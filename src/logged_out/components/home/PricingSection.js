@@ -6,43 +6,43 @@ import {
   Typography,
   isWidthUp,
   withWidth,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import PriceCard from "./PriceCard";
 import calculateSpacing from "./calculateSpacing";
 
-const styles = theme => ({
+const styles = (theme) => ({
   containerFix: {
     [theme.breakpoints.down("md")]: {
       paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6)
+      paddingRight: theme.spacing(6),
     },
     [theme.breakpoints.down("sm")]: {
       paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4)
+      paddingRight: theme.spacing(4),
     },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2)
+      paddingRight: theme.spacing(2),
     },
     overflow: "hidden",
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1)
+    paddingBottom: theme.spacing(1),
   },
   cardWrapper: {
     [theme.breakpoints.down("xs")]: {
       marginLeft: "auto",
       marginRight: "auto",
-      maxWidth: 340
-    }
+      maxWidth: 340,
+    },
   },
   cardWrapperHighlighted: {
     [theme.breakpoints.down("xs")]: {
       marginLeft: "auto",
       marginRight: "auto",
-      maxWidth: 360
-    }
-  }
+      maxWidth: 360,
+    },
+  },
 });
 
 function PricingSection(props) {
@@ -145,7 +145,7 @@ function PricingSection(props) {
 }
 
 PricingSection.propTypes = {
-  width: PropTypes.string.isRequired
+  width: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(

@@ -1,4 +1,4 @@
-import React, {memo, Component} from "react";
+import React, { memo, Component } from "react";
 import PropTypes from "prop-types";
 import AOS from "aos/dist/aos";
 import { withStyles } from "@material-ui/core";
@@ -22,7 +22,6 @@ const styles = (theme) => ({
 });
 
 class Main extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +29,7 @@ class Main extends Component {
       isMobileDrawerOpen: false,
       blogPosts: [],
       dialogOpen: null,
-      isCookieRulesDialogOpen: false
+      isCookieRulesDialogOpen: false,
     };
   }
 
@@ -38,18 +37,17 @@ class Main extends Component {
     this.fetchBlogPosts();
   }
 
-  selectTab = tab => {
+  selectTab = (tab) => {
     this.setState({
-      selectedTab: tab
+      selectedTab: tab,
     });
   };
 
   selectHome = () => {
     smoothScrollTop();
-    document.title =
-      "DT - Document Translator";
+    document.title = "DT - Document Translator";
     this.setState({
-      selectedTab: "Home"
+      selectedTab: "Home",
     });
   };
 
@@ -57,51 +55,51 @@ class Main extends Component {
     smoothScrollTop();
     document.title = "DT - Forms";
     this.setState({
-      selectedTab: "Blog"
+      selectedTab: "Blog",
     });
   };
 
   openLoginDialog = () => {
     this.setState({
       dialogOpen: "login",
-      isMobileDrawerOpen: false
+      isMobileDrawerOpen: false,
     });
   };
 
   closeDialog = () => {
     this.setState({
-      dialogOpen: null
+      dialogOpen: null,
     });
   };
 
   openRegisterDialog = () => {
     this.setState({
       dialogOpen: "register",
-      isMobileDrawerOpen: false
+      isMobileDrawerOpen: false,
     });
   };
 
   openTermsDialog = () => {
     this.setState({
-      dialogOpen: "termsOfService"
+      dialogOpen: "termsOfService",
     });
   };
 
   handleMobileDrawerOpen = () => {
     this.setState({
-      isMobileDrawerOpen: true
+      isMobileDrawerOpen: true,
     });
   };
 
   handleMobileDrawerClose = () => {
     this.setState({
-      isMobileDrawerOpen: false
+      isMobileDrawerOpen: false,
     });
   };
 
   openChangePasswordDialog = () => {
     this.setState({
-      dialogOpen: "changePassword"
+      dialogOpen: "changePassword",
     });
   };
 
@@ -117,59 +115,59 @@ class Main extends Component {
       return blogPost;
     });
     this.setState({
-      blogPosts: blogPosts
+      blogPosts: blogPosts,
     });
   };
 
   handleCookieRulesDialogOpen = () => {
     this.setState({
-      isCookieRulesDialogOpen: true
+      isCookieRulesDialogOpen: true,
     });
   };
 
   handleCookieRulesDialogClose = () => {
     this.setState({
-      isCookieRulesDialogOpen: false
+      isCookieRulesDialogOpen: false,
     });
   };
 
   render() {
     const classes = this.props.classes;
     return (
-        <div className={classes.wrapper}>
-          {!this.state.isCookieRulesDialogOpen && (
-              <CookieConsent
-                  handleCookieRulesDialogOpen={this.handleCookieRulesDialogOpen}
-              />
-          )}
-          <DialogSelector
-              openLoginDialog={this.openLoginDialog}
-              dialogOpen={this.state.dialogOpen}
-              onClose={this.closeDialog}
-              openTermsDialog={this.openTermsDialog}
-              openRegisterDialog={this.openRegisterDialog}
-              openChangePasswordDialog={this.openChangePasswordDialog}
+      <div className={classes.wrapper}>
+        {!this.state.isCookieRulesDialogOpen && (
+          <CookieConsent
+            handleCookieRulesDialogOpen={this.handleCookieRulesDialogOpen}
           />
-          <CookieRulesDialog
-              open={this.state.isCookieRulesDialogOpen}
-              onClose={this.handleCookieRulesDialogClose}
-          />
-          <NavBar
-              selectedTab={this.state.selectedTab}
-              selectTab={this.selectTab}
-              openLoginDialog={this.openLoginDialog}
-              openRegisterDialog={this.openRegisterDialog}
-              mobileDrawerOpen={this.state.isMobileDrawerOpen}
-              handleMobileDrawerOpen={this.handleMobileDrawerOpen}
-              handleMobileDrawerClose={this.handleMobileDrawerClose}
-          />
-          <Routing
-              blogPosts={this.state.blogPosts}
-              selectHome={this.selectHome}
-              selectBlog={this.selectBlog}
-          />
-          <Footer />
-        </div>
+        )}
+        <DialogSelector
+          openLoginDialog={this.openLoginDialog}
+          dialogOpen={this.state.dialogOpen}
+          onClose={this.closeDialog}
+          openTermsDialog={this.openTermsDialog}
+          openRegisterDialog={this.openRegisterDialog}
+          openChangePasswordDialog={this.openChangePasswordDialog}
+        />
+        <CookieRulesDialog
+          open={this.state.isCookieRulesDialogOpen}
+          onClose={this.handleCookieRulesDialogClose}
+        />
+        <NavBar
+          selectedTab={this.state.selectedTab}
+          selectTab={this.selectTab}
+          openLoginDialog={this.openLoginDialog}
+          openRegisterDialog={this.openRegisterDialog}
+          mobileDrawerOpen={this.state.isMobileDrawerOpen}
+          handleMobileDrawerOpen={this.handleMobileDrawerOpen}
+          handleMobileDrawerClose={this.handleMobileDrawerClose}
+        />
+        <Routing
+          blogPosts={this.state.blogPosts}
+          selectHome={this.selectHome}
+          selectBlog={this.selectBlog}
+        />
+        <Footer />
+      </div>
     );
   }
 }

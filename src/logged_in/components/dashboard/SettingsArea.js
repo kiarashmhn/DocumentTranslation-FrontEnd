@@ -14,7 +14,7 @@ function SettingsArea(props) {
 }
 
 SettingsArea.propTypes = {
-  pushMessageToSnackbar: PropTypes.func
+  pushMessageToSnackbar: PropTypes.func,
 };
 
 export default SettingsArea;

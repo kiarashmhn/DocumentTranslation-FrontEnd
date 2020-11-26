@@ -10,11 +10,11 @@ const styles = {
     borderWidth: 1,
     borderColor: "rgba(0, 0, 0, 0.23)",
     borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0
+    borderBottomLeftRadius: 0,
   },
   fullHeight: {
-    height: "100%"
-  }
+    height: "100%",
+  },
 };
 
 function getColor(isDragAccept, isDragReject, theme) {
@@ -33,10 +33,10 @@ function Dropzone(props) {
     getRootProps,
     getInputProps,
     isDragAccept,
-    isDragReject
+    isDragReject,
   } = useDropzone({
     accept: accept,
-    onDrop: onDrop
+    onDrop: onDrop,
   });
   return (
     <Box {...getRootProps()} height="100%">
@@ -64,7 +64,7 @@ Dropzone.propTypes = {
   accept: PropTypes.string,
   fullHeight: PropTypes.bool,
   style: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 
 export default withStyles(styles, { withTheme: true })(Dropzone);

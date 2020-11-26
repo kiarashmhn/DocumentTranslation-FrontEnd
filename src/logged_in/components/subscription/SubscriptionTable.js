@@ -6,7 +6,7 @@ import {
   TableCell,
   TablePagination,
   TableRow,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import EnhancedTableHead from "../../../shared/components/EnhancedTableHead";
 import ColorfulChip from "../../../shared/components/ColorfulChip";
@@ -14,53 +14,53 @@ import unixToDateString from "../../../shared/functions/unixToDateString";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import currencyPrettyPrint from "../../../shared/functions/currencyPrettyPrint";
 
-const styles = theme => ({
+const styles = (theme) => ({
   tableWrapper: {
     overflowX: "auto",
-    width: "100%"
+    width: "100%",
   },
   blackBackground: {
-    backgroundColor: theme.palette.primary.main
+    backgroundColor: theme.palette.primary.main,
   },
   contentWrapper: {
     padding: theme.spacing(3),
     [theme.breakpoints.down("xs")]: {
-      padding: theme.spacing(2)
+      padding: theme.spacing(2),
     },
-    width: "100%"
+    width: "100%",
   },
   dBlock: {
-    display: "block !important"
+    display: "block !important",
   },
   dNone: {
-    display: "none !important"
+    display: "none !important",
   },
   firstData: {
-    paddingLeft: theme.spacing(3)
-  }
+    paddingLeft: theme.spacing(3),
+  },
 });
 
 const rows = [
   {
     id: "description",
     numeric: false,
-    label: "Action"
+    label: "Action",
   },
   {
     id: "balanceChange",
     numeric: false,
-    label: "Balance change"
+    label: "Balance change",
   },
   {
     id: "date",
     numeric: false,
-    label: "Date"
+    label: "Date",
   },
   {
     id: "paidUntil",
     numeric: false,
-    label: "Paid until"
-  }
+    label: "Paid until",
+  },
 ];
 
 const rowsPerPage = 25;
@@ -126,17 +126,17 @@ function SubscriptionTable(props) {
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{
-            "aria-label": "Previous Page"
+            "aria-label": "Previous Page",
           }}
           nextIconButtonProps={{
-            "aria-label": "Next Page"
+            "aria-label": "Next Page",
           }}
           onChangePage={handleChangePage}
           classes={{
             select: classes.dNone,
             selectIcon: classes.dNone,
             actions: transactions.length > 0 ? classes.dBlock : classes.dNone,
-            caption: transactions.length > 0 ? classes.dBlock : classes.dNone
+            caption: transactions.length > 0 ? classes.dBlock : classes.dNone,
           }}
           labelRowsPerPage=""
         />
@@ -155,7 +155,7 @@ function SubscriptionTable(props) {
 SubscriptionTable.propTypes = {
   theme: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  transactions: PropTypes.arrayOf(PropTypes.object).isRequired
+  transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(SubscriptionTable);

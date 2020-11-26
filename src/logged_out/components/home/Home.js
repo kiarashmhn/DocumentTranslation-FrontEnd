@@ -19,7 +19,7 @@ function Home(props) {
 }
 
 Home.propTypes = {
-  selectHome: PropTypes.func.isRequired
+  selectHome: PropTypes.func.isRequired,
 };
 
 export default Home;

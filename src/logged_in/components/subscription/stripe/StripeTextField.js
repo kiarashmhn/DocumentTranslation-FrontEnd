@@ -8,7 +8,7 @@ function MyInputComponent(props) {
   React.useImperativeHandle(inputRef, () => ({
     focus: () => {
       // logic to focus the rendered component from 3rd party belongs here
-    }
+    },
     // hiding the value e.g. react-stripe-elements
   }));
 
@@ -26,24 +26,24 @@ function StripeTextField(props) {
         fontSize: "16px",
         fontSmoothing: "antialiased",
         "::placeholder": {
-          color: theme.palette.text.secondary
-        }
+          color: theme.palette.text.secondary,
+        },
       },
       invalid: {
         iconColor: theme.palette.error.main,
-        color: theme.palette.error.main
-      }
+        color: theme.palette.error.main,
+      },
     },
-    ...stripeOptions
+    ...stripeOptions,
   };
   return (
     <TextField
       InputLabelProps={{
-        shrink: true
+        shrink: true,
       }}
       inputProps={{ component: StripeElement, options: options }}
       InputProps={{
-        inputComponent: MyInputComponent
+        inputComponent: MyInputComponent,
       }}
       {...rest}
     />

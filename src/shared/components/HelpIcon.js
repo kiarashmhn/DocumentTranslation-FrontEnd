@@ -3,26 +3,26 @@ import PropTypes from "prop-types";
 import { Tooltip, Typography, withStyles } from "@material-ui/core";
 import HelpIconOutline from "@material-ui/icons/HelpOutline";
 
-const styles = theme => ({
+const styles = (theme) => ({
   tooltipTypo: {
     whiteSpace: "pre-line !important",
     ...theme.typography.caption,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   tooltip: {
     verticalAlign: "middle",
-    fontSize: "1.25rem"
+    fontSize: "1.25rem",
   },
   helpIcon: {
     marginLeft: theme.spacing(1),
     "@media (max-width: 350px)": {
-      marginLeft: theme.spacing(0.5)
+      marginLeft: theme.spacing(0.5),
     },
     transition: theme.transitions.create(["color"], {
       duration: theme.transitions.duration.short,
-      easing: theme.transitions.easing.easeInOut
-    })
-  }
+      easing: theme.transitions.easing.easeInOut,
+    }),
+  },
 });
 
 function HelpIcon(props) {
@@ -66,7 +66,7 @@ function HelpIcon(props) {
 
 HelpIcon.propTypes = {
   classes: PropTypes.object,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 export default withStyles(styles, { withTheme: true })(HelpIcon);

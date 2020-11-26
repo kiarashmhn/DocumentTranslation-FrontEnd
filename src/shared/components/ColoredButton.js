@@ -8,9 +8,9 @@ function ColoredButton(props) {
     ...theme,
     palette: {
       primary: {
-        main: color
-      }
-    }
+        main: color,
+      },
+    },
   });
   const buttonProps = (({ color, theme, children, ...o }) => o)(props);
   return (
@@ -23,7 +23,7 @@ function ColoredButton(props) {
 }
 
 ColoredButton.propTypes = {
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
 };
 
 export default memo(ColoredButton);

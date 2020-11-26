@@ -14,7 +14,7 @@ function StripeIBANForm(props) {
     name,
     setName,
     email,
-    setEmail
+    setEmail,
   } = props;
   return (
     <Grid container spacing={2} justify="space-between">
@@ -25,7 +25,7 @@ function StripeIBANForm(props) {
           required
           label="Your Name"
           value={name}
-          onChange={event => {
+          onChange={(event) => {
             setName(event.target.value);
           }}
           fullWidth
@@ -38,7 +38,7 @@ function StripeIBANForm(props) {
         <TextField
           required
           value={amount}
-          onChange={event => {
+          onChange={(event) => {
             onAmountChange(parseInt(event.target.value));
           }}
           error={amountError ? true : false}
@@ -49,7 +49,7 @@ function StripeIBANForm(props) {
           margin="none"
           label="Amount"
           InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>
+            startAdornment: <InputAdornment position="start">$</InputAdornment>,
           }}
         />
       </Grid>
@@ -59,7 +59,7 @@ function StripeIBANForm(props) {
           variant="outlined"
           fullWidth
           value={email}
-          onChange={event => {
+          onChange={(event) => {
             setEmail(event.target.value);
           }}
           type="email"
@@ -98,7 +98,7 @@ StripeIBANForm.propTypes = {
   name: PropTypes.string.isRequired,
   setName: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
-  setEmail: PropTypes.func.isRequired
+  setEmail: PropTypes.func.isRequired,
 };
 
 export default StripeIBANForm;

@@ -29,21 +29,25 @@ function Posts(props) {
   }, [selectPosts]);
 
   if (isAddPostPaperOpen) {
-    return <AddPost
-      onClose={closeAddPostModal}
-      EmojiTextArea={EmojiTextArea}
-      ImageCropper={ImageCropper}
-      Dropzone={Dropzone}
-      DateTimePicker={DateTimePicker}
+    return (
+      <AddPost
+        onClose={closeAddPostModal}
+        EmojiTextArea={EmojiTextArea}
+        ImageCropper={ImageCropper}
+        Dropzone={Dropzone}
+        DateTimePicker={DateTimePicker}
+        pushMessageToSnackbar={pushMessageToSnackbar}
+      />
+    );
+  }
+  return (
+    <PostContent
+      openAddPostModal={openAddPostModal}
+      posts={posts}
+      setPosts={setPosts}
       pushMessageToSnackbar={pushMessageToSnackbar}
     />
-  }
-  return <PostContent
-    openAddPostModal={openAddPostModal}
-    posts={posts}
-    setPosts={setPosts}
-    pushMessageToSnackbar={pushMessageToSnackbar}
-  />
+  );
 }
 
 Posts.propTypes = {

@@ -9,25 +9,25 @@ import {
   ListItemIcon,
   Switch,
   Box,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 import LoopIcon from "@material-ui/icons/Loop";
 
-const styles = theme => ({
+const styles = (theme) => ({
   paper: {
     borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0
+    borderBottomRightRadius: 0,
   },
   toolbar: { justifyContent: "space-between" },
   scaleMinus: {
-    transform: "scaleX(-1)"
+    transform: "scaleX(-1)",
   },
   "@keyframes spin": {
     from: { transform: "rotate(359deg)" },
-    to: { transform: "rotate(0deg)" }
+    to: { transform: "rotate(0deg)" },
   },
   spin: { animation: "$spin 2s infinite linear" },
-  listItemSecondaryAction: { paddingRight: theme.spacing(1) }
+  listItemSecondaryAction: { paddingRight: theme.spacing(1) },
 });
 
 function AccountInformationArea(props) {
@@ -60,7 +60,7 @@ function AccountInformationArea(props) {
             inputProps={{
               "aria-label": isAccountActivated
                 ? "Deactivate Account"
-                : "Activate Account"
+                : "Activate Account",
             }}
           />
         </ListItemSecondaryAction>
@@ -73,7 +73,7 @@ AccountInformationArea.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   toggleAccountActivation: PropTypes.func.isRequired,
-  isAccountActivated: PropTypes.bool.isRequired
+  isAccountActivated: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(AccountInformationArea);

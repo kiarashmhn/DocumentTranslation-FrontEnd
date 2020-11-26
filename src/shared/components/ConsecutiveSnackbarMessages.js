@@ -23,26 +23,32 @@ function ConsecutiveSnackbars(props) {
     }
   }, [setMessageInfo, setIsOpen, queue]);
 
-  const handleClose = useCallback((_, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setIsOpen(false);
-  }, [setIsOpen]);
-
-  const pushMessage = useCallback(message => {
-    queue.current.push({
-      message,
-      key: new Date().getTime(),
-    });
-    if (isOpen) {
-      // immediately begin dismissing current message
-      // to start showing new one
+  const handleClose = useCallback(
+    (_, reason) => {
+      if (reason === "clickaway") {
+        return;
+      }
       setIsOpen(false);
-    } else {
-      processQueue();
-    }
-  }, [queue, isOpen, setIsOpen, processQueue]);
+    },
+    [setIsOpen]
+  );
+
+  const pushMessage = useCallback(
+    (message) => {
+      queue.current.push({
+        message,
+        key: new Date().getTime(),
+      });
+      if (isOpen) {
+        // immediately begin dismissing current message
+        // to start showing new one
+        setIsOpen(false);
+      } else {
+        processQueue();
+      }
+    },
+    [queue, isOpen, setIsOpen, processQueue]
+  );
 
   useEffect(() => {
     getPushMessageFromChild(pushMessage);
@@ -70,7 +76,6 @@ function ConsecutiveSnackbars(props) {
       }
     />
   );
-
 }
 
 ConsecutiveSnackbars.propTypes = {

@@ -12,24 +12,24 @@ import {
   Typography,
   withWidth,
   isWidthUp,
-  Toolbar
+  Toolbar,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 
-const styles = theme => ({
+const styles = (theme) => ({
   closeIcon: {
-    marginRight: theme.spacing(0.5)
+    marginRight: theme.spacing(0.5),
   },
   headSection: {
-    width: 200
+    width: 200,
   },
   blackList: {
     backgroundColor: theme.palette.common.black,
-    height: "100%"
+    height: "100%",
   },
   noDecoration: {
-    textDecoration: "none !important"
-  }
+    textDecoration: "none !important",
+  },
 });
 
 function NavigationDrawer(props) {
@@ -41,7 +41,7 @@ function NavigationDrawer(props) {
     classes,
     menuItems,
     selectedItem,
-    theme
+    theme,
   } = props;
 
   useEffect(() => {
@@ -60,7 +60,7 @@ function NavigationDrawer(props) {
             paddingTop: theme.spacing(0),
             paddingBottom: theme.spacing(0),
             height: "100%",
-            justifyContent: anchor === "left" ? "flex-start" : "flex-end"
+            justifyContent: anchor === "left" ? "flex-start" : "flex-end",
           }}
           disableGutters
         >
@@ -72,7 +72,7 @@ function NavigationDrawer(props) {
         </ListItem>
       </Toolbar>
       <List className={classes.blackList}>
-        {menuItems.map(element => {
+        {menuItems.map((element) => {
           if (element.link) {
             return (
               <Link
@@ -129,7 +129,7 @@ NavigationDrawer.propTypes = {
   menuItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
-  selectedItem: PropTypes.string
+  selectedItem: PropTypes.string,
 };
 
 export default withWidth()(
