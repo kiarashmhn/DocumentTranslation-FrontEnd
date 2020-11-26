@@ -70,7 +70,7 @@ function RegisterDialog(props) {
       loading={isLoading}
       onClose={onClose}
       open
-      headline="Register"
+      headline="ثبت نام"
       onFormSubmit={e => {
         e.preventDefault();
         register();
@@ -85,7 +85,7 @@ function RegisterDialog(props) {
             required
             fullWidth
             error={status === "invalidEmail"}
-            label="Email Address"
+            label="آدرس ایمیل"
             autoFocus
             autoComplete="off"
             type="email"
@@ -104,7 +104,7 @@ function RegisterDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="Password"
+            label="رمز عبور"
             inputRef={registerPassword}
             autoComplete="off"
             onChange={() => {
@@ -117,10 +117,10 @@ function RegisterDialog(props) {
             }}
             helperText={(() => {
               if (status === "passwordTooShort") {
-                return "Create a password at least 6 characters long.";
+                return "طول رمزعبور باید حداقل ۶ کاراکتر باشد";
               }
               if (status === "passwordsDontMatch") {
-                return "Your passwords dont match.";
+                return "رمزهای وارد شده مطابقت ندارند";
               }
               return null;
             })()}
@@ -136,7 +136,7 @@ function RegisterDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="Repeat Password"
+            label="تکرار رمزعبور"
             inputRef={registerPasswordRepeat}
             autoComplete="off"
             onChange={() => {
@@ -149,10 +149,10 @@ function RegisterDialog(props) {
             }}
             helperText={(() => {
               if (status === "passwordTooShort") {
-                return "Create a password at least 6 characters long.";
+                return "طول رمزعبور باید حداقل ۶ کاراکتر باشد";
               }
               if (status === "passwordsDontMatch") {
-                return "Your passwords dont match.";
+                return "رمزهای وارد شده مطابقت ندارند";
               }
             })()}
             FormHelperTextProps={{ error: true }}
@@ -172,7 +172,7 @@ function RegisterDialog(props) {
             }
             label={
               <Typography variant="body1">
-                I agree to the
+                شرایط و مقررات
                 <span
                   className={classes.link}
                   onClick={isLoading ? null : openTermsDialog}
@@ -189,7 +189,7 @@ function RegisterDialog(props) {
                   }}
                 >
                   {" "}
-                  terms of service
+                  را تایید می‌کنم
                 </span>
               </Typography>
             }
@@ -202,18 +202,17 @@ function RegisterDialog(props) {
                 marginTop: theme.spacing(-1)
               }}
             >
-              In order to create an account, you have to accept our terms of
-              service.
+              برای ساخت پروفایل باید شرایط و مقررات را تایید کنید
             </FormHelperText>
           )}
           {status === "accountCreated" ? (
             <HighlightedInformation>
-              We have created your account. Please click on the link in the
-              email we have sent to you before logging in.
+              اکانت شما ساخته شد. برای ورود روی لینکی که برایتان ایمیل شده‌است
+              کلیک کنید.
             </HighlightedInformation>
           ) : (
             <HighlightedInformation>
-              Registration is disabled until we go live.
+              ثبت نام فعلا کار نمی‌کند
             </HighlightedInformation>
           )}
         </Fragment>
@@ -227,7 +226,7 @@ function RegisterDialog(props) {
           color="secondary"
           disabled={isLoading}
         >
-          Register
+          ثبت نام
           {isLoading && <ButtonCircularProgress />}
         </Button>
       }

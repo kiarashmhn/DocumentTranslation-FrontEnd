@@ -126,7 +126,8 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: "MyFont",
-    useNextVariants: true
+    useNextVariants: true,
+    direction: "rtl"
   },
   direction: "rtl"
 });

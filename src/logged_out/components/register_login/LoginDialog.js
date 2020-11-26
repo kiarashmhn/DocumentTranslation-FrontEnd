@@ -81,7 +81,7 @@ function LoginDialog(props) {
           login();
         }}
         hideBackdrop
-        headline="Login"
+        headline="ورود"
         content={
           <Fragment>
             <TextField
@@ -90,7 +90,8 @@ function LoginDialog(props) {
               error={status === "invalidEmail"}
               required
               fullWidth
-              label="Email Address"
+              className={"typography"}
+              label="آدرس ایمیل"
               inputRef={loginEmail}
               autoFocus
               autoComplete="off"
@@ -101,18 +102,18 @@ function LoginDialog(props) {
                 }
               }}
               helperText={
-                status === "invalidEmail" &&
-                "This email address isn't associated with an account."
+                status === "invalidEmail" && "آدرس ایمیل وارد شده اشتباه است."
               }
               FormHelperTextProps={{ error: true }}
             />
             <VisibilityPasswordTextField
               variant="outlined"
               margin="normal"
+              className={"typography"}
               required
               fullWidth
               error={status === "invalidPassword"}
-              label="Password"
+              label="رمز عبور"
               inputRef={loginPassword}
               autoComplete="off"
               onChange={() => {
@@ -123,8 +124,8 @@ function LoginDialog(props) {
               helperText={
                 status === "invalidPassword" ? (
                   <span>
-                    Incorrect password. Try again, or click on{" "}
-                    <b>&quot;Forgot Password?&quot;</b> to reset it.
+                    کلیک کنید تا بازیابی شود <b>&quot;فراموشی رمزعبور&quot;</b>
+                    رمز اشتباه است. روی
                   </span>
                 ) : (
                   ""
@@ -137,18 +138,17 @@ function LoginDialog(props) {
             <FormControlLabel
               className={classes.formControlLabel}
               control={<Checkbox color="primary" />}
-              label={<Typography variant="body1">Remember me</Typography>}
+              label={<Typography variant="body1">ذخیره اطلاعات</Typography>}
             />
             {status === "verificationEmailSend" ? (
               <HighlightedInformation>
-                We have send instructions on how to reset your password to your
-                email address
+                نحوه بازیابی رمز عبور ، برای شما ایمیل شده است
               </HighlightedInformation>
             ) : (
               <HighlightedInformation>
-                Email is: <b>test@web.com</b>
+                ایمیل تستی: <b>test@web.com</b>
                 <br />
-                Password is: <b>HaRzwc</b>
+                رمزعبور تستی: <b>HaRzwc</b>
               </HighlightedInformation>
             )}
           </Fragment>
@@ -163,7 +163,7 @@ function LoginDialog(props) {
               disabled={isLoading}
               size="large"
             >
-              Login
+              ورود
               {isLoading && <ButtonCircularProgress />}
             </Button>
             <Typography
@@ -186,7 +186,7 @@ function LoginDialog(props) {
                 }
               }}
             >
-              Forgot Password?
+              فراموشی رمزعبور
             </Typography>
           </Fragment>
         }

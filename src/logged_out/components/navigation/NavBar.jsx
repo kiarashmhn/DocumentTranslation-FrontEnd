@@ -30,7 +30,8 @@ const styles = theme => ({
   menuButtonText: {
     fontFamily: "MyFont",
     fontSize: theme.typography.body1.fontSize,
-    fontWeight: theme.typography.h6.fontWeight
+    fontWeight: theme.typography.h6.fontWeight,
+    color: theme.palette.primary.main
   },
   brandText: {
     fontFamily: "'Baloo Bhaijaan', cursive",

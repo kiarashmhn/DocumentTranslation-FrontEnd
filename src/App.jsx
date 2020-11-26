@@ -17,7 +17,7 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <GlobalStyles />
-          <Pace color={theme.palette.primary.light} />
+          <Pace color={theme.palette.secondary.main} />
           <Suspense fallback={<Fragment />}>
             <Switch>
               <Route path="/c">
@@ -33,7 +33,7 @@ class App extends Component {
     );
   }
 }
-
+//document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
 serviceWorker.register();
 
 export default App;
