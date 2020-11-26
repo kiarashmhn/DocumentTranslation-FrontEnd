@@ -14,11 +14,11 @@ import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 
 AOS.init({ once: true });
 
-const styles = (theme) => ({
+const styles = theme => ({
   wrapper: {
     backgroundColor: theme.palette.common.white,
-    overflowX: "hidden",
-  },
+    overflowX: "hidden"
+  }
 });
 
 class Main extends Component {
@@ -29,7 +29,7 @@ class Main extends Component {
       isMobileDrawerOpen: false,
       blogPosts: [],
       dialogOpen: null,
-      isCookieRulesDialogOpen: false,
+      isCookieRulesDialogOpen: false
     };
   }
 
@@ -37,9 +37,9 @@ class Main extends Component {
     this.fetchBlogPosts();
   }
 
-  selectTab = (tab) => {
+  selectTab = tab => {
     this.setState({
-      selectedTab: tab,
+      selectedTab: tab
     });
   };
 
@@ -47,7 +47,7 @@ class Main extends Component {
     smoothScrollTop();
     document.title = "DT - Document Translator";
     this.setState({
-      selectedTab: "Home",
+      selectedTab: "Home"
     });
   };
 
@@ -55,56 +55,56 @@ class Main extends Component {
     smoothScrollTop();
     document.title = "DT - Forms";
     this.setState({
-      selectedTab: "Blog",
+      selectedTab: "Blog"
     });
   };
 
   openLoginDialog = () => {
     this.setState({
       dialogOpen: "login",
-      isMobileDrawerOpen: false,
+      isMobileDrawerOpen: false
     });
   };
 
   closeDialog = () => {
     this.setState({
-      dialogOpen: null,
+      dialogOpen: null
     });
   };
 
   openRegisterDialog = () => {
     this.setState({
       dialogOpen: "register",
-      isMobileDrawerOpen: false,
+      isMobileDrawerOpen: false
     });
   };
 
   openTermsDialog = () => {
     this.setState({
-      dialogOpen: "termsOfService",
+      dialogOpen: "termsOfService"
     });
   };
 
   handleMobileDrawerOpen = () => {
     this.setState({
-      isMobileDrawerOpen: true,
+      isMobileDrawerOpen: true
     });
   };
 
   handleMobileDrawerClose = () => {
     this.setState({
-      isMobileDrawerOpen: false,
+      isMobileDrawerOpen: false
     });
   };
 
   openChangePasswordDialog = () => {
     this.setState({
-      dialogOpen: "changePassword",
+      dialogOpen: "changePassword"
     });
   };
 
   fetchBlogPosts = () => {
-    const blogPosts = dummyBlogPosts.map((blogPost) => {
+    const blogPosts = dummyBlogPosts.map(blogPost => {
       let title = blogPost.title;
       title = title.toLowerCase();
       title = title.replace(/[^A-Za-z0-9 ]/g, "");
@@ -115,19 +115,19 @@ class Main extends Component {
       return blogPost;
     });
     this.setState({
-      blogPosts: blogPosts,
+      blogPosts: blogPosts
     });
   };
 
   handleCookieRulesDialogOpen = () => {
     this.setState({
-      isCookieRulesDialogOpen: true,
+      isCookieRulesDialogOpen: true
     });
   };
 
   handleCookieRulesDialogClose = () => {
     this.setState({
-      isCookieRulesDialogOpen: false,
+      isCookieRulesDialogOpen: false
     });
   };
 
@@ -173,7 +173,7 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(memo(Main));

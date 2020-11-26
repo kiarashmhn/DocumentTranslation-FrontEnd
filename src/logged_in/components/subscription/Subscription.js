@@ -6,8 +6,8 @@ import SubscriptionInfo from "./SubscriptionInfo";
 
 const styles = {
   divider: {
-    backgroundColor: "rgba(0, 0, 0, 0.26)",
-  },
+    backgroundColor: "rgba(0, 0, 0, 0.26)"
+  }
 };
 
 function Subscription(props) {
@@ -15,7 +15,7 @@ function Subscription(props) {
     transactions,
     classes,
     openAddBalanceDialog,
-    selectSubscription,
+    selectSubscription
   } = props;
 
   useEffect(selectSubscription, [selectSubscription]);
@@ -35,7 +35,7 @@ Subscription.propTypes = {
   classes: PropTypes.object.isRequired,
   transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectSubscription: PropTypes.func.isRequired,
-  openAddBalanceDialog: PropTypes.func.isRequired,
+  openAddBalanceDialog: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Subscription);

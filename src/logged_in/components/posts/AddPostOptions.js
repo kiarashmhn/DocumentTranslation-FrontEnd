@@ -12,37 +12,37 @@ import {
   OutlinedInput,
   MenuItem,
   Box,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import Bordered from "../../../shared/components/Bordered";
 import ImageCropperDialog from "../../../shared/components/ImageCropperDialog";
 
-const styles = (theme) => ({
+const styles = theme => ({
   floatButtonWrapper: {
     position: "absolute",
     top: theme.spacing(1),
     right: theme.spacing(1),
-    zIndex: 1000,
+    zIndex: 1000
   },
   inputRoot: {
     width: 190,
     "@media (max-width:  400px)": {
-      width: 160,
+      width: 160
     },
     "@media (max-width:  360px)": {
-      width: 140,
+      width: 140
     },
     "@media (max-width:  340px)": {
-      width: 120,
-    },
+      width: 120
+    }
   },
   uploadIcon: {
     fontSize: 48,
     transition: theme.transitions.create(["color", "box-shadow", "border"], {
       duration: theme.transitions.duration.short,
-      easing: theme.transitions.easing.easeInOut,
-    }),
+      easing: theme.transitions.easing.easeInOut
+    })
   },
   imgWrapper: { position: "relative" },
   img: {
@@ -50,28 +50,28 @@ const styles = (theme) => ({
     border: "1px solid rgba(0, 0, 0, 0.23)",
     borderRadius: theme.shape.borderRadius,
     borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
+    borderBottomLeftRadius: 0
   },
   uploadText: {
     transition: theme.transitions.create(["color", "box-shadow", "border"], {
       duration: theme.transitions.duration.short,
-      easing: theme.transitions.easing.easeInOut,
-    }),
+      easing: theme.transitions.easing.easeInOut
+    })
   },
   numberInput: {
-    width: 110,
+    width: 110
   },
   numberInputInput: {
-    padding: "9px 34px 9px 14.5px",
+    padding: "9px 34px 9px 14.5px"
   },
   emojiTextArea: {
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
-    marginRight: -1,
+    marginRight: -1
   },
   dNone: {
-    display: "none",
-  },
+    display: "none"
+  }
 });
 
 const inputOptions = ["None", "Slow", "Normal", "Fast"];
@@ -90,7 +90,7 @@ function AddPostOptions(props) {
     onCrop,
     onCropperClose,
     uploadAt,
-    onChangeUploadAt,
+    onChangeUploadAt
   } = props;
   const [option1, setOption1] = useState("None");
   const [option2, setOption2] = useState("None");
@@ -98,7 +98,7 @@ function AddPostOptions(props) {
   const [option4, setOption4] = useState("None");
 
   const handleChange = useCallback(
-    (event) => {
+    event => {
       const { name, value } = event.target;
       switch (name) {
         case "option1":
@@ -151,23 +151,23 @@ function AddPostOptions(props) {
     {
       state: option1,
       label: "Option 1",
-      stateName: "option1",
+      stateName: "option1"
     },
     {
       state: option2,
       label: "Option 2",
-      stateName: "option2",
+      stateName: "option2"
     },
     {
       state: option3,
       label: "Option 3",
-      stateName: "option3",
+      stateName: "option3"
     },
     {
       state: option4,
       label: "Option 4",
-      stateName: "option4",
-    },
+      stateName: "option4"
+    }
   ];
 
   return (
@@ -240,7 +240,7 @@ function AddPostOptions(props) {
                     }
                     MenuProps={{ disableScrollLock: true }}
                   >
-                    {inputOptions.map((innerElement) => (
+                    {inputOptions.map(innerElement => (
                       <MenuItem value={innerElement} key={innerElement}>
                         {innerElement}
                       </MenuItem>
@@ -272,7 +272,7 @@ AddPostOptions.propTypes = {
   value: PropTypes.string,
   characters: PropTypes.number,
   uploadAt: PropTypes.instanceOf(Date),
-  onChangeUploadAt: PropTypes.func,
+  onChangeUploadAt: PropTypes.func
 };
 
 export default withStyles(styles, { withTheme: true })(AddPostOptions);

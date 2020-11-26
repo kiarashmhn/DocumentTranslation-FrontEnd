@@ -8,18 +8,18 @@ const styles = {
     width: "100%",
     marginBottom: -7,
     height: "7vw",
-    minHeight: "7vw",
+    minHeight: "7vw"
   },
   "@keyframes moveForever": {
     from: { transform: "translate3d(-90px, 0, 0)" },
-    to: { transform: "translate3d(85px, 0, 0)" },
+    to: { transform: "translate3d(85px, 0, 0)" }
   },
   parallax: {
     "& > use": {
       animation: "$moveForever 4s cubic-bezier(0.62, 0.5, 0.38, 0.5) infinite",
-      animationDelay: (props) => `-${props.animationNegativeDelay}s`,
-    },
-  },
+      animationDelay: props => `-${props.animationNegativeDelay}s`
+    }
+  }
 };
 
 /**
@@ -27,14 +27,7 @@ const styles = {
  */
 function WaveBorder(props) {
   const id = String(Math.random());
-  const {
-    className,
-    lowerColor,
-    upperColor,
-    classes,
-    animationNegativeDelay,
-    ...rest
-  } = props;
+  const { className, lowerColor, upperColor, classes, ...rest } = props;
   return (
     <div className={className} style={{ background: upperColor }} {...rest}>
       <svg
@@ -64,6 +57,7 @@ WaveBorder.propTypes = {
   upperColor: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
   animationNegativeDelay: PropTypes.number.isRequired,
+  className: PropTypes.string
 };
 
 export default withStyles(styles)(WaveBorder);

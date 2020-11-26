@@ -217,7 +217,7 @@ function ShareButton(props) {
 ShareButton.propTypes = {
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 };
 
 export default ShareButton;

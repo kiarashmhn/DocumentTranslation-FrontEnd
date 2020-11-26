@@ -7,28 +7,28 @@ import {
   Checkbox,
   Typography,
   FormControlLabel,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
 
-const styles = (theme) => ({
+const styles = theme => ({
   link: {
     transition: theme.transitions.create(["background-color"], {
       duration: theme.transitions.duration.complex,
-      easing: theme.transitions.easing.easeInOut,
+      easing: theme.transitions.easing.easeInOut
     }),
     cursor: "pointer",
     color: theme.palette.primary.main,
     "&:enabled:hover": {
-      color: theme.palette.primary.dark,
+      color: theme.palette.primary.dark
     },
     "&:enabled:focus": {
-      color: theme.palette.primary.dark,
-    },
-  },
+      color: theme.palette.primary.dark
+    }
+  }
 });
 
 function RegisterDialog(props) {
@@ -62,7 +62,7 @@ function RegisterDialog(props) {
     setHasTermsOfServiceError,
     registerPassword,
     registerPasswordRepeat,
-    registerTermsCheckbox,
+    registerTermsCheckbox
   ]);
 
   return (
@@ -71,7 +71,7 @@ function RegisterDialog(props) {
       onClose={onClose}
       open
       headline="Register"
-      onFormSubmit={(e) => {
+      onFormSubmit={e => {
         e.preventDefault();
         register();
       }}
@@ -178,7 +178,7 @@ function RegisterDialog(props) {
                   onClick={isLoading ? null : openTermsDialog}
                   tabIndex={0}
                   role="button"
-                  onKeyDown={(event) => {
+                  onKeyDown={event => {
                     // For screenreaders listen to space and enter events
                     if (
                       (!isLoading && event.keyCode === 13) ||
@@ -199,7 +199,7 @@ function RegisterDialog(props) {
               error
               style={{
                 display: "block",
-                marginTop: theme.spacing(-1),
+                marginTop: theme.spacing(-1)
               }}
             >
               In order to create an account, you have to accept our terms of
@@ -241,7 +241,7 @@ RegisterDialog.propTypes = {
   openTermsDialog: PropTypes.func.isRequired,
   status: PropTypes.string,
   setStatus: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(RegisterDialog);

@@ -2,12 +2,12 @@ import React, { useCallback, useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Snackbar, withStyles } from "@material-ui/core";
 
-const styles = (theme) => ({
+const styles = theme => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     paddingTop: 0,
-    paddingBottom: 0,
-  },
+    paddingBottom: 0
+  }
 });
 
 function ConsecutiveSnackbars(props) {
@@ -34,10 +34,10 @@ function ConsecutiveSnackbars(props) {
   );
 
   const pushMessage = useCallback(
-    (message) => {
+    message => {
       queue.current.push({
         message,
-        key: new Date().getTime(),
+        key: new Date().getTime()
       });
       if (isOpen) {
         // immediately begin dismissing current message
@@ -60,7 +60,7 @@ function ConsecutiveSnackbars(props) {
       key={messageInfo.key}
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left",
+        horizontal: "left"
       }}
       open={isOpen}
       autoHideDuration={6000}
@@ -68,8 +68,8 @@ function ConsecutiveSnackbars(props) {
       onExited={processQueue}
       ContentProps={{
         classes: {
-          root: classes.root,
-        },
+          root: classes.root
+        }
       }}
       message={
         <span>{messageInfo.message ? messageInfo.message.text : null}</span>
@@ -80,7 +80,7 @@ function ConsecutiveSnackbars(props) {
 
 ConsecutiveSnackbars.propTypes = {
   getPushMessageFromChild: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(ConsecutiveSnackbars);

@@ -6,17 +6,17 @@ import {
   Button,
   Typography,
   Box,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 import fetchIpData from "./fetchIpData";
 
-const styles = (theme) => ({
+const styles = theme => ({
   snackbarContent: {
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-  },
+    paddingRight: theme.spacing(3)
+  }
 });
 
 const europeanCountryCodes = [
@@ -47,7 +47,7 @@ const europeanCountryCodes = [
   "RO",
   "SE",
   "SI",
-  "SK",
+  "SK"
 ];
 
 function CookieConsent(props) {
@@ -56,7 +56,7 @@ function CookieConsent(props) {
 
   const openOnEuCountry = useCallback(() => {
     fetchIpData
-      .then((data) => {
+      .then(data => {
         if (
           data &&
           data.country &&
@@ -77,7 +77,7 @@ function CookieConsent(props) {
    */
   const onAccept = useCallback(() => {
     Cookies.set("remember-cookie-snackbar", "", {
-      expires: 365,
+      expires: 365
     });
     setIsVisible(false);
   }, [setIsVisible]);
@@ -115,6 +115,7 @@ function CookieConsent(props) {
 
 CookieConsent.propTypes = {
   handleCookieRulesDialogOpen: PropTypes.func.isRequired,
+  classes: PropTypes.any
 };
 
 export default withStyles(styles, { withTheme: true })(CookieConsent);

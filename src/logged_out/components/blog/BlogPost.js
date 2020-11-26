@@ -8,27 +8,27 @@ import ShareButton from "../../../shared/components/ShareButton";
 import ZoomImage from "../../../shared/components/ZoomImage";
 import smoothScrollTop from "../../../shared/functions/smoothScrollTop";
 
-const styles = (theme) => ({
+const styles = theme => ({
   blogContentWrapper: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(4),
-      marginRight: theme.spacing(4),
+      marginRight: theme.spacing(4)
     },
     maxWidth: 1280,
-    width: "100%",
+    width: "100%"
   },
   wrapper: {
-    minHeight: "60vh",
+    minHeight: "60vh"
   },
   img: {
     width: "100%",
-    height: "auto",
+    height: "auto"
   },
   card: {
-    boxShadow: theme.shadows[4],
-  },
+    boxShadow: theme.shadows[4]
+  }
 });
 
 function BlogPost(props) {
@@ -55,7 +55,7 @@ function BlogPost(props) {
                 </Typography>
                 <Typography variant="body1" color="textSecondary">
                   {format(new Date(date * 1000), "PPP", {
-                    awareOfUnicodeTokens: true,
+                    awareOfUnicodeTokens: true
                   })}
                 </Typography>
               </Box>
@@ -75,7 +75,7 @@ function BlogPost(props) {
                             variant="contained"
                             className="text-white"
                             classes={{
-                              label: "text-white",
+                              label: "text-white"
                             }}
                           />
                         </Grid>
@@ -90,7 +90,7 @@ function BlogPost(props) {
             <Typography variant="h6" paragraph>
               Other articles
             </Typography>
-            {otherArticles.map((blogPost) => (
+            {otherArticles.map(blogPost => (
               <Box key={blogPost.id} mb={3}>
                 <BlogCard
                   title={blogPost.title}
@@ -113,7 +113,7 @@ BlogPost.propTypes = {
   date: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
   content: PropTypes.node.isRequired,
-  otherArticles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  otherArticles: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(BlogPost);

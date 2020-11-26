@@ -8,32 +8,32 @@ import {
   Checkbox,
   Typography,
   FormControlLabel,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
 
-const styles = (theme) => ({
+const styles = theme => ({
   forgotPassword: {
     marginTop: theme.spacing(2),
     color: theme.palette.primary.main,
     cursor: "pointer",
     "&:enabled:hover": {
-      color: theme.palette.primary.dark,
+      color: theme.palette.primary.dark
     },
     "&:enabled:focus": {
-      color: theme.palette.primary.dark,
-    },
+      color: theme.palette.primary.dark
+    }
   },
   disabledText: {
     cursor: "auto",
-    color: theme.palette.text.disabled,
+    color: theme.palette.text.disabled
   },
   formControlLabel: {
-    marginRight: 0,
-  },
+    marginRight: 0
+  }
 });
 
 function LoginDialog(props) {
@@ -43,7 +43,7 @@ function LoginDialog(props) {
     classes,
     onClose,
     openChangePasswordDialog,
-    status,
+    status
   } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -76,7 +76,7 @@ function LoginDialog(props) {
         open
         onClose={onClose}
         loading={isLoading}
-        onFormSubmit={(e) => {
+        onFormSubmit={e => {
           e.preventDefault();
           login();
         }}
@@ -176,7 +176,7 @@ function LoginDialog(props) {
               onClick={isLoading ? null : openChangePasswordDialog}
               tabIndex={0}
               role="button"
-              onKeyDown={(event) => {
+              onKeyDown={event => {
                 // For screenreaders listen to space and enter events
                 if (
                   (!isLoading && event.keyCode === 13) ||
@@ -201,7 +201,7 @@ LoginDialog.propTypes = {
   setStatus: PropTypes.func.isRequired,
   openChangePasswordDialog: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  status: PropTypes.string,
+  status: PropTypes.string
 };
 
 export default withRouter(withStyles(styles)(LoginDialog));

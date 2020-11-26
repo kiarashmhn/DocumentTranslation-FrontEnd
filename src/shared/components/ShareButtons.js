@@ -285,7 +285,7 @@ ShareButtons.propTypes = {
   types: PropTypes.arrayOf(PropTypes.string).isRequired,
   description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  forceWhite: PropTypes.bool,
+  forceWhite: PropTypes.bool
 };
 
 export default ShareButtons;

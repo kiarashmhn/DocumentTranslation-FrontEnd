@@ -92,7 +92,7 @@ const posts = [
     src: `${process.env.PUBLIC_URL}/images/logged_out/blogPost1.jpg`,
     snippet:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    content: content,
+    content: content
   },
   {
     title: "Post 2",
@@ -101,7 +101,7 @@ const posts = [
     src: `${process.env.PUBLIC_URL}/images/logged_out/blogPost2.jpg`,
     snippet:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    content: content,
+    content: content
   },
   {
     title: "Post 3",
@@ -110,7 +110,7 @@ const posts = [
     src: `${process.env.PUBLIC_URL}/images/logged_out/blogPost3.jpg`,
     snippet:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    content: content,
+    content: content
   },
   {
     title: "Post 4",
@@ -119,7 +119,7 @@ const posts = [
     src: `${process.env.PUBLIC_URL}/images/logged_out/blogPost4.jpg`,
     snippet:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    content: content,
+    content: content
   },
   {
     title: "Post 5",
@@ -128,7 +128,7 @@ const posts = [
     src: `${process.env.PUBLIC_URL}/images/logged_out/blogPost5.jpg`,
     snippet:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    content: content,
+    content: content
   },
   {
     title: "Post 6",
@@ -137,8 +137,8 @@ const posts = [
     src: `${process.env.PUBLIC_URL}/images/logged_out/blogPost6.jpg`,
     snippet:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    content: content,
-  },
+    content: content
+  }
 ];
 
 export default posts;

@@ -4,8 +4,8 @@ import { ListItemText, Button, Toolbar, withStyles } from "@material-ui/core";
 
 const styles = {
   toolbar: {
-    justifyContent: "space-between",
-  },
+    justifyContent: "space-between"
+  }
 };
 
 function SubscriptionInfo(props) {
@@ -27,7 +27,7 @@ function SubscriptionInfo(props) {
 
 SubscriptionInfo.propTypes = {
   classes: PropTypes.object.isRequired,
-  openAddBalanceDialog: PropTypes.func.isRequired,
+  openAddBalanceDialog: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(SubscriptionInfo);

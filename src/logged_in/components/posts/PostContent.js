@@ -9,7 +9,7 @@ import {
   Button,
   Paper,
   Box,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SelfAligningImage from "../../../shared/components/SelfAligningImage";
@@ -20,8 +20,8 @@ const styles = {
   dBlock: { display: "block" },
   dNone: { display: "none" },
   toolbar: {
-    justifyContent: "space-between",
-  },
+    justifyContent: "space-between"
+  }
 };
 
 const rowsPerPage = 25;
@@ -32,7 +32,7 @@ function PostContent(props) {
     setPosts,
     posts,
     openAddPostModal,
-    classes,
+    classes
   } = props;
   const [page, setPage] = useState(0);
   const [isDeletePostDialogOpen, setIsDeletePostDialogOpen] = useState(false);
@@ -49,11 +49,11 @@ function PostContent(props) {
     setIsDeletePostDialogLoading(true);
     setTimeout(() => {
       const _posts = [...posts];
-      const index = _posts.find((element) => element.id === deletePost.id);
+      const index = _posts.find(element => element.id === deletePost.id);
       _posts.splice(index, 1);
       setPosts(_posts);
       pushMessageToSnackbar({
-        text: "Your post has been deleted",
+        text: "Your post has been deleted"
       });
       closeDeletePostDialog();
     }, 1500);
@@ -62,7 +62,7 @@ function PostContent(props) {
     setPosts,
     setIsDeletePostDialogLoading,
     pushMessageToSnackbar,
-    closeDeletePostDialog,
+    closeDeletePostDialog
   ]);
 
   const onDelete = useCallback(() => {
@@ -83,7 +83,7 @@ function PostContent(props) {
           <Grid container spacing={1}>
             {posts
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((post) => (
+              .map(post => (
                 <Grid item xs={6} sm={4} md={3} key={post.id}>
                   <SelfAligningImage
                     src={post.src}
@@ -95,8 +95,8 @@ function PostContent(props) {
                         onClick: () => {
                           onDelete(post);
                         },
-                        icon: <DeleteIcon />,
-                      },
+                        icon: <DeleteIcon />
+                      }
                     ]}
                   />
                 </Grid>
@@ -135,17 +135,17 @@ function PostContent(props) {
         rowsPerPage={rowsPerPage}
         page={page}
         backIconButtonProps={{
-          "aria-label": "Previous Page",
+          "aria-label": "Previous Page"
         }}
         nextIconButtonProps={{
-          "aria-label": "Next Page",
+          "aria-label": "Next Page"
         }}
         onChangePage={handleChangePage}
         classes={{
           select: classes.dNone,
           selectIcon: classes.dNone,
           actions: posts.length > 0 ? classes.dBlock : classes.dNone,
-          caption: posts.length > 0 ? classes.dBlock : classes.dNone,
+          caption: posts.length > 0 ? classes.dBlock : classes.dNone
         }}
         labelRowsPerPage=""
       />
@@ -166,7 +166,7 @@ PostContent.propTypes = {
   classes: PropTypes.object.isRequired,
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
   setPosts: PropTypes.func.isRequired,
-  pushMessageToSnackbar: PropTypes.func,
+  pushMessageToSnackbar: PropTypes.func
 };
 
 export default withStyles(styles)(PostContent);

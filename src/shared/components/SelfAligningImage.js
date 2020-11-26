@@ -9,7 +9,7 @@ const styles = {
     width: "100%",
     paddingTop: "100%",
     overflow: "hidden",
-    position: "relative",
+    position: "relative"
   },
   image: {
     position: "absolute",
@@ -17,8 +17,8 @@ const styles = {
     bottom: 0,
     left: 0,
     right: 0,
-    margin: "auto",
-  },
+    margin: "auto"
+  }
 };
 
 function SelfAligningImage(props) {
@@ -29,7 +29,7 @@ function SelfAligningImage(props) {
     timeStamp,
     options,
     roundedBorder,
-    theme,
+    theme
   } = props;
   const img = useRef();
   const [hasMoreWidthThanHeight, setHasMoreWidthThanHeight] = useState(null);
@@ -51,7 +51,7 @@ function SelfAligningImage(props) {
           height: hasMoreWidthThanHeight ? "100%" : "auto",
           width: hasMoreWidthThanHeight ? "auto" : "100%",
           display: hasLoaded ? "block" : "none",
-          borderRadius: roundedBorder ? theme.shape.borderRadius : 0,
+          borderRadius: roundedBorder ? theme.shape.borderRadius : 0
         }}
         ref={img}
         className={classes.image}
@@ -63,7 +63,7 @@ function SelfAligningImage(props) {
         <GridListTileBar
           title={title}
           subtitle={format(new Date(timeStamp * 1000), "PP - k:mm", {
-            awareOfUnicodeTokens: true,
+            awareOfUnicodeTokens: true
           })}
           actionIcon={
             options.length > 0 && (
@@ -83,7 +83,7 @@ SelfAligningImage.propTypes = {
   title: PropTypes.string,
   timeStamp: PropTypes.number,
   roundedBorder: PropTypes.bool,
-  options: PropTypes.arrayOf(PropTypes.object),
+  options: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default withStyles(styles, { withTheme: true })(SelfAligningImage);

@@ -6,19 +6,19 @@ import {
   DialogContent,
   DialogActions,
   Box,
-  withStyles,
+  withStyles
 } from "@material-ui/core";
 
-const styles = (theme) => ({
+const styles = theme => ({
   helpPadding: {
     "@media (max-width:  400px)": {
       paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
-    },
+      paddingRight: theme.spacing(1)
+    }
   },
   fullWidth: {
-    width: "100%",
-  },
+    width: "100%"
+  }
 });
 
 function ActionPaper(props) {
@@ -30,7 +30,7 @@ function ActionPaper(props) {
     maxWidth,
     actions,
     helpPadding,
-    fullWidthActions,
+    fullWidthActions
   } = props;
   return (
     <Box pt={1}>
@@ -63,13 +63,13 @@ ActionPaper.propTypes = {
   title: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.func,
-    PropTypes.string,
+    PropTypes.string
   ]),
   content: PropTypes.element,
   maxWidth: PropTypes.string,
   actions: PropTypes.element,
   helpPadding: PropTypes.bool,
-  fullWidthActions: PropTypes.bool,
+  fullWidthActions: PropTypes.bool
 };
 
 export default withStyles(styles, { withTheme: true })(ActionPaper);

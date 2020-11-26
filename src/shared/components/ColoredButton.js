@@ -8,11 +8,11 @@ function ColoredButton(props) {
     ...theme,
     palette: {
       primary: {
-        main: color,
-      },
-    },
+        main: color
+      }
+    }
   });
-  const buttonProps = (({ color, theme, children, ...o }) => o)(props);
+  const buttonProps = (({ ...o }) => o)(props);
   return (
     <MuiThemeProvider theme={buttonTheme}>
       <Button {...buttonProps} color="primary">
@@ -24,6 +24,8 @@ function ColoredButton(props) {
 
 ColoredButton.propTypes = {
   color: PropTypes.string.isRequired,
+  theme: PropTypes.any,
+  children: PropTypes.any
 };
 
 export default memo(ColoredButton);

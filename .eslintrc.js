@@ -4,20 +4,19 @@ module.exports = {
     es6: true,
     node: true,
     browser: true,
-    jest: true,
+    jest: true
   },
   parserOptions: {
     ecmaVersion: 6,
     sourceType: "module",
     ecmaFeatures: {
-      jsx: true,
-    },
-    emitWarning: true,
+      jsx: true
+    }
   },
   plugins: ["react"],
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
-  ],
+    "plugin:prettier/recommended"
+  ]
 };

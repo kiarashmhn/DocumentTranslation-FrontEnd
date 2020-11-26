@@ -15,12 +15,12 @@ const renderMergedProps = (component, ...rest) => {
 const PropsRoute = ({ component, ...rest }) => (
   <Route
     {...rest}
-    render={(routeProps) => renderMergedProps(component, routeProps, rest)}
+    render={routeProps => renderMergedProps(component, routeProps, rest)}
   />
 );
 
 PropsRoute.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node]),
+  component: PropTypes.oneOfType([PropTypes.elementType, PropTypes.node])
 };
 
 export default PropsRoute;

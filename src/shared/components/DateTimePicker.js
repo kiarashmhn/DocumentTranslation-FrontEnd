@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   MuiPickersUtilsProvider,
-  DateTimePicker as DTPicker,
+  DateTimePicker as DTPicker
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { withTheme, MuiThemeProvider, createMuiTheme } from "@material-ui/core";
@@ -11,7 +11,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import DateRange from "@material-ui/icons/DateRange";
 
-const Theme2 = (theme) =>
+const Theme2 = theme =>
   createMuiTheme({
     ...theme,
     overrides: {
@@ -19,20 +19,20 @@ const Theme2 = (theme) =>
         root: {
           width: 190,
           "@media (max-width:  400px)": {
-            width: 160,
+            width: 160
           },
           "@media (max-width:  360px)": {
-            width: 140,
+            width: 140
           },
           "@media (max-width:  340px)": {
-            width: 120,
-          },
+            width: 120
+          }
         },
         input: {
-          padding: "9px 14.5px",
-        },
-      },
-    },
+          padding: "9px 14.5px"
+        }
+      }
+    }
   });
 
 function DateTimePicker(props) {
@@ -61,7 +61,7 @@ function DateTimePicker(props) {
 DateTimePicker.propTypes = {
   disabled: PropTypes.bool,
   value: PropTypes.instanceOf(Date),
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default withTheme(DateTimePicker);

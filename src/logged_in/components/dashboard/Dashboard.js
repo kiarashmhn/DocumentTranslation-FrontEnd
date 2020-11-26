@@ -15,7 +15,7 @@ function Dashboard(props) {
     pushMessageToSnackbar,
     targets,
     setTargets,
-    isAccountActivated,
+    isAccountActivated
   } = props;
 
   useEffect(selectDashboard, [selectDashboard]);
@@ -55,7 +55,7 @@ Dashboard.propTypes = {
   targets: PropTypes.arrayOf(PropTypes.object).isRequired,
   setTargets: PropTypes.func.isRequired,
   isAccountActivated: PropTypes.bool.isRequired,
-  selectDashboard: PropTypes.func.isRequired,
+  selectDashboard: PropTypes.func.isRequired
 };
 
 export default Dashboard;

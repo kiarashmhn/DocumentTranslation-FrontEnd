@@ -12,7 +12,7 @@ function Posts(props) {
     DateTimePicker,
     pushMessageToSnackbar,
     posts,
-    setPosts,
+    setPosts
   } = props;
   const [isAddPostPaperOpen, setIsAddPostPaperOpen] = useState(false);
 
@@ -58,7 +58,7 @@ Posts.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
   setPosts: PropTypes.func.isRequired,
   pushMessageToSnackbar: PropTypes.func,
-  selectPosts: PropTypes.func.isRequired,
+  selectPosts: PropTypes.func.isRequired
 };
 
 export default Posts;

@@ -11,7 +11,7 @@ function LazyLoadAddBalanceDialog(props) {
   useEffect(() => {
     if (open && !hasFetchedAddBalanceDialog) {
       setHasFetchedAddBlanceDialog(true);
-      import("./AddBalanceDialog").then((Component) => {
+      import("./AddBalanceDialog").then(Component => {
         setAddBalanceDialog(() => Component.default);
       });
     }
@@ -19,7 +19,7 @@ function LazyLoadAddBalanceDialog(props) {
     open,
     hasFetchedAddBalanceDialog,
     setHasFetchedAddBlanceDialog,
-    setAddBalanceDialog,
+    setAddBalanceDialog
   ]);
 
   return (
@@ -38,7 +38,7 @@ function LazyLoadAddBalanceDialog(props) {
 LazyLoadAddBalanceDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onSuccess: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func.isRequired
 };
 
 export default LazyLoadAddBalanceDialog;

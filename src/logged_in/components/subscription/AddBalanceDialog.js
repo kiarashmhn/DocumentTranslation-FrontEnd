@@ -6,7 +6,7 @@ import {
   CardElement,
   IbanElement,
   useStripe,
-  useElements,
+  useElements
 } from "@stripe/react-stripe-js";
 import { Grid, Button, Box, withTheme } from "@material-ui/core";
 import StripeCardForm from "./stripe/StripeCardForm";
@@ -20,7 +20,7 @@ const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
 
 const paymentOptions = ["Credit Card", "SEPA Direct Debit"];
 
-const AddBalanceDialog = withTheme(function (props) {
+const AddBalanceDialog = withTheme(function(props) {
   const { open, theme, onClose, onSuccess } = props;
 
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ const AddBalanceDialog = withTheme(function (props) {
   const elements = useElements();
   const stripe = useStripe();
 
-  const onAmountChange = (amount) => {
+  const onAmountChange = amount => {
     if (amount < 0) {
       return;
     }
@@ -49,14 +49,14 @@ const AddBalanceDialog = withTheme(function (props) {
         return {
           type: "card",
           card: elements.getElement(CardElement),
-          billing_details: { name: name },
+          billing_details: { name: name }
         };
       }
       case "SEPA Direct Debit": {
         return {
           type: "sepa_debit",
           sepa_debit: elements.getElement(IbanElement),
-          billing_details: { email: email, name: name },
+          billing_details: { email: email, name: name }
         };
       }
       default:
@@ -121,7 +121,7 @@ const AddBalanceDialog = withTheme(function (props) {
       headline="Add Balance"
       hideBackdrop={false}
       loading={loading}
-      onFormSubmit={async (event) => {
+      onFormSubmit={async event => {
         event.preventDefault();
         if (amount <= 0) {
           setAmountError("Can't be zero");
@@ -145,7 +145,7 @@ const AddBalanceDialog = withTheme(function (props) {
         <Box pb={2}>
           <Box mb={2}>
             <Grid container spacing={1}>
-              {paymentOptions.map((option) => (
+              {paymentOptions.map(option => (
                 <Grid item key={option}>
                   <ColoredButton
                     variant={
@@ -189,7 +189,7 @@ AddBalanceDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   theme: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
-  onSuccess: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func.isRequired
 };
 
 function Wrapper() {
@@ -209,7 +209,7 @@ function Wrapper() {
 AddBalanceDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onSuccess: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func.isRequired
 };
 
 export default Wrapper;

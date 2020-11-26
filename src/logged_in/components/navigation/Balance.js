@@ -8,12 +8,12 @@ const styles = {
   outlinedInput: {
     width: 90,
     height: 40,
-    cursor: "pointer",
+    cursor: "pointer"
   },
   wrapper: {
     display: "flex",
-    alignItems: "center",
-  },
+    alignItems: "center"
+  }
 };
 
 function Balance(props) {
@@ -35,7 +35,7 @@ function Balance(props) {
 Balance.propTypes = {
   balance: PropTypes.number.isRequired,
   classes: PropTypes.object.isRequired,
-  openAddBalanceDialog: PropTypes.func.isRequired,
+  openAddBalanceDialog: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Balance);

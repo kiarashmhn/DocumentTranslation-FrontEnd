@@ -1,44 +1,44 @@
 const data = [
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image1.jpg`,
-    name: "Markus",
+    name: "Markus"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image2.jpg`,
-    name: "David",
+    name: "David"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image3.jpg`,
-    name: "Arold",
+    name: "Arold"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image4.jpg`,
-    name: "Joanic",
+    name: "Joanic"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image5.jpg`,
-    name: "Sophia",
+    name: "Sophia"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image6.jpg`,
-    name: "Aaron",
+    name: "Aaron"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image7.jpg`,
-    name: "Steven",
+    name: "Steven"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image8.jpg`,
-    name: "Felix",
+    name: "Felix"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image9.jpg`,
-    name: "Vivien",
+    name: "Vivien"
   },
   {
     src: `${process.env.PUBLIC_URL}/images/logged_in/image10.jpg`,
-    name: "Leonie",
-  },
+    name: "Leonie"
+  }
 ];
 
 export default data;

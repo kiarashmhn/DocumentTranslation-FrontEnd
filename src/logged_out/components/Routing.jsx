@@ -12,7 +12,7 @@ class Routing extends Component {
 
     return (
       <Switch>
-        {blogPosts.map((post) => (
+        {blogPosts.map(post => (
           <PropsRoute
             path={post.url}
             component={BlogPost}
@@ -22,7 +22,7 @@ class Routing extends Component {
             date={post.date}
             content={post.content}
             otherArticles={blogPosts.filter(
-              (blogPost) => blogPost.id !== post.id
+              blogPost => blogPost.id !== post.id
             )}
           />
         ))}
@@ -42,7 +42,7 @@ class Routing extends Component {
 Routing.propTypes = {
   blogPosts: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectHome: PropTypes.func.isRequired,
-  selectBlog: PropTypes.func.isRequired,
+  selectBlog: PropTypes.func.isRequired
 };
 
 export default memo(Routing);

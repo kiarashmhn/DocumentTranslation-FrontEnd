@@ -13,7 +13,7 @@ function DialogSelector(props) {
     openRegisterDialog,
     openLoginDialog,
     openChangePasswordDialog,
-    onClose,
+    onClose
   } = props;
   const [loginStatus, setLoginStatus] = useState(null);
   const [registerStatus, setRegisterStatus] = useState(null);
@@ -65,7 +65,7 @@ function DialogSelector(props) {
     loginStatus,
     registerStatus,
     setLoginStatus,
-    setRegisterStatus,
+    setRegisterStatus
   ]);
 
   return (
@@ -82,7 +82,7 @@ DialogSelector.propTypes = {
   onClose: PropTypes.func.isRequired,
   openTermsDialog: PropTypes.func.isRequired,
   openRegisterDialog: PropTypes.func.isRequired,
-  openChangePasswordDialog: PropTypes.func.isRequired,
+  openChangePasswordDialog: PropTypes.func.isRequired
 };
 
 export default DialogSelector;
