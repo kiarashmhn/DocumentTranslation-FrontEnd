@@ -28,6 +28,9 @@ const xs = 0;
 const spacing = 8;
 
 const theme = createMuiTheme({
+  font: {
+    fontFamily: 'MyFont'
+  },
   palette: {
     primary: { main: primary },
     secondary: { main: secondary },
@@ -123,8 +126,10 @@ const theme = createMuiTheme({
     }
   },
   typography: {
+    fontFamily: 'MyFont',
     useNextVariants: true
-  }
+  },
+  direction: "rtl"
 });
 
 export default responsiveFontSizes(theme);
