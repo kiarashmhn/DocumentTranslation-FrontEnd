@@ -23,6 +23,7 @@ import {
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ImageIcon from "@material-ui/icons/Image";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import MenuIcon from "@material-ui/icons/Menu";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
@@ -30,6 +31,7 @@ import MessagePopperButton from "./MessagePopperButton";
 import SideDrawer from "./SideDrawer";
 import Balance from "./Balance";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
+import theme from "../../../theme";
 
 const styles = theme => ({
   appBar: {
@@ -103,7 +105,10 @@ const styles = theme => ({
     marginRight: theme.spacing(1)
   },
   textPrimary: {
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
+    fontFamily: "MyFont",
+    useNextVariants: true,
+    direction: "rtl"
   },
   mobileItemSelected: {
     backgroundColor: `${theme.palette.primary.main} !important`
@@ -152,7 +157,7 @@ function NavBar(props) {
   const menuItems = [
     {
       link: "/c/dashboard",
-      name: "Dashboard",
+      name: "داشبورد",
       onClick: closeMobileDrawer,
       icon: {
         desktop: (
@@ -160,7 +165,7 @@ function NavBar(props) {
             className={
               selectedTab === "Dashboard" ? classes.textPrimary : "text-white"
             }
-            fontSize="small"
+            fontSize="large"
           />
         ),
         mobile: <DashboardIcon className="text-white" />
@@ -168,7 +173,7 @@ function NavBar(props) {
     },
     {
       link: "/c/posts",
-      name: "Posts",
+      name: "پست ها",
       onClick: closeMobileDrawer,
       icon: {
         desktop: (
@@ -176,7 +181,7 @@ function NavBar(props) {
             className={
               selectedTab === "Posts" ? classes.textPrimary : "text-white"
             }
-            fontSize="small"
+            fontSize="large"
           />
         ),
         mobile: <ImageIcon className="text-white" />
@@ -184,7 +189,7 @@ function NavBar(props) {
     },
     {
       link: "/c/subscription",
-      name: "Subscription",
+      name: "عضویت ها",
       onClick: closeMobileDrawer,
       icon: {
         desktop: (
@@ -194,18 +199,34 @@ function NavBar(props) {
                 ? classes.textPrimary
                 : "text-white"
             }
-            fontSize="small"
+            fontSize="large"
           />
         ),
         mobile: <AccountBalanceIcon className="text-white" />
       }
     },
     {
-      link: "/",
-      name: "Logout",
+      link: "/c/CreateOrder",
+      name: "ثبت سفارش",
+      onClick: closeMobileDrawer,
       icon: {
         desktop: (
-          <PowerSettingsNewIcon className="text-white" fontSize="small" />
+          <AddShoppingCartIcon
+            className={
+              selectedTab === "CreateOrder" ? classes.textPrimary : "text-white"
+            }
+            fontSize="large"
+          />
+        ),
+        mobile: <AddShoppingCartIcon className="text-white" />
+      }
+    },
+    {
+      link: "/",
+      name: "خروج",
+      icon: {
+        desktop: (
+          <PowerSettingsNewIcon className="text-white" fontSize="large" />
         ),
         mobile: <PowerSettingsNewIcon className="text-white" />
       }
@@ -310,6 +331,7 @@ function NavBar(props) {
                 }}
               >
                 <Tooltip
+                  style={theme.typography}
                   title={element.name}
                   placement="right"
                   key={element.name}

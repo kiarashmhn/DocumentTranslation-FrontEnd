@@ -296,6 +296,12 @@ function Main(props) {
     setSelectedTab("Subscription");
   }, [setSelectedTab]);
 
+  const selectCreateOrder = useCallback(() => {
+    smoothScrollTop();
+    document.title = "DT - CreateOrder";
+    setSelectedTab("CreateOrder");
+  }, [setSelectedTab]);
+
   const getPushMessageFromChild = useCallback(
     pushMessage => {
       setPushMessageToSnackbar(() => pushMessage);
@@ -349,6 +355,7 @@ function Main(props) {
           selectDashboard={selectDashboard}
           selectPosts={selectPosts}
           selectSubscription={selectSubscription}
+          selectCreateOrder={selectCreateOrder}
           openAddBalanceDialog={openAddBalanceDialog}
           setTargets={setTargets}
           setPosts={setPosts}

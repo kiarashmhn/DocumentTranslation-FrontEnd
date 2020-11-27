@@ -6,6 +6,7 @@ import Dashboard from "./dashboard/Dashboard";
 import Posts from "./posts/Posts";
 import Subscription from "./subscription/Subscription";
 import PropsRoute from "../../shared/components/PropsRoute";
+import CreateOrder from "./order/CreateOrder";
 
 const styles = theme => ({
   wrapper: {
@@ -51,7 +52,6 @@ function Routing(props) {
     DateTimePicker,
     pushMessageToSnackbar,
     posts,
-    transactions,
     toggleAccountActivation,
     CardChart,
     statistics,
@@ -62,7 +62,7 @@ function Routing(props) {
     selectDashboard,
     selectPosts,
     selectSubscription,
-    openAddBalanceDialog
+    selectCreateOrder
   } = props;
   return (
     <div className={classes.wrapper}>
@@ -81,11 +81,8 @@ function Routing(props) {
         />
         <PropsRoute
           path="/c/subscription"
-          component={Subscription}
-          transactions={transactions}
-          pushMessageToSnackbar={pushMessageToSnackbar}
+          component={CreateOrder}
           selectSubscription={selectSubscription}
-          openAddBalanceDialog={openAddBalanceDialog}
         />
         <PropsRoute
           path=""
@@ -98,6 +95,11 @@ function Routing(props) {
           setTargets={setTargets}
           isAccountActivated={isAccountActivated}
           selectDashboard={selectDashboard}
+        />
+        <PropsRoute
+          path="/c/createOrder"
+          component={Subscription}
+          selectCreateOrder={selectCreateOrder}
         />
       </Switch>
     </div>
@@ -123,6 +125,7 @@ Routing.propTypes = {
   selectDashboard: PropTypes.func.isRequired,
   selectPosts: PropTypes.func.isRequired,
   selectSubscription: PropTypes.func.isRequired,
+  selectCreateOrder: PropTypes.func.isRequired,
   openAddBalanceDialog: PropTypes.func.isRequired
 };
 
