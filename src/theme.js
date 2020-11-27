@@ -11,6 +11,23 @@ const warningMain = "rgba(253, 200, 69, .5)";
 const warningDark = "rgba(253, 200, 69, .7)";
 /*const babyBlue = "#D4F1F4";
 const blueGreen = "#75E6DA";*/
+export const warningColor = ["#ff9800", "#ffa726", "#fb8c00", "#ffa21a"];
+export const dangerColor = ["#f44336", "#ef5350", "#e53935", "#f55a4e"];
+export const successColor = ["#4caf50", "#66bb6a", "#43a047", "#5cb860"];
+export const grayColor = [
+  "#999",
+  "#777",
+  "#3C4858",
+  "#AAAAAA",
+  "#D2D2D2",
+  "#DDD",
+  "#b4b4b4",
+  "#555555",
+  "#333",
+  "#a9afbb",
+  "#eee",
+  "#e7e7e7"
+];
 
 // border
 const borderWidth = 2;

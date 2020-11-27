@@ -1,49 +1,76 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Component, Fragment } from "react";
 import { Grid } from "@material-ui/core";
 import MediaCard from "../../../custom/MediaCard";
 import IdentityCertificate from "./IdentityCertificate";
 import PropTypes from "prop-types";
+import image from "../../../images/identityCard.jpg";
+import CustomDialogs from "../../../custom/CustomDialogs";
 
-function CreateOrder(props) {
-  const { selectSubscription } = props;
+class CreateOrder extends Component {
+  constructor(props) {
+    super(props);
+    this.identityCertificateRef = React.createRef();
+    this.state = {
+      openIdentityDialog: false
+    };
+  }
 
-  useEffect(selectSubscription, [selectSubscription]);
+  componentDidMount() {
+    this.props.selectCreateOrder();
+  }
 
-  const [openIdentityDialog, setOpenIdentityDialog] = useState(false);
-  const identityCertificateRef = useRef();
-
-  const handleOpenDialog = () => {
-    console.log("called");
-    setOpenIdentityDialog(true);
+  handleOpenDialog = () => {
+    console.log("in order");
+    this.setState({
+      openIdentityDialog: true
+    });
   };
 
-  const handleSubmit = () => {
-    console.log(identityCertificateRef.getState());
+  handleCloseDialog = () => {
+    console.log("in order");
+    this.setState({
+      openIdentityDialog: false
+    });
   };
 
-  return (
-    <Fragment>
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={12} md={6} key={"identityCard"}>
-          <MediaCard
-            imageUrl={"/public/images/identityCard.png"}
-            title={"نرجمه شناسنامه"}
-            onClick={handleOpenDialog}
-            secondaryTitle={"نرجمه شناسنامه"}
-          />
-          <IdentityCertificate
-            ref={identityCertificateRef}
-            onClose={() => {}}
-            onSubmit={handleSubmit}
-            open={openIdentityDialog}
-          />
+  handleSubmit = () => {
+    console.log(this.identityCertificateRef.current.getState());
+    this.setState({
+      openIdentityDialog: false
+    });
+  };
+
+  render() {
+    return (
+      <Fragment>
+        <Grid container spacing={1} dir={"rtl"}>
+          <Grid item xs={12} sm={12} md={6} key={"identityCard"}>
+            <MediaCard
+              image={image}
+              title={"شناسنامه"}
+              onClick={this.handleOpenDialog}
+              secondaryTitle={"درخواست ترجمه شناسنامه"}
+            />
+            <CustomDialogs
+              title="test"
+              component={
+                <IdentityCertificate
+                  ref={this.identityCertificateRef}
+                  onSubmit={this.handleSubmit}
+                />
+              }
+              handleClose={this.handleCloseDialog}
+              open={this.state.openIdentityDialog}
+            />
+          </Grid>
         </Grid>
-      </Grid>
-    </Fragment>
-  );
+      </Fragment>
+    );
+  }
 }
+
 export default CreateOrder;
 
 CreateOrder.propTypes = {
-  selectSubscription: PropTypes.func.isRequired
+  selectCreateOrder: PropTypes.func.isRequired
 };

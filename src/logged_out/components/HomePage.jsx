@@ -21,7 +21,7 @@ const styles = theme => ({
   }
 });
 
-class Main extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -172,8 +172,8 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+HomePage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(memo(Main));
+export default withStyles(styles, { withTheme: true })(memo(HomePage));

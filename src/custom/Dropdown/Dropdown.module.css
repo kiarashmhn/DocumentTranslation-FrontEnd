@@ -1,0 +1,13 @@
+.test {
+  right: 92% !important;
+}
+
+.basic {
+  z-index: 999;
+}
+
+.select input {
+  right: 0;
+  font-family: "MyFont";
+  z-index: 999;
+}

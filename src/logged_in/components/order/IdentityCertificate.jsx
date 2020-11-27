@@ -1,36 +1,35 @@
-import React, { Component, Fragment } from "react";
-import FormDialog from "../../../shared/components/FormDialog";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Tooltip from "@material-ui/core/Tooltip";
-import theme from "../../../theme";
-
-import { TextField, Button, Grid } from "@material-ui/core";
+import CustomInput from "../../../custom/CustomInput/CustomInput";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import ShortTextIcon from "@material-ui/icons/ShortText";
+import MultiSingleDropdown from "../../../custom/Dropdown/MultiSingleDropdown";
+import CustomDate from "../../../custom/Date/CustomDate";
+import moment from "moment-jalaali";
+import { Button, Grid, Tooltip } from "@material-ui/core";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing(1)
-  },
+const styles = {
   customWidth: {
     maxWidth: 500
   },
   noMaxWidth: {
     maxWidth: "none"
   }
-});
+};
 
 class IdentityCertificate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: this.props.open,
       isLoading: false,
       name: "",
       lastName: "",
       type: "",
       address: "",
       country: "",
-      birthDate: ""
+      birthDate: moment(),
+      files: []
     };
   }
 
@@ -38,93 +37,158 @@ class IdentityCertificate extends Component {
     return this.state;
   };
 
+  handleTypeChange = selectedType => {
+    this.setState({ type: selectedType });
+  };
+
+  handleCountryChange = selectedCountry => {
+    this.setState({ country: selectedCountry });
+  };
+
+  dateOnChange = date => {
+    this.setState({
+      birthDate: date
+    });
+  };
+
+  handleFileChange = files => {
+    this.setState({
+      files: files
+    });
+  };
+
   render() {
-    const classes = styles(theme);
+    let types = [
+      { value: "1", label: "نوزاد (زیر ۱۵ سال)" },
+      { value: "2", label: "۱۵ تا ۱۸ سال" },
+      { value: "3", label: "بانوان خارجی مزدوج با مرد ایرانی" }
+    ];
+    let countries = [
+      { value: "1", label: "ایران" },
+      { value: "2", label: "فرانسه" }
+    ];
     return (
-      <Fragment>
-        <FormDialog
-          open={this.state.open}
-          onClose={() => {
-            this.setState({
-              open: false
-            });
-          }}
-          loading={this.state.isLoading}
-          onFormSubmit={e => {
-            e.preventDefault();
-            this.props.onSubmit();
-          }}
-          hideBackdrop
-          headline="ثبت سفارش - شناسنامه"
-          content={
-            <Fragment>
-              <Grid container spacing={1}>
-                <Grid item xs={12} sm={12} md={6} key={"name"}>
-                  <Tooltip title={"نام"} className={classes.customWidth}>
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      fullWidth
-                      className={"typography"}
-                      label="نام"
-                      value={this.state.name}
-                      autoFocus
-                      autoComplete="off"
-                      type="text"
-                      onChange={e => this.setState({ name: e.target.value })}
-                    />
-                  </Tooltip>
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} key={"lastName"}>
-                  <Tooltip
-                    title={"نام خانوادگی"}
-                    className={classes.customWidth}
-                  >
-                    <TextField
-                      variant="outlined"
-                      margin="normal"
-                      required
-                      fullWidth
-                      className={"typography"}
-                      label="نام خانوادگی"
-                      value={this.state.lastName}
-                      autoFocus
-                      autoComplete="off"
-                      type="text"
-                      onChange={e =>
-                        this.setState({ lastName: e.target.value })
-                      }
-                    />
-                  </Tooltip>
-                </Grid>
-              </Grid>
-            </Fragment>
-          }
-          actions={
-            <Fragment>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="secondary"
-                disabled={this.state.isLoading}
-                size="large"
-              >
-                ثبت سفارش
-                {this.state.isLoading && <ButtonCircularProgress />}
-              </Button>
-            </Fragment>
-          }
-        />
-      </Fragment>
+      <form onSubmit={this.props.onSubmit}>
+        <Grid container spacing={2} dir={"rtl"}>
+          <Grid item xs={12} sm={12} md={4} key={"type"}>
+            <Tooltip title={"نوع شناسنامه"} style={styles.customWidth}>
+              <MultiSingleDropdown
+                value={this.state.type}
+                isDisabled={false}
+                isMultiple={false}
+                titleStr={"نوع شناسنامه"}
+                isAsync={false}
+                syncOptions={types}
+                handleChange={this.handleTypeChange}
+                isRequired={true}
+              />
+            </Tooltip>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} key={"country"}>
+            <Tooltip title={"کشور محل سکونت"} style={styles.customWidth}>
+              <MultiSingleDropdown
+                value={this.state.country}
+                isDisabled={false}
+                isMultiple={false}
+                titleStr={"کشور محل سکونت"}
+                isAsync={false}
+                syncOptions={countries}
+                handleChange={this.handleCountryChange}
+                isRequired={true}
+              />
+            </Tooltip>
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} dir={"rtl"}>
+          <Grid item xs={12} sm={12} md={4} key={"name"}>
+            <CustomInput
+              required
+              labelText="نام"
+              id="name"
+              value={this.state.name}
+              onChange={e => this.setState({ name: e.target.value })}
+              formControlProps={{
+                fullWidth: true
+              }}
+              inputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <ShortTextIcon />
+                  </InputAdornment>
+                )
+              }}
+              hint={"نام"}
+            />
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} key={"lastName"}>
+            <CustomInput
+              required
+              labelText="نام خانوادگی"
+              id="lastName"
+              value={this.state.lastName}
+              onChange={e => this.setState({ lastName: e.target.value })}
+              formControlProps={{
+                fullWidth: true
+              }}
+              inputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <ShortTextIcon />
+                  </InputAdornment>
+                )
+              }}
+              hint={"نام خانوادگی"}
+            />
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} key={"birthDate"}>
+            <Tooltip title={"تاریخ تولد"} style={styles.customWidth}>
+              <CustomDate
+                onChange={dateObject => this.dateOnChange(dateObject)}
+                placeholder={"تاریخ تولد"}
+                value={this.state.birthDate}
+                disabled={false}
+                required={true}
+                emptyInit={true}
+              />
+            </Tooltip>
+          </Grid>
+          <Grid item xs={12} sm={12} md={8} key={"address"}>
+            <CustomInput
+              required
+              labelText="نشانی در خارج از کشور"
+              id="address"
+              value={this.state.address}
+              onChange={e => this.setState({ address: e.target.value })}
+              formControlProps={{
+                fullWidth: true
+              }}
+              inputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <ShortTextIcon />
+                  </InputAdornment>
+                )
+              }}
+              hint={"نشانی در خارج از کشور"}
+            />
+          </Grid>
+        </Grid>
+        <Button
+          type="submit"
+          variant="contained"
+          color="secondary"
+          disabled={this.state.isLoading}
+          size="large"
+        >
+          ثبت سفارش
+          {this.state.isLoading && <ButtonCircularProgress />}
+        </Button>
+      </form>
     );
   }
 }
 export default IdentityCertificate;
 IdentityCertificate.propTypes = {
   classes: PropTypes.object,
-  onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  onSubmit: PropTypes.func.isRequired
 };

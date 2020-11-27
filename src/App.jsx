@@ -1,14 +1,12 @@
-import React, { Fragment, Suspense, lazy, Component } from "react";
+import React, { Fragment, Suspense, Component } from "react";
 import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
 import * as serviceWorker from "./serviceWorker";
 import Pace from "./shared/components/Pace";
-
-const LoggedInComponent = lazy(() => import("./logged_in/components/Main"));
-
-const LoggedOutComponent = lazy(() => import("./logged_out/components/Main"));
+import MainPage from "./logged_in/components/MainPage";
+import HomePage from "./logged_out/components/HomePage";
 
 class App extends Component {
   render() {
@@ -21,10 +19,10 @@ class App extends Component {
           <Suspense fallback={<Fragment />}>
             <Switch>
               <Route path="/c">
-                <LoggedInComponent />
+                <MainPage />
               </Route>
               <Route>
-                <LoggedOutComponent />
+                <HomePage />
               </Route>
             </Switch>
           </Suspense>
@@ -34,6 +32,7 @@ class App extends Component {
   }
 }
 //document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
+//document.body.setAttribute("dir", "rtl");
 serviceWorker.register();
 
 export default App;

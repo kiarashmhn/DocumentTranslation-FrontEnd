@@ -1,0 +1,22 @@
+.customDatePickerWidth,
+.customDatePickerWidth > div.react-datepicker-wrapper,
+.customDatePickerWidth
+> div
+> div.react-datepicker__input-container
+.customDatePickerWidth
+> div
+> div.react-datepicker__input-container
+input {
+    width: 100%;
+    font: inherit;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    border-width: 0.5px !important;
+}
+
+.dateLabel {
+    margin-top: 32px;
+}
+.filterDateLabel {
+    margin-top: 33px;
+}

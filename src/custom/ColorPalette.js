@@ -1,0 +1,13 @@
+export const purple = "#9c27b0";
+export const mediumvioletred = "mediumvioletred";
+export const cornflowerblue = "cornflowerblue";
+export const lightseagreen = "lightseagreen";
+export const mediumpurple = "mediumpurple";
+export const lightBlack = "rgba(0, 0, 0, 0.87)";
+export const lightGray = "#aaaaaa";
+export const gold = "rgba(212, 175, 55, 0.87)";
+export const red = "rgba(255, 0, 0, 0.87)";
+export const veryLightGray = "#EEEEEE";
+export const green = "#00b300";
+export const primary = "#05445E";
+export const secondary = "#189AB4";

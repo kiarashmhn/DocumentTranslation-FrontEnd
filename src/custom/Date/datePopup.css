@@ -1,0 +1,8 @@
+.tether-element
+{
+    z-index: 99999 !important;
+    margin-top: 20% !important;
+}
+.tether-element.tether-target-attached-bottom{
+    margin-top: 0 !important;
+}
