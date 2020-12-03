@@ -44,7 +44,7 @@ class CreateOrder extends Component {
     return (
       <Fragment>
         <Grid container spacing={1} dir={"rtl"}>
-          <Grid item xs={12} sm={12} md={6} key={"identityCard"}>
+          <Grid item xs={12} sm={12} md={4} key={"identityCard"}>
             <MediaCard
               image={image}
               title={"شناسنامه"}

@@ -14,7 +14,7 @@ const styles = {
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
-    width: 345
+    width: 310
   },
   title: {
     fontFamily: "MyFont",
@@ -32,13 +32,15 @@ class MediaCard extends Component {
             this.props.onClick();
           }}
         >
-          <CardMedia style={styles.media} title={this.props.title}>
-            <img
-              src={this.props.image}
-              alt={"props imageUrl"}
-              style={styles.media}
-            />
-          </CardMedia>
+          {this.props.image && (
+            <CardMedia style={styles.media} title={this.props.title}>
+              <img
+                src={this.props.image}
+                alt={"props imageUrl"}
+                style={styles.media}
+              />
+            </CardMedia>
+          )}
           <CardContent>
             <Typography
               gutterBottom
@@ -66,7 +68,7 @@ class MediaCard extends Component {
 export default MediaCard;
 
 MediaCard.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   title: PropTypes.string.isRequired,
   secondaryTitle: PropTypes.string,
   onClick: PropTypes.func.isRequired

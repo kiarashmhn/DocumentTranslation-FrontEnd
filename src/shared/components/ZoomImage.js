@@ -26,7 +26,7 @@ const styles = theme => ({
     height: "100%",
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(1),
+    paddingTop: theme.spacing(0),
     paddingBottom: theme.spacing(1)
   },
   portalImg: {

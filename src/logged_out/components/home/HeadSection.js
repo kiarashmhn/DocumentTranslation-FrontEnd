@@ -1,73 +1,49 @@
-import React, { Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
   Grid,
-  Typography,
-  Card,
-  Button,
-  Hidden,
-  Box,
+  //isWidthUp,
+  //Typography,
   withStyles,
-  withWidth,
-  isWidthUp
+  withWidth
 } from "@material-ui/core";
 import WaveBorder from "../../../shared/components/WaveBorder";
 import ZoomImage from "../../../shared/components/ZoomImage";
 
+/*const features = [
+  {
+    title: "شناسنامه",
+    image: image,
+    secondaryTitle: "درخواست ترجمه شناسنامه",
+    details: "شتسذزنشتسزتنشذسزتش"
+  },
+  {
+    title: "شناسنامه2",
+    image: image,
+    secondaryTitle: "درخواست ترجمه شناسنامه2",
+    details: "شتسذزنشتسزتنشذسزتش2222"
+  },
+  {
+    title: "شناسنام3ه",
+    image: image,
+    secondaryTitle: "درخواست ترجمه شناسنام3ه",
+    details: "شتسذزنشتسزتنشذسزتش3333"
+  }
+];*/
+
 const styles = theme => ({
-  extraLargeButtonLabel: {
-    fontSize: theme.typography.body1.fontSize,
-    [theme.breakpoints.up("sm")]: {
-      fontSize: theme.typography.h6.fontSize
-    }
-  },
-  extraLargeButton: {
-    paddingTop: theme.spacing(1.5),
-    paddingBottom: theme.spacing(1.5),
-    [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1)
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2)
-    }
-  },
-  card: {
-    boxShadow: theme.shadows[4],
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(3)
-    },
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(5),
-      paddingBottom: theme.spacing(5),
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4)
-    },
-    [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(5.5),
-      paddingBottom: theme.spacing(5.5),
-      paddingLeft: theme.spacing(5),
-      paddingRight: theme.spacing(5)
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6)
-    },
-    [theme.breakpoints.down("lg")]: {
-      width: "auto"
-    }
-  },
   wrapper: {
+    paddingTop: `${theme.spacing(10)}px !important`,
     position: "relative",
     backgroundColor: theme.palette.secondary.main,
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(1)
+  },
+  wrapper2: {
+    paddingTop: `${theme.spacing(0)}px !important`,
+    position: "relative",
+    backgroundColor: theme.palette.secondary.main,
+    paddingBottom: theme.spacing(1)
   },
   image: {
     maxWidth: "100%",
@@ -76,16 +52,16 @@ const styles = theme => ({
     boxShadow: theme.shadows[4]
   },
   container: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(12),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1),
     [theme.breakpoints.down("md")]: {
-      marginBottom: theme.spacing(9)
+      marginBottom: theme.spacing(1)
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(6)
+      marginBottom: theme.spacing(1)
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(3)
+      marginBottom: theme.spacing(1)
     }
   },
   containerFix: {
@@ -94,85 +70,92 @@ const styles = theme => ({
     }
   },
   waveBorder: {
-    paddingTop: theme.spacing(4)
+    paddingTop: theme.spacing(1)
   }
 });
 
-function HeadSection(props) {
-  const { classes, theme, width } = props;
-  return (
-    <Fragment>
-      <div className={classNames("lg-p-top", classes.wrapper)}>
-        <div className={classNames("container-fluid", classes.container)}>
-          <Box display="flex" justifyContent="center" className="row">
-            <Card
-              className={classes.card}
-              data-aos-delay="200"
-              data-aos="zoom-in"
-            >
-              <div className={classNames(classes.containerFix, "container")}>
-                <Box justifyContent="space-between" className="row">
-                  <Grid item xs={12} md={5}>
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="space-between"
-                      height="100%"
-                    >
-                      <Box mb={4}>
-                        <Typography
-                          variant={isWidthUp("lg", width) ? "h3" : "h4"}
-                        >
-                          Free Template for building an SaaS app using
-                          Material-UI
-                        </Typography>
-                      </Box>
-                      <div>
-                        <Box mb={2}>
-                          <Typography
-                            variant={isWidthUp("lg", width) ? "h6" : "body1"}
-                            color="textSecondary"
-                          >
-                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                            elitr, sed diam nonumy eirmod tempor invidunt
-                          </Typography>
-                        </Box>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          fullWidth
-                          className={classes.extraLargeButton}
-                          classes={{ label: classes.extraLargeButtonLabel }}
-                          href="https://github.com/dunky11/react-saas-template"
-                        >
-                          Download from GitHub
-                        </Button>
-                      </div>
-                    </Box>
-                  </Grid>
-                  <Hidden smDown>
-                    <Grid item md={6}>
-                      <ZoomImage
-                        src={`${process.env.PUBLIC_URL}/images/logged_out/headerImage.jpg`}
-                        className={classes.image}
-                        alt="header example"
-                      />
-                    </Grid>
-                  </Hidden>
-                </Box>
-              </div>
-            </Card>
-          </Box>
+class HeadSection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      openDialog: false,
+      dialogDetails: ""
+    };
+  }
+
+  handleOpenDialog = () => {
+    this.setState({
+      openDialog: true
+    });
+  };
+
+  handleCloseDialog = () => {
+    this.setState({
+      openDialog: false
+    });
+  };
+
+  render() {
+    const { classes, theme } = this.props;
+    return (
+      <Fragment>
+        <div className={classes.wrapper}>
+          <div className={classNames("container-fluid", classes.container)}>
+            <Grid item md={12}>
+              <ZoomImage
+                src={`${process.env.PUBLIC_URL}/images/logged_out/banner.png`}
+                className={classes.image}
+                alt="header example"
+              />
+            </Grid>
+          </div>
         </div>
-      </div>
-      <WaveBorder
-        upperColor={theme.palette.secondary.main}
-        lowerColor="#FFFFFF"
-        className={classes.waveBorder}
-        animationNegativeDelay={2}
-      />
-    </Fragment>
-  );
+        {/*<div className={classes.wrapper2}>
+          <div className={classNames("container-fluid", classes.container)}>
+            <Grid
+              container
+              spacing={calculateSpacing(width)}
+              dir={"row"}
+              justify="center"
+            >
+              {features.map(element => (
+                <Grid
+                  item
+                  xs={6}
+                  md={4}
+                  data-aos="zoom-in-up"
+                  data-aos-delay={100}
+                  key={element.title}
+                >
+                  <MediaCard
+                    title={element.title}
+                    onClick={this.handleOpenDialog}
+                    secondaryTitle={element.secondaryTitle}
+                  />
+                  <CustomDialogs
+                    title="test"
+                    component={
+                      <Typography variant="body1" color="textSecondary">
+                        {element.details}
+                      </Typography>
+                    }
+                    handleClose={this.handleCloseDialog}
+                    open={this.state.openDialog}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        </div>*/}
+        <WaveBorder
+          upperColor={theme.palette.secondary.main}
+          lowerColor="#FFFFFF"
+          className={classes.waveBorder}
+          animationNegativeDelay={2}
+        />
+      </Fragment>
+    );
+  }
 }
 
 HeadSection.propTypes = {

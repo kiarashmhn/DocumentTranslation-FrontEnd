@@ -5,7 +5,7 @@ import {
   Typography,
   Box,
   IconButton,
-  Hidden,
+  //Hidden,
   withStyles,
   withWidth,
   isWidthUp,
@@ -191,36 +191,34 @@ function Footer(props) {
               </Box>
             </form>
           </Grid>
-          <Hidden mdDown>
-            <Grid item xs={12} md={6} lg={4}>
-              <Box display="flex" justifyContent="center">
-                <div>
-                  {infos.map((info, index) => (
-                    <Box display="flex" mb={1} key={index}>
-                      <Box mr={2}>
-                        <IconButton
-                          className={classes.infoIcon}
-                          tabIndex={-1}
-                          disabled
-                        >
-                          {info.icon}
-                        </IconButton>
-                      </Box>
-                      <Box
-                        display="flex"
-                        flexDirection="column"
-                        justifyContent="center"
+          <Grid item xs={12} md={6} lg={4}>
+            <Box display="flex" justifyContent="center">
+              <div>
+                {infos.map((info, index) => (
+                  <Box display="flex" mb={1} key={index}>
+                    <Box mr={2}>
+                      <IconButton
+                        className={classes.infoIcon}
+                        tabIndex={-1}
+                        disabled
                       >
-                        <Typography variant="h6" className="text-white">
-                          {info.description}
-                        </Typography>
-                      </Box>
+                        {info.icon}
+                      </IconButton>
                     </Box>
-                  ))}
-                </div>
-              </Box>
-            </Grid>
-          </Hidden>
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      justifyContent="center"
+                    >
+                      <Typography variant="h6" className="text-white">
+                        {info.description}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </div>
+            </Box>
+          </Grid>
           <Grid item xs={12} md={6} lg={4}>
             <Typography variant="h6" paragraph className="text-white">
               About the Company
