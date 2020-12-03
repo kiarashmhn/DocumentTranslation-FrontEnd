@@ -37,7 +37,15 @@ function shadeColor(hex, percent) {
 }
 
 function FeatureCard(props) {
-  const { classes, Icon, color, headline, text } = props;
+  const {
+    classes,
+    Icon,
+    color,
+    headline,
+    frenchHeadline,
+    text,
+    frenchText
+  } = props;
   return (
     <Fragment>
       <div
@@ -54,9 +62,19 @@ function FeatureCard(props) {
       <Typography variant="h5" paragraph>
         {headline}
       </Typography>
+      {frenchHeadline && (
+        <Typography variant="h5" paragraph>
+          {frenchHeadline}
+        </Typography>
+      )}
       <Typography variant="body1" color="textSecondary">
         {text}
       </Typography>
+      {frenchText && (
+        <Typography variant="body1" color="textSecondary">
+          {frenchText}
+        </Typography>
+      )}
     </Fragment>
   );
 }
@@ -66,7 +84,9 @@ FeatureCard.propTypes = {
   Icon: PropTypes.element.isRequired,
   color: PropTypes.string.isRequired,
   headline: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  frenchHeadline: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  frenchText: PropTypes.string
 };
 
 export default withStyles(styles, { withTheme: true })(FeatureCard);

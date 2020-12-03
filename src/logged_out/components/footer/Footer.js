@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
   Grid,
@@ -153,98 +153,107 @@ const socialIcons = [
   }
 ];
 
-function Footer(props) {
-  const { classes, theme, width } = props;
-  return (
-    <footer className="lg-p-top">
-      <WaveBorder
-        upperColor="#FFFFFF"
-        lowerColor={theme.palette.common.darkBlack}
-        animationNegativeDelay={4}
-      />
-      <div className={classes.footerInner}>
-        <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
-          <Grid item xs={12} md={6} lg={4}>
-            <form>
-              <Box display="flex" flexDirection="column">
-                <Box mb={1}>
-                  <TextField
+class Footer extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { classes, theme, width } = this.props;
+    return (
+      <footer className="lg-p-top">
+        <WaveBorder
+          upperColor="#FFFFFF"
+          lowerColor={theme.palette.common.darkBlack}
+          animationNegativeDelay={4}
+        />
+        <div className={classes.footerInner}>
+          <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
+            <Grid item xs={12} md={6} lg={4}>
+              <form>
+                <Box display="flex" flexDirection="column">
+                  <Box mb={1}>
+                    <TextField
+                      variant="outlined"
+                      multiline
+                      placeholder="Get in touch with us"
+                      inputProps={{ "aria-label": "Get in Touch" }}
+                      InputProps={{
+                        className: classes.whiteBg
+                      }}
+                      rows={4}
+                      fullWidth
+                      required
+                    />
+                  </Box>
+                  <ColoredButton
+                    color={theme.palette.common.white}
                     variant="outlined"
-                    multiline
-                    placeholder="Get in touch with us"
-                    inputProps={{ "aria-label": "Get in Touch" }}
-                    InputProps={{
-                      className: classes.whiteBg
-                    }}
-                    rows={4}
-                    fullWidth
-                    required
-                  />
+                    type="submit"
+                  >
+                    Send Message
+                  </ColoredButton>
                 </Box>
-                <ColoredButton
-                  color={theme.palette.common.white}
-                  variant="outlined"
-                  type="submit"
-                >
-                  Send Message
-                </ColoredButton>
-              </Box>
-            </form>
-          </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <Box display="flex" justifyContent="center">
-              <div>
-                {infos.map((info, index) => (
-                  <Box display="flex" mb={1} key={index}>
-                    <Box mr={2}>
-                      <IconButton
-                        className={classes.infoIcon}
-                        tabIndex={-1}
-                        disabled
+              </form>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <Box display="flex" justifyContent="center">
+                <div>
+                  {infos.map((info, index) => (
+                    <Box display="flex" mb={1} key={index}>
+                      <Box mr={2}>
+                        <IconButton
+                          className={classes.infoIcon}
+                          tabIndex={-1}
+                          disabled
+                        >
+                          {info.icon}
+                        </IconButton>
+                      </Box>
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="center"
                       >
-                        {info.icon}
-                      </IconButton>
+                        <Typography variant="h6" className="text-white">
+                          {info.description}
+                        </Typography>
+                      </Box>
                     </Box>
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="center"
+                  ))}
+                </div>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <Typography variant="h6" paragraph className="text-white">
+                About the Company
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
+                euismod convallis velit, eu auctor lacus vehicula sit amet.
+              </Typography>
+              <Box display="flex">
+                {socialIcons.map((socialIcon, index) => (
+                  <Box
+                    key={index}
+                    mr={index !== socialIcons.length - 1 ? 1 : 0}
+                  >
+                    <IconButton
+                      aria-label={socialIcon.label}
+                      className={classes.socialIcon}
+                      href={socialIcon.href}
                     >
-                      <Typography variant="h6" className="text-white">
-                        {info.description}
-                      </Typography>
-                    </Box>
+                      {socialIcon.icon}
+                    </IconButton>
                   </Box>
                 ))}
-              </div>
-            </Box>
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <Typography variant="h6" paragraph className="text-white">
-              About the Company
-            </Typography>
-            <Typography style={{ color: "#8f9296" }} paragraph>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
-            </Typography>
-            <Box display="flex">
-              {socialIcons.map((socialIcon, index) => (
-                <Box key={index} mr={index !== socialIcons.length - 1 ? 1 : 0}>
-                  <IconButton
-                    aria-label={socialIcon.label}
-                    className={classes.socialIcon}
-                    href={socialIcon.href}
-                  >
-                    {socialIcon.icon}
-                  </IconButton>
-                </Box>
-              ))}
-            </Box>
-          </Grid>
-        </Grid>
-      </div>
-    </footer>
-  );
+        </div>
+      </footer>
+    );
+  }
 }
 
 Footer.propTypes = {

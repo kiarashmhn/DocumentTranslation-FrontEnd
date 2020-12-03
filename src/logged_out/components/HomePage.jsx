@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import AOS from "aos/dist/aos";
 import { withStyles } from "@material-ui/core";
 import NavBar from "./navigation/NavBar";
-import Footer from "./footer/Footer";
 import "aos/dist/aos.css";
 import CookieRulesDialog from "./cookies/CookieRulesDialog";
 import CookieConsent from "./cookies/CookieConsent";
@@ -29,7 +28,8 @@ class HomePage extends Component {
       isMobileDrawerOpen: false,
       blogPosts: [],
       dialogOpen: null,
-      isCookieRulesDialogOpen: false
+      isCookieRulesDialogOpen: false,
+      selectedSection: "Home"
     };
   }
 
@@ -39,7 +39,8 @@ class HomePage extends Component {
 
   selectTab = tab => {
     this.setState({
-      selectedTab: tab
+      selectedTab: tab,
+      selectedSection: ""
     });
   };
 
@@ -47,7 +48,32 @@ class HomePage extends Component {
     smoothScrollTop();
     document.title = "DT - Document Translator";
     this.setState({
-      selectedTab: "Home"
+      selectedTab: "Home",
+      selectedSection: "Home"
+    });
+  };
+
+  selectFeatures = () => {
+    document.title = "DT - امکانات";
+    this.setState({
+      selectedTab: "Home",
+      selectedSection: "Features"
+    });
+  };
+
+  selectPricing = () => {
+    document.title = "DT - تعرفه ها";
+    this.setState({
+      selectedTab: "Home",
+      selectedSection: "Pricing"
+    });
+  };
+
+  selectAbout = () => {
+    document.title = "DT - درباره ما";
+    this.setState({
+      selectedTab: "Home",
+      selectedSection: "About"
     });
   };
 
@@ -55,7 +81,8 @@ class HomePage extends Component {
     smoothScrollTop();
     document.title = "DT - Forms";
     this.setState({
-      selectedTab: "Blog"
+      selectedTab: "Blog",
+      selectedSection: "Home"
     });
   };
 
@@ -155,6 +182,10 @@ class HomePage extends Component {
         <NavBar
           selectedTab={this.state.selectedTab}
           selectTab={this.selectTab}
+          selectFeatures={this.selectFeatures}
+          selectPricing={this.selectPricing}
+          selectAbout={this.selectAbout}
+          selectHomeSection={this.selectHome}
           openLoginDialog={this.openLoginDialog}
           openRegisterDialog={this.openRegisterDialog}
           mobileDrawerOpen={this.state.isMobileDrawerOpen}
@@ -162,11 +193,11 @@ class HomePage extends Component {
           handleMobileDrawerClose={this.handleMobileDrawerClose}
         />
         <Routing
+          selectedSection={this.state.selectedSection}
           blogPosts={this.state.blogPosts}
           selectHome={this.selectHome}
           selectBlog={this.selectBlog}
         />
-        <Footer />
       </div>
     );
   }

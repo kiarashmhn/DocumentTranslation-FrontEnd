@@ -51,12 +51,38 @@ class NavBar extends Component {
       handleMobileDrawerOpen,
       handleMobileDrawerClose,
       mobileDrawerOpen,
-      selectedTab
+      selectedTab,
+      selectFeatures,
+      selectPricing,
+      selectAbout,
+      selectHomeSection
     } = this.props;
     const menuItems = [
       {
+        name: "درباره ما",
+        link: "/",
+        onClick: selectAbout,
+        icon: <HomeIcon className="text-white" />,
+        mobileHide: true
+      },
+      {
+        name: "تعرفه ها",
+        link: "/",
+        onClick: selectPricing,
+        icon: <HomeIcon className="text-white" />,
+        mobileHide: true
+      },
+      {
+        name: "امکانات",
+        link: "/",
+        onClick: selectFeatures,
+        icon: <HomeIcon className="text-white" />,
+        mobileHide: true
+      },
+      {
         link: "/",
         name: "صفحه اصلی",
+        onClick: selectHomeSection,
         icon: <HomeIcon className="text-white" />
       },
       {
@@ -115,7 +141,14 @@ class NavBar extends Component {
                         key={element.name}
                         to={element.link}
                         className={classes.noDecoration}
-                        onClick={handleMobileDrawerClose}
+                        onClick={
+                          element.onClick
+                            ? () => {
+                                this.props.handleMobileDrawerClose();
+                                element.onClick();
+                              }
+                            : handleMobileDrawerClose
+                        }
                       >
                         <Button
                           color="secondary"
@@ -162,7 +195,11 @@ NavBar.propTypes = {
   mobileDrawerOpen: PropTypes.bool,
   selectedTab: PropTypes.string,
   openRegisterDialog: PropTypes.func.isRequired,
-  openLoginDialog: PropTypes.func.isRequired
+  openLoginDialog: PropTypes.func.isRequired,
+  selectFeatures: PropTypes.func.isRequired,
+  selectPricing: PropTypes.func.isRequired,
+  selectAbout: PropTypes.func.isRequired,
+  selectHomeSection: PropTypes.func.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(memo(NavBar));

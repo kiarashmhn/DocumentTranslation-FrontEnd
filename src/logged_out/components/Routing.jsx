@@ -8,7 +8,7 @@ import BlogPost from "./blog/BlogPost";
 
 class Routing extends Component {
   render() {
-    const { blogPosts, selectBlog, selectHome } = this.props;
+    const { blogPosts, selectBlog, selectHome, selectedSection } = this.props;
 
     return (
       <Switch>
@@ -33,7 +33,12 @@ class Routing extends Component {
           selectBlog={selectBlog}
           blogPosts={blogPosts}
         />
-        <PropsRoute path="/" component={Home} selectHome={selectHome} />
+        <PropsRoute
+          path="/"
+          component={Home}
+          selectedSection={selectedSection}
+          selectHome={selectHome}
+        />
       </Switch>
     );
   }
@@ -42,7 +47,8 @@ class Routing extends Component {
 Routing.propTypes = {
   blogPosts: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectHome: PropTypes.func.isRequired,
-  selectBlog: PropTypes.func.isRequired
+  selectBlog: PropTypes.func.isRequired,
+  selectedSection: PropTypes.string.isRequired
 };
 
 export default memo(Routing);
