@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import MenuIcon from "@material-ui/icons/Menu";
 import {
   AppBar,
   Toolbar,
@@ -23,7 +24,6 @@ import {
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import MessagePopperButton from "./MessagePopperButton";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import theme from "../../../theme";
@@ -156,10 +156,6 @@ class NavBar extends Component {
     this.setIsMobileOpen(false);
   };
 
-  openDrawer = () => {
-    this.setIsSideDrawerOpen(true);
-  };
-
   render() {
     let menuItems = [
       {
@@ -263,14 +259,18 @@ class NavBar extends Component {
                   />
                 )}
               </ListItem>
+              <Hidden smUp>
+                <Box mr={1}>
+                  <IconButton
+                    aria-label="Open Navigation"
+                    onClick={this.openMobileDrawer}
+                    color="primary"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                </Box>
+              </Hidden>
             </Box>
-            <IconButton
-              onClick={this.openDrawer}
-              color="primary"
-              aria-label="Open Sidedrawer"
-            >
-              <SupervisorAccountIcon />
-            </IconButton>
           </Toolbar>
         </AppBar>
         <Hidden xsDown>
@@ -326,8 +326,8 @@ class NavBar extends Component {
             icon: element.icon.mobile,
             onClick: element.onClick
           }))}
-          anchor="left"
-          open={this.isMobileOpen}
+          anchor="right"
+          open={this.state.isMobileOpen}
           selectedItem={this.props.selectedTab}
           onClose={this.closeMobileDrawer}
         />
