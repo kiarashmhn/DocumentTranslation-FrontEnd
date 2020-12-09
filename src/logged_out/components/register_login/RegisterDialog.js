@@ -56,6 +56,12 @@ function RegisterDialog(props) {
 
   const Auth = new AuthService();
 
+  const validateEmail = email => {
+    // eslint-disable-next-line no-useless-escape
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const register = useCallback(() => {
     if (!registerTermsCheckbox.current.checked) {
       setHasTermsOfServiceError(true);
@@ -67,6 +73,17 @@ function RegisterDialog(props) {
       setStatus("passwordsDontMatch");
       return;
     }
+
+    if (registerPassword.current.value.length < 6) {
+      setStatus("passwordTooShort");
+      return;
+    }
+
+    if (!validateEmail(email.current.value)) {
+      setStatus("invalidEmail");
+      return;
+    }
+
     setStatus(null);
     setIsLoading(true);
     Auth.register(
@@ -75,11 +92,17 @@ function RegisterDialog(props) {
       email.current.value
     )
       .then(function(res) {
-        showSnackbar(res.message, res.success ? "success" : "error");
         if (res.success) {
-          setTimeout(() => {
-            history.push("/c/dashboard");
-          }, 150);
+          history.push("/userPanel");
+          showSnackbar(res.message, "success");
+        } else if (
+          res &&
+          res.message &&
+          res.message === "نام کاربری وارد شده تکراری است"
+        ) {
+          setStatus("invalidUsername");
+        } else {
+          showSnackbar(res.message, "error");
         }
         setIsLoading(false);
       })
@@ -119,7 +142,13 @@ function RegisterDialog(props) {
             label="آدرس ایمیل"
             autoFocus
             autoComplete="off"
-            type="email"
+            type="text"
+            helperText={(() => {
+              if (status === "invalidEmail") {
+                return "ایمیل وارد شده نامعتبر است";
+              }
+              return null;
+            })()}
             onChange={() => {
               if (status === "invalidEmail") {
                 setStatus(null);
@@ -137,6 +166,12 @@ function RegisterDialog(props) {
             label="نام کاربری"
             autoComplete="off"
             type="text"
+            helperText={(() => {
+              if (status === "invalidUsername") {
+                return "نام کاربری وارد شده تکراری است";
+              }
+              return null;
+            })()}
             onChange={() => {
               if (status === "invalidUsername") {
                 setStatus(null);

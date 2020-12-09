@@ -29,7 +29,7 @@ class App extends Component {
             <Pace color={theme.palette.secondary.main} />
             <Suspense fallback={<Fragment />}>
               <Switch>
-                <Route path="/c">
+                <Route path="/userPanel">
                   <MainPage />
                 </Route>
                 <Route>

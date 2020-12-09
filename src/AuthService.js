@@ -15,6 +15,10 @@ export default class AuthService {
     return this.authenticate(username, password, URLConstant.LOGIN, "");
   }
 
+  getUsername() {
+    return localStorage.getItem("username");
+  }
+
   authenticate(username, password, url, email) {
     return axios({
       method: "post",

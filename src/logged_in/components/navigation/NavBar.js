@@ -27,6 +27,7 @@ import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import MessagePopperButton from "./MessagePopperButton";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import theme from "../../../theme";
+import AuthService from "../../../AuthService";
 
 const styles = theme => ({
   appBar: {
@@ -134,6 +135,7 @@ class NavBar extends Component {
       isSideDrawerOpen: false,
       mobileItems: []
     };
+    this.auth = new AuthService();
   }
 
   setIsMobileOpen = value => {
@@ -159,7 +161,7 @@ class NavBar extends Component {
   render() {
     let menuItems = [
       {
-        link: "/c/dashboard",
+        link: "/userPanel/dashboard",
         name: "داشبورد",
         onClick: this.closeMobileDrawer,
         icon: {
@@ -177,7 +179,7 @@ class NavBar extends Component {
         }
       },
       {
-        link: "/c/CreateOrder",
+        link: "/userPanel/CreateOrder",
         name: "ثبت سفارش",
         onClick: this.closeMobileDrawer,
         icon: {
@@ -197,6 +199,7 @@ class NavBar extends Component {
       {
         link: "/",
         name: "خروج",
+        onClick: this.auth.logout,
         icon: {
           desktop: (
             <PowerSettingsNewIcon className="text-white" fontSize="large" />
@@ -253,7 +256,7 @@ class NavBar extends Component {
                     className={this.props.classes.username}
                     primary={
                       <Typography color="textPrimary" style={theme.typography}>
-                        نام کاربری
+                        {this.auth.getUsername()}
                       </Typography>
                     }
                   />

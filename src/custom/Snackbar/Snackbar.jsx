@@ -63,8 +63,8 @@ const style = {
   message: {
     fontFamily: "MyFont",
     display: "flex",
-    marginRight: "auto",
-    direction: "rtl"
+    direction: "rtl",
+    alignItems: "right"
   }
 };
 
@@ -79,7 +79,7 @@ const getMuiTheme = createMuiTheme({
       action: {
         marginRight: "auto",
         marginLeft: "-8px",
-        paddingRight: "5px"
+        paddingRight: "0"
       }
     }
   }
