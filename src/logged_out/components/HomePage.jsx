@@ -79,7 +79,7 @@ class HomePage extends Component {
 
   selectBlog = () => {
     smoothScrollTop();
-    document.title = "DT - Forms";
+    document.title = "DT - وبلاگ";
     this.setState({
       selectedTab: "Blog",
       selectedSection: "Home"

@@ -13,6 +13,9 @@ import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
+import AuthService from "../../../AuthService";
+import SnackbarWrapper from "../../../custom/Snackbar/SnackbarWrapper";
+import { withRouter } from "react-router-dom";
 
 const styles = theme => ({
   link: {
@@ -32,13 +35,26 @@ const styles = theme => ({
 });
 
 function RegisterDialog(props) {
-  const { setStatus, theme, onClose, openTermsDialog, status, classes } = props;
+  const {
+    setStatus,
+    theme,
+    onClose,
+    openTermsDialog,
+    status,
+    classes,
+    showSnackbar,
+    history
+  } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [hasTermsOfServiceError, setHasTermsOfServiceError] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const registerTermsCheckbox = useRef();
   const registerPassword = useRef();
   const registerPasswordRepeat = useRef();
+  const username = useRef();
+  const email = useRef();
+
+  const Auth = new AuthService();
 
   const register = useCallback(() => {
     if (!registerTermsCheckbox.current.checked) {
@@ -53,9 +69,23 @@ function RegisterDialog(props) {
     }
     setStatus(null);
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+    Auth.register(
+      username.current.value,
+      registerPassword.current.value,
+      email.current.value
+    )
+      .then(function(res) {
+        showSnackbar(res.message, res.success ? "success" : "error");
+        if (res.success) {
+          setTimeout(() => {
+            history.push("/c/dashboard");
+          }, 150);
+        }
+        setIsLoading(false);
+      })
+      .catch(function() {
+        setIsLoading(false);
+      });
   }, [
     setIsLoading,
     setStatus,
@@ -80,6 +110,7 @@ function RegisterDialog(props) {
       content={
         <Fragment>
           <TextField
+            inputRef={email}
             variant="outlined"
             margin="normal"
             required
@@ -91,6 +122,23 @@ function RegisterDialog(props) {
             type="email"
             onChange={() => {
               if (status === "invalidEmail") {
+                setStatus(null);
+              }
+            }}
+            FormHelperTextProps={{ error: true }}
+          />
+          <TextField
+            inputRef={username}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            error={status === "invalidUsername"}
+            label="نام کاربری"
+            autoComplete="off"
+            type="text"
+            onChange={() => {
+              if (status === "invalidUsername") {
                 setStatus(null);
               }
             }}
@@ -206,15 +254,8 @@ function RegisterDialog(props) {
             </FormHelperText>
           )}
           {status === "accountCreated" ? (
-            <HighlightedInformation>
-              اکانت شما ساخته شد. برای ورود روی لینکی که برایتان ایمیل شده‌است
-              کلیک کنید.
-            </HighlightedInformation>
-          ) : (
-            <HighlightedInformation>
-              ثبت نام فعلا کار نمی‌کند
-            </HighlightedInformation>
-          )}
+            <HighlightedInformation>اکانت شما ساخته شد.</HighlightedInformation>
+          ) : null}
         </Fragment>
       }
       actions={
@@ -240,7 +281,11 @@ RegisterDialog.propTypes = {
   openTermsDialog: PropTypes.func.isRequired,
   status: PropTypes.string,
   setStatus: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  showSnackbar: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(RegisterDialog);
+export default SnackbarWrapper(
+  withRouter(withStyles(styles, { withTheme: true })(RegisterDialog))
+);
