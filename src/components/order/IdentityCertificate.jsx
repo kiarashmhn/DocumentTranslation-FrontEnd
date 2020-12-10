@@ -14,6 +14,7 @@ import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Paper from "@material-ui/core/Paper";
 import theme from "../../theme";
+import CustomTooltip from "../../custom/Tooltip/CustomTooltip";
 
 const styles = {
   customWidth: {
@@ -174,7 +175,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"شماره ملی"} />
                       </InputAdornment>
                     )
                   }}
@@ -196,7 +197,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"شماره شناسنامه"} />
                       </InputAdornment>
                     )
                   }}

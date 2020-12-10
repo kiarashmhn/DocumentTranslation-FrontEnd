@@ -13,7 +13,6 @@ import Check from "@material-ui/icons/Check";
 import customInputStyle from "./customInputStyle";
 
 import styles from "./CustomInput.module.css";
-import Tooltip from "@material-ui/core/Tooltip";
 
 function CustomInput({ ...props }) {
   const {
@@ -32,8 +31,7 @@ function CustomInput({ ...props }) {
     required,
     name,
     disabled,
-    type,
-    hint
+    type
   } = props;
 
   const labelClasses = classNames({
@@ -66,24 +64,22 @@ function CustomInput({ ...props }) {
           {labelText}
         </InputLabel>
       ) : null}
-      <Tooltip title={hint} style={classes.customWidth}>
-        <Input
-          classes={{
-            root: marginTop,
-            disabled: classes.disabled,
-            underline: underlineClasses
-          }}
-          id={id}
-          value={value ? value : ""}
-          name={name}
-          onChange={onChange}
-          onClick={onClick}
-          disabled={disabled}
-          type={type ? type : "text"}
-          formNoValidate
-          {...inputProps}
-        />
-      </Tooltip>
+      <Input
+        classes={{
+          root: marginTop,
+          disabled: classes.disabled,
+          underline: underlineClasses
+        }}
+        id={id}
+        value={value ? value : ""}
+        name={name}
+        onChange={onChange}
+        onClick={onClick}
+        disabled={disabled}
+        type={type ? type : "text"}
+        formNoValidate
+        {...inputProps}
+      />
       {error ? (
         <Clear className={classes.feedback + " " + classes.labelRootError} />
       ) : success ? (
