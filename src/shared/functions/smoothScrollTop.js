@@ -24,7 +24,7 @@ function smoothScrollTop() {
    */
   setTimeout(() => {
     smoothScrollTopRec();
-  }, 10);
+  }, 100);
 }
 
 export default smoothScrollTop;
