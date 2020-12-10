@@ -22,7 +22,8 @@ class CreateOrder extends Component {
   }
 
   componentDidMount() {
-    this.props.selectCreateOrder();
+    console.log("in order");
+    //this.props.selectCreateOrder();
   }
 
   handleOpenDialog = () => {
@@ -103,6 +104,6 @@ class CreateOrder extends Component {
 export default SnackbarWrapper(CreateOrder);
 
 CreateOrder.propTypes = {
-  selectCreateOrder: PropTypes.func.isRequired,
+  selectCreateOrder: PropTypes.func,
   showSnackbar: PropTypes.func.isRequired
 };

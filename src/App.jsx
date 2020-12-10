@@ -5,7 +5,7 @@ import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
 import * as serviceWorker from "./serviceWorker";
 import Pace from "./shared/components/Pace";
-import MainPage from "./logged_in/components/MainPage";
+import UserPanel from "./logged_in/components/UserPanel";
 import HomePage from "./logged_out/components/HomePage";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -30,7 +30,7 @@ class App extends Component {
             <Suspense fallback={<Fragment />}>
               <Switch>
                 <Route path="/userPanel">
-                  <MainPage />
+                  <UserPanel />
                 </Route>
                 <Route>
                   <HomePage />

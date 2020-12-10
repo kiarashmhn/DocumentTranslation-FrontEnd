@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import * as PropTypes from "prop-types";
 
 import axios from "axios";
 import MUIDataTable from "mui-datatables";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import CircularIndeterminate from "../Progress/CircularProgress";
 import * as Validator from "../utils/Validator";
 
@@ -158,7 +156,7 @@ export default class MUITable extends Component {
           root: {
             textAlign: "center",
             fontFamily: "MyFont",
-            direction: "ltr"
+            direction: "rtl"
           }
         },
         MuiTableBody: {
@@ -185,7 +183,8 @@ export default class MUITable extends Component {
         },
         MuiPaper: {
           root: {
-            width: "100%"
+            width: "100%",
+            direction: "rtl"
           }
         }
       }
@@ -202,22 +201,19 @@ export default class MUITable extends Component {
       sort: false,
       download: false,
       filterType: "dropdown",
-      responsive: "stacked",
       serverSide: true,
       count: count,
       page: page,
       pagination: true,
       rowsPerPageOptions: [10],
+      selectableRows: "none",
+      responsive: "standard", //or vertical
+      viewColumns: false,
       onTableChange: (action, tableState) => {
         if (action === "changePage") {
           this.changePage(tableState.page, tableState);
         }
       },
-      // onRowsDelete: (event, rowData) => {
-      //   console.log(event);
-      //   console.log(rowData);
-      //   return false;
-      // },
       textLabels: {
         body: {
           noMatch: "متاسفانه موردی یافت نشد",
@@ -253,24 +249,22 @@ export default class MUITable extends Component {
       }
     };
     return (
-      <Card>
-        <CardContent>
-          <MuiThemeProvider theme={this.getMuiTheme()}>
-            <MUIDataTable
-              innerRef={this.tableRef}
-              title={
-                <>
-                  {this.props.title}
-                  {isLoading && <CircularIndeterminate />}
-                </>
-              }
-              data={data}
-              columns={columns}
-              options={options}
-            />
-          </MuiThemeProvider>
-        </CardContent>
-      </Card>
+      <Fragment>
+        <MuiThemeProvider theme={this.getMuiTheme()}>
+          <MUIDataTable
+            innerRef={this.tableRef}
+            title={
+              <>
+                {this.props.title}
+                {isLoading && <CircularIndeterminate />}
+              </>
+            }
+            data={data}
+            columns={columns}
+            options={options}
+          />
+        </MuiThemeProvider>
+      </Fragment>
     );
   }
 }
@@ -297,6 +291,6 @@ MUITable.propTypes = {
     structure: PropTypes.any
   }),
   initializationFilter: PropTypes.any,
-  filterKey: PropTypes.string.isRequired,
+  filterKey: PropTypes.string,
   doDataPreprocessing: PropTypes.func
 };

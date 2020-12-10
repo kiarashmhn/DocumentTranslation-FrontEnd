@@ -127,7 +127,14 @@ const styles = theme => ({
 });
 
 function NavBar(props) {
-  const { selectedTab, messages, classes, width } = props;
+  const {
+    selectedTab,
+    messages,
+    classes,
+    width,
+    selectCreateOrder,
+    selectListOrder
+  } = props;
   // Will be use to make website more accessible by screen readers
   const links = useRef([]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -144,10 +151,12 @@ function NavBar(props) {
 
   const menuItems = [
     {
-      link: "/userPanel/ListOrder",
       name: "ListOrder",
       persianName: "لیست سفارش ها",
-      onClick: closeMobileDrawer,
+      onClick: () => {
+        closeMobileDrawer();
+        selectListOrder();
+      },
       icon: {
         desktop: (
           <ListIcon
@@ -161,10 +170,12 @@ function NavBar(props) {
       }
     },
     {
-      link: "/userPanel/",
       name: "CreateOrder",
       persianName: "ثبت سفارش",
-      onClick: closeMobileDrawer,
+      onClick: () => {
+        closeMobileDrawer();
+        selectCreateOrder();
+      },
       icon: {
         desktop: (
           <AddShoppingCartIcon
@@ -264,29 +275,57 @@ function NavBar(props) {
           open={false}
         >
           <List>
-            {menuItems.map((element, index) => (
-              <Link
-                to={element.link}
-                className={classes.menuLink}
-                onClick={element.onClick}
-                key={index}
-                ref={node => {
-                  links.current[index] = node;
-                }}
-              >
+            {menuItems.map((element, index) => {
+              if (element.link)
+                return (
+                  <Link
+                    to={element.link}
+                    className={classes.menuLink}
+                    onClick={element.onClick}
+                    key={index}
+                    ref={node => {
+                      links.current[index] = node;
+                    }}
+                  >
+                    <Tooltip
+                      title={element.persianName}
+                      placement="left"
+                      key={element.persianName}
+                    >
+                      <ListItem
+                        selected={selectedTab === element.name}
+                        button
+                        divider={index !== menuItems.length - 1}
+                        className={classes.permanentDrawerListItem}
+                        onClick={() => {
+                          links.current[index].click();
+                        }}
+                        aria-label={
+                          element.name === "Logout"
+                            ? "Logout"
+                            : `Go to ${element.name}`
+                        }
+                      >
+                        <ListItemIcon className={classes.justifyCenter}>
+                          {element.icon.desktop}
+                        </ListItemIcon>
+                      </ListItem>
+                    </Tooltip>
+                  </Link>
+                );
+              return (
                 <Tooltip
                   title={element.persianName}
                   placement="left"
                   key={element.persianName}
                 >
                   <ListItem
-                    selected={selectedTab === element.name}
                     button
+                    selected={selectedTab === element.name}
                     divider={index !== menuItems.length - 1}
                     className={classes.permanentDrawerListItem}
-                    onClick={() => {
-                      links.current[index].click();
-                    }}
+                    key={element.name}
+                    onClick={element.onClick}
                     aria-label={
                       element.name === "Logout"
                         ? "Logout"
@@ -298,8 +337,8 @@ function NavBar(props) {
                     </ListItemIcon>
                   </ListItem>
                 </Tooltip>
-              </Link>
-            ))}
+              );
+            })}
           </List>
         </Drawer>
       </Hidden>
@@ -324,7 +363,9 @@ NavBar.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedTab: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  selectListOrder: PropTypes.func.isRequired,
+  selectCreateOrder: PropTypes.func.isRequired
 };
 
 export default withWidth()(withStyles(styles, { withTheme: true })(NavBar));
