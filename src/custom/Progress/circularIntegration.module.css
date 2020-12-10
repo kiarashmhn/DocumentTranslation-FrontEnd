@@ -1,0 +1,18 @@
+.parent {
+    display: flex;
+    align-items: center;
+}
+
+.child {
+    margin: 1px;
+    position: relative;
+}
+
+.circularProg {
+    color: #9c27b0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -12px;
+    margin-left: -12px;
+}

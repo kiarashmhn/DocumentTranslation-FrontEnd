@@ -4,6 +4,7 @@ import { Switch } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import PropsRoute from "../../shared/components/PropsRoute";
 import CreateOrder from "./order/CreateOrder";
+import ListOrder from "./order/ListOrder";
 
 const styles = theme => ({
   wrapper: {
@@ -41,7 +42,7 @@ const styles = theme => ({
 });
 
 function Routing(props) {
-  const { classes, selectCreateOrder } = props;
+  const { classes, selectListOrder, selectCreateOrder } = props;
   return (
     <div className={classes.wrapper}>
       <Switch>
@@ -50,6 +51,11 @@ function Routing(props) {
           component={CreateOrder}
           selectCreateOrder={selectCreateOrder}
         />
+        <PropsRoute
+          path="/ListOrder"
+          component={ListOrder}
+          selectListOrder={selectListOrder}
+        />
       </Switch>
     </div>
   );
@@ -57,8 +63,9 @@ function Routing(props) {
 
 Routing.propTypes = {
   classes: PropTypes.object.isRequired,
-  selectDashboard: PropTypes.func.isRequired,
-  selectCreateOrder: PropTypes.func.isRequired
+  selectCreateOrder: PropTypes.func.isRequired,
+  selectListOrder: PropTypes.func.isRequired,
+  pushMessageToSnackbar: PropTypes.func
 };
 
 export default withStyles(styles, { withTheme: true })(memo(Routing));

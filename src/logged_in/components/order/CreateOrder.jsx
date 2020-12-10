@@ -5,11 +5,16 @@ import IdentityCertificate from "./IdentityCertificate";
 import PropTypes from "prop-types";
 import image from "../../../images/identityCard.jpg";
 import FullScreenDialog from "../../../custom/FullScreenDialog";
+import Api from "../../../custom/Api/Api";
+import * as URLConstant from "../../../URLConstant";
+import SnackbarWrapper from "../../../custom/Snackbar/SnackbarWrapper";
+import { OrderTypes } from "./OrderTypes";
 
 class CreateOrder extends Component {
   constructor(props) {
     super(props);
     this.identityCertificateRef = React.createRef();
+    this.api = new Api();
     this.state = {
       openIdentityDialog: false,
       isLoading: false
@@ -32,11 +37,37 @@ class CreateOrder extends Component {
     });
   };
 
+  createOrder = () => {
+    let self = this;
+    let postData = {
+      type: OrderTypes.ID_CERTIFICATE.name,
+      details: this.identityCertificateRef.current.getState()
+    };
+    this.api
+      .doPost(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.CREATE_ORDER,
+        postData
+      )
+      .then(function(res) {
+        self.props.showSnackbar(res.message, res.success ? "success" : "error");
+        self.setState({
+          isLoading: false,
+          openIdentityDialog: false
+        });
+      });
+  };
+
   handleSubmit = () => {
-    console.log(this.identityCertificateRef.current.getState());
-    this.setState({
-      openIdentityDialog: false
-    });
+    this.setState(
+      {
+        isLoading: true
+      },
+      () => {
+        this.createOrder();
+      }
+    );
   };
 
   render() {
@@ -69,8 +100,9 @@ class CreateOrder extends Component {
   }
 }
 
-export default CreateOrder;
+export default SnackbarWrapper(CreateOrder);
 
 CreateOrder.propTypes = {
-  selectCreateOrder: PropTypes.func.isRequired
+  selectCreateOrder: PropTypes.func.isRequired,
+  showSnackbar: PropTypes.func.isRequired
 };

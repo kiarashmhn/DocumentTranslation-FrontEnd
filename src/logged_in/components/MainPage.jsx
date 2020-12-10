@@ -27,10 +27,19 @@ class MainPage extends Component {
     };
   }
 
+  componentDidMount() {
+    this.selectCreateOrder();
+  }
+
   setSelectedTab = tab => {
-    this.setState({
-      selectedTab: tab
-    });
+    this.setState(
+      {
+        selectedTab: tab
+      },
+      () => {
+        console.log(this.state.selectedTab);
+      }
+    );
   };
 
   selectCreateOrder = () => {
@@ -39,10 +48,10 @@ class MainPage extends Component {
     this.setSelectedTab("CreateOrder");
   };
 
-  selectDashboard = () => {
+  selectListOrder = () => {
     smoothScrollTop();
-    document.title = "DT - MainPage";
-    this.setSelectedTab("Dashboard");
+    document.title = "DT - ListOrder";
+    this.setSelectedTab("ListOrder");
   };
 
   render() {
@@ -51,8 +60,8 @@ class MainPage extends Component {
         <NavBar selectedTab={this.state.selectedTab} messages={[]} />
         <main className={classNames(this.props.classes.main)}>
           <Routing
-            selectDashboard={this.selectDashboard}
             selectCreateOrder={this.selectCreateOrder}
+            selectListOrder={this.selectListOrder}
           />
         </main>
       </Fragment>

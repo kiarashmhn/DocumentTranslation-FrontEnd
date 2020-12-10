@@ -1,8 +1,7 @@
-import React, { Fragment, Component } from "react";
+import React, { Fragment, useRef, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import MenuIcon from "@material-ui/icons/Menu";
 import {
   AppBar,
   Toolbar,
@@ -21,12 +20,12 @@ import {
   isWidthUp,
   withWidth
 } from "@material-ui/core";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
+import MenuIcon from "@material-ui/icons/Menu";
 import MessagePopperButton from "./MessagePopperButton";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
-import theme from "../../../theme";
+import ListIcon from "@material-ui/icons/List";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AuthService from "../../../AuthService";
 
 const styles = theme => ({
@@ -127,216 +126,198 @@ const styles = theme => ({
   }
 });
 
-class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMobileOpen: false,
-      isSideDrawerOpen: false,
-      mobileItems: []
-    };
-    this.auth = new AuthService();
-  }
+function NavBar(props) {
+  const { selectedTab, messages, classes, width } = props;
+  // Will be use to make website more accessible by screen readers
+  const links = useRef([]);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  setIsMobileOpen = value => {
-    this.setState({
-      isMobileOpen: value
-    });
-  };
+  const openMobileDrawer = useCallback(() => {
+    setIsMobileOpen(true);
+  }, [setIsMobileOpen]);
 
-  setIsSideDrawerOpen = value => {
-    this.setState({
-      isSideDrawerOpen: value
-    });
-  };
+  const closeMobileDrawer = useCallback(() => {
+    setIsMobileOpen(false);
+  }, [setIsMobileOpen]);
 
-  openMobileDrawer = () => {
-    this.setIsMobileOpen(true);
-  };
+  const Auth = new AuthService();
 
-  closeMobileDrawer = () => {
-    this.setIsMobileOpen(false);
-  };
-
-  render() {
-    let menuItems = [
-      {
-        link: "/userPanel/dashboard",
-        name: "داشبورد",
-        onClick: this.closeMobileDrawer,
-        icon: {
-          desktop: (
-            <DashboardIcon
-              className={
-                this.props.selectedTab === "Dashboard"
-                  ? this.props.classes.textPrimary
-                  : "text-white"
-              }
-              fontSize="large"
-            />
-          ),
-          mobile: <DashboardIcon className="text-white" />
-        }
-      },
-      {
-        link: "/userPanel/CreateOrder",
-        name: "ثبت سفارش",
-        onClick: this.closeMobileDrawer,
-        icon: {
-          desktop: (
-            <AddShoppingCartIcon
-              className={
-                this.props.selectedTab === "CreateOrder"
-                  ? this.props.classes.textPrimary
-                  : "text-white"
-              }
-              fontSize="large"
-            />
-          ),
-          mobile: <AddShoppingCartIcon className="text-white" />
-        }
-      },
-      {
-        link: "/",
-        name: "خروج",
-        onClick: this.auth.logout,
-        icon: {
-          desktop: (
-            <PowerSettingsNewIcon className="text-white" fontSize="large" />
-          ),
-          mobile: <PowerSettingsNewIcon className="text-white" />
-        }
+  const menuItems = [
+    {
+      link: "/userPanel/ListOrder",
+      name: "ListOrder",
+      persianName: "لیست سفارش ها",
+      onClick: closeMobileDrawer,
+      icon: {
+        desktop: (
+          <ListIcon
+            className={
+              selectedTab === "ListOrder" ? classes.textPrimary : "text-white"
+            }
+            fontSize="large"
+          />
+        ),
+        mobile: <ListIcon className="text-white" />
       }
-    ];
-    return (
-      <Fragment>
-        <AppBar position="sticky" className={this.props.classes.appBar}>
-          <Toolbar className={this.props.classes.appBarToolbar}>
-            <Box display="flex" alignItems="center">
-              <Hidden xsDown>
-                <Typography
-                  variant="h4"
-                  className={this.props.classes.brandText}
-                  display="inline"
+    },
+    {
+      link: "/userPanel/",
+      name: "CreateOrder",
+      persianName: "ثبت سفارش",
+      onClick: closeMobileDrawer,
+      icon: {
+        desktop: (
+          <AddShoppingCartIcon
+            className={
+              selectedTab === "CreateOrder" ? classes.textPrimary : "text-white"
+            }
+            fontSize="large"
+          />
+        ),
+        mobile: <AddShoppingCartIcon className="text-white" />
+      }
+    },
+    {
+      link: "/",
+      name: "Logout",
+      persianName: "خروج",
+      onClick: Auth.logout,
+      icon: {
+        desktop: (
+          <PowerSettingsNewIcon className="text-white" fontSize="large" />
+        ),
+        mobile: <PowerSettingsNewIcon className="text-white" />
+      }
+    }
+  ];
+  return (
+    <Fragment>
+      <AppBar position="sticky" className={classes.appBar}>
+        <Toolbar className={classes.appBarToolbar}>
+          <Box display="flex" alignItems="center">
+            <Hidden smUp>
+              <Box mr={1}>
+                <IconButton
+                  aria-label="Open Navigation"
+                  onClick={openMobileDrawer}
                   color="primary"
                 >
-                  Document
-                </Typography>
-                <Typography
-                  variant="h4"
-                  className={this.props.classes.brandText}
-                  display="inline"
-                  color="secondary"
-                >
-                  Translator
-                </Typography>
-              </Hidden>
-            </Box>
-            <Box
-              display="flex"
-              justifyContent="flex-end"
-              alignItems="center"
-              width="100%"
-            >
-              <MessagePopperButton messages={this.props.messages} />
-              <ListItem
-                disableGutters
-                className={classNames(
-                  this.props.classes.iconListItem,
-                  this.props.classes.smBordered
-                )}
+                  <MenuIcon />
+                </IconButton>
+              </Box>
+            </Hidden>
+            <Hidden xsDown>
+              <Typography
+                variant="h4"
+                className={classes.brandText}
+                display="inline"
+                color="primary"
               >
-                <Avatar
-                  alt="profile picture"
-                  src={`${process.env.PUBLIC_URL}/images/logged_in/profilePicture.jpg`}
-                  className={classNames(this.props.classes.accountAvatar)}
-                />
-                {isWidthUp("sm", this.props.width) && (
-                  <ListItemText
-                    className={this.props.classes.username}
-                    primary={
-                      <Typography color="textPrimary" style={theme.typography}>
-                        {this.auth.getUsername()}
-                      </Typography>
-                    }
-                  />
-                )}
-              </ListItem>
-              <Hidden smUp>
-                <Box mr={1}>
-                  <IconButton
-                    aria-label="Open Navigation"
-                    onClick={this.openMobileDrawer}
-                    color="primary"
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                </Box>
-              </Hidden>
-            </Box>
-          </Toolbar>
-        </AppBar>
-        <Hidden xsDown>
-          <Drawer //  both drawers can be combined into one for performance
-            variant="permanent"
-            classes={{
-              paper: this.props.classes.drawerPaper
-            }}
-            open={false}
+                Document
+              </Typography>
+              <Typography
+                variant="h4"
+                className={classes.brandText}
+                display="inline"
+                color="secondary"
+              >
+                Translator
+              </Typography>
+            </Hidden>
+          </Box>
+          <Box
+            display="flex"
+            justifyContent="flex-end"
+            alignItems="center"
+            width="100%"
           >
-            <List>
-              {menuItems.map((element, index) => (
-                <Link
-                  to={element.link}
-                  className={this.props.classes.menuLink}
-                  onClick={element.onClick}
-                  key={index}
+            <MessagePopperButton messages={messages} />
+            <ListItem
+              disableGutters
+              className={classNames(classes.iconListItem, classes.smBordered)}
+            >
+              <Avatar
+                alt="profile picture"
+                src={`${process.env.PUBLIC_URL}/images/logged_in/profilePicture.jpg`}
+                className={classNames(classes.accountAvatar)}
+              />
+              {isWidthUp("sm", width) && (
+                <ListItemText
+                  className={classes.username}
+                  primary={
+                    <Typography color="textPrimary">
+                      {Auth.getUsername()}
+                    </Typography>
+                  }
+                />
+              )}
+            </ListItem>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Hidden xsDown>
+        <Drawer //  both drawers can be combined into one for performance
+          variant="permanent"
+          classes={{
+            paper: classes.drawerPaper
+          }}
+          open={false}
+        >
+          <List>
+            {menuItems.map((element, index) => (
+              <Link
+                to={element.link}
+                className={classes.menuLink}
+                onClick={element.onClick}
+                key={index}
+                ref={node => {
+                  links.current[index] = node;
+                }}
+              >
+                <Tooltip
+                  title={element.persianName}
+                  placement="left"
+                  key={element.persianName}
                 >
-                  <Tooltip
-                    style={theme.typography}
-                    title={element.name}
-                    placement="right"
-                    key={element.name}
+                  <ListItem
+                    selected={selectedTab === element.name}
+                    button
+                    divider={index !== menuItems.length - 1}
+                    className={classes.permanentDrawerListItem}
+                    onClick={() => {
+                      links.current[index].click();
+                    }}
+                    aria-label={
+                      element.name === "Logout"
+                        ? "Logout"
+                        : `Go to ${element.name}`
+                    }
                   >
-                    <ListItem
-                      selected={this.props.selectedTab === element.name}
-                      button
-                      divider={index !== menuItems.length - 1}
-                      className={this.props.classes.permanentDrawerListItem}
-                      onClick={() => {}}
-                      aria-label={
-                        element.name === "Logout"
-                          ? "Logout"
-                          : `Go to ${element.name}`
-                      }
-                    >
-                      <ListItemIcon
-                        className={this.props.classes.justifyCenter}
-                      >
-                        {element.icon.desktop}
-                      </ListItemIcon>
-                    </ListItem>
-                  </Tooltip>
-                </Link>
-              ))}
-            </List>
-          </Drawer>
-        </Hidden>
-        <NavigationDrawer
-          menuItems={menuItems.map(element => ({
-            link: element.link,
-            name: element.name,
-            icon: element.icon.mobile,
-            onClick: element.onClick
-          }))}
-          anchor="right"
-          open={this.state.isMobileOpen}
-          selectedItem={this.props.selectedTab}
-          onClose={this.closeMobileDrawer}
-        />
-      </Fragment>
-    );
-  }
+                    <ListItemIcon className={classes.justifyCenter}>
+                      {element.icon.desktop}
+                    </ListItemIcon>
+                  </ListItem>
+                </Tooltip>
+              </Link>
+            ))}
+          </List>
+        </Drawer>
+      </Hidden>
+      <NavigationDrawer
+        menuItems={menuItems.map(element => ({
+          link: element.link,
+          name: element.name,
+          persianName: element.persianName,
+          icon: element.icon.mobile,
+          onClick: element.onClick
+        }))}
+        anchor="right"
+        open={isMobileOpen}
+        selectedItem={selectedTab}
+        onClose={closeMobileDrawer}
+      />
+    </Fragment>
+  );
 }
 
 NavBar.propTypes = {
