@@ -4,9 +4,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import * as ColorPalette from "ColorPalette";
-import DynamicallyIcon from "DynamicallyIcon";
 import * as PropTypes from "prop-types";
+import DeleteIcon from "@material-ui/icons/Clear";
+import * as ColorPalette from "../custom/ColorPalette";
 
 const styles = {
   cardTitleWhite: {
@@ -48,8 +48,8 @@ export default class FullScreenDialog extends Component {
                   onClick={this.props.handleClose}
                   aria-label="close"
                 >
-                  <DynamicallyIcon
-                    icon={"Clear"}
+                  <DeleteIcon
+                    fontSize="small"
                     styles={{ color: ColorPalette.red }}
                   />
                 </IconButton>

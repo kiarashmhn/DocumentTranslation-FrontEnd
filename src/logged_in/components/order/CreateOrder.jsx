@@ -4,14 +4,15 @@ import MediaCard from "../../../custom/MediaCard";
 import IdentityCertificate from "./IdentityCertificate";
 import PropTypes from "prop-types";
 import image from "../../../images/identityCard.jpg";
-import CustomDialogs from "../../../custom/CustomDialogs";
+import FullScreenDialog from "../../../custom/FullScreenDialog";
 
 class CreateOrder extends Component {
   constructor(props) {
     super(props);
     this.identityCertificateRef = React.createRef();
     this.state = {
-      openIdentityDialog: false
+      openIdentityDialog: false,
+      isLoading: false
     };
   }
 
@@ -20,14 +21,12 @@ class CreateOrder extends Component {
   }
 
   handleOpenDialog = () => {
-    console.log("in order");
     this.setState({
       openIdentityDialog: true
     });
   };
 
   handleCloseDialog = () => {
-    console.log("in order");
     this.setState({
       openIdentityDialog: false
     });
@@ -51,12 +50,13 @@ class CreateOrder extends Component {
               onClick={this.handleOpenDialog}
               secondaryTitle={"درخواست ترجمه شناسنامه"}
             />
-            <CustomDialogs
+            <FullScreenDialog
               title="test"
               component={
                 <IdentityCertificate
                   ref={this.identityCertificateRef}
                   onSubmit={this.handleSubmit}
+                  isLoading={this.state.isLoading}
                 />
               }
               handleClose={this.handleCloseDialog}
