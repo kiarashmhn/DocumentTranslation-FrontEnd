@@ -15,6 +15,7 @@ import theme from "../../theme";
 import CustomFileUpload from "../CustomFileUpload/CustomFileUpload";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import Children from "../Children/Children";
+import Spouses from "../Spouses/Spouses";
 
 const styles = {
   customWidth: {
@@ -57,7 +58,7 @@ const countries = [
 
 const initialState = {
   step: 0,
-  steps: 5,
+  steps: 6,
   name: "",
   lastName: "",
   type: "",
@@ -86,6 +87,7 @@ class IdentityCertificate extends Component {
     super(props);
     this.state = initialState;
     this.childrenRef = React.createRef();
+    this.spousesRef = React.createRef();
   }
 
   getSteps = () => {
@@ -472,6 +474,19 @@ class IdentityCertificate extends Component {
         )
       },
       {
+        title: "اطلاعات همسران",
+        content: (
+          <form onSubmit={this.handleNext}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12} md={12} key={"spouses"}>
+                <Spouses ref={this.spousesRef} />
+              </Grid>
+            </Grid>
+            {this.getStepActions()}
+          </form>
+        )
+      },
+      {
         title: "اطلاعات فرزندان",
         content: (
           <form onSubmit={this.handleNext}>
@@ -552,8 +567,20 @@ class IdentityCertificate extends Component {
       : [];
   };
 
+  getSpouses = () => {
+    return this.spousesRef.current
+      ? this.spousesRef.current.getState()
+        ? this.spousesRef.current.getState().spouses
+        : []
+      : [];
+  };
+
   getState = () => {
-    return { ...this.state, children: this.getChildren() };
+    return {
+      ...this.state,
+      children: this.getChildren(),
+      spouses: this.getSpouses()
+    };
   };
 
   handleTypeChange = selectedType => {
