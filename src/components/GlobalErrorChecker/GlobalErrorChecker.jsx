@@ -1,5 +1,5 @@
 import { Component } from "react";
-import AuthService from "../../../src/AuthService";
+import AuthService from "../../AuthService";
 
 export default class GlobalErrorChecker extends Component {
   constructor(props) {

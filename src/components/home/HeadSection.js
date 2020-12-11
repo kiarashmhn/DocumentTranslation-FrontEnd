@@ -8,8 +8,8 @@ import {
   withStyles,
   withWidth
 } from "@material-ui/core";
-import WaveBorder from "../../shared/components/WaveBorder";
-import ZoomImage from "../../shared/components/ZoomImage";
+import WaveBorder from "../Template/WaveBorder";
+import ZoomImage from "../Template/ZoomImage";
 
 /*const features = [
   {

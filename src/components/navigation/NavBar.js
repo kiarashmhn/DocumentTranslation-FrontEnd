@@ -23,7 +23,7 @@ import {
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import MenuIcon from "@material-ui/icons/Menu";
 import MessagePopperButton from "./MessagePopperButton";
-import NavigationDrawer from "../../shared/components/NavigationDrawer";
+import NavigationDrawer from "../Template/NavigationDrawer";
 import ListIcon from "@material-ui/icons/List";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AuthService from "../../AuthService";

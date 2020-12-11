@@ -1,20 +1,20 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import CustomInput from "../../custom/CustomInput/CustomInput";
+import CustomInput from "../CustomInput/CustomInput";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import ShortTextIcon from "@material-ui/icons/ShortText";
-import MultiSingleDropdown from "../../custom/Dropdown/MultiSingleDropdown";
+import MultiSingleDropdown from "../Dropdown/MultiSingleDropdown";
 import moment from "moment-jalaali";
 import { Button, Grid, Tooltip, Typography } from "@material-ui/core";
-import ButtonCircularProgress from "../../shared/components/ButtonCircularProgress";
-import CustomDateInput from "../../custom/CustomDateInput/CustomDateInput";
+import ButtonCircularProgress from "../Template/ButtonCircularProgress";
+import CustomDateInput from "../CustomDateInput/CustomDateInput";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Paper from "@material-ui/core/Paper";
 import theme from "../../theme";
-import CustomTooltip from "../../custom/Tooltip/CustomTooltip";
+import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const styles = {
   customWidth: {

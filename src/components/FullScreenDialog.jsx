@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import * as PropTypes from "prop-types";
 import DeleteIcon from "@material-ui/icons/Clear";
-import * as ColorPalette from "../custom/ColorPalette";
+import * as ColorPalette from "./ColorPalette";
 
 const styles = {
   cardTitleWhite: {

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core";
 import NavBar from "./navigation/NavBar";
-import smoothScrollTop from "../shared/functions/smoothScrollTop";
+import smoothScrollTop from "../functions/smoothScrollTop";
 import CreateOrder from "./order/CreateOrder";
 import ListOrder from "./order/ListOrder";
 

@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Grid } from "@material-ui/core";
-import MediaCard from "../../custom/MediaCard";
+import MediaCard from "../MediaCard";
 import IdentityCertificate from "./IdentityCertificate";
 import PropTypes from "prop-types";
 import image from "../../images/identityCard.jpg";
-import FullScreenDialog from "../../custom/FullScreenDialog";
-import Api from "../../custom/Api/Api";
+import FullScreenDialog from "../FullScreenDialog";
+import Api from "../Api/Api";
 import * as URLConstant from "../../URLConstant";
-import SnackbarWrapper from "../../custom/Snackbar/SnackbarWrapper";
+import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { OrderTypes } from "./OrderTypes";
 
 class CreateOrder extends Component {

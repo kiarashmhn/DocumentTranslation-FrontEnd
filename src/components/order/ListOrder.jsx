@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import PropTypes from "prop-types";
-import MUITable from "../../custom/Table/MUITable";
+import MUITable from "../Table/MUITable";
 import * as URLConstant from "../../URLConstant";
 
 class ListOrder extends Component {

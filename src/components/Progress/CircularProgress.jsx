@@ -3,7 +3,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import * as ColorPalette from "../../custom/ColorPalette";
+import * as ColorPalette from "../ColorPalette";
 
 const useStyles = makeStyles(theme => ({
   root: {

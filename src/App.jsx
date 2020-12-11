@@ -4,13 +4,13 @@ import { Route, Router, Switch } from "react-router-dom";
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
 import * as serviceWorker from "./serviceWorker";
-import Pace from "./shared/components/Pace";
+import Pace from "./components/Template/Pace";
 import UserPanel from "./components/UserPanel";
 import HomePage from "./components/HomePage";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import Snackbar from "../src/custom/Snackbar/Snackbar";
-import snackbarReducer from "./custom/Snackbar/SnackbarReducer";
+import Snackbar from "./components/Snackbar/Snackbar";
+import snackbarReducer from "./components/Snackbar/SnackbarReducer";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 
