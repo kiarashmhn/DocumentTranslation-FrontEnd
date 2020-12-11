@@ -118,9 +118,12 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "اطلاعات اولیه",
+        title: "اطلاعات شخصی",
         content: (
           <form onSubmit={this.handleNext}>
+            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
+              Informations personnelles
+            </Typography>
             <Grid container spacing={2} dir={"rtl"}>
               <Grid item xs={12} sm={12} md={4} key={"type"}>
                 <Tooltip title={"نوع شناسنامه"} style={styles.customWidth}>
@@ -329,9 +332,12 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "اطلاعات شخصی",
+        title: "اطلاعات والدین",
         content: (
           <form onSubmit={this.handleNext}>
+            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
+              Information parentale
+            </Typography>
             <Grid container spacing={2} dir={"rtl"}>
               <Grid item xs={12} sm={12} md={4} key={"fatherName"}>
                 <CustomInput
@@ -478,6 +484,9 @@ class IdentityCertificate extends Component {
         title: "اطلاعات همسران",
         content: (
           <form onSubmit={this.handleNext}>
+            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
+              Informations sur les conjoints
+            </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"spouses"}>
                 <Spouses ref={this.spousesRef} />
@@ -491,6 +500,9 @@ class IdentityCertificate extends Component {
         title: "اطلاعات فرزندان",
         content: (
           <form onSubmit={this.handleNext}>
+            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
+              Informations sur les enfants
+            </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"children"}>
                 <Children ref={this.childrenRef} />
@@ -504,6 +516,9 @@ class IdentityCertificate extends Component {
         title: "بارگذاری تصاویر",
         content: (
           <form onSubmit={this.handleNext}>
+            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
+              Importer des images
+            </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"files"}>
                 <CustomFileUpload onChange={this.onFileChange} />
@@ -517,7 +532,10 @@ class IdentityCertificate extends Component {
         title: "توضیحات",
         content: (
           <form onSubmit={this.handleNext}>
-            <Grid container spacing={2}>
+            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
+              La description
+            </Typography>
+            <Grid container spacing={2} dir={"rtl"}>
               <Grid item xs={12} sm={12} md={12} key={"description"}>
                 <CustomInput
                   required

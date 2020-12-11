@@ -134,7 +134,13 @@ export default class PlusComponent extends Component {
             <AddIcon />
             {this.props.plusTitle ? this.props.plusTitle + " " : ""}
           </Button>
-          <div style={{ marginTop: "15px", marginLeft: "20px" }}>
+          <div
+            style={{
+              marginTop: "8px",
+              marginLeft: "20px",
+              position: "relative"
+            }}
+          >
             <CustomTooltip text={this.props.hint} />
           </div>
         </CardActions>
