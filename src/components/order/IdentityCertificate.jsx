@@ -2,9 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import CustomInput from "../CustomInput/CustomInput";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import ShortTextIcon from "@material-ui/icons/ShortText";
 import MultiSingleDropdown from "../Dropdown/MultiSingleDropdown";
-import moment from "moment-jalaali";
 import { Button, Grid, Tooltip, Typography } from "@material-ui/core";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import CustomDateInput from "../CustomDateInput/CustomDateInput";
@@ -14,6 +12,7 @@ import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Paper from "@material-ui/core/Paper";
 import theme from "../../theme";
+import CustomFileUpload from "../CustomFileUpload/CustomFileUpload";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const styles = {
@@ -64,13 +63,13 @@ const initialState = {
   address: "",
   country: "",
   gender: "",
-  birthDate: moment(),
+  birthDate: "",
   birthLocation: "",
   files: [],
   nationalId: "",
   serial: "",
   certificateId: "",
-  registrationDate: moment(),
+  registrationDate: "",
   registrationLocation: "",
   fatherName: "",
   fatherId: "",
@@ -265,6 +264,7 @@ class IdentityCertificate extends Component {
                 <CustomDateInput
                   label={"تاریخ تولد"}
                   hint={"Date de naissance"}
+                  onChange={this.handleBirthDateChange}
                 />
               </Grid>
             </Grid>
@@ -315,6 +315,7 @@ class IdentityCertificate extends Component {
                 <CustomDateInput
                   label={"تاریخ ثبت"}
                   hint={"Date d’enregistrement"}
+                  onChange={this.handleRegistrationDateChange}
                 />
               </Grid>
             </Grid>
@@ -469,29 +470,12 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "اطلاعات تکمیلی",
+        title: "بارگذاری تصاویر",
         content: (
           <form onSubmit={this.handleNext}>
-            <Grid container spacing={2} dir={"rtl"}>
-              <Grid item xs={12} sm={12} md={8} key={"address"}>
-                <CustomInput
-                  required
-                  labelText="نشانی در خارج از کشور"
-                  id="address"
-                  value={this.state.address}
-                  onChange={e => this.setState({ address: e.target.value })}
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <ShortTextIcon />
-                      </InputAdornment>
-                    )
-                  }}
-                  hint={"نشانی در خارج از کشور"}
-                />
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12} md={12} key={"files"}>
+                <CustomFileUpload onChange={this.onFileChange} />
               </Grid>
             </Grid>
             {this.getStepActions()}
@@ -525,6 +509,24 @@ class IdentityCertificate extends Component {
         </div>
       </div>
     );
+  };
+
+  onFileChange = e => {
+    this.setState({
+      files: e.target.files
+    });
+  };
+
+  handleBirthDateChange = newDate => {
+    this.setState({
+      birthDate: newDate
+    });
+  };
+
+  handleRegistrationDateChange = newDate => {
+    this.setState({
+      registrationDate: newDate
+    });
   };
 
   getState = () => {

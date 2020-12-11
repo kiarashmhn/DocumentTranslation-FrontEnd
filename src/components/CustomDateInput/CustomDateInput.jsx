@@ -44,7 +44,11 @@ export default class CustomDateInput extends Component {
             labelText="روز"
             id="day"
             value={this.state.day}
-            onChange={e => this.setState({ day: e.target.value })}
+            onChange={e =>
+              this.setState({ day: e.target.value }, () => {
+                this.props.onChange(this.getState());
+              })
+            }
             formControlProps={{
               fullWidth: true
             }}
@@ -68,7 +72,11 @@ export default class CustomDateInput extends Component {
             labelText="ماه"
             id="month"
             value={this.state.month}
-            onChange={e => this.setState({ month: e.target.value })}
+            onChange={e =>
+              this.setState({ month: e.target.value }, () => {
+                this.props.onChange(this.getState());
+              })
+            }
             formControlProps={{
               fullWidth: true
             }}
@@ -92,7 +100,11 @@ export default class CustomDateInput extends Component {
             labelText="سال"
             id="year"
             value={this.state.year}
-            onChange={e => this.setState({ year: e.target.value })}
+            onChange={e =>
+              this.setState({ year: e.target.value }, () => {
+                this.props.onChange(this.getState());
+              })
+            }
             formControlProps={{
               fullWidth: true
             }}
@@ -112,5 +124,6 @@ export default class CustomDateInput extends Component {
 
 CustomDateInput.propTypes = {
   label: PropTypes.string.isRequired,
-  hint: PropTypes.string.isRequired
+  hint: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 };
