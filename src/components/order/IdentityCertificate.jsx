@@ -58,7 +58,7 @@ const countries = [
 
 const initialState = {
   step: 0,
-  steps: 6,
+  steps: 7,
   name: "",
   lastName: "",
   type: "",
@@ -79,7 +79,8 @@ const initialState = {
   motherName: "",
   motherId: "",
   motherRegistrationLocation: "",
-  maritalStatus: ""
+  maritalStatus: "",
+  description: ""
 };
 
 class IdentityCertificate extends Component {
@@ -328,7 +329,7 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "اطلاعات والدین",
+        title: "اطلاعات شخصی",
         content: (
           <form onSubmit={this.handleNext}>
             <Grid container spacing={2} dir={"rtl"}>
@@ -506,6 +507,39 @@ class IdentityCertificate extends Component {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"files"}>
                 <CustomFileUpload onChange={this.onFileChange} />
+              </Grid>
+            </Grid>
+            {this.getStepActions()}
+          </form>
+        )
+      },
+      {
+        title: "توضیحات",
+        content: (
+          <form onSubmit={this.handleNext}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12} md={12} key={"description"}>
+                <CustomInput
+                  required
+                  labelText="توضیحات"
+                  id="description"
+                  value={this.state.description}
+                  onChange={e =>
+                    this.setState({
+                      description: e.target.value
+                    })
+                  }
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <CustomTooltip text={"La description"} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
               </Grid>
             </Grid>
             {this.getStepActions()}

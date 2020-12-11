@@ -22,7 +22,7 @@ export default class CustomDateInput extends Component {
 
   render() {
     return (
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         <Grid item xs={2} sm={2} md={2} key={this.props.label}>
           <Typography
             style={{
@@ -113,7 +113,7 @@ export default class CustomDateInput extends Component {
           />
         </Grid>
         <Grid item xs={1} sm={1} md={1} key={"date_hint"}>
-          <div style={{ marginTop: "43px", marginLeft: "20px" }}>
+          <div style={{ marginTop: "43px", position: "relative" }}>
             <CustomTooltip text={this.props.hint} />
           </div>
         </Grid>

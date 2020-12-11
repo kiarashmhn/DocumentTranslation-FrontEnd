@@ -39,6 +39,7 @@ export default class CustomTooltip extends Component {
             disableHoverListener
             disableTouchListener
             title={this.props.text}
+            arrow
           >
             <IconButton
               color="primary"
