@@ -14,6 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import theme from "../../theme";
 import CustomFileUpload from "../CustomFileUpload/CustomFileUpload";
 import CustomTooltip from "../Tooltip/CustomTooltip";
+import Children from "../Children/Children";
 
 const styles = {
   customWidth: {
@@ -56,7 +57,7 @@ const countries = [
 
 const initialState = {
   step: 0,
-  steps: 4,
+  steps: 5,
   name: "",
   lastName: "",
   type: "",
@@ -84,6 +85,7 @@ class IdentityCertificate extends Component {
   constructor(props) {
     super(props);
     this.state = initialState;
+    this.childrenRef = React.createRef();
   }
 
   getSteps = () => {
@@ -470,6 +472,19 @@ class IdentityCertificate extends Component {
         )
       },
       {
+        title: "اطلاعات فرزندان",
+        content: (
+          <form onSubmit={this.handleNext}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12} md={12} key={"children"}>
+                <Children ref={this.childrenRef} />
+              </Grid>
+            </Grid>
+            {this.getStepActions()}
+          </form>
+        )
+      },
+      {
         title: "بارگذاری تصاویر",
         content: (
           <form onSubmit={this.handleNext}>
@@ -529,8 +544,16 @@ class IdentityCertificate extends Component {
     });
   };
 
+  getChildren = () => {
+    return this.childrenRef.current
+      ? this.childrenRef.current.getState()
+        ? this.childrenRef.current.getState().children
+        : []
+      : [];
+  };
+
   getState = () => {
-    return this.state;
+    return { ...this.state, children: this.getChildren() };
   };
 
   handleTypeChange = selectedType => {
@@ -553,7 +576,7 @@ class IdentityCertificate extends Component {
         step: prevState + 1
       },
       () => {
-        console.log(this.state);
+        console.log(this.getState());
       }
     );
   };
