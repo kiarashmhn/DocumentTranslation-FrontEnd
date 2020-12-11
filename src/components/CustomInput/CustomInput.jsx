@@ -105,8 +105,7 @@ CustomInput.propTypes = {
   onClick: PropTypes.func,
   name: PropTypes.string,
   disabled: PropTypes.bool,
-  type: PropTypes.string,
-  hint: PropTypes.string.isRequired
+  type: PropTypes.string
 };
 
 export default withStyles(customInputStyle)(CustomInput);

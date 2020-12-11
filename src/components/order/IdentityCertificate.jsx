@@ -175,11 +175,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"شماره ملی"} />
+                        <CustomTooltip text={"N° d'identité national"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"شماره ملی"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"certificateId"}>
@@ -197,11 +196,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"شماره شناسنامه"} />
+                        <CustomTooltip text={"N° de l’Acte de l’état civil"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"شماره شناسنامه"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"serial"}>
@@ -217,11 +215,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Numéro séquentiel"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"شماره سریال شناسنامه"}
                 />
               </Grid>
             </Grid>
@@ -239,11 +236,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Prénom"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"نام"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"lastName"}>
@@ -259,15 +255,17 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Nom"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"نام خانوادگی"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"birthDate"}>
-                <CustomDateInput label={"تاریخ تولد"} />
+                <CustomDateInput
+                  label={"تاریخ تولد"}
+                  hint={"Date de naissance"}
+                />
               </Grid>
             </Grid>
             <Grid container spacing={2} dir={"rtl"}>
@@ -286,11 +284,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Lieu de naissance"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"محل تولد"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"registrationLocation"}>
@@ -308,15 +305,17 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Lieu d’enregistrement"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"محل ثبت"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"registrationDate"}>
-                <CustomDateInput label={"تاریخ ثبت"} />
+                <CustomDateInput
+                  label={"تاریخ ثبت"}
+                  hint={"Date d’enregistrement"}
+                />
               </Grid>
             </Grid>
             {this.getStepActions()}
@@ -341,11 +340,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Prénom du père"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"نام پدر"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"fatherId"}>
@@ -361,11 +359,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"N° de l’Acte de l’état civil "} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"شماره شناسنامه یا ملی پدر"}
                 />
               </Grid>
               <Grid
@@ -377,7 +374,7 @@ class IdentityCertificate extends Component {
               >
                 <CustomInput
                   required
-                  labelText="محل ثبت شناسنامه پدر"
+                  labelText="محل صدور شناسنامه پدر"
                   id="fatherRegistrationLocation"
                   value={this.state.fatherRegistrationLocation}
                   onChange={e =>
@@ -391,11 +388,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Lieu d’émission"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"محل ثبت شناسنامه پدر"}
                 />
               </Grid>
             </Grid>
@@ -413,11 +409,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Prénom de la mère"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"نام مادر"}
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"motherId"}>
@@ -433,11 +428,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"N° de l’Acte de l’état civil"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"شماره شناسنامه یا ملی مادر"}
                 />
               </Grid>
               <Grid
@@ -449,7 +443,7 @@ class IdentityCertificate extends Component {
               >
                 <CustomInput
                   required
-                  labelText="محل ثبت شناسنامه مادر"
+                  labelText="محل صدور شناسنامه مادر"
                   id="motherRegistrationLocation"
                   value={this.state.motherRegistrationLocation}
                   onChange={e =>
@@ -463,11 +457,10 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ShortTextIcon />
+                        <CustomTooltip text={"Lieu d’émission"} />
                       </InputAdornment>
                     )
                   }}
-                  hint={"محل ثبت شناسنامه مادر"}
                 />
               </Grid>
             </Grid>

@@ -4,6 +4,7 @@ import CustomInput from "../CustomInput/CustomInput";
 import { Typography } from "@material-ui/core";
 import { grayColor } from "../../theme";
 import PropTypes from "prop-types";
+import CustomTooltip from "../Tooltip/CustomTooltip";
 
 export default class CustomDateInput extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class CustomDateInput extends Component {
   render() {
     return (
       <Grid container spacing={2}>
-        <Grid item xs={3} sm={3} md={3} key={this.props.label}>
+        <Grid item xs={2} sm={2} md={2} key={this.props.label}>
           <Typography
             style={{
               marginTop: "58px",
@@ -51,7 +52,7 @@ export default class CustomDateInput extends Component {
             hint={"روز"}
           />
         </Grid>
-        <Grid item xs={1} sm={1} md={1} key={"slash2"}>
+        <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash2"}>
           <Typography
             variant="body1"
             color="textSecondary"
@@ -75,7 +76,7 @@ export default class CustomDateInput extends Component {
             hint={"ماه"}
           />
         </Grid>
-        <Grid item xs={1} sm={1} md={1} key={"slash1"}>
+        <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash1"}>
           <Typography
             variant="body1"
             color="textSecondary"
@@ -99,11 +100,17 @@ export default class CustomDateInput extends Component {
             hint={"سال"}
           />
         </Grid>
+        <Grid item xs={1} sm={1} md={1} key={"date_hint"}>
+          <div style={{ marginTop: "43px", marginLeft: "20px" }}>
+            <CustomTooltip text={this.props.hint} />
+          </div>
+        </Grid>
       </Grid>
     );
   }
 }
 
 CustomDateInput.propTypes = {
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  hint: PropTypes.string.isRequired
 };
