@@ -100,7 +100,7 @@ const styles = theme => ({
     marginRight: theme.spacing(1)
   },
   textPrimary: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
     fontFamily: "MyFont",
     useNextVariants: true,
     direction: "rtl"

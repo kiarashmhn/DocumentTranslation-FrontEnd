@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import IconButton from "@material-ui/core/IconButton";
-import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import AttachFileIcon from "@material-ui/icons/AttachFile";
 import PropTypes from "prop-types";
 import theme from "../../theme";
 
@@ -44,7 +44,6 @@ export default class CustomFileUpload extends Component {
     return (
       <div style={styles.root}>
         <input
-          accept="image/*"
           style={styles.input}
           id="contained-button-file"
           multiple
@@ -57,7 +56,7 @@ export default class CustomFileUpload extends Component {
             aria-label="upload picture"
             component="span"
           >
-            <PhotoCamera />
+            <AttachFileIcon />
           </IconButton>
         </label>
         <span id="file-chosen">{this.state.spanTitle}</span>

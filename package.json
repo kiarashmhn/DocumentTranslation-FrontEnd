@@ -43,6 +43,7 @@
     "react-scripts": "^4.0.1",
     "react-select": "^3.1.1",
     "recharts": "^1.8.5",
+    "redocx": "^1.1.4",
     "redux": "latest",
     "redux-thunk": "^2.3.0"
   },

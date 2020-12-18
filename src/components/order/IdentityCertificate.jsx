@@ -16,6 +16,9 @@ import CustomFileUpload from "../CustomFileUpload/CustomFileUpload";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import Children from "../Children/Children";
 import Spouses from "../Spouses/Spouses";
+import EditIcon from "@material-ui/icons/Edit";
+import IconButton from "@material-ui/core/IconButton";
+import { getCompleteName } from "../../Dictionary";
 
 const styles = {
   customWidth: {
@@ -79,14 +82,15 @@ const initialState = {
   motherName: "",
   motherId: "",
   motherRegistrationLocation: "",
-  maritalStatus: "",
   description: ""
 };
 
 class IdentityCertificate extends Component {
   constructor(props) {
     super(props);
-    this.state = initialState;
+    this.state = this.props.initialState
+      ? this.props.initialState
+      : initialState;
     this.childrenRef = React.createRef();
     this.spousesRef = React.createRef();
   }
@@ -94,44 +98,20 @@ class IdentityCertificate extends Component {
   getSteps = () => {
     return [
       {
-        title: "شروع درخواست",
+        title: getCompleteName("personalInfo"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Typography variant="body1" color="textSecondary" dir={"rtl"}>
-              - نوشتار لاتین نام، نام خانوادگی، تاریخ تولد و دیگر مشخصات خود را
-              با پاسپورت یا مدارک دیگر مثل کارت اقامت خود حتما مطابقت دهید.
-            </Typography>
-            <br />
-            <Typography variant="body1" color="textSecondary">
-              - On rencontre souvent des difficultés à déterminer la
-              translitération exacte des noms et prénoms afghans, les déclarants
-              ne pouvant souvent la préciser. Pour réduire les risques
-              d`&apos;erreur, il est fortement recommandé de vérifier ses
-              déclarations antérieures auprès des administrations (préfecture,
-              OFPRA,…), ses documents officiels déjà délivrés par les autorités
-              (récépissé, titre de séjour, passeport…) permettant ainsi de
-              concorder l`&apos;orthographe des noms ou prénoms à ceux qui ont
-              été déjà enregistrés.
-            </Typography>
-            {this.getStepActions()}
-          </form>
-        )
-      },
-      {
-        title: "اطلاعات شخصی",
-        content: (
-          <form onSubmit={this.handleNext}>
-            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
-              Informations personnelles
-            </Typography>
             <Grid container spacing={2} dir={"rtl"}>
               <Grid item xs={12} sm={12} md={4} key={"type"}>
-                <Tooltip title={"نوع شناسنامه"} style={styles.customWidth}>
+                <Tooltip
+                  title={getCompleteName("type")}
+                  style={styles.customWidth}
+                >
                   <MultiSingleDropdown
                     value={this.state.type}
                     isDisabled={false}
                     isMultiple={false}
-                    titleStr={"نوع شناسنامه"}
+                    titleStr={getCompleteName("type")}
                     isAsync={false}
                     syncOptions={types}
                     handleChange={this.handleTypeChange}
@@ -140,12 +120,15 @@ class IdentityCertificate extends Component {
                 </Tooltip>
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"country"}>
-                <Tooltip title={"کشور محل سکونت"} style={styles.customWidth}>
+                <Tooltip
+                  title={getCompleteName("country")}
+                  style={styles.customWidth}
+                >
                   <MultiSingleDropdown
                     value={this.state.country}
                     isDisabled={false}
                     isMultiple={false}
-                    titleStr={"کشور محل سکونت"}
+                    titleStr={getCompleteName("country")}
                     isAsync={false}
                     syncOptions={countries}
                     handleChange={this.handleCountryChange}
@@ -154,12 +137,15 @@ class IdentityCertificate extends Component {
                 </Tooltip>
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"gender"}>
-                <Tooltip title={"جنسیت"} style={styles.customWidth}>
+                <Tooltip
+                  title={getCompleteName("gender")}
+                  style={styles.customWidth}
+                >
                   <MultiSingleDropdown
                     value={this.state.gender}
                     isDisabled={false}
                     isMultiple={false}
-                    titleStr={"جنسیت"}
+                    titleStr={getCompleteName("gender")}
                     isAsync={false}
                     syncOptions={genders}
                     handleChange={this.handleGenderChange}
@@ -172,7 +158,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"nationalId"}>
                 <CustomInput
                   required
-                  labelText="شماره ملی"
+                  labelText={getCompleteName("nationalId")}
                   id="nationalId"
                   value={this.state.nationalId}
                   onChange={e => this.setState({ nationalId: e.target.value })}
@@ -182,7 +168,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"N° d'identité national"} />
+                        <CustomTooltip text={getCompleteName("nationalId")} />
                       </InputAdornment>
                     )
                   }}
@@ -191,7 +177,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"certificateId"}>
                 <CustomInput
                   required
-                  labelText="شماره شناسنامه"
+                  labelText={getCompleteName("certificateId")}
                   id="certificateId"
                   value={this.state.certificateId}
                   onChange={e =>
@@ -203,7 +189,9 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"N° de l’Acte de l’état civil"} />
+                        <CustomTooltip
+                          text={getCompleteName("certificateId")}
+                        />
                       </InputAdornment>
                     )
                   }}
@@ -212,7 +200,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"serial"}>
                 <CustomInput
                   required
-                  labelText="شماره سریال شناسنامه"
+                  labelText={getCompleteName("serial")}
                   id="serial"
                   value={this.state.serial}
                   onChange={e => this.setState({ serial: e.target.value })}
@@ -222,7 +210,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Numéro séquentiel"} />
+                        <CustomTooltip text={getCompleteName("serial")} />
                       </InputAdornment>
                     )
                   }}
@@ -233,7 +221,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"name"}>
                 <CustomInput
                   required
-                  labelText="نام"
+                  labelText={getCompleteName("name")}
                   id="name"
                   value={this.state.name}
                   onChange={e => this.setState({ name: e.target.value })}
@@ -243,7 +231,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Prénom"} />
+                        <CustomTooltip text={getCompleteName("name")} />
                       </InputAdornment>
                     )
                   }}
@@ -252,7 +240,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"lastName"}>
                 <CustomInput
                   required
-                  labelText="نام خانوادگی"
+                  labelText={getCompleteName("lastName")}
                   id="lastName"
                   value={this.state.lastName}
                   onChange={e => this.setState({ lastName: e.target.value })}
@@ -262,7 +250,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Nom"} />
+                        <CustomTooltip text={getCompleteName("lastName")} />
                       </InputAdornment>
                     )
                   }}
@@ -270,8 +258,8 @@ class IdentityCertificate extends Component {
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"birthDate"}>
                 <CustomDateInput
-                  label={"تاریخ تولد"}
-                  hint={"Date de naissance"}
+                  label={getCompleteName("birthDate")}
+                  hint={getCompleteName("birthDate")}
                   onChange={this.handleBirthDateChange}
                 />
               </Grid>
@@ -280,7 +268,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"birthLocation"}>
                 <CustomInput
                   required
-                  labelText="محل تولد"
+                  labelText={getCompleteName("birthLocation")}
                   id="birthLocation"
                   value={this.state.birthLocation}
                   onChange={e =>
@@ -292,7 +280,9 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Lieu de naissance"} />
+                        <CustomTooltip
+                          text={getCompleteName("birthLocation")}
+                        />
                       </InputAdornment>
                     )
                   }}
@@ -301,7 +291,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"registrationLocation"}>
                 <CustomInput
                   required
-                  labelText="محل ثبت"
+                  labelText={getCompleteName("registrationLocation")}
                   id="registrationLocation"
                   value={this.state.registrationLocation}
                   onChange={e =>
@@ -313,7 +303,9 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Lieu d’enregistrement"} />
+                        <CustomTooltip
+                          text={getCompleteName("registrationLocation")}
+                        />
                       </InputAdornment>
                     )
                   }}
@@ -321,8 +313,8 @@ class IdentityCertificate extends Component {
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"registrationDate"}>
                 <CustomDateInput
-                  label={"تاریخ ثبت"}
-                  hint={"Date d’enregistrement"}
+                  label={getCompleteName("registrationDate")}
+                  hint={getCompleteName("registrationDate")}
                   onChange={this.handleRegistrationDateChange}
                 />
               </Grid>
@@ -332,17 +324,14 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "اطلاعات والدین",
+        title: getCompleteName("parentsInfo"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
-              Information parentale
-            </Typography>
             <Grid container spacing={2} dir={"rtl"}>
               <Grid item xs={12} sm={12} md={4} key={"fatherName"}>
                 <CustomInput
                   required
-                  labelText="نام پدر"
+                  labelText={getCompleteName("fatherName")}
                   id="fatherName"
                   value={this.state.fatherName}
                   onChange={e => this.setState({ fatherName: e.target.value })}
@@ -352,7 +341,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Prénom du père"} />
+                        <CustomTooltip text={getCompleteName("fatherName")} />
                       </InputAdornment>
                     )
                   }}
@@ -361,7 +350,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"fatherId"}>
                 <CustomInput
                   required
-                  labelText="شماره شناسنامه یا ملی پدر"
+                  labelText={getCompleteName("fatherId")}
                   id="fatherId"
                   value={this.state.fatherId}
                   onChange={e => this.setState({ fatherId: e.target.value })}
@@ -371,7 +360,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"N° de l’Acte de l’état civil "} />
+                        <CustomTooltip text={getCompleteName("fatherId")} />
                       </InputAdornment>
                     )
                   }}
@@ -386,7 +375,7 @@ class IdentityCertificate extends Component {
               >
                 <CustomInput
                   required
-                  labelText="محل صدور شناسنامه پدر"
+                  labelText={getCompleteName("fatherRegistrationLocation")}
                   id="fatherRegistrationLocation"
                   value={this.state.fatherRegistrationLocation}
                   onChange={e =>
@@ -400,7 +389,9 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Lieu d’émission"} />
+                        <CustomTooltip
+                          text={getCompleteName("fatherRegistrationLocation")}
+                        />
                       </InputAdornment>
                     )
                   }}
@@ -411,7 +402,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"motherName"}>
                 <CustomInput
                   required
-                  labelText="نام مادر"
+                  labelText={getCompleteName("motherName")}
                   id="motherName"
                   value={this.state.motherName}
                   onChange={e => this.setState({ motherName: e.target.value })}
@@ -421,7 +412,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Prénom de la mère"} />
+                        <CustomTooltip text={getCompleteName("motherName")} />
                       </InputAdornment>
                     )
                   }}
@@ -430,7 +421,7 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"motherId"}>
                 <CustomInput
                   required
-                  labelText="شماره شناسنامه یا ملی مادر"
+                  labelText={getCompleteName("motherId")}
                   id="motherId"
                   value={this.state.motherId}
                   onChange={e => this.setState({ motherId: e.target.value })}
@@ -440,7 +431,7 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"N° de l’Acte de l’état civil"} />
+                        <CustomTooltip text={getCompleteName("motherId")} />
                       </InputAdornment>
                     )
                   }}
@@ -455,7 +446,7 @@ class IdentityCertificate extends Component {
               >
                 <CustomInput
                   required
-                  labelText="محل صدور شناسنامه مادر"
+                  labelText={getCompleteName("motherRegistrationLocation")}
                   id="motherRegistrationLocation"
                   value={this.state.motherRegistrationLocation}
                   onChange={e =>
@@ -469,7 +460,9 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"Lieu d’émission"} />
+                        <CustomTooltip
+                          text={getCompleteName("motherRegistrationLocation")}
+                        />
                       </InputAdornment>
                     )
                   }}
@@ -481,12 +474,9 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "اطلاعات همسران",
+        title: getCompleteName("spousesInfo"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
-              Informations sur les conjoints
-            </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"spouses"}>
                 <Spouses ref={this.spousesRef} />
@@ -497,12 +487,9 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "اطلاعات فرزندان",
+        title: getCompleteName("childrenInfo"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
-              Informations sur les enfants
-            </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"children"}>
                 <Children ref={this.childrenRef} />
@@ -513,12 +500,9 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "بارگذاری تصاویر",
+        title: getCompleteName("uploadFiles"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
-              Importer des images
-            </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"files"}>
                 <CustomFileUpload onChange={this.onFileChange} />
@@ -529,17 +513,14 @@ class IdentityCertificate extends Component {
         )
       },
       {
-        title: "توضیحات",
+        title: getCompleteName("description"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Typography variant="h6" color="textSecondary" dir={"ltr"}>
-              La description
-            </Typography>
             <Grid container spacing={2} dir={"rtl"}>
               <Grid item xs={12} sm={12} md={12} key={"description"}>
                 <CustomInput
                   required
-                  labelText="توضیحات"
+                  labelText={getCompleteName("description")}
                   id="description"
                   value={this.state.description}
                   onChange={e =>
@@ -553,7 +534,40 @@ class IdentityCertificate extends Component {
                   inputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <CustomTooltip text={"La description"} />
+                        <CustomTooltip text={getCompleteName("description")} />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </Grid>
+            </Grid>
+            {this.getStepActions()}
+          </form>
+        )
+      },
+      {
+        title: getCompleteName("address"),
+        content: (
+          <form onSubmit={this.handleNext}>
+            <Grid container spacing={2} dir={"rtl"}>
+              <Grid item xs={12} sm={12} md={12} key={"address"}>
+                <CustomInput
+                  required
+                  labelText={getCompleteName("address")}
+                  id="address"
+                  value={this.state.address}
+                  onChange={e =>
+                    this.setState({
+                      address: e.target.value
+                    })
+                  }
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                  inputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <CustomTooltip text={getCompleteName("address")} />
                       </InputAdornment>
                     )
                   }}
@@ -578,7 +592,7 @@ class IdentityCertificate extends Component {
             onClick={this.handleBack}
             style={styles.button}
           >
-            مرحله قبل
+            {getCompleteName("back")}
           </Button>
           <Button
             variant="contained"
@@ -586,8 +600,20 @@ class IdentityCertificate extends Component {
             type={"submit"}
             style={styles.button}
           >
-            {this.state.step === this.state.steps - 1 ? "پایان" : "مرحله بعد"}
+            {this.state.step === this.state.steps - 1
+              ? getCompleteName("save")
+              : getCompleteName("next")}
           </Button>
+          {this.state.step < this.state.steps - 1 && (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.props.onSave}
+              style={styles.button}
+            >
+              {getCompleteName("save")}
+            </Button>
+          )}
         </div>
       </div>
     );
@@ -667,8 +693,10 @@ class IdentityCertificate extends Component {
     });
   };
 
-  handleReset = () => {
-    this.setState(initialState);
+  selectStep = index => {
+    this.setState({
+      step: index
+    });
   };
 
   render() {
@@ -676,23 +704,28 @@ class IdentityCertificate extends Component {
       <Fragment>
         <div style={styles.root}>
           <Stepper activeStep={this.state.step} orientation="vertical">
-            {this.getSteps().map(step => (
+            {this.getSteps().map((step, index) => (
               <Step key={step.title}>
-                <StepLabel>{step.title}</StepLabel>
+                <StepLabel>
+                  {step.title}
+                  <IconButton onClick={() => this.selectStep(index)}>
+                    <EditIcon />
+                  </IconButton>
+                </StepLabel>
                 <StepContent>{step.content}</StepContent>
               </Step>
             ))}
           </Stepper>
           {this.state.step === this.getSteps().length && (
             <Paper square elevation={0} style={styles.resetContainer}>
-              <Typography>همه مراحل با موفقیت تکمیل شدند</Typography>
+              <Typography>{getCompleteName("allStepsCompleted")}</Typography>
               <Button
                 onClick={this.props.onSubmit}
                 style={styles.button}
                 variant="contained"
                 color="secondary"
               >
-                ثبت درخواست
+                {getCompleteName("submit")}
                 {this.props.isLoading && <ButtonCircularProgress />}
               </Button>
             </Paper>
@@ -706,5 +739,7 @@ export default IdentityCertificate;
 IdentityCertificate.propTypes = {
   classes: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  onSave: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  initialState: PropTypes.object
 };
