@@ -9,6 +9,7 @@ import Api from "../Api/Api";
 import * as URLConstant from "../../URLConstant";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { OrderTypes } from "./OrderTypes";
+import { OrderStatus } from "./OrderStatus";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -38,11 +39,12 @@ class CreateOrder extends Component {
     });
   };
 
-  createOrder = close => {
+  createOrder = (close, status) => {
     let self = this;
     let postData = {
       type: OrderTypes.ID_CERTIFICATE.name,
-      details: this.identityCertificateRef.current.getState()
+      details: this.identityCertificateRef.current.getState(),
+      status: status
     };
     this.api
       .doPost(
@@ -69,7 +71,7 @@ class CreateOrder extends Component {
         isLoading: true
       },
       () => {
-        this.createOrder(true);
+        this.createOrder(true, OrderStatus.PENDING.name);
       }
     );
   };
@@ -81,7 +83,7 @@ class CreateOrder extends Component {
         isLoading: true
       },
       () => {
-        this.createOrder(false);
+        this.createOrder(false, OrderStatus.COMPLETING.name);
       }
     );
   };

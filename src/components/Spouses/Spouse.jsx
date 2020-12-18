@@ -5,6 +5,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import CustomDateInput from "../CustomDateInput/CustomDateInput";
 import Checkbox from "@material-ui/core/Checkbox";
+import PropTypes from "prop-types";
 
 export default class Spouse extends Component {
   constructor(props) {
@@ -24,6 +25,26 @@ export default class Spouse extends Component {
       divorceLocation: "",
       divorceRegistrationNumber: ""
     };
+  }
+
+  componentDidMount() {
+    if (this.props.initialState)
+      this.setState({
+        name: this.props.initialState.name,
+        lastName: this.props.initialState.lastName,
+        certificateId: this.props.initialState.certificateId,
+        birthLocation: this.props.initialState.birthLocation,
+        birthDate: this.props.initialState.birthDate,
+        marriageDate: this.props.initialState.marriageDate,
+        marriageLocation: this.props.initialState.marriageLocation,
+        officeNumber: this.props.initialState.officeNumber,
+        registrationNumber: this.props.initialState.registrationNumber,
+        divorce: this.props.initialState.divorce === "true",
+        divorceDate: this.props.initialState.divorceDate,
+        divorceLocation: this.props.initialState.divorceLocation,
+        divorceRegistrationNumber: this.props.initialState
+          .divorceRegistrationNumber
+      });
   }
 
   handleBirthDateChange = newDate => {
@@ -276,3 +297,7 @@ export default class Spouse extends Component {
     );
   }
 }
+
+Spouse.propTypes = {
+  initialState: PropTypes.object
+};

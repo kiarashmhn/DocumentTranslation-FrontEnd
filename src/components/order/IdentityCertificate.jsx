@@ -19,6 +19,11 @@ import Spouses from "../Spouses/Spouses";
 import EditIcon from "@material-ui/icons/Edit";
 import IconButton from "@material-ui/core/IconButton";
 import { getCompleteName } from "../../Dictionary";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Spouse from "../Spouses/Spouse";
 
 const styles = {
   customWidth: {
@@ -88,11 +93,19 @@ const initialState = {
 class IdentityCertificate extends Component {
   constructor(props) {
     super(props);
-    this.state = this.props.initialState
-      ? this.props.initialState
-      : initialState;
+    this.state = initialState;
     this.childrenRef = React.createRef();
     this.spousesRef = React.createRef();
+  }
+
+  componentDidMount() {
+    if (this.props.initialState)
+      this.setState({ ...this.props.initialState, step: 0, steps: 7 });
+  }
+
+  componentDidUpdate() {
+    if (this.props.initialState && this.state === initialState)
+      this.setState({ ...this.props.initialState, step: 0, steps: 7 });
   }
 
   getSteps = () => {
@@ -478,6 +491,32 @@ class IdentityCertificate extends Component {
         content: (
           <form onSubmit={this.handleNext}>
             <Grid container spacing={2}>
+              {this.props.initialState &&
+              this.props.initialState.spouses &&
+              this.props.initialState.spouses.size > 0
+                ? this.props.initialState.spouses.map((spouse, index) => (
+                    <Grid item key={"spouses" + index} xs={12} sm={12} md={12}>
+                      <Card variant="outlined">
+                        <CardContent>
+                          <Spouse
+                            initialState={
+                              this.props.initialState.spouses[index]
+                            }
+                          />
+                        </CardContent>
+                        <CardActions>
+                          <IconButton
+                            aria-label="delete"
+                            color="secondary"
+                            onClick={() => this.removeSpouse(index)}
+                          >
+                            <DeleteIcon fontSize="small" />
+                          </IconButton>
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  ))
+                : ""}
               <Grid item xs={12} sm={12} md={12} key={"spouses"}>
                 <Spouses ref={this.spousesRef} />
               </Grid>
@@ -617,6 +656,13 @@ class IdentityCertificate extends Component {
         </div>
       </div>
     );
+  };
+
+  removeSpouse = index => {
+    let removed = this.state.spouses.splice(index, 1);
+    this.setState({
+      spouses: removed
+    });
   };
 
   onFileChange = e => {
