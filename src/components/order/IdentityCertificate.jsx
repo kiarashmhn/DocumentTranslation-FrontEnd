@@ -18,7 +18,11 @@ import Children from "../Children/Children";
 import Spouses from "../Spouses/Spouses";
 import EditIcon from "@material-ui/icons/Edit";
 import IconButton from "@material-ui/core/IconButton";
-import { getCompleteName } from "../../Dictionary";
+import {
+  getCompleteName,
+  getFrenchName,
+  getPersianName
+} from "../../Dictionary";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -40,6 +44,7 @@ const styles = {
     marginRight: theme.spacing(1)
   },
   actionsContainer: {
+    marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2)
   },
   resetContainer: {
@@ -171,7 +176,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"nationalId"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("nationalId")}
+                  labelText={getPersianName("nationalId")}
+                  helperText={getFrenchName("nationalId")}
                   id="nationalId"
                   value={this.state.nationalId}
                   onChange={e => this.setState({ nationalId: e.target.value })}
@@ -190,7 +196,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"certificateId"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("certificateId")}
+                  labelText={getPersianName("certificateId")}
+                  helperText={getFrenchName("certificateId")}
                   id="certificateId"
                   value={this.state.certificateId}
                   onChange={e =>
@@ -213,7 +220,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"serial"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("serial")}
+                  labelText={getPersianName("serial")}
+                  helperText={getFrenchName("serial")}
                   id="serial"
                   value={this.state.serial}
                   onChange={e => this.setState({ serial: e.target.value })}
@@ -234,7 +242,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"name"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("name")}
+                  labelText={getPersianName("name")}
+                  helperText={getFrenchName("name")}
                   id="name"
                   value={this.state.name}
                   onChange={e => this.setState({ name: e.target.value })}
@@ -253,7 +262,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"lastName"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("lastName")}
+                  labelText={getPersianName("lastName")}
+                  helperText={getFrenchName("lastName")}
                   id="lastName"
                   value={this.state.lastName}
                   onChange={e => this.setState({ lastName: e.target.value })}
@@ -271,8 +281,12 @@ class IdentityCertificate extends Component {
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"birthDate"}>
                 <CustomDateInput
-                  label={getCompleteName("birthDate")}
-                  hint={getCompleteName("birthDate")}
+                  name={"birthDate"}
+                  initial={
+                    this.props.initialState
+                      ? this.props.initialState["birthDate"]
+                      : ""
+                  }
                   onChange={this.handleBirthDateChange}
                 />
               </Grid>
@@ -281,7 +295,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"birthLocation"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("birthLocation")}
+                  labelText={getPersianName("birthLocation")}
+                  helperText={getFrenchName("birthLocation")}
                   id="birthLocation"
                   value={this.state.birthLocation}
                   onChange={e =>
@@ -304,7 +319,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"registrationLocation"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("registrationLocation")}
+                  labelText={getPersianName("registrationLocation")}
+                  helperText={getFrenchName("registrationLocation")}
                   id="registrationLocation"
                   value={this.state.registrationLocation}
                   onChange={e =>
@@ -326,8 +342,12 @@ class IdentityCertificate extends Component {
               </Grid>
               <Grid item xs={12} sm={12} md={4} key={"registrationDate"}>
                 <CustomDateInput
-                  label={getCompleteName("registrationDate")}
-                  hint={getCompleteName("registrationDate")}
+                  name={"registrationDate"}
+                  initial={
+                    this.props.initialState
+                      ? this.props.initialState["registrationDate"]
+                      : ""
+                  }
                   onChange={this.handleRegistrationDateChange}
                 />
               </Grid>
@@ -344,7 +364,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"fatherName"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("fatherName")}
+                  labelText={getPersianName("fatherName")}
+                  helperText={getFrenchName("fatherName")}
                   id="fatherName"
                   value={this.state.fatherName}
                   onChange={e => this.setState({ fatherName: e.target.value })}
@@ -363,7 +384,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"fatherId"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("fatherId")}
+                  labelText={getPersianName("fatherId")}
+                  helperText={getFrenchName("fatherId")}
                   id="fatherId"
                   value={this.state.fatherId}
                   onChange={e => this.setState({ fatherId: e.target.value })}
@@ -388,7 +410,8 @@ class IdentityCertificate extends Component {
               >
                 <CustomInput
                   required
-                  labelText={getCompleteName("fatherRegistrationLocation")}
+                  labelText={getPersianName("fatherRegistrationLocation")}
+                  helperText={getFrenchName("fatherRegistrationLocation")}
                   id="fatherRegistrationLocation"
                   value={this.state.fatherRegistrationLocation}
                   onChange={e =>
@@ -415,7 +438,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"motherName"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("motherName")}
+                  labelText={getPersianName("motherName")}
+                  helperText={getFrenchName("motherName")}
                   id="motherName"
                   value={this.state.motherName}
                   onChange={e => this.setState({ motherName: e.target.value })}
@@ -434,7 +458,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={4} key={"motherId"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("motherId")}
+                  labelText={getPersianName("motherId")}
+                  helperText={getFrenchName("motherId")}
                   id="motherId"
                   value={this.state.motherId}
                   onChange={e => this.setState({ motherId: e.target.value })}
@@ -459,7 +484,8 @@ class IdentityCertificate extends Component {
               >
                 <CustomInput
                   required
-                  labelText={getCompleteName("motherRegistrationLocation")}
+                  labelText={getPersianName("motherRegistrationLocation")}
+                  helperText={getFrenchName("motherRegistrationLocation")}
                   id="motherRegistrationLocation"
                   value={this.state.motherRegistrationLocation}
                   onChange={e =>
@@ -559,7 +585,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={12} key={"description"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("description")}
+                  labelText={getPersianName("description")}
+                  helperText={getFrenchName("description")}
                   id="description"
                   value={this.state.description}
                   onChange={e =>
@@ -592,7 +619,8 @@ class IdentityCertificate extends Component {
               <Grid item xs={12} sm={12} md={12} key={"address"}>
                 <CustomInput
                   required
-                  labelText={getCompleteName("address")}
+                  labelText={getPersianName("address")}
+                  helperText={getFrenchName("address")}
                   id="address"
                   value={this.state.address}
                   onChange={e =>

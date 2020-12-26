@@ -13,6 +13,7 @@ import Check from "@material-ui/icons/Check";
 import customInputStyle from "./customInputStyle";
 
 import styles from "./CustomInput.module.css";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 function CustomInput({ ...props }) {
   const {
@@ -31,7 +32,8 @@ function CustomInput({ ...props }) {
     required,
     name,
     disabled,
-    type
+    type,
+    helperText
   } = props;
 
   const labelClasses = classNames({
@@ -80,6 +82,11 @@ function CustomInput({ ...props }) {
         formNoValidate
         {...inputProps}
       />
+      {helperText !== undefined && (
+        <FormHelperText style={{ color: "#000000" }}>
+          {helperText}
+        </FormHelperText>
+      )}
       {error ? (
         <Clear className={classes.feedback + " " + classes.labelRootError} />
       ) : success ? (
@@ -105,7 +112,8 @@ CustomInput.propTypes = {
   onClick: PropTypes.func,
   name: PropTypes.string,
   disabled: PropTypes.bool,
-  type: PropTypes.string
+  type: PropTypes.string,
+  helperText: PropTypes.string
 };
 
 export default withStyles(customInputStyle)(CustomInput);
