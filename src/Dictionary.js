@@ -91,6 +91,26 @@ export const Dictionary = {
     persian: "اطلاعات والدین",
     french: "Information parentale"
   },
+  observations: {
+    persian: "مشاهدات",
+    french: "Observations"
+  },
+  spouses: {
+    persian: "همسران",
+    french: "Conjoints"
+  },
+  divorce: {
+    persian: "طلاق",
+    french: "Divorce"
+  },
+  children: {
+    persian: "فرزندان",
+    french: "Enfants"
+  },
+  death: {
+    persian: "مرگ",
+    french: "Décès"
+  },
   spousesInfo: {
     persian: "اطلاعات همسران",
     french: "Informations sur les conjoints"
@@ -109,7 +129,7 @@ export const Dictionary = {
   },
   next: {
     persian: "مرحله بعد",
-    french: "L'étape suivante"
+    french: "étape suivante"
   },
   save: {
     persian: "ذخیره اطلاعات",

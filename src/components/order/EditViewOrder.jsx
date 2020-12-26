@@ -5,6 +5,7 @@ import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { OrderTypes } from "./OrderTypes";
 import * as URLConstant from "../../URLConstant";
 import Api from "../Api/Api";
+import CreateReport from "../Report/CreateReport";
 
 class EditViewOrder extends Component {
   constructor(props) {
@@ -96,6 +97,7 @@ class EditViewOrder extends Component {
   render() {
     return (
       <Fragment>
+        <CreateReport data={this.state.initialState} />
         <IdentityCertificate
           ref={this.identityCertificateRef}
           onSubmit={this.handleSubmit}
