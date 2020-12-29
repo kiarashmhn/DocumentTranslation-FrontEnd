@@ -31,7 +31,8 @@ export const IdentityCertificateReportData = [
   },
   {
     type: "data",
-    name: "serial"
+    name: "serial",
+    align: "right"
   },
   {
     type: "text",

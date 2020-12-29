@@ -35,7 +35,14 @@ const styles = theme => ({
     maxHeight: "100%"
   },
   zoomedOutImage: {
-    cursor: "pointer"
+    cursor: "pointer",
+    maxWidth: "80%",
+    maxHeight: "80%"
+  },
+  zoomedOutWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
@@ -88,13 +95,15 @@ function ZoomImage(props) {
           </div>
         </Portal>
       )}
-      <img
-        alt={alt}
-        src={src}
-        onClick={zoomIn}
-        className={classNames(className, classes.zoomedOutImage)}
-        {...rest}
-      ></img>
+      <div className={classes.zoomedOutWrapper}>
+        <img
+          alt={alt}
+          src={src}
+          onClick={zoomIn}
+          className={classNames(className, classes.zoomedOutImage)}
+          {...rest}
+        ></img>
+      </div>
     </Fragment>
   );
 }

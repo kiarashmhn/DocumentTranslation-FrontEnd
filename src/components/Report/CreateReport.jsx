@@ -9,9 +9,9 @@ import { IdentityCertificateReportData } from "./IdentityCertificateReportData";
 const alignmentCenter = { vertical: "middle", horizontal: "center" };
 const alignmentRight = { vertical: "middle", horizontal: "right" };
 const alignmentLeft = { vertical: "middle", horizontal: "left" };
-const signature1 =
-  "Daniel MOVAHHEDI Expert Traducteur et Interprète en langue dari, farsi et persan près la cour d'appel de Caen,";
+const signature1 = "Daniel MOVAHHEDI Expert Traducteur et Interprète en ";
 const signature2 = "Tél : 0033 (0) 6 49 60 82 93, Mail : md_movahedi@yahoo.fr";
+const signature3 = "langue dari, farsi et persan près la cour d'appel de Caen,";
 
 const signatureFont = {
   name: "Times",
@@ -32,7 +32,7 @@ export default class CreateReport extends Component {
   };
 
   writeText = (worksheet, idx, isBold, text) => {
-    worksheet.mergeCells("A" + idx + ":" + "M" + idx);
+    worksheet.mergeCells("A" + idx + ":" + "I" + idx);
     worksheet.addRow();
     const customCell = worksheet.getCell("A" + idx);
     customCell.font = {
@@ -46,38 +46,52 @@ export default class CreateReport extends Component {
     customCell.value = text;
   };
 
-  writeData = (worksheet, idx, key, value) => {
-    worksheet.mergeCells("A" + idx + ":" + "F" + idx);
-    worksheet.mergeCells("H" + idx + ":" + "M" + idx);
+  writeData = (worksheet, idx, key, value, align) => {
+    worksheet.mergeCells("B" + idx + ":" + "D" + idx);
+    worksheet.mergeCells("F" + idx + ":" + "I" + idx);
     worksheet.addRow();
 
-    const customCellKey = worksheet.getCell("A" + idx);
+    const customCellKey = worksheet.getCell("B" + idx);
     customCellKey.font = {
       name: "Times",
       family: 4,
-      size: 16,
+      size: 14,
       underline: false,
       bold: false
     };
-    customCellKey.alignment = alignmentRight;
+
+    switch (align) {
+      case "right":
+        customCellKey.alignment = alignmentRight;
+        break;
+      case "left":
+        customCellKey.alignment = alignmentLeft;
+        break;
+      case "center":
+        customCellKey.alignment = alignmentCenter;
+        break;
+      default:
+        customCellKey.alignment = alignmentLeft;
+        break;
+    }
     customCellKey.value = key;
 
-    const customCellDot = worksheet.getCell("G" + idx);
+    const customCellDot = worksheet.getCell("E" + idx);
     customCellDot.font = {
       name: "Times",
       family: 4,
-      size: 16,
+      size: 14,
       underline: false,
       bold: false
     };
     customCellDot.alignment = alignmentCenter;
     customCellDot.value = ":";
 
-    const customCellValue = worksheet.getCell("M" + idx);
+    const customCellValue = worksheet.getCell("F" + idx);
     customCellValue.font = {
       name: "Times",
       family: 4,
-      size: 16,
+      size: 14,
       underline: false,
       bold: false
     };
@@ -85,9 +99,9 @@ export default class CreateReport extends Component {
     customCellValue.value = value;
   };
 
-  writeRow = (key, data, worksheet, rowCount) => {
+  writeRow = (key, data, worksheet, rowCount, align) => {
     rowCount += 1;
-    this.writeData(worksheet, rowCount, getFrenchName(key), data[key]);
+    this.writeData(worksheet, rowCount, getFrenchName(key), data[key], align);
     return rowCount;
   };
 
@@ -111,14 +125,21 @@ export default class CreateReport extends Component {
     this.writeText(worksheet, rowCount, false, "");
 
     rowCount += 1;
-    worksheet.mergeCells("A" + rowCount + ":" + "M" + rowCount);
+    worksheet.mergeCells("A" + rowCount + ":" + "I" + rowCount);
     let signatureCell1 = worksheet.getCell(`A${rowCount}`);
     signatureCell1.alignment = alignmentCenter;
     signatureCell1.font = signatureFont;
     signatureCell1.value = signature1;
 
     rowCount += 1;
-    worksheet.mergeCells("A" + rowCount + ":" + "M" + rowCount);
+    worksheet.mergeCells("A" + rowCount + ":" + "I" + rowCount);
+    let signatureCell3 = worksheet.getCell(`A${rowCount}`);
+    signatureCell3.alignment = alignmentCenter;
+    signatureCell3.font = signatureFont;
+    signatureCell3.value = signature3;
+
+    rowCount += 1;
+    worksheet.mergeCells("A" + rowCount + ":" + "I" + rowCount);
     let signatureCell2 = worksheet.getCell(`A${rowCount}`);
     signatureCell2.alignment = alignmentCenter;
     signatureCell2.font = signatureFont;
@@ -146,7 +167,7 @@ export default class CreateReport extends Component {
               this.props.data[row.name],
               worksheet,
               rowCount,
-              false
+              row.align
             );
           });
         } else {
@@ -159,7 +180,7 @@ export default class CreateReport extends Component {
           this.props.data,
           worksheet,
           rowCount,
-          false
+          row.align
         );
     });
     rowCount += 1;
@@ -173,13 +194,13 @@ export default class CreateReport extends Component {
     let ExcelJSWorkbook = new ExcelJS.Workbook();
     let worksheet = ExcelJSWorkbook.addWorksheet("sheet1", {
       views: [{ showGridLines: false }],
-      pageSetup: { paperSize: 9, orientation: "landscape" }
+      pageSetup: { paperSize: 9, orientation: "portrait" }
     });
-    worksheet.pageSetup.printTitlesColumn = "A:M";
+    worksheet.pageSetup.printTitlesColumn = "A:I";
 
     let rowCount = this.writeRows(worksheet);
 
-    worksheet.pageSetup.printArea = "A1:M" + rowCount;
+    worksheet.pageSetup.printArea = "A1:I" + rowCount;
 
     ExcelJSWorkbook.xlsx.writeBuffer().then(function(buffer) {
       saveAs(

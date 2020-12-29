@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import WaveBorder from "../Template/WaveBorder";
 import ZoomImage from "../Template/ZoomImage";
+import Button from "@material-ui/core/Button";
 
 /*const features = [
   {
@@ -46,10 +47,14 @@ const styles = theme => ({
     paddingBottom: theme.spacing(1)
   },
   image: {
-    maxWidth: "100%",
+    maxWidth: "80%",
     verticalAlign: "middle",
     borderRadius: theme.shape.borderRadius,
     boxShadow: theme.shadows[4]
+  },
+  button: {
+    maxWidth: "80%",
+    verticalAlign: "middle"
   },
   container: {
     marginTop: theme.spacing(2),
@@ -101,12 +106,32 @@ class HeadSection extends Component {
       <Fragment>
         <div className={classes.wrapper}>
           <div className={classNames("container-fluid", classes.container)}>
-            <Grid item md={12}>
-              <ZoomImage
-                src={`${process.env.PUBLIC_URL}/images/logged_out/banner.png`}
-                className={classes.image}
-                alt="header example"
-              />
+            <Grid
+              container
+              spacing={1}
+              dir={"rtl"}
+              direction="column"
+              alignItems="center"
+              justify="center"
+            >
+              <Grid item md={12}>
+                <ZoomImage
+                  src={`${process.env.PUBLIC_URL}/images/logged_out/banner.png`}
+                  className={classes.image}
+                  alt="header example"
+                />
+              </Grid>
+              <Grid item md={12}>
+                <div className={classes.button}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {}}
+                  >
+                    درخواست ترجمه/demande de traduction
+                  </Button>
+                </div>
+              </Grid>
             </Grid>
           </div>
         </div>

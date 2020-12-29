@@ -97,7 +97,7 @@ export const Dictionary = {
   },
   spouses: {
     persian: "همسران",
-    french: "Conjoints"
+    french: "Conjoint"
   },
   divorce: {
     persian: "طلاق",
