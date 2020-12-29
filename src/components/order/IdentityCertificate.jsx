@@ -80,6 +80,7 @@ const initialState = {
   gender: "",
   birthDate: "",
   birthLocation: "",
+  children: [],
   files: [],
   nationalId: "",
   serial: "",
@@ -557,7 +558,10 @@ class IdentityCertificate extends Component {
           <form onSubmit={this.handleNext}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"children"}>
-                <Children ref={this.childrenRef} />
+                <Children
+                  ref={this.childrenRef}
+                  initialChildren={this.state.children}
+                />
               </Grid>
             </Grid>
             {this.getStepActions()}

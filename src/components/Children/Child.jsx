@@ -4,16 +4,29 @@ import CustomInput from "../CustomInput/CustomInput";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import CustomDateInput from "../CustomDateInput/CustomDateInput";
+import * as PropTypes from "prop-types";
+import { getFrenchName, getPersianName } from "../../Dictionary";
+
+const initialState = {
+  name: "",
+  certificateId: "",
+  birthLocation: "",
+  birthDate: ""
+};
 
 export default class Child extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: "",
-      certificateId: "",
-      birthLocation: "",
-      birthDate: ""
-    };
+    this.state = initialState;
+  }
+
+  componentDidMount() {
+    if (this.props.initialState) this.setState(this.props.initialState);
+  }
+
+  componentDidUpdate() {
+    if (this.props.initialState && this.state === initialState)
+      this.setState(this.props.initialState);
   }
 
   handleBirthDateChange = newDate => {
@@ -25,11 +38,12 @@ export default class Child extends Component {
   render() {
     return (
       <Fragment>
-        <Grid container spacing={2} dir={"rtl"}>
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={4} key={"name"}>
             <CustomInput
               required
-              labelText="نام"
+              labelText={getPersianName("name")}
+              helperText={getFrenchName("name")}
               id="name"
               value={this.state.name}
               onChange={e => this.setState({ name: e.target.value })}
@@ -39,7 +53,7 @@ export default class Child extends Component {
               inputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <CustomTooltip text={"Prénom"} />
+                    <CustomTooltip text={getFrenchName("name")} />
                   </InputAdornment>
                 )
               }}
@@ -48,7 +62,8 @@ export default class Child extends Component {
           <Grid item xs={12} sm={12} md={4} key={"certificateId"}>
             <CustomInput
               required
-              labelText="شماره شناسنامه یا ملی"
+              labelText={getPersianName("certificateId")}
+              helperText={getFrenchName("certificateId")}
               id="certificateId"
               value={this.state.certificateId}
               onChange={e => this.setState({ certificateId: e.target.value })}
@@ -58,7 +73,7 @@ export default class Child extends Component {
               inputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <CustomTooltip text={"N° de l’Acte de l’état civil"} />
+                    <CustomTooltip text={getFrenchName("certificateId")} />
                   </InputAdornment>
                 )
               }}
@@ -66,15 +81,16 @@ export default class Child extends Component {
           </Grid>
           <Grid item xs={12} sm={12} md={4} key={"birthDate"}>
             <CustomDateInput
-              label={"تاریخ تولد"}
-              hint={"Date de naissance"}
+              name={"birthDate"}
+              initial={this.state.birthDate}
               onChange={this.handleBirthDateChange}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4} key={"birthLocation"}>
             <CustomInput
               required
-              labelText="محل تولد"
+              labelText={getPersianName("birthLocation")}
+              helperText={getFrenchName("birthLocation")}
               id="birthLocation"
               value={this.state.birthLocation}
               onChange={e => this.setState({ birthLocation: e.target.value })}
@@ -84,7 +100,7 @@ export default class Child extends Component {
               inputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <CustomTooltip text={"Lieu de naissance"} />
+                    <CustomTooltip text={getFrenchName("birthLocation")} />
                   </InputAdornment>
                 )
               }}
@@ -95,3 +111,7 @@ export default class Child extends Component {
     );
   }
 }
+
+Child.propTypes = {
+  initialState: PropTypes.object
+};

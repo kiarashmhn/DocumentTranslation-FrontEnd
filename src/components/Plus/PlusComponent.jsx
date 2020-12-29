@@ -23,9 +23,22 @@ export default class PlusComponent extends Component {
     this.componentRefs = {};
   }
 
+  componentDidMount() {
+    this.setState({
+      componentProps: this.props.componentProps
+    });
+  }
+
+  componentDidUpdate() {
+    if (!this.state.componentProps)
+      this.setState({
+        componentProps: this.props.componentProps
+      });
+  }
+
   addComponent = () => {
     let component = Object.create(this.props.component);
-    component["customKey"] = new Date().getTime();
+    component["customKey"] = new Date().getTime() + Math.random() * 100;
 
     this.setState(prevState => ({
       componentObjects: [...prevState.componentObjects, component]
@@ -35,6 +48,12 @@ export default class PlusComponent extends Component {
   removeComponent = i => {
     let componentObjects = [...this.state.componentObjects];
     componentObjects.splice(i, 1);
+
+    let prevComponentProps = this.state.componentProps;
+    prevComponentProps.splice(i, 1);
+    this.setState({
+      componentProps: prevComponentProps
+    });
 
     delete this.componentRefs[i];
 
@@ -63,6 +82,17 @@ export default class PlusComponent extends Component {
     this.componentRefs = {};
   };
 
+  getComponentProps = idx => {
+    if (!this.state.componentProps || this.state.componentProps.length <= idx)
+      return {
+        initialState: {}
+      };
+
+    return {
+      initialState: this.state.componentProps[idx]
+    };
+  };
+
   createUI() {
     return this.state.componentObjects.map((DynamicComponent, index) =>
       this.props.grid ? (
@@ -80,7 +110,7 @@ export default class PlusComponent extends Component {
                   // ref && this.componentRefs.push(ref);
                   this.componentRefs[index] = ref;
                 }}
-                {...this.props.componentProps}
+                {...this.getComponentProps(index)}
               />
             </CardContent>
             <CardActions>
@@ -102,7 +132,7 @@ export default class PlusComponent extends Component {
                 // ref && this.componentRefs.push(ref);
                 this.componentRefs[index] = ref;
               }}
-              {...this.props.componentProps}
+              {...this.getComponentProps(index)}
             />
           </CardContent>
           <CardActions style={{ justifyContent: "flex-end" }}>
@@ -156,6 +186,6 @@ PlusComponent.propTypes = {
   plusTitle: PropTypes.string,
   disabled: PropTypes.bool,
   grid: PropTypes.number,
-  componentProps: PropTypes.any,
+  componentProps: PropTypes.array,
   onComponentRemove: PropTypes.func
 };

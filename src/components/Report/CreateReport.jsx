@@ -160,16 +160,20 @@ export default class CreateReport extends Component {
       } else if (row.type === "array") {
         rowCount += 1;
         this.writeText(worksheet, rowCount, true, getFrenchName(row.name));
-        if (this.props.data[row.name] && this.props.data[row.name].size > 1) {
-          Object.keys(this.props.data).map(key => {
-            rowCount = this.writeRow(
-              key,
-              this.props.data[row.name],
-              worksheet,
-              rowCount,
-              row.align
-            );
-          });
+        if (this.props.data[row.name] && this.props.data[row.name].length > 1) {
+          for (let i = 0; i < this.props.data[row.name].length; i++) {
+            Object.keys(this.props.data[row.name][i]).map(key => {
+              rowCount = this.writeRow(
+                key,
+                this.props.data[row.name][i],
+                worksheet,
+                rowCount,
+                row.align
+              );
+            });
+            rowCount += 1;
+            this.writeText(worksheet, rowCount, false, "");
+          }
         } else {
           rowCount += 1;
           this.writeText(worksheet, rowCount, false, "[Néant]");
@@ -225,5 +229,5 @@ export default class CreateReport extends Component {
   }
 }
 CreateReport.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object
 };

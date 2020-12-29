@@ -8,8 +8,42 @@ export default class Children extends Component {
     super(props);
     this.plusComponentRef = React.createRef();
     this.state = {
-      children: null
+      children: null,
+      childCount: 0
     };
+  }
+
+  componentDidMount() {
+    this.setState(
+      {
+        childCount: this.props.initialChildren.length
+      },
+      () => {
+        if (this.props.initialChildren) {
+          for (let i = 0; i < this.props.initialChildren.length; i++)
+            this.plusComponentRef.current.addComponent();
+        }
+      }
+    );
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.initialChildren &&
+      this.props.initialChildren.length &&
+      this.state.childCount === 0
+    )
+      this.setState(
+        {
+          childCount: this.props.initialChildren.length
+        },
+        () => {
+          if (this.props.initialChildren) {
+            for (let i = 0; i < this.props.initialChildren.length; i++)
+              this.plusComponentRef.current.addComponent();
+          }
+        }
+      );
   }
 
   getState = () => {
@@ -29,7 +63,7 @@ export default class Children extends Component {
         plusTitle={"افزودن اطلاعات فرزند"}
         ref={this.plusComponentRef}
         grid={12}
-        componentProps={{ onChange: this.props.onChildSelect }}
+        componentProps={this.props.initialChildren}
         onComponentRemove={this.props.onComponentRemove}
         hint={"Ajouter des informations sur les enfants"}
       />
@@ -37,6 +71,6 @@ export default class Children extends Component {
   }
 }
 Children.propTypes = {
-  onChildSelect: PropTypes.func,
+  initialChildren: PropTypes.array,
   onComponentRemove: PropTypes.func
 };

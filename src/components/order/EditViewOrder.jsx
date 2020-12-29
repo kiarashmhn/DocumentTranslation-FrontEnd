@@ -6,6 +6,7 @@ import { OrderTypes } from "./OrderTypes";
 import * as URLConstant from "../../URLConstant";
 import Api from "../Api/Api";
 import CreateReport from "../Report/CreateReport";
+import { OrderStatus } from "./OrderStatus";
 
 class EditViewOrder extends Component {
   constructor(props) {
@@ -52,15 +53,16 @@ class EditViewOrder extends Component {
         isLoading: true
       },
       () => {
-        this.updateOrder(true);
+        this.updateOrder(true, OrderStatus.PENDING.name);
       }
     );
   };
 
-  updateOrder = () => {
+  updateOrder = (close, status) => {
     let self = this;
     let postData = {
       type: OrderTypes.ID_CERTIFICATE.name,
+      status: status,
       details: this.identityCertificateRef.current.getState()
     };
     this.api
@@ -89,7 +91,7 @@ class EditViewOrder extends Component {
         isLoading: true
       },
       () => {
-        this.updateOrder(false);
+        this.updateOrder(false, OrderStatus.COMPLETING.name);
       }
     );
   };
