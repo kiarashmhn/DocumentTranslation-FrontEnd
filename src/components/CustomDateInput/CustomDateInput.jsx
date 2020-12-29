@@ -49,23 +49,23 @@ export default class CustomDateInput extends Component {
     return (
       <Fragment>
         <Grid container spacing={1}>
-          <Grid item xs={2} sm={2} md={3} key={"day"}>
+          <Grid item xs={3} sm={3} md={4} key={"year"}>
             <CustomInput
               required
               type={"number"}
-              labelText="روز"
-              id="day"
-              value={this.state.day}
+              labelText="سال"
+              id="year"
+              value={this.state.year}
               onChange={e =>
-                this.setState({ day: e.target.value }, () => {
+                this.setState({ year: e.target.value }, () => {
                   this.props.onChange(this.getState());
                 })
               }
               formControlProps={{
                 fullWidth: true
               }}
-              inputProps={{ maxLength: 2 }}
-              hint={"روز"}
+              inputProps={{ maxLength: 4 }}
+              hint={"سال"}
             />
           </Grid>
           <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash2"}>
@@ -105,23 +105,23 @@ export default class CustomDateInput extends Component {
               /
             </Typography>
           </Grid>
-          <Grid item xs={3} sm={3} md={4} key={"year"}>
+          <Grid item xs={2} sm={2} md={3} key={"day"}>
             <CustomInput
               required
               type={"number"}
-              labelText="سال"
-              id="year"
-              value={this.state.year}
+              labelText="روز"
+              id="day"
+              value={this.state.day}
               onChange={e =>
-                this.setState({ year: e.target.value }, () => {
+                this.setState({ day: e.target.value }, () => {
                   this.props.onChange(this.getState());
                 })
               }
               formControlProps={{
                 fullWidth: true
               }}
-              inputProps={{ maxLength: 4 }}
-              hint={"سال"}
+              inputProps={{ maxLength: 2 }}
+              hint={"روز"}
             />
           </Grid>
           <Grid item xs={1} sm={1} md={1} key={"date_hint"}>

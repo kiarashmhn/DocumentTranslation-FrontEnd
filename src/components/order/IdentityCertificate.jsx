@@ -119,7 +119,7 @@ class IdentityCertificate extends Component {
         title: getCompleteName("personalInfo"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={4} key={"type"}>
                 <Tooltip
                   title={getCompleteName("type")}
@@ -172,7 +172,7 @@ class IdentityCertificate extends Component {
                 </Tooltip>
               </Grid>
             </Grid>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={4} key={"nationalId"}>
                 <CustomInput
                   required
@@ -238,7 +238,7 @@ class IdentityCertificate extends Component {
                 />
               </Grid>
             </Grid>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={4} key={"name"}>
                 <CustomInput
                   required
@@ -291,7 +291,7 @@ class IdentityCertificate extends Component {
                 />
               </Grid>
             </Grid>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={4} key={"birthLocation"}>
                 <CustomInput
                   required
@@ -360,7 +360,7 @@ class IdentityCertificate extends Component {
         title: getCompleteName("parentsInfo"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={4} key={"fatherName"}>
                 <CustomInput
                   required
@@ -434,7 +434,7 @@ class IdentityCertificate extends Component {
                 />
               </Grid>
             </Grid>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={4} key={"motherName"}>
                 <CustomInput
                   required
@@ -581,7 +581,7 @@ class IdentityCertificate extends Component {
         title: getCompleteName("description"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"description"}>
                 <CustomInput
                   required
@@ -615,7 +615,7 @@ class IdentityCertificate extends Component {
         title: getCompleteName("address"),
         content: (
           <form onSubmit={this.handleNext}>
-            <Grid container spacing={2} dir={"rtl"}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12} key={"address"}>
                 <CustomInput
                   required
