@@ -23,11 +23,6 @@ import {
   getFrenchName,
   getPersianName
 } from "../../Dictionary";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import DeleteIcon from "@material-ui/icons/Delete";
-import Spouse from "../Spouses/Spouse";
 
 const styles = {
   customWidth: {
@@ -81,6 +76,8 @@ const initialState = {
   birthDate: "",
   birthLocation: "",
   children: [],
+  spouses: [],
+  divorces: [],
   files: [],
   nationalId: "",
   serial: "",
@@ -518,34 +515,11 @@ class IdentityCertificate extends Component {
         content: (
           <form onSubmit={this.handleNext}>
             <Grid container spacing={2}>
-              {this.props.initialState &&
-              this.props.initialState.spouses &&
-              this.props.initialState.spouses.size > 0
-                ? this.props.initialState.spouses.map((spouse, index) => (
-                    <Grid item key={"spouses" + index} xs={12} sm={12} md={12}>
-                      <Card variant="outlined">
-                        <CardContent>
-                          <Spouse
-                            initialState={
-                              this.props.initialState.spouses[index]
-                            }
-                          />
-                        </CardContent>
-                        <CardActions>
-                          <IconButton
-                            aria-label="delete"
-                            color="secondary"
-                            onClick={() => this.removeSpouse(index)}
-                          >
-                            <DeleteIcon fontSize="small" />
-                          </IconButton>
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  ))
-                : ""}
               <Grid item xs={12} sm={12} md={12} key={"spouses"}>
-                <Spouses ref={this.spousesRef} />
+                <Spouses
+                  ref={this.spousesRef}
+                  initialSpouses={this.getMarriagesFromState()}
+                />
               </Grid>
             </Grid>
             {this.getStepActions()}
@@ -723,7 +697,15 @@ class IdentityCertificate extends Component {
       : [];
   };
 
-  getSpouses = () => {
+  getMarriagesFromState = () => {
+    let arr1 = [];
+    let arr2 = [];
+    if (this.state.spouses) arr1 = this.state.spouses;
+    if (this.state.divorces) arr2 = this.state.divorces;
+    return arr1.concat(arr2);
+  };
+
+  getMarriagesFromComponent = () => {
     return this.spousesRef.current
       ? this.spousesRef.current.getState()
         ? this.spousesRef.current.getState().spouses
@@ -731,11 +713,26 @@ class IdentityCertificate extends Component {
       : [];
   };
 
+  getMarriages = () => {
+    let marriages = this.getMarriagesFromComponent();
+    let divorces = [];
+    let spouses = [];
+    if (marriages && marriages.length) {
+      for (let i = 0; i < marriages.length; i++)
+        if (marriages[i].divorce) divorces.push(marriages[i]);
+        else spouses.push(marriages[i]);
+    }
+    return {
+      divorces: divorces,
+      spouses: spouses
+    };
+  };
+
   getState = () => {
     return {
       ...this.state,
       children: this.getChildren(),
-      spouses: this.getSpouses()
+      ...this.getMarriages()
     };
   };
 

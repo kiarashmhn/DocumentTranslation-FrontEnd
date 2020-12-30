@@ -8,8 +8,42 @@ export default class Spouses extends Component {
     super(props);
     this.plusComponentRef = React.createRef();
     this.state = {
-      spouses: null
+      spouses: null,
+      spouseCount: 0
     };
+  }
+
+  componentDidMount() {
+    this.setState(
+      {
+        spouseCount: this.props.initialSpouses.length
+      },
+      () => {
+        if (this.props.initialSpouses) {
+          for (let i = 0; i < this.props.initialSpouses.length; i++)
+            this.plusComponentRef.current.addComponent();
+        }
+      }
+    );
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.initialSpouses &&
+      this.props.initialSpouses.length &&
+      this.state.spouseCount === 0
+    )
+      this.setState(
+        {
+          childCount: this.props.initialSpouses.length
+        },
+        () => {
+          if (this.props.initialSpouses) {
+            for (let i = 0; i < this.props.initialSpouses.length; i++)
+              this.plusComponentRef.current.addComponent();
+          }
+        }
+      );
   }
 
   getState = () => {
@@ -29,7 +63,7 @@ export default class Spouses extends Component {
         plusTitle={"افزودن اطلاعات ازدواج"}
         ref={this.plusComponentRef}
         grid={12}
-        componentProps={{ onChange: this.props.onSpouseSelect }}
+        componentProps={this.props.initialSpouses}
         onComponentRemove={this.props.onComponentRemove}
         hint={"Ajouter des informations sur le mariage"}
       />
@@ -37,6 +71,6 @@ export default class Spouses extends Component {
   }
 }
 Spouses.propTypes = {
-  onSpouseSelect: PropTypes.func,
+  initialSpouses: PropTypes.array,
   onComponentRemove: PropTypes.func
 };

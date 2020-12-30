@@ -55,7 +55,7 @@ export default class CreateReport extends Component {
     customCellKey.font = {
       name: "Times",
       family: 4,
-      size: 14,
+      size: 12,
       underline: false,
       bold: false
     };
@@ -80,7 +80,7 @@ export default class CreateReport extends Component {
     customCellDot.font = {
       name: "Times",
       family: 4,
-      size: 14,
+      size: 12,
       underline: false,
       bold: false
     };
@@ -91,7 +91,7 @@ export default class CreateReport extends Component {
     customCellValue.font = {
       name: "Times",
       family: 4,
-      size: 14,
+      size: 12,
       underline: false,
       bold: false
     };
@@ -160,9 +160,15 @@ export default class CreateReport extends Component {
       } else if (row.type === "array") {
         rowCount += 1;
         this.writeText(worksheet, rowCount, true, getFrenchName(row.name));
-        if (this.props.data[row.name] && this.props.data[row.name].length > 1) {
+        if (
+          this.props.data[row.name] &&
+          this.props.data[row.name].length >= 1
+        ) {
           for (let i = 0; i < this.props.data[row.name].length; i++) {
-            Object.keys(this.props.data[row.name][i]).map(key => {
+            let keys = row.keys
+              ? row.keys
+              : Object.keys(this.props.data[row.name][i]);
+            keys.map(key => {
               rowCount = this.writeRow(
                 key,
                 this.props.data[row.name][i],

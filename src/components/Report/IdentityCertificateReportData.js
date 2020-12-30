@@ -111,14 +111,39 @@ export const IdentityCertificateReportData = [
   },
   {
     type: "array",
-    name: "spouses"
+    name: "spouses",
+    keys: [
+      "name",
+      "lastName",
+      "marriageDate",
+      "marriageLocation",
+      "birthDate",
+      "birthLocation",
+      "certificateId",
+      "officeNumber",
+      "registrationNumber"
+    ]
   },
   {
     type: "empty"
   },
   {
     type: "array",
-    name: "divorce"
+    name: "divorces",
+    keys: [
+      "name",
+      "lastName",
+      "marriageDate",
+      "marriageLocation",
+      "birthDate",
+      "birthLocation",
+      "certificateId",
+      "officeNumber",
+      "registrationNumber",
+      "divorceDate",
+      "divorceLocation",
+      "divorceRegistrationNumber"
+    ]
   },
   {
     type: "empty"

@@ -99,7 +99,7 @@ export const Dictionary = {
     persian: "همسران",
     french: "Conjoint"
   },
-  divorce: {
+  divorces: {
     persian: "طلاق",
     french: "Divorce"
   },
@@ -142,6 +142,34 @@ export const Dictionary = {
   allStepsCompleted: {
     persian: "همه مراحل با موفقیت تکمیل شدند",
     french: "toutes les étapes terminées"
+  },
+  divorceLocation: {
+    persian: "محل طلاق",
+    french: "Lieu de divorce"
+  },
+  divorceDate: {
+    persian: "تاریخ طلاق",
+    french: "Date de divorce"
+  },
+  divorceRegistrationNumber: {
+    persian: "شماره ثبت طلاق",
+    french: "N° d’enregistrement du divorce"
+  },
+  registrationNumber: {
+    persian: "شماره ثبت",
+    french: "N° d’enregistrement"
+  },
+  officeNumber: {
+    persian: "شماره دفتر",
+    french: "N° de l’étude notariale"
+  },
+  marriageLocation: {
+    persian: "محل از‌دواج",
+    french: "Lieu de mariage"
+  },
+  marriageDate: {
+    persian: "تاریخ عقد",
+    french: "Date de mariage"
   }
 };
 
