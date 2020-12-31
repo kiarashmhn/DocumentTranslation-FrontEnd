@@ -46,7 +46,7 @@ class Home extends Component {
     return (
       <Fragment>
         <div ref={this.homeRef}>
-          <HeadSection />
+          <HeadSection openRegisterDialog={this.props.openRegisterDialog} />
         </div>
         <div ref={this.featureRef}>
           <FeatureSection />
@@ -64,7 +64,8 @@ class Home extends Component {
 
 Home.propTypes = {
   selectHome: PropTypes.func.isRequired,
-  selectedSection: PropTypes.string.isRequired
+  selectedSection: PropTypes.string.isRequired,
+  openRegisterDialog: PropTypes.func.isRequired
 };
 
 export default Home;

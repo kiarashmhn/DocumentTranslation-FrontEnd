@@ -186,6 +186,7 @@ class HomePage extends Component {
           blogPosts={this.state.blogPosts}
           selectHome={this.selectHome}
           selectBlog={this.selectBlog}
+          openRegisterDialog={this.openRegisterDialog}
         />
       </div>
     );

@@ -8,7 +8,13 @@ import BlogPost from "./blog/BlogPost";
 
 class Routing extends Component {
   render() {
-    const { blogPosts, selectBlog, selectHome, selectedSection } = this.props;
+    const {
+      blogPosts,
+      selectBlog,
+      selectHome,
+      selectedSection,
+      openRegisterDialog
+    } = this.props;
 
     return (
       <Switch>
@@ -38,6 +44,7 @@ class Routing extends Component {
           component={Home}
           selectedSection={selectedSection}
           selectHome={selectHome}
+          openRegisterDialog={openRegisterDialog}
         />
       </Switch>
     );
@@ -48,7 +55,8 @@ Routing.propTypes = {
   blogPosts: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectHome: PropTypes.func.isRequired,
   selectBlog: PropTypes.func.isRequired,
-  selectedSection: PropTypes.string.isRequired
+  selectedSection: PropTypes.string.isRequired,
+  openRegisterDialog: PropTypes.func.isRequired
 };
 
 export default memo(Routing);

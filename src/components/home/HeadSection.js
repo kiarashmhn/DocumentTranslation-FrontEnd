@@ -3,35 +3,15 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
   Grid,
+  Typography,
   //isWidthUp,
   //Typography,
   withStyles,
   withWidth
 } from "@material-ui/core";
 import WaveBorder from "../Template/WaveBorder";
-import ZoomImage from "../Template/ZoomImage";
+//import ZoomImage from "../Template/ZoomImage";
 import Button from "@material-ui/core/Button";
-
-/*const features = [
-  {
-    title: "شناسنامه",
-    image: image,
-    secondaryTitle: "درخواست ترجمه شناسنامه",
-    details: "شتسذزنشتسزتنشذسزتش"
-  },
-  {
-    title: "شناسنامه2",
-    image: image,
-    secondaryTitle: "درخواست ترجمه شناسنامه2",
-    details: "شتسذزنشتسزتنشذسزتش2222"
-  },
-  {
-    title: "شناسنام3ه",
-    image: image,
-    secondaryTitle: "درخواست ترجمه شناسنام3ه",
-    details: "شتسذزنشتسزتنشذسزتش3333"
-  }
-];*/
 
 const styles = theme => ({
   wrapper: {
@@ -47,14 +27,33 @@ const styles = theme => ({
     paddingBottom: theme.spacing(1)
   },
   image: {
-    maxWidth: "80%",
+    [theme.breakpoints.up("sm")]: {
+      width: `${theme.spacing(160)}px !important`,
+      minHeight: `${theme.spacing(70)}px !important`
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: `${theme.spacing(60)}px !important`,
+      minHeight: `${theme.spacing(45)}px !important`
+    },
+    backgroundSize: "100% 100%",
+    backgroundRepeat: "no-repeat",
     verticalAlign: "middle",
     borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4]
+    boxShadow: theme.shadows[4],
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/banner.png)`
   },
   button: {
-    maxWidth: "80%",
-    verticalAlign: "middle"
+    maxWidth: "100%",
+    verticalAlign: "middle",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.up("sm")]: {
+      marginTop: theme.spacing(50)
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: theme.spacing(32)
+    }
   },
   container: {
     marginTop: theme.spacing(2),
@@ -75,7 +74,12 @@ const styles = theme => ({
     }
   },
   waveBorder: {
-    paddingTop: theme.spacing(1)
+    paddingTop: theme.spacing(0)
+  },
+  imageWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
@@ -87,18 +91,6 @@ class HeadSection extends Component {
       dialogDetails: ""
     };
   }
-
-  handleOpenDialog = () => {
-    this.setState({
-      openDialog: true
-    });
-  };
-
-  handleCloseDialog = () => {
-    this.setState({
-      openDialog: false
-    });
-  };
 
   render() {
     const { classes, theme } = this.props;
@@ -114,69 +106,65 @@ class HeadSection extends Component {
               alignItems="center"
               justify="center"
             >
-              <Grid item md={12}>
-                <ZoomImage
-                  src={`${process.env.PUBLIC_URL}/images/logged_out/banner.png`}
-                  className={classes.image}
-                  alt="header example"
-                />
-              </Grid>
-              <Grid item md={12}>
-                <div className={classes.button}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {}}
-                  >
-                    درخواست ترجمه/demande de traduction
-                  </Button>
+              <Grid item xs={12} sm={12} md={12}>
+                <div className={classes.imageWrapper}>
+                  <div className={classes.image}>
+                    <div className={classes.button}>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => {
+                          this.props.openRegisterDialog();
+                        }}
+                      >
+                        <p>
+                          <span
+                            style={{
+                              display: "block",
+                              marginBottom: "2px",
+                              fontSize: "100%",
+                              color: "#000000"
+                            }}
+                          ></span>
+                          <Typography
+                            variant="h6"
+                            align="center"
+                            style={{
+                              color: "#000000"
+                            }}
+                          >
+                            درخواست ترجمه
+                          </Typography>
+                          <span
+                            style={{
+                              display: "block",
+                              marginBottom: "0",
+                              fontSize: 16,
+                              color: "#000000"
+                            }}
+                          ></span>
+                          <Typography
+                            variant="h6"
+                            align="center"
+                            style={{
+                              color: "#000000"
+                            }}
+                          >
+                            demande de traduction
+                          </Typography>
+                        </p>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </Grid>
             </Grid>
           </div>
         </div>
-        {/*<div className={classes.wrapper2}>
-          <div className={classNames("container-fluid", classes.container)}>
-            <Grid
-              container
-              spacing={calculateSpacing(width)}
-              dir={"row"}
-              justify="center"
-            >
-              {features.map(element => (
-                <Grid
-                  item
-                  xs={6}
-                  md={4}
-                  data-aos="zoom-in-up"
-                  data-aos-delay={100}
-                  key={element.title}
-                >
-                  <MediaCard
-                    title={element.title}
-                    onClick={this.handleOpenDialog}
-                    secondaryTitle={element.secondaryTitle}
-                  />
-                  <CustomDialogs
-                    title="test"
-                    component={
-                      <Typography variant="body1" color="textSecondary">
-                        {element.details}
-                      </Typography>
-                    }
-                    handleClose={this.handleCloseDialog}
-                    open={this.state.openDialog}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-          </div>
-        </div>*/}
         <WaveBorder
           upperColor={theme.palette.secondary.main}
           lowerColor="#FFFFFF"
           className={classes.waveBorder}
-          animationNegativeDelay={2}
         />
       </Fragment>
     );
@@ -186,7 +174,8 @@ class HeadSection extends Component {
 HeadSection.propTypes = {
   classes: PropTypes.object,
   width: PropTypes.string,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  openRegisterDialog: PropTypes.func.isRequired
 };
 
 export default withWidth()(

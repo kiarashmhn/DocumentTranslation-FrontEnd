@@ -24,13 +24,13 @@ const iconSize = 30;
 
 const styles = theme => ({
   wrapper: {
-    paddingTop: `${theme.spacing(10)}px !important`,
+    paddingTop: `${theme.spacing(1)}px !important`,
     position: "relative",
     backgroundColor: "#FFFFFF",
     paddingBottom: theme.spacing(1)
   },
   container: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
     [theme.breakpoints.down("md")]: {
       marginBottom: theme.spacing(1)
