@@ -246,6 +246,9 @@ class Footer extends Component {
                 ترجمه کاهش چشمگیر بوجود آید و کارایی فرآیند به میزان قابل توجهی
                 افزایش یابد.
               </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                شماره ثبت شرکت: 890 317 563 00017
+              </Typography>
               {/*<Box display="flex">
                 {socialIcons.map((socialIcon, index) => (
                   <Box
@@ -282,22 +285,9 @@ class Footer extends Component {
                 et de réduire fortement le délai, le coût et les erreurs de
                 traduction.
               </Typography>
-              {/*<Box display="flex">
-                {socialIcons.map((socialIcon, index) => (
-                  <Box
-                    key={index}
-                    mr={index !== socialIcons.length - 1 ? 1 : 0}
-                  >
-                    <IconButton
-                      aria-label={socialIcon.label}
-                      className={classes.socialIcon}
-                      href={socialIcon.href}
-                    >
-                      {socialIcon.icon}
-                    </IconButton>
-                  </Box>
-                ))}
-              </Box>*/}
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Identifiant SIRET : 890 317 563 00017
+              </Typography>
             </Grid>
           </Grid>
         </div>
