@@ -8,14 +8,15 @@ import {
   //Hidden,
   withStyles,
   withWidth,
-  isWidthUp,
-  TextField
+  isWidthUp
+  //TextField
 } from "@material-ui/core";
 import PhoneIcon from "@material-ui/icons/Phone";
 import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from "@material-ui/icons/Home";
 import WaveBorder from "../Template/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
-import ColoredButton from "../Template/ColoredButton";
+//import ColoredButton from "../Template/ColoredButton";
 
 const styles = theme => ({
   footerInner: {
@@ -81,12 +82,16 @@ const infos = [
     description: "+1 555 123456"
   },
   {
+    icon: <HomeIcon />,
+    description: "99 Bd Général Vanier, 14000 Caen, France"
+  },
+  {
     icon: <MailIcon />,
-    description: "support@company.com"
+    description: "contact@..."
   }
 ];
 
-const socialIcons = [
+/*const socialIcons = [
   {
     icon: (
       <svg
@@ -151,7 +156,7 @@ const socialIcons = [
     label: "Twitter",
     href: "https://www.twitter.com/"
   }
-];
+];*/
 
 class Footer extends Component {
   constructor(props) {
@@ -169,7 +174,7 @@ class Footer extends Component {
         />
         <div className={classes.footerInner}>
           <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
-            <Grid item xs={12} md={6} lg={4}>
+            {/*<Grid item xs={12} md={6} lg={4}>
               <form>
                 <Box display="flex" flexDirection="column">
                   <Box mb={1}>
@@ -195,7 +200,7 @@ class Footer extends Component {
                   </ColoredButton>
                 </Box>
               </form>
-            </Grid>
+            </Grid>*/}
             <Grid item xs={12} md={6} lg={4}>
               <Box display="flex" justifyContent="center">
                 <div>
@@ -224,15 +229,24 @@ class Footer extends Component {
                 </div>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={4} dir={"rtl"}>
               <Typography variant="h6" paragraph className="text-white">
-                About the Company
+                درباره ما
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
-                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-                euismod convallis velit, eu auctor lacus vehicula sit amet.
+                این پلتفرم جامعه ای است از مترجمان رسمی به زبان دری و فارسی که
+                با هدف کاهش زمان انتظار و هزینه ترجمه اسناد و مدارک تشکیل شده
+                است. پلتفرم سعی در ساده و کارآمد کردن فرایند درخواست، انجام و
+                تحویل ترجمه رسمی مدارک دارد. متقاضی سند و فرم مربوطه را در حساب
+                کاربری تکمیل می کند و ترجمه خود را پس از آنکه توسط یک مترجم رسمی
+                تصحیح، تکمیل و تأیید اطلاعات شد در مدت زمان کوتاهی دریافت
+                مینماید. ویژگی اصلی پلتفرم در الکترونیکی کردن فرآیند ترجمه و
+                مدیریت دیجیتال و خودکار داده ها است. این ویژگی امکان می دهد که
+                با تسهیل ارتباط بین متقاضی و مترجم، در زمان، هزینه و خطاهای
+                ترجمه کاهش چشمگیر بوجود آید و کارایی فرآیند به میزان قابل توجهی
+                افزایش یابد.
               </Typography>
-              <Box display="flex">
+              {/*<Box display="flex">
                 {socialIcons.map((socialIcon, index) => (
                   <Box
                     key={index}
@@ -247,7 +261,43 @@ class Footer extends Component {
                     </IconButton>
                   </Box>
                 ))}
-              </Box>
+              </Box>*/}
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <Typography variant="h6" paragraph className="text-white">
+                à propos de nous
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Notre plateforme est pour but de créer une communauté des
+                Experts traducteurs (assermentés) afin de s’assurer la vague
+                importante des demandes de traduction en dari et farsi et de
+                réduire considérablement le temps d’attente et le coût de
+                traduction. La plateforme constitue une manière simple et
+                efficace pour réaliser des traductions assermentées, le client
+                auto saisisse les informations, qui vont ensuite être vérifiées,
+                corrigées et complétées par un traducteur assermenté. Notre
+                principal atout est la dématérialisation du processus de
+                traduction et la gestion numérique et automatique de données. Il
+                nous permet de faciliter les échanges entre client et traducteur
+                et de réduire fortement le délai, le coût et les erreurs de
+                traduction.
+              </Typography>
+              {/*<Box display="flex">
+                {socialIcons.map((socialIcon, index) => (
+                  <Box
+                    key={index}
+                    mr={index !== socialIcons.length - 1 ? 1 : 0}
+                  >
+                    <IconButton
+                      aria-label={socialIcon.label}
+                      className={classes.socialIcon}
+                      href={socialIcon.href}
+                    >
+                      {socialIcon.icon}
+                    </IconButton>
+                  </Box>
+                ))}
+              </Box>*/}
             </Grid>
           </Grid>
         </div>

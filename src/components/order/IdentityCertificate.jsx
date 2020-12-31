@@ -114,6 +114,19 @@ class IdentityCertificate extends Component {
   getSteps = () => {
     return [
       {
+        title: getCompleteName("uploadFiles"),
+        content: (
+          <form onSubmit={this.handleNext}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12} md={12} key={"files"}>
+                <CustomFileUpload onChange={this.onFileChange} />
+              </Grid>
+            </Grid>
+            {this.getStepActions()}
+          </form>
+        )
+      },
+      {
         title: getCompleteName("personalInfo"),
         content: (
           <form onSubmit={this.handleNext}>
@@ -536,19 +549,6 @@ class IdentityCertificate extends Component {
                   ref={this.childrenRef}
                   initialChildren={this.state.children}
                 />
-              </Grid>
-            </Grid>
-            {this.getStepActions()}
-          </form>
-        )
-      },
-      {
-        title: getCompleteName("uploadFiles"),
-        content: (
-          <form onSubmit={this.handleNext}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12} md={12} key={"files"}>
-                <CustomFileUpload onChange={this.onFileChange} />
               </Grid>
             </Grid>
             {this.getStepActions()}

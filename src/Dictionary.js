@@ -13,7 +13,7 @@ export const Dictionary = {
   },
   address: {
     persian: "آدرس دریافت مدارک ترجمه شده",
-    french: "Recevoir l'adresse"
+    french: "Adresse d'envoi de la commande"
   },
   country: {
     persian: "کشور محل سکونت",
@@ -81,7 +81,7 @@ export const Dictionary = {
   },
   description: {
     persian: "توضیحات تکمیلی",
-    french: "La description"
+    french: "informations complémentaires"
   },
   personalInfo: {
     persian: "اطلاعات شخصی",
