@@ -247,7 +247,7 @@ class Footer extends Component {
                 افزایش یابد.
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
-                شماره ثبت شرکت: 890 317 563 00017
+                شماره ثبت شرکت: 00017 563 317 890
               </Typography>
               {/*<Box display="flex">
                 {socialIcons.map((socialIcon, index) => (
