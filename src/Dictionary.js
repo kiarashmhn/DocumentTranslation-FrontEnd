@@ -136,8 +136,8 @@ export const Dictionary = {
     french: "enregistrer"
   },
   submit: {
-    persian: "ثبت درخواست",
-    french: "soumettre"
+    persian: "ثبت نهایی سفارش",
+    french: "soumettre la commande"
   },
   allStepsCompleted: {
     persian: "همه مراحل با موفقیت تکمیل شدند",

@@ -794,17 +794,51 @@ class IdentityCertificate extends Component {
           {this.state.step === this.getSteps().length && (
             <Paper square elevation={0} style={styles.resetContainer}>
               <Typography>{getCompleteName("allStepsCompleted")}</Typography>
-              <Button
-                onClick={this.props.onSubmit}
-                style={styles.button}
-                variant="contained"
-                color="secondary"
-              >
-                {getCompleteName("submit")}
-                {this.props.isLoading && <ButtonCircularProgress />}
-              </Button>
             </Paper>
           )}
+          <div
+            style={{
+              maxWidth: "100%",
+              verticalAlign: "middle",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: "10px",
+              paddingBottom: "20px",
+              marginTop: "5px"
+            }}
+          >
+            <Button
+              onClick={this.props.onSubmit}
+              style={styles.button}
+              variant="contained"
+              color="secondary"
+            >
+              <p>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "2px",
+                    fontSize: "100%"
+                  }}
+                ></span>
+                <Typography variant="body1" align="center">
+                  {getPersianName("submit")}
+                </Typography>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "0",
+                    fontSize: 16
+                  }}
+                ></span>
+                <Typography variant="body2" align="center">
+                  {getFrenchName("submit")}
+                </Typography>
+              </p>
+              {this.props.isLoading && <ButtonCircularProgress />}
+            </Button>
+          </div>
         </div>
       </Fragment>
     );
