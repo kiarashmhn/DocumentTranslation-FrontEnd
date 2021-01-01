@@ -14,6 +14,7 @@ import FullScreenDialog from "../FullScreenDialog";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
+import Help from "./Help";
 
 const styles = theme => ({
   wrapper: {
@@ -102,13 +103,15 @@ class HelpSection extends Component {
     super(props);
     this.state = {
       openIdentityDialog: false,
+      language: "",
       isLoading: false
     };
   }
 
-  handleOpenDialog = () => {
+  handleOpenDialog = language => {
     this.setState({
-      openIdentityDialog: true
+      openIdentityDialog: true,
+      language: language
     });
   };
 
@@ -157,7 +160,9 @@ class HelpSection extends Component {
                     className={classes.root}
                     style={{ backgroundColor: "#00B8D4" }}
                   >
-                    <CardActionArea onClick={this.handleOpenDialog}>
+                    <CardActionArea
+                      onClick={() => this.handleOpenDialog(element.language)}
+                    >
                       <CardContent>
                         <Typography
                           gutterBottom
@@ -174,13 +179,7 @@ class HelpSection extends Component {
                   <FullScreenDialog
                     title="test"
                     component={
-                      <Typography
-                        variant="h6"
-                        align="center"
-                        className={classes.secondaryHeader}
-                      >
-                        راهنمای استفاده از سایت
-                      </Typography>
+                      <Help language={this.state.language} width={width} />
                     }
                     handleClose={this.handleCloseDialog}
                     open={this.state.openIdentityDialog}
