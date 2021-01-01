@@ -55,7 +55,8 @@ class NavBar extends Component {
       selectFeatures,
       selectPricing,
       selectAbout,
-      selectHomeSection
+      selectHomeSection,
+      selectHelp
     } = this.props;
     const menuItems = [
       {
@@ -69,6 +70,13 @@ class NavBar extends Component {
         name: "تعرفه ها",
         link: "/",
         onClick: selectPricing,
+        icon: <HomeIcon className="text-white" />,
+        mobileHide: true
+      },
+      {
+        name: "راهنما",
+        link: "/",
+        onClick: selectHelp,
         icon: <HomeIcon className="text-white" />,
         mobileHide: true
       },
@@ -199,6 +207,7 @@ NavBar.propTypes = {
   selectFeatures: PropTypes.func.isRequired,
   selectPricing: PropTypes.func.isRequired,
   selectAbout: PropTypes.func.isRequired,
+  selectHelp: PropTypes.func.isRequired,
   selectHomeSection: PropTypes.func.isRequired
 };
 

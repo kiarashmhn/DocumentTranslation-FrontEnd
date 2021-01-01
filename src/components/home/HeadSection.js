@@ -117,42 +117,31 @@ class HeadSection extends Component {
                           this.props.openRegisterDialog();
                         }}
                       >
-                        <p>
-                          <span
-                            style={{
-                              display: "block",
-                              marginBottom: "2px",
-                              fontSize: "100%",
-                              color: "#000000"
-                            }}
-                          ></span>
+                        <div style={{ display: "block" }}>
                           <Typography
                             variant="h6"
                             align="center"
+                            component={"span"}
                             style={{
+                              display: "block",
+                              marginBottom: "2px",
                               color: "#000000"
                             }}
                           >
                             درخواست ترجمه
                           </Typography>
-                          <span
-                            style={{
-                              display: "block",
-                              marginBottom: "0",
-                              fontSize: 16,
-                              color: "#000000"
-                            }}
-                          ></span>
                           <Typography
                             variant="h6"
                             align="center"
+                            component={"span"}
                             style={{
+                              display: "block",
                               color: "#000000"
                             }}
                           >
                             demande de traduction
                           </Typography>
-                        </p>
+                        </div>
                       </Button>
                     </div>
                   </div>

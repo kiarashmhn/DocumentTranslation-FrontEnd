@@ -4,6 +4,7 @@ import HeadSection from "./HeadSection";
 import FeatureSection from "./FeatureSection";
 import PricingSection from "./PricingSection";
 import Footer from "../footer/Footer";
+import HelpSection from "./HelpSection";
 
 class Home extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Home extends Component {
     this.featureRef = React.createRef();
     this.aboutRef = React.createRef();
     this.pricingRef = React.createRef();
+    this.helpRef = React.createRef();
   }
 
   componentDidMount() {
@@ -36,6 +38,10 @@ class Home extends Component {
       this.pricingRef.current.scrollIntoView({
         behavior: "smooth"
       });
+    else if (this.props.selectedSection === "Help")
+      this.helpRef.current.scrollIntoView({
+        behavior: "smooth"
+      });
     else
       this.homeRef.current.scrollIntoView({
         behavior: "smooth"
@@ -50,6 +56,9 @@ class Home extends Component {
         </div>
         <div ref={this.featureRef}>
           <FeatureSection />
+        </div>
+        <div ref={this.helpRef}>
+          <HelpSection />
         </div>
         <div ref={this.pricingRef}>
           <PricingSection />

@@ -59,6 +59,14 @@ class HomePage extends Component {
     });
   };
 
+  selectHelp = () => {
+    document.title = "DT - راهنما";
+    this.setState({
+      selectedTab: "Home",
+      selectedSection: "Help"
+    });
+  };
+
   selectPricing = () => {
     document.title = "DT - تعرفه ها";
     this.setState({
@@ -175,6 +183,7 @@ class HomePage extends Component {
           selectPricing={this.selectPricing}
           selectAbout={this.selectAbout}
           selectHomeSection={this.selectHome}
+          selectHelp={this.selectHelp}
           openLoginDialog={this.openLoginDialog}
           openRegisterDialog={this.openRegisterDialog}
           mobileDrawerOpen={this.state.isMobileDrawerOpen}

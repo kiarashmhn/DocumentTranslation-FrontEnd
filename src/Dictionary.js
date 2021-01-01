@@ -170,6 +170,14 @@ export const Dictionary = {
   marriageDate: {
     persian: "تاریخ عقد",
     french: "Date de mariage"
+  },
+  help: {
+    persian: "راهنما",
+    french: "Guider"
+  },
+  helpLanguage: {
+    persian: "راهنمای فارسی",
+    french: "aide en français"
   }
 };
 
