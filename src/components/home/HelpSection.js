@@ -64,16 +64,28 @@ const styles = theme => ({
       marginBottom: `${theme.spacing(1)}px !important`
     }
   },
-  secondaryHeader: {
-    marginBottom: `${theme.spacing(10)}px !important`,
+  thirdHeader: {
+    marginTop: `${theme.spacing(4)}px !important`,
     [theme.breakpoints.down("md")]: {
-      marginBottom: `${theme.spacing(8)}px !important`
+      marginTop: `${theme.spacing(3)}px !important`
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: `${theme.spacing(6)}px !important`
+      marginTop: `${theme.spacing(2)}px !important`
     },
     [theme.breakpoints.down("xs")]: {
+      marginTop: `${theme.spacing(2)}px !important`
+    }
+  },
+  secondaryHeader: {
+    marginBottom: `${theme.spacing(5)}px !important`,
+    [theme.breakpoints.down("md")]: {
       marginBottom: `${theme.spacing(4)}px !important`
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: `${theme.spacing(3)}px !important`
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: `${theme.spacing(2)}px !important`
     }
   },
   grid: {
@@ -136,7 +148,7 @@ class HelpSection extends Component {
           >
             راهنمای استفاده از سایت
           </Typography>
-          <div className={classNames("container-fluid", classes.grid)}>
+          <div className={classes.grid}>
             <Grid
               container
               spacing={calculateSpacing(width)}
@@ -187,6 +199,40 @@ class HelpSection extends Component {
                 </Grid>
               ))}
             </Grid>
+          </div>
+          <Typography
+            variant="h6"
+            align="center"
+            className={classes.thirdHeader}
+          >
+            ویدیو آموزش استفاده از سایت
+          </Typography>
+          <div className={classes.grid}>
+            <div
+              style={{
+                position: "relative",
+                paddingBottom: "30%" /* 16:9 */,
+                paddingTop: 25,
+                marginTop: "20px",
+                height: 0,
+                width: "50%"
+              }}
+            >
+              <iframe
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%"
+                }}
+                src={`https://www.aparat.com/video/video/embed/videohash/1WL4S/vt/frame?&recom=none`}
+                frameBorder="0"
+                allowFullScreen="true"
+                webKitAllowFullScreen="true"
+                MozAllowFullScreen="true"
+              />
+            </div>
           </div>
         </div>
       </div>
