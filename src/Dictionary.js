@@ -194,3 +194,7 @@ export const getFrenchName = text => {
 export const getPersianName = text => {
   return Dictionary[text] ? Dictionary[text].persian : null;
 };
+
+export const getHint = text => {
+  return Dictionary[text] ? Dictionary[text].hint : null;
+};

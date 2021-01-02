@@ -91,20 +91,23 @@ class CreateOrder extends Component {
   render() {
     return (
       <Fragment>
-        <Typography variant="body1" color="textSecondary" dir={"rtl"}>
-          - نوشتار لاتین نام، نام خانوادگی، تاریخ تولد و دیگر مشخصات خود را با
-          پاسپورت یا مدارک دیگر مثل کارت اقامت خود حتما مطابقت دهید.
+        <Typography
+          variant="body1"
+          color={"error"}
+          dir={"rtl"}
+          align="center"
+          paragraph
+        >
+          توصیه می شود که نوشتار لاتین نام، نام خانوادگی (تخلص)، تاریخ تولد و
+          دیگر مشخصات را با پاسپورت یا مدارک دیگر مثل کارت اقامت خود حتما مطابقت
+          دهید.
         </Typography>
         <br />
-        <Typography variant="body1" color="textSecondary">
-          - On rencontre souvent des difficultés à déterminer la translitération
-          exacte des noms et prénoms afghans, les déclarants ne pouvant souvent
-          la préciser. Pour réduire les risques d`&apos;erreur, il est fortement
-          recommandé de vérifier ses déclarations antérieures auprès des
-          administrations (préfecture, OFPRA,…), ses documents officiels déjà
-          délivrés par les autorités (récépissé, titre de séjour, passeport…)
-          permettant ainsi de concorder l`&apos;orthographe des noms ou prénoms
-          à ceux qui ont été déjà enregistrés.
+        <Typography variant="body1" color={"error"} align="center" paragraph>
+          Il est fortement recommandé de concorder l&apos;orthographe des noms,
+          prénoms et les dates à celles déjà déclarées antérieurement auprès des
+          administrations (préfecture, OFPRA, récépissé, titre de séjour,
+          passeport…).
         </Typography>
         <br />
         <Grid container spacing={1} dir={"rtl"}>
