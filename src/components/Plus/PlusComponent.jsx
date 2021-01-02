@@ -13,6 +13,7 @@ import CardContent from "@material-ui/core/CardContent";
 import * as Validator from "../utils/Validator";
 import Grid from "@material-ui/core/Grid";
 import CustomTooltip from "../Tooltip/CustomTooltip";
+import { getHint } from "../../Dictionary";
 
 export default class PlusComponent extends Component {
   constructor(props) {
@@ -164,15 +165,23 @@ export default class PlusComponent extends Component {
             <AddIcon />
             {this.props.plusTitle ? this.props.plusTitle + " " : ""}
           </Button>
-          <div
-            style={{
-              marginTop: "8px",
-              marginLeft: "20px",
-              position: "relative"
-            }}
-          >
-            <CustomTooltip text={this.props.hint} />
-          </div>
+          {getHint(this.props.name) ? (
+            <div
+              style={{
+                marginTop: "8px",
+                marginLeft: "20px",
+                position: "relative"
+              }}
+            >
+              <CustomTooltip
+                text={
+                  getHint(this.props.name).persian +
+                  "\n" +
+                  getHint(this.props.name).french
+                }
+              />
+            </div>
+          ) : null}
         </CardActions>
       </>
     );
@@ -181,7 +190,7 @@ export default class PlusComponent extends Component {
 
 PlusComponent.propTypes = {
   component: PropTypes.object.isRequired,
-  hint: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   stateHandler: PropTypes.func,
   plusTitle: PropTypes.string,
   disabled: PropTypes.bool,

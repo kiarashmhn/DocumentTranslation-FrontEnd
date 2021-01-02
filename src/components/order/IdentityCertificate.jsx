@@ -539,7 +539,7 @@ class IdentityCertificate extends Component {
                     marginBottom: "2px",
                     fontSize: "100%"
                   }}
-                ></span>
+                />
                 <Typography variant="body1" align="center">
                   {getPersianName("submit")}
                 </Typography>
@@ -549,7 +549,7 @@ class IdentityCertificate extends Component {
                     marginBottom: "0",
                     fontSize: 16
                   }}
-                ></span>
+                />
                 <Typography variant="body2" align="center">
                   {getFrenchName("submit")}
                 </Typography>

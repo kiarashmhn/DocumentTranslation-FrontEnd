@@ -65,7 +65,7 @@ export default class Children extends Component {
         grid={12}
         componentProps={this.props.initialChildren}
         onComponentRemove={this.props.onComponentRemove}
-        hint={"Ajouter des informations sur les enfants"}
+        name={"children"}
       />
     );
   }

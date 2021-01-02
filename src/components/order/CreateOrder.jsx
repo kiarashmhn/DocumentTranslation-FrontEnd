@@ -22,11 +22,6 @@ class CreateOrder extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log("in order");
-    //this.props.selectCreateOrder();
-  }
-
   handleOpenDialog = () => {
     this.setState({
       openIdentityDialog: true

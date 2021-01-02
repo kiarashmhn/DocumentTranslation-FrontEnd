@@ -13,7 +13,13 @@ export const Dictionary = {
   },
   address: {
     persian: "آدرس دریافت مدارک ترجمه شده",
-    french: "Adresse d'envoi de la commande"
+    french: "Adresse d'envoi de la commande",
+    hint: {
+      persian:
+        "برای دریافت اصل ترجمه انجام شده آدرس پستی کامل و دقیق خود را در این قسمت اضافه کنید. توجه داشته باشید که اصل ترجمه فقط یک بار برای شما ارسال میشود و هرگونه اشتباه در ثبت آدرس بر عهده متقاضی میباشد",
+      french:
+        "Préciser l’adresse postale à laquelle vous souhaitez recevoir la traduction réalisée en version papier. Cette version ne vous sera envoyée qu’une seule fois.  Assurez-vous de son exactitude"
+    }
   },
   country: {
     persian: "کشور محل سکونت",
@@ -81,7 +87,13 @@ export const Dictionary = {
   },
   description: {
     persian: "توضیحات تکمیلی",
-    french: "informations complémentaires"
+    french: "informations complémentaires",
+    hint: {
+      persian:
+        "هر گونه توضیحی که برای ترجمه سند خود مفید میدانید را میتوانید در این قسمت اضافه کنید",
+      french:
+        "Veuillez ajouter toute autre information que vous jugerez utile à la réalisation de traduction de votre document dans cette rubrique"
+    }
   },
   personalInfo: {
     persian: "اطلاعات شخصی",
@@ -97,7 +109,13 @@ export const Dictionary = {
   },
   spouses: {
     persian: "همسران",
-    french: "Conjoint"
+    french: "Conjoint",
+    hint: {
+      persian:
+        "لطفاً اگر ازدواج کرده اید یا مطلقه هستید این قسمت را تکمیل کنید",
+      french:
+        "Veuillez compléter cette rubrique, si vous êtes marié(e) ou divorcé(e)"
+    }
   },
   divorces: {
     persian: "طلاق",
@@ -105,7 +123,12 @@ export const Dictionary = {
   },
   children: {
     persian: "فرزندان",
-    french: "Enfants"
+    french: "Enfants",
+    hint: {
+      persian: "لطفاً در صورت داشتن فرزند این قسمت را کامل کنید",
+      french:
+        "Veuillez compléter cette rubrique, si vous avez un (des) enfant(s)"
+    }
   },
   death: {
     persian: "مرگ",

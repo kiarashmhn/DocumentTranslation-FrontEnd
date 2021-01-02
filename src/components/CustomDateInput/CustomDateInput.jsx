@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import CustomInput from "../CustomInput/CustomInput";
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import CustomTooltip from "../Tooltip/CustomTooltip";
 import { getCompleteName } from "../../Dictionary";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
@@ -123,11 +122,6 @@ export default class CustomDateInput extends Component {
               inputProps={{ maxLength: 2 }}
               hint={"روز"}
             />
-          </Grid>
-          <Grid item xs={1} sm={1} md={1} key={"date_hint"}>
-            <div style={{ marginTop: "43px", position: "relative" }}>
-              <CustomTooltip text={getCompleteName(this.props.name)} />
-            </div>
           </Grid>
         </Grid>
         <div

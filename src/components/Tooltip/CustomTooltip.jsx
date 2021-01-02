@@ -38,7 +38,9 @@ export default class CustomTooltip extends Component {
             disableFocusListener
             disableHoverListener
             disableTouchListener
-            title={this.props.text}
+            title={
+              <span style={{ whiteSpace: "pre-line" }}>{this.props.text}</span>
+            }
             arrow
           >
             <IconButton

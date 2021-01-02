@@ -65,7 +65,7 @@ export default class Spouses extends Component {
         grid={12}
         componentProps={this.props.initialSpouses}
         onComponentRemove={this.props.onComponentRemove}
-        hint={"Ajouter des informations sur le mariage"}
+        name={"spouses"}
       />
     );
   }

@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Grid } from "@material-ui/core";
-import CustomInput from "../CustomInput/CustomInput";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import CustomTooltip from "../Tooltip/CustomTooltip";
 import CustomDateInput from "../CustomDateInput/CustomDateInput";
 import * as PropTypes from "prop-types";
-import { getFrenchName, getPersianName } from "../../Dictionary";
+import FieldInput from "../CustomInput/FieldInput";
 
 const initialState = {
   name: "",
@@ -40,43 +37,25 @@ export default class Child extends Component {
       <Fragment>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={4} key={"name"}>
-            <CustomInput
-              required
-              labelText={getPersianName("name")}
-              helperText={getFrenchName("name")}
-              id="name"
+            <FieldInput
+              name={"name"}
               value={this.state.name}
-              onChange={e => this.setState({ name: e.target.value })}
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <CustomTooltip text={getFrenchName("name")} />
-                  </InputAdornment>
-                )
-              }}
+              onChange={e =>
+                this.setState({
+                  name: e.target.value
+                })
+              }
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4} key={"certificateId"}>
-            <CustomInput
-              required
-              labelText={getPersianName("certificateId")}
-              helperText={getFrenchName("certificateId")}
-              id="certificateId"
+            <FieldInput
+              name={"certificateId"}
               value={this.state.certificateId}
-              onChange={e => this.setState({ certificateId: e.target.value })}
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <CustomTooltip text={getFrenchName("certificateId")} />
-                  </InputAdornment>
-                )
-              }}
+              onChange={e =>
+                this.setState({
+                  certificateId: e.target.value
+                })
+              }
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4} key={"birthDate"}>
@@ -87,23 +66,14 @@ export default class Child extends Component {
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4} key={"birthLocation"}>
-            <CustomInput
-              required
-              labelText={getPersianName("birthLocation")}
-              helperText={getFrenchName("birthLocation")}
-              id="birthLocation"
+            <FieldInput
+              name={"birthLocation"}
               value={this.state.birthLocation}
-              onChange={e => this.setState({ birthLocation: e.target.value })}
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <CustomTooltip text={getFrenchName("birthLocation")} />
-                  </InputAdornment>
-                )
-              }}
+              onChange={e =>
+                this.setState({
+                  birthLocation: e.target.value
+                })
+              }
             />
           </Grid>
         </Grid>

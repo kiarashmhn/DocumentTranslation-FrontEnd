@@ -26,7 +26,13 @@ export default class FieldInput extends Component {
             ? {
                 endAdornment: (
                   <InputAdornment position="end">
-                    <CustomTooltip text={getHint(this.props.name)} />
+                    <CustomTooltip
+                      text={
+                        getHint(this.props.name).persian +
+                        "\n" +
+                        getHint(this.props.name).french
+                      }
+                    />
                   </InputAdornment>
                 )
               }
