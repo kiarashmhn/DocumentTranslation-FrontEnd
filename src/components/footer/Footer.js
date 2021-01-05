@@ -229,22 +229,36 @@ class Footer extends Component {
                 </div>
               </Box>
             </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <Typography variant="h6" paragraph className="text-white">
+                à propos de nous
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Notre plateforme est pour but de créer une communauté des
+                Experts traducteurs (assermentés) afin de s’assurer la vague
+                importante des demandes de traduction en dari et farsi et de
+                réduire considérablement le temps d’attente et le coût de
+                traduction. La plateforme constitue une manière simple et
+                efficace pour réaliser des traductions assermentées, le client
+                auto saisisse les informations, qui vont ensuite être vérifiées,
+                corrigées et complétées par un traducteur assermenté.
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Identifiant SIRET : 890 317 563 00017
+              </Typography>
+            </Grid>
             <Grid item xs={12} md={6} lg={4} dir={"rtl"}>
               <Typography variant="h6" paragraph className="text-white">
                 درباره ما
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
-                این پلتفرم جامعه ای است از مترجمان رسمی به زبان دری و فارسی که
+                این پلتفرم جامعه ای از مترجمان رسمی به زبان دری ـ فارسی است، که
                 با هدف کاهش زمان انتظار و هزینه ترجمه اسناد و مدارک تشکیل شده
                 است. پلتفرم سعی در ساده و کارآمد کردن فرایند درخواست، انجام و
-                تحویل ترجمه رسمی مدارک دارد. متقاضی سند و فرم مربوطه را در حساب
+                تحویل ترجمه رسمی مدارک دارد. متقاضی، سند و فرم مربوطه را در حساب
                 کاربری تکمیل می کند و ترجمه خود را پس از آنکه توسط یک مترجم رسمی
                 تصحیح، تکمیل و تأیید اطلاعات شد در مدت زمان کوتاهی دریافت
-                مینماید. ویژگی اصلی پلتفرم در الکترونیکی کردن فرآیند ترجمه و
-                مدیریت دیجیتال و خودکار داده ها است. این ویژگی امکان می دهد که
-                با تسهیل ارتباط بین متقاضی و مترجم، در زمان، هزینه و خطاهای
-                ترجمه کاهش چشمگیر بوجود آید و کارایی فرآیند به میزان قابل توجهی
-                افزایش یابد.
+                مینماید.
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
                 شماره ثبت شرکت: 00017 563 317 890
@@ -265,29 +279,6 @@ class Footer extends Component {
                   </Box>
                 ))}
               </Box>*/}
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Typography variant="h6" paragraph className="text-white">
-                à propos de nous
-              </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                Notre plateforme est pour but de créer une communauté des
-                Experts traducteurs (assermentés) afin de s’assurer la vague
-                importante des demandes de traduction en dari et farsi et de
-                réduire considérablement le temps d’attente et le coût de
-                traduction. La plateforme constitue une manière simple et
-                efficace pour réaliser des traductions assermentées, le client
-                auto saisisse les informations, qui vont ensuite être vérifiées,
-                corrigées et complétées par un traducteur assermenté. Notre
-                principal atout est la dématérialisation du processus de
-                traduction et la gestion numérique et automatique de données. Il
-                nous permet de faciliter les échanges entre client et traducteur
-                et de réduire fortement le délai, le coût et les erreurs de
-                traduction.
-              </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                Identifiant SIRET : 890 317 563 00017
-              </Typography>
             </Grid>
           </Grid>
         </div>

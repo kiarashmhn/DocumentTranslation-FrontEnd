@@ -10,6 +10,7 @@ import * as URLConstant from "../../URLConstant";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { OrderTypes } from "./OrderTypes";
 import { OrderStatus } from "./OrderStatus";
+import Box from "@material-ui/core/Box";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -86,25 +87,35 @@ class CreateOrder extends Component {
   render() {
     return (
       <Fragment>
-        <Typography
-          variant="body1"
-          color={"error"}
-          dir={"rtl"}
-          align="center"
-          paragraph
+        <Box
+          borderColor="error.main"
+          bgcolor="background.paper"
+          border={1}
+          style={{ padding: "10px", marginBottom: "30px" }}
+          m={5}
         >
-          توصیه می شود که نوشتار لاتین نام، نام خانوادگی (تخلص)، تاریخ تولد و
-          دیگر مشخصات را با پاسپورت یا مدارک دیگر مثل کارت اقامت خود حتما مطابقت
-          دهید.
-        </Typography>
-        <br />
-        <Typography variant="body1" color={"error"} align="center" paragraph>
-          Il est fortement recommandé de concorder l&apos;orthographe des noms,
-          prénoms et les dates à celles déjà déclarées antérieurement auprès des
-          administrations (préfecture, OFPRA, récépissé, titre de séjour,
-          passeport…).
-        </Typography>
-        <br />
+          <Fragment>
+            <Typography variant="body1" color={"error"} paragraph>
+              * pointe:
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Il est fortement recommandé de concorder l&apos;orthographe des
+              noms, prénoms et les dates à celles déjà déclarées antérieurement
+              auprès des administrations (préfecture, OFPRA, récépissé, titre de
+              séjour, passeport…).
+            </Typography>
+            <br />
+            <Typography variant="body1" dir={"rtl"} color={"error"} paragraph>
+              * نکته:
+            </Typography>
+            <Typography variant="body1" dir={"rtl"} paragraph>
+              توصیه می شود که نوشتار لاتین نام، نام خانوادگی (تخلص)، تاریخ تولد
+              و دیگر مشخصات را با پاسپورت یا مدارک دیگر مثل کارت اقامت خود حتما
+              مطابقت دهید.
+            </Typography>
+            <br />
+          </Fragment>
+        </Box>
         <Grid container spacing={1} dir={"rtl"}>
           <Grid item xs={12} sm={12} md={4} key={"identityCard"}>
             <MediaCard

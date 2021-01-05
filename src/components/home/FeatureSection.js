@@ -73,9 +73,9 @@ const features = [
     color: "#DD2C00",
     headline: "ترجمه شناسنامه",
     frenchHeadline: "Traduction de la carte d'identité",
-    text: "ترجمه انواع شناسنامه از فارسی به فرانسوی",
+    text: "ترجمه انواع شناسنامه از فارسی به فرانسوی\n تعرفه: از ۲۰ تا ۲۵ یورو",
     frenchText:
-      "Traduction de différents types de cartes d'identité du persan au français",
+      "Traduction de différents types de cartes d'identité du persan au français\n Coût: 20 à 25€",
     icon: <FingerprintIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
@@ -164,7 +164,7 @@ class FeatureSection extends Component {
       <div className={classes.wrapper}>
         <div className={classNames("container-fluid", classes.container)}>
           <Typography variant="h3" align="center" className={classes.header}>
-            امکانات
+            خدمات
           </Typography>
           <Typography
             variant="h6"
@@ -175,7 +175,7 @@ class FeatureSection extends Component {
             برای استفاده از امکانات ابتدا وارد شوید *
           </Typography>
           <div className="container-fluid">
-            <Grid container spacing={calculateSpacing(width)} dir={"rtl"}>
+            <Grid container spacing={calculateSpacing(width)}>
               {features.map(element => (
                 <Grid
                   item

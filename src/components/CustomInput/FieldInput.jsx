@@ -12,9 +12,9 @@ export default class FieldInput extends Component {
   render() {
     return (
       <CustomInput
-        required
-        labelText={getPersianName(this.props.name)}
-        helperText={getFrenchName(this.props.name)}
+        required={!this.props.notRequired}
+        labelText={getFrenchName(this.props.name)}
+        helperText={getPersianName(this.props.name)}
         id={this.props.name + new Date()}
         value={this.props.value}
         onChange={this.props.onChange}
@@ -45,5 +45,6 @@ export default class FieldInput extends Component {
 FieldInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.object.isRequired
+  value: PropTypes.any.isRequired,
+  notRequired: PropTypes.bool
 };

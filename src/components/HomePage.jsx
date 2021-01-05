@@ -67,14 +67,6 @@ class HomePage extends Component {
     });
   };
 
-  selectPricing = () => {
-    document.title = "DT - تعرفه ها";
-    this.setState({
-      selectedTab: "Home",
-      selectedSection: "Pricing"
-    });
-  };
-
   selectAbout = () => {
     document.title = "DT - درباره ما";
     this.setState({
@@ -180,7 +172,6 @@ class HomePage extends Component {
           selectedTab={this.state.selectedTab}
           selectTab={this.selectTab}
           selectFeatures={this.selectFeatures}
-          selectPricing={this.selectPricing}
           selectAbout={this.selectAbout}
           selectHomeSection={this.selectHome}
           selectHelp={this.selectHelp}

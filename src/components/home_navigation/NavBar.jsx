@@ -53,7 +53,6 @@ class NavBar extends Component {
       mobileDrawerOpen,
       selectedTab,
       selectFeatures,
-      selectPricing,
       selectAbout,
       selectHomeSection,
       selectHelp
@@ -63,13 +62,6 @@ class NavBar extends Component {
         name: "درباره ما",
         link: "/",
         onClick: selectAbout,
-        icon: <HomeIcon className="text-white" />,
-        mobileHide: true
-      },
-      {
-        name: "تعرفه ها",
-        link: "/",
-        onClick: selectPricing,
         icon: <HomeIcon className="text-white" />,
         mobileHide: true
       },
@@ -205,7 +197,6 @@ NavBar.propTypes = {
   openRegisterDialog: PropTypes.func.isRequired,
   openLoginDialog: PropTypes.func.isRequired,
   selectFeatures: PropTypes.func.isRequired,
-  selectPricing: PropTypes.func.isRequired,
   selectAbout: PropTypes.func.isRequired,
   selectHelp: PropTypes.func.isRequired,
   selectHomeSection: PropTypes.func.isRequired

@@ -32,8 +32,22 @@ const styles = theme => ({
     backgroundColor: "#FFFFFF",
     paddingBottom: theme.spacing(1)
   },
-  root: {
-    maxWidth: 345
+  card: {
+    maxWidth: 345,
+    backgroundColor: "#00B8D4",
+    width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "70%"
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "80%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "80%"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "80%"
+    }
   },
   container: {
     marginTop: theme.spacing(1),
@@ -141,13 +155,6 @@ class HelpSection extends Component {
           <Typography variant="h3" align="center" className={classes.header}>
             راهنما
           </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            className={classes.secondaryHeader}
-          >
-            راهنمای استفاده از سایت
-          </Typography>
           <div className={classes.grid}>
             <Grid
               container
@@ -161,17 +168,15 @@ class HelpSection extends Component {
                 <Grid
                   item
                   xs={6}
-                  md={4}
+                  md={6}
                   data-aos="zoom-in-up"
                   data-aos-delay={
                     isWidthUp("md", width) ? element.mdDelay : element.smDelay
                   }
                   key={element.title}
+                  dir={element.language === "persian" ? "ltl" : "rtl"}
                 >
-                  <Card
-                    className={classes.root}
-                    style={{ backgroundColor: "#00B8D4" }}
-                  >
+                  <Card className={classes.card}>
                     <CardActionArea
                       onClick={() => this.handleOpenDialog(element.language)}
                     >
@@ -188,18 +193,16 @@ class HelpSection extends Component {
                       </CardContent>
                     </CardActionArea>
                   </Card>
-                  <FullScreenDialog
-                    title="test"
-                    component={
-                      <Help language={this.state.language} width={width} />
-                    }
-                    handleClose={this.handleCloseDialog}
-                    open={this.state.openIdentityDialog}
-                  />
                 </Grid>
               ))}
             </Grid>
           </div>
+          <FullScreenDialog
+            title="test"
+            component={<Help language={this.state.language} width={width} />}
+            handleClose={this.handleCloseDialog}
+            open={this.state.openIdentityDialog}
+          />
           <Typography
             variant="h6"
             align="center"
@@ -215,7 +218,7 @@ class HelpSection extends Component {
                 paddingTop: 25,
                 marginTop: "20px",
                 height: 0,
-                width: "50%"
+                width: "80%"
               }}
             >
               <iframe
@@ -228,9 +231,7 @@ class HelpSection extends Component {
                 }}
                 src={`https://www.aparat.com/video/video/embed/videohash/1WL4S/vt/frame?&recom=none`}
                 frameBorder="0"
-                allowFullScreen="true"
-                webKitAllowFullScreen="true"
-                MozAllowFullScreen="true"
+                allowFullScreen={true}
               />
             </div>
           </div>

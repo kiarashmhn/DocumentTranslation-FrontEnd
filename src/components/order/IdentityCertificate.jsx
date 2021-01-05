@@ -35,6 +35,12 @@ const styles = {
     marginTop: theme.spacing(1),
     marginRight: theme.spacing(1)
   },
+  submitButton: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(70),
+    backgroundColor: "#197163",
+    color: "#FFFFFF"
+  },
   actionsContainer: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2)
@@ -94,7 +100,7 @@ class IdentityCertificate extends Component {
   getSteps = () => {
     return [
       {
-        title: getCompleteName("uploadFiles"),
+        title: getCompleteName("uploadIDFiles"),
         content: (
           <form onSubmit={this.handleNext}>
             <Grid container spacing={2}>
@@ -325,6 +331,7 @@ class IdentityCertificate extends Component {
                       description: e.target.value
                     })
                   }
+                  notRequired={true}
                 />
               </Grid>
             </Grid>
@@ -374,17 +381,15 @@ class IdentityCertificate extends Component {
             color="primary"
             type={"submit"}
             style={styles.button}
+            disabled={this.state.step === this.state.steps - 1}
           >
-            {this.state.step === this.state.steps - 1
-              ? getCompleteName("save")
-              : getCompleteName("next")}
+            {getCompleteName("next")}
           </Button>
-          {this.state.step < this.state.steps - 1 && (
+          {this.state.step <= this.state.steps - 1 && (
             <Button
               variant="contained"
-              color="primary"
               onClick={this.props.onSave}
-              style={styles.button}
+              style={styles.submitButton}
             >
               {getCompleteName("save")}
             </Button>
@@ -392,13 +397,6 @@ class IdentityCertificate extends Component {
         </div>
       </div>
     );
-  };
-
-  removeSpouse = index => {
-    let removed = this.state.spouses.splice(index, 1);
-    this.setState({
-      spouses: removed
-    });
   };
 
   onFileChange = e => {
@@ -422,7 +420,7 @@ class IdentityCertificate extends Component {
   getChildren = () => {
     return this.childrenRef.current
       ? this.childrenRef.current.getState()
-        ? this.childrenRef.current.getState().children
+        ? { children: this.childrenRef.current.getState().children }
         : []
       : [];
   };
@@ -461,7 +459,7 @@ class IdentityCertificate extends Component {
   getState = () => {
     return {
       ...this.state,
-      children: this.getChildren(),
+      ...this.getChildren(),
       ...this.getMarriages()
     };
   };
@@ -469,27 +467,61 @@ class IdentityCertificate extends Component {
   handleNext = event => {
     event.preventDefault();
     let prevState = this.state.step;
-    this.setState(
-      {
+    if (prevState === 3) {
+      this.setState({
+        step: prevState + 1,
+        ...this.getMarriages()
+      });
+    } else if (prevState === 4) {
+      this.setState({
+        step: prevState + 1,
+        ...this.getChildren()
+      });
+    } else {
+      this.setState({
         step: prevState + 1
-      },
-      () => {
-        console.log(this.getState());
-      }
-    );
+      });
+    }
+
+    this.props.onSave(event);
   };
 
   handleBack = () => {
     let prevState = this.state.step;
-    this.setState({
-      step: prevState - 1
-    });
+    if (prevState === 3) {
+      this.setState({
+        step: prevState - 1,
+        ...this.getMarriages()
+      });
+    } else if (prevState === 4) {
+      this.setState({
+        step: prevState - 1,
+        ...this.getChildren()
+      });
+    } else {
+      this.setState({
+        step: prevState - 1
+      });
+    }
   };
 
   selectStep = index => {
-    this.setState({
-      step: index
-    });
+    let prevState = this.state.step;
+    if (prevState === 3) {
+      this.setState({
+        step: index,
+        ...this.getMarriages()
+      });
+    } else if (prevState === 4) {
+      this.setState({
+        step: index,
+        ...this.getChildren()
+      });
+    } else {
+      this.setState({
+        step: index
+      });
+    }
   };
 
   render() {
@@ -540,7 +572,7 @@ class IdentityCertificate extends Component {
                     fontSize: "100%"
                   }}
                 />
-                <Typography variant="body1" align="center">
+                <Typography variant="body1" align="center" component={"span"}>
                   {getPersianName("submit")}
                 </Typography>
                 <span
@@ -550,7 +582,7 @@ class IdentityCertificate extends Component {
                     fontSize: 16
                   }}
                 />
-                <Typography variant="body2" align="center">
+                <Typography variant="body2" align="center" component={"span"}>
                   {getFrenchName("submit")}
                 </Typography>
               </p>

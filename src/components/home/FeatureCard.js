@@ -59,22 +59,31 @@ function FeatureCard(props) {
       >
         {Icon}
       </div>
-      <Typography variant="h5" paragraph>
-        {headline}
-      </Typography>
       {frenchHeadline && (
         <Typography variant="h5" paragraph>
           {frenchHeadline}
         </Typography>
       )}
-      <Typography variant="body1" color="textSecondary">
-        {text}
+      <Typography variant="h5" paragraph dir={"rtl"}>
+        {headline}
       </Typography>
       {frenchText && (
-        <Typography variant="body1" color="textSecondary">
+        <Typography
+          variant="body1"
+          color="textSecondary"
+          style={{ whiteSpace: "pre-line" }}
+        >
           {frenchText}
         </Typography>
       )}
+      <Typography
+        variant="body1"
+        color="textSecondary"
+        style={{ whiteSpace: "pre-line" }}
+        dir={"rtl"}
+      >
+        {text}
+      </Typography>
     </Fragment>
   );
 }

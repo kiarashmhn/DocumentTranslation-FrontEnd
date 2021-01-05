@@ -61,6 +61,7 @@ class EditViewOrder extends Component {
   updateOrder = (close, status) => {
     let self = this;
     let postData = {
+      id: this.props.itemId,
       type: OrderTypes.ID_CERTIFICATE.name,
       status: status,
       details: this.identityCertificateRef.current.getState()
@@ -99,7 +100,7 @@ class EditViewOrder extends Component {
   render() {
     return (
       <Fragment>
-        <CreateReport data={this.state.initialState} />
+        <CreateReport data={this.state.initialState} id={this.props.itemId} />
         <IdentityCertificate
           ref={this.identityCertificateRef}
           onSubmit={this.handleSubmit}

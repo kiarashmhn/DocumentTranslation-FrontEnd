@@ -87,7 +87,7 @@ export const Dictionary = {
   },
   description: {
     persian: "توضیحات تکمیلی",
-    french: "informations complémentaires",
+    french: "Informations complémentaires",
     hint: {
       persian:
         "هر گونه توضیحی که برای ترجمه سند خود مفید میدانید را میتوانید در این قسمت اضافه کنید",
@@ -142,9 +142,9 @@ export const Dictionary = {
     persian: "اطلاعات فرزندان",
     french: "Informations sur les enfants"
   },
-  uploadFiles: {
-    persian: "بارگذاری مستندات",
-    french: "Importer des documents"
+  uploadIDFiles: {
+    persian: "بارگذاری سند شناسنامه",
+    french: "Importer la Acte de naissance"
   },
   back: {
     persian: "مرحله قبل",
@@ -200,7 +200,7 @@ export const Dictionary = {
   },
   helpLanguage: {
     persian: "راهنمای فارسی",
-    french: "aide en français"
+    french: "Aide en français"
   }
 };
 

@@ -9,13 +9,26 @@ import ListOrder from "./order/ListOrder";
 
 const styles = theme => ({
   main: {
-    marginLeft: theme.spacing(9),
+    marginRight: theme.spacing(9),
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
     [theme.breakpoints.down("xs")]: {
-      marginLeft: 0
+      marginLeft: 0,
+      marginRight: theme.spacing(0)
+    },
+    [theme.breakpoints.up("xs")]: {
+      marginRight: theme.spacing(0)
+    },
+    [theme.breakpoints.up("sm")]: {
+      marginRight: theme.spacing(7)
+    },
+    [theme.breakpoints.up("md")]: {
+      marginRight: theme.spacing(8)
+    },
+    [theme.breakpoints.up("lg")]: {
+      marginRight: theme.spacing(9)
     }
   },
   wrapper: {
@@ -38,14 +51,14 @@ const styles = theme => ({
     [theme.breakpoints.up("md")]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
-      width: "82.5%",
+      width: "90%",
       marginLeft: "auto",
       marginRight: "auto"
     },
     [theme.breakpoints.up("lg")]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
-      width: "70%",
+      width: "90%",
       marginLeft: "auto",
       marginRight: "auto"
     }

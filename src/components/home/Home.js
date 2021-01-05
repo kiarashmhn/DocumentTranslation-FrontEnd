@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import FeatureSection from "./FeatureSection";
-import PricingSection from "./PricingSection";
 import Footer from "../footer/Footer";
 import HelpSection from "./HelpSection";
 
@@ -13,7 +12,6 @@ class Home extends Component {
     this.homeRef = React.createRef();
     this.featureRef = React.createRef();
     this.aboutRef = React.createRef();
-    this.pricingRef = React.createRef();
     this.helpRef = React.createRef();
   }
 
@@ -32,10 +30,6 @@ class Home extends Component {
       });
     else if (this.props.selectedSection === "About")
       this.aboutRef.current.scrollIntoView({
-        behavior: "smooth"
-      });
-    else if (this.props.selectedSection === "Pricing")
-      this.pricingRef.current.scrollIntoView({
         behavior: "smooth"
       });
     else if (this.props.selectedSection === "Help")
@@ -59,9 +53,6 @@ class Home extends Component {
         </div>
         <div ref={this.helpRef}>
           <HelpSection />
-        </div>
-        <div ref={this.pricingRef}>
-          <PricingSection />
         </div>
         <div ref={this.aboutRef}>
           <Footer />

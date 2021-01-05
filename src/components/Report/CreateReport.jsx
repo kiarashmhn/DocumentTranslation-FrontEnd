@@ -9,9 +9,7 @@ import { IdentityCertificateReportData } from "./IdentityCertificateReportData";
 const alignmentCenter = { vertical: "middle", horizontal: "center" };
 const alignmentRight = { vertical: "middle", horizontal: "right" };
 const alignmentLeft = { vertical: "middle", horizontal: "left" };
-const signature1 = "Daniel MOVAHHEDI Expert Traducteur et Interprète en ";
-const signature2 = "Tél : 0033 (0) 6 49 60 82 93, Mail : md_movahedi@yahoo.fr";
-const signature3 = "langue dari, farsi et persan près la cour d'appel de Caen,";
+const signature = "www….fr - Plate-forme des Experts Traducteurs Assermentés";
 
 const signatureFont = {
   name: "Times",
@@ -105,18 +103,22 @@ export default class CreateReport extends Component {
     return rowCount;
   };
 
-  writeFooter = (worksheet, data, rowCount) => {
+  writeFooter = (worksheet, rowCount) => {
     let first = "-------------------------------------------------------------";
     let second = `Pour traduction conforme au texte Persan - Caen, le ${new Date().getDate() +
       "/" +
-      new Date().getMonth() +
+      (new Date().getMonth() + 1) +
       "/" +
       new Date().getFullYear()}`;
+
+    let third = "Ref : " + this.props.id;
 
     rowCount += 1;
     this.writeText(worksheet, rowCount, false, first);
     rowCount += 1;
     this.writeText(worksheet, rowCount, false, second);
+    rowCount += 1;
+    this.writeText(worksheet, rowCount, false, third);
     return rowCount;
   };
 
@@ -129,21 +131,7 @@ export default class CreateReport extends Component {
     let signatureCell1 = worksheet.getCell(`A${rowCount}`);
     signatureCell1.alignment = alignmentCenter;
     signatureCell1.font = signatureFont;
-    signatureCell1.value = signature1;
-
-    rowCount += 1;
-    worksheet.mergeCells("A" + rowCount + ":" + "I" + rowCount);
-    let signatureCell3 = worksheet.getCell(`A${rowCount}`);
-    signatureCell3.alignment = alignmentCenter;
-    signatureCell3.font = signatureFont;
-    signatureCell3.value = signature3;
-
-    rowCount += 1;
-    worksheet.mergeCells("A" + rowCount + ":" + "I" + rowCount);
-    let signatureCell2 = worksheet.getCell(`A${rowCount}`);
-    signatureCell2.alignment = alignmentCenter;
-    signatureCell2.font = signatureFont;
-    signatureCell2.value = signature2;
+    signatureCell1.value = signature;
 
     return rowCount;
   };
@@ -195,7 +183,7 @@ export default class CreateReport extends Component {
     });
     rowCount += 1;
     this.writeText(worksheet, rowCount, false, "");
-    rowCount = this.writeFooter(worksheet, this.props.data, rowCount);
+    rowCount = this.writeFooter(worksheet, rowCount);
     rowCount = this.writeSignature(worksheet, rowCount);
     return rowCount;
   };
@@ -235,5 +223,6 @@ export default class CreateReport extends Component {
   }
 }
 CreateReport.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  id: PropTypes.number
 };
