@@ -14,7 +14,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import HowToRegIcon from "@material-ui/icons/HowToReg";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
-import BookIcon from "@material-ui/icons/Book";
+//import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../Template/NavigationDrawer";
 import "../../index.css";
 
@@ -85,11 +85,11 @@ class NavBar extends Component {
         onClick: selectHomeSection,
         icon: <HomeIcon className="text-white" />
       },
-      {
+      /*{
         link: "/blog",
         name: "بلاگ",
         icon: <BookIcon className="text-white" />
-      },
+      },*/
       {
         name: "ثبت نام",
         onClick: openRegisterDialog,
