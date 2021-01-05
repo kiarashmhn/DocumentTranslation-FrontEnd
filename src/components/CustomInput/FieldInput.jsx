@@ -12,6 +12,7 @@ export default class FieldInput extends Component {
   render() {
     return (
       <CustomInput
+        type={this.props.type ? this.props.type : "text"}
         required={!this.props.notRequired}
         labelText={getFrenchName(this.props.name)}
         helperText={getPersianName(this.props.name)}
@@ -28,9 +29,9 @@ export default class FieldInput extends Component {
                   <InputAdornment position="end">
                     <CustomTooltip
                       text={
-                        getHint(this.props.name).persian +
+                        getHint(this.props.name).french +
                         "\n" +
-                        getHint(this.props.name).french
+                        getHint(this.props.name).persian
                       }
                     />
                   </InputAdornment>
@@ -46,5 +47,6 @@ FieldInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
-  notRequired: PropTypes.bool
+  notRequired: PropTypes.bool,
+  type: PropTypes.string
 };

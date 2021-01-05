@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
-import CustomInput from "../CustomInput/CustomInput";
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
-import { getCompleteName } from "../../Dictionary";
+import { getCompleteName, getHint } from "../../Dictionary";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import FieldInput from "../CustomInput/FieldInput";
+import CustomTooltip from "../Tooltip/CustomTooltip";
+import * as moment from "jalali-moment";
 
 const initialState = {
   year: "",
@@ -41,30 +43,36 @@ export default class CustomDateInput extends Component {
   }
 
   getState = () => {
-    return this.state.year + "/" + this.state.month + "/" + this.state.day;
+    let date =
+      this.state.year +
+      "/" +
+      this.getCorrect(this.state.month) +
+      "/" +
+      this.getCorrect(this.state.day);
+    if (parseInt(this.state.year) < 1600)
+      date = moment.from(date, "fa", "YYYY/MM/DD").format("YYYY/MM/DD");
+    return date;
+  };
+
+  getCorrect = number => {
+    if (number < 10) return "0" + number;
+    return number;
   };
 
   render() {
     return (
       <Fragment>
         <Grid container spacing={1}>
-          <Grid item xs={3} sm={3} md={4} key={"year"}>
-            <CustomInput
-              required
+          <Grid item xs={4} sm={4} md={4} key={"year"}>
+            <FieldInput
               type={"number"}
-              labelText="سال"
-              id="year"
+              name={"year"}
               value={this.state.year}
               onChange={e =>
-                this.setState({ year: e.target.value }, () => {
+                this.setState({ year: parseInt(e.target.value, 10) }, () => {
                   this.props.onChange(this.getState());
                 })
               }
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{ maxLength: 4 }}
-              hint={"سال"}
             />
           </Grid>
           <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash2"}>
@@ -77,22 +85,15 @@ export default class CustomDateInput extends Component {
             </Typography>
           </Grid>
           <Grid item xs={2} sm={2} md={3} key={"month"}>
-            <CustomInput
-              required
+            <FieldInput
               type={"number"}
-              labelText="ماه"
-              id="month"
+              name={"month"}
               value={this.state.month}
               onChange={e =>
-                this.setState({ month: e.target.value }, () => {
+                this.setState({ month: parseInt(e.target.value, 10) }, () => {
                   this.props.onChange(this.getState());
                 })
               }
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{ maxLength: 2, min: 1, max: 12 }}
-              hint={"ماه"}
             />
           </Grid>
           <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash1"}>
@@ -105,31 +106,34 @@ export default class CustomDateInput extends Component {
             </Typography>
           </Grid>
           <Grid item xs={2} sm={2} md={3} key={"day"}>
-            <CustomInput
-              required
+            <FieldInput
               type={"number"}
-              labelText="روز"
-              id="day"
+              name={"day"}
               value={this.state.day}
               onChange={e =>
-                this.setState({ day: e.target.value }, () => {
+                this.setState({ day: parseInt(e.target.value, 10) }, () => {
                   this.props.onChange(this.getState());
                 })
               }
-              formControlProps={{
-                fullWidth: true
-              }}
-              inputProps={{ maxLength: 2 }}
-              hint={"روز"}
             />
+          </Grid>
+          <Grid item xs={2} sm={2} md={1} key={"day"}>
+            <div style={{ marginTop: "45px" }}>
+              <CustomTooltip
+                text={getHint("date").french + "\n" + getHint("date").persian}
+              />
+            </div>
           </Grid>
         </Grid>
         <div
           style={{
+            display: "flex",
             position: "relative",
             alignItems: "center",
+            justifyContent: "center",
             direction: "ltr",
-            top: 0
+            top: 0,
+            marginTop: 0
           }}
         >
           <FormHelperText

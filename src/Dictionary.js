@@ -201,12 +201,32 @@ export const Dictionary = {
   helpLanguage: {
     persian: "راهنمای فارسی",
     french: "Aide en français"
+  },
+  month: {
+    persian: "ماه",
+    french: "Mois"
+  },
+  year: {
+    persian: "سال",
+    french: "An"
+  },
+  day: {
+    persian: "روز",
+    french: "Jour"
+  },
+  date: {
+    persian: "تاریخ",
+    french: "date",
+    hint: {
+      persian: "تاریخ را می توانید به شمسی یا میلادی وارد کنید",
+      french: "Vous pouvez entrer la date en solaire ou grégorien"
+    }
   }
 };
 
 export const getCompleteName = text => {
   if (Dictionary[text])
-    return Dictionary[text].french + "/" + Dictionary[text].persian;
+    return Dictionary[text].french + " / " + Dictionary[text].persian;
   return null;
 };
 
