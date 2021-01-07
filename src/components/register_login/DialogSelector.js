@@ -33,6 +33,7 @@ function DialogSelector(props) {
             openTermsDialog={openTermsDialog}
             status={registerStatus}
             setStatus={setRegisterStatus}
+            openLoginDialog={openLoginDialog}
           />
         );
       case "termsOfService":

@@ -4,9 +4,7 @@ import {
   FormHelperText,
   TextField,
   Button,
-  Checkbox,
   Typography,
-  FormControlLabel,
   withStyles
 } from "@material-ui/core";
 import FormDialog from "../Template/FormDialog";
@@ -24,12 +22,12 @@ const styles = theme => ({
       easing: theme.transitions.easing.easeInOut
     }),
     cursor: "pointer",
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
     "&:enabled:hover": {
-      color: theme.palette.primary.dark
+      color: theme.palette.secondary.dark
     },
     "&:enabled:focus": {
-      color: theme.palette.primary.dark
+      color: theme.palette.secondary.dark
     }
   }
 });
@@ -39,11 +37,11 @@ function RegisterDialog(props) {
     setStatus,
     theme,
     onClose,
-    openTermsDialog,
     status,
     classes,
     showSnackbar,
-    history
+    history,
+    openLoginDialog
   } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [hasTermsOfServiceError, setHasTermsOfServiceError] = useState(false);
@@ -242,41 +240,27 @@ function RegisterDialog(props) {
             isVisible={isPasswordVisible}
             onVisibilityChange={setIsPasswordVisible}
           />
-          <FormControlLabel
-            style={{ marginRight: 0 }}
-            control={
-              <Checkbox
-                color="primary"
-                inputRef={registerTermsCheckbox}
-                onChange={() => {
-                  setHasTermsOfServiceError(false);
-                }}
-              />
-            }
-            label={
-              <Typography variant="body1">
-                شرایط و مقررات
-                <span
-                  className={classes.link}
-                  onClick={isLoading ? null : openTermsDialog}
-                  tabIndex={0}
-                  role="button"
-                  onKeyDown={event => {
-                    // For screenreaders listen to space and enter events
-                    if (
-                      (!isLoading && event.keyCode === 13) ||
-                      event.keyCode === 32
-                    ) {
-                      openTermsDialog();
-                    }
-                  }}
-                >
-                  {" "}
-                  را تایید می‌کنم
-                </span>
-              </Typography>
-            }
-          />
+          <Typography variant="body1" dir={"rtl"}>
+            قبلا حساب شخصی ساخته اید؟
+            <span
+              className={classes.link}
+              onClick={isLoading ? null : openLoginDialog}
+              tabIndex={0}
+              role="button"
+              onKeyDown={event => {
+                // For screenreaders listen to space and enter events
+                if (
+                  (!isLoading && event.keyCode === 13) ||
+                  event.keyCode === 32
+                ) {
+                  openLoginDialog();
+                }
+              }}
+            >
+              {" "}
+              ورود
+            </span>
+          </Typography>
           {hasTermsOfServiceError && (
             <FormHelperText
               error
@@ -314,6 +298,7 @@ RegisterDialog.propTypes = {
   theme: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   openTermsDialog: PropTypes.func.isRequired,
+  openLoginDialog: PropTypes.func.isRequired,
   status: PropTypes.string,
   setStatus: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
