@@ -66,7 +66,8 @@ export default class Api {
       },
       data: {
         ...postData,
-        username: localStorage.getItem("username")
+        username: localStorage.getItem("username"),
+        adminName: localStorage.getItem("username")
       }
     })
       .then(function(response) {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
-import DynamicallyIcon from "../../utils/DynamicallyIcon";
+import DynamicallyIcon from "../../components/utils/DynamicallyIcon";
 import CircularIndeterminate from "./CircularProgress";
 
 import IconButton from "@material-ui/core/IconButton";
@@ -57,5 +57,6 @@ export default withStyles(useStyles)(ProgressibleButton);
 ProgressibleButton.propTypes = {
   passedFunction: PropTypes.func,
   icon: PropTypes.any,
-  color: PropTypes.string
+  color: PropTypes.string,
+  classes: PropTypes.any
 };
