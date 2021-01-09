@@ -16,6 +16,7 @@ import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../Template/VisibilityPasswordTextField";
 import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
+import * as URLConstant from "../../URLConstant";
 
 const styles = theme => ({
   forgotPassword: {
@@ -62,7 +63,9 @@ function LoginDialog(props) {
     Auth.login(username.current.value, loginPassword.current.value)
       .then(function(res) {
         if (res.success) {
-          history.push("/userPanel");
+          Auth.isAdmin()
+            ? history.push(URLConstant.ADMIN_PANEL)
+            : history.push(URLConstant.USER_PANEL);
           showSnackbar(res.message, "success");
         } else {
           setStatus("invalidUsernameOrPassword");

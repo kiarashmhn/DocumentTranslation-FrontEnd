@@ -50,6 +50,11 @@ export default class AuthService {
     return token && !this.isTokenExpired();
   }
 
+  isAdmin() {
+    let level = localStorage.getItem("level");
+    return this.loggedIn() && level === "1";
+  }
+
   isTokenExpired() {
     try {
       const decoded = localStorage.getItem("exp_token");

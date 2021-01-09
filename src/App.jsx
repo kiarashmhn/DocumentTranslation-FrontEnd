@@ -13,6 +13,9 @@ import Snackbar from "./components/Snackbar/Snackbar";
 import snackbarReducer from "./components/Snackbar/SnackbarReducer";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import CreateOrder from "./components/order/CreateOrder";
+import * as URLConstant from "./URLConstant";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
@@ -29,9 +32,14 @@ class App extends Component {
             <Pace color={theme.palette.secondary.main} />
             <Suspense fallback={<Fragment />}>
               <Switch>
-                <Route path="/userPanel">
-                  <UserPanel />
-                </Route>
+                <PrivateRoute
+                  path={URLConstant.ADMIN_PANEL}
+                  component={CreateOrder}
+                />
+                <PrivateRoute
+                  path={URLConstant.USER_PANEL}
+                  component={UserPanel}
+                />
                 <Route>
                   <HomePage />
                 </Route>
