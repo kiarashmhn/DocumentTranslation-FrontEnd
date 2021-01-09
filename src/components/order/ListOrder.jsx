@@ -9,12 +9,14 @@ import * as ColorPalette from "../ColorPalette";
 import EditViewOrder from "./EditViewOrder";
 import ProgressibleButton from "../Progress/ProgressibleButton";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
+import Api from "../Api/Api";
 
 class ListOrder extends Component {
   constructor(props) {
     super(props);
     this.refElement = React.createRef();
     this.progressElementRef = {};
+    this.api = new Api();
     this.state = {
       open: false,
       itemId: ""
@@ -35,7 +37,7 @@ class ListOrder extends Component {
   claim = itemId => {
     let self = this;
     let postData = {
-      id: itemId
+      orderId: itemId
     };
     this.api
       .doPost(
@@ -47,6 +49,7 @@ class ListOrder extends Component {
       .then(function(res) {
         self.props.showSnackbar(res.message, res.success ? "success" : "error");
         self.progressElementRef[itemId].setLoding(false);
+        self.getData();
       })
       .catch(function() {
         self.progressElementRef[itemId].setLoding(false);
@@ -91,17 +94,22 @@ class ListOrder extends Component {
           name: "id",
           label: "مشاهده",
           options: {
-            customBodyRender: value => {
+            customBodyRender: (value, meta) => {
               if (value !== undefined && value !== null) {
-                return (
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => this.handleClickOpen(value)}
-                    style={{ color: ColorPalette.cornflowerblue }}
-                  >
-                    <Info fontSize="small" />
-                  </IconButton>
-                );
+                if (
+                  (this.props.type && this.props.type === "ADMIN") ||
+                  (meta.rowData && meta.rowData[3] !== "درحال انجام/En cours")
+                ) {
+                  return (
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => this.handleClickOpen(value)}
+                      style={{ color: ColorPalette.cornflowerblue }}
+                    >
+                      <Info fontSize="small" />
+                    </IconButton>
+                  );
+                }
               }
             }
           }
@@ -118,7 +126,7 @@ class ListOrder extends Component {
               value !== undefined &&
               value !== null &&
               meta.rowData &&
-              meta.rowData[3] ===
+              meta.rowData[4] ===
                 "در انتظار پذیرش توسط مسئول ترجمه/En attente d'acceptation"
             ) {
               return (
@@ -156,13 +164,22 @@ class ListOrder extends Component {
           url={url}
           method={"Post"}
           title={title}
-          additionalData={{
-            username: localStorage.getItem("username")
-          }}
+          additionalData={
+            this.props.type === "ADMIN"
+              ? {}
+              : {
+                  username: localStorage.getItem("username")
+                }
+          }
         />
         <CustomDialogs
           title="ویرایش سفارش"
-          component={<EditViewOrder itemId={parseInt(this.state.itemId)} />}
+          component={
+            <EditViewOrder
+              itemId={parseInt(this.state.itemId)}
+              type={this.props.type}
+            />
+          }
           handleClose={this.handleClose}
           open={this.state.open}
           itemId={this.state.itemId}

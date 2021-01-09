@@ -100,7 +100,9 @@ class EditViewOrder extends Component {
   render() {
     return (
       <Fragment>
-        <CreateReport data={this.state.initialState} id={this.props.itemId} />
+        {this.props.type === "ADMIN" && (
+          <CreateReport data={this.state.initialState} id={this.props.itemId} />
+        )}
         <IdentityCertificate
           ref={this.identityCertificateRef}
           onSubmit={this.handleSubmit}
@@ -114,7 +116,8 @@ class EditViewOrder extends Component {
 }
 
 EditViewOrder.propTypes = {
-  itemId: PropTypes.number.isRequired
+  itemId: PropTypes.number.isRequired,
+  type: PropTypes.string
 };
 
 export default SnackbarWrapper(EditViewOrder);

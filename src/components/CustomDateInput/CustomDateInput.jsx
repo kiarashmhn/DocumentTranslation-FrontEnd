@@ -117,7 +117,7 @@ export default class CustomDateInput extends Component {
               }
             />
           </Grid>
-          <Grid item xs={2} sm={2} md={1} key={"day"}>
+          <Grid item xs={2} sm={2} md={1} key={"hint"}>
             <div style={{ marginTop: "45px", position: "relative" }}>
               <CustomTooltip
                 text={getHint("date").french + "\n" + getHint("date").persian}

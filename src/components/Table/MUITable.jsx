@@ -32,8 +32,7 @@ export default class MUITable extends Component {
   }
 
   shouldComponentUpdate() {
-    if (this.state.data === [["در حال دریافت..."]]) return false;
-    else return true;
+    return this.state.data !== [["در حال دریافت..."]];
   }
 
   getData = filterInputs => {
@@ -114,13 +113,13 @@ export default class MUITable extends Component {
           });
   };
 
-  changePage = (page, tableState) => {
+  changePage = page => {
     this.setState({
       isLoading: true,
       data: [["در حال دریافت..."]]
     });
 
-    let begin = page * tableState.rowsPerPage;
+    let begin = page * 10;
 
     this.xhrRequest(begin, this.state.currentFilters).then(res => {
       let data = res.data;
@@ -132,7 +131,7 @@ export default class MUITable extends Component {
         isLoading: false,
         page: page,
         data: data,
-        count: res.data.count
+        count: res.count
       });
     });
   };
@@ -211,7 +210,7 @@ export default class MUITable extends Component {
       viewColumns: false,
       onTableChange: (action, tableState) => {
         if (action === "changePage") {
-          this.changePage(tableState.page, tableState);
+          this.changePage(tableState.page);
         }
       },
       textLabels: {
