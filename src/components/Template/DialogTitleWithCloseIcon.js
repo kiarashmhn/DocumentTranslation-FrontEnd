@@ -34,7 +34,9 @@ function DialogTitleWithCloseIcon(props) {
       disableTypography
     >
       <Box display="flex" justifyContent="space-between">
-        <Typography variant="h5">{title}</Typography>
+        <div style={{ justifyContent: "center", alignItems: "center" }}>
+          <Typography variant="h5">{title}</Typography>
+        </div>
         <IconButton
           onClick={onClose}
           style={{ marginRight: -12, marginTop: -10 }}

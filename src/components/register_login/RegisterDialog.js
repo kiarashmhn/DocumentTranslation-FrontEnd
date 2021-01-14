@@ -1,12 +1,6 @@
 import React, { useState, useCallback, useRef, Fragment } from "react";
 import PropTypes from "prop-types";
-import {
-  FormHelperText,
-  TextField,
-  Button,
-  Typography,
-  withStyles
-} from "@material-ui/core";
+import { TextField, Button, Typography, withStyles } from "@material-ui/core";
 import FormDialog from "../Template/FormDialog";
 import HighlightedInformation from "../Template/HighlightedInformation";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
@@ -14,6 +8,7 @@ import VisibilityPasswordTextField from "../Template/VisibilityPasswordTextField
 import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { withRouter } from "react-router-dom";
+import Box from "@material-ui/core/Box";
 
 const styles = theme => ({
   link: {
@@ -35,7 +30,6 @@ const styles = theme => ({
 function RegisterDialog(props) {
   const {
     setStatus,
-    theme,
     onClose,
     status,
     classes,
@@ -44,13 +38,12 @@ function RegisterDialog(props) {
     openLoginDialog
   } = props;
   const [isLoading, setIsLoading] = useState(false);
-  const [hasTermsOfServiceError, setHasTermsOfServiceError] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const registerTermsCheckbox = useRef();
   const registerPassword = useRef();
   const registerPasswordRepeat = useRef();
   const username = useRef();
   const email = useRef();
+  const phone = useRef();
 
   const Auth = new AuthService();
 
@@ -61,10 +54,6 @@ function RegisterDialog(props) {
   };
 
   const register = useCallback(() => {
-    if (!registerTermsCheckbox.current.checked) {
-      setHasTermsOfServiceError(true);
-      return;
-    }
     if (
       registerPassword.current.value !== registerPasswordRepeat.current.value
     ) {
@@ -77,7 +66,12 @@ function RegisterDialog(props) {
       return;
     }
 
-    if (!validateEmail(email.current.value)) {
+    if (!email.current.value && !phone.current.value) {
+      setStatus("nullEmailPhone");
+      return;
+    }
+
+    if (email.current.value && !validateEmail(email.current.value)) {
       setStatus("invalidEmail");
       return;
     }
@@ -107,14 +101,7 @@ function RegisterDialog(props) {
       .catch(function() {
         setIsLoading(false);
       });
-  }, [
-    setIsLoading,
-    setStatus,
-    setHasTermsOfServiceError,
-    registerPassword,
-    registerPasswordRepeat,
-    registerTermsCheckbox
-  ]);
+  }, [setIsLoading, setStatus, registerPassword, registerPasswordRepeat]);
 
   return (
     <FormDialog
@@ -131,34 +118,11 @@ function RegisterDialog(props) {
       content={
         <Fragment>
           <TextField
-            inputRef={email}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            error={status === "invalidEmail"}
-            label="آدرس ایمیل"
-            autoFocus
-            autoComplete="off"
-            type="text"
-            helperText={(() => {
-              if (status === "invalidEmail") {
-                return "ایمیل وارد شده نامعتبر است";
-              }
-              return null;
-            })()}
-            onChange={() => {
-              if (status === "invalidEmail") {
-                setStatus(null);
-              }
-            }}
-            FormHelperTextProps={{ error: true }}
-          />
-          <TextField
             inputRef={username}
             variant="outlined"
             margin="normal"
             required
+            autoFocus
             fullWidth
             error={status === "invalidUsername"}
             label="نام کاربری"
@@ -172,6 +136,50 @@ function RegisterDialog(props) {
             })()}
             onChange={() => {
               if (status === "invalidUsername") {
+                setStatus(null);
+              }
+            }}
+            FormHelperTextProps={{ error: true }}
+          />
+          <TextField
+            inputRef={email}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            error={status === "invalidEmail" || status === "nullEmailPhone"}
+            label="آدرس ایمیل"
+            autoComplete="off"
+            type="text"
+            helperText={(() => {
+              if (status === "invalidEmail")
+                return "ایمیل وارد شده نامعتبر است";
+              if (status === "nullEmailPhone")
+                return "آدرس ایمیل یا شماره موبایل را وارد کنید";
+              return null;
+            })()}
+            onChange={() => {
+              if (status === "invalidEmail" || status === "nullEmailPhone") {
+                setStatus(null);
+              }
+            }}
+            FormHelperTextProps={{ error: true }}
+          />
+          <TextField
+            inputRef={phone}
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            error={status === "nullEmailPhone"}
+            label="شماره موبایل"
+            autoComplete="off"
+            type="number"
+            helperText={(() => {
+              if (status === "nullEmailPhone")
+                return "آدرس ایمیل یا شماره موبایل را وارد کنید";
+              return null;
+            })()}
+            onChange={() => {
+              if (status === "nullEmailPhone") {
                 setStatus(null);
               }
             }}
@@ -240,38 +248,39 @@ function RegisterDialog(props) {
             isVisible={isPasswordVisible}
             onVisibilityChange={setIsPasswordVisible}
           />
-          <Typography variant="body1" dir={"rtl"}>
-            قبلا حساب شخصی ساخته اید؟
-            <span
-              className={classes.link}
-              onClick={isLoading ? null : openLoginDialog}
-              tabIndex={0}
-              role="button"
-              onKeyDown={event => {
-                // For screenreaders listen to space and enter events
-                if (
-                  (!isLoading && event.keyCode === 13) ||
-                  event.keyCode === 32
-                ) {
-                  openLoginDialog();
+          <Box fontWeight="fontWeightBold">
+            <Typography
+              variant="body1"
+              dir={"rtl"}
+              style={{
+                useNextVariants: true,
+                suppressDeprecationWarnings: true,
+                h6: {
+                  fontWeight: 600
                 }
               }}
             >
-              {" "}
-              ورود
-            </span>
-          </Typography>
-          {hasTermsOfServiceError && (
-            <FormHelperText
-              error
-              style={{
-                display: "block",
-                marginTop: theme.spacing(-1)
-              }}
-            >
-              برای ساخت پروفایل باید شرایط و مقررات را تایید کنید
-            </FormHelperText>
-          )}
+              قبلا حساب شخصی ساخته اید؟
+              <span
+                className={classes.link}
+                onClick={isLoading ? null : openLoginDialog}
+                tabIndex={0}
+                role="button"
+                onKeyDown={event => {
+                  // For screenreaders listen to space and enter events
+                  if (
+                    (!isLoading && event.keyCode === 13) ||
+                    event.keyCode === 32
+                  ) {
+                    openLoginDialog();
+                  }
+                }}
+              >
+                {" "}
+                ورود
+              </span>
+            </Typography>
+          </Box>
           {status === "accountCreated" ? (
             <HighlightedInformation>اکانت شما ساخته شد.</HighlightedInformation>
           ) : null}

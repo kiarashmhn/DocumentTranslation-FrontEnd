@@ -231,7 +231,7 @@ class Footer extends Component {
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <Typography variant="h6" paragraph className="text-white">
-                à propos de nous
+                À propos de nous
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
                 Notre plateforme est pour but de créer une communauté des

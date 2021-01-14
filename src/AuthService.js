@@ -7,24 +7,31 @@ export default class AuthService {
     this.login = this.login.bind(this);
   }
 
-  register(username, password, email) {
-    return this.authenticate(username, password, URLConstant.REGISTER, email);
+  register(username, password, email, phone) {
+    return this.authenticate(
+      username,
+      password,
+      URLConstant.REGISTER,
+      email,
+      phone
+    );
   }
 
   login(username, password) {
-    return this.authenticate(username, password, URLConstant.LOGIN, "");
+    return this.authenticate(username, password, URLConstant.LOGIN, "", "");
   }
 
   getUsername() {
     return localStorage.getItem("username");
   }
 
-  authenticate(username, password, url, email) {
+  authenticate(username, password, url, email, phone) {
     return axios({
       method: "post",
       url: `${this.domain + process.env.REACT_APP_MAIN_PATH + url}`,
       data: {
         email: email,
+        phone: phone,
         username: username,
         password: password
       }

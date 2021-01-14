@@ -208,7 +208,7 @@ export const Dictionary = {
   },
   year: {
     persian: "سال",
-    french: "An"
+    french: "Annee"
   },
   day: {
     persian: "روز",
