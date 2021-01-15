@@ -113,6 +113,10 @@ export default class MUITable extends Component {
           });
   };
 
+  reload = () => {
+    this.changePage(this.state.page);
+  };
+
   changePage = page => {
     this.setState({
       isLoading: true,

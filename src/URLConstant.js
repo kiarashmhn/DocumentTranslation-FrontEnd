@@ -8,3 +8,4 @@ export const USER_PANEL = "/userPanel";
 export const CLAIM_ORDER = "/order/assign";
 export const GET_USER = "/admin/get";
 export const UPDATE_USER = "/admin/update";
+export const GET_ADMINS = "/admin/gets";

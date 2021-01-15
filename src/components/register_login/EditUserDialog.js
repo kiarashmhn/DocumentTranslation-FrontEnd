@@ -38,6 +38,8 @@ function EditUserDialog(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+  const api = new Api();
+
   useEffect(() => {
     (async function getUser() {
       await api
@@ -73,8 +75,6 @@ function EditUserDialog(props) {
         });
     })();
   }, [setUsername, setEmail, setPhone, setIsLoading]);
-
-  const api = new Api();
 
   const validateEmail = email => {
     // eslint-disable-next-line no-useless-escape

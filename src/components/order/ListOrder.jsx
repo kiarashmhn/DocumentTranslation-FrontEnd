@@ -12,6 +12,7 @@ import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import Api from "../Api/Api";
 import { withStyles } from "@material-ui/core";
 import EditUserDialog from "../register_login/EditUserDialog";
+import SelectAdminDialog from "../register_login/SelectAdminDialog";
 
 const styles = theme => ({
   link: {
@@ -34,12 +35,12 @@ const styles = theme => ({
       easing: theme.transitions.easing.easeInOut
     }),
     cursor: "pointer",
-    color: theme.palette.primary.main,
+    color: theme.palette.danger.main,
     "&:enabled:hover": {
-      color: theme.palette.primary.dark
+      color: theme.palette.danger.main
     },
     "&:enabled:focus": {
-      color: theme.palette.primary.dark
+      color: theme.palette.danger.main
     }
   }
 });
@@ -53,13 +54,15 @@ class ListOrder extends Component {
     this.state = {
       open: false,
       openUser: false,
+      openAdmins: false,
       itemId: "",
-      username: ""
+      username: "",
+      adminName: ""
     };
   }
 
   getData = () => {
-    this.refElement.current.getData();
+    this.refElement.current.reload();
   };
 
   handleClickOpen = itemId => {
@@ -67,6 +70,23 @@ class ListOrder extends Component {
       open: true,
       itemId: itemId
     });
+  };
+
+  handleClickOpenAdmins = (itemId, adminName) => {
+    this.setState({
+      openAdmins: true,
+      itemId: itemId,
+      adminName: adminName
+    });
+  };
+
+  handleClickCloseAdmins = () => {
+    this.setState({
+      openAdmins: false,
+      itemId: "",
+      adminName: ""
+    });
+    this.getData();
   };
 
   handleClickOpenUser = username => {
@@ -81,6 +101,7 @@ class ListOrder extends Component {
       openUser: false,
       username: ""
     });
+    this.getData();
   };
 
   claim = itemId => {
@@ -107,6 +128,7 @@ class ListOrder extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+    this.getData();
   };
 
   getColumns = () => {
@@ -114,6 +136,10 @@ class ListOrder extends Component {
       {
         name: "rowId",
         label: "شماره ردیف"
+      },
+      {
+        name: "id",
+        label: "شناسه سفارش"
       }
     ];
 
@@ -131,7 +157,6 @@ class ListOrder extends Component {
                   tabIndex={0}
                   role="button"
                   onKeyDown={event => {
-                    // For screenreaders listen to space and enter events
                     if (event.keyCode === 13 || event.keyCode === 32) {
                       this.handleClickOpenUser(value);
                     }
@@ -145,16 +170,59 @@ class ListOrder extends Component {
         }
       });
 
+    if (this.props.type && this.props.type === "ADMIN")
+      columns.push({
+        name: "adminName",
+        label: "مسئول",
+        options: {
+          customBodyRender: (value, meta) => {
+            if (value !== undefined && value !== null) {
+              return (
+                <span
+                  className={this.props.classes.link}
+                  onClick={() =>
+                    this.handleClickOpenAdmins(meta.rowData[1], value)
+                  }
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={event => {
+                    if (event.keyCode === 13 || event.keyCode === 32) {
+                      this.handleClickOpenAdmins(meta.rowData[1], value);
+                    }
+                  }}
+                >
+                  {value}
+                </span>
+              );
+            } else {
+              return (
+                <span
+                  className={this.props.classes.emptyLink}
+                  onClick={() =>
+                    this.handleClickOpenAdmins(meta.rowData[1], null)
+                  }
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={event => {
+                    if (event.keyCode === 13 || event.keyCode === 32) {
+                      this.handleClickOpenAdmins(meta.rowData[1], null);
+                    }
+                  }}
+                >
+                  بدون مسئول
+                </span>
+              );
+            }
+          }
+        }
+      });
+
     columns = [
       ...columns,
       ...[
         {
           name: "type",
           label: "نوع سفارش"
-        },
-        {
-          name: "id",
-          label: "شناسه سفارش"
         },
         {
           name: "status",
@@ -200,7 +268,7 @@ class ListOrder extends Component {
               value !== undefined &&
               value !== null &&
               meta.rowData &&
-              meta.rowData[4] ===
+              meta.rowData[5] ===
                 "در انتظار پذیرش توسط مسئول ترجمه/En attente d'acceptation"
             ) {
               return (
@@ -262,6 +330,13 @@ class ListOrder extends Component {
           <EditUserDialog
             name={this.state.username}
             onClose={this.handleClickCloseUser}
+          />
+        )}
+        {this.state.openAdmins && (
+          <SelectAdminDialog
+            adminName={this.state.adminName}
+            itemId={this.state.itemId}
+            onClose={this.handleClickCloseAdmins}
           />
         )}
       </Fragment>
