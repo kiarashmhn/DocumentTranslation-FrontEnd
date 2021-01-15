@@ -8,7 +8,6 @@ import Api from "../Api/Api";
 import FormDialog from "../Template/FormDialog";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import MultiSingleDropdown from "../Dropdown/MultiSingleDropdown";
-import Grid from "@material-ui/core/Grid";
 
 const styles = theme => ({
   link: {
@@ -104,21 +103,19 @@ function SelectAdminDialog(props) {
       hideBackdrop
       hasCloseIcon
       content={
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12} sm={12}>
-            <MultiSingleDropdown
-              title={"انتخاب مسئول"}
-              value={admin ? { value: admin, label: admin } : null}
-              handleChange={e => {
-                setAdmin(e.value);
-              }}
-              syncOptions={admins}
-              isAsync={false}
-              isMultiple={false}
-              isDisabled={false}
-            />
-          </Grid>
-        </Grid>
+        <div style={{ margin: "normal", width: "100%" }}>
+          <MultiSingleDropdown
+            title={"انتخاب مسئول"}
+            value={admin ? { value: admin, label: admin } : null}
+            handleChange={e => {
+              setAdmin(e.value);
+            }}
+            syncOptions={admins}
+            isAsync={false}
+            isMultiple={false}
+            isDisabled={false}
+          />
+        </div>
       }
       actions={
         <Button

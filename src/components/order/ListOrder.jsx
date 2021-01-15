@@ -99,7 +99,6 @@ class ListOrder extends Component {
       openUser: false,
       username: ""
     });
-    this.getData();
   };
 
   handleClose = () => {

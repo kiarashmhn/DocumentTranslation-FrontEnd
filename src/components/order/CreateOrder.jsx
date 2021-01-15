@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import MediaCard from "../MediaCard";
-import IdentityCertificate from "./IdentityCertificate";
 import PropTypes from "prop-types";
 import image from "../../images/identityCard.jpg";
 import FullScreenDialog from "../FullScreenDialog";
@@ -11,6 +10,8 @@ import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { OrderTypes } from "./OrderTypes";
 import { OrderStatus } from "./OrderStatus";
 import Box from "@material-ui/core/Box";
+import CreateOrderForm from "./CreateOrderForm";
+import { idCertificateForm } from "./IDCertificate";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class CreateOrder extends Component {
     this.api = new Api();
     this.state = {
       openIdentityDialog: false,
-      isLoading: false
+      isLoading: false,
+      id: null
     };
   }
 
@@ -51,9 +53,17 @@ class CreateOrder extends Component {
       )
       .then(function(res) {
         self.props.showSnackbar(res.message, res.success ? "success" : "error");
-        self.setState({
-          isLoading: false
-        });
+        self.setState(
+          {
+            isLoading: false
+          },
+          () => {
+            if (res.success)
+              self.setState({
+                id: res.data.id
+              });
+          }
+        );
         if (close && res.success)
           self.setState({
             openIdentityDialog: false
@@ -127,7 +137,8 @@ class CreateOrder extends Component {
             <FullScreenDialog
               title="test"
               component={
-                <IdentityCertificate
+                <CreateOrderForm
+                  form={idCertificateForm}
                   ref={this.identityCertificateRef}
                   onSubmit={this.handleSubmit}
                   onSave={this.handleSave}
