@@ -7,7 +7,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Info from "@material-ui/icons/Info";
 import * as ColorPalette from "../ColorPalette";
 import EditViewOrder from "./EditViewOrder";
-import ProgressibleButton from "../Progress/ProgressibleButton";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import Api from "../Api/Api";
 import { withStyles } from "@material-ui/core";
@@ -49,7 +48,6 @@ class ListOrder extends Component {
   constructor(props) {
     super(props);
     this.refElement = React.createRef();
-    this.progressElementRef = {};
     this.api = new Api();
     this.state = {
       open: false,
@@ -104,28 +102,6 @@ class ListOrder extends Component {
     this.getData();
   };
 
-  claim = itemId => {
-    let self = this;
-    let postData = {
-      orderId: itemId
-    };
-    this.api
-      .doPost(
-        process.env.REACT_APP_HOST_URL +
-          process.env.REACT_APP_MAIN_PATH +
-          URLConstant.CLAIM_ORDER,
-        postData
-      )
-      .then(function(res) {
-        self.props.showSnackbar(res.message, res.success ? "success" : "error");
-        self.progressElementRef[itemId].setLoding(false);
-        self.getData();
-      })
-      .catch(function() {
-        self.progressElementRef[itemId].setLoding(false);
-      });
-  };
-
   handleClose = () => {
     this.setState({ open: false });
     this.getData();
@@ -176,42 +152,49 @@ class ListOrder extends Component {
         label: "مسئول",
         options: {
           customBodyRender: (value, meta) => {
-            if (value !== undefined && value !== null) {
-              return (
-                <span
-                  className={this.props.classes.link}
-                  onClick={() =>
-                    this.handleClickOpenAdmins(meta.rowData[1], value)
-                  }
-                  tabIndex={0}
-                  role="button"
-                  onKeyDown={event => {
-                    if (event.keyCode === 13 || event.keyCode === 32) {
-                      this.handleClickOpenAdmins(meta.rowData[1], value);
+            if (
+              meta.rowData &&
+              (meta.rowData[5] ===
+                "در انتظار پذیرش توسط مسئول ترجمه/En attente d'acceptation" ||
+                meta.rowData[5] === "درحال انجام/En cours")
+            ) {
+              if (value !== undefined && value !== null) {
+                return (
+                  <span
+                    className={this.props.classes.link}
+                    onClick={() =>
+                      this.handleClickOpenAdmins(meta.rowData[1], value)
                     }
-                  }}
-                >
-                  {value}
-                </span>
-              );
-            } else {
-              return (
-                <span
-                  className={this.props.classes.emptyLink}
-                  onClick={() =>
-                    this.handleClickOpenAdmins(meta.rowData[1], null)
-                  }
-                  tabIndex={0}
-                  role="button"
-                  onKeyDown={event => {
-                    if (event.keyCode === 13 || event.keyCode === 32) {
-                      this.handleClickOpenAdmins(meta.rowData[1], null);
+                    tabIndex={0}
+                    role="button"
+                    onKeyDown={event => {
+                      if (event.keyCode === 13 || event.keyCode === 32) {
+                        this.handleClickOpenAdmins(meta.rowData[1], value);
+                      }
+                    }}
+                  >
+                    {value}
+                  </span>
+                );
+              } else {
+                return (
+                  <span
+                    className={this.props.classes.emptyLink}
+                    onClick={() =>
+                      this.handleClickOpenAdmins(meta.rowData[1], null)
                     }
-                  }}
-                >
-                  بدون مسئول
-                </span>
-              );
+                    tabIndex={0}
+                    role="button"
+                    onKeyDown={event => {
+                      if (event.keyCode === 13 || event.keyCode === 32) {
+                        this.handleClickOpenAdmins(meta.rowData[1], null);
+                      }
+                    }}
+                  >
+                    بدون مسئول
+                  </span>
+                );
+              }
             }
           }
         }
@@ -258,34 +241,6 @@ class ListOrder extends Component {
         }
       ]
     ];
-    if (this.props.type && this.props.type === "ADMIN")
-      columns.push({
-        name: "id",
-        label: "پذیرش",
-        options: {
-          customBodyRender: (value, meta) => {
-            if (
-              value !== undefined &&
-              value !== null &&
-              meta.rowData &&
-              meta.rowData[5] ===
-                "در انتظار پذیرش توسط مسئول ترجمه/En attente d'acceptation"
-            ) {
-              return (
-                <ProgressibleButton
-                  key={value}
-                  ref={ref => {
-                    this.progressElementRef[value] = ref;
-                  }}
-                  passedFunction={() => this.claim(value)}
-                  icon={"CheckCircle"}
-                  color={ColorPalette.lightseagreen}
-                />
-              );
-            }
-          }
-        }
-      });
     return columns;
   };
 
