@@ -59,7 +59,7 @@ export default class AuthService {
 
   isAdmin() {
     let level = localStorage.getItem("level");
-    return this.loggedIn() && level === "1";
+    return this.loggedIn() && level !== "0";
   }
 
   isTokenExpired() {

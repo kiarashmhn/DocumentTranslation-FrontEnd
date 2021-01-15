@@ -1,14 +1,13 @@
-import React, { useState, useCallback, useRef, Fragment } from "react";
+import React, { useState, useCallback, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { TextField, Button, Typography, withStyles } from "@material-ui/core";
+import { TextField, Button, withStyles } from "@material-ui/core";
 import FormDialog from "../Template/FormDialog";
-import HighlightedInformation from "../Template/HighlightedInformation";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../Template/VisibilityPasswordTextField";
-import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { withRouter } from "react-router-dom";
-import Box from "@material-ui/core/Box";
+import Api from "../Api/Api";
+import * as URLConstant from "../../URLConstant";
 
 const styles = theme => ({
   link: {
@@ -27,25 +26,55 @@ const styles = theme => ({
   }
 });
 
-function RegisterDialog(props) {
-  const {
-    setStatus,
-    onClose,
-    status,
-    classes,
-    showSnackbar,
-    history,
-    openLoginDialog
-  } = props;
+function EditUserDialog(props) {
+  const { onClose, showSnackbar, name } = props;
+
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerPasswordRepeat, setRegisterPasswordRepeat] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const registerPassword = useRef();
-  const registerPasswordRepeat = useRef();
-  const username = useRef();
-  const email = useRef();
-  const phone = useRef();
 
-  const Auth = new AuthService();
+  useEffect(() => {
+    (async function getUser() {
+      await api
+        .doPostNoAppend(
+          process.env.REACT_APP_HOST_URL +
+            process.env.REACT_APP_MAIN_PATH +
+            URLConstant.GET_USER,
+          {
+            username: name
+          }
+        )
+        .then(function(res) {
+          if (res.success) {
+            setUsername(res.data.username);
+            setEmail(res.data.email ? res.data.email : "");
+            setPhone(res.data.phone ? res.data.phone : "");
+          } else if (
+            res &&
+            res.message &&
+            res.message === "نام کاربری وارد شده تکراری است"
+          ) {
+            onClose();
+            setStatus("invalidUsername");
+          } else {
+            onClose();
+            showSnackbar(res.message, "error");
+          }
+          setIsLoading(false);
+        })
+        .catch(function() {
+          onClose();
+          setIsLoading(false);
+        });
+    })();
+  }, [setUsername, setEmail, setPhone, setIsLoading]);
+
+  const api = new Api();
 
   const validateEmail = email => {
     // eslint-disable-next-line no-useless-escape
@@ -54,45 +83,43 @@ function RegisterDialog(props) {
   };
 
   const register = useCallback(() => {
-    if (
-      registerPassword.current.value !== registerPasswordRepeat.current.value
-    ) {
-      setStatus("passwordsDontMatch");
-      return;
-    }
-
-    if (registerPassword.current.value.length < 6) {
-      setStatus("passwordTooShort");
-      return;
-    }
-
-    if (!email.current.value && !phone.current.value) {
+    if (!email && !phone) {
       setStatus("nullEmailPhone");
       return;
     }
-
-    if (email.current.value && !validateEmail(email.current.value)) {
+    if (email && !validateEmail(email)) {
       setStatus("invalidEmail");
       return;
+    }
+    if (registerPassword && registerPasswordRepeat) {
+      if (registerPassword !== registerPasswordRepeat) {
+        setStatus("passwordsDontMatch");
+        return;
+      }
+
+      if (registerPassword.length < 6) {
+        setStatus("passwordTooShort");
+        return;
+      }
     }
 
     setStatus(null);
     setIsLoading(true);
-    Auth.register(
-      username.current.value,
-      registerPassword.current.value,
-      email.current.value
-    )
+    api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.UPDATE_USER,
+        {
+          username: name,
+          email: email,
+          phone: phone,
+          password: registerPassword
+        }
+      )
       .then(function(res) {
         if (res.success) {
-          history.push("/userPanel");
           showSnackbar(res.message, "success");
-        } else if (
-          res &&
-          res.message &&
-          res.message === "نام کاربری وارد شده تکراری است"
-        ) {
-          setStatus("invalidUsername");
         } else {
           showSnackbar(res.message, "error");
         }
@@ -101,14 +128,21 @@ function RegisterDialog(props) {
       .catch(function() {
         setIsLoading(false);
       });
-  }, [setIsLoading, setStatus, registerPassword, registerPasswordRepeat]);
+  }, [
+    setIsLoading,
+    setStatus,
+    registerPassword,
+    registerPasswordRepeat,
+    email,
+    phone
+  ]);
 
   return (
     <FormDialog
       loading={isLoading}
       onClose={onClose}
       open
-      headline="ثبت نام"
+      headline="اطلاعات کاربر"
       onFormSubmit={e => {
         e.preventDefault();
         register();
@@ -118,14 +152,15 @@ function RegisterDialog(props) {
       content={
         <Fragment>
           <TextField
-            inputRef={username}
+            name={"username"}
+            value={username}
             margin="normal"
             required
-            autoFocus
             fullWidth
+            disabled={true}
             error={status === "invalidUsername"}
             label="نام کاربری"
-            autoComplete="off"
+            autoComplete="new-off"
             type="text"
             helperText={(() => {
               if (status === "invalidUsername") {
@@ -141,12 +176,13 @@ function RegisterDialog(props) {
             FormHelperTextProps={{ error: true }}
           />
           <TextField
-            inputRef={email}
+            name={"email"}
+            value={email}
             margin="normal"
             fullWidth
             error={status === "invalidEmail" || status === "nullEmailPhone"}
             label="آدرس ایمیل"
-            autoComplete="off"
+            autoComplete="new-off"
             type="text"
             helperText={(() => {
               if (status === "invalidEmail")
@@ -155,50 +191,53 @@ function RegisterDialog(props) {
                 return "آدرس ایمیل یا شماره موبایل را وارد کنید";
               return null;
             })()}
-            onChange={() => {
+            onChange={e => {
               if (status === "invalidEmail" || status === "nullEmailPhone") {
                 setStatus(null);
               }
+              setEmail(e.target.value);
             }}
             FormHelperTextProps={{ error: true }}
           />
           <TextField
-            inputRef={phone}
+            name={"phone"}
+            value={phone}
             margin="normal"
             fullWidth
             error={status === "nullEmailPhone"}
             label="شماره موبایل"
-            autoComplete="off"
-            type="number"
+            type="text"
             helperText={(() => {
               if (status === "nullEmailPhone")
                 return "آدرس ایمیل یا شماره موبایل را وارد کنید";
               return null;
             })()}
-            onChange={() => {
+            onChange={e => {
               if (status === "nullEmailPhone") {
                 setStatus(null);
               }
+              setPhone(e.target.value);
             }}
             FormHelperTextProps={{ error: true }}
           />
           <VisibilityPasswordTextField
+            name={"registerPassword"}
             margin="normal"
-            required
             fullWidth
+            autoComplete="new-off"
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
             label="رمز عبور"
-            inputRef={registerPassword}
-            autoComplete="off"
-            onChange={() => {
+            value={registerPassword}
+            onChange={e => {
               if (
                 status === "passwordTooShort" ||
                 status === "passwordsDontMatch"
               ) {
                 setStatus(null);
               }
+              setRegisterPassword(e.target.value);
             }}
             helperText={(() => {
               if (status === "passwordTooShort") {
@@ -214,22 +253,23 @@ function RegisterDialog(props) {
             onVisibilityChange={setIsPasswordVisible}
           />
           <VisibilityPasswordTextField
+            name={"registerPasswordRepeat"}
             margin="normal"
-            required
             fullWidth
+            autoComplete="new-off"
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
             label="تکرار رمزعبور"
-            inputRef={registerPasswordRepeat}
-            autoComplete="off"
-            onChange={() => {
+            value={registerPasswordRepeat}
+            onChange={e => {
               if (
                 status === "passwordTooShort" ||
                 status === "passwordsDontMatch"
               ) {
                 setStatus(null);
               }
+              setRegisterPasswordRepeat(e.target.value);
             }}
             helperText={(() => {
               if (status === "passwordTooShort") {
@@ -243,42 +283,6 @@ function RegisterDialog(props) {
             isVisible={isPasswordVisible}
             onVisibilityChange={setIsPasswordVisible}
           />
-          <Box fontWeight="fontWeightBold">
-            <Typography
-              variant="h6"
-              dir={"rtl"}
-              style={{
-                useNextVariants: true,
-                suppressDeprecationWarnings: true,
-                h6: {
-                  fontWeight: 600
-                }
-              }}
-            >
-              قبلا حساب شخصی ساخته اید؟
-              <span
-                className={classes.link}
-                onClick={isLoading ? null : openLoginDialog}
-                tabIndex={0}
-                role="button"
-                onKeyDown={event => {
-                  // For screenreaders listen to space and enter events
-                  if (
-                    (!isLoading && event.keyCode === 13) ||
-                    event.keyCode === 32
-                  ) {
-                    openLoginDialog();
-                  }
-                }}
-              >
-                {" "}
-                ورود
-              </span>
-            </Typography>
-          </Box>
-          {status === "accountCreated" ? (
-            <HighlightedInformation>اکانت شما ساخته شد.</HighlightedInformation>
-          ) : null}
         </Fragment>
       }
       actions={
@@ -290,7 +294,7 @@ function RegisterDialog(props) {
           color="secondary"
           disabled={isLoading}
         >
-          ثبت نام
+          بروزرسانی
           {isLoading && <ButtonCircularProgress />}
         </Button>
       }
@@ -298,18 +302,15 @@ function RegisterDialog(props) {
   );
 }
 
-RegisterDialog.propTypes = {
+EditUserDialog.propTypes = {
   theme: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
-  openTermsDialog: PropTypes.func.isRequired,
-  openLoginDialog: PropTypes.func.isRequired,
-  status: PropTypes.string,
-  setStatus: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   showSnackbar: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired
 };
 
 export default SnackbarWrapper(
-  withRouter(withStyles(styles, { withTheme: true })(RegisterDialog))
+  withRouter(withStyles(styles, { withTheme: true })(EditUserDialog))
 );

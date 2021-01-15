@@ -11,7 +11,7 @@ export default class GlobalErrorChecker extends Component {
     if (!response.data.success)
       switch (response.data.message) {
         case "با اطلاعات ارسالی، نشست کارر یافت نشد.":
-        case "نشست نامعتبر است":
+        case "دسترسی محدود":
           this.redirectToLogin();
           break;
         case "خطای داخلی رخ داده است":

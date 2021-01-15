@@ -79,4 +79,24 @@ export default class Api {
         checker.redirectToLogin();
       });
   };
+
+  doPostNoAppend = (url, postData) => {
+    let checker = this.globalErrorChecker;
+    return axios({
+      method: "post",
+      url: url,
+      headers: {
+        Authorization: localStorage.getItem("id_token")
+      },
+      data: postData
+    })
+      .then(function(response) {
+        checker.checkResponse(response);
+        return response.data;
+      })
+      .catch(function(error) {
+        console.error(error.message);
+        checker.redirectToLogin();
+      });
+  };
 }

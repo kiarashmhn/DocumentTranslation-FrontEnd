@@ -57,7 +57,7 @@ function FormDialog(props) {
         disabled={loading}
       />
       <DialogContent className={classes.dialogContent}>
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit} autoComplete="new-password">
           <div>{content}</div>
           <Box width="100%" className={classes.actions}>
             {actions}
