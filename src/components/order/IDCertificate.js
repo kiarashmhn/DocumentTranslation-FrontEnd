@@ -3,6 +3,15 @@ export const idCertificateForm = {
   steps: 7,
   content: [
     {
+      title: "uploadIDFiles",
+      content: [
+        {
+          key: "files",
+          type: "file"
+        }
+      ]
+    },
+    {
       title: "personalInfo",
       content: [
         {
@@ -68,6 +77,45 @@ export const idCertificateForm = {
         },
         {
           key: "motherRegistrationLocation",
+          type: "text"
+        }
+      ]
+    },
+    {
+      title: "spousesInfo",
+      content: [
+        {
+          key: "spouses",
+          type: "spouses"
+        }
+      ]
+    },
+    {
+      title: "childrenInfo",
+      content: [
+        {
+          key: "children",
+          type: "children"
+        }
+      ]
+    },
+    {
+      title: "description",
+      content: [
+        {
+          key: "description",
+          type: "text",
+          grid: 12,
+          notRequired: true
+        }
+      ]
+    },
+    {
+      title: "address",
+      content: [
+        {
+          key: "address",
+          grid: 12,
           type: "text"
         }
       ]

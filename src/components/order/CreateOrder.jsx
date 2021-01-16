@@ -40,6 +40,7 @@ class CreateOrder extends Component {
   createOrder = (close, status) => {
     let self = this;
     let postData = {
+      id: this.state.id,
       type: OrderTypes.ID_CERTIFICATE.name,
       details: this.identityCertificateRef.current.getState(),
       status: status
@@ -82,8 +83,7 @@ class CreateOrder extends Component {
     );
   };
 
-  handleSave = e => {
-    e.preventDefault();
+  handleSave = () => {
     this.setState(
       {
         isLoading: true

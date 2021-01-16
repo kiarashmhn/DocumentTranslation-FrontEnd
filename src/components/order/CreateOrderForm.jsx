@@ -58,10 +58,6 @@ class CreateOrderForm extends Component {
     this.nodeGenRef = React.createRef();
   }
 
-  componentDidMount() {
-    console.log(this.state);
-  }
-
   getState = () => {
     return this.state;
   };
@@ -105,14 +101,16 @@ class CreateOrderForm extends Component {
   handleNext = event => {
     event.preventDefault();
     let prevState = this.state.step;
-    let nodeGenState = this.nodeGenRef.current.getState();
+    console.log(prevState);
+    let nodeGenState = this.nodeGenRef.getState();
     this.setState(
       {
         step: prevState + 1,
         ...nodeGenState
       },
       () => {
-        this.props.onSave(event);
+        console.log(this.state);
+        this.props.onSave();
       }
     );
   };
@@ -126,25 +124,26 @@ class CreateOrderForm extends Component {
 
   handleSave = event => {
     event.preventDefault();
-    let nodeGenState = this.nodeGenRef.current.getState();
+    let nodeGenState = this.nodeGenRef.getState();
     this.setState(
       {
         ...nodeGenState
       },
       () => {
-        this.props.onSave(event);
+        this.props.onSave();
       }
     );
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    let nodeGenState = this.nodeGenRef.current.getState();
+    let nodeGenState = this.nodeGenRef.getState();
     this.setState(
       {
         ...nodeGenState
       },
       () => {
+        console.log(this.state);
         this.props.onSubmit();
       }
     );
@@ -177,7 +176,7 @@ class CreateOrderForm extends Component {
                   <form onSubmit={this.handleNext}>
                     <Grid container spacing={2}>
                       <NodeGenerator
-                        ref={this.nodeGenRef}
+                        ref={e => (this.nodeGenRef = e)}
                         elements={step.content}
                         externalInitializationData={this.state}
                       />
