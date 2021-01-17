@@ -13,6 +13,7 @@ import { withStyles } from "@material-ui/core";
 import EditUserDialog from "../register_login/EditUserDialog";
 import SelectAdminDialog from "../register_login/SelectAdminDialog";
 import { getTypeByKey } from "./OrderTypes";
+import { getCompleteName } from "../../Dictionary";
 
 const styles = theme => ({
   link: {
@@ -210,7 +211,7 @@ class ListOrder extends Component {
             customBodyRender: value => {
               if (value !== undefined && value !== null) {
                 let type = getTypeByKey(value);
-                return type ? type.completeName : "";
+                return type ? getCompleteName(type.key) : "";
               }
             }
           }

@@ -1,12 +1,14 @@
-import { idCertificateForm } from "./IDCertificate";
+import { idCertificateForm } from "./form/IDCertificate";
+import { idCardForm } from "./form/IDCard";
 
 export const OrderTypes = {
   ID_CERTIFICATE: {
     key: "identificationCertificate",
-    persianName: "شناسنامه",
-    frenchName: "Acte de naissance",
-    completeName: "Acte de naissance / شناسنامه",
     form: idCertificateForm
+  },
+  ID_CARD: {
+    key: "identificationCard",
+    form: idCardForm
   }
 };
 

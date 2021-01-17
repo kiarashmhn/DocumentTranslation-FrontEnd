@@ -87,8 +87,7 @@ class EditViewOrder extends Component {
       });
   };
 
-  handleSave = e => {
-    e.preventDefault();
+  handleSave = () => {
     this.setState(
       {
         isLoading: true

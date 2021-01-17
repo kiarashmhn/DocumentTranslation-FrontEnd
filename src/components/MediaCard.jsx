@@ -19,7 +19,13 @@ const styles = {
   title: {
     fontFamily: "MyFont",
     useNextVariants: true,
-    direction: "rtl"
+    display: "block"
+  },
+  titleWrapper: {
+    display: "block",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center"
   }
 };
 
@@ -42,23 +48,24 @@ class MediaCard extends Component {
             </CardMedia>
           )}
           <CardContent>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              style={styles.title}
-            >
-              {this.props.title}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="p"
-              dir={"rtl"}
-              style={styles.title}
-            >
-              {this.props.secondaryTitle}
-            </Typography>
+            <div style={styles.titleWrapper}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component={"span"}
+                style={styles.title}
+              >
+                {this.props.title}
+              </Typography>
+              <Typography
+                variant="body1"
+                color="textSecondary"
+                component={"span"}
+                style={styles.title}
+              >
+                {this.props.secondaryTitle}
+              </Typography>
+            </div>
           </CardContent>
         </CardActionArea>
       </Card>

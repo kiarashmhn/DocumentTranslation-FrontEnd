@@ -11,6 +11,7 @@ import { OrderTypes } from "./OrderTypes";
 import { OrderStatus } from "./OrderStatus";
 import Box from "@material-ui/core/Box";
 import OrderForm from "./OrderForm";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -134,9 +135,9 @@ class CreateOrder extends Component {
               <Grid item xs={12} sm={12} md={4} key={typeKey}>
                 <MediaCard
                   image={image}
-                  title={type.frenchName}
+                  title={getFrenchName(type.key)}
                   onClick={() => this.handleOpenDialog(type)}
-                  secondaryTitle={type.persianName}
+                  secondaryTitle={getPersianName(type.key)}
                 />
               </Grid>
             );

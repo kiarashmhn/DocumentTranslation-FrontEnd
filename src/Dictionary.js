@@ -1,4 +1,24 @@
 export const Dictionary = {
+  M: {
+    persian: "مرد",
+    french: "Mâle"
+  },
+  F: {
+    persian: "زن",
+    french: "Femelle"
+  },
+  none: {
+    persian: "هیچکدام",
+    french: "Aucun"
+  },
+  identificationCertificate: {
+    persian: "شناسنامه",
+    french: "Acte de naissance"
+  },
+  identificationCard: {
+    persian: "کارت ملی",
+    french: "Carte d'Identité Nationale"
+  },
   name: {
     persian: "نام",
     french: "Prénom"
@@ -27,7 +47,7 @@ export const Dictionary = {
   },
   gender: {
     persian: "جنسیت",
-    french: "Le sexe"
+    french: "Sexe"
   },
   birthDate: {
     persian: "تاریخ تولد",
@@ -48,6 +68,18 @@ export const Dictionary = {
   serial: {
     persian: "شماره سریال شناسنامه",
     french: "Numéro séquentiel"
+  },
+  cardSerial: {
+    persian: "شماره سریال کارت",
+    french: "N° de Série"
+  },
+  postalCode: {
+    persian: "کد پستی",
+    french: "Code postal"
+  },
+  validationDate: {
+    persian: "تاریخ اعتبار کارت",
+    french: "Date de validité"
   },
   certificateId: {
     persian: "شماره شناسنامه",
@@ -99,6 +131,14 @@ export const Dictionary = {
     persian: "اطلاعات شخصی",
     french: "Informations personnelles"
   },
+  isSmartCard: {
+    persian: "آیا کارت هوشمند است؟",
+    french: "Est la carte à puce?"
+  },
+  cardInfo: {
+    persian: "اطلاعات کارت",
+    french: "Informations sur la carte"
+  },
   parentsInfo: {
     persian: "اطلاعات والدین",
     french: "Information parentale"
@@ -145,6 +185,10 @@ export const Dictionary = {
   uploadIDFiles: {
     persian: "بارگذاری سند شناسنامه",
     french: "Importer la Acte de naissance"
+  },
+  uploadIDCardFiles: {
+    persian: "بارگذاری سند کارت ملی",
+    french: "Importer la Carte d'Identité Nationale"
   },
   back: {
     persian: "مرحله قبل",

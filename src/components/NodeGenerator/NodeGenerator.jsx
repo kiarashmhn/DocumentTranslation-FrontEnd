@@ -7,6 +7,13 @@ import CustomDateInput from "../CustomDateInput/CustomDateInput";
 import CustomFileUpload from "../CustomFileUpload/CustomFileUpload";
 import Children from "../Children/Children";
 import Spouses from "../Spouses/Spouses";
+import {
+  getCompleteName,
+  getFrenchName,
+  getPersianName
+} from "../../Dictionary";
+import Checkbox from "@material-ui/core/Checkbox";
+import ControlledOpenSelect from "../Dropdown/Dropdown";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -71,6 +78,12 @@ export default class NodesGenerator extends Component {
 
   fileOnChange = (event, element) => {
     this.onChange(event.target.files, element);
+  };
+
+  checkBoxOnChange = (e, element) => {
+    this.setState({
+      [element.key]: e.target.checked
+    });
   };
 
   prepareValue = (value, type) => {
@@ -229,6 +242,50 @@ export default class NodesGenerator extends Component {
                 ref={this.spousesRef}
                 initialSpouses={this.getMarriagesFromState()}
               />
+            </Grid>
+          );
+        case "select":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 4}
+              key={element.key}
+            >
+              <ControlledOpenSelect
+                required={element.required}
+                value={this.state[element.key]}
+                keyId={element.key}
+                onChange={event => this.elementOnChange(event, element)}
+                names={element.options.map(option => ({
+                  value: option.value,
+                  displayName: getCompleteName(option.key)
+                }))}
+                title={getFrenchName(element.key)}
+                helperText={getPersianName(element.key)}
+                disabled={element.readOnly}
+              />
+            </Grid>
+          );
+        case "check":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 4}
+              key={element.key}
+            >
+              <div style={{ marginTop: "43px", alignItems: "center" }}>
+                <Checkbox
+                  checked={!!this.state[element.key]}
+                  onChange={e => this.checkBoxOnChange(e, element)}
+                  name={element.key + "name"}
+                  color="secondary"
+                />
+                <span>{getCompleteName(element.key)}</span>
+              </div>
             </Grid>
           );
         default:

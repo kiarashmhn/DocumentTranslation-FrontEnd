@@ -15,7 +15,7 @@ const pStyle = {
   paddingBottom: "10px",
   paddingTop: "3%",
   verticalAlign: "unset",
-  textAlign: "right"
+  textAlign: "left"
 };
 
 export default class MultiSingleDropdown extends React.Component {

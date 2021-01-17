@@ -1,5 +1,5 @@
 .test {
-  right: 92% !important;
+  left: 92% !important;
 }
 
 .basic {
@@ -7,7 +7,7 @@
 }
 
 .select input {
-  right: 0;
+  left: 0;
   font-family: "MyFont";
   z-index: 999;
 }
