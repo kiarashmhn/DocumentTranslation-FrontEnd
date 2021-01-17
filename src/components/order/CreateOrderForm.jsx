@@ -101,15 +101,12 @@ class CreateOrderForm extends Component {
   handleNext = event => {
     event.preventDefault();
     let prevState = this.state.step;
-    console.log(prevState);
-    let nodeGenState = this.nodeGenRef.getState();
     this.setState(
       {
         step: prevState + 1,
-        ...nodeGenState
+        ...this.nodeGenRef.getState()
       },
       () => {
-        console.log(this.state);
         this.props.onSave();
       }
     );
@@ -143,13 +140,13 @@ class CreateOrderForm extends Component {
         ...nodeGenState
       },
       () => {
-        console.log(this.state);
         this.props.onSubmit();
       }
     );
   };
 
-  selectStep = index => {
+  selectStep = (e, index) => {
+    e.preventDefault();
     this.setState({
       step: index
     });
@@ -159,16 +156,25 @@ class CreateOrderForm extends Component {
     return this.props.form.content;
   };
 
+  setRef = e => {
+    if (e !== null) this.nodeGenRef = e;
+    return this.nodeGenRef;
+  };
+
   render() {
     return (
       <Fragment>
         <div style={styles.root}>
-          <Stepper activeStep={this.state.step} orientation="vertical">
+          <Stepper
+            activeStep={this.state.step}
+            orientation="vertical"
+            nonLinear={true}
+          >
             {this.getSteps().map((step, index) => (
               <Step key={step.title}>
                 <StepLabel>
                   {getCompleteName(step.title)}
-                  <IconButton onClick={() => this.selectStep(index)}>
+                  <IconButton onClick={e => this.selectStep(e, index)}>
                     <EditIcon />
                   </IconButton>
                 </StepLabel>
@@ -176,7 +182,7 @@ class CreateOrderForm extends Component {
                   <form onSubmit={this.handleNext}>
                     <Grid container spacing={2}>
                       <NodeGenerator
-                        ref={e => (this.nodeGenRef = e)}
+                        ref={this.setRef}
                         elements={step.content}
                         externalInitializationData={this.state}
                       />

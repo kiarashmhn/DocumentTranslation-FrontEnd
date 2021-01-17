@@ -87,8 +87,8 @@ export default class NodesGenerator extends Component {
     return this.childrenRef.current
       ? this.childrenRef.current.getState()
         ? { children: this.childrenRef.current.getState().children }
-        : []
-      : [];
+        : { children: [] }
+      : { children: [] };
   };
 
   getInitialChildren = key => {
@@ -132,11 +132,16 @@ export default class NodesGenerator extends Component {
   };
 
   getState = () => {
-    return {
-      ...this.state,
-      ...this.getChildrenState(),
-      ...this.getMarriages()
-    };
+    let state = this.state;
+
+    let children = this.getChildrenState();
+    if (children.children.length > 0) state = { ...state, ...children };
+
+    let marriages = this.getMarriages();
+    if (marriages.divorces.length > 0 || marriages.spouses.length > 0)
+      state = { ...state, ...marriages };
+
+    return state;
   };
 
   createNodes = elements => {
