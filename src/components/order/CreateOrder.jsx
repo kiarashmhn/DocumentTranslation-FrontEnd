@@ -10,24 +10,25 @@ import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { OrderTypes } from "./OrderTypes";
 import { OrderStatus } from "./OrderStatus";
 import Box from "@material-ui/core/Box";
-import CreateOrderForm from "./CreateOrderForm";
-import { idCertificateForm } from "./IDCertificate";
+import OrderForm from "./OrderForm";
 
 class CreateOrder extends Component {
   constructor(props) {
     super(props);
-    this.identityCertificateRef = React.createRef();
+    this.orderFormRef = React.createRef();
     this.api = new Api();
     this.state = {
       openIdentityDialog: false,
       isLoading: false,
+      type: null,
       id: null
     };
   }
 
-  handleOpenDialog = () => {
+  handleOpenDialog = type => {
     this.setState({
-      openIdentityDialog: true
+      openIdentityDialog: true,
+      type: type
     });
   };
 
@@ -41,12 +42,12 @@ class CreateOrder extends Component {
     let self = this;
     let postData = {
       id: this.state.id,
-      type: OrderTypes.ID_CERTIFICATE.name,
-      details: this.identityCertificateRef.current.getState(),
+      type: this.state.type.key,
+      details: this.orderFormRef.current.getState(),
       status: status
     };
     this.api
-      .doPost(
+      .doPostNoAppend(
         process.env.REACT_APP_HOST_URL +
           process.env.REACT_APP_MAIN_PATH +
           URLConstant.CREATE_ORDER,
@@ -126,30 +127,37 @@ class CreateOrder extends Component {
             <br />
           </Fragment>
         </Box>
-        <Grid container spacing={1} dir={"rtl"}>
-          <Grid item xs={12} sm={12} md={4} key={"identityCard"}>
-            <MediaCard
-              image={image}
-              title={"شناسنامه"}
-              onClick={this.handleOpenDialog}
-              secondaryTitle={"درخواست ترجمه شناسنامه"}
-            />
-            <FullScreenDialog
-              title="test"
-              component={
-                <CreateOrderForm
-                  form={idCertificateForm}
-                  ref={this.identityCertificateRef}
-                  onSubmit={this.handleSubmit}
-                  onSave={this.handleSave}
-                  isLoading={this.state.isLoading}
+        <Grid container spacing={1}>
+          {Object.keys(OrderTypes).map(typeKey => {
+            let type = OrderTypes[typeKey];
+            return (
+              <Grid item xs={12} sm={12} md={4} key={typeKey}>
+                <MediaCard
+                  image={image}
+                  title={type.frenchName}
+                  onClick={() => this.handleOpenDialog(type)}
+                  secondaryTitle={type.persianName}
                 />
-              }
-              handleClose={this.handleCloseDialog}
-              open={this.state.openIdentityDialog}
-            />
-          </Grid>
+              </Grid>
+            );
+          })}
         </Grid>
+        {this.state.type && (
+          <FullScreenDialog
+            title="test"
+            component={
+              <OrderForm
+                form={this.state.type.form}
+                ref={this.orderFormRef}
+                onSubmit={this.handleSubmit}
+                onSave={this.handleSave}
+                isLoading={this.state.isLoading}
+              />
+            }
+            handleClose={this.handleCloseDialog}
+            open={this.state.openIdentityDialog}
+          />
+        )}
       </Fragment>
     );
   }

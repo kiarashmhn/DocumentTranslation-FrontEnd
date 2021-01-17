@@ -46,7 +46,7 @@ const styles = {
   }
 };
 
-class CreateOrderForm extends Component {
+class OrderForm extends Component {
   constructor(props) {
     super(props);
     let initialState = this.props.initialState ? this.props.initialState : {};
@@ -246,7 +246,7 @@ class CreateOrderForm extends Component {
     );
   }
 }
-CreateOrderForm.propTypes = {
+OrderForm.propTypes = {
   classes: PropTypes.object,
   form: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -254,4 +254,4 @@ CreateOrderForm.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   initialState: PropTypes.object
 };
-export default CreateOrderForm;
+export default OrderForm;

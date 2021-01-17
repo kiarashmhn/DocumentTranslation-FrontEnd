@@ -12,6 +12,7 @@ import Api from "../Api/Api";
 import { withStyles } from "@material-ui/core";
 import EditUserDialog from "../register_login/EditUserDialog";
 import SelectAdminDialog from "../register_login/SelectAdminDialog";
+import { getTypeByKey } from "./OrderTypes";
 
 const styles = theme => ({
   link: {
@@ -204,7 +205,15 @@ class ListOrder extends Component {
       ...[
         {
           name: "type",
-          label: "نوع سفارش"
+          label: "نوع سفارش",
+          options: {
+            customBodyRender: value => {
+              if (value !== undefined && value !== null) {
+                let type = getTypeByKey(value);
+                return type ? type.completeName : "";
+              }
+            }
+          }
         },
         {
           name: "status",
