@@ -4,7 +4,7 @@ import { saveAs } from "file-saver";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { getFrenchName } from "../../Dictionary";
-import { IdentityCertificateReportData } from "./IdentityCertificateReportData";
+import { IdentityCertificateReportData } from "./data/IdentityCertificateReportData";
 
 const alignmentCenter = { vertical: "middle", horizontal: "center" };
 const alignmentRight = { vertical: "middle", horizontal: "right" };

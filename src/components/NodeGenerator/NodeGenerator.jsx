@@ -104,7 +104,7 @@ export default class NodesGenerator extends Component {
       : { children: [] };
   };
 
-  getInitialChildren = key => {
+  getInitialArrayByKey = key => {
     return this.props.externalInitializationData
       ? this.props.externalInitializationData[key]
         ? this.props.externalInitializationData[key]
@@ -112,36 +112,12 @@ export default class NodesGenerator extends Component {
       : [];
   };
 
-  getMarriagesFromState = () => {
-    if (!this.externalInitializationData) return [];
-    let arr1 = [];
-    let arr2 = [];
-    if (this.externalInitializationData.spouses) arr1 = this.state.spouses;
-    if (this.externalInitializationData.divorces) arr2 = this.state.divorces;
-    return arr1.concat(arr2);
-  };
-
-  getMarriagesFromComponent = () => {
+  getSpousesState = () => {
     return this.spousesRef.current
       ? this.spousesRef.current.getState()
-        ? this.spousesRef.current.getState().spouses
-        : []
-      : [];
-  };
-
-  getMarriages = () => {
-    let marriages = this.getMarriagesFromComponent();
-    let divorces = [];
-    let spouses = [];
-    if (marriages && marriages.length) {
-      for (let i = 0; i < marriages.length; i++)
-        if (marriages[i].divorce) divorces.push(marriages[i]);
-        else spouses.push(marriages[i]);
-    }
-    return {
-      divorces: divorces,
-      spouses: spouses
-    };
+        ? { spouses: this.spousesRef.current.getState().spouses }
+        : { spouses: [] }
+      : { spouses: [] };
   };
 
   getState = () => {
@@ -150,9 +126,8 @@ export default class NodesGenerator extends Component {
     let children = this.getChildrenState();
     if (children.children.length > 0) state = { ...state, ...children };
 
-    let marriages = this.getMarriages();
-    if (marriages.divorces.length > 0 || marriages.spouses.length > 0)
-      state = { ...state, ...marriages };
+    let marriages = this.getSpousesState();
+    if (marriages.spouses.length > 0) state = { ...state, ...marriages };
 
     return state;
   };
@@ -225,7 +200,7 @@ export default class NodesGenerator extends Component {
             >
               <Children
                 ref={this.childrenRef}
-                initialChildren={this.getInitialChildren(element.key)}
+                initialChildren={this.getInitialArrayByKey(element.key)}
               />
             </Grid>
           );
@@ -240,7 +215,7 @@ export default class NodesGenerator extends Component {
             >
               <Spouses
                 ref={this.spousesRef}
-                initialSpouses={this.getMarriagesFromState()}
+                initialSpouses={this.getInitialArrayByKey(element.key)}
               />
             </Grid>
           );
