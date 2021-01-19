@@ -252,7 +252,7 @@ export const Dictionary = {
   },
   year: {
     persian: "سال",
-    french: "Annee"
+    french: "Année"
   },
   day: {
     persian: "روز",
@@ -265,6 +265,10 @@ export const Dictionary = {
       persian: "تاریخ را می توانید به شمسی یا میلادی وارد کنید",
       french: "Vous pouvez entrer la date en solaire ou grégorien"
     }
+  },
+  uploadedFiles: {
+    persian: "فایل های بارگذاری شده",
+    french: "Fichiers téléchargés"
   }
 };
 

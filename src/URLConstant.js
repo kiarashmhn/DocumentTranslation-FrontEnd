@@ -9,3 +9,6 @@ export const CLAIM_ORDER = "/order/assign";
 export const GET_USER = "/admin/get";
 export const UPDATE_USER = "/admin/update";
 export const GET_ADMINS = "/admin/gets";
+export const GET_DOCUMENT = "/document/get";
+export const GET_DOCUMENTS = "/document/gets";
+export const CREATE_DOCUMENT = "/document/create";

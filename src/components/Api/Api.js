@@ -99,4 +99,21 @@ export default class Api {
         checker.redirectToLogin();
       });
   };
+
+  getFile = (url, id, name) => {
+    let fileDownload = require("js-file-download");
+    axios({
+      method: "post",
+      url: url,
+      headers: {
+        Authorization: localStorage.getItem("id_token")
+      },
+      data: {
+        id: id
+      },
+      responseType: "blob"
+    }).then(function(response) {
+      fileDownload(response.data, name);
+    });
+  };
 }

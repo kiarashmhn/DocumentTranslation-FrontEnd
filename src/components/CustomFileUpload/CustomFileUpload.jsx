@@ -19,7 +19,7 @@ export default class CustomFileUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      spanTitle: "فایلی انتخاب نشده است"
+      spanTitle: "فایلی انتخاب نشده است / Aucun fichier sélectionné"
     };
   }
 

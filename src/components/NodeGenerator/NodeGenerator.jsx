@@ -14,6 +14,7 @@ import {
 } from "../../Dictionary";
 import Checkbox from "@material-ui/core/Checkbox";
 import ControlledOpenSelect from "../Dropdown/Dropdown";
+import FileHandler from "../File/FileHandler";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -189,6 +190,18 @@ export default class NodesGenerator extends Component {
               />
             </Grid>
           );
+        case "fileHandler":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <FileHandler orderId={this.props.id} type={element.fileType} />
+            </Grid>
+          );
         case "children":
           return (
             <Grid
@@ -275,6 +288,7 @@ export default class NodesGenerator extends Component {
 }
 
 NodesGenerator.propTypes = {
+  id: PropTypes.any,
   elements: PropTypes.arrayOf(PropTypes.object).isRequired,
   externalInitializationData: PropTypes.any
 };

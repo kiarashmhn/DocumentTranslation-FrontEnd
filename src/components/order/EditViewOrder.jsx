@@ -112,6 +112,7 @@ class EditViewOrder extends Component {
             isLoading={this.state.isLoading}
             initialState={this.state.initialState}
             form={this.state.type.form}
+            itemId={this.props.itemId}
           />
         )}
       </Fragment>

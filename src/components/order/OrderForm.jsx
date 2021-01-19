@@ -185,6 +185,7 @@ class OrderForm extends Component {
                         ref={this.setRef}
                         elements={step.content}
                         externalInitializationData={this.state}
+                        id={this.props.itemId ? this.props.itemId : ""}
                       />
                     </Grid>
                     {this.getStepActions()}
@@ -252,6 +253,7 @@ OrderForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  initialState: PropTypes.object
+  initialState: PropTypes.object,
+  itemId: PropTypes.any
 };
 export default OrderForm;

@@ -128,7 +128,14 @@ class CreateOrder extends Component {
             <br />
           </Fragment>
         </Box>
-        <Grid container spacing={1}>
+        <Grid
+          container
+          spacing={1}
+          alignItems="center"
+          direction="row"
+          justify="center"
+          alignContent={"center"}
+        >
           {Object.keys(OrderTypes).map(typeKey => {
             let type = OrderTypes[typeKey];
             return (
