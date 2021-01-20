@@ -26,25 +26,20 @@ export default class Api {
       });
   };
 
-  doPostMultiPartFileAndHeader = (url, file, params, paramsKey) => {
+  doPostMultiPartFileAndHeader = (url, file, data) => {
     let checker = this.globalErrorChecker;
-    let data = new FormData();
-    data.append("file", file);
-    let parameters = {};
-    let parametersKey = paramsKey ? paramsKey : "inputs";
-    parameters[parametersKey] = {
-      ...params,
-      ...{ sessionId: localStorage.getItem("id_token") }
-    };
+    let formData = new FormData();
+    formData.append("file", file);
+    formData.append("data", data);
 
     return axios({
       method: "post",
       url: url,
       headers: {
-        "content-type": "multipart/*"
+        "content-type": "multipart/*",
+        Authorization: localStorage.getItem("id_token")
       },
-      params: parameters,
-      data: data
+      data: formData
     })
       .then(function(response) {
         checker.checkResponse(response);

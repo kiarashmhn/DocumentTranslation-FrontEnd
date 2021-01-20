@@ -98,6 +98,30 @@ class EditViewOrder extends Component {
     );
   };
 
+  handleFileSelect = async files => {
+    let self = this;
+    for (let file of files) {
+      let selectedFile = file.selectedFile;
+      let params = {
+        type: "documents",
+        name: selectedFile.name,
+        orderId: self.props.itemId,
+        fileSize: selectedFile.size
+      };
+      await this.api
+        .doPostMultiPartFileAndHeader(
+          process.env.REACT_APP_HOST_URL +
+            process.env.REACT_APP_MAIN_PATH +
+            URLConstant.CREATE_DOCUMENT,
+          selectedFile,
+          params
+        )
+        .then(function(res) {
+          if (!res.success) self.props.showSnackbar(res.message, "error");
+        });
+    }
+  };
+
   render() {
     return (
       <Fragment>
@@ -113,6 +137,7 @@ class EditViewOrder extends Component {
             initialState={this.state.initialState}
             form={this.state.type.form}
             itemId={this.props.itemId}
+            onFileSelect={this.handleFileSelect}
           />
         )}
       </Fragment>

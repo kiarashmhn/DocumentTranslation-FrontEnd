@@ -22,6 +22,7 @@ export default class NodesGenerator extends Component {
     this.state = { ...this.constructState() };
     this.childrenRef = React.createRef();
     this.spousesRef = React.createRef();
+    this.fileHandlerRef = React.createRef();
   }
 
   constructState = () => {
@@ -63,6 +64,11 @@ export default class NodesGenerator extends Component {
         : element.value
         ? element.value
         : "";
+  };
+
+  onRefresh = () => {
+    if (this.fileHandlerRef && this.fileHandlerRef.current)
+      this.fileHandlerRef.current.getDocuments();
   };
 
   elementOnChange = (event, element) => {

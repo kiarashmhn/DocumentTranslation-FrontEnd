@@ -7,7 +7,8 @@ export const idCardForm = {
       content: [
         {
           key: "files",
-          type: "file"
+          type: "fileHandler",
+          fileType: "documents"
         }
       ]
     },
