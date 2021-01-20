@@ -41,10 +41,17 @@ class CreateOrder extends Component {
 
   createOrder = (close, status) => {
     let self = this;
+    let orderFormState = this.orderFormRef.current.getState();
+    let files = orderFormState
+      ? orderFormState.files
+        ? orderFormState.files
+        : []
+      : [];
+    delete orderFormState["files"];
     let postData = {
       id: this.state.id,
       type: this.state.type.key,
-      details: this.orderFormRef.current.getState(),
+      details: orderFormState,
       status: status
     };
     this.api
@@ -62,9 +69,16 @@ class CreateOrder extends Component {
           },
           () => {
             if (res.success)
-              self.setState({
-                id: res.data.id
-              });
+              self.setState(
+                {
+                  id: res.data.id
+                },
+                () => {
+                  self.handleFileSelect(files).then(() => {
+                    self.orderFormRef.current.onRefresh();
+                  });
+                }
+              );
           }
         );
         if (close && res.success)
@@ -94,6 +108,29 @@ class CreateOrder extends Component {
         this.createOrder(false, OrderStatus.COMPLETING.name);
       }
     );
+  };
+
+  handleFileSelect = async files => {
+    let self = this;
+    for (let file of files) {
+      let params = {
+        type: "documents",
+        name: file.name,
+        orderId: this.state.id,
+        size: file.size
+      };
+      await this.api
+        .doPostMultiPartFileAndHeader(
+          process.env.REACT_APP_HOST_URL +
+            process.env.REACT_APP_MAIN_PATH +
+            URLConstant.CREATE_DOCUMENT,
+          file,
+          params
+        )
+        .then(function(res) {
+          if (!res.success) self.props.showSnackbar(res.message, "error");
+        });
+    }
   };
 
   render() {
@@ -159,6 +196,7 @@ class CreateOrder extends Component {
                 ref={this.orderFormRef}
                 onSubmit={this.handleSubmit}
                 onSave={this.handleSave}
+                itemId={this.state.id}
                 isLoading={this.state.isLoading}
               />
             }

@@ -107,6 +107,6 @@ export default class CustomFileDownload extends Component {
   }
 }
 CustomFileDownload.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.any.isRequired,
   name: PropTypes.string.isRequired
 };

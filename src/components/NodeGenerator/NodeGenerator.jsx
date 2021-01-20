@@ -68,7 +68,7 @@ export default class NodesGenerator extends Component {
 
   onRefresh = () => {
     if (this.fileHandlerRef && this.fileHandlerRef.current)
-      this.fileHandlerRef.current.getDocuments();
+      this.fileHandlerRef.current.reset();
   };
 
   elementOnChange = (event, element) => {

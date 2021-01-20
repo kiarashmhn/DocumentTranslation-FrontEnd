@@ -7,8 +7,11 @@ import theme from "../../theme";
 const styles = {
   root: {
     "& > *": {
-      margin: theme.spacing(1)
-    }
+      margin: theme.spacing(3)
+    },
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center"
   },
   input: {
     display: "none"
@@ -22,6 +25,12 @@ export default class CustomFileUpload extends Component {
       spanTitle: "فایلی انتخاب نشده است / Aucun fichier sélectionné"
     };
   }
+
+  reset = () => {
+    this.setState({
+      spanTitle: "فایلی انتخاب نشده است / Aucun fichier sélectionné"
+    });
+  };
 
   getTitle = e => {
     let title = "";

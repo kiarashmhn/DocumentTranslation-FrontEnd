@@ -14,7 +14,6 @@ class EditViewOrder extends Component {
     this.orderFormRef = React.createRef();
     this.api = new Api();
     this.state = {
-      openIdentityDialog: false,
       isLoading: false,
       initialState: null,
       type: null
@@ -62,11 +61,18 @@ class EditViewOrder extends Component {
 
   updateOrder = (close, status) => {
     let self = this;
+    let orderFormState = this.orderFormRef.current.getState();
+    let files = orderFormState
+      ? orderFormState.files
+        ? orderFormState.files
+        : []
+      : [];
+    delete orderFormState["files"];
     let postData = {
       id: this.props.itemId,
       type: this.state.type ? this.state.type.key : "",
       status: status,
-      details: this.orderFormRef.current.getState()
+      details: orderFormState
     };
     this.api
       .doPostNoAppend(
@@ -77,13 +83,16 @@ class EditViewOrder extends Component {
       )
       .then(function(res) {
         self.props.showSnackbar(res.message, res.success ? "success" : "error");
-        self.setState({
-          isLoading: false
-        });
-        if (close && res.success)
-          self.setState({
-            openIdentityDialog: false
-          });
+        self.handleFileSelect(files).then(
+          () => {
+            self.orderFormRef.current.onRefresh();
+          },
+          () => {
+            self.setState({
+              isLoading: false
+            });
+          }
+        );
       });
   };
 

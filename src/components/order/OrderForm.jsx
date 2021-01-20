@@ -98,15 +98,15 @@ class OrderForm extends Component {
     );
   };
 
+  onRefresh = () => {
+    this.nodeGenRef.onRefresh();
+  };
+
   handleNext = event => {
     event.preventDefault();
     let prevState = this.state.step;
     let nodeGenState = this.nodeGenRef.getState();
-    if (nodeGenState.files && nodeGenState.files.length) {
-      this.props.onFileSelect(nodeGenState.files);
-      this.nodeGenRef.onRefresh();
-    }
-    delete nodeGenState["files"];
+
     this.setState(
       {
         step: prevState + 1,
@@ -128,11 +128,6 @@ class OrderForm extends Component {
   handleSave = event => {
     event.preventDefault();
     let nodeGenState = this.nodeGenRef.getState();
-    if (nodeGenState.files && nodeGenState.files.length) {
-      this.props.onFileSelect(nodeGenState.files);
-      this.nodeGenRef.onRefresh();
-    }
-    delete nodeGenState["files"];
     this.setState(
       {
         ...nodeGenState
@@ -146,11 +141,6 @@ class OrderForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     let nodeGenState = this.nodeGenRef.getState();
-    if (nodeGenState.files && nodeGenState.files.length) {
-      this.props.onFileSelect(nodeGenState.files);
-      this.nodeGenRef.onRefresh();
-    }
-    delete nodeGenState["files"];
     this.setState(
       {
         ...nodeGenState
@@ -268,7 +258,6 @@ OrderForm.propTypes = {
   form: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  onFileSelect: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   initialState: PropTypes.object,
   itemId: PropTypes.any

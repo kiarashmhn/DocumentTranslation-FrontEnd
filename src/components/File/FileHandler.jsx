@@ -7,6 +7,24 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Api from "../Api/Api";
 import { getCompleteName } from "../../Dictionary";
+import theme from "../../theme";
+
+const textStyle = {
+  alignItems: "center",
+  display: "flex",
+  justifyContent: "center",
+  marginTop: theme.spacing(3),
+  marginBottom: theme.spacing(3),
+  color: theme.palette.primary.main
+};
+
+const subTextStyle = {
+  alignItems: "center",
+  display: "flex",
+  justifyContent: "center",
+  marginTop: theme.spacing(3),
+  marginBottom: theme.spacing(3)
+};
 
 export default class FileHandler extends Component {
   constructor(props) {
@@ -16,10 +34,23 @@ export default class FileHandler extends Component {
       oldFiles: []
     };
     this.api = new Api();
+    this.uploadFileRef = React.createRef();
   }
 
   getState = () => {
     return this.state.files;
+  };
+
+  reset = () => {
+    this.getDocuments().then(() => {});
+    this.setState(
+      {
+        files: []
+      },
+      () => {
+        this.uploadFileRef.current.reset();
+      }
+    );
   };
 
   componentDidMount() {
@@ -55,36 +86,54 @@ export default class FileHandler extends Component {
     this.setState({ files: event.target.files });
   };
 
+  getFiles = () => {
+    if (this.state.oldFiles && this.state.oldFiles.length > 0)
+      return (
+        <Fragment>
+          <Grid container spacing={2} justify="center">
+            {this.state.oldFiles.map((file, index) => {
+              return (
+                <Grid
+                  item
+                  xs={4}
+                  sm={4}
+                  md={2}
+                  align="center"
+                  key={file.name + index}
+                >
+                  <CustomFileDownload id={file.id} name={file.name} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Fragment>
+      );
+    else
+      return (
+        <div style={subTextStyle}>
+          <span id="files-empty">{getCompleteName("empty")}</span>
+        </div>
+      );
+  };
+
   render() {
     return (
       <Fragment>
-        <CustomFileUpload onChange={event => this.fileOnChange(event)} />
-        {this.state.oldFiles && this.state.oldFiles.length && (
-          <Fragment>
-            <div
-              style={{
-                alignItems: "center",
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "5px",
-                marginBottom: "5px"
-              }}
-            >
-              <Typography variant={"body1"}>
-                {getCompleteName("uploadedFiles")}
-              </Typography>
-            </div>
-            <Grid container spacing={2}>
-              {this.state.oldFiles.map((file, index) => {
-                return (
-                  <Grid item xs={4} sm={4} md={2} key={file.name + index}>
-                    <CustomFileDownload id={file.id} name={file.name} />
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Fragment>
-        )}
+        <div style={textStyle}>
+          <Typography variant={"body1"}>
+            {getCompleteName("uploadFiles")}
+          </Typography>
+        </div>
+        <CustomFileUpload
+          ref={this.uploadFileRef}
+          onChange={event => this.fileOnChange(event)}
+        />
+        <div style={textStyle}>
+          <Typography variant={"body1"}>
+            {getCompleteName("uploadedFiles")}
+          </Typography>
+        </div>
+        {this.getFiles()}
       </Fragment>
     );
   }

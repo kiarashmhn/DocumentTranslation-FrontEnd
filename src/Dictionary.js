@@ -269,6 +269,14 @@ export const Dictionary = {
   uploadedFiles: {
     persian: "فایل های بارگذاری شده",
     french: "Fichiers téléchargés"
+  },
+  uploadFiles: {
+    persian: "بارگذاری فایل",
+    french: "Télécharger des fichiers"
+  },
+  empty: {
+    persian: "خالی",
+    french: "Vide"
   }
 };
 
