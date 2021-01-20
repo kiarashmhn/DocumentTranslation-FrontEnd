@@ -1,6 +1,19 @@
 export const IdentityCertificateReportData = [
   {
     type: "text",
+    name: "Traduction de l’Acte d’Etat Civil (Shenasnameh)",
+    isBold: true,
+    size: 16
+  },
+  {
+    type: "text",
+    name:
+      "[Acte de naissance, Livret de famille, Certificat de mariage, Certificat de divorce]",
+    isBold: false,
+    size: 12
+  },
+  {
+    type: "text",
     name: "Armoiries de l’Iran",
     isBold: false
   },
@@ -17,16 +30,6 @@ export const IdentityCertificateReportData = [
   {
     type: "text",
     name: "Organisation des services d’état civil",
-    isBold: false
-  },
-  {
-    type: "text",
-    name: "SHENASNAMEH",
-    isBold: true
-  },
-  {
-    type: "text",
-    name: "[Acte de l’état civil, Acte de naissance, Livret de famille]",
     isBold: false
   },
   {
@@ -122,27 +125,6 @@ export const IdentityCertificateReportData = [
       "certificateId",
       "officeNumber",
       "registrationNumber"
-    ]
-  },
-  {
-    type: "empty"
-  },
-  {
-    type: "array",
-    name: "divorces",
-    keys: [
-      "name",
-      "lastName",
-      "marriageDate",
-      "marriageLocation",
-      "birthDate",
-      "birthLocation",
-      "certificateId",
-      "officeNumber",
-      "registrationNumber",
-      "divorceDate",
-      "divorceLocation",
-      "divorceRegistrationNumber"
     ]
   },
   {

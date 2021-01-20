@@ -4,7 +4,7 @@ import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { getTypeByKey } from "./OrderTypes";
 import * as URLConstant from "../../URLConstant";
 import Api from "../Api/Api";
-import CreateReport from "../Report/CreateReport";
+import IdentityCertificateReport from "../Report/IdentityCertificate/IdentityCertificateReport";
 import { OrderStatus } from "./OrderStatus";
 import OrderForm from "./OrderForm";
 
@@ -134,7 +134,10 @@ class EditViewOrder extends Component {
     return (
       <Fragment>
         {this.props.type === "ADMIN" && (
-          <CreateReport data={this.state.initialState} id={this.props.itemId} />
+          <IdentityCertificateReport
+            data={this.state.initialState}
+            id={this.props.itemId}
+          />
         )}
         {this.state.initialState && this.state.type && (
           <OrderForm

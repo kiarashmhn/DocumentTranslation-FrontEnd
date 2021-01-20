@@ -165,18 +165,11 @@ class CreateOrder extends Component {
             <br />
           </Fragment>
         </Box>
-        <Grid
-          container
-          spacing={1}
-          alignItems="center"
-          direction="row"
-          justify="center"
-          alignContent={"center"}
-        >
+        <Grid container spacing={1} justify="center">
           {Object.keys(OrderTypes).map(typeKey => {
             let type = OrderTypes[typeKey];
             return (
-              <Grid item xs={12} sm={12} md={4} key={typeKey}>
+              <Grid item xs={12} sm={12} md={4} align="center" key={typeKey}>
                 <MediaCard
                   image={image}
                   title={getFrenchName(type.key)}
