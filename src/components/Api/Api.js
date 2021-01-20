@@ -30,7 +30,9 @@ export default class Api {
     let checker = this.globalErrorChecker;
     let formData = new FormData();
     formData.append("file", file);
-    formData.append("data", data);
+
+    let parameters = {};
+    parameters["data"] = data;
 
     return axios({
       method: "post",
@@ -39,7 +41,8 @@ export default class Api {
         "content-type": "multipart/*",
         Authorization: localStorage.getItem("id_token")
       },
-      data: formData
+      data: formData,
+      params: parameters
     })
       .then(function(response) {
         checker.checkResponse(response);

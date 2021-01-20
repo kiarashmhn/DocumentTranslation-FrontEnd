@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ExcelJS from "exceljs/dist/es5/exceljs.browser";
+import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";

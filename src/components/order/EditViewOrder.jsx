@@ -101,19 +101,18 @@ class EditViewOrder extends Component {
   handleFileSelect = async files => {
     let self = this;
     for (let file of files) {
-      let selectedFile = file.selectedFile;
       let params = {
         type: "documents",
-        name: selectedFile.name,
+        name: file.name,
         orderId: self.props.itemId,
-        fileSize: selectedFile.size
+        size: file.size
       };
       await this.api
         .doPostMultiPartFileAndHeader(
           process.env.REACT_APP_HOST_URL +
             process.env.REACT_APP_MAIN_PATH +
             URLConstant.CREATE_DOCUMENT,
-          selectedFile,
+          file,
           params
         )
         .then(function(res) {

@@ -106,6 +106,7 @@ class OrderForm extends Component {
       this.props.onFileSelect(nodeGenState.files);
       this.nodeGenRef.onRefresh();
     }
+    delete nodeGenState["files"];
     this.setState(
       {
         step: prevState + 1,
@@ -131,6 +132,7 @@ class OrderForm extends Component {
       this.props.onFileSelect(nodeGenState.files);
       this.nodeGenRef.onRefresh();
     }
+    delete nodeGenState["files"];
     this.setState(
       {
         ...nodeGenState
@@ -148,6 +150,7 @@ class OrderForm extends Component {
       this.props.onFileSelect(nodeGenState.files);
       this.nodeGenRef.onRefresh();
     }
+    delete nodeGenState["files"];
     this.setState(
       {
         ...nodeGenState

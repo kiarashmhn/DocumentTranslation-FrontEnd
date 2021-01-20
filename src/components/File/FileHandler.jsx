@@ -18,6 +18,10 @@ export default class FileHandler extends Component {
     this.api = new Api();
   }
 
+  getState = () => {
+    return this.state.files;
+  };
+
   componentDidMount() {
     this.getDocuments();
   }
@@ -86,6 +90,6 @@ export default class FileHandler extends Component {
   }
 }
 FileHandler.propTypes = {
-  orderId: PropTypes.string,
+  orderId: PropTypes.any,
   type: PropTypes.string.isRequired
 };
