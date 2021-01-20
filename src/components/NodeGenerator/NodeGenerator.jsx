@@ -136,7 +136,11 @@ export default class NodesGenerator extends Component {
     let marriages = this.getSpousesState();
     if (marriages.spouses.length > 0) state = { ...state, ...marriages };
 
-    let files = this.fileHandlerRef.current.getState();
+    let files = this.fileHandlerRef
+      ? this.fileHandlerRef.current
+        ? this.fileHandlerRef.current.getState()
+        : []
+      : [];
     if (files.length > 0) state = { ...state, ...{ files: files } };
 
     return state;

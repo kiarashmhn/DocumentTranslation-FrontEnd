@@ -31,7 +31,7 @@ export default class IdentityCertificateReport extends Component {
         ? "0" + (new Date().getMonth() + 1)
         : new Date().getMonth() + 1) +
       "/" +
-      new Date().getFullYear()} + Ref : IA${this.props.id}`;
+      new Date().getFullYear()} - Ref : IA${this.props.id}`;
 
     let third =
       "Pièce jointe : Copie du document original en langue persan (farsi)";
