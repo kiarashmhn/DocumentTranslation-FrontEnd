@@ -147,5 +147,8 @@ export const IdentityCertificateReportData = [
   {
     type: "array",
     name: "observations"
+  },
+  {
+    type: "empty"
   }
 ];
