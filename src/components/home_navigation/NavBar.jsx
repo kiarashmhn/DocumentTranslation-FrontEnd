@@ -112,7 +112,7 @@ class NavBar extends Component {
                 display="inline"
                 color="primary"
               >
-                Document
+                France
               </Typography>
               <Typography
                 variant="h4"
@@ -120,7 +120,7 @@ class NavBar extends Component {
                 display="inline"
                 color="secondary"
               >
-                Translator
+                Doc
               </Typography>
             </div>
             <div>

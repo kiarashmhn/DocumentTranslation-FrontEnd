@@ -224,7 +224,7 @@ function NavBar(props) {
                 display="inline"
                 color="primary"
               >
-                Document
+                France
               </Typography>
               <Typography
                 variant="h4"
@@ -232,7 +232,7 @@ function NavBar(props) {
                 display="inline"
                 color="secondary"
               >
-                Translator
+                Doc
               </Typography>
             </Hidden>
           </Box>

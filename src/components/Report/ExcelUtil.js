@@ -74,8 +74,14 @@ export const writeData = (worksheet, idx, key, value, align) => {
     bold: false
   };
   customCellValue.alignment = alignmentLeft;
-  customCellValue.value = value === "Tehran" ? "Téhéran" : value;
+  customCellValue.value = getCorrectValue(key, value);
   return idx;
+};
+
+export const getCorrectValue = (key, value) => {
+  if (value === "Tehran") return "Téhéran";
+  if (key === "Nom") return value.toUpperCase();
+  return value;
 };
 
 export const writeDataByKey = (key, data, worksheet, rowCount, align) => {

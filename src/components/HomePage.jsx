@@ -44,7 +44,7 @@ class HomePage extends Component {
 
   selectHome = () => {
     smoothScrollTop();
-    document.title = "DT - Document Translator";
+    document.title = "France Doc";
     this.setState({
       selectedTab: "Home",
       selectedSection: "Home"
@@ -52,7 +52,7 @@ class HomePage extends Component {
   };
 
   selectFeatures = () => {
-    document.title = "DT - امکانات";
+    document.title = "FD - امکانات";
     this.setState({
       selectedTab: "Home",
       selectedSection: "Features"
@@ -60,7 +60,7 @@ class HomePage extends Component {
   };
 
   selectHelp = () => {
-    document.title = "DT - راهنما";
+    document.title = "FD - راهنما";
     this.setState({
       selectedTab: "Home",
       selectedSection: "Help"
@@ -68,7 +68,7 @@ class HomePage extends Component {
   };
 
   selectAbout = () => {
-    document.title = "DT - درباره ما";
+    document.title = "FD - درباره ما";
     this.setState({
       selectedTab: "Home",
       selectedSection: "About"
@@ -77,7 +77,7 @@ class HomePage extends Component {
 
   selectBlog = () => {
     smoothScrollTop();
-    document.title = "DT - وبلاگ";
+    document.title = "FD - وبلاگ";
     this.setState({
       selectedTab: "Blog",
       selectedSection: "Home"

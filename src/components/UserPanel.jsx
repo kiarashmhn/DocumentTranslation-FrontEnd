@@ -85,13 +85,13 @@ class UserPanel extends Component {
 
   selectCreateOrder = () => {
     smoothScrollTop();
-    document.title = "DT - CreateOrder";
+    document.title = "FD - CreateOrder";
     this.setSelectedTab("CreateOrder");
   };
 
   selectListOrder = () => {
     smoothScrollTop();
-    document.title = "DT - ListOrder";
+    document.title = "FD - ListOrder";
     this.setSelectedTab("ListOrder");
   };
 
