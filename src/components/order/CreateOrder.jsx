@@ -50,7 +50,7 @@ class CreateOrder extends Component {
     delete orderFormState["files"];
     let postData = {
       id: this.state.id,
-      type: this.state.type.key,
+      type: this.state.type.code,
       details: orderFormState,
       status: status
     };

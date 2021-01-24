@@ -158,8 +158,7 @@ export default class MUITable extends Component {
         MuiTableFooter: {
           root: {
             textAlign: "center",
-            fontFamily: "MyFont",
-            direction: "rtl"
+            fontFamily: "MyFont"
           }
         },
         MuiTableBody: {
@@ -186,8 +185,7 @@ export default class MUITable extends Component {
         },
         MuiPaper: {
           root: {
-            width: "100%",
-            direction: "rtl"
+            width: "100%"
           }
         }
       }
@@ -226,7 +224,7 @@ export default class MUITable extends Component {
           next: "بعدی",
           previous: "قبلی",
           rowsPerPage: "تعداد در صفحه",
-          displayRows: "از"
+          displayRows: "/"
         },
         toolbar: {
           search: "جستجو",

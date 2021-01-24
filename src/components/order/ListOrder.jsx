@@ -12,8 +12,6 @@ import Api from "../Api/Api";
 import { withStyles } from "@material-ui/core";
 import EditUserDialog from "../register_login/EditUserDialog";
 import SelectAdminDialog from "../register_login/SelectAdminDialog";
-import { getTypeByKey } from "./OrderTypes";
-import { getCompleteName } from "../../Dictionary";
 
 const styles = theme => ({
   link: {
@@ -111,19 +109,22 @@ class ListOrder extends Component {
   getColumns = () => {
     let columns = [
       {
-        name: "rowId",
-        label: "شماره ردیف"
+        name: "identifier",
+        label: "N° de commande"
       },
       {
         name: "id",
-        label: "شناسه سفارش"
+        label: "آیدی",
+        options: {
+          display: "excluded"
+        }
       }
     ];
 
     if (this.props.type && this.props.type === "ADMIN")
       columns.push({
         name: "username",
-        label: "درخواست دهنده",
+        label: "Demandeur",
         options: {
           customBodyRender: value => {
             if (value !== undefined && value !== null) {
@@ -147,17 +148,53 @@ class ListOrder extends Component {
         }
       });
 
+    columns = [
+      ...columns,
+      ...[
+        {
+          name: "status",
+          label: "État"
+        },
+        {
+          name: "creationTime",
+          label: "Date d'enregistrement"
+        },
+        {
+          name: "id",
+          label: "Vue",
+          options: {
+            customBodyRender: (value, meta) => {
+              if (value !== undefined && value !== null) {
+                if (
+                  (this.props.type && this.props.type === "ADMIN") ||
+                  (meta.rowData && meta.rowData[2] !== "En cours")
+                ) {
+                  return (
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => this.handleClickOpen(value)}
+                      style={{ color: ColorPalette.cornflowerblue }}
+                    >
+                      <Info fontSize="small" />
+                    </IconButton>
+                  );
+                }
+              }
+            }
+          }
+        }
+      ]
+    ];
     if (this.props.type && this.props.type === "ADMIN")
       columns.push({
         name: "adminName",
-        label: "مسئول",
+        label: "Responsable",
         options: {
           customBodyRender: (value, meta) => {
             if (
               meta.rowData &&
-              (meta.rowData[5] ===
-                "در انتظار پذیرش توسط مسئول ترجمه/En attente d'acceptation" ||
-                meta.rowData[5] === "درحال انجام/En cours")
+              (meta.rowData[3] === "En attente d'acceptation" ||
+                meta.rowData[3] === "En cours")
             ) {
               if (value !== undefined && value !== null) {
                 return (
@@ -192,7 +229,7 @@ class ListOrder extends Component {
                       }
                     }}
                   >
-                    بدون مسئول
+                    pas de responsables
                   </span>
                 );
               }
@@ -200,61 +237,11 @@ class ListOrder extends Component {
           }
         }
       });
-
-    columns = [
-      ...columns,
-      ...[
-        {
-          name: "type",
-          label: "نوع سفارش",
-          options: {
-            customBodyRender: value => {
-              if (value !== undefined && value !== null) {
-                let type = getTypeByKey(value);
-                return type ? getCompleteName(type.key) : "";
-              }
-            }
-          }
-        },
-        {
-          name: "status",
-          label: "وضعیت سفارش"
-        },
-        {
-          name: "creationTime",
-          label: "تاریخ ثبت"
-        },
-        {
-          name: "id",
-          label: "مشاهده",
-          options: {
-            customBodyRender: (value, meta) => {
-              if (value !== undefined && value !== null) {
-                if (
-                  (this.props.type && this.props.type === "ADMIN") ||
-                  (meta.rowData && meta.rowData[3] !== "درحال انجام/En cours")
-                ) {
-                  return (
-                    <IconButton
-                      aria-label="delete"
-                      onClick={() => this.handleClickOpen(value)}
-                      style={{ color: ColorPalette.cornflowerblue }}
-                    >
-                      <Info fontSize="small" />
-                    </IconButton>
-                  );
-                }
-              }
-            }
-          }
-        }
-      ]
-    ];
     return columns;
   };
 
   render() {
-    const title = "لیست سفارش ها";
+    const title = "Liste de commande";
 
     const url =
       process.env.REACT_APP_HOST_URL +

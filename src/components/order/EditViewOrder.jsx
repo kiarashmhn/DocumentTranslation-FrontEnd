@@ -70,7 +70,7 @@ class EditViewOrder extends Component {
     delete orderFormState["files"];
     let postData = {
       id: this.props.itemId,
-      type: this.state.type ? this.state.type.key : "",
+      type: this.state.type ? this.state.type.code : "",
       status: status,
       details: orderFormState
     };

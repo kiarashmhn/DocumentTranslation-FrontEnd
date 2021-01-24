@@ -19,7 +19,7 @@ export const OrderTypes = {
 export const getTypeByKey = key => {
   let obj = null;
   Object.keys(OrderTypes).map(objectKey => {
-    if (OrderTypes[objectKey].key === key) obj = OrderTypes[objectKey];
+    if (OrderTypes[objectKey].code === key) obj = OrderTypes[objectKey];
   });
   return obj;
 };
