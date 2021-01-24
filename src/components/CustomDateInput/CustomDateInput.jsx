@@ -24,9 +24,9 @@ export default class CustomDateInput extends Component {
     if (this.props.initial) {
       let initialDate = this.props.initial.split("/");
       this.setState({
-        year: initialDate[0],
+        year: initialDate[2],
         month: initialDate[1],
-        day: initialDate[2]
+        day: initialDate[0]
       });
     }
   }
@@ -35,22 +35,22 @@ export default class CustomDateInput extends Component {
     if (this.props.initial && this.state === initialState) {
       let initialDate = this.props.initial.split("/");
       this.setState({
-        year: initialDate[0],
+        year: initialDate[2],
         month: initialDate[1],
-        day: initialDate[2]
+        day: initialDate[0]
       });
     }
   }
 
   getState = () => {
     let date =
-      this.state.year +
+      this.getCorrect(this.state.day) +
       "/" +
       this.getCorrect(this.state.month) +
       "/" +
-      this.getCorrect(this.state.day);
+      this.state.year;
     if (parseInt(this.state.year) < 1600)
-      date = moment.from(date, "fa", "YYYY/MM/DD").format("YYYY/MM/DD");
+      date = moment.from(date, "fa", "DD/MM/YYYY").format("DD/MM/YYYY");
     return date;
   };
 
@@ -63,19 +63,19 @@ export default class CustomDateInput extends Component {
     return (
       <Fragment>
         <Grid container spacing={1}>
-          <Grid item xs={4} sm={4} md={4} key={"year"}>
+          <Grid item xs={2} sm={2} md={3} key={"day"}>
             <FieldInput
               type={"number"}
-              name={"year"}
-              value={this.state.year}
+              name={"day"}
+              value={this.state.day}
               onChange={e =>
-                this.setState({ year: parseInt(e.target.value, 10) }, () => {
+                this.setState({ day: parseInt(e.target.value, 10) }, () => {
                   this.props.onChange(this.getState());
                 })
               }
             />
           </Grid>
-          <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash2"}>
+          <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash1"}>
             <Typography
               variant="body1"
               color="textSecondary"
@@ -96,7 +96,7 @@ export default class CustomDateInput extends Component {
               }
             />
           </Grid>
-          <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash1"}>
+          <Grid item xs={"auto"} sm={"auto"} md={"auto"} key={"slash2"}>
             <Typography
               variant="body1"
               color="textSecondary"
@@ -105,13 +105,13 @@ export default class CustomDateInput extends Component {
               /
             </Typography>
           </Grid>
-          <Grid item xs={2} sm={2} md={3} key={"day"}>
+          <Grid item xs={4} sm={4} md={4} key={"year"}>
             <FieldInput
               type={"number"}
-              name={"day"}
-              value={this.state.day}
+              name={"year"}
+              value={this.state.year}
               onChange={e =>
-                this.setState({ day: parseInt(e.target.value, 10) }, () => {
+                this.setState({ year: parseInt(e.target.value, 10) }, () => {
                   this.props.onChange(this.getState());
                 })
               }

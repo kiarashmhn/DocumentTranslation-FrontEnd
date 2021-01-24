@@ -229,7 +229,7 @@ class ListOrder extends Component {
                       }
                     }}
                   >
-                    pas de responsables
+                    Pas de responsables
                   </span>
                 );
               }

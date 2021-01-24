@@ -18,7 +18,9 @@ const initialState = {
   divorce: false,
   divorceDate: "",
   divorceLocation: "",
-  divorceRegistrationNumber: ""
+  divorceRegistrationNumber: "",
+  death: false,
+  deathDate: ""
 };
 
 export default class Spouse extends Component {
@@ -57,6 +59,18 @@ export default class Spouse extends Component {
   handleDivorceChange = e => {
     this.setState({
       divorce: e.target.checked
+    });
+  };
+
+  handleDeathChange = e => {
+    this.setState({
+      death: e.target.checked
+    });
+  };
+
+  handleDeathDateChange = newDate => {
+    this.setState({
+      deathDate: newDate
     });
   };
 
@@ -163,7 +177,7 @@ export default class Spouse extends Component {
                 name="divorce"
                 color="secondary"
               />
-              <span>طلاق؟ / divorce?</span>
+              <span>طلاق؟ / Divorce?</span>
             </div>
           </Grid>
           {this.state.divorce && (
@@ -198,6 +212,26 @@ export default class Spouse extends Component {
                     divorceLocation: e.target.value
                   })
                 }
+              />
+            </Grid>
+          )}
+          <Grid item xs={12} sm={12} md={4} key={"death"}>
+            <div style={{ marginTop: "43px", alignItems: "center" }}>
+              <Checkbox
+                checked={this.state.death}
+                onChange={this.handleDeathChange}
+                name="death"
+                color="secondary"
+              />
+              <span>فوت شده؟ / Décès?</span>
+            </div>
+          </Grid>
+          {this.state.death && (
+            <Grid item xs={12} sm={12} md={4} key={"deathDate"}>
+              <CustomDateInput
+                name={"deathDate"}
+                initial={this.state.deathDate}
+                onChange={this.handleDeathDateChange}
               />
             </Grid>
           )}

@@ -67,7 +67,7 @@ export const Dictionary = {
   },
   serial: {
     persian: "شماره سریال شناسنامه",
-    french: "Numéro séquentiel"
+    french: "N° séquentiel"
   },
   cardSerial: {
     persian: "شماره سریال کارت",
@@ -203,7 +203,7 @@ export const Dictionary = {
     french: "enregistrer"
   },
   submit: {
-    persian: "ثبت نهایی سفارش",
+    persian: "ثبت سفارش",
     french: "soumettre la commande"
   },
   allStepsCompleted: {
@@ -277,6 +277,10 @@ export const Dictionary = {
   empty: {
     persian: "خالی",
     french: "Vide"
+  },
+  useFrenchNumber: {
+    persian: "شماره موبایلتان در فرانسه را وارد کنید",
+    french: "Entrez votre numéro de mobile en France"
   }
 };
 

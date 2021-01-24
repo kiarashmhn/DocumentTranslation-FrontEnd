@@ -1,6 +1,12 @@
 import React, { useState, useCallback, useRef, Fragment } from "react";
 import PropTypes from "prop-types";
-import { TextField, Button, Typography, withStyles } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Typography,
+  withStyles,
+  InputAdornment
+} from "@material-ui/core";
 import FormDialog from "../Template/FormDialog";
 import HighlightedInformation from "../Template/HighlightedInformation";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
@@ -9,6 +15,8 @@ import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { withRouter } from "react-router-dom";
 import Box from "@material-ui/core/Box";
+import { getCompleteName } from "../../Dictionary";
+import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const styles = theme => ({
   link: {
@@ -179,6 +187,13 @@ function RegisterDialog(props) {
               if (status === "nullEmailPhone") {
                 setStatus(null);
               }
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <CustomTooltip text={getCompleteName("useFrenchNumber")} />
+                </InputAdornment>
+              )
             }}
             FormHelperTextProps={{ error: true }}
           />
