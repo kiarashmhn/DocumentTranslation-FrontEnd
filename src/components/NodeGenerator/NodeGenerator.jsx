@@ -146,6 +146,12 @@ export default class NodesGenerator extends Component {
     return state;
   };
 
+  isNotRequired = element => {
+    if (element.notRequired) return true;
+    if (element.notRequiredField) return !!this.state[element.notRequiredField];
+    return false;
+  };
+
   createNodes = elements => {
     return elements.map(element => {
       switch (element.type) {
@@ -164,7 +170,7 @@ export default class NodesGenerator extends Component {
                 name={element.key}
                 value={this.state[element.key]}
                 onChange={event => this.elementOnChange(event, element)}
-                notRequired={element.notRequired}
+                notRequired={this.isNotRequired(element)}
                 type={element.inputType}
               />
             </Grid>

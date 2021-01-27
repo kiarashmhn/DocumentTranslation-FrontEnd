@@ -83,7 +83,7 @@ export const Dictionary = {
   },
   certificateId: {
     persian: "شماره شناسنامه",
-    french: "N° de l’Acte de l’état civil"
+    french: "Numéro d’acte de naissance"
   },
   registrationDate: {
     persian: "تاریخ ثبت",
@@ -285,6 +285,14 @@ export const Dictionary = {
   divorceOrDeath: {
     persian: "طلاق یا فوت",
     french: "Divorce ou décès"
+  },
+  codeBar: {
+    persian: "کدبار",
+    french: "Code-bar",
+    hint: {
+      persian: "کدبار درج شده در پشت کارت شناسایی ملی",
+      french: "Code-bar noté sur le dos de la carte d’identité"
+    }
   }
 };
 

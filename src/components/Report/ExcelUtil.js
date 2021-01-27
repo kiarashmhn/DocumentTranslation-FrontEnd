@@ -122,7 +122,9 @@ export const writeSortedArray = (worksheet, rowCount, data, row) => {
         worksheet,
         rowCount,
         true,
-        getFrenchName(row.name) + " " + (data.length - i)
+        data.length > 1
+          ? getFrenchName(row.name) + " " + (data.length - i)
+          : getFrenchName(row.name)
       );
       let keys = row.keys ? row.keys : Object.keys(data[i]);
       keys.map(key => {

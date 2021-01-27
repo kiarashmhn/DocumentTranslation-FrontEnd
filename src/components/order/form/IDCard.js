@@ -43,20 +43,16 @@ export const idCardForm = {
         {
           key: "nationalId",
           type: "text"
-        },
-        {
-          key: "certificateId",
-          type: "text"
-        },
-        {
-          key: "postalCode",
-          type: "text"
         }
       ]
     },
     {
       title: "cardInfo",
       content: [
+        {
+          key: "isSmartCard",
+          type: "check"
+        },
         {
           key: "cardSerial",
           type: "text"
@@ -66,8 +62,19 @@ export const idCardForm = {
           type: "date"
         },
         {
-          key: "isSmartCard",
-          type: "check"
+          key: "certificateId",
+          type: "text",
+          notRequiredField: "isSmartCard"
+        },
+        {
+          key: "postalCode",
+          type: "text",
+          notRequiredField: "isSmartCard"
+        },
+        {
+          key: "codeBar",
+          type: "text",
+          notRequiredField: "isSmartCard"
         }
       ]
     },

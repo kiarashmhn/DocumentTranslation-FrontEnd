@@ -55,7 +55,7 @@ const getSpouses = data => {
 };
 
 const getSpousesSection = data => {
-  if (data.spouses && data.spouses.length > 1) {
+  if (data.spouses && data.spouses.length >= 1) {
     return getSpouses(data);
   }
   return [
