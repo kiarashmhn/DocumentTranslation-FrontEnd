@@ -19,12 +19,8 @@ export default class CreateReport extends Component {
 
   writeData = worksheet => {
     let rowCount = 0;
-    rowCount = writeRows(
-      worksheet,
-      rowCount,
-      this.props.type.reportData,
-      this.props.data
-    );
+    let data = this.props.type.reportData(this.props.data);
+    rowCount = writeRows(worksheet, rowCount, data);
     rowCount = writeFooter(
       worksheet,
       rowCount,

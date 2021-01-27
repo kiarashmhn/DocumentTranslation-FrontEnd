@@ -24,9 +24,9 @@ export default class CustomDateInput extends Component {
     if (this.props.initial) {
       let initialDate = this.props.initial.split("/");
       this.setState({
-        year: initialDate[2],
-        month: initialDate[1],
-        day: initialDate[0]
+        year: parseInt(initialDate[2], 10),
+        month: parseInt(initialDate[1], 10),
+        day: parseInt(initialDate[0], 10)
       });
     }
   }
@@ -35,9 +35,9 @@ export default class CustomDateInput extends Component {
     if (this.props.initial && this.state === initialState) {
       let initialDate = this.props.initial.split("/");
       this.setState({
-        year: initialDate[2],
-        month: initialDate[1],
-        day: initialDate[0]
+        year: parseInt(initialDate[2], 10),
+        month: parseInt(initialDate[1], 10),
+        day: parseInt(initialDate[0], 10)
       });
     }
   }

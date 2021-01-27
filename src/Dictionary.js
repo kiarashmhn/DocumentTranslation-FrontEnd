@@ -281,6 +281,10 @@ export const Dictionary = {
   useFrenchNumber: {
     persian: "شماره موبایلتان در فرانسه را وارد کنید",
     french: "Entrez votre numéro de mobile en France"
+  },
+  divorceOrDeath: {
+    persian: "طلاق یا فوت",
+    french: "Divorce ou décès"
   }
 };
 

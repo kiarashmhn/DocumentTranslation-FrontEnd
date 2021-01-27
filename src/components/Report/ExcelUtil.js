@@ -1,4 +1,5 @@
 import { getFrenchName } from "../../Dictionary";
+import * as moment from "jalali-moment";
 
 export const alignmentCenter = { vertical: "middle", horizontal: "center" };
 export const alignmentRight = { vertical: "middle", horizontal: "right" };
@@ -79,29 +80,55 @@ export const writeData = (worksheet, idx, key, value, align) => {
 };
 
 export const getCorrectValue = (key, value) => {
+  if (!value) return value;
   if (value === "Tehran") return "Téhéran";
   if (key === "Nom") return value.toUpperCase();
   return value;
 };
 
 export const writeDataByKey = (key, data, worksheet, rowCount, align) => {
-  return writeData(worksheet, rowCount, getFrenchName(key), data[key], align);
+  return writeData(worksheet, rowCount, getFrenchName(key), data, align);
 };
 
 export const writeArray = (worksheet, rowCount, data, row) => {
-  if (data[row.name] && data[row.name].length >= 1) {
-    for (let i = 0; i < data[row.name].length; i++) {
+  if (data && data.length >= 1) {
+    rowCount = writeText(worksheet, rowCount, true, getFrenchName(row.name));
+    rowCount = writeText(worksheet, rowCount, false, "");
+    for (let i = 0; i < data.length; i++) {
+      let keys = row.keys ? row.keys : Object.keys(data[i]);
+      keys.map(key => {
+        rowCount = writeDataByKey(
+          key,
+          data[i][key],
+          worksheet,
+          rowCount,
+          row.align
+        );
+      });
+      rowCount = writeText(worksheet, rowCount, false, "");
+    }
+  } else {
+    rowCount = writeText(worksheet, rowCount, true, getFrenchName(row.name));
+    rowCount = writeText(worksheet, rowCount, false, "[Néant]");
+  }
+  rowCount = writeText(worksheet, rowCount, false, endSection);
+  return rowCount;
+};
+
+export const writeSortedArray = (worksheet, rowCount, data, row) => {
+  if (data && data.length >= 1) {
+    for (let i = 0; i < data.length; i++) {
       rowCount = writeText(
         worksheet,
         rowCount,
         true,
-        getFrenchName(row.name) + " " + (i + 1)
+        getFrenchName(row.name) + " " + (data.length - i)
       );
-      let keys = row.keys ? row.keys : Object.keys(data[row.name][i]);
+      let keys = row.keys ? row.keys : Object.keys(data[i]);
       keys.map(key => {
         rowCount = writeDataByKey(
           key,
-          data[row.name][i],
+          data[i][key],
           worksheet,
           rowCount,
           row.align
@@ -110,14 +137,11 @@ export const writeArray = (worksheet, rowCount, data, row) => {
       rowCount = writeText(worksheet, rowCount, false, endSection);
       rowCount = writeText(worksheet, rowCount, false, "");
     }
-  } else {
-    rowCount = writeText(worksheet, rowCount, true, getFrenchName(row.name));
-    rowCount = writeText(worksheet, rowCount, false, "[Néant]");
-  }
+  } else return writeArray(worksheet, rowCount, data, row);
   return rowCount;
 };
 
-export const writeRow = (worksheet, rowCount, row, data) => {
+export const writeRow = (worksheet, rowCount, row) => {
   switch (row.type) {
     case "text":
       rowCount = writeText(worksheet, rowCount, row.isBold, row.name, row.size);
@@ -126,14 +150,19 @@ export const writeRow = (worksheet, rowCount, row, data) => {
       rowCount = writeText(worksheet, rowCount, false, "");
       break;
     case "data":
-      rowCount = writeDataByKey(row.name, data, worksheet, rowCount, row.align);
+      rowCount = writeDataByKey(
+        row.name,
+        row.data,
+        worksheet,
+        rowCount,
+        row.align
+      );
       break;
     case "array":
-      rowCount = writeArray(worksheet, rowCount, data, row);
+      rowCount = writeArray(worksheet, rowCount, row.data, row);
       break;
-    case "children":
-      break;
-    case "spouses":
+    case "sortedArray":
+      rowCount = writeSortedArray(worksheet, rowCount, row.data, row);
       break;
     default:
       break;
@@ -141,9 +170,9 @@ export const writeRow = (worksheet, rowCount, row, data) => {
   return rowCount;
 };
 
-export const writeRows = (worksheet, rowCount, rows, data) => {
+export const writeRows = (worksheet, rowCount, rows) => {
   rows.map(row => {
-    rowCount = writeRow(worksheet, rowCount, row, data);
+    rowCount = writeRow(worksheet, rowCount, row);
   });
   return rowCount;
 };
@@ -167,4 +196,13 @@ export const writeFooter = (worksheet, rowCount, code, id) => {
   rowCount = writeText(worksheet, rowCount, false, second);
   rowCount = writeText(worksheet, rowCount, false, third);
   return rowCount;
+};
+
+export const compareDates = (date1, date2) => {
+  let d1 = moment.from(date1, "en", "DD/MM/YYYY").toDate();
+  let d2 = moment.from(date2, "en", "DD/MM/YYYY").toDate();
+
+  if (d1 > d2) return 1;
+  else if (d1 < d2) return -1;
+  return 0;
 };
