@@ -89,7 +89,8 @@ function RegisterDialog(props) {
     Auth.register(
       username.current.value,
       registerPassword.current.value,
-      email.current.value
+      email.current.value,
+      phone.current.value
     )
       .then(function(res) {
         if (res.success) {

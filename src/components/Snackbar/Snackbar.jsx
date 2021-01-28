@@ -133,10 +133,7 @@ function CustomizedSnackbars() {
   const dispatch = useDispatch();
   const { message, open, variant } = useSelector(state => state);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+  const handleClose = () => {
     dispatch(destroySnackbar());
   };
 
@@ -148,7 +145,7 @@ function CustomizedSnackbars() {
           horizontal: "center"
         }}
         open={open}
-        autoHideDuration={2000}
+        autoHideDuration={10000}
         onClose={handleClose}
         TransitionComponent={GrowTransition}
         ContentProps={{
