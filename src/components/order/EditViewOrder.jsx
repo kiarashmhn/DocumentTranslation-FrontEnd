@@ -54,12 +54,12 @@ class EditViewOrder extends Component {
         isLoading: true
       },
       () => {
-        this.updateOrder(true, OrderStatus.PENDING.name);
+        this.updateOrder(true, OrderStatus.PENDING.name, "SUBMIT");
       }
     );
   };
 
-  updateOrder = (close, status) => {
+  updateOrder = (close, status, mode) => {
     let self = this;
     let orderFormState = this.orderFormRef.current.getState();
     let files = orderFormState
@@ -72,6 +72,7 @@ class EditViewOrder extends Component {
       id: this.props.itemId,
       type: this.state.type ? this.state.type.code : "",
       status: status,
+      mode: mode,
       details: orderFormState
     };
     this.api
@@ -102,7 +103,7 @@ class EditViewOrder extends Component {
         isLoading: true
       },
       () => {
-        this.updateOrder(false, OrderStatus.COMPLETING.name);
+        this.updateOrder(false, OrderStatus.COMPLETING.name, "SAVE");
       }
     );
   };

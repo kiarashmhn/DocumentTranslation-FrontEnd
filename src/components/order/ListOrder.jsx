@@ -12,6 +12,7 @@ import Api from "../Api/Api";
 import { withStyles } from "@material-ui/core";
 import EditUserDialog from "../register_login/EditUserDialog";
 import SelectAdminDialog from "../register_login/SelectAdminDialog";
+import AuthService from "../../AuthService";
 
 const styles = theme => ({
   link: {
@@ -57,6 +58,19 @@ class ListOrder extends Component {
       username: "",
       adminName: ""
     };
+    this.auth = new AuthService();
+  }
+
+  componentDidMount() {
+    this.setState(
+      {
+        isAdmin: this.auth.isAdmin(),
+        isSuperAdmin: this.auth.isSuperAdmin()
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   }
 
   getData = () => {
@@ -121,7 +135,7 @@ class ListOrder extends Component {
       }
     ];
 
-    if (this.props.type && this.props.type === "ADMIN")
+    if (this.props.type && this.state.isAdmin) {
       columns.push({
         name: "username",
         label: "Demandeur",
@@ -147,6 +161,7 @@ class ListOrder extends Component {
           }
         }
       });
+    }
 
     columns = [
       ...columns,
@@ -156,36 +171,20 @@ class ListOrder extends Component {
           label: "État"
         },
         {
-          name: "creationTime",
-          label: "Date d'enregistrement"
+          name: "submitDate",
+          label: "Date d'enregistrement ou de paiement"
         },
         {
-          name: "id",
-          label: "Vue",
-          options: {
-            customBodyRender: (value, meta) => {
-              if (value !== undefined && value !== null) {
-                if (
-                  (this.props.type && this.props.type === "ADMIN") ||
-                  (meta.rowData && meta.rowData[2] !== "En cours")
-                ) {
-                  return (
-                    <IconButton
-                      aria-label="delete"
-                      onClick={() => this.handleClickOpen(value)}
-                      style={{ color: ColorPalette.cornflowerblue }}
-                    >
-                      <Info fontSize="small" />
-                    </IconButton>
-                  );
-                }
-              }
-            }
-          }
+          name: "acceptanceDate",
+          label: "Date d'acceptation"
+        },
+        {
+          name: "deliveryDate",
+          label: "Date de livraison"
         }
       ]
     ];
-    if (this.props.type && this.props.type === "ADMIN")
+    if (this.props.type && this.state.isSuperAdmin)
       columns.push({
         name: "adminName",
         label: "Responsable",
@@ -229,7 +228,7 @@ class ListOrder extends Component {
                       }
                     }}
                   >
-                    Pas de responsables
+                    À déterminer
                   </span>
                 );
               }
@@ -237,6 +236,35 @@ class ListOrder extends Component {
           }
         }
       });
+    columns = [
+      ...columns,
+      ...[
+        {
+          name: "id",
+          label: "Vue",
+          options: {
+            customBodyRender: (value, meta) => {
+              if (value !== undefined && value !== null) {
+                if (
+                  (this.props.type && this.state.isAdmin) ||
+                  (meta.rowData && meta.rowData[2] !== "En cours")
+                ) {
+                  return (
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => this.handleClickOpen(value)}
+                      style={{ color: ColorPalette.cornflowerblue }}
+                    >
+                      <Info fontSize="small" />
+                    </IconButton>
+                  );
+                }
+              }
+            }
+          }
+        }
+      ]
+    ];
     return columns;
   };
 
@@ -258,8 +286,12 @@ class ListOrder extends Component {
           method={"Post"}
           title={title}
           additionalData={
-            this.props.type === "ADMIN"
+            this.state.isSuperAdmin
               ? {}
+              : this.state.isAdmin
+              ? {
+                  adminName: localStorage.getItem("username")
+                }
               : {
                   username: localStorage.getItem("username")
                 }

@@ -287,10 +287,10 @@ export const Dictionary = {
     french: "Divorce ou décès"
   },
   codeBar: {
-    persian: "کدبار",
+    persian: "شماره پشت کارت",
     french: "Code-bar",
     hint: {
-      persian: "کدبار درج شده در پشت کارت شناسایی ملی",
+      persian: "شماره درج شده در پشت و پایین کارت شناسایی ملی",
       french: "Code-bar noté sur le dos de la carte d’identité"
     }
   }

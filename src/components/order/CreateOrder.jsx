@@ -39,7 +39,7 @@ class CreateOrder extends Component {
     });
   };
 
-  createOrder = (close, status) => {
+  createOrder = (close, status, mode) => {
     let self = this;
     let orderFormState = this.orderFormRef.current.getState();
     let files = orderFormState
@@ -52,6 +52,7 @@ class CreateOrder extends Component {
       id: this.state.id,
       type: this.state.type.code,
       details: orderFormState,
+      mode: mode,
       status: status
     };
     this.api
@@ -94,7 +95,7 @@ class CreateOrder extends Component {
         isLoading: true
       },
       () => {
-        this.createOrder(true, OrderStatus.PENDING.name);
+        this.createOrder(true, OrderStatus.PENDING.name, "SUBMIT");
       }
     );
   };
@@ -105,7 +106,7 @@ class CreateOrder extends Component {
         isLoading: true
       },
       () => {
-        this.createOrder(false, OrderStatus.COMPLETING.name);
+        this.createOrder(false, OrderStatus.COMPLETING.name, "SAVE");
       }
     );
   };
