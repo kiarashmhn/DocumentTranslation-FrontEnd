@@ -62,15 +62,10 @@ class ListOrder extends Component {
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        isAdmin: this.auth.isAdmin(),
-        isSuperAdmin: this.auth.isSuperAdmin()
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
+    this.setState({
+      isAdmin: this.auth.isAdmin(),
+      isSuperAdmin: this.auth.isSuperAdmin()
+    });
   }
 
   getData = () => {

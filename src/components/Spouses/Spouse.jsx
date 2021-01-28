@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { Grid } from "@material-ui/core";
 import CustomDateInput from "../CustomDateInput/CustomDateInput";
-import Checkbox from "@material-ui/core/Checkbox";
 import PropTypes from "prop-types";
 import FieldInput from "../CustomInput/FieldInput";
+import ControlledOpenSelect from "../Dropdown/Dropdown";
+import {
+  getCompleteName,
+  getFrenchName,
+  getPersianName
+} from "../../Dictionary";
 
 const initialState = {
   name: "",
@@ -15,12 +20,13 @@ const initialState = {
   marriageLocation: "",
   officeNumber: "",
   registrationNumber: "",
-  divorce: false,
   divorceDate: "",
   divorceLocation: "",
   divorceRegistrationNumber: "",
-  death: false,
-  deathDate: ""
+  deathDate: "",
+  deathLocation: "",
+  deathRegistrationNumber: "",
+  marriageStatus: ""
 };
 
 export default class Spouse extends Component {
@@ -53,18 +59,6 @@ export default class Spouse extends Component {
   handleDivorceDateChange = newDate => {
     this.setState({
       divorceDate: newDate
-    });
-  };
-
-  handleDivorceChange = e => {
-    this.setState({
-      divorce: e.target.checked
-    });
-  };
-
-  handleDeathChange = e => {
-    this.setState({
-      death: e.target.checked
     });
   };
 
@@ -169,18 +163,24 @@ export default class Spouse extends Component {
               }
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={4} key={"divorce"}>
-            <div style={{ marginTop: "43px", alignItems: "center" }}>
-              <Checkbox
-                checked={this.state.divorce}
-                onChange={this.handleDivorceChange}
-                name="divorce"
-                color="secondary"
-              />
-              <span>طلاق؟ / Divorce?</span>
-            </div>
+          <Grid item xs={12} sm={12} md={4} key={"marriageStatus"}>
+            <ControlledOpenSelect
+              required={true}
+              value={this.state.marriageStatus}
+              keyId={"marriageStatus"}
+              onChange={event =>
+                this.setState({ marriageStatus: event.target.value })
+              }
+              names={[
+                { value: "living", displayName: getCompleteName("living") },
+                { value: "divorce", displayName: getCompleteName("divorce") },
+                { value: "death", displayName: getCompleteName("death") }
+              ]}
+              title={getFrenchName("marriageStatus")}
+              helperText={getPersianName("marriageStatus")}
+            />
           </Grid>
-          {this.state.divorce && (
+          {this.state.marriageStatus === "divorce" && (
             <Grid item xs={12} sm={12} md={4} key={"divorceRegistrationNumber"}>
               <FieldInput
                 name={"divorceRegistrationNumber"}
@@ -193,7 +193,7 @@ export default class Spouse extends Component {
               />
             </Grid>
           )}
-          {this.state.divorce && (
+          {this.state.marriageStatus === "divorce" && (
             <Grid item xs={12} sm={12} md={4} key={"divorceDate"}>
               <CustomDateInput
                 name={"divorceDate"}
@@ -202,7 +202,7 @@ export default class Spouse extends Component {
               />
             </Grid>
           )}
-          {this.state.divorce && (
+          {this.state.marriageStatus === "divorce" && (
             <Grid item xs={12} sm={12} md={4} key={"divorceLocation"}>
               <FieldInput
                 name={"divorceLocation"}
@@ -215,23 +215,38 @@ export default class Spouse extends Component {
               />
             </Grid>
           )}
-          <Grid item xs={12} sm={12} md={4} key={"death"}>
-            <div style={{ marginTop: "43px", alignItems: "center" }}>
-              <Checkbox
-                checked={this.state.death}
-                onChange={this.handleDeathChange}
-                name="death"
-                color="secondary"
+          {this.state.marriageStatus === "death" && (
+            <Grid item xs={12} sm={12} md={4} key={"deathRegistrationNumber"}>
+              <FieldInput
+                name={"deathRegistrationNumber"}
+                value={this.state.deathRegistrationNumber}
+                onChange={e =>
+                  this.setState({
+                    deathRegistrationNumber: e.target.value
+                  })
+                }
               />
-              <span>فوت شده؟ / Décès?</span>
-            </div>
-          </Grid>
-          {this.state.death && (
+            </Grid>
+          )}
+          {this.state.marriageStatus === "death" && (
             <Grid item xs={12} sm={12} md={4} key={"deathDate"}>
               <CustomDateInput
                 name={"deathDate"}
                 initial={this.state.deathDate}
                 onChange={this.handleDeathDateChange}
+              />
+            </Grid>
+          )}
+          {this.state.marriageStatus === "death" && (
+            <Grid item xs={12} sm={12} md={4} key={"deathLocation"}>
+              <FieldInput
+                name={"deathLocation"}
+                value={this.state.deathLocation}
+                onChange={e =>
+                  this.setState({
+                    deathLocation: e.target.value
+                  })
+                }
               />
             </Grid>
           )}

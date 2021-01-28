@@ -157,7 +157,7 @@ export const Dictionary = {
         "Veuillez compléter cette rubrique, si vous êtes marié(e) ou divorcé(e)"
     }
   },
-  divorces: {
+  divorce: {
     persian: "طلاق",
     french: "Divorce"
   },
@@ -171,7 +171,7 @@ export const Dictionary = {
     }
   },
   death: {
-    persian: "مرگ",
+    persian: "فوت",
     french: "Décès"
   },
   spousesInfo: {
@@ -293,6 +293,26 @@ export const Dictionary = {
       persian: "شماره درج شده در پشت و پایین کارت شناسایی ملی",
       french: "Code-bar noté sur le dos de la carte d’identité"
     }
+  },
+  marriageStatus: {
+    persian: "وضعیت زناشویی",
+    french: "Situation de couple"
+  },
+  living: {
+    persian: "در حال زندگی",
+    french: "En cours"
+  },
+  deathLocation: {
+    persian: "محل فوت",
+    french: "Lieu du décès"
+  },
+  deathDate: {
+    persian: "تاریخ فوت",
+    french: "Date de décès"
+  },
+  deathRegistrationNumber: {
+    persian: "شماره ثبت فوت",
+    french: "N° d’enregistrement de décès"
   }
 };
 

@@ -13,14 +13,7 @@ const getSpouse = spouse => {
     registrationNumber: spouse.registrationNumber
   };
 
-  if (!spouse.death && !spouse.divorce)
-    info = {
-      ...info,
-      ...{
-        divorceOrDeathdivorceOrDeathdivorceOrDeath: "Néant"
-      }
-    };
-  if (spouse.divorce)
+  if (spouse.marriageStatus === "divorce")
     info = {
       ...info,
       ...{
@@ -29,11 +22,20 @@ const getSpouse = spouse => {
         divorceRegistrationNumber: spouse.divorceRegistrationNumber
       }
     };
-  if (spouse.death)
+  else if (spouse.marriageStatus === "death")
     info = {
       ...info,
       ...{
-        deathDate: spouse.deathDate
+        deathDate: spouse.deathDate,
+        deathLocation: spouse.deathLocation,
+        deathRegistrationNumber: spouse.deathRegistrationNumber
+      }
+    };
+  else
+    info = {
+      ...info,
+      ...{
+        divorceOrDeath: "Néant"
       }
     };
   return info;
