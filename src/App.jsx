@@ -40,9 +40,7 @@ class App extends Component {
                   path={URLConstant.USER_PANEL}
                   component={UserPanel}
                 />
-                <Route>
-                  <HomePage />
-                </Route>
+                <Route exact path="/" component={HomePage} />
               </Switch>
             </Suspense>
           </MuiThemeProvider>
