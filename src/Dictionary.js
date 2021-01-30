@@ -288,10 +288,10 @@ export const Dictionary = {
   },
   codeBar: {
     persian: "شماره پشت کارت",
-    french: "Code-bar",
+    french: "Le code-barre noté",
     hint: {
       persian: "شماره درج شده در پشت و پایین کارت شناسایی ملی",
-      french: "Code-bar noté sur le dos de la carte d’identité"
+      french: "Le code-barre noté au dos de la carte d'identité Nationale"
     }
   },
   marriageStatus: {
