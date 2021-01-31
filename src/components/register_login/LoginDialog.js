@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { withRouter } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -17,6 +16,7 @@ import VisibilityPasswordTextField from "../Template/VisibilityPasswordTextField
 import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import * as URLConstant from "../../URLConstant";
+import { Redirect } from "react-router";
 
 const styles = theme => ({
   forgotPassword: {
@@ -42,7 +42,6 @@ const styles = theme => ({
 function LoginDialog(props) {
   const {
     setStatus,
-    history,
     classes,
     onClose,
     openChangePasswordDialog,
@@ -51,6 +50,8 @@ function LoginDialog(props) {
   } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(false);
   const username = useRef();
   const loginPassword = useRef();
 
@@ -62,128 +63,148 @@ function LoginDialog(props) {
 
     Auth.login(username.current.value, loginPassword.current.value)
       .then(function(res) {
+        setIsLoading(false);
         if (res.success) {
-          Auth.isAdmin()
-            ? history.push(URLConstant.ADMIN_PANEL)
-            : history.push(URLConstant.USER_PANEL);
+          Auth.isAdmin() ? setIsAdmin(true) : setIsUser(true);
           showSnackbar(res.message, "success");
         } else {
           setStatus("invalidUsernameOrPassword");
         }
-        setIsLoading(false);
       })
       .catch(function() {
         setIsLoading(false);
       });
-  }, [setIsLoading, username, loginPassword, history, setStatus]);
+  }, [setIsLoading, username, loginPassword, setStatus, setIsAdmin, setIsUser]);
+
+  const redirect = () => {
+    let url = isAdmin
+      ? URLConstant.ADMIN_PANEL
+      : isUser
+      ? URLConstant.USER_PANEL
+      : null;
+    if (url) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: url,
+            state: {}
+          }}
+        />
+      );
+    }
+  };
 
   return (
-    <FormDialog
-      open
-      onClose={onClose}
-      loading={isLoading}
-      onFormSubmit={e => {
-        e.preventDefault();
-        login();
-      }}
-      hideBackdrop
-      headline="ورود"
-      content={
-        <Fragment>
-          <TextField
-            autoFocus
-            inputRef={username}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            error={status === "invalidUsernameOrPassword"}
-            label="نام کاربری"
-            autoComplete="off"
-            type="text"
-            onChange={() => {
-              if (status === "invalidUsernameOrPassword") {
-                setStatus(null);
+    <Fragment>
+      <FormDialog
+        open
+        onClose={onClose}
+        loading={isLoading}
+        onFormSubmit={e => {
+          e.preventDefault();
+          login();
+        }}
+        hideBackdrop
+        headline="ورود"
+        content={
+          <Fragment>
+            <TextField
+              autoFocus
+              inputRef={username}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              error={status === "invalidUsernameOrPassword"}
+              label="نام کاربری"
+              autoComplete="off"
+              type="text"
+              onChange={() => {
+                if (status === "invalidUsernameOrPassword") {
+                  setStatus(null);
+                }
+              }}
+              FormHelperTextProps={{ error: true }}
+            />
+            <VisibilityPasswordTextField
+              variant="outlined"
+              margin="normal"
+              className={"typography"}
+              required
+              fullWidth
+              error={status === "invalidUsernameOrPassword"}
+              label="رمز عبور"
+              inputRef={loginPassword}
+              autoComplete="off"
+              onChange={() => {
+                if (status === "invalidUsernameOrPassword") {
+                  setStatus(null);
+                }
+              }}
+              helperText={
+                status === "invalidUsernameOrPassword" ? (
+                  <span dir={"rtl"}>نام کاربری یا رمز عبور اشتباه است.</span>
+                ) : (
+                  ""
+                )
               }
-            }}
-            FormHelperTextProps={{ error: true }}
-          />
-          <VisibilityPasswordTextField
-            variant="outlined"
-            margin="normal"
-            className={"typography"}
-            required
-            fullWidth
-            error={status === "invalidUsernameOrPassword"}
-            label="رمز عبور"
-            inputRef={loginPassword}
-            autoComplete="off"
-            onChange={() => {
-              if (status === "invalidUsernameOrPassword") {
-                setStatus(null);
-              }
-            }}
-            helperText={
-              status === "invalidUsernameOrPassword" ? (
-                <span dir={"rtl"}>نام کاربری یا رمز عبور اشتباه است.</span>
-              ) : (
-                ""
-              )
-            }
-            FormHelperTextProps={{ error: true }}
-            onVisibilityChange={setIsPasswordVisible}
-            isVisible={isPasswordVisible}
-          />
-          <FormControlLabel
-            className={classes.formControlLabel}
-            control={<Checkbox color="primary" />}
-            label={<Typography variant="body1">ذخیره اطلاعات</Typography>}
-          />
-          {status === "verificationEmailSend" ? (
-            <HighlightedInformation>
-              نحوه بازیابی رمز عبور ، برای شما ایمیل شده است
-            </HighlightedInformation>
-          ) : null}
-        </Fragment>
-      }
-      actions={
-        <Fragment>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            disabled={isLoading}
-            size="large"
-          >
-            ورود
-            {isLoading && <ButtonCircularProgress />}
-          </Button>
-          <Typography
-            align="center"
-            className={classNames(
-              classes.forgotPassword,
-              isLoading ? classes.disabledText : null
-            )}
-            color="primary"
-            onClick={isLoading ? null : openChangePasswordDialog}
-            tabIndex={0}
-            role="button"
-            onKeyDown={event => {
-              // For screenreaders listen to space and enter events
-              if (
-                (!isLoading && event.keyCode === 13) ||
-                event.keyCode === 32
-              ) {
-                openChangePasswordDialog();
-              }
-            }}
-          >
-            فراموشی رمزعبور
-          </Typography>
-        </Fragment>
-      }
-    />
+              FormHelperTextProps={{ error: true }}
+              onVisibilityChange={setIsPasswordVisible}
+              isVisible={isPasswordVisible}
+            />
+            <FormControlLabel
+              className={classes.formControlLabel}
+              control={<Checkbox color="primary" />}
+              label={<Typography variant="body1">ذخیره اطلاعات</Typography>}
+            />
+            {status === "verificationEmailSend" ? (
+              <HighlightedInformation>
+                نحوه بازیابی رمز عبور ، برای شما ایمیل شده است
+              </HighlightedInformation>
+            ) : null}
+          </Fragment>
+        }
+        actions={
+          <Fragment>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="secondary"
+              disabled={isLoading}
+              size="large"
+            >
+              ورود
+              {isLoading && <ButtonCircularProgress />}
+            </Button>
+            <Typography
+              align="center"
+              className={classNames(
+                classes.forgotPassword,
+                isLoading ? classes.disabledText : null
+              )}
+              color="primary"
+              onClick={isLoading ? null : openChangePasswordDialog}
+              tabIndex={0}
+              role="button"
+              onKeyDown={event => {
+                // For screenreaders listen to space and enter events
+                if (
+                  (!isLoading && event.keyCode === 13) ||
+                  event.keyCode === 32
+                ) {
+                  openChangePasswordDialog();
+                }
+              }}
+            >
+              فراموشی رمزعبور
+            </Typography>
+          </Fragment>
+        }
+      />
+      {redirect()}
+    </Fragment>
   );
 }
 
@@ -192,11 +213,10 @@ LoginDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
   setStatus: PropTypes.func.isRequired,
   openChangePasswordDialog: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
   status: PropTypes.string,
   showSnackbar: PropTypes.func.isRequired
 };
 
 export default SnackbarWrapper(
-  withRouter(withStyles(styles, { withTheme: true })(LoginDialog))
+  withStyles(styles, { withTheme: true })(LoginDialog)
 );
