@@ -7,34 +7,25 @@ import * as URLConstant from "../../URLConstant";
 const Auth = new AuthService();
 
 const PrivateRoute = ({ component: Component, path, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        path === URLConstant.ADMIN_PANEL ? (
-          Auth.isAdmin() === true ? (
-            <Component {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/",
-                state: { from: props.location }
-              }}
-            />
-          )
-        ) : Auth.loggedIn() === true ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
-  );
+  if (path === URLConstant.ADMIN_PANEL && !Auth.isAdmin()) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/"
+        }}
+      />
+    );
+  }
+  if (path === URLConstant.USER_PANEL && !Auth.loggedIn()) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/"
+        }}
+      />
+    );
+  }
+  return <Route {...rest} render={props => <Component {...props} />} />;
 };
 PrivateRoute.propTypes = {
   location: PropTypes.any,
