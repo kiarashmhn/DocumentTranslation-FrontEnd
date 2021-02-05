@@ -14,28 +14,6 @@ const styles = theme => ({
   }
 });
 
-function shadeColor(hex, percent) {
-  const f = parseInt(hex.slice(1), 16);
-
-  const t = percent < 0 ? 0 : 255;
-
-  const p = percent < 0 ? percent * -1 : percent;
-
-  const R = f >> 16;
-
-  const G = (f >> 8) & 0x00ff;
-
-  const B = f & 0x0000ff;
-  return `#${(
-    0x1000000 +
-    (Math.round((t - R) * p) + R) * 0x10000 +
-    (Math.round((t - G) * p) + G) * 0x100 +
-    (Math.round((t - B) * p) + B)
-  )
-    .toString(16)
-    .slice(1)}`;
-}
-
 function FeatureCard(props) {
   const {
     classes,
@@ -53,18 +31,20 @@ function FeatureCard(props) {
         className={classes.iconWrapper}
         style={{
           color: color,
-          backgroundColor: shadeColor(color, 0.5),
-          fill: color
+          fill: color,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
         }}
       >
         {Icon}
       </div>
       {frenchHeadline && (
-        <Typography variant="h5" paragraph>
+        <Typography variant="h5" paragraph align={"center"} color={color}>
           {frenchHeadline}
         </Typography>
       )}
-      <Typography variant="h5" paragraph dir={"rtl"}>
+      <Typography variant="h5" paragraph align={"center"} color={color}>
         {headline}
       </Typography>
       {frenchText && (
@@ -72,6 +52,7 @@ function FeatureCard(props) {
           variant="body1"
           color="textSecondary"
           style={{ whiteSpace: "pre-line" }}
+          align={"center"}
         >
           {frenchText}
         </Typography>
@@ -80,7 +61,7 @@ function FeatureCard(props) {
         variant="body1"
         color="textSecondary"
         style={{ whiteSpace: "pre-line" }}
-        dir={"rtl"}
+        align={"center"}
       >
         {text}
       </Typography>

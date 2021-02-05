@@ -8,7 +8,7 @@ export const Dictionary = {
     french: "Femelle"
   },
   none: {
-    persian: "هیچکدام",
+    persian: "انتخاب نشده",
     french: "Aucun"
   },
   identificationCertificate: {
@@ -288,7 +288,7 @@ export const Dictionary = {
   },
   codeBar: {
     persian: "شماره پشت کارت",
-    french: "Le code-barre noté",
+    french: "Code-barre noté",
     hint: {
       persian: "شماره درج شده در پشت و پایین کارت شناسایی ملی",
       french: "Le code-barre noté au dos de la carte d'identité Nationale"

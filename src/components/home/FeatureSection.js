@@ -7,15 +7,7 @@ import {
   withWidth,
   withStyles
 } from "@material-ui/core";
-import CodeIcon from "@material-ui/icons/Code";
-import FingerprintIcon from "@material-ui/icons/Fingerprint";
-import ComputerIcon from "@material-ui/icons/Computer";
-import BarChartIcon from "@material-ui/icons/BarChart";
-import HeadsetMicIcon from "@material-ui/icons/HeadsetMic";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import CloudIcon from "@material-ui/icons/Cloud";
-import MeassageIcon from "@material-ui/icons/Message";
-import CancelIcon from "@material-ui/icons/Cancel";
+import DescriptionIcon from "@material-ui/icons/Description";
 import calculateSpacing from "./calculateSpacing";
 import FeatureCard from "./FeatureCard";
 import classNames from "classnames";
@@ -71,84 +63,139 @@ const styles = theme => ({
 const features = [
   {
     color: "#DD2C00",
-    headline: "ترجمه شناسنامه",
-    frenchHeadline: "Traduction de la carte d'identité",
-    text: "ترجمه انواع شناسنامه از فارسی به فرانسوی\n تعرفه: از ۲۰ تا ۲۵ یورو",
+    headline: "شناسنامه",
+    frenchHeadline: "Acte de l’état civil",
+    text: "ترجمه رسمی شناسنامه\n تعرفه: از ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
     frenchText:
-      "Traduction de différents types de cartes d'identité du persan au français\n Coût: 20 à 25€",
-    icon: <FingerprintIcon style={{ fontSize: iconSize }} />,
+      "Traduction certifiée de l’Acte de l’état civil\n Tarif : 20 à 25€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
   },
   {
     color: "#6200EA",
-    headline: "Feature 2",
+    headline: "کارت ملی",
+    frenchHeadline: "Carte d'Identité Nationale",
     text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CalendarTodayIcon style={{ fontSize: iconSize }} />,
+      "ترجمه رسمی کارت شناسایی ملی و کارت هوشمند ملی\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée de la Carte d'identité nationale\n Tarif : 20€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
   },
   {
     color: "#0091EA",
-    headline: "Feature 3",
-    text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <MeassageIcon style={{ fontSize: iconSize }} />,
+    headline: "گواهینامه",
+    frenchHeadline: "Permis de conduire",
+    text: "ترجمه رسمی گواهینامه رانندگی\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée du Permis de conduire\n Tarif : 20€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
   },
   {
     color: "#d50000",
-    headline: "Feature 4",
+    headline: "کارت پایان خدمت",
+    frenchHeadline: "Carte de fin de service militaire",
     text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <ComputerIcon style={{ fontSize: iconSize }} />,
+      "ترجمه رسمی کارت پایان خدمت دوره ضرورت و کارت معافیت از خدمت دوره ضرورت\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée de la Carte de fin ou d’exemption du service militaire\n Tarif : 20€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "200"
   },
   {
     color: "#00C853",
-    headline: "Feature 5",
+    headline: "سند ازدواج",
+    frenchHeadline: "Acte de mariage",
     text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <BarChartIcon style={{ fontSize: iconSize }} />,
+      "ترجمه رسمی سند ازدواج یا عقدنامه\n تعرفه: ۶۰ یورو\n زمان تحویل: ۴۸ ساعت",
+    frenchText:
+      "Traduction certifiée du Certificat ou de l’Acte de mariage\n Tarif : 60€ \n Délai de livraison : 48h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "0"
   },
   {
     color: "#64DD17",
-    headline: "Feature 6",
-    text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <HeadsetMicIcon style={{ fontSize: iconSize }} />,
+    headline: "تذکره",
+    frenchHeadline: "Acte de naissance",
+    text: "ترجمه رسمی تذکره\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée de l’Acte de naissance\n Tarif : 20€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "200"
   },
   {
     color: "#304FFE",
-    headline: "Feature 7",
+    headline: "نکاح نامه (سند ازدواج)",
+    frenchHeadline: "Certificat de mariage",
     text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CloudIcon style={{ fontSize: iconSize }} />,
+      "ترجمه رسمی نکاح نامه، نکاح خطر، وثیقه زوجیت، نکاح نامه شرعی\n تعرفه: ۵۰ یورو\n زمان تحویل: ۴۸ ساعت",
+    frenchText:
+      "Traduction certifiée du Certificat ou de l’Acte de mariage\n Tarif : 50€ \n Délai de livraison : 48h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
   },
   {
     color: "#C51162",
-    headline: "Feature 8",
-    text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CodeIcon style={{ fontSize: iconSize }} />,
+    headline: "لیسانس درایوری",
+    frenchHeadline: "Permis de conduire",
+    text: "ترجمه رسمی لایسنس درایوری\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée du Permis de conduire\n Tarif : 25€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
   },
   {
     color: "#00B8D4",
-    headline: "Feature 9",
+    headline: "کارت ثبت تولدات",
+    frenchHeadline: "Carte d’enregistrement de naissance",
+    text: "ترجمه رسمی کارت ثبت تولدات\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée de la Carte d’enregistrement de naissance\n Tarif : 25€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
+    mdDelay: "400",
+    smDelay: "0"
+  },
+  {
+    color: "#dbc858",
+    headline: "فورم تثبیت هویت",
+    frenchHeadline: "Formulaire de vérification d’identité",
+    text: "ترجمه رسمی فورم تثبیت هویت\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée de la Formulaire de vérification d’identité\n Tarif : 25€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
+    mdDelay: "0",
+    smDelay: "0"
+  },
+  {
+    color: "#0d133b",
+    headline: "کارت اقامت موقت اتباع خارجی",
+    frenchHeadline: "Carte de séjour temporaire  pour les étrangers",
     text:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-    icon: <CancelIcon style={{ fontSize: iconSize }} />,
+      "ترجمه رسمی کارت اقامت موقت اتباع خارجی\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText:
+      "Traduction certifiée de la Carte de séjour temporaire  pour les étrangers\n Tarif : 25€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
+    mdDelay: "200",
+    smDelay: "200"
+  },
+  {
+    color: "#db8758",
+    headline: "ترجمه متن",
+    frenchHeadline: "Autres types de documents",
+    text:
+      "ترجمه رسمی متون، اسناد و مدارک دیگر\n تعرفه: درخواست پیش فاکتور کنید\n زمان تحویل: با توجه به مقدار کار تعیین می شود",
+    frenchText:
+      "Traduction certifiée d'autres types de documents\n Tarif : demander un devis \n Délai de livraison : en fonction de la difficulté linguistique",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
   }

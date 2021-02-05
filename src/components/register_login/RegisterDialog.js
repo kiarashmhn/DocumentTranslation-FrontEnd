@@ -114,13 +114,8 @@ function RegisterDialog(props) {
         if (res.success) {
           setIsUser(true);
           showSnackbar(res.message, "success");
-        } else if (
-          res &&
-          res.message &&
-          res.message === "نام کاربری وارد شده تکراری است"
-        ) {
-          setStatus("invalidUsername");
         } else {
+          setStatus("invalidUsername");
           showSnackbar(res.message, "error");
         }
       })
