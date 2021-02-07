@@ -1,4 +1,8 @@
 export const Dictionary = {
+  amount: {
+    persian: "مبلغ",
+    french: "Montant"
+  },
   M: {
     persian: "مرد",
     french: "Mâle"

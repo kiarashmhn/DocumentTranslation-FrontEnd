@@ -7,6 +7,8 @@ import Api from "../Api/Api";
 import CreateReport from "../Report/CreateReport";
 import { OrderStatus } from "./OrderStatus";
 import OrderForm from "./OrderForm";
+import FullScreenDialog from "../FullScreenDialog";
+import Payment from "./Payment";
 
 class EditViewOrder extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class EditViewOrder extends Component {
     this.state = {
       isLoading: false,
       initialState: null,
+      openPaymentDialog: false,
       type: null
     };
   }
@@ -46,6 +49,18 @@ class EditViewOrder extends Component {
           });
         }
       });
+  };
+
+  handleClosePaymentDialog = () => {
+    this.setState({
+      openPaymentDialog: false
+    });
+  };
+
+  handleOpenPaymentDialog = () => {
+    this.setState({
+      openPaymentDialog: true
+    });
   };
 
   handleSubmit = () => {
@@ -84,16 +99,17 @@ class EditViewOrder extends Component {
       )
       .then(function(res) {
         self.props.showSnackbar(res.message, res.success ? "success" : "error");
-        self.handleFileSelect(files).then(
-          () => {
-            self.orderFormRef.current.onRefresh();
-          },
-          () => {
-            self.setState({
+        self.handleFileSelect(files).then(() => {
+          self.orderFormRef.current.onRefresh();
+          self.setState(
+            {
               isLoading: false
-            });
-          }
-        );
+            },
+            () => {
+              if (mode === "SUBMIT") self.handleOpenPaymentDialog();
+            }
+          );
+        });
       });
   };
 
@@ -151,6 +167,20 @@ class EditViewOrder extends Component {
             form={this.state.type.form}
             itemId={this.props.itemId}
             onFileSelect={this.handleFileSelect}
+          />
+        )}
+        {this.state.type && (
+          <FullScreenDialog
+            title="test"
+            component={
+              <Payment
+                orderId={this.props.itemId}
+                amount={this.state.type.price}
+                type={this.state.type}
+              />
+            }
+            handleClose={this.handleClosePaymentDialog}
+            open={this.state.openPaymentDialog}
           />
         )}
       </Fragment>

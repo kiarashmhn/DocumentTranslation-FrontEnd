@@ -8,13 +8,15 @@ export const OrderTypes = {
     key: "identificationCertificate",
     form: idCertificateForm,
     reportData: IdentityCertificateReportData,
-    code: "IA"
+    code: "IA",
+    price: 25
   },
   ID_CARD: {
     key: "identificationCard",
     form: idCardForm,
     reportData: IDCardReportData,
-    code: "IC"
+    code: "IC",
+    price: 20
   }
 };
 

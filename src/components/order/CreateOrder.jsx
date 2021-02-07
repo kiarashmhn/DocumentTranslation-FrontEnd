@@ -12,6 +12,7 @@ import { OrderStatus } from "./OrderStatus";
 import Box from "@material-ui/core/Box";
 import OrderForm from "./OrderForm";
 import { getFrenchName, getPersianName } from "../../Dictionary";
+import Payment from "./Payment";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class CreateOrder extends Component {
     this.api = new Api();
     this.state = {
       openIdentityDialog: false,
+      openPaymentDialog: false,
       isLoading: false,
       type: null,
       id: null
@@ -36,6 +38,18 @@ class CreateOrder extends Component {
   handleCloseDialog = () => {
     this.setState({
       openIdentityDialog: false
+    });
+  };
+
+  handleClosePaymentDialog = () => {
+    this.setState({
+      openPaymentDialog: false
+    });
+  };
+
+  handleOpenPaymentDialog = () => {
+    this.setState({
+      openPaymentDialog: true
     });
   };
 
@@ -78,6 +92,8 @@ class CreateOrder extends Component {
                   self.handleFileSelect(files).then(() => {
                     self.orderFormRef.current.onRefresh();
                   });
+
+                  if (mode === "SUBMIT") self.handleOpenPaymentDialog();
                 }
               );
           }
@@ -196,6 +212,20 @@ class CreateOrder extends Component {
             }
             handleClose={this.handleCloseDialog}
             open={this.state.openIdentityDialog}
+          />
+        )}
+        {this.state.type && (
+          <FullScreenDialog
+            title="test"
+            component={
+              <Payment
+                orderId={this.state.id}
+                amount={this.state.type.price}
+                type={this.state.type}
+              />
+            }
+            handleClose={this.handleClosePaymentDialog}
+            open={this.state.openPaymentDialog}
           />
         )}
       </Fragment>
