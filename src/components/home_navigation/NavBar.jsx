@@ -73,7 +73,7 @@ class NavBar extends Component {
         mobileHide: true
       },
       {
-        name: "امکانات",
+        name: "خدمات",
         link: "/",
         onClick: selectFeatures,
         icon: <HomeIcon className="text-white" />,

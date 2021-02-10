@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Button, Grid, Typography } from "@material-ui/core";
+import { Button, Grid, Typography, withStyles } from "@material-ui/core";
 import {
   getCompleteName,
   getFrenchName,
@@ -45,6 +45,13 @@ const styles = {
     padding: theme.spacing(3)
   }
 };
+
+const customStyles = theme => ({
+  stepLabel: {
+    marginLeft: theme.spacing(0),
+    left: theme.spacing(0)
+  }
+});
 
 class OrderForm extends Component {
   constructor(props) {
@@ -168,9 +175,10 @@ class OrderForm extends Component {
   };
 
   render() {
+    let classes = this.props.classes;
     return (
       <Fragment>
-        <div style={styles.root}>
+        <div style={{ width: "100%" }}>
           <Stepper
             activeStep={this.state.step}
             orientation="vertical"
@@ -178,7 +186,7 @@ class OrderForm extends Component {
           >
             {this.getSteps().map((step, index) => (
               <Step key={step.title}>
-                <StepLabel>
+                <StepLabel classes={{ label: classes.stepLabel }}>
                   {getCompleteName(step.title)}
                   <IconButton onClick={e => this.selectStep(e, index)}>
                     <EditIcon />
@@ -262,4 +270,4 @@ OrderForm.propTypes = {
   initialState: PropTypes.object,
   itemId: PropTypes.any
 };
-export default OrderForm;
+export default withStyles(customStyles, { withTheme: true })(OrderForm);

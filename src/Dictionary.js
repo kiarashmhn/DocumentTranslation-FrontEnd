@@ -304,7 +304,7 @@ export const Dictionary = {
   },
   living: {
     persian: "در حال زندگی",
-    french: "En cours"
+    french: "En couple"
   },
   deathLocation: {
     persian: "محل فوت",

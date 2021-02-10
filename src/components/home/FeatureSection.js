@@ -65,9 +65,8 @@ const features = [
     color: "#DD2C00",
     headline: "شناسنامه",
     frenchHeadline: "Acte de l’état civil",
-    text: "ترجمه رسمی شناسنامه\n تعرفه: از ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée de l’Acte de l’état civil\n Tarif : 20 à 25€ \n Délai de livraison : 24h",
+    text: "تعرفه: از ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 20 à 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
@@ -76,10 +75,8 @@ const features = [
     color: "#6200EA",
     headline: "کارت ملی",
     frenchHeadline: "Carte d'Identité Nationale",
-    text:
-      "ترجمه رسمی کارت شناسایی ملی و کارت هوشمند ملی\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée de la Carte d'identité nationale\n Tarif : 20€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
@@ -88,9 +85,8 @@ const features = [
     color: "#0091EA",
     headline: "گواهینامه",
     frenchHeadline: "Permis de conduire",
-    text: "ترجمه رسمی گواهینامه رانندگی\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée du Permis de conduire\n Tarif : 20€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
@@ -99,10 +95,8 @@ const features = [
     color: "#d50000",
     headline: "کارت پایان خدمت",
     frenchHeadline: "Carte de fin de service militaire",
-    text:
-      "ترجمه رسمی کارت پایان خدمت دوره ضرورت و کارت معافیت از خدمت دوره ضرورت\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée de la Carte de fin ou d’exemption du service militaire\n Tarif : 20€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "200"
@@ -111,10 +105,8 @@ const features = [
     color: "#00C853",
     headline: "سند ازدواج",
     frenchHeadline: "Acte de mariage",
-    text:
-      "ترجمه رسمی سند ازدواج یا عقدنامه\n تعرفه: ۶۰ یورو\n زمان تحویل: ۴۸ ساعت",
-    frenchText:
-      "Traduction certifiée du Certificat ou de l’Acte de mariage\n Tarif : 60€ \n Délai de livraison : 48h",
+    text: "تعرفه: ۶۰ یورو\n زمان تحویل: ۴۸ ساعت",
+    frenchText: "Tarif : 60€ \n Délai de livraison : 48h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "0"
@@ -123,9 +115,8 @@ const features = [
     color: "#64DD17",
     headline: "تذکره",
     frenchHeadline: "Acte de naissance",
-    text: "ترجمه رسمی تذکره\n تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée de l’Acte de naissance\n Tarif : 20€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "200"
@@ -134,10 +125,8 @@ const features = [
     color: "#304FFE",
     headline: "نکاح نامه (سند ازدواج)",
     frenchHeadline: "Certificat de mariage",
-    text:
-      "ترجمه رسمی نکاح نامه، نکاح خطر، وثیقه زوجیت، نکاح نامه شرعی\n تعرفه: ۵۰ یورو\n زمان تحویل: ۴۸ ساعت",
-    frenchText:
-      "Traduction certifiée du Certificat ou de l’Acte de mariage\n Tarif : 50€ \n Délai de livraison : 48h",
+    text: "تعرفه: ۵۰ یورو\n زمان تحویل: ۴۸ ساعت",
+    frenchText: "Tarif : 50€ \n Délai de livraison : 48h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
@@ -146,9 +135,8 @@ const features = [
     color: "#C51162",
     headline: "لیسانس درایوری",
     frenchHeadline: "Permis de conduire",
-    text: "ترجمه رسمی لایسنس درایوری\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée du Permis de conduire\n Tarif : 25€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
@@ -157,9 +145,8 @@ const features = [
     color: "#00B8D4",
     headline: "کارت ثبت تولدات",
     frenchHeadline: "Carte d’enregistrement de naissance",
-    text: "ترجمه رسمی کارت ثبت تولدات\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée de la Carte d’enregistrement de naissance\n Tarif : 25€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
@@ -168,9 +155,8 @@ const features = [
     color: "#dbc858",
     headline: "فورم تثبیت هویت",
     frenchHeadline: "Formulaire de vérification d’identité",
-    text: "ترجمه رسمی فورم تثبیت هویت\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée de la Formulaire de vérification d’identité\n Tarif : 25€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
@@ -179,22 +165,20 @@ const features = [
     color: "#0d133b",
     headline: "کارت اقامت موقت اتباع خارجی",
     frenchHeadline: "Carte de séjour temporaire  pour les étrangers",
-    text:
-      "ترجمه رسمی کارت اقامت موقت اتباع خارجی\n تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText:
-      "Traduction certifiée de la Carte de séjour temporaire  pour les étrangers\n Tarif : 25€ \n Délai de livraison : 24h",
+    text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
   },
   {
     color: "#db8758",
-    headline: "ترجمه متن",
+    headline: "متون، اسناد و مدارک دیگر",
     frenchHeadline: "Autres types de documents",
     text:
-      "ترجمه رسمی متون، اسناد و مدارک دیگر\n تعرفه: درخواست پیش فاکتور کنید\n زمان تحویل: با توجه به مقدار کار تعیین می شود",
+      "تعرفه: درخواست پیش فاکتور کنید\n زمان تحویل: با توجه به مقدار کار تعیین می شود",
     frenchText:
-      "Traduction certifiée d'autres types de documents\n Tarif : demander un devis \n Délai de livraison : en fonction de la difficulté linguistique",
+      "Tarif : demander un devis \n Délai de livraison : en fonction de la difficulté linguistique",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
@@ -211,7 +195,7 @@ class FeatureSection extends Component {
       <div className={classes.wrapper}>
         <div className={classNames("container-fluid", classes.container)}>
           <Typography variant="h3" align="center" className={classes.header}>
-            خدمات
+            خدمات ترجمه رسمی
           </Typography>
           <Typography
             variant="h6"
@@ -219,7 +203,7 @@ class FeatureSection extends Component {
             color={"error"}
             className={classes.secondaryHeader}
           >
-            برای استفاده از امکانات ابتدا وارد شوید *
+            برای استفاده از خدمات ابتدا وارد شوید *
           </Typography>
           <div className="container-fluid">
             <Grid container spacing={calculateSpacing(width)}>

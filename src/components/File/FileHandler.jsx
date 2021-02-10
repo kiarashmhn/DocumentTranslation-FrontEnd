@@ -95,7 +95,7 @@ export default class FileHandler extends Component {
               return (
                 <Grid
                   item
-                  xs={4}
+                  xs={8}
                   sm={4}
                   md={2}
                   align="center"

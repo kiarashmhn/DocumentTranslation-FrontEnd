@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import CustomDialogs from "../CustomDialogs";
 import PropTypes from "prop-types";
 import MUITable from "../Table/MUITable";
 import * as URLConstant from "../../URLConstant";
@@ -13,6 +12,7 @@ import { withStyles } from "@material-ui/core";
 import EditUserDialog from "../register_login/EditUserDialog";
 import SelectAdminDialog from "../register_login/SelectAdminDialog";
 import AuthService from "../../AuthService";
+import FullScreenDialog from "../FullScreenDialog";
 
 const styles = theme => ({
   link: {
@@ -292,7 +292,7 @@ class ListOrder extends Component {
                 }
           }
         />
-        <CustomDialogs
+        <FullScreenDialog
           title="ویرایش سفارش"
           component={
             <EditViewOrder
