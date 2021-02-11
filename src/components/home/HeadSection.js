@@ -1,21 +1,12 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
-import {
-  Grid,
-  Typography,
-  //isWidthUp,
-  //Typography,
-  withStyles,
-  withWidth
-} from "@material-ui/core";
+import { Grid, Typography, withStyles, withWidth } from "@material-ui/core";
 import WaveBorder from "../Template/WaveBorder";
-//import ZoomImage from "../Template/ZoomImage";
 import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   wrapper: {
-    paddingTop: `${theme.spacing(10)}px !important`,
+    paddingTop: `${theme.spacing(0)}px !important`,
     position: "relative",
     backgroundColor: theme.palette.secondary.main,
     paddingBottom: theme.spacing(1)
@@ -28,12 +19,10 @@ const styles = theme => ({
   },
   image: {
     [theme.breakpoints.up("sm")]: {
-      width: `${theme.spacing(160)}px !important`,
-      minHeight: `${theme.spacing(70)}px !important`
+      width: `100%`
     },
     [theme.breakpoints.down("sm")]: {
-      width: `${theme.spacing(60)}px !important`,
-      minHeight: `${theme.spacing(45)}px !important`
+      width: `100%`
     },
     backgroundSize: "100% 100%",
     backgroundRepeat: "no-repeat",
@@ -49,10 +38,12 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center",
     [theme.breakpoints.up("sm")]: {
-      marginTop: theme.spacing(50)
+      marginTop: theme.spacing(42),
+      marginBottom: theme.spacing(5)
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: theme.spacing(32)
+      marginTop: theme.spacing(29),
+      marginBottom: theme.spacing(4)
     }
   },
   container: {
@@ -79,7 +70,8 @@ const styles = theme => ({
   imageWrapper: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    width: "100%"
   }
 });
 
@@ -97,18 +89,18 @@ class HeadSection extends Component {
     return (
       <Fragment>
         <div className={classes.wrapper}>
-          <div className={classNames("container-fluid", classes.container)}>
-            <Grid
-              container
-              spacing={1}
-              dir={"rtl"}
-              direction="column"
-              alignItems="center"
-              justify="center"
-            >
-              <Grid item xs={12} sm={12} md={12}>
-                <div className={classes.imageWrapper}>
-                  <div className={classes.image}>
+          <div className={classes.container}>
+            <div className={classes.imageWrapper}>
+              <div className={classes.image}>
+                <Grid
+                  container
+                  spacing={1}
+                  dir={"rtl"}
+                  direction="column"
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={12} sm={12} md={12}>
                     <div className={classes.button}>
                       <Button
                         variant="contained"
@@ -144,10 +136,10 @@ class HeadSection extends Component {
                         </div>
                       </Button>
                     </div>
-                  </div>
-                </div>
-              </Grid>
-            </Grid>
+                  </Grid>
+                </Grid>
+              </div>
+            </div>
           </div>
         </div>
         <WaveBorder

@@ -152,7 +152,7 @@ class HelpSection extends Component {
     return (
       <div className={classes.wrapper}>
         <div className={classNames("container-fluid", classes.container)}>
-          <Typography variant="h3" align="center" className={classes.header}>
+          <Typography variant="h4" align="center" className={classes.header}>
             راهنما
           </Typography>
           <div className={classes.grid}>

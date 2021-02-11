@@ -47,15 +47,15 @@ const styles = theme => ({
     }
   },
   secondaryHeader: {
-    marginBottom: `${theme.spacing(10)}px !important`,
+    marginBottom: `${theme.spacing(2)}px !important`,
     [theme.breakpoints.down("md")]: {
-      marginBottom: `${theme.spacing(8)}px !important`
+      marginBottom: `${theme.spacing(2)}px !important`
     },
     [theme.breakpoints.down("sm")]: {
-      marginBottom: `${theme.spacing(6)}px !important`
+      marginBottom: `${theme.spacing(2)}px !important`
     },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: `${theme.spacing(4)}px !important`
+      marginBottom: `${theme.spacing(2)}px !important`
     }
   }
 });
@@ -194,7 +194,7 @@ class FeatureSection extends Component {
     return (
       <div className={classes.wrapper}>
         <div className={classNames("container-fluid", classes.container)}>
-          <Typography variant="h3" align="center" className={classes.header}>
+          <Typography variant="h4" align="center" className={classes.header}>
             خدمات ترجمه رسمی
           </Typography>
           <Typography
