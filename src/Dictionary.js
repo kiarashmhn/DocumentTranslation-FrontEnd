@@ -317,6 +317,30 @@ export const Dictionary = {
   deathRegistrationNumber: {
     persian: "شماره ثبت فوت",
     french: "N° d’enregistrement de décès"
+  },
+  post: {
+    persian: "پست با امکان رهگیری (۲ یورو)",
+    french: "Lettre suivie (2 euros)"
+  },
+  specialPost: {
+    persian: "پست سفارشی دو قبضه (۷ یورو)",
+    french: "Lettre recommandée avec accusé de réception (7 euros)"
+  },
+  deliveryType: {
+    persian: "انتخاب شیوه ارسال",
+    french: "Sélectionnez la méthode de soumission"
+  },
+  bill: {
+    persian: "صورتحساب",
+    french: "Facture"
+  },
+  orderType: {
+    persian: "نوع سفارش",
+    french: "Type de commande"
+  },
+  orderId: {
+    persian: "شناسه سفارش",
+    french: "N° de commande"
   }
 };
 

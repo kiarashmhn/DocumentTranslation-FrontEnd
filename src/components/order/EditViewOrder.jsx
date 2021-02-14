@@ -34,7 +34,7 @@ class EditViewOrder extends Component {
           to={{
             pathname: URLConstant.PAYMENT,
             state: {
-              orderId: this.state.itemId,
+              orderId: this.props.itemId,
               type: this.state.type.key
             }
           }}

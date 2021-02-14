@@ -158,7 +158,7 @@ class CreateOrder extends Component {
           to={{
             pathname: URLConstant.PAYMENT,
             state: {
-              orderId: this.state.itemId,
+              orderId: this.state.id,
               type: this.state.type.key
             }
           }}

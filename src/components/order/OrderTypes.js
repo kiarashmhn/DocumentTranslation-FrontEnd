@@ -27,3 +27,11 @@ export const getTypeByKey = key => {
   });
   return obj;
 };
+
+export const getType = key => {
+  let obj = null;
+  Object.keys(OrderTypes).map(objectKey => {
+    if (OrderTypes[objectKey].key === key) obj = OrderTypes[objectKey];
+  });
+  return obj;
+};
