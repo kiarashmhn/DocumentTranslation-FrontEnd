@@ -16,6 +16,7 @@ import { createBrowserHistory } from "history";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import * as URLConstant from "./URLConstant";
 import AdminPanel from "./components/AdminPanel";
+import Payment from "./components/order/Payment";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
@@ -40,6 +41,7 @@ class App extends Component {
                   path={URLConstant.USER_PANEL}
                   component={UserPanel}
                 />
+                <PrivateRoute path={URLConstant.PAYMENT} component={Payment} />
                 <Route exact path="/" component={HomePage} />
               </Switch>
             </Suspense>

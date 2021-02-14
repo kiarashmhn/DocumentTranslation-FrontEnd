@@ -1,21 +1,13 @@
 import React, { Component, Fragment } from "react";
 import * as PropTypes from "prop-types";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  Grid,
-  Typography,
-  withStyles,
-  withWidth
-} from "@material-ui/core";
+import { Grid, Typography, withStyles, withWidth } from "@material-ui/core";
 import calculateSpacing from "../home/calculateSpacing";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Clear";
 import { getCompleteName } from "../../Dictionary";
+import { getTypeByKey } from "./OrderTypes";
+import theme from "../../theme";
 
 const styles = theme => ({
   wrapper: {
@@ -138,6 +130,14 @@ class Payment extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props.location.state);
+    this.setState({
+      orderId: this.props.location.state.orderId,
+      type: getTypeByKey(this.props.location.state.type)
+    });
+  }
+
   handleOpenDialog = idx => {
     this.setState({
       openDialog: true,
@@ -158,16 +158,16 @@ class Payment extends Component {
         <Typography
           gutterBottom
           variant="h4"
-          component="h2"
+          component="h4"
           align="center"
-          style={{ whiteSpace: "pre-line" }}
+          style={{ whiteSpace: "pre-line", marginTop: theme.spacing(2) }}
         >
           Payer
         </Typography>
         <Typography
           gutterBottom
           variant="h4"
-          component="h2"
+          component="h4"
           align="center"
           style={{ whiteSpace: "pre-line" }}
         >
@@ -182,27 +182,19 @@ class Payment extends Component {
             alignContent={"center"}
           >
             <Grid item xs={6} md={3}>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component="h6"
-                align="center"
-              >
-                {this.props.type.price +
-                  "€" +
-                  " : " +
-                  getCompleteName("amount")}
+              <Typography gutterBottom variant="h6" align="center">
+                {20 + "€" + " : " + getCompleteName("amount")}
               </Typography>
             </Grid>
           </Grid>
         </div>
         <div className={classes.thirdHeader}>
-          <Typography gutterBottom variant="h6" component="h6" align="center">
+          <Typography gutterBottom variant="h6" align="center">
             Méthodes de payement
           </Typography>
         </div>
         <div className={classes.secondaryHeader}>
-          <Typography gutterBottom variant="h6" component="h6" align="center">
+          <Typography gutterBottom variant="h6" align="center">
             روش های پرداخت
           </Typography>
         </div>
@@ -221,7 +213,6 @@ class Payment extends Component {
                     <Typography
                       gutterBottom
                       variant="body1"
-                      component="h2"
                       align="center"
                       style={{ whiteSpace: "pre-line" }}
                     >
@@ -230,7 +221,6 @@ class Payment extends Component {
                     <Typography
                       gutterBottom
                       variant="body1"
-                      component="h2"
                       align="center"
                       style={{ whiteSpace: "pre-line" }}
                     >
@@ -242,43 +232,6 @@ class Payment extends Component {
             </Grid>
           ))}
         </Grid>
-        <Dialog
-          open={this.state.openDialog}
-          scroll="paper"
-          onClose={this.handleCloseDialog}
-          hideBackdrop
-        >
-          <DialogActions>
-            <IconButton
-              aria-label="delete"
-              color="secondary"
-              onClick={this.handleCloseDialog}
-            >
-              <DeleteIcon fontSize="small" />
-            </IconButton>
-          </DialogActions>
-          <DialogContent>
-            <Typography
-              variant="h6"
-              color="primary"
-              paragraph
-              style={{ whiteSpace: "pre-line" }}
-              align={"center"}
-            >
-              {methods[this.state.idx].frenchTitle}
-            </Typography>
-            <Typography
-              variant="h6"
-              color="primary"
-              paragraph
-              style={{ whiteSpace: "pre-line" }}
-              align={"center"}
-            >
-              {methods[this.state.idx].title}
-            </Typography>
-            {methods[this.state.idx].content}
-          </DialogContent>
-        </Dialog>
       </Fragment>
     );
   }
@@ -286,10 +239,9 @@ class Payment extends Component {
 
 Payment.propTypes = {
   width: PropTypes.string.isRequired,
-  orderId: PropTypes.number.isRequired,
-  type: PropTypes.object.isRequired,
   classes: PropTypes.any.isRequired,
-  amount: PropTypes.any
+  location: PropTypes.any,
+  history: PropTypes.any
 };
 
 export default withWidth()(withStyles(styles, { withTheme: true })(Payment));

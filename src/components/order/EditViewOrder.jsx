@@ -7,8 +7,7 @@ import Api from "../Api/Api";
 import CreateReport from "../Report/CreateReport";
 import { OrderStatus } from "./OrderStatus";
 import OrderForm from "./OrderForm";
-import FullScreenDialog from "../FullScreenDialog";
-import Payment from "./Payment";
+import { Redirect } from "react-router";
 
 class EditViewOrder extends Component {
   constructor(props) {
@@ -26,6 +25,23 @@ class EditViewOrder extends Component {
   componentDidMount() {
     this.getOrder();
   }
+
+  redirectToPayment = () => {
+    if (this.state.openPaymentDialog) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: URLConstant.PAYMENT,
+            state: {
+              orderId: this.state.itemId,
+              type: this.state.type.key
+            }
+          }}
+        />
+      );
+    }
+  };
 
   getOrder = async () => {
     let self = this;
@@ -169,20 +185,7 @@ class EditViewOrder extends Component {
             onFileSelect={this.handleFileSelect}
           />
         )}
-        {this.state.type && (
-          <FullScreenDialog
-            title="test"
-            component={
-              <Payment
-                orderId={this.props.itemId}
-                amount={this.state.type.price}
-                type={this.state.type}
-              />
-            }
-            handleClose={this.handleClosePaymentDialog}
-            open={this.state.openPaymentDialog}
-          />
-        )}
+        {this.redirectToPayment()}
       </Fragment>
     );
   }

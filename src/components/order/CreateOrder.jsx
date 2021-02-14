@@ -12,7 +12,7 @@ import { OrderStatus } from "./OrderStatus";
 import Box from "@material-ui/core/Box";
 import OrderForm from "./OrderForm";
 import { getFrenchName, getPersianName } from "../../Dictionary";
-import Payment from "./Payment";
+import { Redirect } from "react-router";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -150,6 +150,23 @@ class CreateOrder extends Component {
     }
   };
 
+  redirectToPayment = () => {
+    if (this.state.openPaymentDialog) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: URLConstant.PAYMENT,
+            state: {
+              orderId: this.state.itemId,
+              type: this.state.type.key
+            }
+          }}
+        />
+      );
+    }
+  };
+
   render() {
     return (
       <Fragment>
@@ -214,20 +231,7 @@ class CreateOrder extends Component {
             open={this.state.openIdentityDialog}
           />
         )}
-        {this.state.type && (
-          <FullScreenDialog
-            title="test"
-            component={
-              <Payment
-                orderId={this.state.id}
-                amount={this.state.type.price}
-                type={this.state.type}
-              />
-            }
-            handleClose={this.handleClosePaymentDialog}
-            open={this.state.openPaymentDialog}
-          />
-        )}
+        {this.redirectToPayment()}
       </Fragment>
     );
   }

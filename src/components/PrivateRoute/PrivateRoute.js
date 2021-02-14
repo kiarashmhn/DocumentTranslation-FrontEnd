@@ -16,7 +16,7 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
       />
     );
   }
-  if (path === URLConstant.USER_PANEL && !Auth.loggedIn()) {
+  if (!Auth.loggedIn()) {
     return (
       <Redirect
         to={{
