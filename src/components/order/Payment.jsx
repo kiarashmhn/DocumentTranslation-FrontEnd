@@ -1,15 +1,12 @@
 import React, { Component, Fragment } from "react";
 import * as PropTypes from "prop-types";
 import { Grid, Typography, withStyles, withWidth } from "@material-ui/core";
-import calculateSpacing from "../home/calculateSpacing";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
 import { getCompleteName } from "../../Dictionary";
 import { getType } from "./OrderTypes";
 import theme from "../../theme";
 import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
+import PaymentMethods from "./PaymentMethods";
 
 const frenchNote =
   "* Important : le tarif annoncé comprend le frais d’envoie en lettre économique (Lettre verte). Francedoc.fr se dégage de toute \nresponsabilité si le client ne reçoit pas le courrier. Toute réclamation et demande de nouvel envoi postal fera l’objet d’une nouvelle facturation.\n Francedoc.fr offre la possibilité de choisir l’envoi d’un des deux types suivants qui constituent des choix plus fiables\n afin d’assurer la bonne réception de la commande.";
@@ -109,36 +106,13 @@ const styles = theme => ({
   }
 });
 
-const methods = [
-  {
-    title: "پرداخت با کارت",
-    frenchTitle: "Carte bancaire",
-    content: <Fragment />
-  },
-  {
-    title: "واریز به حساب",
-    frenchTitle: "Virement bancaire",
-    content: <Fragment />
-  },
-  {
-    title: "ارسال چک",
-    frenchTitle: "Envoyez un chèque",
-    content: <Fragment />
-  },
-  {
-    title: "از طریق Western Union",
-    frenchTitle: "Par Western Union",
-    content: <Fragment />
-  }
-];
-
 class Payment extends Component {
   constructor(props) {
     super(props);
     this.state = {
       openDialog: false,
       isLoading: false,
-      idx: 0,
+      idx: null,
       post: false,
       specialPost: false,
       basePrice: 20,
@@ -187,19 +161,6 @@ class Payment extends Component {
         specialPost: false
       });
     }
-  };
-
-  handleOpenDialog = idx => {
-    this.setState({
-      openDialog: true,
-      idx: idx
-    });
-  };
-
-  handleCloseDialog = () => {
-    this.setState({
-      openDialog: false
-    });
   };
 
   render() {
@@ -300,57 +261,7 @@ class Payment extends Component {
             </Fragment>
           </Box>
         </div>
-        <div className={classes.thirdHeader}>
-          <Typography gutterBottom variant="h6" align="center">
-            Méthodes de payement
-          </Typography>
-        </div>
-        <div className={classes.secondaryHeader}>
-          <Typography gutterBottom variant="h6" align="center">
-            شیوه‌های پرداخت
-          </Typography>
-        </div>
-        <Grid
-          container
-          spacing={calculateSpacing(width)}
-          alignItems="center"
-          justify="center"
-          alignContent={"center"}
-        >
-          {methods.map((element, idx) => (
-            <Grid
-              item
-              xs={6}
-              md={4}
-              key={"step" + idx}
-              style={{ margin: "5px" }}
-            >
-              <Card style={{ backgroundColor: "#D2D2D2" }}>
-                <CardActionArea onClick={() => this.handleOpenDialog(idx)}>
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      align="center"
-                      style={{ whiteSpace: "pre-line" }}
-                    >
-                      {element.frenchTitle}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      align="center"
-                      dir="rtl"
-                      style={{ whiteSpace: "pre-line" }}
-                    >
-                      {element.title}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <PaymentMethods code={this.state.type.code} price={this.state.price} id={this.state.orderId} width={width} classes={classes} />
       </Fragment>
     );
   }

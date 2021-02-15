@@ -341,6 +341,26 @@ export const Dictionary = {
   orderId: {
     persian: "شناسه سفارش",
     french: "N° de commande"
+  },
+  paymentMethods: {
+    persian: "شیوه‌های پرداخت",
+    french: "Méthodes de payement"
+  },
+  receiptImage: {
+    persian: "بارگذاری تصویر رسید",
+    french: "Télécharger l'image recue"
+  },
+  num: {
+    persian: "کد رهگیری",
+    french: "Code de suivi"
+  },
+  receiptInfo: {
+    persian: "اطلاعات پرداخت را وارد کنید",
+    french: "Entrez les informations de paiement"
+  },
+  finalSubmit: {
+    persian: "ثبت اطلاعات پرداخت",
+    french: "Enregistrer les informations de paiement"
   }
 };
 
