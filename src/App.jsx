@@ -16,7 +16,7 @@ import { createBrowserHistory } from "history";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import * as URLConstant from "./URLConstant";
 import AdminPanel from "./components/AdminPanel";
-import Payment from "./components/order/Payment";
+import Payment from "./components/Payment/Payment";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();

@@ -344,7 +344,7 @@ export const Dictionary = {
   },
   paymentMethods: {
     persian: "شیوه‌های پرداخت",
-    french: "Méthodes de payement"
+    french: "Méthodes de paiement"
   },
   receiptImage: {
     persian: "بارگذاری تصویر رسید",
@@ -361,6 +361,10 @@ export const Dictionary = {
   finalSubmit: {
     persian: "ثبت اطلاعات پرداخت",
     french: "Enregistrer les informations de paiement"
+  },
+  sendCheckImage: {
+    persian: "ارسال عکس چک",
+    french: "Envoyer une copie de chèque"
   }
 };
 

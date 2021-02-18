@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import * as PropTypes from "prop-types";
 import { Grid, Typography, withStyles, withWidth } from "@material-ui/core";
 import { getCompleteName } from "../../Dictionary";
-import { getType } from "./OrderTypes";
+import { getType } from "../order/OrderTypes";
 import theme from "../../theme";
 import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -261,7 +261,13 @@ class Payment extends Component {
             </Fragment>
           </Box>
         </div>
-        <PaymentMethods code={this.state.type.code} price={this.state.price} id={this.state.orderId} width={width} classes={classes} />
+        <PaymentMethods
+          code={this.state.type.code}
+          price={this.state.price}
+          id={this.state.orderId}
+          width={width}
+          classes={classes}
+        />
       </Fragment>
     );
   }

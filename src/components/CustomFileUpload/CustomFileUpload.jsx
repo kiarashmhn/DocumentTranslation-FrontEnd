@@ -22,13 +22,17 @@ export default class CustomFileUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      spanTitle: "فایلی انتخاب نشده است / Aucun fichier sélectionné"
+      spanTitle: this.props.title
+        ? this.props.title
+        : "فایلی انتخاب نشده است / Aucun fichier sélectionné"
     };
   }
 
   reset = () => {
     this.setState({
-      spanTitle: "فایلی انتخاب نشده است / Aucun fichier sélectionné"
+      spanTitle: this.props.title
+        ? this.props.title
+        : "فایلی انتخاب نشده است / Aucun fichier sélectionné"
     });
   };
 
@@ -74,5 +78,6 @@ export default class CustomFileUpload extends Component {
   }
 }
 CustomFileUpload.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  title: PropTypes.string
 };
