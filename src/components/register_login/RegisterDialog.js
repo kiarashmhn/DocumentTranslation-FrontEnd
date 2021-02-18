@@ -33,6 +33,18 @@ const styles = theme => ({
     "&:enabled:focus": {
       color: theme.palette.secondary.dark
     }
+  },
+  secondaryHeader: {
+    marginBottom: `${theme.spacing(2)}px !important`,
+    [theme.breakpoints.down("md")]: {
+      marginBottom: `${theme.spacing(2)}px !important`
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: `${theme.spacing(2)}px !important`
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: `${theme.spacing(2)}px !important`
+    }
   }
 });
 
@@ -145,6 +157,17 @@ function RegisterDialog(props) {
         hasCloseIcon
         content={
           <Fragment>
+            <Typography variant="body1" align="center" color={"error"}>
+              * Inscrivez-vous pour utiliser le service
+            </Typography>
+            <Typography
+              variant="body1"
+              align="center"
+              color={"error"}
+              className={classes.secondaryHeader}
+            >
+              برای استفاده از خدمات، ثبت نام کنید *
+            </Typography>
             <TextField
               inputRef={username}
               margin="normal"

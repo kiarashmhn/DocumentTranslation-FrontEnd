@@ -1,6 +1,9 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Typography, withStyles } from "@material-ui/core";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 const styles = theme => ({
   iconWrapper: {
@@ -44,57 +47,66 @@ function FeatureCard(props) {
     headline,
     frenchHeadline,
     text,
-    frenchText
+    frenchText,
+    onClick
   } = props;
   return (
-    <Fragment>
-      <div
-        style={{
-          textAlign: "center",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
+    <Card style={styles.root}>
+      <CardActionArea
+        onClick={() => {
+          onClick();
         }}
       >
-        <div
-          // We will set color and fill here, due to some prios complications
-          className={classes.iconWrapper}
-          style={{
-            color: color,
-            fill: color,
-            backgroundColor: shadeColor(color, 0.5)
-          }}
-        >
-          {Icon}
-        </div>
-      </div>
-      {frenchHeadline && (
-        <Typography variant="h6" paragraph align={"center"} color={color}>
-          {frenchHeadline}
-        </Typography>
-      )}
-      <Typography variant="h6" paragraph align={"center"} color={color}>
-        {headline}
-      </Typography>
-      {frenchText && (
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          style={{ whiteSpace: "pre-line" }}
-          align={"center"}
-        >
-          {frenchText}
-        </Typography>
-      )}
-      <Typography
-        variant="body1"
-        color="textSecondary"
-        style={{ whiteSpace: "pre-line" }}
-        align={"center"}
-      >
-        {text}
-      </Typography>
-    </Fragment>
+        <CardContent>
+          <div
+            style={{
+              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <div
+              // We will set color and fill here, due to some prios complications
+              className={classes.iconWrapper}
+              style={{
+                color: color,
+                fill: color,
+                backgroundColor: shadeColor(color, 0.5)
+              }}
+            >
+              {Icon}
+            </div>
+          </div>
+          {frenchHeadline && (
+            <Typography variant="h6" paragraph align={"center"} color={color}>
+              {frenchHeadline}
+            </Typography>
+          )}
+          <Typography variant="h6" paragraph align={"center"} color={color}>
+            {headline}
+          </Typography>
+          {frenchText && (
+            <Typography
+              variant="body1"
+              color="textSecondary"
+              style={{ whiteSpace: "pre-line" }}
+              align={"center"}
+            >
+              {frenchText}
+            </Typography>
+          )}
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            style={{ whiteSpace: "pre-line" }}
+            align={"center"}
+          >
+            {text}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 }
 
@@ -105,7 +117,8 @@ FeatureCard.propTypes = {
   headline: PropTypes.string.isRequired,
   frenchHeadline: PropTypes.string,
   text: PropTypes.string.isRequired,
-  frenchText: PropTypes.string
+  frenchText: PropTypes.string,
+  onClick: PropTypes.func.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(FeatureCard);

@@ -49,7 +49,7 @@ class Home extends Component {
           <HeadSection openRegisterDialog={this.props.openRegisterDialog} />
         </div>
         <div ref={this.featureRef}>
-          <FeatureSection />
+          <FeatureSection openRegisterDialog={this.props.openRegisterDialog} />
         </div>
         <div ref={this.helpRef}>
           <HelpSection />

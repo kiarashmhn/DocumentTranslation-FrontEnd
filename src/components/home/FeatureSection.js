@@ -8,7 +8,6 @@ import {
   withStyles
 } from "@material-ui/core";
 import DescriptionIcon from "@material-ui/icons/Description";
-import calculateSpacing from "./calculateSpacing";
 import FeatureCard from "./FeatureCard";
 import classNames from "classnames";
 
@@ -62,6 +61,26 @@ const styles = theme => ({
 
 const features = [
   {
+    color: "#64DD17",
+    headline: "تذکره",
+    frenchHeadline: "Acte de naissance",
+    text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
+    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
+    mdDelay: "400",
+    smDelay: "200"
+  },
+  {
+    color: "#304FFE",
+    headline: "نکاح نامه (سند ازدواج)",
+    frenchHeadline: "Certificat de mariage",
+    text: "تعرفه: ۵۰ یورو\n زمان تحویل: ۴۸ ساعت",
+    frenchText: "Tarif : 50€ \n Délai de livraison : 48h",
+    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
+    mdDelay: "0",
+    smDelay: "0"
+  },
+  {
     color: "#DD2C00",
     headline: "شناسنامه",
     frenchHeadline: "Acte de l’état civil",
@@ -109,26 +128,6 @@ const features = [
     frenchText: "Tarif : 60€ \n Délai de livraison : 48h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
-    smDelay: "0"
-  },
-  {
-    color: "#64DD17",
-    headline: "تذکره",
-    frenchHeadline: "Acte de naissance",
-    text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
-    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "400",
-    smDelay: "200"
-  },
-  {
-    color: "#304FFE",
-    headline: "نکاح نامه (سند ازدواج)",
-    frenchHeadline: "Certificat de mariage",
-    text: "تعرفه: ۵۰ یورو\n زمان تحویل: ۴۸ ساعت",
-    frenchText: "Tarif : 50€ \n Délai de livraison : 48h",
-    icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
-    mdDelay: "0",
     smDelay: "0"
   },
   {
@@ -197,16 +196,8 @@ class FeatureSection extends Component {
           <Typography variant="h4" align="center" className={classes.header}>
             خدمات ترجمه رسمی
           </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            color={"error"}
-            className={classes.secondaryHeader}
-          >
-            برای استفاده از خدمات ابتدا وارد شوید *
-          </Typography>
           <div className="container-fluid">
-            <Grid container spacing={calculateSpacing(width)}>
+            <Grid container spacing={1}>
               {features.map(element => (
                 <Grid
                   item
@@ -225,6 +216,7 @@ class FeatureSection extends Component {
                     frenchHeadline={element.frenchHeadline}
                     text={element.text}
                     frenchText={element.frenchText}
+                    onClick={this.props.openRegisterDialog}
                   />
                 </Grid>
               ))}
@@ -238,7 +230,8 @@ class FeatureSection extends Component {
 
 FeatureSection.propTypes = {
   width: PropTypes.string.isRequired,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  openRegisterDialog: PropTypes.func.isRequired
 };
 
 export default withWidth()(
