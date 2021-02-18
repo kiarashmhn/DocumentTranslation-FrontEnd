@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   Hidden,
   IconButton,
@@ -39,6 +38,16 @@ const styles = theme => ({
   },
   noDecoration: {
     textDecoration: "none !important"
+  },
+  image: {
+    display: "block",
+    backgroundRepeat: "no-repeat",
+    verticalAlign: "middle",
+    borderRadius: theme.shape.borderRadius,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/logo.png)`,
+    backgroundSize: "contain",
+    height: "60px",
+    width: "240px"
   }
 });
 
@@ -102,27 +111,14 @@ class NavBar extends Component {
       }
     ];
     return (
-      <div className={classes.root}>
+      <div>
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar className={classes.toolbar}>
-            <div>
-              <Typography
-                variant="h4"
-                className={classes.brandText}
-                display="inline"
-                color="primary"
-              >
-                France
-              </Typography>
-              <Typography
-                variant="h4"
-                className={classes.brandText}
-                display="inline"
-                color="secondary"
-              >
-                Doc
-              </Typography>
-            </div>
+            <div
+              className={classes.image}
+              onClick={selectHomeSection}
+              style={{ cursor: "pointer" }}
+            />
             <div>
               <Hidden mdUp>
                 <IconButton

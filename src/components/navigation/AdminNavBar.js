@@ -43,18 +43,14 @@ const styles = theme => ({
   appBarToolbar: {
     display: "flex",
     justifyContent: "space-between",
-    paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {
-      paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2)
     },
     [theme.breakpoints.up("md")]: {
-      paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3)
     },
     [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4)
     }
   },
@@ -122,6 +118,16 @@ const styles = theme => ({
     justifyContent: "center",
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2)
+  },
+  image: {
+    display: "block",
+    backgroundRepeat: "no-repeat",
+    verticalAlign: "middle",
+    borderRadius: theme.shape.borderRadius,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/logo.png)`,
+    backgroundSize: "contain",
+    height: "60px",
+    width: "240px"
   }
 });
 
@@ -190,24 +196,14 @@ function NavBar(props) {
                 </IconButton>
               </Box>
             </Hidden>
-            <Hidden xsDown>
-              <Typography
-                variant="h4"
-                className={classes.brandText}
-                display="inline"
-                color="primary"
-              >
-                France
-              </Typography>
-              <Typography
-                variant="h4"
-                className={classes.brandText}
-                display="inline"
-                color="secondary"
-              >
-                Doc
-              </Typography>
-            </Hidden>
+            <Link
+              to={"/"}
+              className={classes.menuLink}
+              onClick={Auth.logout}
+              key={"logo"}
+            >
+              <div className={classes.image} style={{ cursor: "pointer" }} />
+            </Link>
           </Box>
           <Box
             display="flex"

@@ -79,11 +79,11 @@ function FeatureCard(props) {
             </div>
           </div>
           {frenchHeadline && (
-            <Typography variant="h6" paragraph align={"center"} color={color}>
+            <Typography variant="h6" paragraph align={"center"}>
               {frenchHeadline}
             </Typography>
           )}
-          <Typography variant="h6" paragraph align={"center"} color={color}>
+          <Typography variant="h6" paragraph align={"center"}>
             {headline}
           </Typography>
           {frenchText && (
