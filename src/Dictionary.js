@@ -327,12 +327,12 @@ export const Dictionary = {
     french: "Lettre recommandée avec accusé de réception (7 euros)"
   },
   deliveryType: {
-    persian: "انتخاب شیوه ارسال",
-    french: "Sélectionnez la méthode de soumission"
+    persian: "انتخاب شیوه ارسال سفارش",
+    french: "Choisir un mode de livraison"
   },
   bill: {
-    persian: "صورتحساب",
-    french: "Facture"
+    persian: "خلاصه سفارش",
+    french: "Résumé de commande"
   },
   orderType: {
     persian: "نوع سفارش",
@@ -365,6 +365,10 @@ export const Dictionary = {
   sendCheckImage: {
     persian: "ارسال عکس چک",
     french: "Envoyer une copie de chèque"
+  },
+  normalPost: {
+    persian: "پست عادی (بدون هزینه اضافی)",
+    french: "Lettre normale (compris)"
   }
 };
 

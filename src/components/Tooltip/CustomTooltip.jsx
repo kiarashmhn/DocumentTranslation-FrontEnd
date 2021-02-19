@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import HelpIcon from "@material-ui/icons/Help";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 export default class CustomTooltip extends Component {
@@ -39,7 +39,13 @@ export default class CustomTooltip extends Component {
             disableHoverListener
             disableTouchListener
             title={
-              <span style={{ whiteSpace: "pre-line" }}>{this.props.text}</span>
+              <Typography
+                style={{ whiteSpace: "pre-line" }}
+                dir={this.props.dir ? this.props.dir : "ltr"}
+                variant={"caption"}
+              >
+                {this.props.text}
+              </Typography>
             }
             arrow
           >
@@ -58,5 +64,6 @@ export default class CustomTooltip extends Component {
   }
 }
 CustomTooltip.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  dir: PropTypes.string
 };

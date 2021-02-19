@@ -7,11 +7,20 @@ import theme from "../../theme";
 import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
 import PaymentMethods from "./PaymentMethods";
+import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const frenchNote =
-  "* Important : le tarif annoncé comprend le frais d’envoie en lettre économique (Lettre verte). Francedoc.fr se dégage de toute \nresponsabilité si le client ne reçoit pas le courrier. Toute réclamation et demande de nouvel envoi postal fera l’objet d’une nouvelle facturation.\n Francedoc.fr offre la possibilité de choisir l’envoi d’un des deux types suivants qui constituent des choix plus fiables\n afin d’assurer la bonne réception de la commande.";
+  "* Important : le tarif annoncé comprend l’accès à la copie numérique (PDF) du document traduit sur votre espace client et le frais d’envoie en lettre économique (lettre verte) à votre adresse. Francedoc.fr offre la possibilité de choisir l’envoi d’un des deux types suivants qui constituent des choix plus fiables afin d’assurer la bonne réception de la commande.";
 const persianNote =
-  "* نکته: هزینه های اعلام شده شامل ارسال اصل ترجمه با پست عادی میباشد. توجه داشته باشید که فرانسدک هیچگونه مسئولیتی در قبال عدم وصول ترجمه از طریق پست بر عهده نمی گیرد. ارسال مجدد ترجمه منوط به پرداخت کل هزینه ترجمه میباشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
+  "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی میباشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
+
+const frenchHint =
+  "Le tarif annoncé comprend le frais d’envoie en lettre économique (Lettre verte). Francedoc.fr se dégage de toute responsabilité si le client ne reçoit pas le courrier. Toute réclamation et demande de nouvel envoi postal fera l’objet d’une nouvelle facturation.";
+
+const persianHint =
+  "هزینه های اعلام شده شامل ارسال اصل ترجمه با پست عادی میباشد. توجه داشته باشید که " +
+  "فرانسدک هیچگونه مسئولیتی در قبال عدم وصول ترجمه از طریق پست بر عهده نمی گیرد. ارسال مجدد " +
+  "ترجمه منوط به پرداخت کل هزینه ترجمه میباشد.";
 
 const styles = theme => ({
   wrapper: {
@@ -113,6 +122,7 @@ class Payment extends Component {
       openDialog: false,
       isLoading: false,
       idx: null,
+      normal: true,
       post: false,
       specialPost: false,
       basePrice: 20,
@@ -136,6 +146,7 @@ class Payment extends Component {
     if (e.target.checked) {
       this.setState({
         post: true,
+        normal: false,
         specialPost: false,
         price: price + 2
       });
@@ -147,12 +158,30 @@ class Payment extends Component {
     }
   };
 
+  normalOnChange = e => {
+    let price = this.state.basePrice;
+    if (e.target.checked) {
+      this.setState({
+        post: false,
+        normal: true,
+        specialPost: false,
+        price: price
+      });
+    } else {
+      this.setState({
+        price: price,
+        normal: false
+      });
+    }
+  };
+
   specialPostOnChange = e => {
     let price = this.state.basePrice;
     if (e.target.checked) {
       this.setState({
         post: false,
         specialPost: true,
+        normal: false,
         price: price + 7
       });
     } else {
@@ -197,12 +226,47 @@ class Payment extends Component {
               <Typography paragraph variant="h6" align="center">
                 {getCompleteName("deliveryType")}
               </Typography>
-              <Typography paragraph variant="body1" align="center">
-                {frenchNote}
-              </Typography>
-              <Typography paragraph variant="body1" align="center" dir="rtl">
-                {persianNote}
-              </Typography>
+              <div>
+                <Grid
+                  container
+                  spacing={0}
+                  alignItems="center"
+                  justify="center"
+                  alignContent={"center"}
+                >
+                  <Grid item xs={12} md={12}>
+                    <Typography paragraph variant="body1" align="center">
+                      {frenchNote}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={"auto"}>
+                    <CustomTooltip text={frenchHint} />
+                  </Grid>
+                </Grid>
+              </div>
+              <div>
+                <Grid
+                  container
+                  spacing={0}
+                  alignItems="center"
+                  justify="center"
+                  alignContent={"center"}
+                >
+                  <Grid item xs={12} md={12}>
+                    <Typography
+                      paragraph
+                      variant="body1"
+                      align="center"
+                      dir="rtl"
+                    >
+                      {persianNote}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={"auto"}>
+                    <CustomTooltip text={persianHint} dir={"rtl"} />
+                  </Grid>
+                </Grid>
+              </div>
               <Grid
                 container
                 spacing={1}
@@ -210,6 +274,15 @@ class Payment extends Component {
                 justify="center"
                 alignContent={"center"}
               >
+                <Grid item xs={12} sm={12} md={12}>
+                  <Checkbox
+                    checked={!!this.state.normal}
+                    onChange={e => this.normalOnChange(e)}
+                    color="secondary"
+                    name={getCompleteName("normalPost")}
+                  />
+                  <span>{getCompleteName("normalPost")}</span>
+                </Grid>
                 <Grid item xs={12} sm={12} md={12}>
                   <Checkbox
                     checked={!!this.state.post}

@@ -21,8 +21,8 @@ const persianNote3 =
 const frenchNote3 = "Western Union à l’ordre de Daniel MOVAHHEDI.";
 
 export function methodsInfo(id, code, price) {
-  const rib = `   • montant : ${price}€
-\n  • motif du virement : « francedoc${code + id} »
+  const rib = `   • Montant : ${price}€
+\n  • Motif du virement : « francedoc${code + id} »
 \n  • Informations de notre RIB :
 \n      o Nom : MOVAHHEDI Daniel
 \n      o IBAN : FR62 3000 2059 5100 0019 3403 P54
@@ -58,7 +58,7 @@ export function methodsInfo(id, code, price) {
     },
     {
       title: "ارسال چک",
-      frenchTitle: "Envoyez un chèque",
+      frenchTitle: "Chèque",
       content: (
         <Fragment>
           <Typography
