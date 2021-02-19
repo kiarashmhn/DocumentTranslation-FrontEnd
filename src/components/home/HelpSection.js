@@ -9,7 +9,11 @@ import {
 } from "@material-ui/core";
 import calculateSpacing from "./calculateSpacing";
 import PropTypes from "prop-types";
-import { getFrenchName, getPersianName } from "../../Dictionary";
+import {
+  getCompleteName,
+  getFrenchName,
+  getPersianName
+} from "../../Dictionary";
 import FullScreenDialog from "../FullScreenDialog";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
@@ -153,7 +157,7 @@ class HelpSection extends Component {
       <div className={classes.wrapper}>
         <div className={classNames("container-fluid", classes.container)}>
           <Typography variant="h4" align="center" className={classes.header}>
-            راهنما
+            {getCompleteName("help")}
           </Typography>
           <div className={classes.grid}>
             <Grid

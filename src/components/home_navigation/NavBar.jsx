@@ -16,6 +16,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 //import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../Template/NavigationDrawer";
 import "../../index.css";
+import { getCompleteName } from "../../Dictionary";
 
 const styles = theme => ({
   appBar: {
@@ -28,7 +29,7 @@ const styles = theme => ({
   },
   menuButtonText: {
     fontFamily: "MyFont",
-    fontSize: theme.typography.body1.fontSize,
+    fontSize: "10",
     fontWeight: theme.typography.h6.fontWeight,
     color: theme.palette.primary.main
   },
@@ -68,21 +69,21 @@ class NavBar extends Component {
     } = this.props;
     const menuItems = [
       {
-        name: "درباره ما",
+        name: getCompleteName("aboutUs"),
         link: "/",
         onClick: selectAbout,
         icon: <HomeIcon className="text-white" />,
         mobileHide: true
       },
       {
-        name: "راهنما",
+        name: getCompleteName("help"),
         link: "/",
         onClick: selectHelp,
         icon: <HomeIcon className="text-white" />,
         mobileHide: true
       },
       {
-        name: "خدمات",
+        name: getCompleteName("features"),
         link: "/",
         onClick: selectFeatures,
         icon: <HomeIcon className="text-white" />,
@@ -90,7 +91,7 @@ class NavBar extends Component {
       },
       {
         link: "/",
-        name: "صفحه اصلی",
+        name: getCompleteName("homePage"),
         onClick: selectHomeSection,
         icon: <HomeIcon className="text-white" />
       },
@@ -100,12 +101,12 @@ class NavBar extends Component {
         icon: <BookIcon className="text-white" />
       },*/
       {
-        name: "ثبت نام",
+        name: getCompleteName("register"),
         onClick: openRegisterDialog,
         icon: <HowToRegIcon className="text-white" />
       },
       {
-        name: "ورود",
+        name: getCompleteName("login"),
         onClick: openLoginDialog,
         icon: <LockOpenIcon className="text-white" />
       }
@@ -148,7 +149,7 @@ class NavBar extends Component {
                       >
                         <Button
                           color="secondary"
-                          size="large"
+                          size="small"
                           classes={{ text: classes.menuButtonText }}
                         >
                           {element.name}

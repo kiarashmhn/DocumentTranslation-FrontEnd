@@ -397,6 +397,26 @@ export const Dictionary = {
   chequeNum: {
     persian: "شماره چک ارسالی",
     french: "Numéro de chèque"
+  },
+  aboutUs: {
+    persian: "درباره ما",
+    french: "À propos de nous"
+  },
+  login: {
+    persian: "ورود",
+    french: "Connexion"
+  },
+  register: {
+    persian: "ثبت نام",
+    french: "S'inscrire"
+  },
+  homePage: {
+    persian: "صفحه اصلی",
+    french: "Page d'accueil"
+  },
+  features: {
+    persian: "خدمات",
+    french: "Prestations de service"
   }
 };
 
