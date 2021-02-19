@@ -9,6 +9,7 @@ import { getCompleteName } from "../../Dictionary";
 import Box from "@material-ui/core/Box";
 import PaymentSubmit from "./PaymentSubmit";
 import { methodsInfo } from "./MethodsInfo";
+import { StripePayment } from "./StripePayment";
 
 export default class PaymentMethods extends Component {
   constructor(props) {
@@ -96,7 +97,8 @@ export default class PaymentMethods extends Component {
               style={{ padding: "10px", marginBottom: "30px" }}
               m={5}
             >
-              {this.state.idx !== null && this.state.idx > 0 && (
+              {this.state.idx === 0 && <StripePayment />}
+              {this.state.idx > 0 && (
                 <Fragment>
                   {methods[this.state.idx].content}
                   <PaymentSubmit id={this.props.id} />

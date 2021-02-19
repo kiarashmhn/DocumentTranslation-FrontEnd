@@ -369,6 +369,14 @@ export const Dictionary = {
   normalPost: {
     persian: "پست عادی (بدون هزینه اضافی)",
     french: "Lettre normale (compris)"
+  },
+  pay: {
+    persian: "پرداخت",
+    french: "Payer"
+  },
+  paymentLoading: {
+    persian: "در حال پرداخت",
+    french: "Chargement de paiement"
   }
 };
 
