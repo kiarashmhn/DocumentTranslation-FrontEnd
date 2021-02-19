@@ -1,13 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
-import {
-  getCompleteName,
-  getFrenchName,
-  getPersianName
-} from "../../Dictionary";
-import FileHandler from "../File/FileHandler";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 import FieldInput from "../CustomInput/FieldInput";
 import PropTypes from "prop-types";
+import CustomFileUpload from "../CustomFileUpload/CustomFileUpload";
+import CustomTooltip from "../Tooltip/CustomTooltip";
+import Divider from "@material-ui/core/Divider";
 
 export default class PaymentSubmit extends Component {
   constructor(props) {
@@ -22,6 +20,7 @@ export default class PaymentSubmit extends Component {
   render() {
     return (
       <Fragment>
+        <Divider style={{ margin: "4px 2px" }} />
         <Grid
           container
           spacing={1}
@@ -29,19 +28,28 @@ export default class PaymentSubmit extends Component {
           justify="center"
           alignContent={"center"}
         >
-          <Grid item xs={12} sm={12} md={12}>
+          <Grid item xs={12} md={12}>
             <Typography paragraph variant="h6" align="center">
-              {getCompleteName("receiptInfo")}
+              {getFrenchName("receiptInfo")}
             </Typography>
-            <FileHandler
-              ref={this.fileHandlerRef}
-              orderId={this.props.id}
-              type={"payment"}
-            />
+          </Grid>
+          <Grid item xs={"auto"}>
+            <CustomTooltip text={getFrenchName("sendInfo")} />
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Typography paragraph variant="h6" align="center" dir="rtl">
+              {getPersianName("receiptInfo")}
+            </Typography>
+          </Grid>
+          <Grid item xs={"auto"}>
+            <CustomTooltip text={getPersianName("sendInfo")} dir={"rtl"} />
+          </Grid>
+          <Grid item xs={12} sm={12} md={12}>
+            <CustomFileUpload onChange={() => {}} />
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
             <FieldInput
-              name={"num"}
+              name={this.props.inputKey}
               value={this.state.num}
               onChange={event => this.setState({ num: event.target.value })}
               notRequired={true}
@@ -96,5 +104,6 @@ export default class PaymentSubmit extends Component {
 }
 
 PaymentSubmit.propTypes = {
-  id: PropTypes.any.isRequired
+  id: PropTypes.any.isRequired,
+  inputKey: PropTypes.string.isRequired
 };

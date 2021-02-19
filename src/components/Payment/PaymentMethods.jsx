@@ -37,7 +37,7 @@ export default class PaymentMethods extends Component {
 
   render() {
     const { width, classes, id, price, code } = this.props;
-    const methods = methodsInfo(id, price, code);
+    const methods = methodsInfo(id, code, price);
     return (
       <Fragment>
         <div className={classes.thirdHeader}>
@@ -101,7 +101,10 @@ export default class PaymentMethods extends Component {
               {this.state.idx > 0 && (
                 <Fragment>
                   {methods[this.state.idx].content}
-                  <PaymentSubmit id={this.props.id} />
+                  <PaymentSubmit
+                    id={this.props.id}
+                    inputKey={methods[this.state.idx].inputKey}
+                  />
                 </Fragment>
               )}
             </Box>

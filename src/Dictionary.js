@@ -352,11 +352,18 @@ export const Dictionary = {
   },
   num: {
     persian: "کد رهگیری",
-    french: "Code de suivi"
+    french: "Code de suivi",
+    hint: {
+      persian:
+        "کد رهگیری را بانک در پیام های تأییدیه واریز به شما اطلاع میدهد. در هر صورت، بهتر آن است که یک کپی از تأییدیه واریز را برای ما ارسال کنید.",
+      french:
+        "Référence virement\n" +
+        "En général, elle vous sera communiquée dans les messages de confirmation de l'opération qui vous seront adressés par la banque. Il est préférable de nous transmettre une copie de preuve de virement."
+    }
   },
   receiptInfo: {
-    persian: "اطلاعات پرداخت را وارد کنید",
-    french: "Entrez les informations de paiement"
+    persian: "سند یا تأییدیه واریز را برای ما ارسال کنید",
+    french: "Transférer-nous la preuve de paiement"
   },
   finalSubmit: {
     persian: "ثبت اطلاعات پرداخت",
@@ -377,6 +384,18 @@ export const Dictionary = {
   paymentLoading: {
     persian: "در حال پرداخت",
     french: "Chargement de paiement"
+  },
+  sendInfo: {
+    persian:
+      "ارسال " +
+      "سند پرداخت در ص رت واریز در حساب بانک  یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع " +
+      "کار ترجمه را فراهم م  کند. هرگ نه عدم ارسال سند پرداخت، انجام ترجمه را به تأخیر می اندازد.",
+    french:
+      "Il appartient au client de transmettre la preuve du paiement en cas de virement ou d’envoi de chèque. Le justificatif de paiement permet le traitement de la traduction. Toute omission de transmission du justificatif de paiement retarderait le traitement de la traduction."
+  },
+  chequeNum: {
+    persian: "شماره چک ارسالی",
+    french: "Numéro de chèque"
   }
 };
 

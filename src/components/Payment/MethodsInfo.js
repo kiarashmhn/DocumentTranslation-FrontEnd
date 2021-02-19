@@ -37,6 +37,7 @@ export function methodsInfo(id, code, price) {
     {
       title: "واریز به حساب",
       frenchTitle: "Virement bancaire",
+      inputKey: "num",
       content: (
         <Fragment>
           <Typography paragraph variant="body1" align="center">
@@ -59,6 +60,7 @@ export function methodsInfo(id, code, price) {
     {
       title: "ارسال چک",
       frenchTitle: "Chèque",
+      inputKey: "chequeNum",
       content: (
         <Fragment>
           <Typography
@@ -109,6 +111,7 @@ export function methodsInfo(id, code, price) {
     {
       title: "وسترن یونیون",
       frenchTitle: "Western Union",
+      inputKey: "num",
       content: (
         <Fragment>
           <Typography paragraph variant="body1" align="center">
