@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import { Typography } from "@material-ui/core";
 
 const frenchNote =
-  "* Ajouter ensuite la preuve de virement bancaire ici sur votre compte client. (Il appartient au client de transmettre la preuve du paiement en cas de virement ou d’envoi de chèque. Le justificatif de paiement permet le traitement de la traduction. Toute omission de transmission du justificatif de paiement retarderait le traitement de la traduction.) Renseignez les informations suivantes sur l’ordre de virement à votre banque :";
+  "* Ajouter ensuite la preuve de virement bancaire ici sur votre compte client. Renseignez les informations suivantes sur l’ordre de virement à votre banque :";
 const persianNote =
-  "* هزینه ترجمه را به حساب بانکی واریز کرده و رسید واریز را در حساب کاربری برای ما ارسال کنید. (ارسال سند پرداخت در صورت واریز در حساب بانکی یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع کار ترجمه را فراهم می کند. هرگونه عدم ارسال سند پرداخت، انجام ترجمه را به تأخیر می اندازد.) اطلاعات زیر را در دستور واریز بانکی خود می بایست ثبت کنید :";
+  "* هزینه ترجمه را به حساب بانکی واریز کرده و رسید واریز را در حساب کاربری برای ما ارسال کنید. اطلاعات زیر را در دستور واریز بانکی خود می بایست ثبت کنید :";
 
 const persianNote2 =
   "مبلغ هزینه ترجمه را در قالب چک در وجه Daniel MOVAHHEDI به آدرس زیر ارسال کنید: ";

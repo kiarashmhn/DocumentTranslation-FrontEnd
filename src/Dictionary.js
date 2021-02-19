@@ -37,7 +37,7 @@ export const Dictionary = {
   },
   address: {
     persian: "آدرس دریافت مدارک ترجمه شده",
-    french: "Adresse d'envoi de la commande",
+    french: "Adresse de réception de traduction effectuée",
     hint: {
       persian:
         "برای دریافت اصل ترجمه انجام شده آدرس پستی کامل و دقیق خود را در این قسمت اضافه کنید. توجه داشته باشید که اصل ترجمه فقط یک بار برای شما ارسال میشود و هرگونه اشتباه در ثبت آدرس بر عهده متقاضی میباشد",
@@ -71,7 +71,7 @@ export const Dictionary = {
   },
   serial: {
     persian: "شماره سریال شناسنامه",
-    french: "N° séquentiel"
+    french: "N° de série"
   },
   cardSerial: {
     persian: "شماره سریال کارت",
@@ -123,7 +123,7 @@ export const Dictionary = {
   },
   description: {
     persian: "توضیحات تکمیلی",
-    french: "Informations complémentaires",
+    french: "Informations complémentaire",
     hint: {
       persian:
         "هر گونه توضیحی که برای ترجمه سند خود مفید میدانید را میتوانید در این قسمت اضافه کنید",
@@ -145,7 +145,7 @@ export const Dictionary = {
   },
   parentsInfo: {
     persian: "اطلاعات والدین",
-    french: "Information parentale"
+    french: "Parents"
   },
   observations: {
     persian: "مشاهدات",
@@ -180,15 +180,15 @@ export const Dictionary = {
   },
   spousesInfo: {
     persian: "اطلاعات همسران",
-    french: "Informations sur les conjoints"
+    french: "Conjoint(e)"
   },
   childrenInfo: {
     persian: "اطلاعات فرزندان",
-    french: "Informations sur les enfants"
+    french: "Enfants"
   },
   uploadIDFiles: {
     persian: "بارگذاری سند شناسنامه",
-    french: "Importer la Acte de naissance"
+    french: "Importer ici votre acte de naissance à traduire"
   },
   uploadIDCardFiles: {
     persian: "بارگذاری سند کارت ملی",
@@ -267,20 +267,21 @@ export const Dictionary = {
     french: "date",
     hint: {
       persian: "تاریخ را می توانید به شمسی یا میلادی وارد کنید",
-      french: "Vous pouvez entrer la date en solaire ou grégorien"
+      french:
+        "Vous pouvez saisir la date selon calendrier persan ou grégorien. Nous nous chargeons de la convertir."
     }
   },
   uploadedFiles: {
     persian: "فایل های بارگذاری شده",
-    french: "Fichiers téléchargés"
+    french: "Fichiers choisis"
   },
   uploadFiles: {
     persian: "بارگذاری فایل",
-    french: "Télécharger des fichiers"
+    french: "Choisir un fichier"
   },
   empty: {
     persian: "خالی",
-    french: "Vide"
+    french: "Aucun fichier choisi"
   },
   useFrenchNumber: {
     persian: "شماره موبایلتان در فرانسه را وارد کنید",
@@ -388,8 +389,8 @@ export const Dictionary = {
   sendInfo: {
     persian:
       "ارسال " +
-      "سند پرداخت در ص رت واریز در حساب بانک  یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع " +
-      "کار ترجمه را فراهم م  کند. هرگ نه عدم ارسال سند پرداخت، انجام ترجمه را به تأخیر می اندازد.",
+      "سند پرداخت در صورت واریز در حساب بانکd یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع " +
+      "کار ترجمه را فراهم می کند. هرگ,نه عدم ارسال سند پرداخت، انجام ترجمه را به تأخیر می اندازد.",
     french:
       "Il appartient au client de transmettre la preuve du paiement en cas de virement ou d’envoi de chèque. Le justificatif de paiement permet le traitement de la traduction. Toute omission de transmission du justificatif de paiement retarderait le traitement de la traduction."
   },
