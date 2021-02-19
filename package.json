@@ -53,6 +53,7 @@
     "redocx": "^1.1.4",
     "redux": "latest",
     "redux-thunk": "^2.3.0",
+    "terser": "3.14.1",
     "xlsx": "^0.16.9"
   },
   "scripts": {
