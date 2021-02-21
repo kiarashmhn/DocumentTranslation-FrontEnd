@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import * as PropTypes from "prop-types";
 import { Grid, Typography, withStyles, withWidth } from "@material-ui/core";
-import { getCompleteName } from "../../Dictionary";
+import { getCompleteName, getCompleteNameNew } from "../../Dictionary";
 import { getType } from "../order/OrderTypes";
 import theme from "../../theme";
 import Box from "@material-ui/core/Box";
@@ -10,17 +10,17 @@ import PaymentMethods from "./PaymentMethods";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const frenchNote =
-  "* Important : le tarif annoncé comprend l’accès à la copie numérique (PDF) du document traduit sur votre espace client et le frais d’envoie en lettre économique (lettre verte) à votre adresse. Francedoc.fr offre la possibilité de choisir l’envoi d’un des deux types suivants qui constituent des choix plus fiables afin d’assurer la bonne réception de la commande.";
+  "* Important : le tarif annoncé comprend l’accès à la copie numérique (PDF) du document traduit sur votre espace client et le frais d’envoie en lettre économique (lettre verte) à votre adresse. francedoc offre la possibilité de choisir l’envoi d’un des deux types suivants qui constituent des choix plus fiables afin d’assurer la bonne réception de la commande.";
 const persianNote =
-  "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی میباشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
+  "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی می باشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
 
 const frenchHint =
-  "Le tarif annoncé comprend le frais d’envoie en lettre économique (Lettre verte). Francedoc.fr se dégage de toute responsabilité si le client ne reçoit pas le courrier. Toute réclamation et demande de nouvel envoi postal fera l’objet d’une nouvelle facturation.";
+  "francedoc se dégage de toute responsabilité si le client ne reçoit pas le courrier. Toute réclamation et demande de nouvel envoi postal fera l’objet d’une nouvelle facturation.";
 
 const persianHint =
-  "هزینه های اعلام شده شامل ارسال اصل ترجمه با پست عادی میباشد. توجه داشته باشید که " +
+  "توجه داشته باشید که " +
   "فرانسدک هیچگونه مسئولیتی در قبال عدم وصول ترجمه از طریق پست بر عهده نمی گیرد. ارسال مجدد " +
-  "ترجمه منوط به پرداخت کل هزینه ترجمه میباشد.";
+  "ترجمه منوط به پرداخت کل هزینه ترجمه می باشد.";
 
 const styles = theme => ({
   wrapper: {
@@ -318,18 +318,18 @@ class Payment extends Component {
                 {getCompleteName("bill")}
               </Typography>
               <Typography gutterBottom variant="body1" align="center">
-                {getCompleteName(this.state.type.key) +
+                {getCompleteNameNew("orderType") +
                   " : " +
-                  getCompleteName("orderType")}
+                  getCompleteNameNew(this.state.type.key)}
               </Typography>
               <Typography gutterBottom variant="body1" align="center">
-                {this.state.type.code +
-                  this.state.orderId +
+                {getCompleteNameNew("orderId") +
                   " : " +
-                  getCompleteName("orderId")}
+                  this.state.type.code +
+                  this.state.orderId}
               </Typography>
               <Typography gutterBottom variant="body1" align="center">
-                {this.state.price + "€" + " : " + getCompleteName("amount")}
+                {getCompleteNameNew("amount") + " : " + this.state.price + "€"}
               </Typography>
             </Fragment>
           </Box>

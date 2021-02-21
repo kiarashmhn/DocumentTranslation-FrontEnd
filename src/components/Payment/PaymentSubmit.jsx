@@ -70,6 +70,7 @@ export default class PaymentSubmit extends Component {
         >
           <Button
             onClick={() => {}}
+            style={{ textTransform: "none" }}
             variant="contained"
             color="secondary"
             align={"center"}
@@ -92,7 +93,7 @@ export default class PaymentSubmit extends Component {
                   fontSize: 16
                 }}
               />
-              <Typography variant="body2" align="center" component={"span"}>
+              <Typography variant="body1" align="center" component={"span"}>
                 {getFrenchName("finalSubmit")}
               </Typography>
             </p>

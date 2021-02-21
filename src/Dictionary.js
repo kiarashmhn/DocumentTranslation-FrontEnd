@@ -353,12 +353,11 @@ export const Dictionary = {
   },
   num: {
     persian: "کد رهگیری",
-    french: "Code de suivi",
+    french: "Référence virement",
     hint: {
       persian:
         "کد رهگیری را بانک در پیام های تأییدیه واریز به شما اطلاع میدهد. در هر صورت، بهتر آن است که یک کپی از تأییدیه واریز را برای ما ارسال کنید.",
       french:
-        "Référence virement\n" +
         "En général, elle vous sera communiquée dans les messages de confirmation de l'opération qui vous seront adressés par la banque. Il est préférable de nous transmettre une copie de preuve de virement."
     }
   },
@@ -367,8 +366,8 @@ export const Dictionary = {
     french: "Transférer-nous la preuve de paiement"
   },
   finalSubmit: {
-    persian: "ثبت اطلاعات پرداخت",
-    french: "Enregistrer les informations de paiement"
+    persian: "تایید پرداخت",
+    french: "Confirmation de Paiement"
   },
   sendCheckImage: {
     persian: "ارسال عکس چک",
@@ -423,6 +422,12 @@ export const Dictionary = {
 export const getCompleteName = text => {
   if (Dictionary[text])
     return Dictionary[text].french + " / " + Dictionary[text].persian;
+  return null;
+};
+
+export const getCompleteNameNew = text => {
+  if (Dictionary[text])
+    return Dictionary[text].french + "(" + Dictionary[text].persian + ")";
   return null;
 };
 
