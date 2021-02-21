@@ -7,7 +7,8 @@ import {
   Button,
   Hidden,
   IconButton,
-  withStyles
+  withStyles,
+  Typography
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
@@ -16,7 +17,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 //import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../Template/NavigationDrawer";
 import "../../index.css";
-import { getCompleteName } from "../../Dictionary";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 
 const styles = theme => ({
   appBar: {
@@ -29,7 +30,7 @@ const styles = theme => ({
   },
   menuButtonText: {
     fontFamily: "MyFont",
-    fontSize: "10",
+    fontSize: theme.typography.body1.fontSize,
     fontWeight: theme.typography.h6.fontWeight,
     color: theme.palette.primary.main
   },
@@ -69,21 +70,21 @@ class NavBar extends Component {
     } = this.props;
     const menuItems = [
       {
-        name: getCompleteName("aboutUs"),
+        name: "aboutUs",
         link: "/",
         onClick: selectAbout,
         icon: <HomeIcon className="text-white" />,
         mobileHide: true
       },
       {
-        name: getCompleteName("help"),
+        name: "help",
         link: "/",
         onClick: selectHelp,
         icon: <HomeIcon className="text-white" />,
         mobileHide: true
       },
       {
-        name: getCompleteName("features"),
+        name: "features",
         link: "/",
         onClick: selectFeatures,
         icon: <HomeIcon className="text-white" />,
@@ -91,7 +92,7 @@ class NavBar extends Component {
       },
       {
         link: "/",
-        name: getCompleteName("homePage"),
+        name: "homePage",
         onClick: selectHomeSection,
         icon: <HomeIcon className="text-white" />
       },
@@ -101,12 +102,12 @@ class NavBar extends Component {
         icon: <BookIcon className="text-white" />
       },*/
       {
-        name: getCompleteName("register"),
+        name: "register",
         onClick: openRegisterDialog,
         icon: <HowToRegIcon className="text-white" />
       },
       {
-        name: getCompleteName("login"),
+        name: "login",
         onClick: openLoginDialog,
         icon: <LockOpenIcon className="text-white" />
       }
@@ -132,42 +133,86 @@ class NavBar extends Component {
               </Hidden>
               <Hidden smDown>
                 {menuItems.map(element => {
-                  if (element.link) {
-                    return (
-                      <Link
-                        key={element.name}
-                        to={element.link}
-                        className={classes.noDecoration}
-                        onClick={
-                          element.onClick
-                            ? () => {
-                                this.props.handleMobileDrawerClose();
-                                element.onClick();
-                              }
-                            : handleMobileDrawerClose
-                        }
-                      >
-                        <Button
-                          color="secondary"
-                          size="small"
-                          classes={{ text: classes.menuButtonText }}
+                  if (element.name !== "homePage") {
+                    if (element.link) {
+                      return (
+                        <Link
+                          key={element.name}
+                          to={element.link}
+                          className={classes.noDecoration}
+                          onClick={
+                            element.onClick
+                              ? () => {
+                                  this.props.handleMobileDrawerClose();
+                                  element.onClick();
+                                }
+                              : handleMobileDrawerClose
+                          }
                         >
-                          {element.name}
-                        </Button>
-                      </Link>
+                          <Button
+                            color="secondary"
+                            classes={{ text: classes.menuButtonText }}
+                            style={{ textTransform: "none" }}
+                          >
+                            <div style={{ display: "block" }}>
+                              <Typography
+                                variant="body1"
+                                align="center"
+                                component={"span"}
+                                style={{
+                                  display: "block"
+                                }}
+                              >
+                                {getFrenchName(element.name)}
+                              </Typography>
+                              <Typography
+                                variant="body1"
+                                align="center"
+                                component={"span"}
+                                style={{
+                                  display: "block"
+                                }}
+                              >
+                                {getPersianName(element.name)}
+                              </Typography>
+                            </div>
+                          </Button>
+                        </Link>
+                      );
+                    }
+                    return (
+                      <Button
+                        color="secondary"
+                        onClick={element.onClick}
+                        classes={{ text: classes.menuButtonText }}
+                        key={element.name}
+                        style={{ textTransform: "none" }}
+                      >
+                        <div style={{ display: "block" }}>
+                          <Typography
+                            variant="body1"
+                            align="center"
+                            component={"span"}
+                            style={{
+                              display: "block"
+                            }}
+                          >
+                            {getFrenchName(element.name)}
+                          </Typography>
+                          <Typography
+                            variant="body1"
+                            align="center"
+                            component={"span"}
+                            style={{
+                              display: "block"
+                            }}
+                          >
+                            {getPersianName(element.name)}
+                          </Typography>
+                        </div>
+                      </Button>
                     );
                   }
-                  return (
-                    <Button
-                      color="secondary"
-                      size="large"
-                      onClick={element.onClick}
-                      classes={{ text: classes.menuButtonText }}
-                      key={element.name}
-                    >
-                      {element.name}
-                    </Button>
-                  );
                 })}
               </Hidden>
             </div>

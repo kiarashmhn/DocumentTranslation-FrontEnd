@@ -105,6 +105,7 @@ class HeadSection extends Component {
                       <Button
                         variant="contained"
                         color="secondary"
+                        style={{ textTransform: "none" }}
                         onClick={() => {
                           this.props.openRegisterDialog();
                         }}
@@ -131,7 +132,7 @@ class HeadSection extends Component {
                               color: "#000000"
                             }}
                           >
-                            demande de traduction
+                            Demande de Traduction
                           </Typography>
                         </div>
                       </Button>

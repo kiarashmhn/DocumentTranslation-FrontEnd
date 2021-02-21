@@ -244,7 +244,7 @@ export const Dictionary = {
   },
   help: {
     persian: "راهنما",
-    french: "Guider"
+    french: "Aide"
   },
   helpLanguage: {
     persian: "راهنمای فارسی",
@@ -345,7 +345,7 @@ export const Dictionary = {
   },
   paymentMethods: {
     persian: "شیوه‌های پرداخت",
-    french: "Méthodes de paiement"
+    french: "Moyens de paiement"
   },
   receiptImage: {
     persian: "بارگذاری تصویر رسید",
@@ -416,7 +416,7 @@ export const Dictionary = {
   },
   features: {
     persian: "خدمات",
-    french: "Prestations de service"
+    french: "Services"
   }
 };
 

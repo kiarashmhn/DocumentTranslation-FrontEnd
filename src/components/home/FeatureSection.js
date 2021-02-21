@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {
-  Grid,
-  Typography,
-  isWidthUp,
-  withWidth,
-  withStyles
-} from "@material-ui/core";
+import { Grid, isWidthUp, withWidth, withStyles } from "@material-ui/core";
 import DescriptionIcon from "@material-ui/icons/Description";
 import FeatureCard from "./FeatureCard";
 import classNames from "classnames";
@@ -93,7 +87,7 @@ const features = [
   {
     color: "#6200EA",
     headline: "کارت ملی",
-    frenchHeadline: "Carte d'Identité Nationale",
+    frenchHeadline: "Carte d'identité nationale",
     text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
     frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
@@ -154,7 +148,7 @@ const features = [
     color: "#dbc858",
     headline: "فورم تثبیت هویت",
     frenchHeadline: "Formulaire de vérification d’identité",
-    text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت \n ",
     frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
@@ -174,8 +168,7 @@ const features = [
     color: "#db8758",
     headline: "متون، اسناد و مدارک دیگر",
     frenchHeadline: "Autres types de documents",
-    text:
-      "تعرفه: درخواست پیش فاکتور کنید\n زمان تحویل: با توجه به مقدار کار تعیین می شود",
+    text: "تعرفه: درخواست پیش فاکتور کنید\n زمان تحویل: با توجه به مقدار کار",
     frenchText:
       "Tarif : demander un devis \n Délai de livraison : en fonction de la difficulté linguistique",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
@@ -193,9 +186,6 @@ class FeatureSection extends Component {
     return (
       <div className={classes.wrapper}>
         <div className={classNames("container-fluid", classes.container)}>
-          <Typography variant="h4" align="center" className={classes.header}>
-            خدمات ترجمه رسمی
-          </Typography>
           <div className="container-fluid">
             <Grid container spacing={1}>
               {features.map(element => (
