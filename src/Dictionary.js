@@ -388,8 +388,8 @@ export const Dictionary = {
   sendInfo: {
     persian:
       "ارسال " +
-      "سند پرداخت در صورت واریز در حساب بانکd یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع " +
-      "کار ترجمه را فراهم می کند. هرگ,نه عدم ارسال سند پرداخت، انجام ترجمه را به تأخیر می اندازد.",
+      "سند پرداخت در صورت واریز در حساب بانکی یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع " +
+      "کار ترجمه را فراهم می کند. هرگونه عدم ارسال سند پرداخت، انجام ترجمه را به تأخیر می اندازد.",
     french:
       "Il appartient au client de transmettre la preuve du paiement en cas de virement ou d’envoi de chèque. Le justificatif de paiement permet le traitement de la traduction. Toute omission de transmission du justificatif de paiement retarderait le traitement de la traduction."
   },

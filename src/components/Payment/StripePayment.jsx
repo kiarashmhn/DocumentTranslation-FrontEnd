@@ -10,12 +10,8 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import "./StripePayment.css";
-import {
-  getCompleteName,
-  getFrenchName,
-  getPersianName
-} from "../../Dictionary";
-import { Typography } from "@material-ui/core";
+import { getFrenchName, getPersianName } from "../../Dictionary";
+import { Button, Typography } from "@material-ui/core";
 
 export const StripePayment = () => {
   const stripe = loadStripe(
@@ -125,11 +121,55 @@ function CheckoutForm() {
                 }
               }}
             />
-            <button className="pay-button" disabled={isPaymentLoading}>
-              {isPaymentLoading
-                ? getCompleteName("paymentLoading")
-                : getCompleteName("pay")}
-            </button>
+          </div>
+          <div
+            style={{
+              maxWidth: "100%",
+              verticalAlign: "middle",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: "10px",
+              paddingBottom: "20px",
+              marginTop: "5px"
+            }}
+          >
+            <Button
+              className="pay-button"
+              disabled={isPaymentLoading}
+              style={{ textTransform: "none" }}
+              align={"center"}
+              variant="contained"
+              color="secondary"
+              type={"submit"}
+            >
+              <p>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "0",
+                    fontSize: 16
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  {isPaymentLoading
+                    ? getFrenchName("paymentLoading")
+                    : getFrenchName("pay")}
+                </Typography>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "2px",
+                    fontSize: "100%"
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  {isPaymentLoading
+                    ? getPersianName("paymentLoading")
+                    : getPersianName("pay")}
+                </Typography>
+              </p>
+            </Button>
           </div>
         </form>
       </div>

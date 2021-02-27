@@ -29,20 +29,45 @@ export default class PaymentSubmit extends Component {
           alignContent={"center"}
         >
           <Grid item xs={12} md={12}>
-            <Typography paragraph variant="h6" align="center">
-              {getFrenchName("receiptInfo")}
-            </Typography>
-          </Grid>
-          <Grid item xs={"auto"}>
-            <CustomTooltip text={getFrenchName("sendInfo")} />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justify: "center",
+                justifyContent: "center"
+              }}
+            >
+              <Typography
+                paragraph
+                variant="h6"
+                align="center"
+                style={{ marginTop: "18px" }}
+              >
+                {getFrenchName("receiptInfo")}
+              </Typography>
+              <CustomTooltip text={getFrenchName("sendInfo")} />
+            </div>
           </Grid>
           <Grid item xs={12} md={12}>
-            <Typography paragraph variant="h6" align="center" dir="rtl">
-              {getPersianName("receiptInfo")}
-            </Typography>
-          </Grid>
-          <Grid item xs={"auto"}>
-            <CustomTooltip text={getPersianName("sendInfo")} dir={"rtl"} />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justify: "center",
+                justifyContent: "center"
+              }}
+            >
+              <CustomTooltip text={getPersianName("sendInfo")} dir={"rtl"} />
+              <Typography
+                paragraph
+                variant="h6"
+                align="center"
+                style={{ marginTop: "18px" }}
+                dir="rtl"
+              >
+                {getPersianName("receiptInfo")}
+              </Typography>
+            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={12}>
             <CustomFileUpload onChange={() => {}} />
@@ -79,22 +104,22 @@ export default class PaymentSubmit extends Component {
               <span
                 style={{
                   display: "block",
-                  marginBottom: "2px",
-                  fontSize: "100%"
-                }}
-              />
-              <Typography variant="body1" align="center" component={"span"}>
-                {getPersianName("finalSubmit")}
-              </Typography>
-              <span
-                style={{
-                  display: "block",
                   marginBottom: "0",
                   fontSize: 16
                 }}
               />
               <Typography variant="body1" align="center" component={"span"}>
                 {getFrenchName("finalSubmit")}
+              </Typography>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "2px",
+                  fontSize: "100%"
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                {getPersianName("finalSubmit")}
               </Typography>
             </p>
           </Button>
