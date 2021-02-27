@@ -416,6 +416,10 @@ export const Dictionary = {
   features: {
     persian: "خدمات",
     french: "Services"
+  },
+  enterCardInfo: {
+    persian: "اطلاعات کارت بانکی خود را وارد کنید",
+    french: "Entrez vos informations de carte bancaire"
   }
 };
 

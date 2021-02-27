@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import {
   Elements,
   CardElement,
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import "./StripePayment.css";
-import { getCompleteName } from "../../Dictionary";
+import {
+  getCompleteName,
+  getFrenchName,
+  getPersianName
+} from "../../Dictionary";
+import { Typography } from "@material-ui/core";
 
 export const StripePayment = () => {
   const stripe = loadStripe(
@@ -81,7 +89,33 @@ function CheckoutForm() {
               alignItems: "center"
             }}
           >
-            <CardElement
+            <Typography paragraph variant="body1" align="center">
+              {getFrenchName("enterCardInfo")}
+            </Typography>
+            <Typography paragraph variant="body1" align="center">
+              {getPersianName("enterCardInfo")}
+            </Typography>
+            <CardNumberElement
+              className="card"
+              options={{
+                style: {
+                  base: {
+                    backgroundColor: "white"
+                  }
+                }
+              }}
+            />
+            <CardExpiryElement
+              className="card"
+              options={{
+                style: {
+                  base: {
+                    backgroundColor: "white"
+                  }
+                }
+              }}
+            />
+            <CardCvcElement
               className="card"
               options={{
                 style: {
