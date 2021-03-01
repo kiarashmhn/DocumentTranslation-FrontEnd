@@ -167,53 +167,13 @@ export const TazkaraForm = {
       title: "birthLocation",
       content: [
         {
-          key: "province",
-          type: "select",
-          options: [
-            { value: "kaboul", key: "kaboul" },
-            { value: "herat", key: "herat" },
-            { value: "nangarhar", key: "nangarhar" },
-            { value: "balkh", key: "balkh" },
-            { value: "kandahar", key: "kandahar" },
-            { value: "ghor", key: "ghor" },
-            { value: "laghman", key: "laghman" },
-            { value: "kunduz", key: "kunduz" },
-            { value: "paktiya", key: "paktiya" },
-            { value: "zabol", key: "zabol" },
-            { value: "baghlan", key: "baghlan" },
-            { value: "badakhchan", key: "badakhchan" },
-            { value: "bamiyan", key: "bamiyan" },
-            { value: "badghis", key: "badghis" },
-            { value: "maydanWardak", key: "maydanWardak" },
-            { value: "logar", key: "logar" },
-            { value: "samangan", key: "samangan" },
-            { value: "takhar", key: "takhar" },
-            { value: "nouristan", key: "nouristan" },
-            { value: "faryab", key: "faryab" },
-            { value: "sarpol", key: "sarpol" },
-            { value: "paktika", key: "paktika" },
-            { value: "farah", key: "farah" },
-            { value: "helmand", key: "helmand" },
-            { value: "nimroz", key: "nimroz" },
-            { value: "ghazni", key: "ghazni" },
-            { value: "orozgan", key: "orozgan" },
-            { value: "kapissa", key: "kapissa" },
-            { value: "parwan", key: "parwan" },
-            { value: "pandjchir", key: "pandjchir" },
-            { value: "djozdjan", key: "djozdjan" },
-            { value: "khost", key: "khost" },
-            { value: "kounar", key: "kounar" },
-            { value: "deykandi", key: "deykandi" }
-          ],
+          key: "provinceDistrict",
+          provinceKey: "province",
+          districtKey: "district",
+          villageKey: "village",
+          type: "provinceDistrict",
+          name: "birthLocation",
           required: true
-        },
-        {
-          key: "district",
-          type: "text"
-        },
-        {
-          key: "village",
-          type: "text"
         }
       ]
     },
@@ -251,7 +211,6 @@ export const TazkaraForm = {
           options: [
             { value: "connected", key: "connected" },
             { value: "departed", key: "departed" },
-
             { value: "others", key: "others" }
           ],
           required: true
@@ -292,9 +251,7 @@ export const TazkaraForm = {
             { value: "yes", key: "yes" },
             { value: "little", key: "little" },
             { value: "moderate", key: "moderate" },
-
-            { value: "majorSigns", key: "ajorSigns" },
-
+            { value: "majorSigns", key: "majorSigns" },
             { value: "others", key: "others" }
           ],
           required: true
@@ -305,53 +262,13 @@ export const TazkaraForm = {
       title: "tazkaraInformation",
       content: [
         {
-          key: "province",
-          type: "select",
-          options: [
-            { value: "kaboul", key: "kaboul" },
-            { value: "herat", key: "herat" },
-            { value: "nangarhar", key: "nangarhar" },
-            { value: "balkh", key: "balkh" },
-            { value: "kandahar", key: "kandahar" },
-            { value: "ghor", key: "ghor" },
-            { value: "laghman", key: "laghman" },
-            { value: "kunduz", key: "kunduz" },
-            { value: "paktiya", key: "paktiya" },
-            { value: "zabol", key: "zabol" },
-            { value: "baghlan", key: "baghlan" },
-            { value: "badakhchan", key: "badakhchan" },
-            { value: "bamiyan", key: "bamiyan" },
-            { value: "badghis", key: "badghis" },
-            { value: "maydanWardak", key: "maydanWardak" },
-            { value: "logar", key: "logar" },
-            { value: "samangan", key: "samangan" },
-            { value: "takhar", key: "takhar" },
-            { value: "nouristan", key: "nouristan" },
-            { value: "faryab", key: "faryab" },
-            { value: "sarpol", key: "sarpol" },
-            { value: "paktika", key: "paktika" },
-            { value: "farah", key: "farah" },
-            { value: "helmand", key: "helmand" },
-            { value: "nimroz", key: "nimroz" },
-            { value: "ghazni", key: "ghazni" },
-            { value: "orozgan", key: "orozgan" },
-            { value: "kapissa", key: "kapissa" },
-            { value: "parwan", key: "parwan" },
-            { value: "pandjchir", key: "pandjchir" },
-            { value: "djozdjan", key: "djozdjan" },
-            { value: "khost", key: "khost" },
-            { value: "kounar", key: "kounar" },
-            { value: "deykandi", key: "deykandi" }
-          ],
+          key: "provinceDistrict",
+          provinceKey: "province",
+          districtKey: "district",
+          villageKey: "village",
+          type: "provinceDistrict",
+          name: "registerLocation",
           required: true
-        },
-        {
-          key: "district",
-          type: "text"
-        },
-        {
-          key: "village",
-          type: "text"
         }
       ]
     },

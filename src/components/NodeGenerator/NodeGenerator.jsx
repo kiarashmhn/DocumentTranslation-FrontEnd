@@ -15,6 +15,7 @@ import {
 import Checkbox from "@material-ui/core/Checkbox";
 import ControlledOpenSelect from "../Dropdown/Dropdown";
 import FileHandler from "../File/FileHandler";
+import ProvinceDistrict from "../ProvinceDistrict/ProvinceDistrict";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class NodesGenerator extends Component {
     this.childrenRef = React.createRef();
     this.spousesRef = React.createRef();
     this.fileHandlerRef = React.createRef();
+    this.provinceDistrictRef = React.createRef();
   }
 
   constructState = () => {
@@ -143,6 +145,14 @@ export default class NodesGenerator extends Component {
       : [];
     if (files.length > 0) state = { ...state, ...{ files: files } };
 
+    let provinceState = this.provinceDistrictRef
+      ? this.provinceDistrictRef.current
+        ? this.provinceDistrictRef.current.getState()
+        : null
+      : null;
+    if (provinceState && provinceState.province)
+      state = { ...state, ...provinceState };
+
     return state;
   };
 
@@ -252,6 +262,34 @@ export default class NodesGenerator extends Component {
               <Spouses
                 ref={this.spousesRef}
                 initialSpouses={this.getInitialArrayByKey(element.key)}
+              />
+            </Grid>
+          );
+        case "provinceDistrict":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <ProvinceDistrict
+                ref={this.provinceDistrictRef}
+                province={
+                  this.props.externalInitializationData[element.provinceKey]
+                }
+                district={
+                  this.props.externalInitializationData[element.districtKey]
+                }
+                village={
+                  this.props.externalInitializationData[element.villageKey]
+                }
+                name={element.name}
+                provinceKey={element.provinceKey}
+                districtKey={element.districtKey}
+                villageKey={element.villageKey}
+                required={!element.notRequired}
               />
             </Grid>
           );
