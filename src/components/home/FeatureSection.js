@@ -157,7 +157,7 @@ const features = [
   {
     color: "#0d133b",
     headline: "کارت اقامت موقت اتباع خارجی",
-    frenchHeadline: "Carte de séjour temporaire  pour les étrangers",
+    frenchHeadline: "Carte de séjour temporaire",
     text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
     frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
@@ -170,7 +170,7 @@ const features = [
     frenchHeadline: "Autres types de documents",
     text: "تعرفه: درخواست پیش فاکتور کنید\n زمان تحویل: با توجه به مقدار کار",
     frenchText:
-      "Tarif : demander un devis \n Délai de livraison : en fonction de la difficulté linguistique",
+      "Tarif : demander un devis \n Délai : en fonction de la difficulté linguistique",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
@@ -191,7 +191,8 @@ class FeatureSection extends Component {
               {features.map(element => (
                 <Grid
                   item
-                  xs={6}
+                  xs={12}
+                  sm={6}
                   md={4}
                   data-aos="zoom-in-up"
                   data-aos-delay={

@@ -42,7 +42,7 @@ const styles = theme => ({
       marginBottom: theme.spacing(5)
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: theme.spacing(29),
+      marginTop: theme.spacing(33),
       marginBottom: theme.spacing(4)
     }
   },

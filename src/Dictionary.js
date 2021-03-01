@@ -333,7 +333,7 @@ export const Dictionary = {
   },
   bill: {
     persian: "خلاصه سفارش",
-    french: "Résumé de commande"
+    french: "Mon panier"
   },
   orderType: {
     persian: "نوع سفارش",
@@ -365,6 +365,10 @@ export const Dictionary = {
     persian: "سند یا تأییدیه واریز را برای ما ارسال کنید",
     french: "Transférer-nous la preuve de paiement"
   },
+  chequeInfo: {
+    persian: "تصویر چک را برای ما ارسال کنید",
+    french: "Transférer-nous une copie de chèque"
+  },
   finalSubmit: {
     persian: "تایید پرداخت",
     french: "Confirmation de Paiement"
@@ -388,7 +392,7 @@ export const Dictionary = {
   sendInfo: {
     persian:
       "ارسال " +
-      "سند پرداخت در صورت واریز در حساب بانکی یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع " +
+      "سند پرداخت در صورت واریز به حساب بانکی یا ارسال چک به عهده مشتری است. سند پرداخت امکان شروع " +
       "کار ترجمه را فراهم می کند. هرگونه عدم ارسال سند پرداخت، انجام ترجمه را به تأخیر می اندازد.",
     french:
       "Il appartient au client de transmettre la preuve du paiement en cas de virement ou d’envoi de chèque. Le justificatif de paiement permet le traitement de la traduction. Toute omission de transmission du justificatif de paiement retarderait le traitement de la traduction."
@@ -402,8 +406,8 @@ export const Dictionary = {
     french: "À propos de nous"
   },
   login: {
-    persian: "ورود",
-    french: "Connexion"
+    persian: "حساب کاربری",
+    french: "Mon compte"
   },
   register: {
     persian: "ثبت نام",
@@ -431,7 +435,7 @@ export const getCompleteName = text => {
 
 export const getCompleteNameNew = text => {
   if (Dictionary[text])
-    return Dictionary[text].french + "(" + Dictionary[text].persian + ")";
+    return Dictionary[text].french + " (" + Dictionary[text].persian + ")";
   return null;
 };
 

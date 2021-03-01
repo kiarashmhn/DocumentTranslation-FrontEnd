@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import HelpIcon from "@material-ui/icons/Help";
+import ErrorIcon from "@material-ui/icons/Error";
 import { IconButton, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 
@@ -26,6 +27,7 @@ export default class CustomTooltip extends Component {
   };
 
   render() {
+    const dir = this.props.dir ? this.props.dir : "ltr";
     return (
       <ClickAwayListener onClickAway={this.handleTooltipClose}>
         <div>
@@ -39,13 +41,18 @@ export default class CustomTooltip extends Component {
             disableHoverListener
             disableTouchListener
             title={
-              <Typography
-                style={{ whiteSpace: "pre-line" }}
-                dir={this.props.dir ? this.props.dir : "ltr"}
-                variant={"caption"}
-              >
-                {this.props.text}
-              </Typography>
+              <div style={{ dir: dir, direction: dir }}>
+                <Typography
+                  style={{
+                    whiteSpace: "pre-line",
+                    direction: this.props.dir ? this.props.dir : "ltr"
+                  }}
+                  dir={this.props.dir ? this.props.dir : "ltr"}
+                  variant={"caption"}
+                >
+                  {this.props.text}
+                </Typography>
+              </div>
             }
             arrow
           >
@@ -55,7 +62,11 @@ export default class CustomTooltip extends Component {
               component="span"
               onClick={this.handleTooltipOpen}
             >
-              <HelpIcon />
+              {this.props.icon && this.props.icon === "error" ? (
+                <ErrorIcon />
+              ) : (
+                <HelpIcon />
+              )}
             </IconButton>
           </Tooltip>
         </div>
@@ -65,5 +76,6 @@ export default class CustomTooltip extends Component {
 }
 CustomTooltip.propTypes = {
   text: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   dir: PropTypes.string
 };

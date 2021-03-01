@@ -104,6 +104,7 @@ export default class PaymentMethods extends Component {
                   <PaymentSubmit
                     id={this.props.id}
                     inputKey={methods[this.state.idx].inputKey}
+                    idx={this.state.idx}
                   />
                 </Fragment>
               )}

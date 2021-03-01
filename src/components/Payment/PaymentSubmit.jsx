@@ -23,7 +23,7 @@ export default class PaymentSubmit extends Component {
         <Divider style={{ margin: "4px 2px" }} />
         <Grid
           container
-          spacing={1}
+          spacing={0}
           alignItems="center"
           justify="center"
           alignContent={"center"}
@@ -43,7 +43,9 @@ export default class PaymentSubmit extends Component {
                 align="center"
                 style={{ marginTop: "18px" }}
               >
-                {getFrenchName("receiptInfo")}
+                {this.props.idx === 2
+                  ? getFrenchName("chequeInfo")
+                  : getFrenchName("receiptInfo")}
               </Typography>
               <CustomTooltip text={getFrenchName("sendInfo")} />
             </div>
@@ -57,15 +59,13 @@ export default class PaymentSubmit extends Component {
                 justifyContent: "center"
               }}
             >
-              <CustomTooltip text={getPersianName("sendInfo")} dir={"rtl"} />
-              <Typography
-                paragraph
-                variant="h6"
-                align="center"
-                style={{ marginTop: "18px" }}
-                dir="rtl"
-              >
-                {getPersianName("receiptInfo")}
+              <div style={{ marginBottom: "18px" }}>
+                <CustomTooltip text={getPersianName("sendInfo")} dir={"rtl"} />
+              </div>
+              <Typography paragraph variant="h6" align="center" dir="rtl">
+                {this.props.idx === 2
+                  ? getPersianName("chequeInfo")
+                  : getPersianName("receiptInfo")}
               </Typography>
             </div>
           </Grid>
@@ -131,5 +131,6 @@ export default class PaymentSubmit extends Component {
 
 PaymentSubmit.propTypes = {
   id: PropTypes.any.isRequired,
+  idx: PropTypes.any.isRequired,
   inputKey: PropTypes.string.isRequired
 };

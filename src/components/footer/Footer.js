@@ -79,15 +79,15 @@ const styles = theme => ({
 const infos = [
   {
     icon: <PhoneIcon />,
-    description: "+1 555 123456"
+    description: "(+33) 06 34 39 71 56"
   },
-  {
+  /*{
     icon: <HomeIcon />,
     description: "99 Bd Général Vanier, 14000 Caen, France"
-  },
+  },*/
   {
     icon: <MailIcon />,
-    description: "contact@..."
+    description: "francedoc.fr@gmail.com"
   }
 ];
 
@@ -228,6 +228,19 @@ class Footer extends Component {
                   ))}
                 </div>
               </Box>
+              <br />
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                * Utiliser la messagerie sécurisée de votre espace client pour
+                communiquer avec nous, poser une question ou signaler une
+                difficulté.
+              </Typography>
+              <br />
+              <div style={{ dir: "rtl", direction: "rtl" }}>
+                <Typography style={{ color: "#8f9296" }} paragraph>
+                  * برای برقراری ارتباط با ما، پرسیدن یک سوال یا گزارش یک مشکل
+                  از سیستم پیام رسان حساب کاربری خود استفاده کنید.
+                </Typography>
+              </div>
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <Typography variant="h6" paragraph className="text-white">

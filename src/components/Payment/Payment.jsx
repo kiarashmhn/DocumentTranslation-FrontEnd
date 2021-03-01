@@ -9,8 +9,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import PaymentMethods from "./PaymentMethods";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 
-const frenchNote =
-  "* Important : le tarif annoncé comprend l’accès à la copie numérique (PDF) du document traduit sur votre espace client et le frais d’envoie en lettre économique (lettre verte) à votre adresse. francedoc offre la possibilité de choisir l’envoi d’un des deux types suivants qui constituent des choix plus fiables afin d’assurer la bonne réception de la commande.";
 const persianNote =
   "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی می باشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
 
@@ -235,12 +233,31 @@ class Payment extends Component {
                   alignContent={"center"}
                 >
                   <Grid item xs={12} md={12}>
-                    <Typography paragraph variant="body1" align="center">
-                      {frenchNote}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={"auto"}>
-                    <CustomTooltip text={frenchHint} />
+                    <div
+                      style={{
+                        alignItems: "center",
+                        display: "flex",
+                        flexDirection: "row"
+                      }}
+                    >
+                      <Typography paragraph variant="body1" align="center">
+                        * Important : le tarif annoncé comprend l’accès à la
+                        copie numérique (PDF) du document traduit sur votre
+                        espace client et le frais d’envoie en lettre économique
+                        (lettre verte) à votre adresse.{" "}
+                        <Box
+                          fontStyle="italic"
+                          fontWeight="fontWeightMedium"
+                          display="inline"
+                        >
+                          francedoc
+                        </Box>{" "}
+                        offre la possibilité de choisir un des modes de
+                        livraison suivants afin d’assurer la bonne réception de
+                        votre commande.{" "}
+                      </Typography>
+                      <CustomTooltip text={frenchHint} icon={"error"} />
+                    </div>
                   </Grid>
                 </Grid>
               </div>
@@ -253,17 +270,27 @@ class Payment extends Component {
                   alignContent={"center"}
                 >
                   <Grid item xs={12} md={12}>
-                    <Typography
-                      paragraph
-                      variant="body1"
-                      align="center"
-                      dir="rtl"
+                    <div
+                      style={{
+                        alignItems: "center",
+                        display: "flex",
+                        flexDirection: "row"
+                      }}
                     >
-                      {persianNote}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={"auto"}>
-                    <CustomTooltip text={persianHint} dir={"rtl"} />
+                      <CustomTooltip
+                        text={persianHint}
+                        dir={"rtl"}
+                        icon={"error"}
+                      />
+                      <Typography
+                        paragraph
+                        variant="body1"
+                        align="center"
+                        dir="rtl"
+                      >
+                        {persianNote}
+                      </Typography>
+                    </div>
                   </Grid>
                 </Grid>
               </div>
