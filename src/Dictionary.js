@@ -424,6 +424,662 @@ export const Dictionary = {
   enterCardInfo: {
     persian: "اطلاعات کارت بانکی خود را وارد کنید",
     french: "Entrez vos informations de carte bancaire"
+  },
+  uploadMilitaryLicenceFiles: {
+    persian: "بارگذاری کارت پایان خدمت سربازی",
+    french: "Importer la Carte de fin de service militaire"
+  },
+  militaryServiceLicence: {
+    persian: "کارت پایان خدمت سربازی",
+    french: "Carte de fin de service militaire"
+  },
+  startDateofMilitaryService: {
+    persian: "تاریخ شروع خدمت سربازی",
+    french: "ate de Début du Service Militaire"
+  },
+  militaryServiceEndDate: {
+    persian: "تاریخ پایان خدمت سربازی",
+    french: "Date de Fin du Service Militaire"
+  },
+  grade: {
+    persian: "درجه",
+    french: "grade"
+  },
+  dateofIssue: {
+    persian: "تاریخ صدور",
+    french: "Date de Délivrance"
+  },
+  corporal: {
+    persian: "سرجوخه / سرناوی",
+    french: "Corporal"
+  },
+  soldier: {
+    persian: "سرباز/ناوی",
+    french: "Soldat"
+  },
+  secondSoldier: {
+    persian: "سرباز دوم/ناوی دوم",
+    french: "Soldat de 2e classe"
+  },
+  firstSoldier: {
+    persian: "سرباز یکم/ناوی یکم",
+    french: "Soldat de 1e classe"
+  },
+  thirdSergeant: {
+    persian: "گروهبان سوم/مهناوی سوم",
+    french: "Troisième sergent"
+  },
+  secondSergeant: {
+    persian: "گروهبان دوم/مهناوی دوم",
+    french: "Deuxième sergent"
+  },
+  firstSergeant: {
+    persian: "گروهبان یکم/مهناوی یکم",
+    french: "Premier sergent"
+  },
+  secondMajor: {
+    persian: "استوار دوم/ناو استوار دوم",
+    french: "Deuxième major"
+  },
+  firstMajor: {
+    persian: "استوار یکم/ناو استوار یکم",
+    french: "Premier major"
+  },
+  thirdLieutenant: {
+    persian: "ستوان سوم/ناوبان سوم",
+    french: "Troisième lieutenant"
+  },
+  secondLieutenant: {
+    persian: "ستوان دوم/ناوبان دوم",
+    french: "Deuxième lieutenant"
+  },
+  firstLieutenant: {
+    persian: "ستوان یکم/ناوبان یکم",
+    french: "Premier lieutenant"
+  },
+  firstLieutenantDoctor: {
+    persian: "ستوان یکم پزشک/ناوبان یکم پزشک",
+    french: "Premier lieutenant médecin"
+  },
+  afghanDrivingLicence: {
+    persian: "لایسنس درایوری",
+    french: "Permis de Conduire"
+  },
+  numberofPages: {
+    persian: "نمبر صفحه",
+    french: "N° de page"
+  },
+  registerNumber: {
+    persian: "نمبر ثبت",
+    french: "N° d'enregistrement"
+  },
+  province: {
+    persian: "ولایت",
+    french: "Province"
+  },
+  district: {
+    persian: "ولسوالی",
+    french: "District"
+  },
+  village: {
+    persian: "قریه - ناحیه",
+    french: "Village"
+  },
+  homeAddress: {
+    persian: "محل سکونت",
+    french: "Adresse"
+  },
+  bloodType: {
+    persian: "گروه خونی",
+    french: "Groupe sanguin"
+  },
+  tazkiraNumber: {
+    persian: "نمبر تذکره",
+    french: "N° de Tazkira (acte de naissance)"
+  },
+  volumeNumber: {
+    persian: "جلد",
+    french: "N° de volume"
+  },
+  serialNumber: {
+    persian: "نمبر سریال",
+    french: "N° de série  (N° de document)"
+  },
+  directorProvince: {
+    persian: "محل صدور (مدیر ترافیک کدام ولایت)",
+    french: "Directeur de la Circulation de Province"
+  },
+  category: {
+    persian: "کته گوری",
+    french: "Catégories du permis de conduire"
+  },
+  Manuscript: {
+    persian: "نمبر مسلسل",
+    french: "Manuscrit"
+  },
+  uploadAfghanDrivingLicence: {
+    persian: "آپلود فایل لایسنس درایوری",
+    french: "Importer la Permis de Conduire"
+  },
+  Oplus: {
+    persian: "او+",
+    french: "O+"
+  },
+  Ominus: {
+    persian: "او-",
+    french: "O-"
+  },
+  Aplus: {
+    persian: "آ+",
+    french: "A+"
+  },
+  Aminus: {
+    persian: "آ-",
+    french: "A-"
+  },
+  Bplus: {
+    persian: "ب+",
+    french: "B+"
+  },
+  Bminus: {
+    persian: "ب-",
+    french: "B-"
+  },
+  ABplus: {
+    persian: "آب+",
+    french: "AB+"
+  },
+  ABminus: {
+    persian: "آب-",
+    french: "AB-"
+  },
+  Tazkara: {
+    persian: "تذکره",
+    french: "Acte de naissance"
+  },
+  uploadTazkara: {
+    persian: "بارگذاری تذکره",
+    french: "Importer la Acte de naissance"
+  },
+  grandFatherName: {
+    persian: "نام پدر کلان",
+    french: "Prénom du grand-père"
+  },
+  birthDateOrAge: {
+    persian: "تاریخ تولد یا عمر",
+    french: "Date de naissance ou âge"
+  },
+  age: {
+    persian: "عمر",
+    french: "âgé"
+  },
+  religion: {
+    persian: "دین",
+    french: "Religion"
+  },
+  nationality: {
+    persian: "ملیت",
+    french: "Nationalité"
+  },
+  job: {
+    persian: "شغل",
+    french: "Profession"
+  },
+  sex: {
+    persian: "جنس",
+    french: "Sexe"
+  },
+  civilState: {
+    persian: "مدنی حالت",
+    french: "État civil"
+  },
+  familyMembers: {
+    persian: "تعداد نفرات فامیل",
+    french: "Nombre de membres dans la famille"
+  },
+  motherLanguage: {
+    persian: "زبان مادری",
+    french: "Langue maternelle"
+  },
+  foreignLanguage: {
+    persian: "زبان خارجی",
+    french: "Langue étrangère"
+  },
+  militaryStatus: {
+    persian: "خدمت عسکری",
+    french: "Situation militaire"
+  },
+  height: {
+    persian: "قد",
+    french: "Taille"
+  },
+  eyeColor: {
+    persian: "رنگ چشم",
+    french: "Couleur des yeux"
+  },
+  eyebrow: {
+    persian: "حالت ابرو",
+    french: "Forme des sourcils"
+  },
+  hairColor: {
+    persian: "رنگ موی",
+    french: "Couleur des cheveux"
+  },
+  skinColor: {
+    persian: "رنگ پوست",
+    french: "Couleur de la peau"
+  },
+  otherSigns: {
+    persian: "علائم فارقه ی دیگر",
+    french: "Signe particulier"
+  },
+  incapacity: {
+    persian: "معلولیت",
+    french: "Incapacité"
+  },
+  fatherInformation: {
+    persian: "مشخصات تذکره پد یا پدر کلان",
+    french: "Référence de l’acte de naissance de son grand-père"
+  },
+  islam: {
+    persian: "اسلام",
+    french: "Islam"
+  },
+  hindou: {
+    persian: "هندو",
+    french: "Hindou"
+  },
+  sikhe: {
+    persian: "سیک",
+    french: "Sikhe"
+  },
+  christian: {
+    persian: "عیسوی",
+    french: "Chrétien"
+  },
+  jew: {
+    persian: "یهودی",
+    french: "Juif"
+  },
+  bouddhist: {
+    persian: "بودایی",
+    french: "Bouddhiste"
+  },
+  afghan: {
+    persian: "افغان",
+    french: "Afghan"
+  },
+  others: {
+    persian: "دیگر",
+    french: "Autre"
+  },
+  worker: {
+    persian: "کارگر",
+    french: "Ouvrier"
+  },
+  student: {
+    persian: "محصل یا متعلم",
+    french: "Elève"
+  },
+  houseKeeper: {
+    persian: "امور منزل",
+    french: "Femme au foyer"
+  },
+  free: {
+    persian: "آزاد",
+    french: "Profession libérale"
+  },
+  agriculture: {
+    persian: "دهقانی",
+    french: "Agriculteur"
+  },
+  single: {
+    persian: "مجرد",
+    french: "Célibataire"
+  },
+  married: {
+    persian: "متاهل",
+    french: "Marié(e)"
+  },
+  divorced: {
+    persian: "طلاق شده",
+    french: "Divorcé(e)"
+  },
+  weadow: {
+    persian: "زنمرده(بیوه)",
+    french: "Veuf (veuve)"
+  },
+  pachto: {
+    persian: "پشتو",
+    french: "Pachto"
+  },
+  dari: {
+    persian: "دری",
+    french: "Dari"
+  },
+  tadjik: {
+    persian: "تاجیکی",
+    french: "Tadjik"
+  },
+  ouzbek: {
+    persian: "اوزبیک",
+    french: "Ouzbek"
+  },
+  turkmeni: {
+    persian: "ترکمنی",
+    french: "Turkmen"
+  },
+  balochi: {
+    persian: "بلوچی",
+    french: "Baloch"
+  },
+  pashai: {
+    persian: "پشه‌یی",
+    french: "Pashai"
+  },
+  nuristani: {
+    persian: "نورستانی",
+    french: "Nuristani"
+  },
+  pamiri: {
+    persian: "پامیری",
+    french: "Pamiri"
+  },
+  ormuri: {
+    persian: "اورمری",
+    french: "Ormuri"
+  },
+  arab: {
+    persian: "عربی",
+    french: "Arab"
+  },
+  parachi: {
+    persian: "پراچی",
+    french: "Parachi"
+  },
+  yes: {
+    persian: "بله",
+    french: "Oui"
+  },
+  no: {
+    persian: "خیر",
+    french: "Non"
+  },
+  pashtun: {
+    persian: "پشتون",
+    french: "Pashtun"
+  },
+  tajik: {
+    persian: "تاجیک",
+    french: "Tajik"
+  },
+  hazara: {
+    persian: "هزاره",
+    french: "Hazara"
+  },
+  uzbek: {
+    persian: "اوزبیک",
+    french: "Uzbek"
+  },
+  aimaq: {
+    persian: "ایماق",
+    french: "Aimaq"
+  },
+  turkmen: {
+    persian: "ترکمن",
+    french: "Turkmen"
+  },
+  baloch: {
+    persian: "بلوچ",
+    french: "Baloch"
+  },
+  brahui: {
+    persian: "براهوی",
+    french: "Brahui"
+  },
+  qizilbash: {
+    persian: "قزلباش",
+    french: "Qizilbash"
+  },
+  sadat: {
+    persian: "سادات",
+    french: "Sadat"
+  },
+  kyrgyz: {
+    persian: "قزقیز",
+    french: "Kyrgyz"
+  },
+  guijar: {
+    persian: "گوجر",
+    french: "Guijar"
+  },
+  hindu: {
+    persian: "اهل هنود",
+    french: "Hindu"
+  },
+  sikan: {
+    persian: "سیکان",
+    french: "Sikan"
+  },
+  tribe: {
+    persian: "قومیت",
+    french: "Appartenance tribale"
+  },
+  appearance: {
+    persian: "مشخصات ظاهری",
+    french: "Caractéristiques physiques"
+  },
+  shortHeight: {
+    persian: "کوتاه",
+    french: "Petite"
+  },
+  tall: {
+    persian: "بلند",
+    french: "Grande"
+  },
+  middle: {
+    persian: "میانه",
+    french: "Moyenne"
+  },
+  black: {
+    persian: "سیاه یا مشکی",
+    french: "Noir"
+  },
+  blue: {
+    persian: "آبی",
+    french: "Bleu"
+  },
+  gray: {
+    persian: "خاکستری",
+    french: "Gris"
+  },
+  marron: {
+    persian: "خرمایی",
+    french: "Marron"
+  },
+  noisette: {
+    persian: "میشی",
+    french: "Noisette"
+  },
+  green: {
+    persian: "سبز",
+    french: "Vert"
+  },
+  connected: {
+    persian: "پیوسته",
+    french: "Synophridie"
+  },
+  departed: {
+    persian: "گشاده",
+    french: "Ouverte"
+  },
+  red: {
+    persian: "سرخ",
+    french: "Rouge"
+  },
+  white: {
+    persian: "سفید",
+    french: "Blanc"
+  },
+  wheat: {
+    persian: "گندم",
+    french: "Couleur Blée"
+  },
+  blonde: {
+    persian: "زرد",
+    french: "Blonde"
+  },
+  little: {
+    persian: "قسمی",
+    french: "Légère"
+  },
+  moderate: {
+    persian: "متوسط",
+    french: "Modérée"
+  },
+  majorSigns: {
+    persian: "کلی",
+    french: "Majeure"
+  },
+  tazkaraInformation: {
+    persian: "مشخصات تذکره",
+    french: "Enregistré auprès du bureau du registre d'état civil"
+  },
+  kaboul: {
+    persian: "کابل",
+    french: "Kaboul"
+  },
+  herat: {
+    persian: "هرات",
+    french: "Herat"
+  },
+  nangarhar: {
+    persian: "ننگرهار",
+    french: "Nangarhar"
+  },
+  balkh: {
+    persian: "بلخ",
+    french: "Balkh"
+  },
+  kandahar: {
+    persian: "قندهار",
+    french: "Kandahar"
+  },
+  ghor: {
+    persian: "غور",
+    french: "ghor"
+  },
+  laghman: {
+    persian: "لغمان",
+    french: "laghman"
+  },
+  kunduz: {
+    persian: "کندوز",
+    french: "kunduz"
+  },
+  paktiya: {
+    persian: "پکتیا",
+    french: "paktiya"
+  },
+  zabol: {
+    persian: "زابل",
+    french: "zabol"
+  },
+  baghlan: {
+    persian: "بغلان",
+    french: "baghlan"
+  },
+  badakhchan: {
+    persian: "بدخشان",
+    french: "badakhchan"
+  },
+  bamiyan: {
+    persian: "بامیان",
+    french: "bamiyan"
+  },
+  badghis: {
+    persian: "بادغیس",
+    french: "badghis"
+  },
+  maydanWardak: {
+    persian: "میدان وردک",
+    french: "maydanWardak"
+  },
+  logar: {
+    persian: "لوگر",
+    french: "logar"
+  },
+  samangan: {
+    persian: "سمنگان",
+    french: "samangan"
+  },
+  takhar: {
+    persian: "تخار",
+    french: "takhar"
+  },
+  nouristan: {
+    persian: "نورستان",
+    french: "nouristan"
+  },
+  faryab: {
+    persian: "فاریاب",
+    french: "faryab"
+  },
+  sarpol: {
+    persian: "سرپل",
+    french: "Sar e pol"
+  },
+  paktika: {
+    persian: "پکتیکا",
+    french: "paktika"
+  },
+  farah: {
+    persian: "فراه",
+    french: "farah"
+  },
+  helmand: {
+    persian: "هلمند",
+    french: "helmand"
+  },
+  nimroz: {
+    persian: "نیمروز",
+    french: "nimroz"
+  },
+  ghazni: {
+    persian: "غزنی",
+    french: "ghazni"
+  },
+  orozgan: {
+    persian: "ارزگان",
+    french: "orozgan"
+  },
+  kapissa: {
+    persian: "کاپیسا",
+    french: "kapissa"
+  },
+  parwan: {
+    persian: "پروان",
+    french: "parwan"
+  },
+  pandjchir: {
+    persian: "پنجشیر",
+    french: "pandjchir"
+  },
+  djozdjan: {
+    persian: "جوزجان",
+    french: "djozdjan"
+  },
+  khost: {
+    persian: "خوست",
+    french: "khost"
+  },
+  kounar: {
+    persian: "کنر",
+    french: "Kounar"
+  },
+  deykandi: {
+    persian: "دایکندی",
+    french: "Deykandi"
   }
 };
 

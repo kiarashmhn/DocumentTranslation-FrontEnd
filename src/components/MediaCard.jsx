@@ -51,7 +51,7 @@ class MediaCard extends Component {
             <div style={styles.titleWrapper}>
               <Typography
                 gutterBottom
-                variant="h5"
+                variant="h6"
                 component={"span"}
                 style={styles.title}
               >
