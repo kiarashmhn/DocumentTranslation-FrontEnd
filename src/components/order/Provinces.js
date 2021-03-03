@@ -67,7 +67,73 @@ const provinces = {
   },
   Herat: {
     persian: "هرات",
-    french: "Herat"
+    french: "Herat",
+    districts: [
+      {
+        persian: "هرات",
+        french: "Hérat"
+      },
+      {
+        persian: "ادرسکن",
+        french: "Adraskan"
+      },
+      {
+        persian: "انجیل",
+        french: "Enjil"
+      },
+      {
+        persian: "اوبه",
+        french: "Obe"
+      },
+      {
+        persian: "پشتون زرغون",
+        french: "Pashtun Zarghun"
+      },
+      {
+        persian: "چشت شریف",
+        french: "Chishti Sharif"
+      },
+      {
+        persian: "زنده جان",
+        french: "Zinda Jan"
+      },
+      {
+        persian: "شینډنډ/سبزوار",
+        french: "Shindand"
+      },
+      {
+        persian: "غوریان",
+        french: "Ghoryan"
+      },
+      {
+        persian: "فارسی",
+        french: "Farsi"
+      },
+      {
+        persian: "کرخ",
+        french: "Karrukh"
+      },
+      {
+        persian: "کشک",
+        french: "Kushk"
+      },
+      {
+        persian: "کشک کهنه",
+        french: "Kushk-i-Kuhna"
+      },
+      {
+        persian: "کهسان",
+        french: "Kohsan"
+      },
+      {
+        persian: "گذره",
+        french: "Guzara"
+      },
+      {
+        persian: "گلران",
+        french: "Gulran"
+      }
+    ]
   },
   Nangarhar: {
     persian: "ننگرهار",
