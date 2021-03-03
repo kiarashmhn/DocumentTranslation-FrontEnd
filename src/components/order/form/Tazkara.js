@@ -269,6 +269,10 @@ export const TazkaraForm = {
           type: "provinceDistrict",
           name: "registerLocation",
           required: true
+        },
+        {
+          key: "tazkaraInformation",
+          type: "tazkaraInfo"
         }
       ]
     },

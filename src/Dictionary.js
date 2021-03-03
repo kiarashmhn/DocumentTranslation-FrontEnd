@@ -541,6 +541,10 @@ export const Dictionary = {
     persian: "جلد",
     french: "N° de volume"
   },
+  pageNumber: {
+    persian: "صفحه",
+    french: "N° de page"
+  },
   serialNumber: {
     persian: "نمبر سریال",
     french: "N° de série  (N° de document)"

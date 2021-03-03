@@ -16,6 +16,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import ControlledOpenSelect from "../Dropdown/Dropdown";
 import FileHandler from "../File/FileHandler";
 import ProvinceDistrict from "../ProvinceDistrict/ProvinceDistrict";
+import TazkaraInfo from "../TazkaraInfo/TazkaraInfo";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class NodesGenerator extends Component {
     this.spousesRef = React.createRef();
     this.fileHandlerRef = React.createRef();
     this.provinceDistrictRef = React.createRef();
+    this.tazkaraRef = React.createRef();
   }
 
   constructState = () => {
@@ -152,6 +154,13 @@ export default class NodesGenerator extends Component {
       : null;
     if (provinceState && provinceState.province)
       state = { ...state, ...provinceState };
+
+    let tazkaraState = this.tazkaraRef
+      ? this.tazkaraRef.current
+        ? this.tazkaraRef.current.getState()
+        : null
+      : null;
+    if (tazkaraState) state = { ...state, ...tazkaraState };
 
     return state;
   };
@@ -335,6 +344,22 @@ export default class NodesGenerator extends Component {
                 />
                 <span>{getCompleteName(element.key)}</span>
               </div>
+            </Grid>
+          );
+        case "tazkaraInfo":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 4}
+              key={element.key}
+            >
+              <TazkaraInfo
+                name={element.key}
+                initial={this.props.externalInitializationData}
+                ref={this.tazkaraRef}
+              />
             </Grid>
           );
         default:
