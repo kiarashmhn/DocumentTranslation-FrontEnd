@@ -17,6 +17,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import * as URLConstant from "./URLConstant";
 import AdminPanel from "./components/AdminPanel";
 import Payment from "./components/Payment/Payment";
+import LegalNotes from "./components/LegalNotes";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
@@ -43,6 +44,7 @@ class App extends Component {
                 />
                 <PrivateRoute path={URLConstant.PAYMENT} component={Payment} />
                 <Route exact path="/" component={HomePage} />
+                <Route exact path="/LegalNotes" component={LegalNotes} />
               </Switch>
             </Suspense>
           </MuiThemeProvider>
@@ -51,8 +53,7 @@ class App extends Component {
     );
   }
 }
-//document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
-//document.body.setAttribute("dir", "rtl");
+
 serviceWorker.register();
 
 export default App;

@@ -6,6 +6,7 @@ export const GET_ORDER_BY_ID = "/order/getById";
 export const ADMIN_PANEL = "/AdminPanel";
 export const USER_PANEL = "/UserPanel";
 export const PAYMENT = "/Payment";
+export const LEGAL_NOTES = "/LegalNotes";
 export const CLAIM_ORDER = "/order/assign";
 export const GET_USER = "/admin/get";
 export const UPDATE_USER = "/admin/update";

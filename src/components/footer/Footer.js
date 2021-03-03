@@ -13,9 +13,10 @@ import {
 } from "@material-ui/core";
 import PhoneIcon from "@material-ui/icons/Phone";
 import MailIcon from "@material-ui/icons/Mail";
-import HomeIcon from "@material-ui/icons/Home";
 import WaveBorder from "../Template/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
+import * as URLConstant from "../../URLConstant";
+import { Redirect } from "react-router";
 //import ColoredButton from "../Template/ColoredButton";
 
 const styles = theme => ({
@@ -161,7 +162,24 @@ const infos = [
 class Footer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      redirect: false
+    };
   }
+
+  redirect = () => {
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: URLConstant.LEGAL_NOTES,
+            state: {}
+          }}
+        />
+      );
+    }
+  };
 
   render() {
     const { classes, theme, width } = this.props;
@@ -241,20 +259,44 @@ class Footer extends Component {
                   از سیستم پیام رسان حساب کاربری خود استفاده کنید.
                 </Typography>
               </div>
+              <Typography
+                variant="h6"
+                align="center"
+                style={{
+                  whiteSpace: "pre-line",
+                  fontWeight: "bold",
+                  display: "block",
+                  align: "center"
+                }}
+              >
+                <span
+                  className={classes.link}
+                  onClick={() => this.setState({ redirect: true })}
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={event => {
+                    if (event.keyCode === 13 || event.keyCode === 32) {
+                      this.setState({ redirect: true });
+                    }
+                  }}
+                >
+                  Mentions légales / نکات قانونی
+                </span>
+              </Typography>
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <Typography variant="h6" paragraph className="text-white">
                 À propos de nous
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
-                Notre plateforme est pour but de créer une communauté des
-                Experts traducteurs (assermentés) afin de s’assurer la vague
-                importante des demandes de traduction en dari et farsi et de
-                réduire considérablement le temps d’attente et le coût de
-                traduction. La plateforme constitue une manière simple et
-                efficace pour réaliser des traductions assermentées, le client
-                auto saisisse les informations, qui vont ensuite être vérifiées,
-                corrigées et complétées par un traducteur assermenté.
+                Notre plateforme a pour but de créer une communauté des Experts
+                traducteurs (assermentés) afin de s’assurer la vague importante
+                des demandes de traduction en dari et farsi et de réduire
+                considérablement le temps d’attente et le coût de traduction. La
+                plateforme constitue une manière simple et efficace pour
+                réaliser des traductions assermentées, le client auto saisisse
+                les informations, qui vont ensuite être vérifiées, corrigées et
+                complétées par un traducteur assermenté.
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
                 Identifiant SIRET : 890 317 563 00017
@@ -295,6 +337,7 @@ class Footer extends Component {
             </Grid>
           </Grid>
         </div>
+        {this.redirect()}
       </footer>
     );
   }
