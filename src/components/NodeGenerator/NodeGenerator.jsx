@@ -17,6 +17,7 @@ import ControlledOpenSelect from "../Dropdown/Dropdown";
 import FileHandler from "../File/FileHandler";
 import ProvinceDistrict from "../ProvinceDistrict/ProvinceDistrict";
 import TazkaraInfo from "../TazkaraInfo/TazkaraInfo";
+import ComplexDateInput from "../CustomDateInput/ComplexDateInput";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -210,6 +211,27 @@ export default class NodesGenerator extends Component {
                     ? this.props.externalInitializationData[element.key]
                     : ""
                 }
+                onChange={value => this.onChange(value, element)}
+              />
+            </Grid>
+          );
+        case "complexDate":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 8}
+              key={element.key}
+            >
+              <ComplexDateInput
+                name={element.key}
+                initial={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key]
+                    : ""
+                }
+                required={!!element.required}
                 onChange={value => this.onChange(value, element)}
               />
             </Grid>

@@ -31,20 +31,6 @@ export const TazkaraForm = {
           key: "grandFatherName",
           type: "text"
         },
-
-        {
-          key: "birthDateOrAge",
-          type: "select",
-          options: [
-            { value: "age", key: "age" },
-            { value: "birthDate", key: "birthDate" }
-          ],
-          required: true
-        },
-        {
-          key: "birthDate",
-          type: "date"
-        },
         {
           key: "religion",
           type: "select",
@@ -159,6 +145,11 @@ export const TazkaraForm = {
             { value: "hindu", key: "hindu" },
             { value: "sikan", key: "sikan" }
           ],
+          required: true
+        },
+        {
+          key: "birthDate",
+          type: "complexDate",
           required: true
         }
       ]

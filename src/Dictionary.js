@@ -952,6 +952,22 @@ export const Dictionary = {
   registerLocation: {
     persian: "محل صدور",
     french: "Lieu d’émission"
+  },
+  exactDate: {
+    persian: "تاریخ دقیق",
+    french: "Date exacte"
+  },
+  approximateDate: {
+    persian: "تاریخ تقریبی",
+    french: "Date approximative"
+  },
+  entryMode: {
+    persian: "نوع ورود",
+    french: "Type d'entrée de"
+  },
+  inYear: {
+    persian: "در سال",
+    french: "Par an"
   }
 };
 
