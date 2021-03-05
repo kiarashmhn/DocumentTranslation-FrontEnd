@@ -66,6 +66,7 @@ const customInputStyle = {
     paddingBottom: "10px",
     margin: "27px 0 0 0",
     position: "relative",
+    left: 0,
     verticalAlign: "unset"
   }
 };
