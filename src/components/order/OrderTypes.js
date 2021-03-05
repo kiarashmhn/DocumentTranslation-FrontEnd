@@ -5,6 +5,7 @@ import { IDCardReportData } from "../Report/data/IDCardReportData";
 import { militaryServiceLicenceForm } from "./form/MilitaryServiceLicence";
 import { afghanDrivingLicenceForm } from "./form/AfghanDrivingLicence";
 import { TazkaraForm } from "./form/Tazkara";
+import { MilitaryServiceLicenceReportData } from "../Report/data/MilitaryServiceLicenceReportData";
 
 export const OrderTypes = {
   ID_CERTIFICATE: {
@@ -24,6 +25,7 @@ export const OrderTypes = {
   MILITARY_SERVICE_LICENCE: {
     key: "militaryServiceLicence",
     form: militaryServiceLicenceForm,
+    reportData: MilitaryServiceLicenceReportData,
     code: "MSL"
   },
   AFGHAN_DRIVING_LICENCE: {
