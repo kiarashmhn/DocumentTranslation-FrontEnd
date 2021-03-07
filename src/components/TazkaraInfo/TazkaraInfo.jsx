@@ -20,9 +20,15 @@ export default class TazkaraInfo extends Component {
   componentDidMount() {
     if (this.props.initial) {
       this.setState({
-        volumeNumber: this.props.initial.volumeNumber,
-        pageNumber: this.props.initial.pageNumber,
+        volumeNumber: this.props.initial.volumeNumber
+          ? this.props.initial.volumeNumber
+          : "",
+        pageNumber: this.props.initial.pageNumber
+          ? this.props.initial.pageNumber
+          : "",
         registerNumber: this.props.initial.registerNumber
+          ? this.props.initial.registerNumber
+          : ""
       });
     }
   }
@@ -30,9 +36,15 @@ export default class TazkaraInfo extends Component {
   componentDidUpdate() {
     if (this.props.initial && this.state === initialState) {
       this.setState({
-        volumeNumber: this.props.initial.volumeNumber,
-        pageNumber: this.props.initial.pageNumber,
+        volumeNumber: this.props.initial.volumeNumber
+          ? this.props.initial.volumeNumber
+          : "",
+        pageNumber: this.props.initial.pageNumber
+          ? this.props.initial.pageNumber
+          : "",
         registerNumber: this.props.initial.registerNumber
+          ? this.props.initial.registerNumber
+          : ""
       });
     }
   }
@@ -97,5 +109,5 @@ export default class TazkaraInfo extends Component {
 
 TazkaraInfo.propTypes = {
   name: PropTypes.string.isRequired,
-  initial: PropTypes.string
+  initial: PropTypes.any
 };

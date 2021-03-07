@@ -22,18 +22,18 @@ import { Redirect } from "react-router";
 const styles = theme => ({
   footerInner: {
     backgroundColor: theme.palette.common.darkBlack,
-    paddingTop: theme.spacing(8),
+    paddingTop: theme.spacing(4),
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     paddingBottom: theme.spacing(6),
     [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(10),
+      paddingTop: theme.spacing(5),
       paddingLeft: theme.spacing(16),
       paddingRight: theme.spacing(16),
       paddingBottom: theme.spacing(10)
     },
     [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(10),
+      paddingTop: theme.spacing(5),
       paddingLeft: theme.spacing(10),
       paddingRight: theme.spacing(10),
       paddingBottom: theme.spacing(10)
@@ -191,7 +191,11 @@ class Footer extends Component {
           animationNegativeDelay={4}
         />
         <div className={classes.footerInner}>
-          <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
+          <Grid
+            container
+            spacing={isWidthUp("md", width) ? 4 : 2}
+            justify="center"
+          >
             {/*<Grid item xs={12} md={6} lg={4}>
               <form>
                 <Box display="flex" flexDirection="column">
@@ -220,7 +224,41 @@ class Footer extends Component {
               </form>
             </Grid>*/}
             <Grid item xs={12} md={6} lg={4}>
-              <Box display="flex" justifyContent="center">
+              <Typography
+                variant="h6"
+                style={{
+                  whiteSpace: "pre-line",
+                  fontWeight: "bold",
+                  display: "block",
+                  marginBottom: "20px"
+                }}
+              >
+                <span
+                  className={classes.link}
+                  onClick={() => this.setState({ redirect: true })}
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={event => {
+                    if (event.keyCode === 13 || event.keyCode === 32) {
+                      this.setState({ redirect: true });
+                    }
+                  }}
+                >
+                  {"* Mentions légales / نکات قانونی"}
+                </span>
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Utiliser la messagerie sécurisée de votre espace client pour
+                communiquer avec nous, poser une question ou signaler une
+                difficulté.
+              </Typography>
+              <div style={{ dir: "rtl", direction: "rtl" }}>
+                <Typography style={{ color: "#8f9296" }} paragraph>
+                  برای برقراری ارتباط با ما، پرسیدن یک سوال یا گزارش یک مشکل از
+                  سیستم پیام رسان حساب کاربری خود استفاده کنید.
+                </Typography>
+              </div>
+              <Box display="flex">
                 <div>
                   {infos.map((info, index) => (
                     <Box display="flex" mb={1} key={index}>
@@ -246,43 +284,6 @@ class Footer extends Component {
                   ))}
                 </div>
               </Box>
-              <br />
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                * Utiliser la messagerie sécurisée de votre espace client pour
-                communiquer avec nous, poser une question ou signaler une
-                difficulté.
-              </Typography>
-              <br />
-              <div style={{ dir: "rtl", direction: "rtl" }}>
-                <Typography style={{ color: "#8f9296" }} paragraph>
-                  * برای برقراری ارتباط با ما، پرسیدن یک سوال یا گزارش یک مشکل
-                  از سیستم پیام رسان حساب کاربری خود استفاده کنید.
-                </Typography>
-              </div>
-              <Typography
-                variant="h6"
-                align="center"
-                style={{
-                  whiteSpace: "pre-line",
-                  fontWeight: "bold",
-                  display: "block",
-                  align: "center"
-                }}
-              >
-                <span
-                  className={classes.link}
-                  onClick={() => this.setState({ redirect: true })}
-                  tabIndex={0}
-                  role="button"
-                  onKeyDown={event => {
-                    if (event.keyCode === 13 || event.keyCode === 32) {
-                      this.setState({ redirect: true });
-                    }
-                  }}
-                >
-                  Mentions légales / نکات قانونی
-                </span>
-              </Typography>
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <Typography variant="h6" paragraph className="text-white">

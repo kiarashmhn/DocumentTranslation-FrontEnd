@@ -47,6 +47,7 @@ export default class CustomTooltip extends Component {
                     whiteSpace: "pre-line",
                     direction: this.props.dir ? this.props.dir : "ltr"
                   }}
+                  component={"div"}
                   dir={this.props.dir ? this.props.dir : "ltr"}
                   variant={"caption"}
                 >
@@ -75,7 +76,7 @@ export default class CustomTooltip extends Component {
   }
 }
 CustomTooltip.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.any.isRequired,
   icon: PropTypes.string,
   dir: PropTypes.string
 };

@@ -22,8 +22,13 @@ export default class ComplexDateInput extends Component {
   }
 
   getState = () => {
-    if (this.state.mode > 1) return this.dateInputRef.current.getState();
-    return this.state.age + "[" + this.state.inYear + "]";
+    if (this.state.mode === 1)
+      return this.dateInputRef
+        ? this.dateInputRef.current
+          ? this.dateInputRef.current.getState()
+          : ""
+        : "";
+    else return this.state.age + "[" + this.state.inYear + "]";
   };
 
   render() {
@@ -60,6 +65,7 @@ export default class ComplexDateInput extends Component {
         <Grid item xs={12} sm={6} md={6}>
           {this.state.mode === 1 && (
             <CustomDateInput
+              ref={this.dateInputRef}
               name={this.props.name}
               onChange={() => this.props.onChange(this.getState())}
               initial={this.props.initial}

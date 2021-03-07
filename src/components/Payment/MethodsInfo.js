@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import { Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import ribFile from "../../images/rib.png";
 
 const frenchNote =
-  "* Ajouter ensuite la preuve de virement bancaire ici sur votre compte client. Vous pouvez régler votre commande par virement bancaire. Dans ce cas, votre commande sera validée, traitée et expédiée dès réception de votre virement. Renseignez les informations suivantes sur l’ordre de virement à votre banque :";
+  "* Vous pouvez régler votre commande par virement bancaire. Ajouter ensuite la preuve de virement bancaire ici sur votre compte client. Dans ce cas, votre commande sera validée, traitée et expédiée dès réception de votre virement. Renseignez les informations suivantes sur l’ordre de virement à votre banque :";
 const persianNote =
   "* هزینه ترجمه را به حساب بانکی واریز کرده و رسید واریز را در حساب کاربری برای ما ارسال کنید. اطلاعات زیر را در دستور واریز بانکی خود می بایست ثبت کنید :";
 
@@ -18,13 +18,6 @@ const persianNote3 =
 const frenchNote3 = "Western Union à l’ordre de Daniel MOVAHHEDI.";
 
 export function methodsInfo(id, code, price) {
-  const billInfo = `   Montant : ${price}€
-\n  Motif du virement : « francedoc${code + id} »`;
-  /*\n  Informations de notre RIB :
-\n      o Nom : MOVAHHEDI Daniel
-\n      o IBAN : FR62 3000 2059 5100 0019 3403 P54
-\n      o BIC : CRLYFRPP*/
-
   return [
     {
       title: "پرداخت با کارت",
@@ -47,14 +40,45 @@ export function methodsInfo(id, code, price) {
             paragraph
             variant="body1"
             align="center"
+            component={"div"}
             style={{
-              whiteSpace: "pre-line",
-              fontWeight: "bold",
-              display: "block",
-              align: "center"
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
             }}
           >
-            {billInfo}
+            {"Montant : "}
+            &nbsp;
+            <Box
+              style={{
+                fontWeight: "bold"
+              }}
+            >
+              {price + "€"}
+            </Box>
+            {""}
+          </Typography>
+          <Typography
+            paragraph
+            variant="body1"
+            align="center"
+            component={"div"}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            {"Motif du virement : "}
+            &nbsp;
+            <Box
+              style={{
+                fontWeight: "bold"
+              }}
+            >
+              {"francedoc" + code + id}
+            </Box>
+            {""}
           </Typography>
           <Typography
             paragraph
@@ -121,7 +145,13 @@ export function methodsInfo(id, code, price) {
             align="center"
             style={{ whiteSpace: "pre-line" }}
           >
-            {address}
+            <Box
+              style={{
+                fontWeight: "bold"
+              }}
+            >
+              {address}
+            </Box>
           </Typography>
         </Fragment>
       )

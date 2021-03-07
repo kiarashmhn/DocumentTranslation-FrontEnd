@@ -13,7 +13,7 @@ const persianNote =
   "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی می باشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
 
 const frenchHint =
-  "francedoc se dégage de toute responsabilité si le client ne reçoit pas le courrier. Toute réclamation et demande de nouvel envoi postal fera l’objet d’une nouvelle facturation.";
+  " se dégage de toute responsabilité si le client ne reçoit pas le courrier. Toute réclamation et demande de nouvel envoi postal fera l’objet d’une nouvelle facturation.";
 
 const persianHint =
   "توجه داشته باشید که " +
@@ -256,7 +256,20 @@ class Payment extends Component {
                         livraison suivants afin d’assurer la bonne réception de
                         votre commande.{" "}
                       </Typography>
-                      <CustomTooltip text={frenchHint} icon={"error"} />
+                      <CustomTooltip
+                        text={
+                          (
+                            <Box
+                              fontStyle="italic"
+                              fontWeight="fontWeightMedium"
+                              display="inline"
+                            >
+                              francedoc
+                            </Box>
+                          ) + frenchHint
+                        }
+                        icon={"error"}
+                      />
                     </div>
                   </Grid>
                 </Grid>

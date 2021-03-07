@@ -59,7 +59,7 @@ const features = [
     headline: "تذکره",
     frenchHeadline: "Acte de naissance",
     text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "200"
@@ -69,7 +69,7 @@ const features = [
     headline: "نکاح نامه (سند ازدواج)",
     frenchHeadline: "Certificat de mariage",
     text: "تعرفه: ۵۰ یورو\n زمان تحویل: ۴۸ ساعت",
-    frenchText: "Tarif : 50€ \n Délai de livraison : 48h",
+    frenchText: "Tarif * : 50€ \n Délai de livraison : 48h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
@@ -79,7 +79,7 @@ const features = [
     headline: "شناسنامه",
     frenchHeadline: "Acte de l’état civil",
     text: "تعرفه: از ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 20 à 25€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 20 à 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
@@ -89,7 +89,7 @@ const features = [
     headline: "کارت ملی",
     frenchHeadline: "Carte d'identité nationale",
     text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
@@ -99,7 +99,7 @@ const features = [
     headline: "گواهینامه",
     frenchHeadline: "Permis de conduire",
     text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
@@ -109,7 +109,7 @@ const features = [
     headline: "کارت پایان خدمت",
     frenchHeadline: "Carte de fin de service militaire",
     text: "تعرفه: ۲۰ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 20€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 20€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "200"
@@ -119,7 +119,7 @@ const features = [
     headline: "سند ازدواج",
     frenchHeadline: "Acte de mariage",
     text: "تعرفه: ۶۰ یورو\n زمان تحویل: ۴۸ ساعت",
-    frenchText: "Tarif : 60€ \n Délai de livraison : 48h",
+    frenchText: "Tarif * : 60€ \n Délai de livraison : 48h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "0"
@@ -129,7 +129,7 @@ const features = [
     headline: "لیسانس درایوری",
     frenchHeadline: "Permis de conduire",
     text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
@@ -139,7 +139,7 @@ const features = [
     headline: "کارت ثبت تولدات",
     frenchHeadline: "Carte d’enregistrement de naissance",
     text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
@@ -149,7 +149,7 @@ const features = [
     headline: "فورم تثبیت هویت",
     frenchHeadline: "Formulaire de vérification d’identité",
     text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت \n ",
-    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
     smDelay: "0"
@@ -159,7 +159,7 @@ const features = [
     headline: "کارت اقامت موقت اتباع خارجی",
     frenchHeadline: "Carte de séjour temporaire",
     text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-    frenchText: "Tarif : 25€ \n Délai de livraison : 24h",
+    frenchText: "Tarif * : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
     smDelay: "200"
@@ -170,7 +170,7 @@ const features = [
     frenchHeadline: "Autres types de documents",
     text: "تعرفه: درخواست پیش فاکتور کنید\n زمان تحویل: با توجه به مقدار کار",
     frenchText:
-      "Tarif : demander un devis \n Délai : en fonction de la difficulté linguistique",
+      "Tarif * : demander un devis \n Délai : en fonction de la difficulté linguistique",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
     smDelay: "0"
