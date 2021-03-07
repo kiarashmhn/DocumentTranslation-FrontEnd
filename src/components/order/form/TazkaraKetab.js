@@ -1,5 +1,5 @@
-export const TazkaraForm = {
-  title: "Tazkara",
+export const TazkaraOldForm = {
+  title: "TazkaraOld",
   steps: 7,
   content: [
     {
@@ -45,15 +45,7 @@ export const TazkaraForm = {
           ],
           required: true
         },
-        {
-          key: "nationality",
-          type: "select",
-          options: [
-            { value: "afghan", key: "afghan" },
-            { value: "others", key: "others" }
-          ],
-          required: true
-        },
+        
         {
           key: "job",
           type: "select",
@@ -65,7 +57,7 @@ export const TazkaraForm = {
             { value: "agriculture", key: "agriculture" },
             { value: "others", key: "others" }
           ],
-          notRequired: true
+          
         },
         {
           key: "sex",
@@ -87,67 +79,10 @@ export const TazkaraForm = {
           ],
           required: true
         },
-        {
-          key: "familyMembers",
-          type: "text",
-          notRequired: true
-        },
-        {
-          key: "motherLanguage",
-          type: "select",
-          options: [
-            { value: "pachto", key: "pachto" },
-            { value: "dari", key: "dari" },
-            { value: "tadjik", key: "tadjik" },
-            { value: "ouzbek", key: "ouzbek" },
-            { value: "turkmeni", key: "turkmeni" },
-            { value: "balochi", key: "balochi" },
-            { value: "pashai", key: "pashai" },
-            { value: "nuristani", key: "nuristani" },
-            { value: "pamiri", key: "pamiri" },
-            { value: "ormuri", key: "ormuri" },
-            { value: "arab", key: "arab" },
-            { value: "parachi", key: "parachi" }
-          ],
-          required: true
-        },
-        {
-          key: "foreignLanguage",
-          type: "text",
-          notRequired: true
-        },
-        {
-          key: "militaryStatus",
-          type: "select",
-          options: [
-            { value: "yes", key: "yes" },
-            { value: "no", key: "no" }
-          ]
-        },
-        {
-          key: "tribe",
-          type: "select",
-          options: [
-            { value: "pashtun", key: "pashtun" },
-            { value: "tajik", key: "tajik" },
-            { value: "hazara", key: "hazara" },
-            { value: "uzbek", key: "uzbek" },
-            { value: "aimaq", key: "aimaq" },
-            { value: "turkmeni", key: "turkmeni" },
-            { value: "baloch", key: "baloch" },
-            { value: "pashai", key: "pashai" },
-            { value: "nuristani", key: "nuristani" },
-            { value: "brahui", key: "brahui" },
-            { value: "qizilbash", key: "qizilbash" },
-            { value: "pamiri", key: "pamiri" },
-            { value: "sadat", key: "sadat" },
-            { value: "arab", key: "arab" },
-            { value: "kyrgyz", key: "kyrgyz" },
-            { value: "guijar", key: "guijar" },
-            { value: "hindu", key: "hindu" },
-            { value: "sikan", key: "sikan" }
-          ]
-        },
+        
+        
+        
+        
         {
           key: "birthDate",
           type: "complexDate",
@@ -180,7 +115,8 @@ export const TazkaraForm = {
             { value: "tall", key: "tall" },
             { value: "middle", key: "middle" },
             { value: "others", key: "others" }
-          ]
+          ],
+          
         },
         {
           key: "eyeColor",
@@ -193,7 +129,8 @@ export const TazkaraForm = {
             { value: "noisette", key: "noisette" },
             { value: "green", key: "green" },
             { value: "others", key: "others" }
-          ]
+          ],
+          
         },
         {
           key: "eyebrow",
@@ -202,7 +139,8 @@ export const TazkaraForm = {
             { value: "connected", key: "connected" },
             { value: "departed", key: "departed" },
             { value: "others", key: "others" }
-          ]
+          ],
+          
         },
         {
           key: "hairColor",
@@ -214,7 +152,8 @@ export const TazkaraForm = {
             { value: "white", key: "white" },
             { value: "marron", key: "marron" },
             { value: "others", key: "others" }
-          ]
+          ],
+          
         },
         {
           key: "skinColor",
@@ -228,7 +167,8 @@ export const TazkaraForm = {
             { value: "red", key: "red" },
 
             { value: "others", key: "others" }
-          ]
+          ],
+          
         },
         {
           key: "otherSigns",
@@ -240,7 +180,8 @@ export const TazkaraForm = {
             { value: "moderate", key: "moderate" },
             { value: "majorSigns", key: "majorSigns" },
             { value: "others", key: "others" }
-          ]
+          ],
+          
         }
       ]
     },
@@ -258,12 +199,16 @@ export const TazkaraForm = {
         },
         {
           key: "tazkaraInformation",
-          type: "tazkaraInfo",
+          type: "tazkaraInfo"
+        },
+        {
+          key: "SarakName",
+          type: "text",
           notRequired: true
         },
         {
-          key: "fatherstazkaraInformation",
-          type: "tazkaraInfo",
+          key: "HouseNumber",
+          type: "text",
           notRequired: true
         },
         {

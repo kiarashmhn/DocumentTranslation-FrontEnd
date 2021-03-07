@@ -968,6 +968,82 @@ export const Dictionary = {
   inYear: {
     persian: "در سال",
     french: "Par an"
+  },
+  DrivingLicence: {
+    persian: "گواهینامه رانندگی",
+    french: "Permis de Conduire"
+  },
+  DrivingLicenceNumber: {
+    persian: "شماره گواهینامه",
+    french: "N° du permis de conduire"
+  },
+  uploadDrivingLicenceFiles: {
+    persian: "بارگذاری گواهینامه ی رانندگی",
+    french: "Importer la Permis de Conduire"
+  },
+  HouseNumber: {
+    persian: "شماره خانه/دکور نمبر",
+    french: "N° de rue"
+  },
+  SarakName: {
+    persian: "نام سرک یا محله/دکوځی نوم",
+    french: "Nom de la rue"
+  },
+  TazkaraIssueDate: {
+    persian: "تاریخ صدور تذکره/د تذکرې د صدور نیټه",
+    french: "Date d’émission"
+  },
+  aLastName: {
+    persian: "تخلص",
+    french: "Nom"
+  },
+  drivingLicenceCategory: {
+    persian: "نوع گواهینامه",
+    french: "Catégories du permis de conduire "
+  },
+  firstGrade: {
+    persian: "پایه یکم",
+    french: "Nom"
+  },
+  secondGrade: {
+    persian: "پایه دوم",
+    french: "Nom"
+  },
+  thirdGrade: {
+    persian: "پایه سوم",
+    french: "Nom"
+  },
+  special: {
+    persian: "ویژه",
+    french: "Nom"
+  },
+  motorcycle: {
+    persian: "موتورسیکلت",
+    french: "Nom"
+  },
+  expirationDuration: {
+    persian: "مدت اعتبار",
+    french: "Valable"
+  },
+  firstIssueDate: {
+    persian: "تاریخ اولین صدور",
+    french: "Date de la 1ère délivrance du permis de conduire"
+  },
+  tenYears: {
+    persian: "ده سال",
+    french: "10 Ans"
+  },
+  fiveYears: {
+    persian: "پنج سال",
+    french: "5 Ans"
+  },
+  aFatherName: {
+    persian: "نام پدر/دپلار نوم",
+    french: "Prénom du père"
+  },
+  TazkaraOld: {
+    persian: "تذکره(کتابچه)",
+    french: "Acte de naissance"
   }
 };
 

@@ -137,15 +137,253 @@ const provinces = {
   },
   Nangarhar: {
     persian: "ننگرهار",
-    french: "Nangarhar"
+    french: "Nangarhar",
+    districts: [
+      {
+        persian: "جلال آباد",
+        french: "Jalalabad"
+      },
+      {
+        persian: "آچین",
+        french: "Achin"
+      },
+      {
+        persian: "رودات",
+        french: "Rodat"
+      },
+      {
+        persian: "بتی کوت",
+        french: "Bati Kot"
+      },
+      {
+        persian: "سرخ رود",
+        french: "Surkh Rod"
+      },
+      {
+        persian: "بهسود",
+        french: "Bihsud"
+      },
+      {
+        persian: "شیرزاد",
+        french: "Sherzad"
+      },
+      {
+        persian: "پچیر آگام",
+        french: "Pachir Aw Agam"
+      },
+      {
+        persian: "شینوار",
+        french: "Shinwar"
+      },
+      {
+        persian: "غنی خیل",
+        french: "Ghani Khel"
+      },
+      {
+        persian: "کامه",
+        french: "Kama"
+      },
+      {
+        persian: "کوت",
+        french: "Kot"
+      },
+      {
+        persian: "حصارک",
+        french: "Hisarak"
+      },
+      {
+        persian: "کوزکنر",
+        french: "Kuz Kunar"
+      },
+      {
+        persian: "هسکه مینه",
+        french: "Haska Meyna"
+      },
+      {
+        persian: "چپر هار",
+        french: "Chaparhar"
+      },
+      {
+        persian: "گوشته",
+        french: "Goshta"
+      },
+      {
+        persian: "خوگیانی",
+        french: "Khogyani"
+      },
+      {
+        persian: "دربابا",
+        french: "Dur Baba"
+      },
+      {
+        persian: "لعل پور",
+        french: "Lal Pur"
+      },
+      {
+        persian: "دره نور",
+        french: "Darai Nur"
+      },
+      {
+        persian: "مهمند دره",
+        french: "Momand Dara"
+      },
+      {
+        persian: "ده بالا",
+        french: "Dih Bala"
+      },
+      {
+        persian: "خیوه",
+        french: "Khiva"
+      },
+      {
+        persian: "نازیان",
+        french: "Nazyan"
+      },
+      {
+        persian: "سپین غر",
+        french: "Spen Ghar"
+      }
+    ]
   },
   Balkh: {
     persian: "بلخ",
-    french: "Balkh"
+    french: "Balkh",
+    districts: [
+      {
+        persian: "مزار شریف",
+        french: "Mazar-e Sharif"
+      },
+      {
+        persian: "بلخ",
+        french: "Balkh"
+      },
+      {
+        persian: "بلخ",
+        french: "Balkh"
+      },
+      {
+        persian: "چاربولک",
+        french: "Chahar Bolak"
+      },
+      {
+        persian: "چارکنت",
+        french: "Chahar Kint"
+      },
+      {
+        persian: "چمتال",
+        french: "Chimtal"
+      },
+      {
+        persian: "خلم",
+        french: "Khulm"
+      },
+      {
+        persian: "دولت آباد",
+        french: "Dawlatabad"
+      },
+      {
+        persian: "دهدادی",
+        french: "Dihdadi"
+      },
+      {
+        persian: "زاری",
+        french: "Zari"
+      },
+      {
+        persian: "شورتپه",
+        french: "Shortepa"
+      },
+      {
+        persian: "شولگره",
+        french: "Sholgara"
+      },
+      {
+        persian: "کشنده",
+        french: "Kishindih"
+      },
+      {
+        persian: "کلدار",
+        french: "Kaldar"
+      },
+      {
+        persian: "مارمل",
+        french: "Marmul"
+      },
+      {
+        persian: "نهرشاهی",
+        french: "Nahri Shahi"
+      }
+    ]
   },
   Kandahar: {
     persian: "قندهار",
-    french: "Kandahar"
+    french: "Kandahar",
+    districts: [
+      {
+        persian: "آرغستان",
+        french: "Arghistan"
+      },
+      {
+        persian: "شاه ولی کوت",
+        french: "Arghistan"
+      },
+      {
+        persian: "ارغنداب",
+        french: "Arghistan"
+      },
+      {
+        persian: "شورابک",
+        french: "Arghistan"
+      },
+      {
+        persian: "پنجوائی",
+        french: "Arghistan"
+      },
+      {
+        persian: "غورک",
+        french: "Arghistan"
+      },
+      {
+        persian: "خاکریز",
+        french: "Arghistan"
+      },
+      {
+        persian: "دامان",
+        french: "Arghistan"
+      },
+      {
+        persian: "معروف",
+        french: "Arghistan"
+      },
+      {
+        persian: "ریگستان",
+        french: "Arghistan"
+      },
+      {
+        persian: "میانشین",
+        french: "Arghistan"
+      },
+      {
+        persian: "ژیری",
+        french: "Arghistan"
+      },
+      {
+        persian: "میوند",
+        french: "Arghistan"
+      },
+      {
+        persian: "نیش",
+        french: "Arghistan"
+      },
+      {
+        persian: "سپین بولدک",
+        french: "Arghistan"
+      },
+      {
+        persian: "تخته پل",
+        french: "Arghistan"
+      }
+    ]
   },
   Ghor: {
     persian: "غور",

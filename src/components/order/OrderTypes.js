@@ -6,6 +6,8 @@ import { militaryServiceLicenceForm } from "./form/MilitaryServiceLicence";
 import { afghanDrivingLicenceForm } from "./form/AfghanDrivingLicence";
 import { TazkaraForm } from "./form/Tazkara";
 import { MilitaryServiceLicenceReportData } from "../Report/data/MilitaryServiceLicenceReportData";
+import { TazkaraOldForm } from "./form/TazkaraKetab";
+import { DrivingLicenceForm } from "./form/DrivingLicence";
 
 export const OrderTypes = {
   ID_CERTIFICATE: {
@@ -37,6 +39,16 @@ export const OrderTypes = {
     key: "Tazkara",
     form: TazkaraForm,
     code: "TZ"
+  },
+  TAZKARA_OLD: {
+    key: "TazkaraOld",
+    form: TazkaraOldForm,
+    code: "TZO"
+  },
+  DRIVING_LICENCE: {
+    key: "DrivingLicence",
+    form: DrivingLicenceForm,
+    code: "DL"
   }
 };
 
