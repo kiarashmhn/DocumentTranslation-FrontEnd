@@ -174,25 +174,23 @@ export const TazkaraForm = {
       content: [
         {
           key: "height",
-          type: "select",
+          type: "autoComplete",
           options: [
             { value: "shortHeight", key: "shortHeight" },
             { value: "tall", key: "tall" },
-            { value: "middle", key: "middle" },
-            { value: "others", key: "others" }
+            { value: "middle", key: "middle" }
           ]
         },
         {
           key: "eyeColor",
-          type: "select",
+          type: "autoComplete",
           options: [
             { value: "black", key: "black" },
             { value: "blue", key: "blue" },
             { value: "gray", key: "gray" },
             { value: "marron", key: "marron" },
             { value: "noisette", key: "noisette" },
-            { value: "green", key: "green" },
-            { value: "others", key: "others" }
+            { value: "green", key: "green" }
           ]
         },
         {
@@ -232,14 +230,13 @@ export const TazkaraForm = {
         },
         {
           key: "otherSigns",
-          type: "select",
+          type: "autoComplete",
           options: [
             { value: "no", key: "no" },
             { value: "yes", key: "yes" },
             { value: "little", key: "little" },
             { value: "moderate", key: "moderate" },
-            { value: "majorSigns", key: "majorSigns" },
-            { value: "others", key: "others" }
+            { value: "majorSigns", key: "majorSigns" }
           ]
         }
       ]

@@ -18,6 +18,7 @@ import FileHandler from "../File/FileHandler";
 import ProvinceDistrict from "../ProvinceDistrict/ProvinceDistrict";
 import TazkaraInfo from "../TazkaraInfo/TazkaraInfo";
 import ComplexDateInput from "../CustomDateInput/ComplexDateInput";
+import CustomAutoComplete from "../AutoComplete/CustomAutoComplete";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -192,6 +193,24 @@ export default class NodesGenerator extends Component {
                 onChange={event => this.elementOnChange(event, element)}
                 notRequired={this.isNotRequired(element)}
                 type={element.inputType}
+              />
+            </Grid>
+          );
+        case "autoComplete":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 4}
+              key={element.key}
+            >
+              <CustomAutoComplete
+                name={element.key}
+                options={element.options}
+                value={this.state[element.key]}
+                onChange={event => this.elementOnChange(event, element)}
+                required={element.required}
               />
             </Grid>
           );
