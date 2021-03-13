@@ -51,7 +51,7 @@ export default class CustomTooltip extends Component {
                   dir={this.props.dir ? this.props.dir : "ltr"}
                   variant={"caption"}
                 >
-                  {this.props.text}
+                  {this.props.text ? this.props.text : this.props.children}
                 </Typography>
               </div>
             }
@@ -76,7 +76,8 @@ export default class CustomTooltip extends Component {
   }
 }
 CustomTooltip.propTypes = {
-  text: PropTypes.any.isRequired,
+  text: PropTypes.any,
+  children: PropTypes.any,
   icon: PropTypes.string,
   dir: PropTypes.string
 };

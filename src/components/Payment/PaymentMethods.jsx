@@ -105,6 +105,8 @@ export default class PaymentMethods extends Component {
                     id={this.props.id}
                     inputKey={methods[this.state.idx].inputKey}
                     idx={this.state.idx}
+                    price={this.props.price}
+                    deliveryType={this.props.deliveryType}
                   />
                 </Fragment>
               )}
@@ -118,6 +120,7 @@ export default class PaymentMethods extends Component {
 PaymentMethods.propTypes = {
   width: PropTypes.string.isRequired,
   classes: PropTypes.any.isRequired,
+  deliveryType: PropTypes.any.isRequired,
   id: PropTypes.any.isRequired,
   code: PropTypes.string.isRequired,
   price: PropTypes.any.isRequired

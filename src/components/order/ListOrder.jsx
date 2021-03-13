@@ -13,6 +13,7 @@ import EditUserDialog from "../register_login/EditUserDialog";
 import SelectAdminDialog from "../register_login/SelectAdminDialog";
 import AuthService from "../../AuthService";
 import FullScreenDialog from "../FullScreenDialog";
+import { getFrench } from "./OrderStatus";
 
 const styles = theme => ({
   link: {
@@ -158,13 +159,21 @@ class ListOrder extends Component {
       });
     }
 
+    columns.push({
+      name: "status",
+      label: "État",
+      options: {
+        customBodyRender: value => {
+          if (value !== undefined && value !== null) {
+            return <span>{getFrench(value)}</span>;
+          }
+        }
+      }
+    });
+
     columns = [
       ...columns,
       ...[
-        {
-          name: "status",
-          label: "État"
-        },
         {
           name: "submitDate",
           label: "Date d'enregistrement ou de paiement"
@@ -187,8 +196,8 @@ class ListOrder extends Component {
           customBodyRender: (value, meta) => {
             if (
               meta.rowData &&
-              (meta.rowData[3] === "En attente d'acceptation" ||
-                meta.rowData[3] === "En cours")
+              (meta.rowData[3] === "IN_PROGRESS" ||
+                meta.rowData[3] === "PENDING")
             ) {
               if (value !== undefined && value !== null) {
                 return (
@@ -242,7 +251,7 @@ class ListOrder extends Component {
               if (value !== undefined && value !== null) {
                 if (
                   (this.props.type && this.state.isAdmin) ||
-                  (meta.rowData && meta.rowData[2] !== "En cours")
+                  (meta.rowData && meta.rowData[2] !== "PENDING")
                 ) {
                   return (
                     <IconButton

@@ -6,16 +6,102 @@ import PropTypes from "prop-types";
 import CustomFileUpload from "../CustomFileUpload/CustomFileUpload";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import Divider from "@material-ui/core/Divider";
+import * as URLConstant from "../../URLConstant";
+import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
+import Api from "../Api/Api";
+import { Redirect } from "react-router";
+import AuthService from "../../AuthService";
 
-export default class PaymentSubmit extends Component {
+class PaymentSubmit extends Component {
   constructor(props) {
     super(props);
     this.state = {
       files: [],
-      num: ""
+      code: "",
+      redirect: false
     };
-    this.fileHandlerRef = React.createRef();
+    this.uploadFileRef = React.createRef();
+    this.api = new Api();
+    this.auth = new AuthService();
   }
+
+  fileOnChange = event => {
+    this.setState({ files: event.target.files });
+  };
+
+  handleFileSelect = async () => {
+    let self = this;
+    for (let file of this.state.files) {
+      let params = {
+        type: "payment",
+        name: file.name,
+        orderId: this.props.id,
+        size: file.size
+      };
+      await this.api
+        .doPostMultiPartFileAndHeader(
+          process.env.REACT_APP_HOST_URL +
+            process.env.REACT_APP_MAIN_PATH +
+            URLConstant.CREATE_DOCUMENT,
+          file,
+          params
+        )
+        .then(function(res) {
+          if (!res.success) self.props.showSnackbar(res.message, "error");
+        });
+    }
+  };
+
+  submitPayment = e => {
+    e.preventDefault();
+    let self = this;
+    let postData = {
+      orderId: this.props.id,
+      method: this.props.idx,
+      amount: this.props.price,
+      deliveryType: this.props.deliveryType,
+      code: this.state.code
+    };
+    this.api
+      .doPost(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.PAY_ORDER,
+        postData
+      )
+      .then(function(res) {
+        if (!res.success) self.props.showSnackbar(res.message, "error");
+        self.setState(
+          {
+            isLoading: false
+          },
+          () => {
+            if (res.success)
+              self.handleFileSelect().then(() => {
+                self.props.showSnackbar(res.message, "success");
+                self.setState({ redirect: true });
+              });
+          }
+        );
+      });
+  };
+
+  redirect = () => {
+    let url = this.auth.isAdmin()
+      ? URLConstant.ADMIN_PANEL
+      : URLConstant.USER_PANEL;
+    if (url && this.state.redirect) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: url,
+            state: {}
+          }}
+        />
+      );
+    }
+  };
 
   render() {
     return (
@@ -70,13 +156,16 @@ export default class PaymentSubmit extends Component {
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={12}>
-            <CustomFileUpload onChange={() => {}} />
+            <CustomFileUpload
+              onChange={event => this.fileOnChange(event)}
+              ref={this.uploadFileRef}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
             <FieldInput
               name={this.props.inputKey}
-              value={this.state.num}
-              onChange={event => this.setState({ num: event.target.value })}
+              value={this.state.code}
+              onChange={event => this.setState({ code: event.target.value })}
               notRequired={true}
             />
           </Grid>
@@ -94,7 +183,7 @@ export default class PaymentSubmit extends Component {
           }}
         >
           <Button
-            onClick={() => {}}
+            onClick={this.submitPayment}
             style={{ textTransform: "none" }}
             variant="contained"
             color="secondary"
@@ -124,13 +213,19 @@ export default class PaymentSubmit extends Component {
             </p>
           </Button>
         </div>
+        {this.redirect()}
       </Fragment>
     );
   }
 }
 
+export default SnackbarWrapper(PaymentSubmit);
+
 PaymentSubmit.propTypes = {
   id: PropTypes.any.isRequired,
   idx: PropTypes.any.isRequired,
+  price: PropTypes.any.isRequired,
+  deliveryType: PropTypes.any.isRequired,
+  showSnackbar: PropTypes.func.isRequired,
   inputKey: PropTypes.string.isRequired
 };

@@ -119,7 +119,7 @@ class Payment extends Component {
     this.state = {
       openDialog: false,
       isLoading: false,
-      idx: null,
+      deliveryType: 0,
       normal: true,
       post: false,
       specialPost: false,
@@ -146,12 +146,15 @@ class Payment extends Component {
         post: true,
         normal: false,
         specialPost: false,
+        deliveryType: 1,
         price: price + 2
       });
     } else {
       this.setState({
         price: price,
-        post: false
+        post: false,
+        normal: true,
+        deliveryType: 0
       });
     }
   };
@@ -163,6 +166,7 @@ class Payment extends Component {
         post: false,
         normal: true,
         specialPost: false,
+        deliveryType: 0,
         price: price
       });
     } else {
@@ -180,12 +184,15 @@ class Payment extends Component {
         post: false,
         specialPost: true,
         normal: false,
+        deliveryType: 2,
         price: price + 7
       });
     } else {
       this.setState({
         price: price,
-        specialPost: false
+        specialPost: false,
+        normal: true,
+        deliveryType: 0
       });
     }
   };
@@ -224,14 +231,37 @@ class Payment extends Component {
               <Typography paragraph variant="h6" align="center">
                 {getCompleteName("deliveryType")}
               </Typography>
-              <div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
                 <Grid
                   container
                   spacing={0}
                   alignItems="center"
                   justify="center"
-                  alignContent={"center"}
                 >
+                  <Grid item xs={12} md={12}>
+                    <Typography paragraph variant="body1" align="center">
+                      * Important : le tarif annoncé comprend l’accès à la copie
+                      numérique (PDF) du document traduit sur votre espace
+                      client et le frais d’envoie en lettre économique (lettre
+                      verte) à votre adresse.{" "}
+                      <Box
+                        fontStyle="italic"
+                        fontWeight="fontWeightMedium"
+                        display="inline"
+                      >
+                        francedoc
+                      </Box>{" "}
+                      offre la possibilité de choisir un des modes de livraison
+                      suivants afin d’assurer la bonne réception de votre
+                      commande.{" "}
+                    </Typography>
+                  </Grid>
                   <Grid item xs={12} md={12}>
                     <div
                       style={{
@@ -240,36 +270,17 @@ class Payment extends Component {
                         flexDirection: "row"
                       }}
                     >
-                      <Typography paragraph variant="body1" align="center">
-                        * Important : le tarif annoncé comprend l’accès à la
-                        copie numérique (PDF) du document traduit sur votre
-                        espace client et le frais d’envoie en lettre économique
-                        (lettre verte) à votre adresse.{" "}
+                      <CustomTooltip icon={"error"}>
+                        {""}
                         <Box
                           fontStyle="italic"
                           fontWeight="fontWeightMedium"
                           display="inline"
                         >
                           francedoc
-                        </Box>{" "}
-                        offre la possibilité de choisir un des modes de
-                        livraison suivants afin d’assurer la bonne réception de
-                        votre commande.{" "}
-                      </Typography>
-                      <CustomTooltip
-                        text={
-                          (
-                            <Box
-                              fontStyle="italic"
-                              fontWeight="fontWeightMedium"
-                              display="inline"
-                            >
-                              francedoc
-                            </Box>
-                          ) + frenchHint
-                        }
-                        icon={"error"}
-                      />
+                        </Box>
+                        {frenchHint}
+                      </CustomTooltip>
                     </div>
                   </Grid>
                 </Grid>
@@ -380,6 +391,7 @@ class Payment extends Component {
           id={this.state.orderId}
           width={width}
           classes={classes}
+          deliveryType={this.state.deliveryType}
         />
       </Fragment>
     );

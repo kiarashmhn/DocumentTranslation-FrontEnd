@@ -1,23 +1,53 @@
 export const OrderStatus = {
-  ACTIVE: {
-    name: "active"
+  COMPLETING: {
+    name: "completing",
+    french: "En attente de l'achèvement",
+    persian: "در حال تکمیل"
   },
-  INACTIVE: {
-    name: "inactive"
-  },
-  IN_PROGRESS: {
-    name: "inProgress"
-  },
-  COMPLETED: {
-    name: "completed"
-  },
-  CANCELLED: {
-    name: "cancelled"
+  WAITING_FOR_PAYMENT: {
+    name: "waitingForPayment",
+    french: "En attente de paiement",
+    persian: "در انتظار پرداخت"
   },
   PENDING: {
-    name: "pending"
+    name: "pending",
+    french: "En attente d'acceptation",
+    persian: "در انتظار پذیرش"
   },
-  COMPLETING: {
-    name: "completing"
+  IN_PROGRESS: {
+    name: "inProgress",
+    french: "En cours",
+    persian: "در حال انجام"
+  },
+  COMPLETED: {
+    name: "completed",
+    french: "Fini",
+    persian: "انجام شده"
+  },
+  CANCELLED: {
+    name: "cancelled",
+    french: "Annulé",
+    persian: "لغو شده"
+  },
+  DELIVERED: {
+    name: "delivered",
+    french: "Livré",
+    persian: "تحویل شده"
   }
+};
+
+export const getComplete = text => {
+  if (OrderStatus[text])
+    return OrderStatus[text].french + " / " + OrderStatus[text].persian;
+  return null;
+};
+
+export const getFrench = text => {
+  if (OrderStatus[text]) return OrderStatus[text].french;
+  return null;
+};
+
+export const getPersian = text => {
+  if (OrderStatus[text]) return OrderStatus[text].persian;
+  return null;
 };
