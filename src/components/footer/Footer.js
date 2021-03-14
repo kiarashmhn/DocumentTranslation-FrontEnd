@@ -196,33 +196,41 @@ class Footer extends Component {
             spacing={isWidthUp("md", width) ? 4 : 2}
             justify="center"
           >
-            {/*<Grid item xs={12} md={6} lg={4}>
-              <form>
-                <Box display="flex" flexDirection="column">
-                  <Box mb={1}>
-                    <TextField
-                      variant="outlined"
-                      multiline
-                      placeholder="Get in touch with us"
-                      inputProps={{ "aria-label": "Get in Touch" }}
-                      InputProps={{
-                        className: classes.whiteBg
-                      }}
-                      rows={4}
-                      fullWidth
-                      required
-                    />
-                  </Box>
-                  <ColoredButton
-                    color={theme.palette.common.white}
-                    variant="outlined"
-                    type="submit"
-                  >
-                    Send Message
-                  </ColoredButton>
-                </Box>
-              </form>
-            </Grid>*/}
+            <Grid item xs={12} md={6} lg={4} dir={"rtl"}>
+              <Typography variant="h6" paragraph className="text-white">
+                درباره ما
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                این پلتفرم جامعه ای از مترجمان رسمی به زبان دری ـ فارسی است، که
+                با هدف کاهش زمان انتظار و هزینه ترجمه اسناد و مدارک تشکیل شده
+                است. پلتفرم سعی در ساده و کارآمد کردن فرایند درخواست، انجام و
+                تحویل ترجمه رسمی مدارک دارد. متقاضی، سند و فرم مربوطه را در حساب
+                کاربری تکمیل می کند و ترجمه خود را پس از آنکه توسط یک مترجم رسمی
+                تصحیح، تکمیل و تأیید اطلاعات شد در مدت زمان کوتاهی دریافت
+                مینماید.
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                شماره ثبت شرکت: 00017 563 317 890
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <Typography variant="h6" paragraph className="text-white">
+                À propos de nous
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Notre plateforme a pour but de créer une communauté des Experts
+                traducteurs (assermentés) afin de s’assurer la vague importante
+                des demandes de traduction en dari et farsi et de réduire
+                considérablement le temps d’attente et le coût de traduction. La
+                plateforme constitue une manière simple et efficace pour
+                réaliser des traductions assermentées, le client auto saisisse
+                les informations, qui vont ensuite être vérifiées, corrigées et
+                complétées par un traducteur assermenté.
+              </Typography>
+              <Typography style={{ color: "#8f9296" }} paragraph>
+                Identifiant SIRET : 890 317 563 00017
+              </Typography>
+            </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <Typography
                 variant="h6"
@@ -284,57 +292,6 @@ class Footer extends Component {
                   ))}
                 </div>
               </Box>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Typography variant="h6" paragraph className="text-white">
-                À propos de nous
-              </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                Notre plateforme a pour but de créer une communauté des Experts
-                traducteurs (assermentés) afin de s’assurer la vague importante
-                des demandes de traduction en dari et farsi et de réduire
-                considérablement le temps d’attente et le coût de traduction. La
-                plateforme constitue une manière simple et efficace pour
-                réaliser des traductions assermentées, le client auto saisisse
-                les informations, qui vont ensuite être vérifiées, corrigées et
-                complétées par un traducteur assermenté.
-              </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                Identifiant SIRET : 890 317 563 00017
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4} dir={"rtl"}>
-              <Typography variant="h6" paragraph className="text-white">
-                درباره ما
-              </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                این پلتفرم جامعه ای از مترجمان رسمی به زبان دری ـ فارسی است، که
-                با هدف کاهش زمان انتظار و هزینه ترجمه اسناد و مدارک تشکیل شده
-                است. پلتفرم سعی در ساده و کارآمد کردن فرایند درخواست، انجام و
-                تحویل ترجمه رسمی مدارک دارد. متقاضی، سند و فرم مربوطه را در حساب
-                کاربری تکمیل می کند و ترجمه خود را پس از آنکه توسط یک مترجم رسمی
-                تصحیح، تکمیل و تأیید اطلاعات شد در مدت زمان کوتاهی دریافت
-                مینماید.
-              </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                شماره ثبت شرکت: 00017 563 317 890
-              </Typography>
-              {/*<Box display="flex">
-                {socialIcons.map((socialIcon, index) => (
-                  <Box
-                    key={index}
-                    mr={index !== socialIcons.length - 1 ? 1 : 0}
-                  >
-                    <IconButton
-                      aria-label={socialIcon.label}
-                      className={classes.socialIcon}
-                      href={socialIcon.href}
-                    >
-                      {socialIcon.icon}
-                    </IconButton>
-                  </Box>
-                ))}
-              </Box>*/}
             </Grid>
           </Grid>
         </div>

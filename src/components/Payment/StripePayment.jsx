@@ -85,6 +85,16 @@ function CheckoutForm() {
               alignItems: "center"
             }}
           >
+            <div
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_in/creditcards.png)`,
+                backgroundRepeat: "no-repeat",
+                verticalAlign: "middle",
+                backgroundSize: "contain",
+                height: "60px",
+                width: "240px"
+              }}
+            />
             <Typography paragraph variant="body1" align="center">
               {getFrenchName("enterCardInfo")}
             </Typography>
@@ -98,7 +108,9 @@ function CheckoutForm() {
                   base: {
                     backgroundColor: "white"
                   }
-                }
+                },
+                showIcon: true,
+                placeholder: "Card Number"
               }}
             />
             <CardExpiryElement
@@ -108,7 +120,8 @@ function CheckoutForm() {
                   base: {
                     backgroundColor: "white"
                   }
-                }
+                },
+                showIcon: true
               }}
             />
             <CardCvcElement
@@ -118,7 +131,8 @@ function CheckoutForm() {
                   base: {
                     backgroundColor: "white"
                   }
-                }
+                },
+                showIcon: true
               }}
             />
           </div>

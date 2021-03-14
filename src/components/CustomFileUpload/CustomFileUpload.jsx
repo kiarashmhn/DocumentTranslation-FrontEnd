@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import PropTypes from "prop-types";
-import theme from "../../theme";
 
 const styles = {
   root: {
-    "& > *": {
-      margin: theme.spacing(3)
-    },
     alignItems: "center",
     display: "flex",
     justifyContent: "center"

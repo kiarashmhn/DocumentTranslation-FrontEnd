@@ -8,22 +8,15 @@ import Typography from "@material-ui/core/Typography";
 import Api from "../Api/Api";
 import { getCompleteName } from "../../Dictionary";
 import theme from "../../theme";
+import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const textStyle = {
   alignItems: "center",
   display: "flex",
   justifyContent: "center",
   marginTop: theme.spacing(3),
-  marginBottom: theme.spacing(3),
+  marginBottom: theme.spacing(1),
   color: theme.palette.primary.main
-};
-
-const subTextStyle = {
-  alignItems: "center",
-  display: "flex",
-  justifyContent: "center",
-  marginTop: theme.spacing(3),
-  marginBottom: theme.spacing(3)
 };
 
 export default class FileHandler extends Component {
@@ -108,12 +101,6 @@ export default class FileHandler extends Component {
           </Grid>
         </Fragment>
       );
-    else
-      return (
-        <div style={subTextStyle}>
-          <span id="files-empty">{getCompleteName("empty")}</span>
-        </div>
-      );
   };
 
   render() {
@@ -123,16 +110,29 @@ export default class FileHandler extends Component {
           <Typography variant={"body1"}>
             {getCompleteName("uploadFiles")}
           </Typography>
+          <CustomTooltip icon={"error"}>
+            <div dir={"ltr"}>
+              Assurez-vous que vos documents sont valides, bien visibles et
+              faciles à lire. Vos informations déclarées sur le formulaire
+              doivent correspondre, à la lettre, à celles de votre document.
+            </div>
+            <div dir={"rtl"}>
+              اطمینان حاصل کنید که سند شما معتبر، واضح و قابل خواندن است.
+              اطلاعات شما در فرم باید با سند شما مطابقت کامل داشته باشد.
+            </div>
+          </CustomTooltip>
         </div>
         <CustomFileUpload
           ref={this.uploadFileRef}
           onChange={event => this.fileOnChange(event)}
         />
-        <div style={textStyle}>
-          <Typography variant={"body1"}>
-            {getCompleteName("uploadedFiles")}
-          </Typography>
-        </div>
+        {this.state.oldFiles && this.state.oldFiles.length > 0 && (
+          <div style={textStyle}>
+            <Typography variant={"body1"}>
+              {getCompleteName("uploadedFiles")}
+            </Typography>
+          </div>
+        )}
         {this.getFiles()}
       </Fragment>
     );

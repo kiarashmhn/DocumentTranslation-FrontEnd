@@ -19,17 +19,19 @@ const styles = theme => ({
   },
   image: {
     [theme.breakpoints.up("sm")]: {
-      width: `100%`
+      width: `100%`,
+      backgroundSize: "100% 100%"
     },
     [theme.breakpoints.down("sm")]: {
-      width: `100%`
+      width: `150%`,
+      backgroundSize: "115% 100%"
     },
-    backgroundSize: "100% 100%",
     backgroundRepeat: "no-repeat",
     verticalAlign: "middle",
     borderRadius: theme.shape.borderRadius,
     boxShadow: theme.shadows[4],
-    backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/banner.png)`
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/banner.png)`,
+    backgroundPosition: "center"
   },
   button: {
     maxWidth: "100%",
@@ -42,8 +44,8 @@ const styles = theme => ({
       marginBottom: theme.spacing(5)
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: theme.spacing(33),
-      marginBottom: theme.spacing(4)
+      marginTop: theme.spacing(27),
+      marginBottom: theme.spacing(1)
     }
   },
   container: {

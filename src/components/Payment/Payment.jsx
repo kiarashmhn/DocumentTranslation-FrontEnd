@@ -131,7 +131,6 @@ class Payment extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location.state);
     let price = this.state.type.price;
     this.setState({
       basePrice: price,
@@ -201,15 +200,33 @@ class Payment extends Component {
     const { width, classes } = this.props;
     return (
       <Fragment>
-        <Typography
-          gutterBottom
-          variant="h4"
-          component="h4"
-          align="center"
-          style={{ whiteSpace: "pre-line", marginTop: theme.spacing(2) }}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
         >
-          Payer
-        </Typography>
+          <Typography
+            gutterBottom
+            variant="h4"
+            component="h4"
+            align="center"
+            style={{ whiteSpace: "pre-line", marginTop: theme.spacing(2) }}
+          >
+            Payer
+          </Typography>
+          <CustomTooltip icon={"error"}>
+            <div dir={"ltr"}>
+              Après le paiement, la demande de traduction est définitive et
+              aucune modification ne sera plus possible.
+            </div>
+            <div dir={"rtl"}>
+              پس از پرداخت درخواست ترجمه سند نهایی است و دیگر قابل اصلاح نمی
+              باشد.
+            </div>
+          </CustomTooltip>
+        </div>
         <Typography
           gutterBottom
           variant="h4"
@@ -238,85 +255,60 @@ class Payment extends Component {
                   alignItems: "center"
                 }}
               >
-                <Grid
-                  container
-                  spacing={0}
-                  alignItems="center"
-                  justify="center"
+                <Typography
+                  paragraph
+                  variant="body1"
+                  align="center"
+                  component={"div"}
                 >
-                  <Grid item xs={12} md={12}>
-                    <Typography paragraph variant="body1" align="center">
-                      * Important : le tarif annoncé comprend l’accès à la copie
-                      numérique (PDF) du document traduit sur votre espace
-                      client et le frais d’envoie en lettre économique (lettre
-                      verte) à votre adresse.{" "}
-                      <Box
-                        fontStyle="italic"
-                        fontWeight="fontWeightMedium"
-                        display="inline"
-                      >
-                        francedoc
-                      </Box>{" "}
-                      offre la possibilité de choisir un des modes de livraison
-                      suivants afin d’assurer la bonne réception de votre
-                      commande.{" "}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} md={12}>
-                    <div
-                      style={{
-                        alignItems: "center",
-                        display: "flex",
-                        flexDirection: "row"
-                      }}
+                  * Important : le tarif annoncé comprend l’accès à la copie
+                  numérique (PDF) du document traduit sur votre espace client et
+                  le frais d’envoie en lettre économique (lettre verte) à votre
+                  adresse.{" "}
+                  <Box
+                    fontStyle="italic"
+                    fontWeight="fontWeightMedium"
+                    display="inline"
+                  >
+                    francedoc
+                  </Box>{" "}
+                  offre la possibilité de choisir un des modes de livraison
+                  suivants afin d’assurer la bonne réception de votre commande.{" "}
+                  <CustomTooltip icon={"error"}>
+                    {""}
+                    <Box
+                      fontStyle="italic"
+                      fontWeight="fontWeightMedium"
+                      display="inline"
                     >
-                      <CustomTooltip icon={"error"}>
-                        {""}
-                        <Box
-                          fontStyle="italic"
-                          fontWeight="fontWeightMedium"
-                          display="inline"
-                        >
-                          francedoc
-                        </Box>
-                        {frenchHint}
-                      </CustomTooltip>
-                    </div>
-                  </Grid>
-                </Grid>
+                      francedoc
+                    </Box>
+                    {frenchHint}
+                  </CustomTooltip>{" "}
+                </Typography>
               </div>
-              <div>
-                <Grid
-                  container
-                  spacing={0}
-                  alignItems="center"
-                  justify="center"
-                  alignContent={"center"}
+              <div
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  display: "flex",
+                  flexDirection: "row"
+                }}
+              >
+                <Typography
+                  paragraph
+                  variant="body1"
+                  align="center"
+                  dir="rtl"
+                  component={"div"}
                 >
-                  <Grid item xs={12} md={12}>
-                    <div
-                      style={{
-                        alignItems: "center",
-                        display: "flex",
-                        flexDirection: "row"
-                      }}
-                    >
-                      <CustomTooltip
-                        text={persianHint}
-                        dir={"rtl"}
-                        icon={"error"}
-                      />
-                      <Typography
-                        paragraph
-                        variant="body1"
-                        align="center"
-                        dir="rtl"
-                      >
-                        {persianNote}
-                      </Typography>
-                    </div>
-                  </Grid>
-                </Grid>
+                  {persianNote}
+                  <CustomTooltip
+                    text={persianHint}
+                    dir={"rtl"}
+                    icon={"error"}
+                  />
+                </Typography>
               </div>
               <Grid
                 container
