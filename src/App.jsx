@@ -18,6 +18,7 @@ import * as URLConstant from "./URLConstant";
 import AdminPanel from "./components/AdminPanel";
 import Payment from "./components/Payment/Payment";
 import LegalNotes from "./components/LegalNotes";
+import PaymentSuccess from "./components/Payment/PaymentSuccess";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
@@ -45,6 +46,11 @@ class App extends Component {
                 <PrivateRoute path={URLConstant.PAYMENT} component={Payment} />
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/LegalNotes" component={LegalNotes} />
+                <Route
+                  exact
+                  path="/PaymentSuccess"
+                  component={PaymentSuccess}
+                />
               </Switch>
             </Suspense>
           </MuiThemeProvider>

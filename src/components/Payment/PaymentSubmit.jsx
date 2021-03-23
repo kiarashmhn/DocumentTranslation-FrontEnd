@@ -87,16 +87,18 @@ class PaymentSubmit extends Component {
   };
 
   redirect = () => {
-    let url = this.auth.isAdmin()
-      ? URLConstant.ADMIN_PANEL
-      : URLConstant.USER_PANEL;
-    if (url && this.state.redirect) {
+    if (this.state.redirect) {
       return (
         <Redirect
           push
           to={{
-            pathname: url,
-            state: {}
+            pathname: "/PaymentSuccess",
+            state: {
+              orderId: this.props.id,
+              method: this.props.idx,
+              amount: this.props.price,
+              code: this.state.code
+            }
           }}
         />
       );

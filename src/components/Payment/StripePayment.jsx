@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Elements,
   CardElement,
@@ -12,6 +12,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import "./StripePayment.css";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 import { Button, Typography } from "@material-ui/core";
+import Api from "../Api/Api";
+import * as URLConstant from "../../URLConstant";
 
 export const StripePayment = () => {
   const stripe = loadStripe(
@@ -28,13 +30,29 @@ function CheckoutForm() {
   const [isPaymentLoading, setPaymentLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const api = new Api();
+  const postData = {};
+  let clientSecret = "";
+
+  useEffect(() => {
+    api
+      .doPost(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.STRIPE_PAY_ORDER,
+        postData
+      )
+      .then(function(res) {
+        clientSecret = res.data.clientSecret;
+      });
+  }, []);
+
   const payMoney = async e => {
     e.preventDefault();
     if (!stripe || !elements) {
       return;
     }
     setPaymentLoading(true);
-    const clientSecret = "134_secret_587688";
     await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
