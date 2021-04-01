@@ -3,6 +3,10 @@ import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
 import { Typography } from "@material-ui/core";
 import Bill from "./Bill";
+import JsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import Button from "@material-ui/core/Button";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 
 export default class PaymentSuccess extends Component {
   constructor(props) {
@@ -15,41 +19,99 @@ export default class PaymentSuccess extends Component {
     };
   }
 
+  exportPdf = () => {
+    html2canvas(document.querySelector("#bill-box")).then(canvas => {
+      const imgData = canvas.toDataURL("image/jpg");
+      const pdf = new JsPDF({
+        orientation: "l", // landscape
+        unit: "pt", // points, pixels won't work properly
+        format: [canvas.width, canvas.height] // set needed dimensions for any element
+      });
+      pdf.addImage(imgData, "JPEG", 0, 0, canvas.width, canvas.height);
+      pdf.save("facture.pdf");
+    });
+  };
+
   render() {
     return (
       <div>
         <Typography
           gutterBottom
-          variant="h4"
+          variant="h6"
           component="h4"
           align="center"
-          style={{ whiteSpace: "pre-line" }}
+          style={{ whiteSpace: "pre-line", marginTop: "10px" }}
         >
           Paiement enregistré avec succès
         </Typography>
         <Typography
           gutterBottom
-          variant="h4"
+          variant="h6"
           component="h4"
           align="center"
-          style={{ whiteSpace: "pre-line" }}
+          style={{ whiteSpace: "pre-line", marginBottom: "5px" }}
         >
           پرداخت با موفقیت ثبت شد
         </Typography>
-        <Box
-          borderColor="primary.main"
-          bgcolor="background.paper"
-          border={2}
-          style={{ padding: "10px", marginTop: "8px" }}
-          m={5}
+        <div id={"bill-box"}>
+          <Box
+            borderColor="primary.main"
+            bgcolor="background.paper"
+            border={2}
+            style={{ padding: "10px" }}
+            m={5}
+          >
+            <Bill
+              amount={this.state.amount}
+              orderId={this.state.orderId}
+              code={this.state.code}
+              method={this.state.method}
+            />
+          </Box>
+        </div>
+        <div
+          style={{
+            maxWidth: "100%",
+            verticalAlign: "middle",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "10px",
+            paddingBottom: "20px",
+            marginTop: "2px"
+          }}
         >
-          <Bill
-            amount={this.state.amount}
-            orderId={this.state.orderId}
-            code={this.state.code}
-            method={this.state.method}
-          />
-        </Box>
+          <Button
+            onClick={this.exportPdf}
+            style={{ textTransform: "none" }}
+            variant="contained"
+            color="secondary"
+            align={"center"}
+          >
+            <p>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "0",
+                  fontSize: 16
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                {getFrenchName("downloadBill")}
+              </Typography>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "2px",
+                  fontSize: "100%"
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                {getPersianName("downloadBill")}
+              </Typography>
+            </p>
+          </Button>
+        </div>
       </div>
     );
   }

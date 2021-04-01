@@ -1,38 +1,37 @@
 import React, { useEffect, useState } from "react";
 import {
-  Elements,
-  CardElement,
   CardNumberElement,
   CardExpiryElement,
   CardCvcElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import "./StripePayment.css";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 import { Button, Typography } from "@material-ui/core";
 import Api from "../Api/Api";
 import * as URLConstant from "../../URLConstant";
+import PropTypes from "prop-types";
+import AuthService from "../../AuthService";
+import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
+import { Redirect } from "react-router";
 
-export const StripePayment = () => {
-  const stripe = loadStripe(
-    "pk_test_51IMcfSDJralPixYMYcqmdwXKdFhT0ZbkdpLtu1DjX3K9VSMv7OTdEbolmicfnVuDigV8xV2PeiDoPPGlLFRiV49x00HLxkwkxq"
-  );
-  return (
-    <Elements stripe={stripe}>
-      <CheckoutForm />
-    </Elements>
-  );
-};
+function StripePayment(props) {
+  const { amount, orderId, code, deliveryType, showSnackbar } = props;
 
-function CheckoutForm() {
   const [isPaymentLoading, setPaymentLoading] = useState(false);
+  const [clientSecret, setClientSecret] = useState(null);
+  const [redirect, setRedirect] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const Auth = new AuthService();
   const api = new Api();
-  const postData = {};
-  let clientSecret = "";
+  const postData = {
+    amount: amount,
+    orderId: orderId,
+    code: code,
+    deliveryType: deliveryType
+  };
 
   useEffect(() => {
     api
@@ -43,9 +42,9 @@ function CheckoutForm() {
         postData
       )
       .then(function(res) {
-        clientSecret = res.data.clientSecret;
+        setClientSecret(res.data.clientSecret);
       });
-  }, []);
+  }, [setClientSecret]);
 
   const payMoney = async e => {
     e.preventDefault();
@@ -53,28 +52,61 @@ function CheckoutForm() {
       return;
     }
     setPaymentLoading(true);
+    const completePostData = { ...postData, ...{ method: 0 } };
     await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
-          card: elements.getElement(CardElement),
+          card: elements.getElement(CardNumberElement),
           billing_details: {
-            name: "Faruq Yusuff"
+            name: Auth.getUsername()
           }
         }
       })
       .then(function(paymentResult) {
         setPaymentLoading(false);
         if (paymentResult.error) {
-          alert(paymentResult.error.message);
+          showSnackbar(paymentResult.error.message, "error");
         } else {
           if (paymentResult.paymentIntent.status === "succeeded") {
-            alert("Success!");
+            api
+              .doPost(
+                process.env.REACT_APP_HOST_URL +
+                  process.env.REACT_APP_MAIN_PATH +
+                  URLConstant.PAY_ORDER,
+                completePostData
+              )
+              .then(function(res) {
+                if (!res.success) showSnackbar(res.message, "error");
+                else {
+                  showSnackbar(res.message, "success");
+                  setRedirect(true);
+                }
+              });
           }
         }
       })
       .catch(function() {
-        alert("Error");
+        showSnackbar("error in payment", "error");
       });
+  };
+
+  const redirectToSuccess = () => {
+    if (redirect) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: "/PaymentSuccess",
+            state: {
+              orderId: orderId,
+              method: 0,
+              amount: amount,
+              code: code
+            }
+          }}
+        />
+      );
+    }
   };
 
   return (
@@ -138,8 +170,7 @@ function CheckoutForm() {
                   base: {
                     backgroundColor: "white"
                   }
-                },
-                showIcon: true
+                }
               }}
             />
             <CardCvcElement
@@ -149,8 +180,7 @@ function CheckoutForm() {
                   base: {
                     backgroundColor: "white"
                   }
-                },
-                showIcon: true
+                }
               }}
             />
           </div>
@@ -205,6 +235,17 @@ function CheckoutForm() {
           </div>
         </form>
       </div>
+      {redirectToSuccess()}
     </div>
   );
 }
+
+export default SnackbarWrapper(StripePayment);
+
+StripePayment.propTypes = {
+  amount: PropTypes.any.isRequired,
+  orderId: PropTypes.any.isRequired,
+  code: PropTypes.any.isRequired,
+  deliveryType: PropTypes.any.isRequired,
+  showSnackbar: PropTypes.func.isRequired
+};

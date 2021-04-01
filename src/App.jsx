@@ -19,42 +19,52 @@ import AdminPanel from "./components/AdminPanel";
 import Payment from "./components/Payment/Payment";
 import LegalNotes from "./components/LegalNotes";
 import PaymentSuccess from "./components/Payment/PaymentSuccess";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
 
 class App extends Component {
   render() {
+    let stripe = loadStripe(
+      "pk_test_51IMcfSDJralPixYMYcqmdwXKdFhT0ZbkdpLtu1DjX3K9VSMv7OTdEbolmicfnVuDigV8xV2PeiDoPPGlLFRiV49x00HLxkwkxq"
+    );
     return (
       <Provider store={store}>
-        <Snackbar />
-        <Router history={hist}>
-          <MuiThemeProvider theme={theme}>
-            <CssBaseline />
-            <GlobalStyles />
-            <Pace color={theme.palette.secondary.main} />
-            <Suspense fallback={<Fragment />}>
-              <Switch>
-                <PrivateRoute
-                  path={URLConstant.ADMIN_PANEL}
-                  component={AdminPanel}
-                />
-                <PrivateRoute
-                  path={URLConstant.USER_PANEL}
-                  component={UserPanel}
-                />
-                <PrivateRoute path={URLConstant.PAYMENT} component={Payment} />
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/LegalNotes" component={LegalNotes} />
-                <Route
-                  exact
-                  path="/PaymentSuccess"
-                  component={PaymentSuccess}
-                />
-              </Switch>
-            </Suspense>
-          </MuiThemeProvider>
-        </Router>
+        <Elements stripe={stripe}>
+          <Snackbar />
+          <Router history={hist}>
+            <MuiThemeProvider theme={theme}>
+              <CssBaseline />
+              <GlobalStyles />
+              <Pace color={theme.palette.secondary.main} />
+              <Suspense fallback={<Fragment />}>
+                <Switch>
+                  <PrivateRoute
+                    path={URLConstant.ADMIN_PANEL}
+                    component={AdminPanel}
+                  />
+                  <PrivateRoute
+                    path={URLConstant.USER_PANEL}
+                    component={UserPanel}
+                  />
+                  <PrivateRoute
+                    path={URLConstant.PAYMENT}
+                    component={Payment}
+                  />
+                  <Route exact path="/" component={HomePage} />
+                  <Route exact path="/LegalNotes" component={LegalNotes} />
+                  <Route
+                    exact
+                    path="/PaymentSuccess"
+                    component={PaymentSuccess}
+                  />
+                </Switch>
+              </Suspense>
+            </MuiThemeProvider>
+          </Router>
+        </Elements>
       </Provider>
     );
   }

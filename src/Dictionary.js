@@ -1044,6 +1044,10 @@ export const Dictionary = {
   TazkaraOld: {
     persian: "تذکره(کتابچه)",
     french: "Acte de naissance"
+  },
+  downloadBill: {
+    persian: "دریافت صورتحساب",
+    french: "Télécharger facture"
   }
 };
 
