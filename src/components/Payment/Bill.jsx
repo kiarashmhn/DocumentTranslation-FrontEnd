@@ -11,27 +11,17 @@ import Paper from "@material-ui/core/Paper";
 import * as PropTypes from "prop-types";
 import Divider from "@material-ui/core/Divider";
 import theme, { grayColor } from "../../theme";
+import * as URLConstant from "../../URLConstant";
+import { getTypeByKey } from "../order/OrderTypes";
+import { methods } from "./MethodsInfo";
+import { getFrenchName } from "../../Dictionary";
+import Api from "../Api/Api";
 
 const info =
   "Service de traduction certifiée\n" +
   "Tél : 06 34 39 71 56\n" +
   "Courriel : francedoc.fr@gmail.com\n" +
   "N° SIRET 89031756300017\n";
-
-const orderInfo = {
-  type: "",
-  name: "Ebrahim",
-  lastName: "ASSADI",
-  address: "Tehran, Iran"
-};
-
-const methodInfo = {
-  name: "virement bancaire"
-};
-
-const typeInfo = {
-  name: "Permis de conduire"
-};
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -55,7 +45,44 @@ const StyledTableRow = withStyles(theme => ({
 export default class Bill extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      type: { key: "" },
+      username: "",
+      address: "",
+      method: { frenchTitle: "" }
+    };
+    this.api = new Api();
   }
+
+  componentDidMount() {
+    this.getOrder();
+  }
+
+  getOrder = async () => {
+    let self = this;
+    let postData = {
+      id: this.props.orderId
+    };
+    await this.api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.GET_ORDER_BY_ID,
+        postData
+      )
+      .then(function(res) {
+        if (!res.success) self.props.showSnackbar(res.message, "error");
+        else {
+          self.setState({
+            address: res.data.details ? res.data.details.address : "",
+            username: res.data.username,
+            type: getTypeByKey(res.data.type),
+            method: methods[self.props.method]
+          });
+        }
+      });
+  };
+
   render() {
     return (
       <div>
@@ -83,7 +110,7 @@ export default class Bill extends Component {
         <Typography
           gutterBottom
           variant="h5"
-          component="h5"
+          component="div"
           align="center"
           style={{ marginTop: "10px" }}
         >
@@ -95,17 +122,17 @@ export default class Bill extends Component {
           variant="body1"
           style={{ marginTop: "10px" }}
           align={"center"}
+          component="div"
         >
           <Box fontStyle="bold" fontWeight="fontWeightMedium" display="inline">
-            {orderInfo.name + " " + orderInfo.lastName}
+            {this.state.username}
           </Box>
           <br />
         </Typography>
         <Typography variant="body1" align={"center"}>
-          {orderInfo.address}
+          {this.state.address}
         </Typography>
-        <br />
-        <div style={{ padding: "30px 30px" }}>
+        <div style={{ padding: "20px 20px" }}>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
@@ -119,9 +146,9 @@ export default class Bill extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <StyledTableRow key={orderInfo.name}>
+                <StyledTableRow key={this.state.type.key}>
                   <StyledTableCell component="th" scope="row">
-                    {"Traduction " + typeInfo.name}
+                    {"Traduction " + getFrenchName(this.state.type.key)}
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {this.props.amount + " euros"}
@@ -149,11 +176,10 @@ export default class Bill extends Component {
           </Typography>
           <Typography>{"Facture n°" + this.props.orderId}</Typography>
           <Typography>
-            {"La facture a été payée par " + methodInfo.name}
+            {"La facture a été payée par " + this.state.method.frenchTitle}
           </Typography>
-          <br />
           <Divider style={{ margin: "4px 2px" }} />
-          <Typography>
+          <Typography component="div">
             <Box
               fontStyle="bold"
               fontWeight="fontWeightMedium"

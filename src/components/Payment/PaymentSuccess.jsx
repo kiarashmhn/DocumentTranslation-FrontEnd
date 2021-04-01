@@ -20,7 +20,16 @@ export default class PaymentSuccess extends Component {
   }
 
   exportPdf = () => {
-    html2canvas(document.querySelector("#bill-box")).then(canvas => {
+    window.scrollTo(0, 0);
+    html2canvas(document.querySelector("#bill-box"), {
+      logging: false,
+      allowTaint: true,
+      windowWidth: "1360px",
+      width: "1360",
+      scrollY: window.pageYOffset + 100,
+      height: "768",
+      windowHeight: "768px"
+    }).then(canvas => {
       const imgData = canvas.toDataURL("image/jpg");
       const pdf = new JsPDF({
         orientation: "l", // landscape
@@ -58,7 +67,6 @@ export default class PaymentSuccess extends Component {
             borderColor="primary.main"
             bgcolor="background.paper"
             border={2}
-            style={{ padding: "10px" }}
             m={5}
           >
             <Bill

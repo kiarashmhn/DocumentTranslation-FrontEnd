@@ -17,6 +17,25 @@ const persianNote3 =
   "از طریق Western Union در وجه Daniel MOVAHHEDI مبلغ هزینه را پرداخت کنید.";
 const frenchNote3 = "Western Union à l’ordre de Daniel MOVAHHEDI.";
 
+export const methods = [
+  {
+    title: "پرداخت با کارت",
+    frenchTitle: "Carte bancaire"
+  },
+  {
+    title: "واریز به حساب",
+    frenchTitle: "Virement bancaire"
+  },
+  {
+    title: "ارسال چک",
+    frenchTitle: "Chèque"
+  },
+  {
+    title: "وسترن یونیون",
+    frenchTitle: "Western Union"
+  }
+];
+
 export function methodsInfo(id, code, price) {
   return [
     {
