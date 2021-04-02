@@ -109,6 +109,7 @@ export default class PaymentInfo extends Component {
                   <TableCell align="center">Montant</TableCell>
                   <TableCell align="center">Mode de livraison</TableCell>
                   <TableCell align="center">Date</TableCell>
+                  <TableCell align="center">Référence</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -137,6 +138,7 @@ export default class PaymentInfo extends Component {
                           "/" +
                           new Date(p.creationTime).getFullYear()}
                       </TableCell>
+                      <TableCell align={"center"}>{p.code}</TableCell>
                     </TableRow>
                   );
                 })}
