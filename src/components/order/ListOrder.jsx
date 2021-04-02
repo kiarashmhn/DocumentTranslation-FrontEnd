@@ -14,6 +14,9 @@ import SelectAdminDialog from "../register_login/SelectAdminDialog";
 import AuthService from "../../AuthService";
 import FullScreenDialog from "../FullScreenDialog";
 import { getFrench } from "./OrderStatus";
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import theme from "../../theme";
+import PaymentInfo from "../Payment/PaymentInfo";
 
 const styles = theme => ({
   link: {
@@ -55,6 +58,7 @@ class ListOrder extends Component {
       open: false,
       openUser: false,
       openAdmins: false,
+      openPaymentInfo: false,
       itemId: "",
       username: "",
       adminName: ""
@@ -108,6 +112,20 @@ class ListOrder extends Component {
     this.setState({
       openUser: false,
       username: ""
+    });
+  };
+
+  handleClickOpenPayment = orderId => {
+    this.setState({
+      openPaymentInfo: true,
+      itemId: orderId
+    });
+  };
+
+  handleClickClosePayment = () => {
+    this.setState({
+      openPaymentInfo: false,
+      itemId: ""
     });
   };
 
@@ -269,6 +287,28 @@ class ListOrder extends Component {
         }
       ]
     ];
+    if (this.props.type && this.state.isSuperAdmin)
+      columns.push({
+        name: "isPaid",
+        label: "Informations de paiement",
+        options: {
+          customBodyRender: (value, meta) => {
+            if (value !== undefined && value !== null && !!value) {
+              return (
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => this.handleClickOpenPayment(meta.rowData[1])}
+                  style={{ color: theme.palette.primary.main }}
+                >
+                  <MonetizationOnIcon fontSize="small" />
+                </IconButton>
+              );
+            } else {
+              return <span />;
+            }
+          }
+        }
+      });
     return columns;
   };
 
@@ -324,6 +364,12 @@ class ListOrder extends Component {
             adminName={this.state.adminName}
             itemId={this.state.itemId}
             onClose={this.handleClickCloseAdmins}
+          />
+        )}
+        {this.state.openPaymentInfo && (
+          <PaymentInfo
+            orderId={this.state.itemId}
+            onClose={this.handleClickClosePayment}
           />
         )}
       </Fragment>

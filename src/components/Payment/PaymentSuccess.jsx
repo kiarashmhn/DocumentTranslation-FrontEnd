@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import Bill from "./Bill";
 import JsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Button from "@material-ui/core/Button";
 import { getFrenchName, getPersianName } from "../../Dictionary";
+import { Redirect } from "react-router";
 
 export default class PaymentSuccess extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ export default class PaymentSuccess extends Component {
       amount: this.props.location.state.amount,
       orderId: this.props.location.state.orderId,
       code: this.props.location.state.code,
-      method: this.props.location.state.method
+      method: this.props.location.state.method,
+      redirect: false
     };
   }
 
@@ -41,6 +43,19 @@ export default class PaymentSuccess extends Component {
     });
   };
 
+  redirect = () => {
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: "/"
+          }}
+        />
+      );
+    }
+  };
+
   render() {
     return (
       <div>
@@ -58,7 +73,7 @@ export default class PaymentSuccess extends Component {
           variant="h6"
           component="h4"
           align="center"
-          style={{ whiteSpace: "pre-line", marginBottom: "5px" }}
+          style={{ whiteSpace: "pre-line" }}
         >
           پرداخت با موفقیت ثبت شد
         </Typography>
@@ -85,15 +100,14 @@ export default class PaymentSuccess extends Component {
             justifyContent: "center",
             alignItems: "center",
             marginBottom: "10px",
-            paddingBottom: "20px",
-            marginTop: "2px"
+            paddingBottom: "20px"
           }}
         >
           <Button
             onClick={this.exportPdf}
-            style={{ textTransform: "none" }}
+            style={{ textTransform: "none", marginRight: "5px" }}
             variant="contained"
-            color="secondary"
+            color="primary"
             align={"center"}
           >
             <p>
@@ -119,7 +133,40 @@ export default class PaymentSuccess extends Component {
               </Typography>
             </p>
           </Button>
+          <Button
+            onClick={() => {
+              this.setState({ redirect: true });
+            }}
+            style={{ textTransform: "none", marginLeft: "5px" }}
+            variant="contained"
+            color="secondary"
+            align={"center"}
+          >
+            <p>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "0",
+                  fontSize: 16
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                {getFrenchName("redirectToAccount")}
+              </Typography>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "2px",
+                  fontSize: "100%"
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                {getPersianName("redirectToAccount")}
+              </Typography>
+            </p>
+          </Button>
         </div>
+        {this.redirect()}
       </div>
     );
   }

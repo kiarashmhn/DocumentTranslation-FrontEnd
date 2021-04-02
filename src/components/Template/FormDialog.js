@@ -15,7 +15,7 @@ const styles = theme => ({
     marginTop: theme.spacing(2)
   },
   dialogPaperScrollPaper: {
-    maxHeight: "none"
+    overflow: "scroll"
   },
   dialogContent: {
     paddingTop: 0,
@@ -45,6 +45,7 @@ function FormDialog(props) {
       onClose={onClose}
       disableBackdropClick={loading}
       disableEscapeKeyDown={loading}
+      scroll={"paper"}
       classes={{
         paper: classes.dialogPaper,
         paperScrollPaper: classes.dialogPaperScrollPaper

@@ -1152,6 +1152,18 @@ export const Dictionary = {
   mahrHaj: {
     persian: "سفر حج به ارزش",
     french: "Un voyage Hajj d’une valeur de"
+  },
+  downloadBill: {
+    persian: "دریافت صورتحساب",
+    french: "Télécharger facture"
+  },
+  redirectToAccount: {
+    persian: "بازگشت به حساب کاربری",
+    french: "Retour au mon compte"
+  },
+  deliveryMode: {
+    persian: "شیوه ارسال سفارش",
+    french: "Mode de livraison"
   }
 };
 

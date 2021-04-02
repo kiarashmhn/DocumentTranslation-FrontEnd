@@ -24,15 +24,18 @@ export const methods = [
   },
   {
     title: "واریز به حساب",
-    frenchTitle: "Virement bancaire"
+    frenchTitle: "Virement bancaire",
+    inputKey: "num"
   },
   {
     title: "ارسال چک",
-    frenchTitle: "Chèque"
+    frenchTitle: "Chèque",
+    inputKey: "chequeNum"
   },
   {
     title: "وسترن یونیون",
-    frenchTitle: "Western Union"
+    frenchTitle: "Western Union",
+    inputKey: "num"
   }
 ];
 
