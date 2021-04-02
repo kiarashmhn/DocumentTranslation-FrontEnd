@@ -23,8 +23,6 @@ export const DrivingLicenceForm = {
           key: "lastName",
           type: "text"
         },
-        
-        
         {
           key: "birthDate",
           type: "date"
@@ -38,7 +36,10 @@ export const DrivingLicenceForm = {
     {
       title: "cardInfo",
       content: [
-        
+        {
+          key: "isSmartCard",
+          type: "check"
+        },
         {
           key: "DrivingLicenceNumber",
           type: "text"
@@ -56,13 +57,12 @@ export const DrivingLicenceForm = {
             { value: "ABplus", key: "ABplus" },
             { value: "ABminus", key: "ABminus" }
           ],
-          required: true
+          notRequiredField: "isSmartCard"
         },
         {
           key: "dateofIssue",
           type: "date"
         },
-        
         {
           key: "drivingLicenceCategory",
           type: "select",

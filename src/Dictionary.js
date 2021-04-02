@@ -5,15 +5,15 @@ export const Dictionary = {
   },
   M: {
     persian: "مرد",
-    french: "Mâle"
+    french: "M"
   },
   F: {
     persian: "زن",
-    french: "Femelle"
+    french: "F"
   },
   none: {
-    persian: "انتخاب نشده",
-    french: "Aucun"
+    persian: "خالی",
+    french: "case vide"
   },
   identificationCertificate: {
     persian: "شناسنامه",
@@ -75,7 +75,7 @@ export const Dictionary = {
   },
   cardSerial: {
     persian: "شماره سریال کارت",
-    french: "N° de Série"
+    french: "N° de série"
   },
   postalCode: {
     persian: "کد پستی",
@@ -137,7 +137,7 @@ export const Dictionary = {
   },
   isSmartCard: {
     persian: "آیا کارت هوشمند است؟",
-    french: "Est la carte à puce?"
+    french: "S'agit-il d'une carte d'identité biométrique?"
   },
   cardInfo: {
     persian: "اطلاعات کارت",
@@ -192,7 +192,7 @@ export const Dictionary = {
   },
   uploadIDCardFiles: {
     persian: "بارگذاری سند کارت ملی",
-    french: "Importer la Carte d'Identité Nationale"
+    french: "Importer la Carte d'identité nationale"
   },
   back: {
     persian: "مرحله قبل",
@@ -435,11 +435,11 @@ export const Dictionary = {
   },
   startDateofMilitaryService: {
     persian: "تاریخ شروع خدمت سربازی",
-    french: "ate de Début du Service Militaire"
+    french: "Date de début du service militaire"
   },
   militaryServiceEndDate: {
     persian: "تاریخ پایان خدمت سربازی",
-    french: "Date de Fin du Service Militaire"
+    french: "Date de fin du service militaire"
   },
   grade: {
     persian: "درجه",
@@ -447,7 +447,7 @@ export const Dictionary = {
   },
   dateofIssue: {
     persian: "تاریخ صدور",
-    french: "Date de Délivrance"
+    french: "Date de délivrance"
   },
   corporal: {
     persian: "سرجوخه / سرناوی",
@@ -503,15 +503,15 @@ export const Dictionary = {
   },
   afghanDrivingLicence: {
     persian: "لایسنس درایوری",
-    french: "Permis de Conduire"
+    french: "Permis de conduire"
   },
   numberofPages: {
     persian: "نمبر صفحه",
-    french: "N° de page"
+    french: "Page"
   },
   registerNumber: {
-    persian: "نمبر ثبت",
-    french: "N° d'enregistrement"
+    persian: "نمبر ثبت/د ثبت شمیره",
+    french: "Numéro"
   },
   province: {
     persian: "ولایت",
@@ -538,12 +538,12 @@ export const Dictionary = {
     french: "N° de Tazkira (acte de naissance)"
   },
   volumeNumber: {
-    persian: "جلد",
-    french: "N° de volume"
+    persian: "جلد/توک",
+    french: "Volume"
   },
   pageNumber: {
-    persian: "صفحه",
-    french: "N° de page"
+    persian: "صفحه/پاڼه",
+    french: "Page"
   },
   serialNumber: {
     persian: "نمبر سریال",
@@ -563,42 +563,46 @@ export const Dictionary = {
   },
   uploadAfghanDrivingLicence: {
     persian: "آپلود فایل لایسنس درایوری",
-    french: "Importer la Permis de Conduire"
+    french: "Importer la Permis de conduire"
   },
   Oplus: {
-    persian: "او+",
+    persian: "",
     french: "O+"
   },
   Ominus: {
-    persian: "او-",
+    persian: "",
     french: "O-"
   },
   Aplus: {
-    persian: "آ+",
+    persian: "",
     french: "A+"
   },
   Aminus: {
-    persian: "آ-",
+    persian: "",
     french: "A-"
   },
   Bplus: {
-    persian: "ب+",
+    persian: "",
     french: "B+"
   },
   Bminus: {
-    persian: "ب-",
+    persian: "",
     french: "B-"
   },
   ABplus: {
-    persian: "آب+",
+    persian: "",
     french: "AB+"
   },
   ABminus: {
-    persian: "آب-",
+    persian: "",
     french: "AB-"
   },
   Tazkara: {
-    persian: "تذکره",
+    persian: "تذکره(برگه)",
+    french: "Acte de naissance"
+  },
+  TazkaraOld: {
+    persian: "تذکره(کتابچه)",
     french: "Acte de naissance"
   },
   uploadTazkara: {
@@ -606,16 +610,16 @@ export const Dictionary = {
     french: "Importer la Acte de naissance"
   },
   grandFatherName: {
-    persian: "نام پدر کلان",
+    persian: "نام پدر کلان/د نیکه نوم",
     french: "Prénom du grand-père"
   },
   birthDateOrAge: {
-    persian: "تاریخ تولد یا عمر",
+    persian: "تاریخ تولد یا عمر/د زیږیدلو نیټه او عمر",
     french: "Date de naissance ou âge"
   },
   age: {
     persian: "عمر",
-    french: "âgé"
+    french: "agé de"
   },
   religion: {
     persian: "دین",
@@ -638,15 +642,15 @@ export const Dictionary = {
     french: "État civil"
   },
   familyMembers: {
-    persian: "تعداد نفرات فامیل",
+    persian: "تعداد نفرات فامیل/دعایلې شمیره",
     french: "Nombre de membres dans la famille"
   },
   motherLanguage: {
-    persian: "زبان مادری",
+    persian: "زبان مادری/مورنی ژبه",
     french: "Langue maternelle"
   },
   foreignLanguage: {
-    persian: "زبان خارجی",
+    persian: "زبان خارجی/باندنی ژبه",
     french: "Langue étrangère"
   },
   militaryStatus: {
@@ -654,27 +658,27 @@ export const Dictionary = {
     french: "Situation militaire"
   },
   height: {
-    persian: "قد",
+    persian: "قد/ونه",
     french: "Taille"
   },
   eyeColor: {
-    persian: "رنگ چشم",
+    persian: "رنگ چشم/د سترګو رنګ",
     french: "Couleur des yeux"
   },
   eyebrow: {
-    persian: "حالت ابرو",
+    persian: "حالت ابرو/وروحی",
     french: "Forme des sourcils"
   },
   hairColor: {
-    persian: "رنگ موی",
+    persian: "رنگ موی/دویښتانو رنګ",
     french: "Couleur des cheveux"
   },
   skinColor: {
-    persian: "رنگ پوست",
+    persian: "رنگ پوست/د پوستکي رنګ",
     french: "Couleur de la peau"
   },
   otherSigns: {
-    persian: "علائم فارقه ی دیگر",
+    persian: "علائم فارقه ی دیگر/نورې نښې",
     french: "Signe particulier"
   },
   incapacity: {
@@ -682,8 +686,8 @@ export const Dictionary = {
     french: "Incapacité"
   },
   fatherInformation: {
-    persian: "مشخصات تذکره پد یا پدر کلان",
-    french: "Référence de l’acte de naissance de son grand-père"
+    persian: "مشخصات تذکره پدر یا پدر کلان",
+    french: "Référence de l'enregistrement de son père ou grand-père"
   },
   islam: {
     persian: "اسلام",
@@ -870,7 +874,7 @@ export const Dictionary = {
     french: "Appartenance tribale"
   },
   appearance: {
-    persian: "مشخصات ظاهری",
+    persian: "مشخصات ظاهری/بېلونکې نښې ",
     french: "Caractéristiques physiques"
   },
   shortHeight: {
@@ -947,7 +951,11 @@ export const Dictionary = {
   },
   tazkaraInformation: {
     persian: "مشخصات تذکره",
-    french: "Enregistré auprès du bureau du registre d'état civil"
+    french: "Lieu, date et référence de l'enregistrement"
+  },
+  fatherstazkaraInformation: {
+    persian: "مشخصات تذکره پدر یا پدر کلان",
+    french: "Référence de l'enregistrement de son père ou grand-père"
   },
   registerLocation: {
     persian: "محل صدور",
@@ -967,11 +975,11 @@ export const Dictionary = {
   },
   inYear: {
     persian: "در سال",
-    french: "Par an"
+    french: "en"
   },
   DrivingLicence: {
     persian: "گواهینامه رانندگی",
-    french: "Permis de Conduire"
+    french: "Permis de conduire"
   },
   DrivingLicenceNumber: {
     persian: "شماره گواهینامه",
@@ -979,7 +987,7 @@ export const Dictionary = {
   },
   uploadDrivingLicenceFiles: {
     persian: "بارگذاری گواهینامه ی رانندگی",
-    french: "Importer la Permis de Conduire"
+    french: "Importer la Permis de conduire"
   },
   HouseNumber: {
     persian: "شماره خانه/دکور نمبر",
@@ -1023,7 +1031,7 @@ export const Dictionary = {
   },
   expirationDuration: {
     persian: "مدت اعتبار",
-    french: "Valable"
+    french: "Durée de validité"
   },
   firstIssueDate: {
     persian: "تاریخ اولین صدور",
@@ -1041,19 +1049,119 @@ export const Dictionary = {
     persian: "نام پدر/دپلار نوم",
     french: "Prénom du père"
   },
-  TazkaraOld: {
-    persian: "تذکره(کتابچه)",
-    french: "Acte de naissance"
+  aBirthDate: {
+    persian: "تاریخ تولد یا عمر/ د زیږیدلو نیټه او",
+    french: "Date de naissance"
   },
-  downloadBill: {
-    persian: "دریافت صورتحساب",
-    french: "Télécharger facture"
+  aBirthLocation: {
+    persian: "محل تولد/د زیږبدلو ځای",
+    french: "Lieu de naissance"
+  },
+  identity: {
+    persian: "هویت/ پیژندنه",
+    french: "Identité"
+  },
+  aName: {
+    persian: "نام/نوم",
+    french: "Prénom"
+  },
+  registeredTazkaraInformation: {
+    persian: "مشخصات ثبت تذکره",
+    french: "Référence de l'enregistrement de l'acte"
+  },
+  marriageCertificate: {
+    persian: "عقدنامه",
+    french: "Livret de mariage"
+  },
+  uploadMarriageCertificate: {
+    persian: "بارگذاری عقدنامه",
+    french: "Importer la Livret de mariage"
+  },
+  wifeInfo: {
+    persian: "مشخصات زوجه",
+    french: "Identité de la mariée"
+  },
+  dateofIssueIDCertificate: {
+    persian: "تاریخ صدور شناسنامه",
+    french: "Date de délivrance de l’Acte d’état civil"
+  },
+  placeofIssueIDCertificate: {
+    persian: "محل صدور شناسنامه",
+    french: "Lieu de délivrance de l’Acte d’état civil"
+  },
+  husbandInfo: {
+    persian: "مشخصات زوج",
+    french: "Identité du marié"
+  },
+  firstWitness: {
+    persian: "شاهد اول",
+    french: "1er Témoin"
+  },
+  secondWitness: {
+    persian: "شاهد دوم",
+    french: "2ème Témoin"
+  },
+  thirdWitness: {
+    persian: "شاهد سوم",
+    french: "3ème Témoin"
+  },
+  firstRepresenter: {
+    persian: "معرف اول",
+    french: "1er représentant"
+  },
+  secondRepresenter: {
+    persian: "معرف دوم",
+    french: "2ème représentant"
+  },
+  livingPlace: {
+    persian: "محل سکونت",
+    french: "Lieu de résidence"
+  },
+  aghed: {
+    persian: "مشخصات مجریان صیغه ازدواج ",
+    french: "Identité de la personne qui a célébré le mariage"
+  },
+  witness: {
+    persian: "شاهد",
+    french: "Témoin"
+  },
+  representer: {
+    persian: "معرف",
+    french: "représentant"
+  },
+  mahr: {
+    persian: "مهریه",
+    french: "Mahr"
+  },
+  mahrQuran: {
+    persian: "یک جلد کلام اله مجید (قرآن) به ارزش",
+    french: "Un Coran d’une valeur de"
+  },
+  mahrChandelier: {
+    persian: "آیینه و شمعدان به ارزش ",
+    french: "Un miroir et un chandelier d’une valeur de"
+  },
+  mahrNabat: {
+    persian: "شاخه نبات به ارزش",
+    french: "un sucre cristallisé sur bâton en bois"
+  },
+  mahrCoin: {
+    persian: "عدد سکه بهار آزادی",
+    french: "pièces d’or Azadi"
+  },
+  mahrHaj: {
+    persian: "سفر حج به ارزش",
+    french: "Un voyage Hajj d’une valeur de"
   }
 };
 
 export const getCompleteName = text => {
-  if (Dictionary[text])
-    return Dictionary[text].french + " / " + Dictionary[text].persian;
+  if (Dictionary[text]) {
+    if (Dictionary[text].french && Dictionary[text].persian)
+      return Dictionary[text].french + " / " + Dictionary[text].persian;
+    else if (Dictionary[text].french) return Dictionary[text].french;
+    return Dictionary[text].persian;
+  }
   return null;
 };
 

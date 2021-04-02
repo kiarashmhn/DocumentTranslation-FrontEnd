@@ -13,10 +13,10 @@ export const TazkaraOldForm = {
       ]
     },
     {
-      title: "personalInfo",
+      title: "identity",
       content: [
         {
-          key: "name",
+          key: "aName",
           type: "text"
         },
         {
@@ -32,6 +32,29 @@ export const TazkaraOldForm = {
           key: "grandFatherName",
           type: "text"
         },
+        
+        {
+          key: "provinceDistrict",
+          provinceKey: "province",
+          districtKey: "district",
+          villageKey: "village",
+          type: "provinceDistrict",
+          name: "birthLocation",
+          required: true
+        },
+        
+        
+        
+        {
+          key: "aBirthDate",
+          type: "complexDate",
+          required: true
+        }
+      ]
+    },
+    {
+      title: "personalInfo",
+      content: [
         {
           key: "religion",
           type: "select",
@@ -79,29 +102,6 @@ export const TazkaraOldForm = {
           ],
           required: true
         },
-        
-        
-        
-        
-        {
-          key: "birthDate",
-          type: "complexDate",
-          required: true
-        }
-      ]
-    },
-    {
-      title: "birthLocation",
-      content: [
-        {
-          key: "provinceDistrict",
-          provinceKey: "province",
-          districtKey: "district",
-          villageKey: "village",
-          type: "provinceDistrict",
-          name: "birthLocation",
-          required: true
-        }
       ]
     },
     {
