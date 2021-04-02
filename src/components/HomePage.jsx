@@ -8,6 +8,9 @@ import dummyBlogPosts from "./dummy_data/blogPosts";
 import DialogSelector from "./register_login/DialogSelector";
 import Routing from "./Routing";
 import smoothScrollTop from "../functions/smoothScrollTop";
+import * as URLConstant from "../URLConstant";
+import { Redirect } from "react-router";
+import AuthService from "../AuthService";
 
 AOS.init({ once: true });
 
@@ -29,6 +32,7 @@ class HomePage extends Component {
       isCookieRulesDialogOpen: false,
       selectedSection: "Home"
     };
+    this.auth = new AuthService();
   }
 
   componentDidMount() {
@@ -156,6 +160,28 @@ class HomePage extends Component {
     });
   };
 
+  redirect = () => {
+    let isAdmin = this.auth.isAdmin();
+    let isUser = this.auth.loggedIn();
+    let url = isAdmin
+      ? URLConstant.ADMIN_PANEL
+      : isUser
+      ? URLConstant.USER_PANEL
+      : null;
+    console.log(url);
+    if (url) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: url,
+            state: {}
+          }}
+        />
+      );
+    }
+  };
+
   render() {
     const classes = this.props.classes;
     return (
@@ -188,6 +214,7 @@ class HomePage extends Component {
           selectBlog={this.selectBlog}
           openRegisterDialog={this.openRegisterDialog}
         />
+        {this.redirect()}
       </div>
     );
   }

@@ -13,6 +13,10 @@ import Box from "@material-ui/core/Box";
 import OrderForm from "./OrderForm";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 import { Redirect } from "react-router";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import theme from "../../theme";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -24,7 +28,8 @@ class CreateOrder extends Component {
       openPaymentDialog: false,
       isLoading: false,
       type: null,
-      id: null
+      id: null,
+      nationality: "Iranian"
     };
   }
 
@@ -50,6 +55,18 @@ class CreateOrder extends Component {
   handleOpenPaymentDialog = () => {
     this.setState({
       openPaymentDialog: true
+    });
+  };
+
+  showAfghan = () => {
+    this.setState({
+      nationality: "Afghan"
+    });
+  };
+
+  showIranian = () => {
+    this.setState({
+      nationality: "Iranian"
     });
   };
 
@@ -171,14 +188,14 @@ class CreateOrder extends Component {
     return (
       <Fragment>
         <Box
-          borderColor="error.main"
+          borderColor={theme.palette.secondary.main}
           bgcolor="background.paper"
-          border={1}
-          style={{ padding: "10px", marginBottom: "30px" }}
+          border={2}
+          style={{ padding: "5px", marginBottom: "30px" }}
           m={5}
         >
           <Fragment>
-            <Typography variant="body1" color={"error"} paragraph>
+            <Typography variant="body1" color={"secondary"} paragraph>
               * pointe:
             </Typography>
             <Typography variant="body1" paragraph>
@@ -187,8 +204,12 @@ class CreateOrder extends Component {
               auprès des administrations (préfecture, OFPRA, récépissé, titre de
               séjour, passeport…).
             </Typography>
-            <br />
-            <Typography variant="body1" dir={"rtl"} color={"error"} paragraph>
+            <Typography
+              variant="body1"
+              dir={"rtl"}
+              color={"secondary"}
+              paragraph
+            >
               * نکته:
             </Typography>
             <Typography variant="body1" dir={"rtl"} paragraph>
@@ -196,9 +217,81 @@ class CreateOrder extends Component {
               و دیگر مشخصات را با پاسپورت یا مدارک دیگر مثل کارت اقامت خود حتما
               مطابقت دهید.
             </Typography>
-            <br />
           </Fragment>
         </Box>
+        <Grid
+          container
+          spacing={3}
+          alignItems="center"
+          justify="center"
+          alignContent={"center"}
+          style={{ marginBottom: "20px" }}
+        >
+          <Grid item xs={6} md={4} key={"afghan"}>
+            <Card
+              style={{
+                backgroundColor:
+                  this.state.nationality === "Afghan"
+                    ? theme.palette.primary.main
+                    : theme.palette.secondary.main
+              }}
+            >
+              <CardActionArea onClick={() => this.showAfghan()}>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    align="center"
+                    style={{ whiteSpace: "pre-line", color: "#FFFFFF" }}
+                  >
+                    Documents Afghans
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    align="center"
+                    dir="rtl"
+                    style={{ whiteSpace: "pre-line", color: "#FFFFFF" }}
+                  >
+                    مدارک افغان
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={6} md={4} key={"iranian"}>
+            <Card
+              style={{
+                backgroundColor:
+                  this.state.nationality === "Iranian"
+                    ? theme.palette.primary.main
+                    : theme.palette.secondary.main
+              }}
+            >
+              <CardActionArea onClick={() => this.showIranian()}>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    align="center"
+                    style={{ whiteSpace: "pre-line", color: "#FFFFFF" }}
+                  >
+                    Documents Iraniens
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    align="center"
+                    dir="rtl"
+                    style={{ whiteSpace: "pre-line", color: "#FFFFFF" }}
+                  >
+                    مدارک ایرانی
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        </Grid>
         <Grid
           container
           spacing={3}
@@ -209,16 +302,17 @@ class CreateOrder extends Component {
         >
           {Object.keys(OrderTypes).map(typeKey => {
             let type = OrderTypes[typeKey];
-            return (
-              <Grid item xs={12} sm={12} md={4} key={typeKey}>
-                <MediaCard
-                  image={image}
-                  title={getFrenchName(type.key)}
-                  onClick={() => this.handleOpenDialog(type)}
-                  secondaryTitle={getPersianName(type.key)}
-                />
-              </Grid>
-            );
+            if (type.nationality === this.state.nationality)
+              return (
+                <Grid item xs={12} sm={12} md={4} key={typeKey}>
+                  <MediaCard
+                    image={image}
+                    title={getFrenchName(type.key)}
+                    onClick={() => this.handleOpenDialog(type)}
+                    secondaryTitle={getPersianName(type.key)}
+                  />
+                </Grid>
+              );
           })}
         </Grid>
         {this.state.type && (

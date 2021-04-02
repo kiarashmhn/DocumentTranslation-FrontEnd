@@ -16,7 +16,7 @@ export const OrderTypes = {
     form: idCertificateForm,
     reportData: IdentityCertificateReportData,
     code: "IA",
-    type: "Iranian",
+    nationality: "Iranian",
     price: 25
   },
   ID_CARD: {
@@ -24,44 +24,44 @@ export const OrderTypes = {
     form: idCardForm,
     reportData: IDCardReportData,
     code: "IC",
-    type: "Iranian",
+    nationality: "Iranian",
     price: 20
   },
   MILITARY_SERVICE_LICENCE: {
     key: "militaryServiceLicence",
     form: militaryServiceLicenceForm,
     reportData: MilitaryServiceLicenceReportData,
-    type: "Iranian",
+    nationality: "Iranian",
     code: "MSL"
   },
   AFGHAN_DRIVING_LICENCE: {
     key: "afghanDrivingLicence",
     form: afghanDrivingLicenceForm,
-    type: "Afghan",
+    nationality: "Afghan",
     code: "ADL"
   },
   TAZKARA: {
     key: "Tazkara",
     form: TazkaraForm,
-    type: "Afghan",
+    nationality: "Afghan",
     code: "TZ"
   },
   TAZKARA_OLD: {
     key: "TazkaraOld",
     form: TazkaraOldForm,
-    type: "Afghan",
+    nationality: "Afghan",
     code: "TZO"
   },
   DRIVING_LICENCE: {
     key: "DrivingLicence",
     form: DrivingLicenceForm,
-    type: "Iranian",
+    nationality: "Iranian",
     code: "DL"
   },
   MARRIAGE_CERTIFICATE: {
     key: "marriageCertificate",
     form: MarriageCertificateForm,
-    type: "Iranian",
+    nationality: "Iranian",
     code: "MC"
   }
 };
