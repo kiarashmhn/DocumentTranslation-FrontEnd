@@ -52,8 +52,7 @@ class PaymentSubmit extends Component {
     }
   };
 
-  submitPayment = e => {
-    e.preventDefault();
+  doPay = () => {
     let self = this;
     let postData = {
       orderId: this.props.id,
@@ -84,6 +83,14 @@ class PaymentSubmit extends Component {
           }
         );
       });
+  };
+
+  submitPayment = e => {
+    e.preventDefault();
+    let self = this;
+    if (!this.state.code && this.state.files.length === 0)
+      self.props.showSnackbar(getPersianName("receiptInfo"), "error");
+    else this.doPay();
   };
 
   redirect = () => {
