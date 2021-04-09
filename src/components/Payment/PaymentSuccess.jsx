@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
-import { Grid, Typography } from "@material-ui/core";
-import Bill from "./Bill";
-import JsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 import { Redirect } from "react-router";
+import Box from "@material-ui/core/Box";
+import { getTypeByKey } from "../order/OrderTypes";
 
 export default class PaymentSuccess extends Component {
   constructor(props) {
@@ -16,32 +14,11 @@ export default class PaymentSuccess extends Component {
       amount: this.props.location.state.amount,
       orderId: this.props.location.state.orderId,
       code: this.props.location.state.code,
+      delay: getTypeByKey(this.props.location.state.code).delay,
       method: this.props.location.state.method,
       redirect: false
     };
   }
-
-  exportPdf = () => {
-    window.scrollTo(0, 0);
-    html2canvas(document.querySelector("#bill-box"), {
-      logging: false,
-      allowTaint: true,
-      windowWidth: "1360px",
-      width: "1360",
-      scrollY: window.pageYOffset + 100,
-      height: "768",
-      windowHeight: "768px"
-    }).then(canvas => {
-      const imgData = canvas.toDataURL("image/jpg");
-      const pdf = new JsPDF({
-        orientation: "l", // landscape
-        unit: "pt", // points, pixels won't work properly
-        format: [canvas.width, canvas.height] // set needed dimensions for any element
-      });
-      pdf.addImage(imgData, "JPEG", 0, 0, canvas.width, canvas.height);
-      pdf.save("facture.pdf");
-    });
-  };
 
   redirect = () => {
     if (this.state.redirect) {
@@ -77,21 +54,74 @@ export default class PaymentSuccess extends Component {
         >
           پرداخت با موفقیت ثبت شد
         </Typography>
-        <div id={"bill-box"}>
-          <Box
-            borderColor="primary.main"
-            bgcolor="background.paper"
-            border={2}
-            m={5}
+
+        <Box
+          borderColor="primary.main"
+          bgcolor="background.paper"
+          border={2}
+          m={5}
+        >
+          <Typography
+            paragraph
+            variant="body1"
+            align="center"
+            style={{ padding: "10px" }}
           >
-            <Bill
-              amount={this.state.amount}
-              orderId={this.state.orderId}
-              code={this.state.code}
-              method={this.state.method}
-            />
-          </Box>
-        </div>
+            Votre demande de traduction a bien été enregistrée et elle sera
+            traitée dans les plus brefs délais.{" "}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              {this.state.delay}
+            </Box>
+            {""} heures après la validation de votre commande, vous pouvez
+            télécharger la traduction certifiée à partir de votre espace client.
+            Nous reviendrons vers vous en cas de demande incomplète et vous
+            indiquerons les renseignements manquants à la validation de votre
+            commande. Vous pouvez suivre l’état d’avancement de votre commande
+            via votre comte &gt; liste de commande. Pour information votre
+            numéro de commande est{" "}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              {this.state.code + "" + this.state.orderId}
+            </Box>
+            {""}.
+          </Typography>
+          <Typography
+            paragraph
+            variant="body1"
+            align="center"
+            dir={"rtl"}
+            style={{ padding: "10px" }}
+          >
+            درخواست ترجمه شما ثبت شده است. در صورت تکمیل بودن اطلاعات، درخواست
+            تایید و ترجمه آغاز می شود و سند شما بعد از{" "}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              {this.state.delay}
+            </Box>
+            {""} ساعت در حساب کاربری قابل دانلود خواهد بود. در غیر اینصورت،
+            موارد نقص در حساب کاربری به شما اطلاع داده خواهد شد و تایید آن منوط
+            به تکمیل آن می باشد. می توانید وضعیت سفارش خود را از طریق حساب
+            کاربری &gt; لیست سفارشات دنبال کنید. برای اطلاع، شماره سفارش شما{" "}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              {this.state.code + "" + this.state.orderId}
+            </Box>{" "}
+            میباشد.
+          </Typography>
+        </Box>
         <div
           style={{
             maxWidth: "100%",
@@ -100,44 +130,15 @@ export default class PaymentSuccess extends Component {
             justifyContent: "center",
             alignItems: "center",
             marginBottom: "10px",
+            marginTop: "10px",
             paddingBottom: "20px"
           }}
         >
           <Button
-            onClick={this.exportPdf}
-            style={{ textTransform: "none", marginRight: "5px" }}
-            variant="contained"
-            color="primary"
-            align={"center"}
-          >
-            <p>
-              <span
-                style={{
-                  display: "block",
-                  marginBottom: "0",
-                  fontSize: 16
-                }}
-              />
-              <Typography variant="body1" align="center" component={"span"}>
-                {getFrenchName("downloadBill")}
-              </Typography>
-              <span
-                style={{
-                  display: "block",
-                  marginBottom: "2px",
-                  fontSize: "100%"
-                }}
-              />
-              <Typography variant="body1" align="center" component={"span"}>
-                {getPersianName("downloadBill")}
-              </Typography>
-            </p>
-          </Button>
-          <Button
             onClick={() => {
               this.setState({ redirect: true });
             }}
-            style={{ textTransform: "none", marginLeft: "5px" }}
+            style={{ textTransform: "none" }}
             variant="contained"
             color="secondary"
             align={"center"}

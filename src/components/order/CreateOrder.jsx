@@ -29,7 +29,7 @@ class CreateOrder extends Component {
       isLoading: false,
       type: null,
       id: null,
-      nationality: "Iranian"
+      nationality: "Afghan"
     };
   }
 

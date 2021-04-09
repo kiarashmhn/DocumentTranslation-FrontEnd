@@ -17,6 +17,8 @@ import { getFrench } from "./OrderStatus";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import theme from "../../theme";
 import PaymentInfo from "../Payment/PaymentInfo";
+import ReceiptIcon from "@material-ui/icons/Receipt";
+import ShowBill from "../Payment/ShowBill";
 
 const styles = theme => ({
   link: {
@@ -59,6 +61,7 @@ class ListOrder extends Component {
       openUser: false,
       openAdmins: false,
       openPaymentInfo: false,
+      openBillInfo: false,
       itemId: "",
       username: "",
       adminName: ""
@@ -125,6 +128,21 @@ class ListOrder extends Component {
   handleClickClosePayment = () => {
     this.setState({
       openPaymentInfo: false,
+      itemId: ""
+    });
+    this.getData();
+  };
+
+  handleClickOpenBill = orderId => {
+    this.setState({
+      openBillInfo: true,
+      itemId: orderId
+    });
+  };
+
+  handleClickCloseBill = () => {
+    this.setState({
+      openBillInfo: false,
       itemId: ""
     });
   };
@@ -194,7 +212,7 @@ class ListOrder extends Component {
       ...[
         {
           name: "submitDate",
-          label: "Date d'enregistrement ou de paiement"
+          label: "Date d'enregistrement"
         },
         {
           name: "acceptanceDate",
@@ -290,7 +308,7 @@ class ListOrder extends Component {
     if (this.props.type && this.state.isSuperAdmin)
       columns.push({
         name: "isPaid",
-        label: "Informations de paiement",
+        label: "Info paiement",
         options: {
           customBodyRender: (value, meta) => {
             if (value !== undefined && value !== null && !!value) {
@@ -309,6 +327,27 @@ class ListOrder extends Component {
           }
         }
       });
+    columns.push({
+      name: "isPaymentVerified",
+      label: "Facture",
+      options: {
+        customBodyRender: (value, meta) => {
+          if (value !== undefined && value !== null && !!value) {
+            return (
+              <IconButton
+                aria-label="delete"
+                onClick={() => this.handleClickOpenBill(meta.rowData[1])}
+                style={{ color: theme.palette.primary.main }}
+              >
+                <ReceiptIcon fontSize="small" />
+              </IconButton>
+            );
+          } else {
+            return <span />;
+          }
+        }
+      }
+    });
     return columns;
   };
 
@@ -372,6 +411,13 @@ class ListOrder extends Component {
             onClose={this.handleClickClosePayment}
           />
         )}
+        <FullScreenDialog
+          title="Facture"
+          component={<ShowBill orderId={this.state.itemId} />}
+          handleClose={this.handleClickCloseBill}
+          open={this.state.openBillInfo}
+          itemId={this.state.itemId}
+        />
       </Fragment>
     );
   }

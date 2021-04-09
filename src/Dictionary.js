@@ -1164,6 +1164,20 @@ export const Dictionary = {
   deliveryMode: {
     persian: "شیوه ارسال سفارش",
     french: "Mode de livraison"
+  },
+  paymentApproval: {
+    french:
+      "Je reconnais avoir pris connaissance des conditions de vente et être informé que la traduction ne sera commencée qu’après réception du paiement et validation du document à traduire et des informations saisies.",
+    persian:
+      "تایید می کنم که شرایط فروش را می دانم و مطلع هستم که کار ترجمه تنها پس از دریافت هزینه و تایید سند و اطلاعات وارده آغاز می شود."
+  },
+  witnesses: {
+    persian: "شاهدان",
+    french: "Témoins"
+  },
+  representers: {
+    persian: "معرفان",
+    french: "Représentants"
   }
 };
 

@@ -12,8 +12,9 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import { methods } from "./MethodsInfo";
-import { getFrenchName } from "../../Dictionary";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 import FormDialog from "../Template/FormDialog";
+import { Button, Typography } from "@material-ui/core";
 
 export default class PaymentInfo extends Component {
   constructor(props) {
@@ -75,6 +76,27 @@ export default class PaymentInfo extends Component {
             self.setState({
               files: res.data
             });
+          }
+        });
+    }
+  };
+
+  verifyPayment = async () => {
+    if (this.props.orderId) {
+      let self = this;
+      let postData = {
+        orderId: this.props.orderId
+      };
+      await this.api
+        .doPostNoAppend(
+          process.env.REACT_APP_HOST_URL +
+            process.env.REACT_APP_MAIN_PATH +
+            URLConstant.VERIFY_PAYMENT,
+          postData
+        )
+        .then(function(res) {
+          if (res.success) {
+            self.props.onClose();
           }
         });
     }
@@ -166,6 +188,49 @@ export default class PaymentInfo extends Component {
           <Fragment>
             {this.getFilesView()}
             {this.getPaymentsView()}
+            <div
+              style={{
+                maxWidth: "100%",
+                verticalAlign: "middle",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: "10px",
+                paddingBottom: "20px",
+                marginTop: "5px"
+              }}
+            >
+              <Button
+                onClick={this.verifyPayment}
+                style={{ textTransform: "none" }}
+                variant="contained"
+                color="secondary"
+                align={"center"}
+              >
+                <p>
+                  <span
+                    style={{
+                      display: "block",
+                      marginBottom: "0",
+                      fontSize: 16
+                    }}
+                  />
+                  <Typography variant="body1" align="center" component={"span"}>
+                    {getFrenchName("finalSubmit")}
+                  </Typography>
+                  <span
+                    style={{
+                      display: "block",
+                      marginBottom: "2px",
+                      fontSize: "100%"
+                    }}
+                  />
+                  <Typography variant="body1" align="center" component={"span"}>
+                    {getPersianName("finalSubmit")}
+                  </Typography>
+                </p>
+              </Button>
+            </div>
           </Fragment>
         }
         actions={<span />}

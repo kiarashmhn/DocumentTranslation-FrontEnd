@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { Redirect } from "react-router";
+import Checkbox from "@material-ui/core/Checkbox";
 
 function StripePayment(props) {
   const { amount, orderId, code, deliveryType, showSnackbar } = props;
@@ -22,6 +23,7 @@ function StripePayment(props) {
   const [isPaymentLoading, setPaymentLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState(null);
   const [redirect, setRedirect] = useState(false);
+  const [approval, setApproval] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const Auth = new AuthService();
@@ -183,6 +185,27 @@ function StripePayment(props) {
                 }
               }}
             />
+            <div
+              style={{
+                alignItems: "center",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "40px"
+              }}
+            >
+              <Checkbox
+                checked={!!approval}
+                onChange={e => setApproval(e.target.checked)}
+                name={"approval"}
+                color="secondary"
+              />
+            </div>
+            <Typography paragraph variant="body1" align="center">
+              {getFrenchName("paymentApproval")}
+            </Typography>
+            <Typography paragraph variant="body1" align="center" dir={"rtl"}>
+              {getPersianName("paymentApproval")}
+            </Typography>
           </div>
           <div
             style={{
@@ -198,7 +221,7 @@ function StripePayment(props) {
           >
             <Button
               className="pay-button"
-              disabled={isPaymentLoading}
+              disabled={isPaymentLoading || !approval}
               style={{ textTransform: "none" }}
               align={"center"}
               variant="contained"

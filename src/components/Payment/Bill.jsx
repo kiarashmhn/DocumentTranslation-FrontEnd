@@ -49,13 +49,15 @@ export default class Bill extends Component {
       type: { key: "" },
       username: "",
       address: "",
-      method: { frenchTitle: "" }
+      method: { frenchTitle: "" },
+      amount: 0
     };
     this.api = new Api();
   }
 
   componentDidMount() {
     this.getOrder();
+    this.getPayments();
   }
 
   getOrder = async () => {
@@ -76,8 +78,29 @@ export default class Bill extends Component {
           self.setState({
             address: res.data.details ? res.data.details.address : "",
             username: res.data.username,
-            type: getTypeByKey(res.data.type),
-            method: methods[self.props.method]
+            type: getTypeByKey(res.data.type)
+          });
+        }
+      });
+  };
+
+  getPayments = async () => {
+    let self = this;
+    await this.api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.GET_PAYMENTS,
+        {
+          orderId: this.props.orderId
+        }
+      )
+      .then(function(res) {
+        if (res.success && res.data.length > 0) {
+          self.setState({
+            payment: res.data[0],
+            method: methods[res.data[0].method],
+            amount: res.data[0].amount
           });
         }
       });
@@ -151,11 +174,11 @@ export default class Bill extends Component {
                     {"Traduction " + getFrenchName(this.state.type.key)}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {this.props.amount + " euros"}
+                    {this.state.amount + " euros"}
                   </StyledTableCell>
                   <StyledTableCell align="center">{1}</StyledTableCell>
                   <StyledTableCell align="center">
-                    {this.props.amount + " euros"}
+                    {this.state.amount + " euros"}
                   </StyledTableCell>
                 </StyledTableRow>
               </TableBody>
@@ -198,7 +221,5 @@ export default class Bill extends Component {
 }
 
 Bill.propTypes = {
-  amount: PropTypes.any.isRequired,
-  orderId: PropTypes.any.isRequired,
-  method: PropTypes.any.isRequired
+  orderId: PropTypes.any.isRequired
 };

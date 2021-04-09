@@ -114,6 +114,7 @@ export default class PaymentMethods extends Component {
                     idx={this.state.idx}
                     price={this.props.price}
                     deliveryType={this.props.deliveryType}
+                    code={this.props.code}
                   />
                 </Fragment>
               )}

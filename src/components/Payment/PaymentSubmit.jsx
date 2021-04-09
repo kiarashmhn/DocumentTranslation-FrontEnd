@@ -11,6 +11,7 @@ import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import Api from "../Api/Api";
 import { Redirect } from "react-router";
 import AuthService from "../../AuthService";
+import Checkbox from "@material-ui/core/Checkbox";
 
 class PaymentSubmit extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class PaymentSubmit extends Component {
     this.state = {
       files: [],
       code: "",
-      redirect: false
+      redirect: false,
+      approval: false
     };
     this.uploadFileRef = React.createRef();
     this.api = new Api();
@@ -104,7 +106,7 @@ class PaymentSubmit extends Component {
               orderId: this.props.id,
               method: this.props.idx,
               amount: this.props.price,
-              code: this.state.code
+              code: this.props.code
             }
           }}
         />
@@ -170,13 +172,40 @@ class PaymentSubmit extends Component {
               ref={this.uploadFileRef}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={12} md={7}>
             <FieldInput
               name={this.props.inputKey}
               value={this.state.code}
               onChange={event => this.setState({ code: event.target.value })}
               notRequired={true}
             />
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <div
+              style={{
+                alignItems: "center",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "40px"
+              }}
+            >
+              <Checkbox
+                checked={!!this.state.approval}
+                onChange={e =>
+                  this.setState({
+                    approval: e.target.checked
+                  })
+                }
+                name={"approval"}
+                color="secondary"
+              />
+            </div>
+            <Typography paragraph variant="body1" align="center">
+              {getFrenchName("paymentApproval")}
+            </Typography>
+            <Typography paragraph variant="body1" align="center" dir={"rtl"}>
+              {getPersianName("paymentApproval")}
+            </Typography>
           </Grid>
         </Grid>
         <div
@@ -197,6 +226,7 @@ class PaymentSubmit extends Component {
             variant="contained"
             color="secondary"
             align={"center"}
+            disabled={!this.state.approval}
           >
             <p>
               <span
@@ -233,6 +263,7 @@ export default SnackbarWrapper(PaymentSubmit);
 PaymentSubmit.propTypes = {
   id: PropTypes.any.isRequired,
   idx: PropTypes.any.isRequired,
+  code: PropTypes.any.isRequired,
   price: PropTypes.any.isRequired,
   deliveryType: PropTypes.any.isRequired,
   showSnackbar: PropTypes.func.isRequired,
