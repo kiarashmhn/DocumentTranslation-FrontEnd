@@ -84,12 +84,14 @@ export const OrderTypes = {
   BIRTH_LICENSE: {
     key: "birthLicense",
     form: birthLicenseForm,
+    nationality: "Afghan",
     code: "BL"
   },
   TAZKARA_BARGHI: {
     key: "TazkaraBarghi",
     form: TazkaraBarghiForm,
     reportData: TazkaraBarghiReportData,
+    nationality: "Afghan",
     code: "TB"
   }
 };

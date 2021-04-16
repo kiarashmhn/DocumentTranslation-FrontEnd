@@ -501,6 +501,7 @@ export default class NodesGenerator extends Component {
                 valueKey={element.valueKey ? element.valueKey : "value"}
                 onChange={value => this.setState({ [element.key]: value })}
                 valueRequired={element.required}
+                defaultValue={element.defaultValue}
               />
             </Grid>
           );

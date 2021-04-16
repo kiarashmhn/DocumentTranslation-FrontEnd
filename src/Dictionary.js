@@ -1319,6 +1319,10 @@ export const Dictionary = {
   Kaboul: {
     persian: "کابل",
     french: "Kaboul"
+  },
+  byCertificate: {
+    persian: "مطابق عقدنامه",
+    french: "Conformément au livret de mariage"
   }
 };
 

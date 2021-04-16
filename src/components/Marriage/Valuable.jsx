@@ -14,16 +14,25 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import CustomTooltip from "../Tooltip/CustomTooltip";
+import theme, { grayColor } from "../../theme";
 
-const initialState = {
-  check: false,
-  value: ""
+const initialState = defaultValue => {
+  return {
+    check: false,
+    value: defaultValue
+  };
 };
 
 export default class Valuable extends Component {
   constructor(props) {
     super(props);
-    this.state = initialState;
+    this.state = initialState(
+      this.props.defaultValue
+        ? getCompleteName(this.props.defaultValue)
+          ? getCompleteName(this.props.defaultValue)
+          : ""
+        : ""
+    );
   }
 
   componentDidMount() {
@@ -31,7 +40,11 @@ export default class Valuable extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.initialState && this.state === initialState)
+    let initial = initialState(
+      this.props.defaultValue ? this.props.defaultValue : ""
+    );
+
+    if (this.props.initialState && this.state === initial)
       this.setState(this.props.initialState);
   }
 
@@ -44,6 +57,21 @@ export default class Valuable extends Component {
         this.props.onChange(this.state);
       }
     );
+  };
+
+  getHintProp = () => {
+    return getHint(this.props.name)
+      ? {
+          endAdornment: (
+            <InputAdornment position="end">
+              <CustomTooltip>
+                <div dir={"ltr"}>{getHint(this.props.name).french}</div>
+                <div dir={"rtl"}>{getHint(this.props.name).persian}</div>
+              </CustomTooltip>
+            </InputAdornment>
+          )
+        }
+      : {};
   };
 
   render() {
@@ -66,12 +94,31 @@ export default class Valuable extends Component {
             </div>
           </Grid>
           {this.state.check && (
-            <Grid item xs={12} sm={12} md={8}>
-              <FormControl required={true}>
-                <InputLabel htmlFor={this.props.name}>
+            <Grid item xs={12} sm={12} md={4}>
+              <FormControl
+                fullWidth
+                required={!!this.props.valueRequired}
+                style={{
+                  margin: 0,
+                  position: "relative",
+                  left: 0,
+                  verticalAlign: "unset"
+                }}
+              >
+                <InputLabel
+                  htmlFor={this.props.name}
+                  style={{
+                    ...theme.typography,
+                    color: grayColor[8] + " !important",
+                    fontWeight: "400",
+                    fontSize: "14px",
+                    lineHeight: "1.42857"
+                  }}
+                >
                   {getFrenchName(this.props.valueKey)}
                 </InputLabel>
                 <Input
+                  fullWidth
                   required={!!this.props.valueRequired}
                   id={this.props.name}
                   value={this.state.value}
@@ -79,24 +126,7 @@ export default class Valuable extends Component {
                   onChange={event => this.onChange("value", event)}
                   type={"text"}
                   formNoValidate
-                  inputProps={
-                    getHint(this.props.valueKey) !== null
-                      ? {
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <CustomTooltip>
-                                <div dir={"ltr"}>
-                                  {getHint(this.props.name).french}
-                                </div>
-                                <div dir={"rtl"}>
-                                  {getHint(this.props.name).persian}
-                                </div>
-                              </CustomTooltip>
-                            </InputAdornment>
-                          )
-                        }
-                      : {}
-                  }
+                  {...this.getHintProp()}
                 />
                 <FormHelperText style={{ color: "#000000" }}>
                   {getPersianName(this.props.valueKey)}
@@ -115,5 +145,6 @@ Valuable.propTypes = {
   valueKey: PropTypes.any.isRequired,
   initialState: PropTypes.any,
   onChange: PropTypes.func.isRequired,
-  valueRequired: PropTypes.any
+  valueRequired: PropTypes.any,
+  defaultValue: PropTypes.any
 };
