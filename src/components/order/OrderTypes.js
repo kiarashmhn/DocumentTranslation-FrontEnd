@@ -9,6 +9,9 @@ import { MilitaryServiceLicenceReportData } from "../Report/data/MilitaryService
 import { TazkaraOldForm } from "./form/TazkaraKetab";
 import { DrivingLicenceForm } from "./form/DrivingLicence";
 import { MarriageCertificateForm } from "./form/MarriageCertificate";
+import { birthLicenseForm } from "./form/BirthLicense";
+import { TazkaraBarghiForm } from "./form/TazkaraBarghi";
+import { TazkaraBarghiReportData } from "../Report/data/TazkaraBarghiReportData";
 
 export const OrderTypes = {
   ID_CERTIFICATE: {
@@ -77,6 +80,17 @@ export const OrderTypes = {
     code: "MC",
     delay: 48,
     price: 50
+  },
+  BIRTH_LICENSE: {
+    key: "birthLicense",
+    form: birthLicenseForm,
+    code: "BL"
+  },
+  TAZKARA_BARGHI: {
+    key: "TazkaraBarghi",
+    form: TazkaraBarghiForm,
+    reportData: TazkaraBarghiReportData,
+    code: "TB"
   }
 };
 

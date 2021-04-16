@@ -199,10 +199,15 @@ class PaymentSubmit extends Component {
                 name={"approval"}
                 color="secondary"
               />
+              <Typography
+                paragraph
+                variant="body1"
+                align="center"
+                style={{ marginTop: "17px" }}
+              >
+                {getFrenchName("paymentApproval")}
+              </Typography>
             </div>
-            <Typography paragraph variant="body1" align="center">
-              {getFrenchName("paymentApproval")}
-            </Typography>
             <Typography paragraph variant="body1" align="center" dir={"rtl"}>
               {getPersianName("paymentApproval")}
             </Typography>

@@ -10,6 +10,8 @@ import Box from "@material-ui/core/Box";
 import PaymentSubmit from "./PaymentSubmit";
 import { methodsInfo } from "./MethodsInfo";
 import StripePayment from "./StripePayment";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 export default class PaymentMethods extends Component {
   constructor(props) {
@@ -36,6 +38,10 @@ export default class PaymentMethods extends Component {
   };
 
   render() {
+    let stripe = loadStripe(
+      "pk_test_51IMcfSDJralPixYMYcqmdwXKdFhT0ZbkdpLtu1DjX3K9VSMv7OTdEbolmicfnVuDigV8xV2PeiDoPPGlLFRiV49x00HLxkwkxq"
+    );
+
     const { width, classes, id, price, code } = this.props;
     const methods = methodsInfo(id, code, price);
     return (
@@ -98,12 +104,14 @@ export default class PaymentMethods extends Component {
               m={5}
             >
               {this.state.idx === 0 && (
-                <StripePayment
-                  amount={this.props.price}
-                  orderId={this.props.id}
-                  code={this.props.code}
-                  deliveryType={this.props.deliveryType}
-                />
+                <Elements stripe={stripe}>
+                  <StripePayment
+                    amount={this.props.price}
+                    orderId={this.props.id}
+                    code={this.props.code}
+                    deliveryType={this.props.deliveryType}
+                  />
+                </Elements>
               )}
               {this.state.idx > 0 && (
                 <Fragment>

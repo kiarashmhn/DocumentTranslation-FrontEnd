@@ -19,6 +19,8 @@ import ProvinceDistrict from "../ProvinceDistrict/ProvinceDistrict";
 import TazkaraInfo from "../TazkaraInfo/TazkaraInfo";
 import ComplexDateInput from "../CustomDateInput/ComplexDateInput";
 import CustomAutoComplete from "../AutoComplete/CustomAutoComplete";
+import Witness from "../Marriage/Witness";
+import Valuable from "../Marriage/Valuable";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -400,6 +402,105 @@ export default class NodesGenerator extends Component {
                 name={element.key}
                 initial={this.props.externalInitializationData}
                 ref={this.tazkaraRef}
+              />
+            </Grid>
+          );
+        case "witness":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <Witness
+                id={element.key}
+                idx={"1"}
+                onChange={value =>
+                  this.setState({ [element.key + "1"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "1"]
+                    : null
+                }
+              />
+              <Witness
+                id={element.key}
+                idx={"2"}
+                onChange={value =>
+                  this.setState({ [element.key + "2"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "2"]
+                    : null
+                }
+              />
+              <Witness
+                id={element.key}
+                idx={"3"}
+                onChange={value =>
+                  this.setState({ [element.key + "3"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "3"]
+                    : null
+                }
+              />
+            </Grid>
+          );
+        case "representer":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <Witness
+                id={element.key}
+                idx={"1"}
+                onChange={value =>
+                  this.setState({ [element.key + "1"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "1"]
+                    : null
+                }
+              />
+              <Witness
+                id={element.key}
+                idx={"2"}
+                onChange={value =>
+                  this.setState({ [element.key + "2"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "2"]
+                    : null
+                }
+              />
+            </Grid>
+          );
+        case "valuable":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <Valuable
+                name={element.key}
+                valueKey={element.valueKey ? element.valueKey : "value"}
+                onChange={value => this.setState({ [element.key]: value })}
+                valueRequired={element.required}
               />
             </Grid>
           );

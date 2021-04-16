@@ -140,8 +140,7 @@ class OrderForm extends Component {
         ...nodeGenState
       },
       () => {
-        console.log(nodeGenState);
-        //this.props.onSave();
+        this.props.onSave();
       }
     );
   };

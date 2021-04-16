@@ -212,7 +212,7 @@ class ListOrder extends Component {
       ...[
         {
           name: "submitDate",
-          label: "Date d'enregistrement"
+          label: "Date registre/paiement"
         },
         {
           name: "acceptanceDate",

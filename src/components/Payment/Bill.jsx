@@ -197,7 +197,9 @@ export default class Bill extends Component {
               "/" +
               new Date().getFullYear()}
           </Typography>
-          <Typography>{"Facture n°" + this.props.orderId}</Typography>
+          <Typography>
+            {"Facture n°" + this.state.type.code + "" + this.props.orderId}
+          </Typography>
           <Typography>
             {"La facture a été payée par " + this.state.method.frenchTitle}
           </Typography>

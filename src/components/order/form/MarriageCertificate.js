@@ -91,167 +91,20 @@ export const MarriageCertificateForm = {
       ]
     },
     {
-      title: "witness",
+      title: "witnesses",
       content: [
         {
-          key: "name",
-          type: "text"
-        },
-        {
-          key: "lastName",
-          type: "text"
-        },
-
-        {
-          key: "fatherName",
-          type: "text"
-        },
-
-        {
-          key: "nationalId",
-          type: "text"
-        },
-        {
-          key: "placeofIssueIDCertificate",
-          type: "text"
-        },
-        {
-          key: "job",
-          type: "text"
-        },
-        {
-          key: "livingPlace",
-          type: "text",
-          grid: 12
-        },
-        {
-          key: "name",
-          type: "text"
-        },
-        {
-          key: "lastName",
-          type: "text"
-        },
-
-        {
-          key: "fatherName",
-          type: "text"
-        },
-
-        {
-          key: "nationalId",
-          type: "text"
-        },
-        {
-          key: "placeofIssueIDCertificate",
-          type: "text"
-        },
-        {
-          key: "job",
-          type: "text"
-        },
-        {
-          key: "livingPlace",
-          type: "text",
-          grid: 12
-        },
-        {
-          key: "name",
-          type: "text"
-        },
-        {
-          key: "lastName",
-          type: "text"
-        },
-
-        {
-          key: "fatherName",
-          type: "text"
-        },
-
-        {
-          key: "nationalId",
-          type: "text"
-        },
-        {
-          key: "placeofIssueIDCertificate",
-          type: "text"
-        },
-        {
-          key: "job",
-          type: "text"
-        },
-        {
-          key: "livingPlace",
-          type: "text",
-          grid: 12
+          key: "witness",
+          type: "witness"
         }
       ]
     },
     {
-      title: "representer",
+      title: "representers",
       content: [
         {
-          key: "name",
-          type: "text"
-        },
-        {
-          key: "lastName",
-          type: "text"
-        },
-
-        {
-          key: "fatherName",
-          type: "text"
-        },
-
-        {
-          key: "nationalId",
-          type: "text"
-        },
-        {
-          key: "placeofIssueIDCertificate",
-          type: "text"
-        },
-        {
-          key: "job",
-          type: "text"
-        },
-        {
-          key: "livingPlace",
-          type: "text",
-          grid: 12
-        },
-        {
-          key: "name",
-          type: "text"
-        },
-        {
-          key: "lastName",
-          type: "text"
-        },
-
-        {
-          key: "fatherName",
-          type: "text"
-        },
-
-        {
-          key: "nationalId",
-          type: "text"
-        },
-        {
-          key: "placeofIssueIDCertificate",
-          type: "text"
-        },
-        {
-          key: "job",
-          type: "text"
-        },
-        {
-          key: "livingPlace",
-          type: "text",
-          grid: 12
+          key: "representer",
+          type: "representer"
         }
       ]
     },
@@ -278,29 +131,39 @@ export const MarriageCertificateForm = {
       content: [
         {
           key: "mahrQuran",
-          type: "text"
+          type: "valuable",
+          required: false,
+          valueKey: "value"
         },
         {
           key: "mahrChandelier",
-          type: "text"
+          type: "valuable",
+          required: false,
+          valueKey: "value"
         },
         {
           key: "mahrNabat",
-          type: "text"
+          type: "valuable",
+          required: false,
+          valueKey: "value"
         },
         {
           key: "mahrCoin",
-          type: "text"
+          type: "valuable",
+          valueKey: "count",
+          required: true
         },
         {
           key: "mahrHaj",
-          type: "text"
+          type: "valuable",
+          required: false,
+          valueKey: "value"
         },
         {
-          key: "others",
-          type: "text",
-          grid: 12,
-          notRequired: true
+          key: "otherMahr",
+          type: "valuable",
+          required: false,
+          valueKey: "value"
         }
       ]
     },

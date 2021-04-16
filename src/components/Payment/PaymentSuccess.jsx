@@ -20,6 +20,14 @@ export default class PaymentSuccess extends Component {
     };
   }
 
+  componentDidMount() {
+    window.history.pushState(null, document.title, window.location.href);
+    // eslint-disable-next-line no-unused-vars
+    window.addEventListener("popstate", function(event) {
+      window.history.pushState(null, document.title, window.location.href);
+    });
+  }
+
   redirect = () => {
     if (this.state.redirect) {
       return (
@@ -43,7 +51,7 @@ export default class PaymentSuccess extends Component {
           align="center"
           style={{ whiteSpace: "pre-line", marginTop: "10px" }}
         >
-          Paiement enregistré avec succès
+          Information de paiement enregistrée avec succès
         </Typography>
         <Typography
           gutterBottom
@@ -52,7 +60,7 @@ export default class PaymentSuccess extends Component {
           align="center"
           style={{ whiteSpace: "pre-line" }}
         >
-          پرداخت با موفقیت ثبت شد
+          اطلاعات پرداخت با موفقيت ثبت شد
         </Typography>
 
         <Box
@@ -67,8 +75,17 @@ export default class PaymentSuccess extends Component {
             align="center"
             style={{ padding: "10px" }}
           >
-            Votre demande de traduction a bien été enregistrée et elle sera
-            traitée dans les plus brefs délais.{" "}
+            Votre demande de traduction N⁰{""}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              {this.state.code + "" + this.state.orderId}
+            </Box>{" "}
+            a bien été enregistrée et elle sera traitée dans les plus brefs
+            délais. Nous reviendrons vers vous en cas de demande incomplète pour
+            vous indiquerles renseignements manquants.{" "}
             <Box
               fontStyle="bold"
               fontWeight="fontWeightMedium"
@@ -78,19 +95,8 @@ export default class PaymentSuccess extends Component {
             </Box>
             {""} heures après la validation de votre commande, vous pouvez
             télécharger la traduction certifiée à partir de votre espace client.
-            Nous reviendrons vers vous en cas de demande incomplète et vous
-            indiquerons les renseignements manquants à la validation de votre
-            commande. Vous pouvez suivre l’état d’avancement de votre commande
-            via votre comte &gt; liste de commande. Pour information votre
-            numéro de commande est{" "}
-            <Box
-              fontStyle="bold"
-              fontWeight="fontWeightMedium"
-              display="inline"
-            >
-              {this.state.code + "" + this.state.orderId}
-            </Box>
-            {""}.
+            Ainsi à tout moment, vous pouvez suivre l’état d’avancement de votre
+            commande via votre comte &gt; liste de commande.
           </Typography>
           <Typography
             paragraph

@@ -598,11 +598,11 @@ export const Dictionary = {
     french: "AB-"
   },
   Tazkara: {
-    persian: "تذکره(برگه)",
+    persian: "تذکره (برگه)",
     french: "Acte de naissance"
   },
   TazkaraOld: {
-    persian: "تذکره(کتابچه)",
+    persian: "تذکره (کتابچه)",
     french: "Acte de naissance"
   },
   uploadTazkara: {
@@ -1134,24 +1134,24 @@ export const Dictionary = {
     french: "Mahr"
   },
   mahrQuran: {
-    persian: "یک جلد کلام اله مجید (قرآن) به ارزش",
-    french: "Un Coran d’une valeur de"
+    persian: "یک جلد کلام اله مجید (قرآن)",
+    french: "Un Coran"
   },
   mahrChandelier: {
-    persian: "آیینه و شمعدان به ارزش ",
-    french: "Un miroir et un chandelier d’une valeur de"
+    persian: "آیینه و شمعدان",
+    french: "Un miroir et un chandelier"
   },
   mahrNabat: {
-    persian: "شاخه نبات به ارزش",
-    french: "un sucre cristallisé sur bâton en bois"
+    persian: "شاخه نبات",
+    french: "Un sucre cristallisé sur bâton en bois"
   },
   mahrCoin: {
-    persian: "عدد سکه بهار آزادی",
+    persian: "سکه بهار آزادی",
     french: "pièces d’or Azadi"
   },
   mahrHaj: {
-    persian: "سفر حج به ارزش",
-    french: "Un voyage Hajj d’une valeur de"
+    persian: "سفر حج",
+    french: "Un voyage Hajj"
   },
   downloadBill: {
     persian: "دریافت صورتحساب",
@@ -1166,10 +1166,8 @@ export const Dictionary = {
     french: "Mode de livraison"
   },
   paymentApproval: {
-    french:
-      "Je reconnais avoir pris connaissance des conditions de vente et être informé que la traduction ne sera commencée qu’après réception du paiement et validation du document à traduire et des informations saisies.",
-    persian:
-      "تایید می کنم که شرایط فروش را می دانم و مطلع هستم که کار ترجمه تنها پس از دریافت هزینه و تایید سند و اطلاعات وارده آغاز می شود."
+    french: "Je reconnais avoir pris connaissance des conditions de vente.",
+    persian: "تاييد ميكنم که شرايط فروش را مي دانم."
   },
   witnesses: {
     persian: "شاهدان",
@@ -1178,6 +1176,149 @@ export const Dictionary = {
   representers: {
     persian: "معرفان",
     french: "Représentants"
+  },
+  value: {
+    persian: "ارزش",
+    french: "Valeur"
+  },
+  count: {
+    persian: "تعداد",
+    french: "Nombre"
+  },
+  otherMahr: {
+    persian: "دیگر",
+    french: "Autre",
+    hint: {
+      persian:
+        "در صورت وجود موارد دیگر در قسمت مهر، این گزینه را انتخاب کنید، مترجم این قسمت را کامل و تصحیح خواهد کرد.",
+      french:
+        "Sélectionnez cette option pour tous autres éléments, le traducteur complétera cette partie."
+    }
+  },
+  houseNumber: {
+    persian: "نمبر خانه",
+    french: "N° de maison"
+  },
+  volumeNo: {
+    persian: "جلد",
+    french: "Numéro de volume"
+  },
+  pageNo: {
+    persian: "صفحه",
+    french: "Numéro de page"
+  },
+  registerNo: {
+    persian: "نمبر ثبت",
+    french: "Numéro d'enregistrement"
+  },
+  tazkaraDate: {
+    persian: "تاریخ صدور تذکره",
+    french: "Date d’émission"
+  },
+  tazkaraNumber: {
+    persian: "نمبر عمومی تذکره",
+    french: "Numéro de document (N° de Taskera)"
+  },
+  tazkaraNumberElectronic: {
+    persian: "شماره مسلسل تذکره الکترونیکی",
+    french: "Numéro de Taskera électronique"
+  },
+  tazkaraInfo: {
+    persian: "مشخصات تذکره تابعیت",
+    french: "Informations sur l’enregistrement de l’acte de naissance (Taskera)"
+  },
+  birthRegisterCard: {
+    persian: "کارت ثبت تولدات",
+    french:
+      "Carte d’enregistrement de naissance (Description de la personne concernée)"
+  },
+  valad: {
+    persian: "ولد",
+    french: "Prénom du père"
+  },
+  valadiat: {
+    persian: "ولدیت",
+    french: "Prénom du grand-père"
+  },
+  birthLicense: {
+    persian: "کارت ثبت تولدات",
+    french: "Carte d’enregistrement de naissance"
+  },
+  uploadBirthLicense: {
+    persian: "بارگذاری کارت ثبت تولدات",
+    french: "Importer la Carte d’enregistrement de naissance"
+  },
+  east: {
+    persian: "شرق",
+    french: "Est"
+  },
+  west: {
+    persian: "غرب",
+    french: "Ouest"
+  },
+  north: {
+    persian: "شمال",
+    french: "Nord"
+  },
+  south: {
+    persian: "جنوب",
+    french: "Sud"
+  },
+  zone: {
+    persian: "زون",
+    french: "Zone"
+  },
+  fatherTazkara: {
+    persian: "ثبت تذکره اقارب اصولی شان (پدر)",
+    french: "Référence de l’acte de naissance (Taskera) de son père"
+  },
+  fatherLastName: {
+    persian: "تخلص پدر",
+    french: "Nom du père"
+  },
+  livingLocationTemp: {
+    persian: "اوسنی استوګنخی/سکونت فعلی",
+    french: "Lieu de résidence actuel"
+  },
+  livingLocationOriginal: {
+    persian: "اصلی استوګنخی/سکونت اصلی",
+    french: "Lieu de résidence principal"
+  },
+  idNumber: {
+    persian: "شماره ملی",
+    french: "Numéro d'identification national (N° de Taskera électronique)"
+  },
+  issueDate: {
+    persian: "د صدور نیټه/ تاریخ صدور",
+    french: "Date d’émission"
+  },
+  TazkaraBarghi: {
+    persian: "تذکره تابعیت برقی",
+    french: "Carte d'Identité Nationale afghane (Taskera)"
+  },
+  signature: {
+    persian: "امضا دارد",
+    french: "Signature"
+  },
+  fingerPrint: {
+    persian: "شصت دارد",
+    french: "Empreinte digitale"
+  },
+  both: {
+    persian: "امضا و شصت دارد",
+    french: "Empreinte digitale et signature du titulaire"
+  },
+  nothing: {
+    persian: "هیچ کدام",
+    french: "Rien"
+  },
+  signatureorFingerPrint: {
+    persian: "امضا یا شصت",
+    french: "Signature ou empreinte digitale du titulaire du passeport"
+  },
+  Kaboul: {
+    persian: "کابل",
+    french: "Kaboul"
   }
 };
 

@@ -196,7 +196,7 @@ class CreateOrder extends Component {
         >
           <Fragment>
             <Typography variant="body1" color={"secondary"} paragraph>
-              * pointe:
+              * Remarque:
             </Typography>
             <Typography variant="body1" paragraph>
               Il est fortement recommandé de concorder l&apos;orthographe des

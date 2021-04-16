@@ -224,7 +224,11 @@ function NavBar(props) {
               </Box>
             </Hidden>
             <Link to={"/"} className={classes.menuLink} key={"logo"}>
-              <div className={classes.image} style={{ cursor: "pointer" }} />
+              <div
+                className={classes.image}
+                style={{ cursor: "pointer" }}
+                onClick={Auth.logout}
+              />
             </Link>
           </Box>
           <Box
