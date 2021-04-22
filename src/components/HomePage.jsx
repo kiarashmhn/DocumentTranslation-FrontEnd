@@ -11,6 +11,8 @@ import smoothScrollTop from "../functions/smoothScrollTop";
 import * as URLConstant from "../URLConstant";
 import { Redirect } from "react-router";
 import AuthService from "../AuthService";
+import CookieConsent from "./Cookie/CookieConsent";
+import CookieRulesDialog from "./Cookie/CookieRulesDialog";
 
 AOS.init({ once: true });
 
@@ -163,12 +165,19 @@ class HomePage extends Component {
   redirect = () => {
     let isAdmin = this.auth.isAdmin();
     let isUser = this.auth.loggedIn();
-    let url = isAdmin
-      ? URLConstant.ADMIN_PANEL
-      : isUser
-      ? URLConstant.USER_PANEL
-      : null;
-    console.log(url);
+    let noRedirect = this.props.location
+      ? this.props.location.state
+        ? this.props.location.state.noRedirect
+        : false
+      : false;
+    let url = null;
+    if (!noRedirect) {
+      url = isAdmin
+        ? URLConstant.ADMIN_PANEL
+        : isUser
+        ? URLConstant.USER_PANEL
+        : null;
+    }
     if (url) {
       return (
         <Redirect
@@ -186,6 +195,11 @@ class HomePage extends Component {
     const classes = this.props.classes;
     return (
       <div className={classes.wrapper}>
+        {!this.state.isCookieRulesDialogOpen && (
+          <CookieConsent
+            handleCookieRulesDialogOpen={this.handleCookieRulesDialogOpen}
+          />
+        )}
         <DialogSelector
           openLoginDialog={this.openLoginDialog}
           dialogOpen={this.state.dialogOpen}
@@ -214,6 +228,10 @@ class HomePage extends Component {
           selectBlog={this.selectBlog}
           openRegisterDialog={this.openRegisterDialog}
         />
+        <CookieRulesDialog
+          open={this.state.isCookieRulesDialogOpen}
+          onClose={this.handleCookieRulesDialogClose}
+        />
         {this.redirect()}
       </div>
     );
@@ -221,7 +239,8 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  location: PropTypes.any
 };
 
 export default withStyles(styles, { withTheme: true })(memo(HomePage));

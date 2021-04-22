@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Dialog, DialogContent, Box, withStyles } from "@material-ui/core";
-import DialogTitleWithCloseIcon from "./DialogTitleWithCloseIcon";
+import {
+  Dialog,
+  DialogContent,
+  Box,
+  withStyles,
+  Typography
+} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Clear";
+import DialogActions from "@material-ui/core/DialogActions";
 
 const styles = theme => ({
   dialogPaper: {
@@ -37,7 +45,8 @@ function FormDialog(props) {
     onFormSubmit,
     content,
     actions,
-    hideBackdrop
+    hideBackdrop,
+    frenchHeadline
   } = props;
   return (
     <Dialog
@@ -52,11 +61,21 @@ function FormDialog(props) {
       }}
       hideBackdrop={hideBackdrop ? hideBackdrop : false}
     >
-      <DialogTitleWithCloseIcon
-        title={headline}
-        onClose={onClose}
-        disabled={loading}
-      />
+      <DialogActions style={{ position: "relative", left: "43%" }}>
+        <IconButton aria-label="delete" color="secondary" onClick={onClose}>
+          <DeleteIcon />
+        </IconButton>
+      </DialogActions>
+      <div style={{ position: "relative", top: "80%" }}>
+        {frenchHeadline && (
+          <Typography variant="h6" align={"center"}>
+            {frenchHeadline}
+          </Typography>
+        )}
+        <Typography variant="h6" align={"center"}>
+          {headline}
+        </Typography>
+      </div>
       <DialogContent className={classes.dialogContent}>
         <form onSubmit={onFormSubmit} autoComplete="new-password">
           <div>{content}</div>
@@ -74,6 +93,7 @@ FormDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   headline: PropTypes.string.isRequired,
+  frenchHeadline: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   content: PropTypes.element.isRequired,

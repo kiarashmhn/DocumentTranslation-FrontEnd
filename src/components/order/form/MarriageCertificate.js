@@ -162,9 +162,8 @@ export const MarriageCertificateForm = {
         {
           key: "otherMahr",
           type: "valuable",
-          defaultValue: "byCertificate",
           required: false,
-          valueKey: "value"
+          valueKey: "byCertificate"
         }
       ]
     },

@@ -34,7 +34,10 @@ export default class PaymentSuccess extends Component {
         <Redirect
           push
           to={{
-            pathname: "/"
+            pathname: "/",
+            state: {
+              redirect: true
+            }
           }}
         />
       );
@@ -74,6 +77,7 @@ export default class PaymentSuccess extends Component {
             variant="body1"
             align="center"
             style={{ padding: "10px" }}
+            component={"div"}
           >
             Votre demande de traduction N⁰{""}
             <Box
@@ -104,6 +108,7 @@ export default class PaymentSuccess extends Component {
             align="center"
             dir={"rtl"}
             style={{ padding: "10px" }}
+            component={"div"}
           >
             درخواست ترجمه شما ثبت شده است. در صورت تکمیل بودن اطلاعات، درخواست
             تایید و ترجمه آغاز می شود و سند شما بعد از{" "}

@@ -1,16 +1,8 @@
 import React, { useState, useCallback, useRef, Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {
-  TextField,
-  Button,
-  Checkbox,
-  Typography,
-  FormControlLabel,
-  withStyles
-} from "@material-ui/core";
+import { TextField, Button, Typography, withStyles } from "@material-ui/core";
 import FormDialog from "../Template/FormDialog";
-import HighlightedInformation from "../Template/HighlightedInformation";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../Template/VisibilityPasswordTextField";
 import AuthService from "../../AuthService";
@@ -48,15 +40,13 @@ function LoginDialog(props) {
     status,
     showSnackbar
   } = props;
+  const Auth = new AuthService();
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isUser, setIsUser] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(Auth.isAdmin());
+  const [isUser, setIsUser] = useState(Auth.loggedIn());
   const username = useRef();
   const loginPassword = useRef();
-
-  const Auth = new AuthService();
-
   const login = useCallback(() => {
     setIsLoading(true);
     setStatus(null);
@@ -107,6 +97,7 @@ function LoginDialog(props) {
         }}
         hideBackdrop
         headline="ورود"
+        frenchHeadline="Connexion"
         content={
           <Fragment>
             <TextField
@@ -117,7 +108,7 @@ function LoginDialog(props) {
               required
               fullWidth
               error={status === "invalidUsernameOrPassword"}
-              label="نام کاربری"
+              label="Nom d'utilisateur"
               autoComplete="off"
               type="text"
               onChange={() => {
@@ -125,7 +116,19 @@ function LoginDialog(props) {
                   setStatus(null);
                 }
               }}
-              FormHelperTextProps={{ error: true }}
+              helperText={
+                status === "invalidUsernameOrPassword" ? (
+                  <div>
+                    <div dir={"rtl"}>نام کاربری یا رمز عبور اشتباه است.</div>
+                    <div>Nom d&apos;utilisateur ou mot de passe invalide.</div>
+                  </div>
+                ) : (
+                  "نام کاربری"
+                )
+              }
+              FormHelperTextProps={
+                status === "invalidUsernameOrPassword" ? { error: true } : {}
+              }
             />
             <VisibilityPasswordTextField
               variant="outlined"
@@ -134,7 +137,7 @@ function LoginDialog(props) {
               required
               fullWidth
               error={status === "invalidUsernameOrPassword"}
-              label="رمز عبور"
+              label="Le mot de passe"
               inputRef={loginPassword}
               autoComplete="off"
               onChange={() => {
@@ -144,25 +147,20 @@ function LoginDialog(props) {
               }}
               helperText={
                 status === "invalidUsernameOrPassword" ? (
-                  <span dir={"rtl"}>نام کاربری یا رمز عبور اشتباه است.</span>
+                  <div>
+                    <div dir={"rtl"}>نام کاربری یا رمز عبور اشتباه است.</div>
+                    <div>Nom d&apos;utilisateur ou mot de passe invalide.</div>
+                  </div>
                 ) : (
-                  ""
+                  "رمز عبور"
                 )
               }
-              FormHelperTextProps={{ error: true }}
+              FormHelperTextProps={
+                status === "invalidUsernameOrPassword" ? { error: true } : {}
+              }
               onVisibilityChange={setIsPasswordVisible}
               isVisible={isPasswordVisible}
             />
-            <FormControlLabel
-              className={classes.formControlLabel}
-              control={<Checkbox color="primary" />}
-              label={<Typography variant="body1">ذخیره اطلاعات</Typography>}
-            />
-            {status === "verificationEmailSend" ? (
-              <HighlightedInformation>
-                نحوه بازیابی رمز عبور ، برای شما ایمیل شده است
-              </HighlightedInformation>
-            ) : null}
           </Fragment>
         }
         actions={

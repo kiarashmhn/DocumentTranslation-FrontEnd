@@ -87,4 +87,12 @@ export default class AuthService {
   logout() {
     localStorage.removeItem("id_token");
   }
+
+  setNoRedirect(noRedirect) {
+    localStorage.setItem("redirect", noRedirect);
+  }
+
+  getNoRedirect() {
+    return localStorage.getItem("redirect");
+  }
 }

@@ -223,12 +223,12 @@ function NavBar(props) {
                 </IconButton>
               </Box>
             </Hidden>
-            <Link to={"/"} className={classes.menuLink} key={"logo"}>
-              <div
-                className={classes.image}
-                style={{ cursor: "pointer" }}
-                onClick={Auth.logout}
-              />
+            <Link
+              to={{ pathname: "/", state: { noRedirect: true } }}
+              className={classes.menuLink}
+              key={"logo"}
+            >
+              <div className={classes.image} style={{ cursor: "pointer" }} />
             </Link>
           </Box>
           <Box

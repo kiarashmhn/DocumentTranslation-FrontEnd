@@ -27,11 +27,7 @@ export default class Valuable extends Component {
   constructor(props) {
     super(props);
     this.state = initialState(
-      this.props.defaultValue
-        ? getCompleteName(this.props.defaultValue)
-          ? getCompleteName(this.props.defaultValue)
-          : ""
-        : ""
+      this.props.defaultValue ? getCompleteName(this.props.defaultValue) : ""
     );
   }
 

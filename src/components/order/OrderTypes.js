@@ -37,7 +37,7 @@ export const OrderTypes = {
     form: militaryServiceLicenceForm,
     reportData: MilitaryServiceLicenceReportData,
     nationality: "Iranian",
-    code: "MSL",
+    code: "IS",
     delay: 24,
     price: 20
   },
@@ -45,7 +45,7 @@ export const OrderTypes = {
     key: "afghanDrivingLicence",
     form: afghanDrivingLicenceForm,
     nationality: "Afghan",
-    code: "ADL",
+    code: "AP",
     delay: 24,
     price: 25
   },
@@ -53,7 +53,7 @@ export const OrderTypes = {
     key: "Tazkara",
     form: TazkaraForm,
     nationality: "Afghan",
-    code: "TZ",
+    code: "AA",
     delay: 24,
     price: 20
   },
@@ -61,7 +61,7 @@ export const OrderTypes = {
     key: "TazkaraOld",
     form: TazkaraOldForm,
     nationality: "Afghan",
-    code: "TZO",
+    code: "AA",
     delay: 24,
     price: 20
   },
@@ -69,7 +69,7 @@ export const OrderTypes = {
     key: "DrivingLicence",
     form: DrivingLicenceForm,
     nationality: "Iranian",
-    code: "DL",
+    code: "IP",
     delay: 24,
     price: 20
   },
@@ -77,7 +77,7 @@ export const OrderTypes = {
     key: "marriageCertificate",
     form: MarriageCertificateForm,
     nationality: "Iranian",
-    code: "MC",
+    code: "IM",
     delay: 48,
     price: 50
   },
@@ -85,14 +85,14 @@ export const OrderTypes = {
     key: "birthLicense",
     form: birthLicenseForm,
     nationality: "Afghan",
-    code: "BL"
+    code: "AN"
   },
   TAZKARA_BARGHI: {
     key: "TazkaraBarghi",
     form: TazkaraBarghiForm,
     reportData: TazkaraBarghiReportData,
     nationality: "Afghan",
-    code: "TB"
+    code: "AC"
   }
 };
 

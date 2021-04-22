@@ -16,7 +16,8 @@ function DialogTitleWithCloseIcon(props) {
     onClose,
     disabled,
     title,
-    disablePadding
+    disablePadding,
+    frenchTitle
   } = props;
   return (
     <DialogTitle
@@ -33,18 +34,21 @@ function DialogTitleWithCloseIcon(props) {
       }}
       disableTypography
     >
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex">
         <div style={{ justifyContent: "center", alignItems: "center" }}>
+          {frenchTitle && <Typography variant="h5">{frenchTitle}</Typography>}
           <Typography variant="h5">{title}</Typography>
         </div>
-        <IconButton
-          onClick={onClose}
-          style={{ marginRight: -12, marginTop: -10 }}
-          disabled={disabled}
-          aria-label="Close"
-        >
-          <CloseIcon />
-        </IconButton>
+        <div>
+          <IconButton
+            onClick={onClose}
+            style={{ marginTop: -5 }}
+            disabled={disabled}
+            aria-label="Close"
+          >
+            <CloseIcon />
+          </IconButton>
+        </div>
       </Box>
     </DialogTitle>
   );
@@ -56,6 +60,7 @@ DialogTitleWithCloseIcon.propTypes = {
   onClose: PropTypes.func,
   disabled: PropTypes.bool,
   title: PropTypes.string,
+  frenchTitle: PropTypes.string,
   disablePadding: PropTypes.bool
 };
 

@@ -14,7 +14,7 @@ import VisibilityPasswordTextField from "../Template/VisibilityPasswordTextField
 import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import Box from "@material-ui/core/Box";
-import { getCompleteName } from "../../Dictionary";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import * as URLConstant from "../../URLConstant";
 import { Redirect } from "react-router";
@@ -149,6 +149,7 @@ function RegisterDialog(props) {
         onClose={onClose}
         open
         headline="ثبت نام"
+        frenchHeadline={"S'inscrire"}
         onFormSubmit={e => {
           e.preventDefault();
           register();
@@ -157,7 +158,7 @@ function RegisterDialog(props) {
         hasCloseIcon
         content={
           <Fragment>
-            <Typography variant="body1" align="center" color={"error"}>
+            {/* <Typography variant="body1" align="center" color={"error"}>
               * Inscrivez-vous pour utiliser le service
             </Typography>
             <Typography
@@ -167,7 +168,7 @@ function RegisterDialog(props) {
               className={classes.secondaryHeader}
             >
               برای استفاده از خدمات، ثبت نام کنید *
-            </Typography>
+            </Typography>*/}
             <TextField
               inputRef={username}
               margin="normal"
@@ -175,57 +176,84 @@ function RegisterDialog(props) {
               autoFocus
               fullWidth
               error={status === "invalidUsername"}
-              label="نام کاربری"
+              label="Nom d'utilisateur"
               autoComplete="off"
               type="text"
-              helperText={(() => {
-                if (status === "invalidUsername") {
-                  return "نام کاربری وارد شده تکراری است";
-                }
-                return null;
-              })()}
+              helperText={
+                status === "invalidUsername" ? (
+                  <div>
+                    <div dir={"rtl"}>نام کاربری وارد شده تکراری است.</div>
+                    <div>Nom d&apos;utilisateur invalide.</div>
+                  </div>
+                ) : (
+                  "نام کاربری"
+                )
+              }
               onChange={() => {
                 if (status === "invalidUsername") {
                   setStatus(null);
                 }
               }}
-              FormHelperTextProps={{ error: true }}
+              FormHelperTextProps={
+                status === "invalidUsername" ? { error: true } : {}
+              }
             />
             <TextField
               inputRef={email}
               margin="normal"
               fullWidth
               error={status === "invalidEmail" || status === "nullEmailPhone"}
-              label="آدرس ایمیل"
+              label="E-mail"
               autoComplete="off"
               type="text"
-              helperText={(() => {
-                if (status === "invalidEmail")
-                  return "ایمیل وارد شده نامعتبر است";
-                if (status === "nullEmailPhone")
-                  return "آدرس ایمیل یا شماره موبایل را وارد کنید";
-                return null;
-              })()}
+              helperText={
+                status === "invalidEmail" ? (
+                  <div>
+                    <div dir={"rtl"}>ایمیل وارد شده نامعتبر است.</div>
+                    <div>Email invalide.</div>
+                  </div>
+                ) : status === "nullEmailPhone" ? (
+                  <div>
+                    <div dir={"rtl"}>
+                      آدرس ایمیل یا شماره موبایل را وارد کنید.
+                    </div>
+                    <div>Entrez votre e-mail ou votre téléphone</div>
+                  </div>
+                ) : (
+                  "آدرس ایمیل"
+                )
+              }
               onChange={() => {
                 if (status === "invalidEmail" || status === "nullEmailPhone") {
                   setStatus(null);
                 }
               }}
-              FormHelperTextProps={{ error: true }}
+              FormHelperTextProps={
+                status === "invalidEmail" || status === "nullEmailPhone"
+                  ? { error: true }
+                  : {}
+              }
             />
             <TextField
               inputRef={phone}
               margin="normal"
               fullWidth
               error={status === "nullEmailPhone"}
-              label="شماره موبایل"
+              label={"Numéro de mobile"}
               autoComplete="off"
               type="number"
-              helperText={(() => {
-                if (status === "nullEmailPhone")
-                  return "آدرس ایمیل یا شماره موبایل را وارد کنید";
-                return null;
-              })()}
+              helperText={
+                status === "nullEmailPhone" ? (
+                  <div>
+                    <div dir={"rtl"}>
+                      آدرس ایمیل یا شماره موبایل را وارد کنید.
+                    </div>
+                    <div>Entrez votre e-mail ou votre téléphone</div>
+                  </div>
+                ) : (
+                  "شماره موبایل"
+                )
+              }
               onChange={() => {
                 if (status === "nullEmailPhone") {
                   setStatus(null);
@@ -234,11 +262,16 @@ function RegisterDialog(props) {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <CustomTooltip text={getCompleteName("useFrenchNumber")} />
+                    <CustomTooltip>
+                      <div dir={"ltr"}>{getFrenchName("useFrenchNumber")}</div>
+                      <div dir={"rtl"}>{getPersianName("useFrenchNumber")}</div>
+                    </CustomTooltip>
                   </InputAdornment>
                 )
               }}
-              FormHelperTextProps={{ error: true }}
+              FormHelperTextProps={
+                status === "nullEmailPhone" ? { error: true } : {}
+              }
             />
             <VisibilityPasswordTextField
               margin="normal"
@@ -247,7 +280,7 @@ function RegisterDialog(props) {
               error={
                 status === "passwordTooShort" || status === "passwordsDontMatch"
               }
-              label="رمز عبور"
+              label="Le mot de passe"
               inputRef={registerPassword}
               autoComplete="off"
               onChange={() => {
@@ -260,14 +293,30 @@ function RegisterDialog(props) {
               }}
               helperText={(() => {
                 if (status === "passwordTooShort") {
-                  return "طول رمزعبور باید حداقل ۶ کاراکتر باشد";
+                  return (
+                    <div>
+                      <div dir={"rtl"}>
+                        طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+                      </div>
+                      <div>La longueur du mot de passe est inférieure à 6</div>
+                    </div>
+                  );
                 }
                 if (status === "passwordsDontMatch") {
-                  return "رمزهای وارد شده مطابقت ندارند";
+                  return (
+                    <div>
+                      <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
+                      <div>Les mots de passe saisis ne correspondent pas</div>
+                    </div>
+                  );
                 }
-                return null;
+                return "رمزعبور";
               })()}
-              FormHelperTextProps={{ error: true }}
+              FormHelperTextProps={
+                status === "passwordTooShort" || status === "passwordsDontMatch"
+                  ? { error: true }
+                  : {}
+              }
               isVisible={isPasswordVisible}
               onVisibilityChange={setIsPasswordVisible}
             />
@@ -278,7 +327,7 @@ function RegisterDialog(props) {
               error={
                 status === "passwordTooShort" || status === "passwordsDontMatch"
               }
-              label="تکرار رمزعبور"
+              label="Répéter le mot de passe"
               inputRef={registerPasswordRepeat}
               autoComplete="off"
               onChange={() => {
@@ -291,49 +340,100 @@ function RegisterDialog(props) {
               }}
               helperText={(() => {
                 if (status === "passwordTooShort") {
-                  return "طول رمزعبور باید حداقل ۶ کاراکتر باشد";
+                  return (
+                    <div>
+                      <div dir={"rtl"}>
+                        طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+                      </div>
+                      <div>La longueur du mot de passe est inférieure à 6</div>
+                    </div>
+                  );
                 }
                 if (status === "passwordsDontMatch") {
-                  return "رمزهای وارد شده مطابقت ندارند";
+                  return (
+                    <div>
+                      <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
+                      <div>Les mots de passe saisis ne correspondent pas</div>
+                    </div>
+                  );
                 }
+                return "تکرار رمزعبور";
               })()}
-              FormHelperTextProps={{ error: true }}
+              FormHelperTextProps={
+                status === "passwordTooShort" || status === "passwordsDontMatch"
+                  ? { error: true }
+                  : {}
+              }
               isVisible={isPasswordVisible}
               onVisibilityChange={setIsPasswordVisible}
             />
-            <Box fontWeight="fontWeightBold">
-              <Typography
-                variant="h6"
-                dir={"rtl"}
-                style={{
-                  useNextVariants: true,
-                  suppressDeprecationWarnings: true,
-                  h6: {
-                    fontWeight: 600
+
+            <Typography variant="body1" dir={"rtl"} component={"div"}>
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                قبلا حساب شخصی ساخته اید؟
+              </Box>
+              <span
+                className={classes.link}
+                onClick={isLoading ? null : openLoginDialog}
+                tabIndex={0}
+                role="button"
+                onKeyDown={event => {
+                  // For screenreaders listen to space and enter events
+                  if (
+                    (!isLoading && event.keyCode === 13) ||
+                    event.keyCode === 32
+                  ) {
+                    openLoginDialog();
                   }
                 }}
               >
-                قبلا حساب شخصی ساخته اید؟
-                <span
-                  className={classes.link}
-                  onClick={isLoading ? null : openLoginDialog}
-                  tabIndex={0}
-                  role="button"
-                  onKeyDown={event => {
-                    // For screenreaders listen to space and enter events
-                    if (
-                      (!isLoading && event.keyCode === 13) ||
-                      event.keyCode === 32
-                    ) {
-                      openLoginDialog();
-                    }
-                  }}
+                {" "}
+                <Box
+                  fontStyle="bold"
+                  fontWeight="fontWeightMedium"
+                  display="inline"
                 >
-                  {" "}
                   ورود
-                </span>
-              </Typography>
-            </Box>
+                </Box>
+              </span>
+            </Typography>
+            <Typography variant="body1" dir={"ltr"} component={"div"}>
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                Avez-vous déjà créé un compte personnel?
+              </Box>
+              <span
+                className={classes.link}
+                onClick={isLoading ? null : openLoginDialog}
+                tabIndex={0}
+                role="button"
+                onKeyDown={event => {
+                  // For screenreaders listen to space and enter events
+                  if (
+                    (!isLoading && event.keyCode === 13) ||
+                    event.keyCode === 32
+                  ) {
+                    openLoginDialog();
+                  }
+                }}
+              >
+                {" "}
+                <Box
+                  fontStyle="bold"
+                  fontWeight="fontWeightMedium"
+                  display="inline"
+                >
+                  Connexion
+                </Box>
+              </span>
+            </Typography>
             {status === "accountCreated" ? (
               <HighlightedInformation>
                 اکانت شما ساخته شد.
