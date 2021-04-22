@@ -1323,6 +1323,22 @@ export const Dictionary = {
   byCertificate: {
     persian: "مطابق عقدنامه",
     french: "Conformément au livret de mariage"
+  },
+  orderStatus: {
+    persian: "وضعیت سفارش",
+    french: "État"
+  },
+  submitDate: {
+    persian: "تاریخ ثبت / پرداخت",
+    french: "Date registre / paiement"
+  },
+  deliveryDate: {
+    persian: "تاریخ تحویل",
+    french: "Date de livraison"
+  },
+  facture: {
+    persian: "صورتحساب",
+    french: "Facture"
   }
 };
 

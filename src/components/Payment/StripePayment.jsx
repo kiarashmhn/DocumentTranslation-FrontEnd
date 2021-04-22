@@ -16,6 +16,8 @@ import AuthService from "../../AuthService";
 import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { Redirect } from "react-router";
 import Checkbox from "@material-ui/core/Checkbox";
+import Box from "@material-ui/core/Box";
+import { Link } from "react-router-dom";
 
 function StripePayment(props) {
   const { amount, orderId, code, deliveryType, showSnackbar } = props;
@@ -205,11 +207,33 @@ function StripePayment(props) {
                 align="center"
                 style={{ marginTop: "17px" }}
               >
-                {getFrenchName("paymentApproval")}
+                Je reconnais avoir pris connaissance des{" "}
+                <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
+                  {" "}
+                  <Box
+                    fontStyle="bold"
+                    fontWeight="fontWeightMedium"
+                    display="inline"
+                  >
+                    conditions de vente
+                  </Box>
+                </Link>
+                .
               </Typography>
             </div>
             <Typography paragraph variant="body1" align="center" dir={"rtl"}>
-              {getPersianName("paymentApproval")}
+              تاييد ميكنم که{" "}
+              <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
+                {" "}
+                <Box
+                  fontStyle="bold"
+                  fontWeight="fontWeightMedium"
+                  display="inline"
+                >
+                  شرايط فروش
+                </Box>
+              </Link>{" "}
+              را می‌دانم.
             </Typography>
           </div>
           <div
