@@ -32,7 +32,6 @@ export const TazkaraOldForm = {
           key: "grandFatherName",
           type: "text"
         },
-        
         {
           key: "provinceDistrict",
           provinceKey: "province",
@@ -42,9 +41,6 @@ export const TazkaraOldForm = {
           name: "birthLocation",
           required: true
         },
-        
-        
-        
         {
           key: "aBirthDate",
           type: "complexDate",
@@ -68,7 +64,6 @@ export const TazkaraOldForm = {
           ],
           required: true
         },
-        
         {
           key: "job",
           type: "select",
@@ -79,8 +74,7 @@ export const TazkaraOldForm = {
             { value: "free", key: "free" },
             { value: "agriculture", key: "agriculture" },
             { value: "others", key: "others" }
-          ],
-          
+          ]
         },
         {
           key: "sex",
@@ -101,7 +95,7 @@ export const TazkaraOldForm = {
             { value: "weadow", key: "weadow" }
           ],
           required: true
-        },
+        }
       ]
     },
     {
@@ -115,8 +109,7 @@ export const TazkaraOldForm = {
             { value: "tall", key: "tall" },
             { value: "middle", key: "middle" },
             { value: "others", key: "others" }
-          ],
-          
+          ]
         },
         {
           key: "eyeColor",
@@ -129,8 +122,7 @@ export const TazkaraOldForm = {
             { value: "noisette", key: "noisette" },
             { value: "green", key: "green" },
             { value: "others", key: "others" }
-          ],
-          
+          ]
         },
         {
           key: "eyebrow",
@@ -139,8 +131,7 @@ export const TazkaraOldForm = {
             { value: "connected", key: "connected" },
             { value: "departed", key: "departed" },
             { value: "others", key: "others" }
-          ],
-          
+          ]
         },
         {
           key: "hairColor",
@@ -152,8 +143,7 @@ export const TazkaraOldForm = {
             { value: "white", key: "white" },
             { value: "marron", key: "marron" },
             { value: "others", key: "others" }
-          ],
-          
+          ]
         },
         {
           key: "skinColor",
@@ -167,8 +157,7 @@ export const TazkaraOldForm = {
             { value: "red", key: "red" },
 
             { value: "others", key: "others" }
-          ],
-          
+          ]
         },
         {
           key: "otherSigns",
@@ -180,8 +169,7 @@ export const TazkaraOldForm = {
             { value: "moderate", key: "moderate" },
             { value: "majorSigns", key: "majorSigns" },
             { value: "others", key: "others" }
-          ],
-          
+          ]
         }
       ]
     },

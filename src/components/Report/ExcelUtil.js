@@ -8,6 +8,7 @@ export const alignmentLeft = { vertical: "middle", horizontal: "left" };
 export const endSection = "Signature et cachet du proposé à l’état civil";
 
 export const writeText = (worksheet, idx, isBold, text, size) => {
+  console.log(text);
   idx = idx + 1;
   worksheet.mergeCells("A" + idx + ":" + "I" + idx);
   worksheet.addRow();

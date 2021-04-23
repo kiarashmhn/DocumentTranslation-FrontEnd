@@ -38,10 +38,10 @@ export const TazkaraForm = {
           districtKey: "district",
           villageKey: "village",
           type: "provinceDistrict",
+          //needs to have different keys
           name: "aBirthLocation",
           required: true
         },
-
         {
           key: "aBirthDate",
           type: "complexDate",
@@ -85,7 +85,6 @@ export const TazkaraForm = {
             { value: "agriculture", key: "agriculture" },
             { value: "others", key: "others" }
           ],
-
           notRequired: true
         },
         {

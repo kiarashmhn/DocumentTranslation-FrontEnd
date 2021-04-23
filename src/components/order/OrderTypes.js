@@ -12,6 +12,11 @@ import { MarriageCertificateForm } from "./form/MarriageCertificate";
 import { birthLicenseForm } from "./form/BirthLicense";
 import { TazkaraBarghiForm } from "./form/TazkaraBarghi";
 import { TazkaraBarghiReportData } from "../Report/data/TazkaraBarghiReportData";
+import { AfghanDrivingLicenseReportData } from "../Report/data/AfghanDrivingLicenceReportData";
+import { TazkaraReportData } from "../Report/data/TazkaraReportData";
+import { TazkaraKetabReportData } from "../Report/data/TazkaraKetabReportData";
+import { DrivingLicenseReportData } from "../Report/data/DrivingLicenseReportData";
+import { BirthLicenseReportData } from "../Report/data/BirthLicenseReportData";
 
 export const OrderTypes = {
   ID_CERTIFICATE: {
@@ -44,6 +49,7 @@ export const OrderTypes = {
   AFGHAN_DRIVING_LICENCE: {
     key: "afghanDrivingLicence",
     form: afghanDrivingLicenceForm,
+    reportData: AfghanDrivingLicenseReportData,
     nationality: "Afghan",
     code: "AP",
     delay: 24,
@@ -52,6 +58,7 @@ export const OrderTypes = {
   TAZKARA: {
     key: "Tazkara",
     form: TazkaraForm,
+    reportData: TazkaraReportData,
     nationality: "Afghan",
     code: "AA",
     delay: 24,
@@ -60,6 +67,7 @@ export const OrderTypes = {
   TAZKARA_OLD: {
     key: "TazkaraOld",
     form: TazkaraOldForm,
+    reportData: TazkaraKetabReportData,
     nationality: "Afghan",
     code: "AA",
     delay: 24,
@@ -68,6 +76,7 @@ export const OrderTypes = {
   DRIVING_LICENCE: {
     key: "DrivingLicence",
     form: DrivingLicenceForm,
+    reportData: DrivingLicenseReportData,
     nationality: "Iranian",
     code: "IP",
     delay: 24,
@@ -84,6 +93,7 @@ export const OrderTypes = {
   BIRTH_LICENSE: {
     key: "birthLicense",
     form: birthLicenseForm,
+    reportData: BirthLicenseReportData,
     nationality: "Afghan",
     code: "AN"
   },

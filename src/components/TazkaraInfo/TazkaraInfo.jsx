@@ -18,39 +18,43 @@ export default class TazkaraInfo extends Component {
   }
 
   componentDidMount() {
-    if (this.props.initial) {
+    if (this.props.initial && this.props.initial[this.props.name]) {
       this.setState({
-        volumeNumber: this.props.initial.volumeNumber
-          ? this.props.initial.volumeNumber
+        volumeNumber: this.props.initial[this.props.name].volumeNumber
+          ? this.props.initial[this.props.name].volumeNumber
           : "",
-        pageNumber: this.props.initial.pageNumber
-          ? this.props.initial.pageNumber
+        pageNumber: this.props.initial[this.props.name].pageNumber
+          ? this.props.initial[this.props.name].pageNumber
           : "",
-        registerNumber: this.props.initial.registerNumber
-          ? this.props.initial.registerNumber
+        registerNumber: this.props.initial[this.props.name].registerNumber
+          ? this.props.initial[this.props.name].registerNumber
           : ""
       });
     }
   }
 
   componentDidUpdate() {
-    if (this.props.initial && this.state === initialState) {
+    if (
+      this.props.initial &&
+      this.props.initial[this.props.name] &&
+      this.state === initialState
+    ) {
       this.setState({
-        volumeNumber: this.props.initial.volumeNumber
-          ? this.props.initial.volumeNumber
+        volumeNumber: this.props.initial[this.props.name].volumeNumber
+          ? this.props.initial[this.props.name].volumeNumber
           : "",
-        pageNumber: this.props.initial.pageNumber
-          ? this.props.initial.pageNumber
+        pageNumber: this.props.initial[this.props.name].pageNumber
+          ? this.props.initial[this.props.name].pageNumber
           : "",
-        registerNumber: this.props.initial.registerNumber
-          ? this.props.initial.registerNumber
+        registerNumber: this.props.initial[this.props.name].registerNumber
+          ? this.props.initial[this.props.name].registerNumber
           : ""
       });
     }
   }
 
   getState = () => {
-    return this.state;
+    return { [this.props.name]: this.state };
   };
 
   render() {

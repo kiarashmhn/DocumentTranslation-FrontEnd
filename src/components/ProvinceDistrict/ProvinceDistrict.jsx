@@ -24,7 +24,8 @@ export default class ProvinceDistrict extends Component {
   getState = () => {
     return {
       province: this.state.province,
-      district: this.state.district
+      district: this.state.district,
+      village: this.state.village
     };
   };
 

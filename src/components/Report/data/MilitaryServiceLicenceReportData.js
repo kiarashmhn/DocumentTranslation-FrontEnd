@@ -1,4 +1,4 @@
-import { getFrenchName } from "Dictionary.js";
+import { getFrenchName } from "../../../Dictionary.js";
 export function MilitaryServiceLicenceReportData(data) {
   return [
     {

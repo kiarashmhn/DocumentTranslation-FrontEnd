@@ -1,8 +1,8 @@
-import { getFrenchName } from "Dictionary.js";
+import { getFrenchName } from "../../../Dictionary.js";
 export function DrivingLicenseReportData(data) {
   let type1;
   let type2;
-  let type3;
+  //let type3;
   let category = getFrenchName(data.drivingLicenceCategory);
   switch (data.drivingLicenceCategory) {
     case "motorcycle":
@@ -10,8 +10,8 @@ export function DrivingLicenseReportData(data) {
         "Motocyclette : permet de conduire d’une motocyclette dont la cylindré est de 200cc";
       type2 =
         "maximum et après 3 ans de détention de cette catégorie et sous condition d’être âgé d’au";
-      type3 =
-        "moins 23 ans, d’une motocyclette dont la cylindré est supérieure à 200cc.";
+      /*type3 =
+        "moins 23 ans, d’une motocyclette dont la cylindré est supérieure à 200cc.";*/
       break;
     case "thirdGrade":
       type1 =
