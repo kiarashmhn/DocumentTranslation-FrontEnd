@@ -6,6 +6,7 @@ import theme from "../../theme";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import React from "react";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 
 export function getAdminColumns(handleClickOpen, handleClickOpenBill) {
@@ -111,7 +112,8 @@ export function getSuperAdminColumns(
   handleClickOpen,
   handleClickOpenBill,
   handleClickOpenAdmins,
-  handleClickOpenPayment
+  handleClickOpenPayment,
+  handleClickOpenMessages
 ) {
   return [
     {
@@ -229,6 +231,27 @@ export function getSuperAdminColumns(
       }
     },
     {
+      name: "hasNewUserMessage",
+      label: "Message",
+      options: {
+        customBodyRender: (value, meta) => {
+          if (value !== undefined && value !== null) {
+            return (
+              <IconButton
+                aria-label="delete"
+                onClick={() => handleClickOpenMessages(meta.rowData[1])}
+                style={{
+                  color: value ? ColorPalette.red : ColorPalette.cornflowerblue
+                }}
+              >
+                <MailOutlineIcon fontSize="small" />
+              </IconButton>
+            );
+          }
+        }
+      }
+    },
+    {
       name: "id",
       label: "Vue",
       options: {
@@ -292,7 +315,11 @@ export function getSuperAdminColumns(
   ];
 }
 
-export function getUserColumns(handleClickOpenBill) {
+export function getUserColumns(
+  handleClickOpen,
+  handleClickOpenBill,
+  handleClickOpenMessages
+) {
   return [
     {
       name: "identifier",
@@ -348,6 +375,57 @@ export function getUserColumns(handleClickOpenBill) {
           <div dir={"rtl"}>{getPersianName("deliveryDate")}</div>
         </div>
       )
+    },
+    {
+      name: "hasNewAdminMessage",
+      label: (
+        <div>
+          <div dir={"ltr"}>{getFrenchName("message")}</div>
+          <div dir={"rtl"}>{getPersianName("message")}</div>
+        </div>
+      ),
+      options: {
+        customBodyRender: (value, meta) => {
+          if (value !== undefined && value !== null) {
+            return (
+              <IconButton
+                aria-label="delete"
+                onClick={() => handleClickOpenMessages(meta.rowData[1])}
+                style={{
+                  color: value ? ColorPalette.red : ColorPalette.cornflowerblue
+                }}
+              >
+                <MailOutlineIcon fontSize="small" />
+              </IconButton>
+            );
+          }
+        }
+      }
+    },
+    {
+      name: "id",
+      label: "Vue",
+      options: {
+        customBodyRender: (value, meta) => {
+          if (value !== undefined && value !== null) {
+            if (
+              meta.rowData &&
+              (meta.rowData[2] === "COMPLETING" ||
+                meta.rowData[2] === "WAITING_FOR_PAYMENT")
+            ) {
+              return (
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleClickOpen(value)}
+                  style={{ color: ColorPalette.cornflowerblue }}
+                >
+                  <Info fontSize="small" />
+                </IconButton>
+              );
+            }
+          }
+        }
+      }
     },
     {
       name: "isPaymentVerified",

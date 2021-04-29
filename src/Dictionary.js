@@ -1355,6 +1355,14 @@ export const Dictionary = {
   close: {
     persian: "بستن",
     french: "Fermer"
+  },
+  message: {
+    persian: "پیام",
+    french: "Message"
+  },
+  send: {
+    persian: "ارسال",
+    french: "Envoyer"
   }
 };
 

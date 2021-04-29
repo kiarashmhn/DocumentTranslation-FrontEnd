@@ -188,52 +188,53 @@ export default class PaymentInfo extends Component {
           <Fragment>
             {this.getFilesView()}
             {this.getPaymentsView()}
-            <div
-              style={{
-                maxWidth: "100%",
-                verticalAlign: "middle",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginBottom: "10px",
-                paddingBottom: "20px",
-                marginTop: "5px"
-              }}
-            >
-              <Button
-                onClick={this.verifyPayment}
-                style={{ textTransform: "none" }}
-                variant="contained"
-                color="secondary"
-                align={"center"}
-              >
-                <p>
-                  <span
-                    style={{
-                      display: "block",
-                      marginBottom: "0",
-                      fontSize: 16
-                    }}
-                  />
-                  <Typography variant="body1" align="center" component={"span"}>
-                    {getFrenchName("finalSubmit")}
-                  </Typography>
-                  <span
-                    style={{
-                      display: "block",
-                      marginBottom: "2px",
-                      fontSize: "100%"
-                    }}
-                  />
-                  <Typography variant="body1" align="center" component={"span"}>
-                    {getPersianName("finalSubmit")}
-                  </Typography>
-                </p>
-              </Button>
-            </div>
           </Fragment>
         }
-        actions={<span />}
+        actions={
+          <div
+            style={{
+              maxWidth: "100%",
+              verticalAlign: "middle",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: "10px",
+              paddingBottom: "20px",
+              marginTop: "5px"
+            }}
+          >
+            <Button
+              onClick={this.verifyPayment}
+              style={{ textTransform: "none" }}
+              variant="contained"
+              color="secondary"
+              align={"center"}
+            >
+              <p>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "0",
+                    fontSize: 16
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  {getFrenchName("finalSubmit")}
+                </Typography>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "2px",
+                    fontSize: "100%"
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  {getPersianName("finalSubmit")}
+                </Typography>
+              </p>
+            </Button>
+          </div>
+        }
       />
     );
   }

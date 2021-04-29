@@ -16,6 +16,7 @@ import {
   getSuperAdminColumns,
   getUserColumns
 } from "./ListOrderColumns";
+import ChatBox from "../Chat/ChatBox";
 
 class ListOrder extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class ListOrder extends Component {
       openAdmins: false,
       openPaymentInfo: false,
       openBillInfo: false,
+      openMessages: false,
       itemId: "",
       username: "",
       adminName: ""
@@ -113,6 +115,21 @@ class ListOrder extends Component {
     });
   };
 
+  handleClickOpenMessages = orderId => {
+    this.setState({
+      openMessages: true,
+      itemId: orderId
+    });
+  };
+
+  handleClickCloseMessages = () => {
+    this.setState({
+      openMessages: false,
+      itemId: ""
+    });
+    this.getData();
+  };
+
   handleClose = () => {
     this.setState({ open: false });
     this.getData();
@@ -125,11 +142,16 @@ class ListOrder extends Component {
         this.handleClickOpen,
         this.handleClickOpenBill,
         this.handleClickOpenAdmins,
-        this.handleClickOpenPayment
+        this.handleClickOpenPayment,
+        this.handleClickOpenMessages
       );
     if (this.props.type && this.state.isAdmin)
       return getAdminColumns(this.handleClickOpen, this.handleClickOpenBill);
-    return getUserColumns(this.handleClickOpenBill);
+    return getUserColumns(
+      this.handleClickOpen,
+      this.handleClickOpenBill,
+      this.handleClickOpenMessages
+    );
   };
 
   render() {
@@ -192,6 +214,13 @@ class ListOrder extends Component {
             onClose={this.handleClickClosePayment}
           />
         )}
+        {this.state.openMessages && (
+          <ChatBox
+            orderId={this.state.itemId}
+            onClose={this.handleClickCloseMessages}
+            type={this.state.isSuperAdmin ? "ADMIN" : "USER"}
+          />
+        )}
         <FullScreenDialog
           title="Facture"
           component={<ShowBill orderId={this.state.itemId} />}
@@ -205,8 +234,7 @@ class ListOrder extends Component {
 }
 
 ListOrder.propTypes = {
-  type: PropTypes.string,
-  classes: PropTypes.object.isRequired
+  type: PropTypes.string
 };
 
 export default SnackbarWrapper(ListOrder);

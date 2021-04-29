@@ -66,18 +66,20 @@ function FormDialog(props) {
           <DeleteIcon />
         </IconButton>
       </DialogActions>
-      <div style={{ position: "relative", top: "80%" }}>
-        {frenchHeadline && (
-          <Typography variant="h6" align={"center"}>
-            {frenchHeadline}
-          </Typography>
-        )}
-        {headline && (
-          <Typography variant="h6" align={"center"}>
-            {headline}
-          </Typography>
-        )}
-      </div>
+      {(frenchHeadline || headline) && (
+        <div style={{ position: "relative", top: "80%" }}>
+          {frenchHeadline && (
+            <Typography variant="h6" align={"center"}>
+              {frenchHeadline}
+            </Typography>
+          )}
+          {headline && (
+            <Typography variant="h6" align={"center"}>
+              {headline}
+            </Typography>
+          )}
+        </div>
+      )}
       <DialogContent className={classes.dialogContent}>
         <form onSubmit={onFormSubmit} autoComplete="new-password">
           <div>{content}</div>
