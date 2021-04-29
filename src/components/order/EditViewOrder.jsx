@@ -98,7 +98,13 @@ class EditViewOrder extends Component {
         ? orderFormState.files
         : []
       : [];
+    let additionalFiles = orderFormState
+      ? orderFormState.additionalFiles
+        ? orderFormState.additionalFiles
+        : []
+      : [];
     delete orderFormState["files"];
+    delete orderFormState["additionalFiles"];
     let postData = {
       id: this.props.itemId,
       type: this.state.type ? this.state.type.code : "",
@@ -115,16 +121,18 @@ class EditViewOrder extends Component {
       )
       .then(function(res) {
         self.props.showSnackbar(res.message, res.success ? "success" : "error");
-        self.handleFileSelect(files).then(() => {
-          self.orderFormRef.current.onRefresh();
-          self.setState(
-            {
-              isLoading: false
-            },
-            () => {
-              if (mode === "SUBMIT") self.handleOpenPaymentDialog();
-            }
-          );
+        self.handleFileSelect(files, "documents").then(() => {
+          self.handleFileSelect(additionalFiles, "additional").then(() => {
+            self.orderFormRef.current.onRefresh();
+            self.setState(
+              {
+                isLoading: false
+              },
+              () => {
+                if (mode === "SUBMIT") self.handleOpenPaymentDialog();
+              }
+            );
+          });
         });
       });
   };
@@ -140,11 +148,11 @@ class EditViewOrder extends Component {
     );
   };
 
-  handleFileSelect = async files => {
+  handleFileSelect = async (files, type) => {
     let self = this;
     for (let file of files) {
       let params = {
-        type: "documents",
+        type: type,
         name: file.name,
         orderId: self.props.itemId,
         size: file.size

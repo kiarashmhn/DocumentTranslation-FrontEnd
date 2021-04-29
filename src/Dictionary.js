@@ -1363,6 +1363,12 @@ export const Dictionary = {
   send: {
     persian: "ارسال",
     french: "Envoyer"
+  },
+  fileTooltip: {
+    french:
+      "Assurez-vous que vos documents sont valides, bien visibles et faciles à lire. Vos informations déclarées sur le formulaire doivent correspondre, à la lettre, à celles de votre document.",
+    persian:
+      "اطمینان حاصل کنید که سند شما معتبر، واضح و قابل خواندن است. اطلاعات شما در فرم باید با سند شما مطابقت کامل داشته باشد."
   }
 };
 

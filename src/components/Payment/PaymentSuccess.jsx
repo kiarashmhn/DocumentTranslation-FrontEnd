@@ -6,6 +6,8 @@ import { getFrenchName, getPersianName } from "../../Dictionary";
 import { Redirect } from "react-router";
 import Box from "@material-ui/core/Box";
 import { getTypeByKey } from "../order/OrderTypes";
+import theme from "../../theme";
+import AuthService from "../../AuthService";
 
 export default class PaymentSuccess extends Component {
   constructor(props) {
@@ -16,8 +18,10 @@ export default class PaymentSuccess extends Component {
       code: this.props.location.state.code,
       delay: getTypeByKey(this.props.location.state.code).delay,
       method: this.props.location.state.method,
-      redirect: false
+      redirect: false,
+      redirectToList: false
     };
+    this.auth = new AuthService();
   }
 
   componentDidMount() {
@@ -41,6 +45,31 @@ export default class PaymentSuccess extends Component {
           }}
         />
       );
+    }
+  };
+
+  redirectToList = () => {
+    if (this.state.redirectToList) {
+      if (this.auth.isAdmin())
+        return (
+          <Redirect
+            push
+            to={{
+              pathname: "/AdminPanel",
+              state: { selectedTab: "ListOrder" }
+            }}
+          />
+        );
+      else
+        return (
+          <Redirect
+            push
+            to={{
+              pathname: "/UserPanel",
+              state: { selectedTab: "ListOrder" }
+            }}
+          />
+        );
     }
   };
 
@@ -99,7 +128,16 @@ export default class PaymentSuccess extends Component {
               {this.state.delay}
             </Box>{" "}
             heures après la validation de votre commande, la traduction
-            certifiée via votre comte &gt; liste de commande.
+            certifiée via{" "}
+            <span
+              style={{ color: theme.palette.secondary.main, cursor: "pointer" }}
+              onClick={() => {
+                this.setState({ redirectToList: true });
+              }}
+            >
+              votre comte &gt; liste de commande
+            </span>{" "}
+            .
           </Typography>
           <Typography
             paragraph
@@ -128,8 +166,16 @@ export default class PaymentSuccess extends Component {
             </Box>{" "}
             ساعت در حساب کاربری قابل دانلود خواهد بود. در غیر اینصورت، موارد نقص
             در حساب کاربری به شما اطلاع داده خواهد شد و تایید آن منوط به تکمیل
-            آن می باشد. می توانید وضعیت سفارش خود را از طریق حساب کاربری &gt;
-            لیست سفارشات لینک دنبال کنید.
+            آن می باشد. می توانید وضعیت سفارش خود را از طریق{" "}
+            <span
+              style={{ color: theme.palette.secondary.main, cursor: "pointer" }}
+              onClick={() => {
+                this.setState({ redirectToList: true });
+              }}
+            >
+              حساب کاربری &gt; لیست سفارشات
+            </span>{" "}
+            دنبال کنید.
             {""}
           </Typography>
         </Box>
@@ -179,6 +225,7 @@ export default class PaymentSuccess extends Component {
           </Button>
         </div>
         {this.redirect()}
+        {this.redirectToList()}
       </div>
     );
   }

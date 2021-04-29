@@ -78,7 +78,14 @@ class UserPanel extends Component {
     window.onpopstate = function() {
       window.history.pushState(null, null, window.location.href);
     };
-    this.selectCreateOrder();
+
+    if (
+      this.props.location &&
+      this.props.location.state &&
+      this.props.location.state.selectedTab
+    )
+      this.setSelectedTab(this.props.location.state.selectedTab);
+    else this.selectCreateOrder();
   }
 
   setSelectedTab = tab => {
@@ -120,7 +127,8 @@ class UserPanel extends Component {
 }
 
 UserPanel.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  location: PropTypes.any
 };
 
 export default withStyles(styles, { withTheme: true })(memo(UserPanel));

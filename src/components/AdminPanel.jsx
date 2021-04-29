@@ -68,7 +68,7 @@ class AdminPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: "dashboard"
+      selectedTab: "ListOrder"
     };
   }
 
@@ -77,7 +77,12 @@ class AdminPanel extends Component {
     window.onpopstate = function() {
       window.history.pushState(null, null, window.location.href);
     };
-    this.selectListOrder();
+    if (
+      this.props.location &&
+      this.props.location.state &&
+      this.props.location.state.selectedTab
+    )
+      this.setSelectedTab(this.props.location.state.selectedTab);
   }
 
   setSelectedTab = tab => {
@@ -113,7 +118,8 @@ class AdminPanel extends Component {
 }
 
 AdminPanel.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  location: PropTypes.any
 };
 
 export default withStyles(styles, { withTheme: true })(memo(AdminPanel));

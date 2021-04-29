@@ -78,7 +78,13 @@ class CreateOrder extends Component {
         ? orderFormState.files
         : []
       : [];
+    let additionalFiles = orderFormState
+      ? orderFormState.additionalFiles
+        ? orderFormState.additionalFiles
+        : []
+      : [];
     delete orderFormState["files"];
+    delete orderFormState["additionalFiles"];
     let postData = {
       id: this.state.id,
       type: this.state.type.code,
@@ -106,8 +112,12 @@ class CreateOrder extends Component {
                   id: res.data.id
                 },
                 () => {
-                  self.handleFileSelect(files).then(() => {
-                    self.orderFormRef.current.onRefresh();
+                  self.handleFileSelect(files, "documents").then(() => {
+                    self
+                      .handleFileSelect(additionalFiles, "additional")
+                      .then(() => {
+                        self.orderFormRef.current.onRefresh();
+                      });
                   });
 
                   if (mode === "SUBMIT") self.handleOpenPaymentDialog();
@@ -144,11 +154,11 @@ class CreateOrder extends Component {
     );
   };
 
-  handleFileSelect = async files => {
+  handleFileSelect = async (files, type) => {
     let self = this;
     for (let file of files) {
       let params = {
-        type: "documents",
+        type: type,
         name: file.name,
         orderId: this.state.id,
         size: file.size

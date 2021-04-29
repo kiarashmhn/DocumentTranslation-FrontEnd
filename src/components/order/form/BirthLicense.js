@@ -129,6 +129,12 @@ export const birthLicenseForm = {
       title: "description",
       content: [
         {
+          key: "additionalFiles",
+          type: "additionalFileHandler",
+          fileType: "additional",
+          tooltipKey: "description"
+        },
+        {
           key: "description",
           type: "text",
           grid: 12,

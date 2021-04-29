@@ -6,7 +6,12 @@ import * as URLConstant from "../../URLConstant";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Api from "../Api/Api";
-import { getCompleteName } from "../../Dictionary";
+import {
+  getCompleteName,
+  getFrenchName,
+  getHint,
+  getPersianName
+} from "../../Dictionary";
 import theme from "../../theme";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 
@@ -14,6 +19,7 @@ const textStyle = {
   alignItems: "center",
   display: "flex",
   justifyContent: "center",
+  position: "relative",
   marginTop: theme.spacing(3),
   marginBottom: theme.spacing(1),
   color: theme.palette.primary.main
@@ -112,13 +118,14 @@ export default class FileHandler extends Component {
           </Typography>
           <CustomTooltip icon={"error"}>
             <div dir={"ltr"}>
-              Assurez-vous que vos documents sont valides, bien visibles et
-              faciles à lire. Vos informations déclarées sur le formulaire
-              doivent correspondre, à la lettre, à celles de votre document.
+              {this.props.tooltipKey
+                ? getHint(this.props.tooltipKey).french
+                : getFrenchName("fileTooltip")}
             </div>
             <div dir={"rtl"}>
-              اطمینان حاصل کنید که سند شما معتبر، واضح و قابل خواندن است.
-              اطلاعات شما در فرم باید با سند شما مطابقت کامل داشته باشد.
+              {this.props.tooltipKey
+                ? getHint(this.props.tooltipKey).persian
+                : getPersianName("fileTooltip")}
             </div>
           </CustomTooltip>
         </div>
@@ -140,5 +147,6 @@ export default class FileHandler extends Component {
 }
 FileHandler.propTypes = {
   orderId: PropTypes.any,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  tooltipKey: PropTypes.any
 };

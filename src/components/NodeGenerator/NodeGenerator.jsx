@@ -29,6 +29,7 @@ export default class NodesGenerator extends Component {
     this.childrenRef = React.createRef();
     this.spousesRef = React.createRef();
     this.fileHandlerRef = React.createRef();
+    this.additionalFileHandlerRef = React.createRef();
     this.provinceDistrictRef = React.createRef();
     this.tazkaraRef = React.createRef();
   }
@@ -77,6 +78,8 @@ export default class NodesGenerator extends Component {
   onRefresh = () => {
     if (this.fileHandlerRef && this.fileHandlerRef.current)
       this.fileHandlerRef.current.reset();
+    if (this.additionalFileHandlerRef && this.additionalFileHandlerRef.current)
+      this.additionalFileHandlerRef.current.reset();
   };
 
   elementOnChange = (event, element) => {
@@ -150,6 +153,14 @@ export default class NodesGenerator extends Component {
         : []
       : [];
     if (files.length > 0) state = { ...state, ...{ files: files } };
+
+    let additionalFiles = this.additionalFileHandlerRef
+      ? this.additionalFileHandlerRef.current
+        ? this.additionalFileHandlerRef.current.getState()
+        : []
+      : [];
+    if (additionalFiles.length > 0)
+      state = { ...state, ...{ additionalFiles: additionalFiles } };
 
     let provinceState = this.provinceDistrictRef
       ? this.provinceDistrictRef.current
@@ -284,6 +295,23 @@ export default class NodesGenerator extends Component {
                 ref={this.fileHandlerRef}
                 orderId={this.props.id}
                 type={element.fileType}
+              />
+            </Grid>
+          );
+        case "additionalFileHandler":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <FileHandler
+                ref={this.additionalFileHandlerRef}
+                orderId={this.props.id}
+                type={element.fileType}
+                tooltipKey={element.tooltipKey}
               />
             </Grid>
           );
