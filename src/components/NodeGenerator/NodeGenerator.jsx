@@ -184,8 +184,8 @@ export default class NodesGenerator extends Component {
           return (
             <Grid
               item
-              xs={12}
-              sm={12}
+              xs={element.xsGrid ? element.xsGrid : 12}
+              sm={element.smGrid ? element.smGrid : 12}
               md={element.grid ? element.grid : 4}
               key={element.key}
             >

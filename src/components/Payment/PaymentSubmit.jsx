@@ -207,7 +207,7 @@ class PaymentSubmit extends Component {
                 align="center"
                 style={{ marginTop: "17px" }}
               >
-                Je reconnais avoir pris connaissance des{" "}
+                J’ai pris connaissance des{" "}
                 <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
                   {" "}
                   <Box
@@ -215,7 +215,7 @@ class PaymentSubmit extends Component {
                     fontWeight="fontWeightMedium"
                     display="inline"
                   >
-                    conditions de vente
+                    conditions générales de vente
                   </Box>
                 </Link>
                 .

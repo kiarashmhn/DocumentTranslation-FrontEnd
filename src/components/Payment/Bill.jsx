@@ -203,6 +203,7 @@ export default class Bill extends Component {
           <Typography>
             {"La facture a été payée par " + this.state.method.frenchTitle}
           </Typography>
+          <Typography>TVA non applicable, art. 293 B du CGI</Typography>
           <Divider style={{ margin: "4px 2px" }} />
           <Typography component="div">
             <Box

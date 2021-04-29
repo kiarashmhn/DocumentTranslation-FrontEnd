@@ -148,8 +148,6 @@ function RegisterDialog(props) {
         loading={isLoading}
         onClose={onClose}
         open
-        headline="ثبت نام"
-        frenchHeadline={"S'inscrire"}
         onFormSubmit={e => {
           e.preventDefault();
           register();
@@ -170,13 +168,14 @@ function RegisterDialog(props) {
               برای استفاده از خدمات، ثبت نام کنید *
             </Typography>*/}
             <TextField
+              variant="outlined"
               inputRef={username}
               margin="normal"
               required
               autoFocus
               fullWidth
               error={status === "invalidUsername"}
-              label="Nom d'utilisateur"
+              label="Identifiant"
               autoComplete="off"
               type="text"
               helperText={
@@ -198,89 +197,15 @@ function RegisterDialog(props) {
                 status === "invalidUsername" ? { error: true } : {}
               }
             />
-            <TextField
-              inputRef={email}
-              margin="normal"
-              fullWidth
-              error={status === "invalidEmail" || status === "nullEmailPhone"}
-              label="E-mail"
-              autoComplete="off"
-              type="text"
-              helperText={
-                status === "invalidEmail" ? (
-                  <div>
-                    <div dir={"rtl"}>ایمیل وارد شده نامعتبر است.</div>
-                    <div>Email invalide.</div>
-                  </div>
-                ) : status === "nullEmailPhone" ? (
-                  <div>
-                    <div dir={"rtl"}>
-                      آدرس ایمیل یا شماره موبایل را وارد کنید.
-                    </div>
-                    <div>Entrez votre e-mail ou votre téléphone</div>
-                  </div>
-                ) : (
-                  "آدرس ایمیل"
-                )
-              }
-              onChange={() => {
-                if (status === "invalidEmail" || status === "nullEmailPhone") {
-                  setStatus(null);
-                }
-              }}
-              FormHelperTextProps={
-                status === "invalidEmail" || status === "nullEmailPhone"
-                  ? { error: true }
-                  : {}
-              }
-            />
-            <TextField
-              inputRef={phone}
-              margin="normal"
-              fullWidth
-              error={status === "nullEmailPhone"}
-              label={"Numéro de mobile"}
-              autoComplete="off"
-              type="number"
-              helperText={
-                status === "nullEmailPhone" ? (
-                  <div>
-                    <div dir={"rtl"}>
-                      آدرس ایمیل یا شماره موبایل را وارد کنید.
-                    </div>
-                    <div>Entrez votre e-mail ou votre téléphone</div>
-                  </div>
-                ) : (
-                  "شماره موبایل"
-                )
-              }
-              onChange={() => {
-                if (status === "nullEmailPhone") {
-                  setStatus(null);
-                }
-              }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <CustomTooltip>
-                      <div dir={"ltr"}>{getFrenchName("useFrenchNumber")}</div>
-                      <div dir={"rtl"}>{getPersianName("useFrenchNumber")}</div>
-                    </CustomTooltip>
-                  </InputAdornment>
-                )
-              }}
-              FormHelperTextProps={
-                status === "nullEmailPhone" ? { error: true } : {}
-              }
-            />
             <VisibilityPasswordTextField
+              variant="outlined"
               margin="normal"
               required
               fullWidth
               error={
                 status === "passwordTooShort" || status === "passwordsDontMatch"
               }
-              label="Le mot de passe"
+              label="Mot de passe"
               inputRef={registerPassword}
               autoComplete="off"
               onChange={() => {
@@ -321,6 +246,7 @@ function RegisterDialog(props) {
               onVisibilityChange={setIsPasswordVisible}
             />
             <VisibilityPasswordTextField
+              variant="outlined"
               margin="normal"
               required
               fullWidth
@@ -367,7 +293,83 @@ function RegisterDialog(props) {
               isVisible={isPasswordVisible}
               onVisibilityChange={setIsPasswordVisible}
             />
-
+            <TextField
+              variant="outlined"
+              inputRef={email}
+              margin="normal"
+              fullWidth
+              error={status === "invalidEmail" || status === "nullEmailPhone"}
+              label="E-mail"
+              autoComplete="off"
+              type="text"
+              helperText={
+                status === "invalidEmail" ? (
+                  <div>
+                    <div dir={"rtl"}>ایمیل وارد شده نامعتبر است.</div>
+                    <div>Email invalide.</div>
+                  </div>
+                ) : status === "nullEmailPhone" ? (
+                  <div>
+                    <div dir={"rtl"}>
+                      آدرس ایمیل یا شماره موبایل را وارد کنید.
+                    </div>
+                    <div>Entrez votre e-mail ou votre téléphone</div>
+                  </div>
+                ) : (
+                  "آدرس ایمیل"
+                )
+              }
+              onChange={() => {
+                if (status === "invalidEmail" || status === "nullEmailPhone") {
+                  setStatus(null);
+                }
+              }}
+              FormHelperTextProps={
+                status === "invalidEmail" || status === "nullEmailPhone"
+                  ? { error: true }
+                  : {}
+              }
+            />
+            <TextField
+              variant="outlined"
+              inputRef={phone}
+              margin="normal"
+              fullWidth
+              error={status === "nullEmailPhone"}
+              label={"Numéro de portable"}
+              autoComplete="off"
+              type="number"
+              helperText={
+                status === "nullEmailPhone" ? (
+                  <div>
+                    <div dir={"rtl"}>
+                      آدرس ایمیل یا شماره موبایل را وارد کنید.
+                    </div>
+                    <div>Entrez votre e-mail ou votre téléphone</div>
+                  </div>
+                ) : (
+                  "شماره موبایل"
+                )
+              }
+              onChange={() => {
+                if (status === "nullEmailPhone") {
+                  setStatus(null);
+                }
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <CustomTooltip>
+                      <div dir={"ltr"}>{getFrenchName("useFrenchNumber")}</div>
+                      <div dir={"rtl"}>{getPersianName("useFrenchNumber")}</div>
+                    </CustomTooltip>
+                  </InputAdornment>
+                )
+              }}
+              FormHelperTextProps={
+                status === "nullEmailPhone" ? { error: true } : {}
+              }
+            />
             <Typography variant="body1" dir={"rtl"} component={"div"}>
               <Box
                 fontStyle="bold"
@@ -442,17 +444,47 @@ function RegisterDialog(props) {
           </Fragment>
         }
         actions={
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            size="large"
-            color="secondary"
-            disabled={isLoading}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
           >
-            ثبت نام
-            {isLoading && <ButtonCircularProgress />}
-          </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              size={"medium"}
+              color="secondary"
+              style={{ textTransform: "none", align: "center" }}
+              disabled={isLoading}
+            >
+              <p>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "0",
+                    fontSize: 16
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  S&apos;inscrire
+                </Typography>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "2px",
+                    fontSize: "100%"
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  ثبت نام
+                </Typography>
+              </p>
+              {isLoading && <ButtonCircularProgress />}
+            </Button>
+          </div>
         }
       />
       {redirect()}

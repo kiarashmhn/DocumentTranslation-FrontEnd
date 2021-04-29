@@ -17,6 +17,7 @@ import WaveBorder from "../Template/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
 import * as URLConstant from "../../URLConstant";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 //import ColoredButton from "../Template/ColoredButton";
 
 const styles = theme => ({
@@ -238,22 +239,33 @@ class Footer extends Component {
                   whiteSpace: "pre-line",
                   fontWeight: "bold",
                   display: "block",
+                  marginBottom: "10px"
+                }}
+              >
+                <Link
+                  style={{ textDecoration: "none", color: "#FFF" }}
+                  to={{ pathname: "/LegalNotes" }}
+                  target={"_blank"}
+                >
+                  {"* Mentions légales / نکات قانونی"}
+                </Link>
+              </Typography>
+              <Typography
+                variant="h6"
+                style={{
+                  whiteSpace: "pre-line",
+                  fontWeight: "bold",
+                  display: "block",
                   marginBottom: "20px"
                 }}
               >
-                <span
-                  className={classes.link}
-                  onClick={() => this.setState({ redirect: true })}
-                  tabIndex={0}
-                  role="button"
-                  onKeyDown={event => {
-                    if (event.keyCode === 13 || event.keyCode === 32) {
-                      this.setState({ redirect: true });
-                    }
-                  }}
+                <Link
+                  style={{ textDecoration: "none", color: "#FFF" }}
+                  to={{ pathname: "/DataPrivacy" }}
+                  target={"_blank"}
                 >
-                  {"* Mentions légales / نکات قانونی"}
-                </span>
+                  {"* Protection des données / داده‌های شخصی"}
+                </Link>
               </Typography>
               <Typography style={{ color: "#8f9296" }} paragraph>
                 Utiliser la messagerie sécurisée de votre espace client pour

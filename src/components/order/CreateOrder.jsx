@@ -195,27 +195,40 @@ class CreateOrder extends Component {
           m={5}
         >
           <Fragment>
-            <Typography variant="body1" color={"secondary"} paragraph>
+            <Typography variant="body1" color={"secondary"}>
               * Remarque:
             </Typography>
             <Typography variant="body1" paragraph>
-              Il est fortement recommandé de concorder l&apos;orthographe des
-              noms, prénoms et les dates à celles déjà déclarées antérieurement
-              auprès des administrations (préfecture, OFPRA, récépissé, titre de
-              séjour, passeport…).
+              <div>
+                - Il est fortement recommandé de concorder l&apos;orthographe
+                des noms, prénoms et les dates à celles déjà déclarées
+                antérieurement auprès des administrations (préfecture, OFPRA,
+                récépissé, titre de séjour, passeport…).
+              </div>
+              <div>
+                - Utiliser exclusivement{" "}
+                <span style={{ color: theme.palette.danger.main }}>
+                  l&apos;alphabet latin
+                </span>{" "}
+                pour remplir les formulaires.
+              </div>
             </Typography>
-            <Typography
-              variant="body1"
-              dir={"rtl"}
-              color={"secondary"}
-              paragraph
-            >
+            <Typography variant="body1" dir={"rtl"} color={"secondary"}>
               * نکته:
             </Typography>
             <Typography variant="body1" dir={"rtl"} paragraph>
-              توصیه می شود که نوشتار لاتین نام، نام خانوادگی (تخلص)، تاریخ تولد
-              و دیگر مشخصات را با پاسپورت یا مدارک دیگر مثل کارت اقامت خود حتما
-              مطابقت دهید.
+              <div>
+                - توصیه می شود که نوشتار لاتین نام، نام خانوادگی (تخلص)، تاریخ
+                تولد و دیگر مشخصات را با پاسپورت یا مدارک دیگر مثل کارت اقامت
+                خود حتما مطابقت دهید.
+              </div>
+              <div>
+                - فرم‌ها باید به{" "}
+                <span style={{ color: theme.palette.danger.main }}>
+                  الفبای لاتین
+                </span>{" "}
+                نوشته شوند.
+              </div>
             </Typography>
           </Fragment>
         </Box>

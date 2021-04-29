@@ -69,7 +69,7 @@ export const OrderTypes = {
     form: TazkaraOldForm,
     reportData: TazkaraKetabReportData,
     nationality: "Afghan",
-    code: "AA",
+    code: "AAB",
     delay: 24,
     price: 20
   },

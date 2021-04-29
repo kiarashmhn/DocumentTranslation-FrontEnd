@@ -24,7 +24,7 @@ export const TazkaraBarghiForm = {
           type: "text",
           notRequired: true
         },
-		{
+        {
           key: "gender",
           type: "select",
           options: [
@@ -37,7 +37,7 @@ export const TazkaraBarghiForm = {
           key: "aFatherName",
           type: "text"
         },
-		{
+        {
           key: "fatherLastName",
           type: "text",
           notRequired: true
@@ -46,13 +46,12 @@ export const TazkaraBarghiForm = {
           key: "grandFatherName",
           type: "text"
         },
-		
-		
-		{
-			key: "aBirthDate",
-			type: "date"
-		},
-		{
+
+        {
+          key: "aBirthDate",
+          type: "date"
+        },
+        {
           key: "livingLocationTemp",
           type: "select",
           options: [
@@ -61,7 +60,7 @@ export const TazkaraBarghiForm = {
           ],
           required: true
         },
-		{
+        {
           key: "livingLocationOriginal",
           type: "select",
           options: [
@@ -70,7 +69,7 @@ export const TazkaraBarghiForm = {
           ],
           required: true
         },
-		{
+        {
           key: "religion",
           type: "select",
           options: [
@@ -83,7 +82,7 @@ export const TazkaraBarghiForm = {
           ],
           required: true
         },
-		{
+        {
           key: "tribe",
           type: "select",
           options: [
@@ -105,10 +104,9 @@ export const TazkaraBarghiForm = {
             { value: "guijar", key: "guijar" },
             { value: "hindu", key: "hindu" },
             { value: "sikan", key: "sikan" }
-          ],
-          
+          ]
         },
-		{
+        {
           key: "nationality",
           type: "select",
           options: [
@@ -117,17 +115,16 @@ export const TazkaraBarghiForm = {
           ],
           required: true
         },
-		
-        
+
         {
           key: "idNumber",
           type: "text"
         },
-		{
+        {
           key: "issueDate",
           type: "date"
         },
-		{
+        {
           key: "signatureorFingerPrint",
           type: "select",
           options: [
@@ -140,7 +137,7 @@ export const TazkaraBarghiForm = {
         }
       ]
     },
-    
+
     {
       title: "description",
       content: [
@@ -153,12 +150,30 @@ export const TazkaraBarghiForm = {
       ]
     },
     {
-      title: "address",
+      title: "addr",
       content: [
         {
-          key: "address",
+          key: "nameOrCompany",
+          type: "text"
+        },
+        {
+          key: "addr",
           grid: 12,
           type: "text"
+        },
+        {
+          key: "postalCode",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
+        },
+        {
+          key: "city",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
         }
       ]
     }

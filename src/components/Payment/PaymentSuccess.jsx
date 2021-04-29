@@ -87,20 +87,19 @@ export default class PaymentSuccess extends Component {
             >
               {this.state.code + "" + this.state.orderId}
             </Box>{" "}
-            a bien été enregistrée et elle sera traitée dans les plus brefs
-            délais. Nous reviendrons vers vous en cas de demande incomplète pour
-            vous indiquerles renseignements manquants.{" "}
+            a bien été enregistrée et sera traitée dans les plus brefs délais.
+            Nous reviendrons vers vous en cas de demande incomplète pour vous
+            indiquer les renseignements manquants. Vous pouvez suivre l’état
+            d’avancement de votre commande et télécharger,{" "}
             <Box
               fontStyle="bold"
               fontWeight="fontWeightMedium"
               display="inline"
             >
               {this.state.delay}
-            </Box>
-            {""} heures après la validation de votre commande, vous pouvez
-            télécharger la traduction certifiée à partir de votre espace client.
-            Ainsi à tout moment, vous pouvez suivre l’état d’avancement de votre
-            commande via votre comte &gt; liste de commande.
+            </Box>{" "}
+            heures après la validation de votre commande, la traduction
+            certifiée via votre comte &gt; liste de commande.
           </Typography>
           <Typography
             paragraph
@@ -110,19 +109,7 @@ export default class PaymentSuccess extends Component {
             style={{ padding: "10px" }}
             component={"div"}
           >
-            درخواست ترجمه شما ثبت شده است. در صورت تکمیل بودن اطلاعات، درخواست
-            تایید و ترجمه آغاز می شود و سند شما بعد از{" "}
-            <Box
-              fontStyle="bold"
-              fontWeight="fontWeightMedium"
-              display="inline"
-            >
-              {this.state.delay}
-            </Box>
-            {""} ساعت در حساب کاربری قابل دانلود خواهد بود. در غیر اینصورت،
-            موارد نقص در حساب کاربری به شما اطلاع داده خواهد شد و تایید آن منوط
-            به تکمیل آن می باشد. می توانید وضعیت سفارش خود را از طریق حساب
-            کاربری &gt; لیست سفارشات دنبال کنید. برای اطلاع، شماره سفارش شما{" "}
+            درخواست ترجمه شما با شماره{" "}
             <Box
               fontStyle="bold"
               fontWeight="fontWeightMedium"
@@ -130,7 +117,20 @@ export default class PaymentSuccess extends Component {
             >
               {this.state.code + "" + this.state.orderId}
             </Box>{" "}
-            میباشد.
+            ثبت شده است. در صورت تکمیل بودن اطلاعات، سفارش تایید و ترجمه آغاز می
+            شود و سند شما بعد از{" "}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              {this.state.delay}
+            </Box>{" "}
+            ساعت در حساب کاربری قابل دانلود خواهد بود. در غیر اینصورت، موارد نقص
+            در حساب کاربری به شما اطلاع داده خواهد شد و تایید آن منوط به تکمیل
+            آن می باشد. می توانید وضعیت سفارش خود را از طریق حساب کاربری &gt;
+            لیست سفارشات لینک دنبال کنید.
+            {""}
           </Typography>
         </Box>
         <div

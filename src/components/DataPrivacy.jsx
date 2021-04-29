@@ -5,7 +5,7 @@ import theme from "../theme";
 import Button from "@material-ui/core/Button";
 import { getFrenchName, getPersianName } from "../Dictionary";
 
-export default class LegalNotes extends Component {
+export default class DataPrivacy extends Component {
   constructor(props) {
     super(props);
     this.privacyRef = React.createRef();
@@ -15,6 +15,10 @@ export default class LegalNotes extends Component {
     let win = window.open("about:blank", "_self");
     win.close();
   };
+
+  componentDidMount() {
+    this.privacyRef.current.scrollIntoView();
+  }
 
   render() {
     return (

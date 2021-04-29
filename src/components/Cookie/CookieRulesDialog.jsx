@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   Dialog,
-  DialogTitle,
   DialogContent,
   DialogActions,
   Typography,
@@ -35,99 +34,45 @@ function CookieRulesDialog(props) {
       onClose={onClose}
       className={classes.dialog}
     >
-      <DialogTitle>Our Cookie Policy</DialogTitle>
       <DialogContent>
-        <Typography variant="h6" color="primary" paragraph>
-          What Are Cookies
+        <Typography paragraph>
+          - Le site que vous visitez utilise des cookies (traceurs). Ainsi, le
+          site est susceptible d&apos;accéder à des informations déjà stockées
+          dans votre équipement terminal de communications électroniques et
+          d&apos;y inscrire des informations.
         </Typography>
         <Typography paragraph>
-          As is common practice with almost all professional websites this site
-          uses cookies, which are tiny files that are downloaded to your
-          computer, to improve your experience. This page describes what
-          information they gather, how we use it and why we sometimes need to
-          store these cookies. We will also share how you can prevent these
-          cookies from being stored however this may downgrade or
-          &apos;break&apos; certain elements of the sites functionality. For
-          more general information on cookies see the Wikipedia article on HTTP
-          Cookies.
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          How We Use Cookies
+          - Le site utilise exclusivement des traceurs dits &quot;strictement
+          nécessaires&quot;, qui ne nécessitent pas votre consentement
+          préalable.
         </Typography>
         <Typography paragraph>
-          We use cookies for a variety of reasons detailed below. Unfortunately
-          in most cases there are no industry standard options for disabling
-          cookies without completely disabling the functionality and features
-          they add to this site. It is recommended that you leave on all cookies
-          if you are not sure whether you need them or not in case they are used
-          to provide a service that you use.
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          Disabling Cookies
+          - Nous utilisons ces traceurs pour permettre et faciliter la
+          navigation sur le site notamment en mémorisant vos préférences de
+          navigation définis au cours de votre session et fournir les services
+          de traduction que vous demandez expressément.
         </Typography>
         <Typography paragraph>
-          You can prevent the setting of cookies by adjusting the settings on
-          your browser (see your browser Help for how to do this). Be aware that
-          disabling cookies will affect the functionality of this and many other
-          websites that you visit. Disabling cookies will usually result in also
-          disabling certain functionality and features of the this site.
-          Therefore it is recommended that you do not disable cookies.
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          The Cookies We Set
-        </Typography>
-        <Typography paragraph>Account related cookies:</Typography>
-        <Typography paragraph>
-          If you create an account with us then we will use cookies for the
-          management of the signup process and general administration. These
-          cookies will usually be deleted when you log out however in some cases
-          they may remain afterwards to remember your site preferences when
-          logged out. We use cookies to remember that you accepted this message.
-        </Typography>
-        <Typography paragraph>Login related cookies:</Typography>
-        <Typography paragraph>
-          We use cookies when you are logged in so that we can remember this
-          fact. This prevents you from having to log in every single time you
-          visit a new page. These cookies are typically removed or cleared when
-          you log out to ensure that you can only access restricted features and
-          areas when logged in.
-        </Typography>
-        <Typography paragraph>Site preferences cookies:</Typography>
-        <Typography paragraph>
-          In order to provide you with a great experience on this site we
-          provide the functionality to set your preferences for how this site
-          runs when you use it. In order to remember your preferences we need to
-          set cookies so that this information can be called whenever you
-          interact with a page is affected by your preferences.
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          Third Party Cookies:
+          - Ces cookies ne peuvent pas, techniquement, être désactivés depuis le
+          site. Vous pouvez néanmoins vous opposer à l&apos;utilisation de ces
+          traceurs, exclusivement en paramétrant votre navigateur. Ce
+          paramétrage dépend du navigateur que vous utilisez, mais il est en
+          général simple à réaliser : en principe, vous pouvez soit activer une
+          fonction de navigation privée soit uniquement interdire ou restreindre
+          les traceurs (cookies). Attention, il se peut que des traceurs aient
+          été enregistrés sur votre périphérique avant le paramétrage de votre
+          navigateur : dans ce cas, effacez votre historique de navigation,
+          toujours en utilisant le paramétrage de votre navigateur.
         </Typography>
         <Typography paragraph>
-          In some special cases we also use cookies provided by trusted third
-          parties. The following section details which third party cookies you
-          might encounter through this site.
+          - L&apos;utilisation des traceurs est régie par l&apos;article 32 II
+          de la loi n° 78-17 du 6 janvier 1978, transposant l&apos;article 5.3
+          de la directive 2002/58/CE du parlement européen et du conseil du 12
+          juillet 2002 modifiée par la directive 2009/136/CE.
         </Typography>
         <Typography paragraph>
-          Third party analytics are used to track and measure usage of this site
-          so that we can continue to produce engaging content. These cookies may
-          track things such as how long you spend on the site or pages you visit
-          which helps us to understand how we can improve the site for you.
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          More Information
-        </Typography>
-        <Typography paragraph>
-          Hopefully that has clarified things for you and as was previously
-          mentioned if there is something that you aren&apos;t sure whether you
-          need or not it&apos;s usually safer to leave cookies enabled in case
-          it does interact with one of the features you use on our site. This
-          Cookies Policy was created with the help of the Cookies Policy
-          Template Generator and the Terms and Conditions Template.
-        </Typography>
-        <Typography paragraph>
-          However if you are still looking for more information then you can
-          contact us by sending an email to admin@francedoc.fr.
+          - Pour en savoir plus sur les cookies et traceurs, nous vous invitons
+          à consulter le site de la CNIL : www.cnil.fr.
         </Typography>
       </DialogContent>
       <DialogActions className={classes.dialogActions}>
@@ -137,7 +82,7 @@ function CookieRulesDialog(props) {
           color={theme.palette.common.black}
         >
           <ArrowBackIcon className={classes.backIcon} />
-          Back
+          Fermer
         </ColoredButton>
       </DialogActions>
     </Dialog>

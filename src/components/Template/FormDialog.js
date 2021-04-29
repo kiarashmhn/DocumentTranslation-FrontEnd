@@ -72,9 +72,11 @@ function FormDialog(props) {
             {frenchHeadline}
           </Typography>
         )}
-        <Typography variant="h6" align={"center"}>
-          {headline}
-        </Typography>
+        {headline && (
+          <Typography variant="h6" align={"center"}>
+            {headline}
+          </Typography>
+        )}
       </div>
       <DialogContent className={classes.dialogContent}>
         <form onSubmit={onFormSubmit} autoComplete="new-password">
@@ -92,7 +94,7 @@ FormDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  headline: PropTypes.string.isRequired,
+  headline: PropTypes.string,
   frenchHeadline: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   onFormSubmit: PropTypes.func.isRequired,

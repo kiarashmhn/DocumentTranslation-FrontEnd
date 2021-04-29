@@ -96,8 +96,6 @@ function LoginDialog(props) {
           login();
         }}
         hideBackdrop
-        headline="ورود"
-        frenchHeadline="Connexion"
         content={
           <Fragment>
             <TextField
@@ -108,7 +106,7 @@ function LoginDialog(props) {
               required
               fullWidth
               error={status === "invalidUsernameOrPassword"}
-              label="Nom d'utilisateur"
+              label="Identifiant"
               autoComplete="off"
               type="text"
               onChange={() => {
@@ -137,7 +135,7 @@ function LoginDialog(props) {
               required
               fullWidth
               error={status === "invalidUsernameOrPassword"}
-              label="Le mot de passe"
+              label="Mot de passe"
               inputRef={loginPassword}
               autoComplete="off"
               onChange={() => {
@@ -165,17 +163,46 @@ function LoginDialog(props) {
         }
         actions={
           <Fragment>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              disabled={isLoading}
-              size="large"
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
             >
-              ورود
-              {isLoading && <ButtonCircularProgress />}
-            </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="secondary"
+                disabled={isLoading}
+                size={"medium"}
+                style={{ textTransform: "none" }}
+              >
+                <p>
+                  <span
+                    style={{
+                      display: "block",
+                      marginBottom: "0",
+                      fontSize: 14
+                    }}
+                  />
+                  <Typography variant="body1" align="center" component={"span"}>
+                    Connexion
+                  </Typography>
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: 14
+                    }}
+                  />
+                  <Typography variant="body1" align="center" component={"span"}>
+                    ورود
+                  </Typography>
+                </p>
+                {isLoading && <ButtonCircularProgress />}
+              </Button>
+            </div>
             <Typography
               align="center"
               className={classNames(

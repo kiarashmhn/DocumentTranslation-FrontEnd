@@ -93,18 +93,20 @@ function CookieConsent(props) {
       open={isVisible}
       message={
         <Typography className="text-white">
-          We use cookies to ensure you get the best experience on our website.{" "}
+          En cliquant sur ”J’accepte”, vous acceptez l&apos;utilisation de
+          traceurs (cookies) afin de vous fournir les services de traduction que
+          vous demandez expressément.{" "}
         </Typography>
       }
       action={
         <Fragment>
           <Box mr={1}>
             <Button color="secondary" onClick={handleCookieRulesDialogOpen}>
-              More details
+              Pour en savoir plus
             </Button>
           </Box>
           <Button color="secondary" onClick={onAccept}>
-            Got it!
+            J’accepte
           </Button>
         </Fragment>
       }

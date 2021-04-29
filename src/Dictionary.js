@@ -35,7 +35,7 @@ export const Dictionary = {
     persian: "نوع شناسنامه",
     french: "Type de carte d'identité"
   },
-  address: {
+  addr: {
     persian: "آدرس دریافت مدارک ترجمه شده",
     french: "Adresse de réception de traduction effectuée",
     hint: {
@@ -126,9 +126,9 @@ export const Dictionary = {
     french: "Informations complémentaire",
     hint: {
       persian:
-        "هر گونه توضیحی که برای ترجمه سند خود مفید میدانید را میتوانید در این قسمت اضافه کنید",
+        "هر گونه توضیح یا مستندات تکمیلی که برای ترجمه سند خود مفید می دانید را می توانید در این قسمت اضافه کنید.",
       french:
-        "Veuillez ajouter toute autre information que vous jugerez utile à la réalisation de traduction de votre document dans cette rubrique"
+        "Veuillez ajouter toute autre information ou document que vous jugerez utile à la réalisation de traduction de votre document dans cette rubrique."
     }
   },
   personalInfo: {
@@ -204,11 +204,11 @@ export const Dictionary = {
   },
   save: {
     persian: "ذخیره اطلاعات",
-    french: "enregistrer"
+    french: "Conserver"
   },
   submit: {
-    persian: "ثبت سفارش",
-    french: "soumettre la commande"
+    persian: "ثبت و ورود به مرحله پرداخت",
+    french: "Enregistrer et aller a l’étape de paiement"
   },
   allStepsCompleted: {
     persian: "همه مراحل با موفقیت تکمیل شدند",
@@ -1339,6 +1339,22 @@ export const Dictionary = {
   facture: {
     persian: "صورتحساب",
     french: "Facture"
+  },
+  nameOrCompany: {
+    persian: "نام و نام خانوادگی یا نام شرکت",
+    french: "NOM et Prénom ou Société"
+  },
+  address: {
+    persian: "آدرس",
+    french: "Adresse"
+  },
+  city: {
+    persian: "شهر",
+    french: "Ville"
+  },
+  close: {
+    persian: "بستن",
+    french: "Fermer"
   }
 };
 

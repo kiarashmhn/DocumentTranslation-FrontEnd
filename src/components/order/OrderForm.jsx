@@ -16,6 +16,9 @@ import StepContent from "@material-ui/core/StepContent";
 import Paper from "@material-ui/core/Paper";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import NodeGenerator from "../NodeGenerator/NodeGenerator";
+import Checkbox from "@material-ui/core/Checkbox";
+import { Link } from "react-router-dom";
+import Box from "@material-ui/core/Box";
 
 const styles = {
   customWidth: {
@@ -60,6 +63,7 @@ class OrderForm extends Component {
     this.state = {
       step: 0,
       steps: this.props.form.steps,
+      approval: false,
       ...initialState
     };
     this.nodeGenRef = React.createRef();
@@ -215,6 +219,89 @@ class OrderForm extends Component {
           )}
           <div
             style={{
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "40px"
+            }}
+          >
+            <Checkbox
+              checked={!!this.state.approval}
+              onChange={e =>
+                this.setState({
+                  approval: e.target.checked
+                })
+              }
+              name={"approval"}
+              color="secondary"
+            />
+            <Typography
+              paragraph
+              variant="body1"
+              align="center"
+              style={{ marginTop: "17px" }}
+            >
+              J’accepte des{" "}
+              <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
+                {" "}
+                <Box
+                  fontStyle="bold"
+                  fontWeight="fontWeightMedium"
+                  display="inline"
+                >
+                  mentions légales de vente
+                </Box>
+              </Link>{" "}
+              et{" "}
+              <Link
+                to={{
+                  pathname: "/DataPrivacy"
+                }}
+                target={"_blank"}
+              >
+                {" "}
+                <Box
+                  fontStyle="bold"
+                  fontWeight="fontWeightMedium"
+                  display="inline"
+                >
+                  de protection des données
+                </Box>
+              </Link>
+              .
+            </Typography>
+          </div>
+          <Typography paragraph variant="body1" align="center" dir={"rtl"}>
+            <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
+              {" "}
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                قوانین فروش
+              </Box>
+            </Link>{" "}
+            و{" "}
+            <Link
+              to={{
+                pathname: "/DataPrivacy"
+              }}
+              target={"_blank"}
+            >
+              {" "}
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                حفاظت از داده‌های شخصی
+              </Box>
+            </Link>{" "}
+            را قبول دارم.
+          </Typography>
+          <div
+            style={{
               maxWidth: "100%",
               verticalAlign: "middle",
               display: "flex",
@@ -227,9 +314,10 @@ class OrderForm extends Component {
           >
             <Button
               onClick={this.handleSubmit}
-              style={styles.button}
+              style={{ ...styles.button, ...{ textTransform: "none" } }}
               variant="contained"
               color="secondary"
+              disabled={!this.state.approval}
             >
               <p>
                 <span

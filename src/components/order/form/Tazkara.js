@@ -284,12 +284,30 @@ export const TazkaraForm = {
       ]
     },
     {
-      title: "address",
+      title: "addr",
       content: [
         {
-          key: "address",
+          key: "nameOrCompany",
+          type: "text"
+        },
+        {
+          key: "addr",
           grid: 12,
           type: "text"
+        },
+        {
+          key: "postalCode",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
+        },
+        {
+          key: "city",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
         }
       ]
     }

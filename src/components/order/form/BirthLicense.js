@@ -24,7 +24,7 @@ export const birthLicenseForm = {
           name: "aBirthLocation",
           required: true
         },
-		{
+        {
           key: "zone",
           type: "select",
           options: [
@@ -35,35 +35,34 @@ export const birthLicenseForm = {
           ],
           required: true
         },
-		{
-			key: "houseNumber",
-			type: "text"
-		},
-		{
-			key: "volumeNo",
-			type: "text"
-		},
-		{
-			key: "pageNo",
-			type: "text"
-		},
-		{
-			key: "registerNo",
-			type: "text"
-		},
-		{
-			key: "tazkaraDate",
-			type: "date"
-		},
-		{
-			key: "tazkaraNumber",
-			type: "text"
-		},
-		{
-			key: "tazkaraNumberElectronic",
-			type: "text"
-		},
-		
+        {
+          key: "houseNumber",
+          type: "text"
+        },
+        {
+          key: "volumeNo",
+          type: "text"
+        },
+        {
+          key: "pageNo",
+          type: "text"
+        },
+        {
+          key: "registerNo",
+          type: "text"
+        },
+        {
+          key: "tazkaraDate",
+          type: "date"
+        },
+        {
+          key: "tazkaraNumber",
+          type: "text"
+        },
+        {
+          key: "tazkaraNumberElectronic",
+          type: "text"
+        }
       ]
     },
     {
@@ -85,15 +84,15 @@ export const birthLicenseForm = {
           key: "valadiat",
           type: "text"
         },
-		{
+        {
           key: "motherName",
           type: "text"
         },
-		{
-			key: "birthDate",
-			type: "date"
-		},
-		{
+        {
+          key: "birthDate",
+          type: "date"
+        },
+        {
           key: "provinceDistrict",
           provinceKey: "province",
           districtKey: "district",
@@ -102,7 +101,7 @@ export const birthLicenseForm = {
           name: "aBirthLocation",
           required: true
         },
-		{
+        {
           key: "gender",
           type: "select",
           options: [
@@ -119,16 +118,13 @@ export const birthLicenseForm = {
           key: "tazkaraInformation",
           type: "tazkaraInfo"
         },
-		{
+        {
           key: "codeBar",
           type: "text"
-        },
-		
+        }
       ]
     },
-    
-    
-    
+
     {
       title: "description",
       content: [
@@ -141,12 +137,30 @@ export const birthLicenseForm = {
       ]
     },
     {
-      title: "address",
+      title: "addr",
       content: [
         {
-          key: "address",
+          key: "nameOrCompany",
+          type: "text"
+        },
+        {
+          key: "addr",
           grid: 12,
           type: "text"
+        },
+        {
+          key: "postalCode",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
+        },
+        {
+          key: "city",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
         }
       ]
     }
