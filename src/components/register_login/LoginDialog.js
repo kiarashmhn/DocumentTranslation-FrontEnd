@@ -176,7 +176,8 @@ function LoginDialog(props) {
                 variant="contained"
                 color="secondary"
                 disabled={isLoading}
-                size={"medium"}
+                size={"small"}
+                disableElevation
                 style={{ textTransform: "none" }}
               >
                 <p>
@@ -224,6 +225,28 @@ function LoginDialog(props) {
               }}
             >
               فراموشی رمزعبور
+            </Typography>
+            <Typography
+              align="center"
+              className={classNames(
+                classes.forgotPassword,
+                isLoading ? classes.disabledText : null
+              )}
+              color="primary"
+              onClick={isLoading ? null : openChangePasswordDialog}
+              tabIndex={0}
+              role="button"
+              onKeyDown={event => {
+                // For screenreaders listen to space and enter events
+                if (
+                  (!isLoading && event.keyCode === 13) ||
+                  event.keyCode === 32
+                ) {
+                  openChangePasswordDialog();
+                }
+              }}
+            >
+              Mot de passe oublié
             </Typography>
           </Fragment>
         }

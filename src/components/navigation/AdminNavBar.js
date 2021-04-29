@@ -6,7 +6,7 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Avatar,
+  //Avatar,
   Drawer,
   List,
   IconButton,
@@ -22,7 +22,7 @@ import {
 } from "@material-ui/core";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import MenuIcon from "@material-ui/icons/Menu";
-import MessagePopperButton from "./MessagePopperButton";
+//import MessagePopperButton from "./MessagePopperButton";
 import NavigationDrawer from "../Template/NavigationDrawer";
 import ListIcon from "@material-ui/icons/List";
 import AuthService from "../../AuthService";
@@ -132,7 +132,7 @@ const styles = theme => ({
 });
 
 function NavBar(props) {
-  const { selectedTab, messages, classes, width, selectListOrder } = props;
+  const { selectedTab, classes, width, selectListOrder } = props;
   // Will be use to make website more accessible by screen readers
   const links = useRef([]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -210,16 +210,16 @@ function NavBar(props) {
             alignItems="center"
             width="100%"
           >
-            <MessagePopperButton messages={messages} />
+            {/*<MessagePopperButton messages={messages} />*/}
             <ListItem
               disableGutters
               className={classNames(classes.iconListItem, classes.smBordered)}
             >
-              <Avatar
+              {/*<Avatar
                 alt="profile picture"
                 src={`${process.env.PUBLIC_URL}/images/logged_in/profilePicture.jpg`}
                 className={classNames(classes.accountAvatar)}
-              />
+              />*/}
               {isWidthUp("sm", width) && (
                 <ListItemText
                   className={classes.username}

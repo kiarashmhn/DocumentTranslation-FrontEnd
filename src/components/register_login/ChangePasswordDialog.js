@@ -17,8 +17,7 @@ const styles = theme => ({
   },
   dialogActions: {
     paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    paddingRight: theme.spacing(2)
+    paddingBottom: theme.spacing(2)
   }
 });
 
@@ -37,7 +36,7 @@ function ChangePassword(props) {
 
   return (
     <Dialog
-      open
+      open={true}
       hideBackdrop
       onClose={onClose}
       disableBackdropClick={isLoading}
@@ -51,34 +50,116 @@ function ChangePassword(props) {
         }}
       >
         <DialogContent className={classes.dialogContent}>
-          <Typography paragraph>
-            آدرس ایمیلتان را وارد کنید تا نحوه بازیابی رمزعبور برای شما ارسال
-            شود
+          <Typography paragraph align={"center"}>
+            Si vous avez oublié votre identifiant, vous pouvez utiliser votre
+            adresse e-mail ou votre numéro de portable comme votre identifiant.
+            Si vous avez oublié votre mot de passe, renseignez une des
+            informations suivantes pour le recevoir:
+          </Typography>
+          <Typography paragraph dir={"rtl"} align={"center"}>
+            در صورتیکه نام کاربری خود را فراموش کرده اید می توانید از آدرس ایمیل
+            یا شماره موبایل بجای نام کاربری استفاده کنید. در صورتیکه رمز عبور را
+            فراموش کرده اید یکی از اطلاعات زیر را برای دریافت آن وارد کنید:
           </Typography>
           <TextField
             variant="outlined"
             margin="dense"
             required
             fullWidth
-            label="آدرس ایمیل"
+            label="Votre adresse e-mail"
+            helperText={"آدرس ایمیل"}
+            autoFocus
+            type="email"
+            autoComplete="off"
+          />
+          <TextField
+            variant="outlined"
+            margin="dense"
+            required
+            fullWidth
+            label="Votre numéro"
+            helperText={"شماره موبایل"}
             autoFocus
             type="email"
             autoComplete="off"
           />
         </DialogContent>
         <DialogActions className={classes.dialogActions}>
-          <Button onClick={onClose} disabled={isLoading}>
-            انصراف
-          </Button>
-          <Button
-            type="submit"
-            variant="contained"
-            color="secondary"
-            disabled={isLoading}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
           >
-            بازیابی رمزعبور
-            {isLoading && <ButtonCircularProgress />}
-          </Button>
+            <Button
+              onClick={onClose}
+              disabled={isLoading}
+              size={"small"}
+              style={{ textTransform: "none" }}
+            >
+              <p>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "0",
+                    fontSize: 14
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  Annuler
+                </Typography>
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: 14
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  انصراف
+                </Typography>
+              </p>
+            </Button>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              disabled={isLoading}
+              size={"small"}
+              style={{ textTransform: "none" }}
+            >
+              <p>
+                <span
+                  style={{
+                    display: "block",
+                    marginBottom: "0",
+                    fontSize: 14
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  Récupérer mot de passe
+                </Typography>
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: 14
+                  }}
+                />
+                <Typography variant="body1" align="center" component={"span"}>
+                  بازیابی رمزعبور
+                </Typography>
+              </p>
+              {isLoading && <ButtonCircularProgress />}
+            </Button>
+          </div>
         </DialogActions>
       </form>
     </Dialog>
