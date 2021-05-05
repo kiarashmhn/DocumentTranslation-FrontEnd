@@ -52,7 +52,7 @@ export default class ChatBox extends Component {
         <Message
           key={"message" + m.id}
           info={m}
-          color={m.sender === this.props.type ? "#b9d5fd" : "#709fdc"}
+          color={m.sender === this.props.type ? "lightseagreen" : "#709fdc"}
           position={m.sender === this.props.type ? "right" : "left"}
           file={this.getMessageFile(m.id)}
         />
@@ -60,7 +60,7 @@ export default class ChatBox extends Component {
         <Message
           key={"message" + m.id}
           info={m}
-          color={m.sender === this.props.type ? "#b9d5fd" : "#709fdc"}
+          color={m.sender === this.props.type ? "lightseagreen" : "#709fdc"}
           position={m.sender === this.props.type ? "right" : "left"}
         />
       )

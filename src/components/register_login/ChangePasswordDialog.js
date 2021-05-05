@@ -51,15 +51,12 @@ function ChangePassword(props) {
       >
         <DialogContent className={classes.dialogContent}>
           <Typography paragraph align={"center"}>
-            Si vous avez oublié votre identifiant, vous pouvez utiliser votre
-            adresse e-mail ou votre numéro de portable comme votre identifiant.
-            Si vous avez oublié votre mot de passe, renseignez une des
-            informations suivantes pour le recevoir:
+            Si vous avez oublié votre mot de passe, renseignez votre adresse
+            e-mail :
           </Typography>
           <Typography paragraph dir={"rtl"} align={"center"}>
-            در صورتیکه نام کاربری خود را فراموش کرده اید می توانید از آدرس ایمیل
-            یا شماره موبایل بجای نام کاربری استفاده کنید. در صورتیکه رمز عبور را
-            فراموش کرده اید یکی از اطلاعات زیر را برای دریافت آن وارد کنید:
+            در صورتیکه رمز عبور خود را فراموش کرده‌اید آدرس ایمیلتان را برای
+            دریافت آن وارد کنید:
           </Typography>
           <TextField
             variant="outlined"
@@ -68,17 +65,6 @@ function ChangePassword(props) {
             fullWidth
             label="Votre adresse e-mail"
             helperText={"آدرس ایمیل"}
-            autoFocus
-            type="email"
-            autoComplete="off"
-          />
-          <TextField
-            variant="outlined"
-            margin="dense"
-            required
-            fullWidth
-            label="Votre numéro"
-            helperText={"شماره موبایل"}
             autoFocus
             type="email"
             autoComplete="off"

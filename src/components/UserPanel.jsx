@@ -42,21 +42,21 @@ const styles = theme => ({
       marginBottom: theme.spacing(4)
     },
     [theme.breakpoints.up("sm")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(2),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",
       marginRight: "auto"
     },
     [theme.breakpoints.up("md")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(2),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",
       marginRight: "auto"
     },
     [theme.breakpoints.up("lg")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(2),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",

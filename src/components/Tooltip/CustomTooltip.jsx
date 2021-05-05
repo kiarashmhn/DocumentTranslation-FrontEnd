@@ -30,11 +30,8 @@ export default class CustomTooltip extends Component {
     const dir = this.props.dir ? this.props.dir : "ltr";
     return (
       <ClickAwayListener onClickAway={this.handleTooltipClose}>
-        <div>
+        <div style={{ maxWidth: "100%", width: "30px" }}>
           <Tooltip
-            PopperProps={{
-              disablePortal: true
-            }}
             onClose={this.handleTooltipClose}
             open={this.state.open}
             disableFocusListener

@@ -19,6 +19,7 @@ import NodeGenerator from "../NodeGenerator/NodeGenerator";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
+import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const styles = {
   customWidth: {
@@ -302,7 +303,6 @@ class OrderForm extends Component {
           </Typography>
           <div
             style={{
-              maxWidth: "100%",
               verticalAlign: "middle",
               display: "flex",
               justifyContent: "center",
@@ -343,6 +343,21 @@ class OrderForm extends Component {
               </p>
               {this.props.isLoading && <ButtonCircularProgress />}
             </Button>
+            <div style={{ maxWidth: "100%", position: "relative" }}>
+              <CustomTooltip>
+                <div>
+                  Les informations seront enregistrées et vous passerez à
+                  l’étape du paiement. Cependant, avant le paiement, vous aurez
+                  la possibilité de modifier les informations saisies via liste
+                  commandes.
+                </div>
+                <div dir={"rtl"}>
+                  با فشار بر این دکمه، اطلاعات شما موقتا ثبت میشود و به قسمت
+                  پرداخت وارد می شوید. البته قبل از پرداخت، می توانید برای تصحیح
+                  آنها از طریق لیست سفارشها اقدام کنید.
+                </div>
+              </CustomTooltip>
+            </div>
           </div>
         </div>
       </Fragment>

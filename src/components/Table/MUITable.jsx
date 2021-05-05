@@ -9,6 +9,10 @@ import CircularIndeterminate from "../Progress/CircularProgress";
 import * as Validator from "../utils/Validator";
 
 import GlobalErrorChecker from "../GlobalErrorChecker/GlobalErrorChecker";
+import Filter from "../Filter/Filter";
+import theme from "../../theme";
+import Typography from "@material-ui/core/Typography";
+import { Box } from "@material-ui/core";
 
 export default class MUITable extends Component {
   constructor(props) {
@@ -73,7 +77,7 @@ export default class MUITable extends Component {
       length: 10,
       ...this.generateFilters(
         { ...filterInputs, ...this.props.additionalData },
-        this.props.filter ? this.props.filter.structure : null
+        null
       )
     };
 
@@ -146,11 +150,14 @@ export default class MUITable extends Component {
         MuiTableCell: {
           root: {
             textAlign: "center",
-            fontFamily: "inherit",
-            padding: "4px 40px 4px 16px"
+            fontFamily: "MyFont",
+            padding: "2px 8px 2px 8px"
           }
         },
         MUIDataTable: {
+          root: {
+            fontFamily: "MyFont"
+          },
           caption: {
             display: "none"
           }
@@ -166,10 +173,15 @@ export default class MUITable extends Component {
             fontFamily: "MyFont"
           }
         },
+        MuiTableBodyCell: {
+          root: {
+            fontFamily: "MyFont"
+          }
+        },
         MuiTypography: {
           subtitle1: {
             fontFamily: "MyFont",
-            paddingRight: "20%"
+            paddingRight: "10%"
           },
           caption: {
             fontFamily: "MyFont"
@@ -179,12 +191,16 @@ export default class MUITable extends Component {
           }
         },
         MUIDataTableHeadCell: {
+          root: {
+            fontFamily: "MyFont"
+          },
           sortAction: {
             display: "block"
           }
         },
         MuiPaper: {
           root: {
+            fontFamily: "MyFont",
             width: "100%"
           }
         }
@@ -196,6 +212,26 @@ export default class MUITable extends Component {
     const { data, page, count, isLoading } = this.state;
 
     const options = {
+      customToolbar: this.props.filter
+        ? () => {
+            return (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <Filter
+                  componentTitle={this.props.filter.componentTitle}
+                  staticData={this.props.filter.staticData}
+                  filterKey={this.props.filterKey}
+                  refreshFunction={this.getData}
+                />
+              </div>
+            );
+          }
+        : () => {},
       filter: false,
       search: false,
       print: false,
@@ -251,6 +287,24 @@ export default class MUITable extends Component {
     };
     return (
       <Fragment>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <Typography style={{ marginBottom: theme.spacing(2) }}>
+            <Box
+              style={{
+                fontWeight: "bold"
+              }}
+            >
+              {this.props.title}
+            </Box>
+          </Typography>
+          {isLoading && <CircularIndeterminate />}
+        </div>
         <MuiThemeProvider theme={this.getMuiTheme()}>
           <MUIDataTable
             innerRef={this.tableRef}
@@ -263,6 +317,27 @@ export default class MUITable extends Component {
             data={data}
             columns={columns}
             options={options}
+            components={{
+              TableToolbar: () => {
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "10px"
+                    }}
+                  >
+                    <Filter
+                      componentTitle={this.props.filter.componentTitle}
+                      staticData={this.props.filter.staticData}
+                      refreshFunction={this.getData}
+                      initial={this.state.currentFilters}
+                    />
+                  </div>
+                );
+              }
+            }}
           />
         </MuiThemeProvider>
       </Fragment>
@@ -283,13 +358,7 @@ MUITable.propTypes = {
   additionalData: PropTypes.object,
   filter: PropTypes.shape({
     componentTitle: PropTypes.string.isRequired,
-    staticData: PropTypes.array.isRequired,
-    componentsData: PropTypes.arrayOf(
-      PropTypes.shape({
-        component: PropTypes.element
-      })
-    ),
-    structure: PropTypes.any
+    staticData: PropTypes.array.isRequired
   }),
   initializationFilter: PropTypes.any,
   filterKey: PropTypes.string,

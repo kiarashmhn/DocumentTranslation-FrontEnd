@@ -1,14 +1,18 @@
 import React, { Component, Fragment } from "react";
 import Box from "@material-ui/core/Box";
 import { Typography } from "@material-ui/core";
-import theme from "../theme";
 import Button from "@material-ui/core/Button";
 import { getFrenchName, getPersianName } from "../Dictionary";
+import { getDataNotes, getLegalNotes } from "./LegalNotesData";
+import Checkbox from "@material-ui/core/Checkbox";
 
 export default class LegalNotes extends Component {
   constructor(props) {
     super(props);
     this.privacyRef = React.createRef();
+    this.state = {
+      french: true
+    };
   }
 
   close = () => {
@@ -16,154 +20,94 @@ export default class LegalNotes extends Component {
     win.close();
   };
 
+  setFrench = e => {
+    this.setState({ french: e.target.checked });
+  };
+  setPersian = e => {
+    this.setState({ french: !e.target.checked });
+  };
+
   render() {
     return (
       <Fragment>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="h5"
-          align="center"
-          style={{ whiteSpace: "pre-line", marginTop: theme.spacing(2) }}
+        <div style={{ marginTop: "10px" }}>
+          <Typography variant={"h6"} align={"center"}>
+            Choisir la langue
+          </Typography>
+          <Typography variant={"h6"} align={"center"}>
+            انتخاب زبان
+          </Typography>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
         >
-          Mentions légales
-        </Typography>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="h5"
-          align="center"
-          style={{ whiteSpace: "pre-line" }}
-        >
-          نکات قانونی
-        </Typography>
+          <Checkbox
+            checked={!!this.state.french}
+            onChange={e => this.setFrench(e)}
+            name={"nameFrench"}
+            color="secondary"
+          />
+          <span>Français</span>
+          <Checkbox
+            checked={!this.state.french}
+            onChange={e => this.setPersian(e)}
+            name={"namePersian"}
+            color="secondary"
+          />
+          <span>فارسی</span>
+        </div>
         <Box
           borderColor="secondary.main"
           bgcolor="background.paper"
           border={2}
-          style={{ padding: "10px", marginBottom: "30px", marginTop: "3px" }}
+          style={{ padding: "10px", marginBottom: "15px", marginTop: "10px" }}
           m={5}
         >
-          <Typography paragraph variant="body1" align="center">
-            * Tous les tarifs indiqués comprennent les frais de la mise en
-            disposition d’une copie numérique (PDF) et de la livraison en
-            courrier simple (lettre verre). Le traitement de la demande de
-            traduction commence à réception du paiement. Les délais de livraison
-            sont calculés à partir de l’heure de validation de la commande par
-            notre équipe. Les tarifs et les délais peuvent subir des
-            modifications notamment en raison de la complexité ou de dépôt d’un
-            document illisible.
-          </Typography>
-          <Typography paragraph variant="body1" align="center" dir="rtl">
-            * تمام قیمت های ذکر شده شامل هزینه های تحویل ترجمه رسمی در نسخه
-            دیجیتالی (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی
-            درخواست ترجمه از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام
-            شده مربوط به تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش
-            توسط تیم ما محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل
-            ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند. دیجیتالی
-            (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی درخواست ترجمه
-            از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام شده مربوط به
-            تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش توسط تیم ما
-            محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل ممکن است به
-            دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند. دیجیتالی (PDF) و در نسخه
-            کاغذی از طریق پست عادی می باشد. بررسی درخواست ترجمه از زمان دریافت
-            پرداخت آغاز می شود. زمان تحویل اعلام شده مربوط به تحویل در نسخه
-            دیجیتالی میباشد و از زمان تأیید سفارش توسط تیم ما محاسبه می شود.
-            توجه داشته باشید که قیمت و زمان تحویل ممکن است به دلیل پیچیدگی یا
-            ثبت سند ناخوانا تغییر کند. دیجیتالی (PDF) و در نسخه کاغذی از طریق
-            پست عادی می باشد. بررسی درخواست ترجمه از زمان دریافت پرداخت آغاز می
-            شود. زمان تحویل اعلام شده مربوط به تحویل در نسخه دیجیتالی میباشد و
-            از زمان تأیید سفارش توسط تیم ما محاسبه می شود. توجه داشته باشید که
-            قیمت و زمان تحویل ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر
-            کند. دیجیتالی (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی
-            درخواست ترجمه از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام
-            شده مربوط به تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش
-            توسط تیم ما محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل
-            ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند. دیجیتالی
-            (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی درخواست ترجمه
-            از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام شده مربوط به
-            تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش توسط تیم ما
-            محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل ممکن است به
-            دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند. دیجیتالی (PDF) و در نسخه
-            کاغذی از طریق پست عادی می باشد. بررسی درخواست ترجمه از زمان دریافت
-            پرداخت آغاز می شود. زمان تحویل اعلام شده مربوط به تحویل در نسخه
-            دیجیتالی میباشد و از زمان تأیید سفارش توسط تیم ما محاسبه می شود.
-            توجه داشته باشید که قیمت و زمان تحویل ممکن است به دلیل پیچیدگی یا
-            ثبت سند ناخوانا تغییر کند. دیجیتالی (PDF) و در نسخه کاغذی از طریق
-            پست عادی می باشد. بررسی درخواست ترجمه از زمان دریافت پرداخت آغاز می
-            شود. زمان تحویل اعلام شده مربوط به تحویل در نسخه دیجیتالی میباشد و
-            از زمان تأیید سفارش توسط تیم ما محاسبه می شود. توجه داشته باشید که
-            قیمت و زمان تحویل ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر
-            کند. دیجیتالی (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی
-            درخواست ترجمه از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام
-            شده مربوط به تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش
-            توسط تیم ما محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل
-            ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند. دیجیتالی
-            (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی درخواست ترجمه
-            از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام شده مربوط به
-            تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش توسط تیم ما
-            محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل ممکن است به
-            دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند. دیجیتالی (PDF) و در نسخه
-            کاغذی از طریق پست عادی می باشد. بررسی درخواست ترجمه از زمان دریافت
-            پرداخت آغاز می شود. زمان تحویل اعلام شده مربوط به تحویل در نسخه
-            دیجیتالی میباشد و از زمان تأیید سفارش توسط تیم ما محاسبه می شود.
-            توجه داشته باشید که قیمت و زمان تحویل ممکن است به دلیل پیچیدگی یا
-            ثبت سند ناخوانا تغییر کند. دیجیتالی (PDF) و در نسخه کاغذی از طریق
-            پست عادی می باشد. بررسی درخواست ترجمه از زمان دریافت پرداخت آغاز می
-            شود. زمان تحویل اعلام شده مربوط به تحویل در نسخه دیجیتالی میباشد و
-            از زمان تأیید سفارش توسط تیم ما محاسبه می شود. توجه داشته باشید که
-            قیمت و زمان تحویل ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر
-            کند. دیجیتالی (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی
-            درخواست ترجمه از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام
-            شده مربوط به تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش
-            توسط تیم ما محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل
-            ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند.
-          </Typography>
+          {getLegalNotes(this.state.french ? "French" : "Persian")}
         </Box>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="h5"
-          align="center"
-          style={{ whiteSpace: "pre-line", marginTop: theme.spacing(2) }}
-        >
-          Protection des données
-        </Typography>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="h5"
-          align="center"
-          style={{ whiteSpace: "pre-line" }}
-        >
-          سیاست‌های حفاظت از داده‌های خصوصی
-        </Typography>
         <div ref={this.privacyRef}>
+          <div>
+            <Typography variant={"h6"} align={"center"}>
+              Choisir la langue
+            </Typography>
+            <Typography variant={"h6"} align={"center"}>
+              انتخاب زبان
+            </Typography>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Checkbox
+              checked={!!this.state.french}
+              onChange={e => this.setFrench(e)}
+              name={"nameFrench"}
+              color="secondary"
+            />
+            <span>Français</span>
+            <Checkbox
+              checked={!this.state.french}
+              onChange={e => this.setPersian(e)}
+              name={"namePersian"}
+              color="secondary"
+            />
+            <span>فارسی</span>
+          </div>
           <Box
             borderColor="secondary.main"
             bgcolor="background.paper"
             border={2}
-            style={{ padding: "10px", marginBottom: "30px", marginTop: "3px" }}
+            style={{ padding: "10px", marginBottom: "30px", marginTop: "15px" }}
             m={5}
           >
-            <Typography paragraph variant="body1" align="center">
-              * Tous les tarifs indiqués comprennent les frais de la mise en
-              disposition d’une copie numérique (PDF) et de la livraison en
-              courrier simple (lettre verre). Le traitement de la demande de
-              traduction commence à réception du paiement. Les délais de
-              livraison sont calculés à partir de l’heure de validation de la
-              commande par notre équipe. Les tarifs et les délais peuvent subir
-              des modifications notamment en raison de la complexité ou de dépôt
-              d’un document illisible.
-            </Typography>
-            <Typography paragraph variant="body1" align="center" dir="rtl">
-              * تمام قیمت های ذکر شده شامل هزینه های تحویل ترجمه رسمی در نسخه
-              دیجیتالی (PDF) و در نسخه کاغذی از طریق پست عادی می باشد. بررسی
-              درخواست ترجمه از زمان دریافت پرداخت آغاز می شود. زمان تحویل اعلام
-              شده مربوط به تحویل در نسخه دیجیتالی میباشد و از زمان تأیید سفارش
-              توسط تیم ما محاسبه می شود. توجه داشته باشید که قیمت و زمان تحویل
-              ممکن است به دلیل پیچیدگی یا ثبت سند ناخوانا تغییر کند.
-            </Typography>
+            {getDataNotes(this.state.french ? "French" : "Persian")}
           </Box>
         </div>
         <div

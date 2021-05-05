@@ -106,7 +106,7 @@ function LoginDialog(props) {
               required
               fullWidth
               error={status === "invalidUsernameOrPassword"}
-              label="Identifiant"
+              label="E-mail"
               autoComplete="off"
               type="text"
               onChange={() => {
@@ -117,11 +117,11 @@ function LoginDialog(props) {
               helperText={
                 status === "invalidUsernameOrPassword" ? (
                   <div>
-                    <div dir={"rtl"}>نام کاربری یا رمز عبور اشتباه است.</div>
-                    <div>Nom d&apos;utilisateur ou mot de passe invalide.</div>
+                    <div dir={"rtl"}>آدرس ایمیل یا رمز عبور اشتباه است.</div>
+                    <div>E-mail ou mot de passe invalide.</div>
                   </div>
                 ) : (
-                  "نام کاربری"
+                  "آدرس ایمیل"
                 )
               }
               FormHelperTextProps={
@@ -146,8 +146,8 @@ function LoginDialog(props) {
               helperText={
                 status === "invalidUsernameOrPassword" ? (
                   <div>
-                    <div dir={"rtl"}>نام کاربری یا رمز عبور اشتباه است.</div>
-                    <div>Nom d&apos;utilisateur ou mot de passe invalide.</div>
+                    <div dir={"rtl"}>آدرس ایمیل یا رمز عبور اشتباه است.</div>
+                    <div>E-mail ou mot de passe invalide.</div>
                   </div>
                 ) : (
                   "رمز عبور"
@@ -176,31 +176,12 @@ function LoginDialog(props) {
                 variant="contained"
                 color="secondary"
                 disabled={isLoading}
-                size={"small"}
-                disableElevation
+                size={"large"}
                 style={{ textTransform: "none" }}
               >
-                <p>
-                  <span
-                    style={{
-                      display: "block",
-                      marginBottom: "0",
-                      fontSize: 14
-                    }}
-                  />
-                  <Typography variant="body1" align="center" component={"span"}>
-                    Connexion
-                  </Typography>
-                  <span
-                    style={{
-                      display: "block",
-                      fontSize: 14
-                    }}
-                  />
-                  <Typography variant="body1" align="center" component={"span"}>
-                    ورود
-                  </Typography>
-                </p>
+                <Typography variant="body1" align="center" component={"span"}>
+                  Connexion / ورود
+                </Typography>
                 {isLoading && <ButtonCircularProgress />}
               </Button>
             </div>
@@ -224,29 +205,8 @@ function LoginDialog(props) {
                 }
               }}
             >
-              فراموشی رمزعبور
-            </Typography>
-            <Typography
-              align="center"
-              className={classNames(
-                classes.forgotPassword,
-                isLoading ? classes.disabledText : null
-              )}
-              color="primary"
-              onClick={isLoading ? null : openChangePasswordDialog}
-              tabIndex={0}
-              role="button"
-              onKeyDown={event => {
-                // For screenreaders listen to space and enter events
-                if (
-                  (!isLoading && event.keyCode === 13) ||
-                  event.keyCode === 32
-                ) {
-                  openChangePasswordDialog();
-                }
-              }}
-            >
-              Mot de passe oublié
+              <div>Mot de passe oublié</div>
+              <div>فراموشی رمزعبور</div>
             </Typography>
           </Fragment>
         }

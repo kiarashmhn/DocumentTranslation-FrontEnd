@@ -27,7 +27,8 @@ const styles = theme => ({
   },
   dialogContent: {
     paddingTop: 0,
-    paddingBottom: 0
+    paddingBottom: 0,
+    width: "100%"
   }
 });
 
@@ -82,10 +83,18 @@ function FormDialog(props) {
       )}
       <DialogContent className={classes.dialogContent}>
         <form onSubmit={onFormSubmit} autoComplete="new-password">
-          <div>{content}</div>
-          <Box width="100%" className={classes.actions}>
-            {actions}
-          </Box>
+          <div style={{ width: "100%" }}>{content}</div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <Box width="80%" className={classes.actions}>
+              {actions}
+            </Box>
+          </div>
         </form>
       </DialogContent>
     </Dialog>

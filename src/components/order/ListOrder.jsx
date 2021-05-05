@@ -146,7 +146,11 @@ class ListOrder extends Component {
         this.handleClickOpenMessages
       );
     if (this.props.type && this.state.isAdmin)
-      return getAdminColumns(this.handleClickOpen, this.handleClickOpenBill);
+      return getAdminColumns(
+        this.handleClickOpen,
+        this.handleClickOpenBill,
+        this.handleClickOpenMessages
+      );
     return getUserColumns(
       this.handleClickOpen,
       this.handleClickOpenBill,
@@ -182,6 +186,17 @@ class ListOrder extends Component {
                   username: localStorage.getItem("username")
                 }
           }
+          filter={{
+            componentTitle: title,
+            staticData: [
+              {
+                key: "identifier",
+                type: "text",
+                grid: 12,
+                notRequired: true
+              }
+            ]
+          }}
         />
         <FullScreenDialog
           title="ویرایش سفارش"

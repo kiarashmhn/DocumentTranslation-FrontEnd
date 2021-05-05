@@ -230,7 +230,7 @@ export const TazkaraOldForm = {
           type: "text"
         },
         {
-          key: "addr",
+          key: "address",
           grid: 12,
           type: "text"
         },

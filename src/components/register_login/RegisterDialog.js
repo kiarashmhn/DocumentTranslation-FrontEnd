@@ -62,7 +62,6 @@ function RegisterDialog(props) {
   const [isUser, setIsUser] = useState(false);
   const registerPassword = useRef();
   const registerPasswordRepeat = useRef();
-  const username = useRef();
   const email = useRef();
   const phone = useRef();
 
@@ -103,11 +102,6 @@ function RegisterDialog(props) {
       return;
     }
 
-    if (!email.current.value && !phone.current.value) {
-      setStatus("nullEmailPhone");
-      return;
-    }
-
     if (email.current.value && !validateEmail(email.current.value)) {
       setStatus("invalidEmail");
       return;
@@ -116,7 +110,7 @@ function RegisterDialog(props) {
     setStatus(null);
     setIsLoading(true);
     Auth.register(
-      username.current.value,
+      email.current.value,
       registerPassword.current.value,
       email.current.value,
       phone.current.value
@@ -169,32 +163,37 @@ function RegisterDialog(props) {
             </Typography>*/}
             <TextField
               variant="outlined"
-              inputRef={username}
+              inputRef={email}
               margin="normal"
-              required
-              autoFocus
               fullWidth
-              error={status === "invalidUsername"}
-              label="Identifiant"
+              error={status === "invalidEmail" || status === "invalidUsername"}
+              label="E-mail"
               autoComplete="off"
               type="text"
               helperText={
-                status === "invalidUsername" ? (
+                status === "invalidEmail" ? (
                   <div>
-                    <div dir={"rtl"}>نام کاربری وارد شده تکراری است.</div>
-                    <div>Nom d&apos;utilisateur invalide.</div>
+                    <div dir={"rtl"}>ایمیل وارد شده نامعتبر است.</div>
+                    <div>E-mail invalide.</div>
+                  </div>
+                ) : status === "invalidUsername" ? (
+                  <div>
+                    <div dir={"rtl"}>ایمیل وارد شده تکراری است.</div>
+                    <div>E-mail est déjà utilisée</div>
                   </div>
                 ) : (
-                  "نام کاربری"
+                  "آدرس ایمیل"
                 )
               }
               onChange={() => {
-                if (status === "invalidUsername") {
+                if (status === "invalidEmail" || status === "invalidUsername") {
                   setStatus(null);
                 }
               }}
               FormHelperTextProps={
-                status === "invalidUsername" ? { error: true } : {}
+                status === "invalidEmail" || status === "invalidUsername"
+                  ? { error: true }
+                  : {}
               }
             />
             <VisibilityPasswordTextField
@@ -295,67 +294,13 @@ function RegisterDialog(props) {
             />
             <TextField
               variant="outlined"
-              inputRef={email}
-              margin="normal"
-              fullWidth
-              error={status === "invalidEmail" || status === "nullEmailPhone"}
-              label="E-mail"
-              autoComplete="off"
-              type="text"
-              helperText={
-                status === "invalidEmail" ? (
-                  <div>
-                    <div dir={"rtl"}>ایمیل وارد شده نامعتبر است.</div>
-                    <div>Email invalide.</div>
-                  </div>
-                ) : status === "nullEmailPhone" ? (
-                  <div>
-                    <div dir={"rtl"}>
-                      آدرس ایمیل یا شماره موبایل را وارد کنید.
-                    </div>
-                    <div>Entrez votre e-mail ou votre téléphone</div>
-                  </div>
-                ) : (
-                  "آدرس ایمیل"
-                )
-              }
-              onChange={() => {
-                if (status === "invalidEmail" || status === "nullEmailPhone") {
-                  setStatus(null);
-                }
-              }}
-              FormHelperTextProps={
-                status === "invalidEmail" || status === "nullEmailPhone"
-                  ? { error: true }
-                  : {}
-              }
-            />
-            <TextField
-              variant="outlined"
               inputRef={phone}
               margin="normal"
               fullWidth
-              error={status === "nullEmailPhone"}
               label={"Numéro de portable"}
               autoComplete="off"
               type="number"
-              helperText={
-                status === "nullEmailPhone" ? (
-                  <div>
-                    <div dir={"rtl"}>
-                      آدرس ایمیل یا شماره موبایل را وارد کنید.
-                    </div>
-                    <div>Entrez votre e-mail ou votre téléphone</div>
-                  </div>
-                ) : (
-                  "شماره موبایل"
-                )
-              }
-              onChange={() => {
-                if (status === "nullEmailPhone") {
-                  setStatus(null);
-                }
-              }}
+              helperText={"شماره موبایل"}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -366,9 +311,6 @@ function RegisterDialog(props) {
                   </InputAdornment>
                 )
               }}
-              FormHelperTextProps={
-                status === "nullEmailPhone" ? { error: true } : {}
-              }
             />
             <Typography variant="body1" dir={"rtl"} component={"div"}>
               <Box
@@ -409,7 +351,7 @@ function RegisterDialog(props) {
                 fontWeight="fontWeightMedium"
                 display="inline"
               >
-                Avez-vous déjà créé un compte personnel?
+                Avez-vous déjà un compte personnel?
               </Box>
               <span
                 className={classes.link}
@@ -455,33 +397,14 @@ function RegisterDialog(props) {
               type="submit"
               fullWidth
               variant="contained"
-              size={"medium"}
+              size={"large"}
               color="secondary"
               style={{ textTransform: "none", align: "center" }}
               disabled={isLoading}
             >
-              <p>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "0",
-                    fontSize: 16
-                  }}
-                />
-                <Typography variant="body1" align="center" component={"span"}>
-                  S&apos;inscrire
-                </Typography>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "2px",
-                    fontSize: "100%"
-                  }}
-                />
-                <Typography variant="body1" align="center" component={"span"}>
-                  ثبت نام
-                </Typography>
-              </p>
+              <Typography variant="body1" align="center" component={"span"}>
+                S&apos;inscrire / ثبت نام
+              </Typography>
               {isLoading && <ButtonCircularProgress />}
             </Button>
           </div>

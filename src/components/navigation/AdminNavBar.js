@@ -25,6 +25,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 //import MessagePopperButton from "./MessagePopperButton";
 import NavigationDrawer from "../Template/NavigationDrawer";
 import ListIcon from "@material-ui/icons/List";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import AuthService from "../../AuthService";
 
 const styles = theme => ({
@@ -132,7 +133,13 @@ const styles = theme => ({
 });
 
 function NavBar(props) {
-  const { selectedTab, classes, width, selectListOrder } = props;
+  const {
+    selectedTab,
+    classes,
+    width,
+    selectListOrder,
+    selectListUser
+  } = props;
   // Will be use to make website more accessible by screen readers
   const links = useRef([]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -165,6 +172,25 @@ function NavBar(props) {
           />
         ),
         mobile: <ListIcon className="text-white" />
+      }
+    },
+    {
+      name: "ListUser",
+      persianName: "لیست کاربران",
+      onClick: () => {
+        closeMobileDrawer();
+        selectListUser();
+      },
+      icon: {
+        desktop: (
+          <SupervisorAccountIcon
+            className={
+              selectedTab === "ListUser" ? classes.textPrimary : "text-white"
+            }
+            fontSize="large"
+          />
+        ),
+        mobile: <SupervisorAccountIcon className="text-white" />
       }
     },
     {
@@ -332,7 +358,8 @@ NavBar.propTypes = {
   selectedTab: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
-  selectListOrder: PropTypes.func.isRequired
+  selectListOrder: PropTypes.func.isRequired,
+  selectListUser: PropTypes.func.isRequired
 };
 
 export default withWidth()(withStyles(styles, { withTheme: true })(NavBar));

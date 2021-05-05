@@ -6,10 +6,15 @@ import theme from "../../theme";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import React from "react";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import MarkunreadIcon from "@material-ui/icons/Markunread";
 import { getFrenchName, getPersianName } from "../../Dictionary";
+import DraftsIcon from "@material-ui/icons/Drafts";
 
-export function getAdminColumns(handleClickOpen, handleClickOpenBill) {
+export function getAdminColumns(
+  handleClickOpen,
+  handleClickOpenBill,
+  handleClickOpenMessages
+) {
   return [
     {
       name: "identifier",
@@ -63,6 +68,29 @@ export function getAdminColumns(handleClickOpen, handleClickOpenBill) {
     {
       name: "deliveryDate",
       label: "Date de livraison"
+    },
+    {
+      name: "hasNewUserMessage",
+      label: "Message",
+      options: {
+        customBodyRender: function x(value, meta) {
+          return (
+            <IconButton
+              aria-label="delete"
+              onClick={() => handleClickOpenMessages(meta.rowData[1])}
+              style={{
+                color: value ? ColorPalette.red : ColorPalette.cornflowerblue
+              }}
+            >
+              {value ? (
+                <MarkunreadIcon fontSize="small" />
+              ) : (
+                <DraftsIcon fontSize="small" />
+              )}
+            </IconButton>
+          );
+        }
+      }
     },
     {
       name: "id",
@@ -234,20 +262,22 @@ export function getSuperAdminColumns(
       name: "hasNewUserMessage",
       label: "Message",
       options: {
-        customBodyRender: (value, meta) => {
-          if (value !== undefined && value !== null) {
-            return (
-              <IconButton
-                aria-label="delete"
-                onClick={() => handleClickOpenMessages(meta.rowData[1])}
-                style={{
-                  color: value ? ColorPalette.red : ColorPalette.cornflowerblue
-                }}
-              >
-                <MailOutlineIcon fontSize="small" />
-              </IconButton>
-            );
-          }
+        customBodyRender: function x(value, meta) {
+          return (
+            <IconButton
+              aria-label="delete"
+              onClick={() => handleClickOpenMessages(meta.rowData[1])}
+              style={{
+                color: value ? ColorPalette.red : ColorPalette.cornflowerblue
+              }}
+            >
+              {value ? (
+                <MarkunreadIcon fontSize="small" />
+              ) : (
+                <DraftsIcon fontSize="small" />
+              )}
+            </IconButton>
+          );
         }
       }
     },
@@ -385,20 +415,22 @@ export function getUserColumns(
         </div>
       ),
       options: {
-        customBodyRender: (value, meta) => {
-          if (value !== undefined && value !== null) {
-            return (
-              <IconButton
-                aria-label="delete"
-                onClick={() => handleClickOpenMessages(meta.rowData[1])}
-                style={{
-                  color: value ? ColorPalette.red : ColorPalette.cornflowerblue
-                }}
-              >
-                <MailOutlineIcon fontSize="small" />
-              </IconButton>
-            );
-          }
+        customBodyRender: function x(value, meta) {
+          return (
+            <IconButton
+              aria-label="delete"
+              onClick={() => handleClickOpenMessages(meta.rowData[1])}
+              style={{
+                color: value ? ColorPalette.red : ColorPalette.cornflowerblue
+              }}
+            >
+              {value ? (
+                <MarkunreadIcon fontSize="small" />
+              ) : (
+                <DraftsIcon fontSize="small" />
+              )}
+            </IconButton>
+          );
         }
       }
     },

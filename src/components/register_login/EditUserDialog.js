@@ -1,6 +1,11 @@
 import React, { useState, useCallback, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { TextField, Button, withStyles } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  withStyles,
+  InputAdornment
+} from "@material-ui/core";
 import FormDialog from "../Template/FormDialog";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../Template/VisibilityPasswordTextField";
@@ -8,6 +13,8 @@ import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
 import { withRouter } from "react-router-dom";
 import Api from "../Api/Api";
 import * as URLConstant from "../../URLConstant";
+import CustomTooltip from "../Tooltip/CustomTooltip";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 
 const styles = theme => ({
   link: {
@@ -27,12 +34,11 @@ const styles = theme => ({
 });
 
 function EditUserDialog(props) {
-  const { onClose, showSnackbar, name } = props;
+  const { onClose, showSnackbar, name, type } = props;
 
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerPasswordRepeat, setRegisterPasswordRepeat] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,11 +48,12 @@ function EditUserDialog(props) {
 
   useEffect(() => {
     (async function getUser() {
+      let url = type === "ADMIN" ? URLConstant.GET_USER : URLConstant.USER_GET;
       await api
         .doPostNoAppend(
           process.env.REACT_APP_HOST_URL +
             process.env.REACT_APP_MAIN_PATH +
-            URLConstant.GET_USER,
+            url,
           {
             username: name
           }
@@ -54,7 +61,6 @@ function EditUserDialog(props) {
         .then(function(res) {
           if (res.success) {
             setUsername(res.data.username);
-            setEmail(res.data.email ? res.data.email : "");
             setPhone(res.data.phone ? res.data.phone : "");
           } else if (
             res &&
@@ -74,23 +80,9 @@ function EditUserDialog(props) {
           setIsLoading(false);
         });
     })();
-  }, [setUsername, setEmail, setPhone, setIsLoading]);
-
-  const validateEmail = email => {
-    // eslint-disable-next-line no-useless-escape
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  };
+  }, [setUsername, setPhone, setIsLoading]);
 
   const register = useCallback(() => {
-    if (!email && !phone) {
-      setStatus("nullEmailPhone");
-      return;
-    }
-    if (email && !validateEmail(email)) {
-      setStatus("invalidEmail");
-      return;
-    }
     if (registerPassword && registerPasswordRepeat) {
       if (registerPassword !== registerPasswordRepeat) {
         setStatus("passwordsDontMatch");
@@ -112,7 +104,6 @@ function EditUserDialog(props) {
           URLConstant.UPDATE_USER,
         {
           username: name,
-          email: email,
           phone: phone,
           password: registerPassword
         }
@@ -133,7 +124,6 @@ function EditUserDialog(props) {
     setStatus,
     registerPassword,
     registerPasswordRepeat,
-    email,
     phone
   ]);
 
@@ -142,7 +132,7 @@ function EditUserDialog(props) {
       loading={isLoading}
       onClose={onClose}
       open
-      headline="اطلاعات کاربر"
+      headline="Profil / پروفایل"
       onFormSubmit={e => {
         e.preventDefault();
         register();
@@ -159,66 +149,23 @@ function EditUserDialog(props) {
             fullWidth
             disabled={true}
             error={status === "invalidUsername"}
-            label="نام کاربری"
+            label="E-mail"
             autoComplete="new-off"
             type="text"
             helperText={(() => {
               if (status === "invalidUsername") {
-                return "نام کاربری وارد شده تکراری است";
+                return "آدرس ایمیل وارد شده تکراری است";
               }
-              return null;
+              return "آدرس ایمیل";
             })()}
             onChange={() => {
               if (status === "invalidUsername") {
                 setStatus(null);
               }
             }}
-            FormHelperTextProps={{ error: true }}
-          />
-          <TextField
-            name={"email"}
-            value={email}
-            margin="normal"
-            fullWidth
-            error={status === "invalidEmail" || status === "nullEmailPhone"}
-            label="آدرس ایمیل"
-            autoComplete="new-off"
-            type="text"
-            helperText={(() => {
-              if (status === "invalidEmail")
-                return "ایمیل وارد شده نامعتبر است";
-              if (status === "nullEmailPhone")
-                return "آدرس ایمیل یا شماره موبایل را وارد کنید";
-              return null;
-            })()}
-            onChange={e => {
-              if (status === "invalidEmail" || status === "nullEmailPhone") {
-                setStatus(null);
-              }
-              setEmail(e.target.value);
-            }}
-            FormHelperTextProps={{ error: true }}
-          />
-          <TextField
-            name={"phone"}
-            value={phone}
-            margin="normal"
-            fullWidth
-            error={status === "nullEmailPhone"}
-            label="شماره موبایل"
-            type="text"
-            helperText={(() => {
-              if (status === "nullEmailPhone")
-                return "آدرس ایمیل یا شماره موبایل را وارد کنید";
-              return null;
-            })()}
-            onChange={e => {
-              if (status === "nullEmailPhone") {
-                setStatus(null);
-              }
-              setPhone(e.target.value);
-            }}
-            FormHelperTextProps={{ error: true }}
+            FormHelperTextProps={
+              status === "invalidUsername" ? { error: true } : {}
+            }
           />
           <VisibilityPasswordTextField
             name={"registerPassword"}
@@ -228,7 +175,7 @@ function EditUserDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="رمز عبور"
+            label="Mot de passe"
             value={registerPassword}
             onChange={e => {
               if (
@@ -241,14 +188,30 @@ function EditUserDialog(props) {
             }}
             helperText={(() => {
               if (status === "passwordTooShort") {
-                return "طول رمزعبور باید حداقل ۶ کاراکتر باشد";
+                return (
+                  <div>
+                    <div dir={"rtl"}>
+                      طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+                    </div>
+                    <div>La longueur du mot de passe est inférieure à 6</div>
+                  </div>
+                );
               }
               if (status === "passwordsDontMatch") {
-                return "رمزهای وارد شده مطابقت ندارند";
+                return (
+                  <div>
+                    <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
+                    <div>Les mots de passe saisis ne correspondent pas</div>
+                  </div>
+                );
               }
-              return null;
+              return "رمزعبور";
             })()}
-            FormHelperTextProps={{ error: true }}
+            FormHelperTextProps={
+              status === "passwordTooShort" || status === "passwordsDontMatch"
+                ? { error: true }
+                : {}
+            }
             isVisible={isPasswordVisible}
             onVisibilityChange={setIsPasswordVisible}
           />
@@ -260,7 +223,7 @@ function EditUserDialog(props) {
             error={
               status === "passwordTooShort" || status === "passwordsDontMatch"
             }
-            label="تکرار رمزعبور"
+            label="Répéter le mot de passe"
             value={registerPasswordRepeat}
             onChange={e => {
               if (
@@ -273,15 +236,58 @@ function EditUserDialog(props) {
             }}
             helperText={(() => {
               if (status === "passwordTooShort") {
-                return "طول رمزعبور باید حداقل ۶ کاراکتر باشد";
+                return (
+                  <div>
+                    <div dir={"rtl"}>
+                      طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+                    </div>
+                    <div>La longueur du mot de passe est inférieure à 6</div>
+                  </div>
+                );
               }
               if (status === "passwordsDontMatch") {
-                return "رمزهای وارد شده مطابقت ندارند";
+                return (
+                  <div>
+                    <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
+                    <div>Les mots de passe saisis ne correspondent pas</div>
+                  </div>
+                );
               }
+              return "تکرار رمزعبور";
             })()}
-            FormHelperTextProps={{ error: true }}
+            FormHelperTextProps={
+              status === "passwordTooShort" || status === "passwordsDontMatch"
+                ? { error: true }
+                : {}
+            }
             isVisible={isPasswordVisible}
             onVisibilityChange={setIsPasswordVisible}
+          />
+          <TextField
+            name={"phone"}
+            value={phone}
+            margin="normal"
+            fullWidth
+            error={status === "nullEmailPhone"}
+            label={"Numéro de portable"}
+            helperText={"شماره موبایل"}
+            type="text"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <CustomTooltip>
+                    <div dir={"ltr"}>{getFrenchName("useFrenchNumber")}</div>
+                    <div dir={"rtl"}>{getPersianName("useFrenchNumber")}</div>
+                  </CustomTooltip>
+                </InputAdornment>
+              )
+            }}
+            onChange={e => {
+              if (status === "nullEmailPhone") {
+                setStatus(null);
+              }
+              setPhone(e.target.value);
+            }}
           />
         </Fragment>
       }
@@ -292,9 +298,10 @@ function EditUserDialog(props) {
           variant="contained"
           size="large"
           color="secondary"
+          style={{ textTransform: "none", align: "center" }}
           disabled={isLoading}
         >
-          بروزرسانی
+          Réactualiser / بروزرسانی
           {isLoading && <ButtonCircularProgress />}
         </Button>
       }
@@ -308,7 +315,8 @@ EditUserDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   showSnackbar: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 };
 
 export default SnackbarWrapper(

@@ -135,7 +135,7 @@ export default class PaymentSuccess extends Component {
                 this.setState({ redirectToList: true });
               }}
             >
-              votre comte &gt; liste de commande
+              votre compte &gt; liste de commande
             </span>{" "}
             .
           </Typography>

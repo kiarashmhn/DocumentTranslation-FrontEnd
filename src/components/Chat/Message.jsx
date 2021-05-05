@@ -11,6 +11,7 @@ export default class Message extends Component {
 
   getFromFormat = function(date, format) {
     let yyyy = date.getFullYear().toString();
+    yyyy = yyyy.slice(2, 4);
     format = format.replace(/yyyy/g, yyyy);
     let mm = (date.getMonth() + 1).toString();
     format = format.replace(/mm/g, mm[1] ? mm : "0" + mm[0]);
@@ -62,11 +63,14 @@ export default class Message extends Component {
               <br />
             </div>
           )}
-          <Typography variant="body2">
-            {this.getFromFormat(
-              new Date(this.props.info.creationTime),
-              "yyyy/mm/dd hh:ii"
-            )}
+          <Typography variant="subtitle2" component={"subtitle2"}>
+            <div style={{ padding: 0 }}>
+              {this.getFromFormat(
+                new Date(this.props.info.creationTime),
+                "yyyy/mm/dd hh:ii"
+              )}
+            </div>
+            <div style={{ padding: 0 }}>{this.props.info.senderName}</div>
           </Typography>
         </div>
       </Grid>

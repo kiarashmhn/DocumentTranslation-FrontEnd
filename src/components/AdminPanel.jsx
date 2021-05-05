@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core";
 import smoothScrollTop from "../functions/smoothScrollTop";
 import ListOrder from "./order/ListOrder";
 import AdminNavBar from "./navigation/AdminNavBar";
+import ListUser from "./User/ListUser";
 
 const styles = theme => ({
   main: {
@@ -41,21 +42,21 @@ const styles = theme => ({
       marginBottom: theme.spacing(4)
     },
     [theme.breakpoints.up("sm")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(2),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",
       marginRight: "auto"
     },
     [theme.breakpoints.up("md")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(2),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",
       marginRight: "auto"
     },
     [theme.breakpoints.up("lg")]: {
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(2),
       marginBottom: theme.spacing(6),
       width: "90%",
       marginLeft: "auto",
@@ -97,12 +98,19 @@ class AdminPanel extends Component {
     this.setSelectedTab("ListOrder");
   };
 
+  selectListUser = () => {
+    smoothScrollTop();
+    document.title = "FD - ListUser";
+    this.setSelectedTab("ListUser");
+  };
+
   render() {
     return (
       <Fragment>
         <AdminNavBar
           selectedTab={this.state.selectedTab}
           selectListOrder={this.selectListOrder}
+          selectListUser={this.selectListUser}
           messages={[]}
         />
         <div className={classNames(this.props.classes.main)}>
@@ -110,6 +118,7 @@ class AdminPanel extends Component {
             {this.state.selectedTab === "ListOrder" && (
               <ListOrder type={"ADMIN"} />
             )}
+            {this.state.selectedTab === "ListUser" && <ListUser />}
           </div>
         </div>
       </Fragment>

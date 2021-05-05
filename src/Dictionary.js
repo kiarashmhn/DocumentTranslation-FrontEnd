@@ -123,7 +123,7 @@ export const Dictionary = {
   },
   description: {
     persian: "توضیحات تکمیلی",
-    french: "Informations complémentaire",
+    french: "Informations complémentaires",
     hint: {
       persian:
         "هر گونه توضیح یا مستندات تکمیلی که برای ترجمه سند خود مفید می دانید را می توانید در این قسمت اضافه کنید.",
@@ -1369,6 +1369,18 @@ export const Dictionary = {
       "Assurez-vous que vos documents sont valides, bien visibles et faciles à lire. Vos informations déclarées sur le formulaire doivent correspondre, à la lettre, à celles de votre document.",
     persian:
       "اطمینان حاصل کنید که سند شما معتبر، واضح و قابل خواندن است. اطلاعات شما در فرم باید با سند شما مطابقت کامل داشته باشد."
+  },
+  identifier: {
+    persian: "شناسه سفارش",
+    french: "N° de commande"
+  },
+  username: {
+    french: "E-mail",
+    persian: "ایمیل"
+  },
+  phone: {
+    french: "Numéro de portable",
+    persian: "شماره تلفن"
   }
 };
 
