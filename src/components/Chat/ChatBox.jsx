@@ -25,6 +25,7 @@ export default class ChatBox extends Component {
     };
     this.api = new Api();
     this.uploadFileRef = React.createRef();
+    this.lastRef = React.createRef();
   }
 
   componentDidMount() {
@@ -35,7 +36,9 @@ export default class ChatBox extends Component {
     this.setState({ isLoading: true }, async () => {
       this.getDocuments().then(
         await this.getMessages().then(() => {
-          this.setState({ isLoading: false });
+          this.setState({ isLoading: false }, () => {
+            this.lastRef.current.scrollIntoView();
+          });
         })
       );
     });
@@ -55,6 +58,7 @@ export default class ChatBox extends Component {
           color={m.sender === this.props.type ? "lightseagreen" : "#709fdc"}
           position={m.sender === this.props.type ? "right" : "left"}
           file={this.getMessageFile(m.id)}
+          type={this.props.type}
         />
       ) : (
         <Message
@@ -62,6 +66,7 @@ export default class ChatBox extends Component {
           info={m}
           color={m.sender === this.props.type ? "lightseagreen" : "#709fdc"}
           position={m.sender === this.props.type ? "right" : "left"}
+          type={this.props.type}
         />
       )
     );
@@ -200,6 +205,7 @@ export default class ChatBox extends Component {
             <Grid container spacing={1}>
               {this.generateMessages()}
             </Grid>
+            <div ref={this.lastRef} />
           </div>
         }
         actions={

@@ -26,6 +26,12 @@ export default class Message extends Component {
     return format;
   };
 
+  getUserName = () => {
+    if (this.props.type === "ADMIN")
+      return this.props.position === "right" ? "Vous" : "User";
+    return this.props.position === "right" ? "Vous" : "Admin";
+  };
+
   render() {
     let position =
       this.props.position === "right" ? { float: "right" } : { float: "left" };
@@ -70,7 +76,7 @@ export default class Message extends Component {
                 "yyyy/mm/dd hh:ii"
               )}
             </div>
-            <div style={{ padding: 0 }}>{this.props.info.senderName}</div>
+            <div style={{ padding: 0 }}>{this.getUserName()}</div>
           </Typography>
         </div>
       </Grid>
@@ -82,5 +88,6 @@ Message.propTypes = {
   info: PropTypes.any.isRequired,
   file: PropTypes.any,
   color: PropTypes.any.isRequired,
+  type: PropTypes.any.isRequired,
   position: PropTypes.any.isRequired
 };

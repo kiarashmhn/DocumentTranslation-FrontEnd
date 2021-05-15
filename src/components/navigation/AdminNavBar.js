@@ -27,6 +27,8 @@ import NavigationDrawer from "../Template/NavigationDrawer";
 import ListIcon from "@material-ui/icons/List";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import AuthService from "../../AuthService";
+import EditUserDialog from "../register_login/EditUserDialog";
+import PersonIcon from "@material-ui/icons/Person";
 
 const styles = theme => ({
   appBar: {
@@ -90,8 +92,8 @@ const styles = theme => ({
   iconListItem: {
     width: "auto",
     borderRadius: theme.shape.borderRadius,
-    paddingTop: 11,
-    paddingBottom: 11,
+    paddingTop: 5,
+    paddingBottom: 5,
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1)
   },
@@ -109,7 +111,7 @@ const styles = theme => ({
     fontWeight: 400
   },
   username: {
-    paddingLeft: 0,
+    paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2)
   },
   justifyCenter: {
@@ -128,7 +130,7 @@ const styles = theme => ({
     backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/logo.png)`,
     backgroundSize: "contain",
     height: "60px",
-    width: "240px"
+    width: "220px"
   }
 });
 
@@ -143,6 +145,15 @@ function NavBar(props) {
   // Will be use to make website more accessible by screen readers
   const links = useRef([]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+
+  const openProfile = useCallback(() => {
+    setProfileOpen(true);
+  }, [setProfileOpen]);
+
+  const closeProfile = useCallback(() => {
+    setProfileOpen(false);
+  }, [setProfileOpen]);
 
   const openMobileDrawer = useCallback(() => {
     setIsMobileOpen(true);
@@ -155,6 +166,20 @@ function NavBar(props) {
   const Auth = new AuthService();
 
   const menuItems = [
+    {
+      name: "profile",
+      persianName: "پروفایل",
+      onClick: () => openProfile(),
+      icon: {
+        desktop: (
+          <PersonIcon
+            className={profileOpen ? classes.textPrimary : "text-white"}
+            fontSize="large"
+          />
+        ),
+        mobile: <PersonIcon className="text-white" />
+      }
+    },
     {
       name: "ListOrder",
       persianName: "لیست سفارش ها",
@@ -246,6 +271,12 @@ function NavBar(props) {
                 src={`${process.env.PUBLIC_URL}/images/logged_in/profilePicture.jpg`}
                 className={classNames(classes.accountAvatar)}
               />*/}
+              {profileOpen && (
+                <EditUserDialog
+                  name={Auth.getUsername()}
+                  onClose={closeProfile}
+                />
+              )}
               {isWidthUp("sm", width) && (
                 <ListItemText
                   className={classes.username}

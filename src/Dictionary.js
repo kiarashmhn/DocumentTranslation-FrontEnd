@@ -1159,7 +1159,7 @@ export const Dictionary = {
   },
   redirectToAccount: {
     persian: "بازگشت به حساب کاربری",
-    french: "Retour au mon compte"
+    french: "Retour à mon compte"
   },
   deliveryMode: {
     persian: "شیوه ارسال سفارش",
@@ -1381,6 +1381,18 @@ export const Dictionary = {
   phone: {
     french: "Numéro de portable",
     persian: "شماره تلفن"
+  },
+  user: {
+    french: "Demandeur",
+    persian: "کاربر"
+  },
+  profile: {
+    french: "Profil",
+    persian: "پروفایل"
+  },
+  acceptanceDate: {
+    french: "Date d'acceptation",
+    persian: "تاریخ پذیرش"
   }
 };
 

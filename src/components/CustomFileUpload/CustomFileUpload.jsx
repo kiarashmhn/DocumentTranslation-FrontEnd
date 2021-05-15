@@ -22,7 +22,7 @@ export default class CustomFileUpload extends Component {
       empty: true,
       spanTitle: this.props.title
         ? this.props.title
-        : "فایلی انتخاب نشده است / Aucun fichier sélectionné"
+        : "یک فایل اضافه کنید / Attacher un fichier"
     };
   }
 
@@ -31,7 +31,7 @@ export default class CustomFileUpload extends Component {
       empty: true,
       spanTitle: this.props.title
         ? this.props.title
-        : "فایلی انتخاب نشده است / Aucun fichier sélectionné"
+        : "یک فایل اضافه کنید / Attacher un fichier"
     });
   };
 

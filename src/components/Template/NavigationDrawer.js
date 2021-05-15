@@ -110,7 +110,7 @@ class NavigationDrawer extends Component {
                     <ListItemText
                       primary={
                         <Typography variant="subtitle1" className="text-white">
-                          {getCompleteName(element.name)}
+                          {element.persianName}
                         </Typography>
                       }
                     />
@@ -124,7 +124,7 @@ class NavigationDrawer extends Component {
                 <ListItemText
                   primary={
                     <Typography variant="subtitle1" className="text-white">
-                      {getCompleteName(element.name)}
+                      {element.persianName}
                     </Typography>
                   }
                 />

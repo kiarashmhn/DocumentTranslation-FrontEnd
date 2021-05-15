@@ -1,7 +1,6 @@
 import { getFrench, getPersian } from "./OrderStatus";
 import IconButton from "@material-ui/core/IconButton";
 import * as ColorPalette from "../ColorPalette";
-import Info from "@material-ui/icons/Info";
 import theme from "../../theme";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 import React from "react";
@@ -13,12 +12,25 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 export function getAdminColumns(
   handleClickOpen,
   handleClickOpenBill,
-  handleClickOpenMessages
+  handleClickOpenMessages,
+  handleClickOpenStatus
 ) {
   return [
     {
       name: "identifier",
-      label: "N° de commande"
+      label: "N° de commande",
+      options: {
+        customBodyRender: function x(value, meta) {
+          return (
+            <div
+              style={{ color: theme.palette.primary.main, cursor: "pointer" }}
+              onClick={() => handleClickOpen(meta.rowData[1])}
+            >
+              {value}
+            </div>
+          );
+        }
+      }
     },
     {
       name: "id",
@@ -50,24 +62,19 @@ export function getAdminColumns(
       name: "status",
       label: "État",
       options: {
-        customBodyRender: value => {
+        customBodyRender: (meta, value) => {
           if (value !== undefined && value !== null) {
-            return <span>{getFrench(value)}</span>;
+            return (
+              <span
+                onClick={() => handleClickOpenStatus(meta.rowData[1])}
+                style={{ cursor: "pointer", color: theme.palette.primary.main }}
+              >
+                {getFrench(value)}
+              </span>
+            );
           }
         }
       }
-    },
-    {
-      name: "submitDate",
-      label: "Date registre/paiement"
-    },
-    {
-      name: "acceptanceDate",
-      label: "Date d'acceptation"
-    },
-    {
-      name: "deliveryDate",
-      label: "Date de livraison"
     },
     {
       name: "hasNewUserMessage",
@@ -89,25 +96,6 @@ export function getAdminColumns(
               )}
             </IconButton>
           );
-        }
-      }
-    },
-    {
-      name: "id",
-      label: "Vue",
-      options: {
-        customBodyRender: value => {
-          if (value !== undefined && value !== null) {
-            return (
-              <IconButton
-                aria-label="delete"
-                onClick={() => handleClickOpen(value)}
-                style={{ color: ColorPalette.cornflowerblue }}
-              >
-                <Info fontSize="small" />
-              </IconButton>
-            );
-          }
         }
       }
     },
@@ -141,12 +129,25 @@ export function getSuperAdminColumns(
   handleClickOpenBill,
   handleClickOpenAdmins,
   handleClickOpenPayment,
-  handleClickOpenMessages
+  handleClickOpenMessages,
+  handleClickOpenStatus
 ) {
   return [
     {
       name: "identifier",
-      label: "N° de commande"
+      label: "N° de commande",
+      options: {
+        customBodyRender: function x(value, meta) {
+          return (
+            <div
+              style={{ color: theme.palette.primary.main, cursor: "pointer" }}
+              onClick={() => handleClickOpen(meta.rowData[1])}
+            >
+              {value}
+            </div>
+          );
+        }
+      }
     },
     {
       name: "id",
@@ -185,24 +186,19 @@ export function getSuperAdminColumns(
       name: "status",
       label: "État",
       options: {
-        customBodyRender: value => {
+        customBodyRender: (value, meta) => {
           if (value !== undefined && value !== null) {
-            return <span>{getFrench(value)}</span>;
+            return (
+              <span
+                onClick={() => handleClickOpenStatus(meta.rowData[1])}
+                style={{ cursor: "pointer", color: theme.palette.primary.main }}
+              >
+                {getFrench(value)}
+              </span>
+            );
           }
         }
       }
-    },
-    {
-      name: "submitDate",
-      label: "Date registre/paiement"
-    },
-    {
-      name: "acceptanceDate",
-      label: "Date d'acceptation"
-    },
-    {
-      name: "deliveryDate",
-      label: "Date de livraison"
     },
     {
       name: "adminName",
@@ -282,25 +278,6 @@ export function getSuperAdminColumns(
       }
     },
     {
-      name: "id",
-      label: "Vue",
-      options: {
-        customBodyRender: value => {
-          if (value !== undefined && value !== null) {
-            return (
-              <IconButton
-                aria-label="delete"
-                onClick={() => handleClickOpen(value)}
-                style={{ color: ColorPalette.cornflowerblue }}
-              >
-                <Info fontSize="small" />
-              </IconButton>
-            );
-          }
-        }
-      }
-    },
-    {
       name: "isPaid",
       label: "Info paiement",
       options: {
@@ -348,7 +325,8 @@ export function getSuperAdminColumns(
 export function getUserColumns(
   handleClickOpen,
   handleClickOpenBill,
-  handleClickOpenMessages
+  handleClickOpenMessages,
+  handleClickOpenStatus
 ) {
   return [
     {
@@ -358,7 +336,25 @@ export function getUserColumns(
           <div dir={"ltr"}>{getFrenchName("orderId")}</div>
           <div dir={"rtl"}>{getPersianName("orderId")}</div>
         </div>
-      )
+      ),
+      options: {
+        customBodyRender: (value, meta) => {
+          if (
+            meta.rowData &&
+            (meta.rowData[2] === "COMPLETING" ||
+              meta.rowData[2] === "WAITING_FOR_PAYMENT")
+          ) {
+            return (
+              <div
+                style={{ color: theme.palette.primary.main, cursor: "pointer" }}
+                onClick={() => handleClickOpen(meta.rowData[1])}
+              >
+                {value}
+              </div>
+            );
+          }
+        }
+      }
     },
     {
       name: "id",
@@ -376,10 +372,13 @@ export function getUserColumns(
         </div>
       ),
       options: {
-        customBodyRender: value => {
+        customBodyRender: (value, meta) => {
           if (value !== undefined && value !== null) {
             return (
-              <div>
+              <div
+                onClick={() => handleClickOpenStatus(meta.rowData[1])}
+                style={{ cursor: "pointer", color: theme.palette.primary.main }}
+              >
                 <div dir={"ltr"}>{getFrench(value)}</div>
                 <div dir={"rtl"}>{getPersian(value)}</div>
               </div>
@@ -387,24 +386,6 @@ export function getUserColumns(
           }
         }
       }
-    },
-    {
-      name: "submitDate",
-      label: (
-        <div>
-          <div dir={"ltr"}>{getFrenchName("submitDate")}</div>
-          <div dir={"rtl"}>{getPersianName("submitDate")}</div>
-        </div>
-      )
-    },
-    {
-      name: "deliveryDate",
-      label: (
-        <div>
-          <div dir={"ltr"}>{getFrenchName("deliveryDate")}</div>
-          <div dir={"rtl"}>{getPersianName("deliveryDate")}</div>
-        </div>
-      )
     },
     {
       name: "hasNewAdminMessage",
@@ -431,31 +412,6 @@ export function getUserColumns(
               )}
             </IconButton>
           );
-        }
-      }
-    },
-    {
-      name: "id",
-      label: "Vue",
-      options: {
-        customBodyRender: (value, meta) => {
-          if (value !== undefined && value !== null) {
-            if (
-              meta.rowData &&
-              (meta.rowData[2] === "COMPLETING" ||
-                meta.rowData[2] === "WAITING_FOR_PAYMENT")
-            ) {
-              return (
-                <IconButton
-                  aria-label="delete"
-                  onClick={() => handleClickOpen(value)}
-                  style={{ color: ColorPalette.cornflowerblue }}
-                >
-                  <Info fontSize="small" />
-                </IconButton>
-              );
-            }
-          }
         }
       }
     },

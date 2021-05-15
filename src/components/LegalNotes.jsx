@@ -32,7 +32,7 @@ export default class LegalNotes extends Component {
       <Fragment>
         <div style={{ marginTop: "10px" }}>
           <Typography variant={"h6"} align={"center"}>
-            Choisir la langue
+            Choix de la langue
           </Typography>
           <Typography variant={"h6"} align={"center"}>
             انتخاب زبان
@@ -72,7 +72,7 @@ export default class LegalNotes extends Component {
         <div ref={this.privacyRef}>
           <div>
             <Typography variant={"h6"} align={"center"}>
-              Choisir la langue
+              Choix de la langue
             </Typography>
             <Typography variant={"h6"} align={"center"}>
               انتخاب زبان

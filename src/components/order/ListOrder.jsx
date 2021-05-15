@@ -17,6 +17,7 @@ import {
   getUserColumns
 } from "./ListOrderColumns";
 import ChatBox from "../Chat/ChatBox";
+import OrderStatusDialog from "../register_login/OrderStatusDialog";
 
 class ListOrder extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class ListOrder extends Component {
       openPaymentInfo: false,
       openBillInfo: false,
       openMessages: false,
+      openStatus: false,
       itemId: "",
       username: "",
       adminName: ""
@@ -115,6 +117,20 @@ class ListOrder extends Component {
     });
   };
 
+  handleClickOpenStatus = orderId => {
+    this.setState({
+      openStatus: true,
+      itemId: orderId
+    });
+  };
+
+  handleClickCloseStatus = () => {
+    this.setState({
+      openStatus: false,
+      itemId: ""
+    });
+  };
+
   handleClickOpenMessages = orderId => {
     this.setState({
       openMessages: true,
@@ -143,18 +159,21 @@ class ListOrder extends Component {
         this.handleClickOpenBill,
         this.handleClickOpenAdmins,
         this.handleClickOpenPayment,
-        this.handleClickOpenMessages
+        this.handleClickOpenMessages,
+        this.handleClickOpenStatus
       );
     if (this.props.type && this.state.isAdmin)
       return getAdminColumns(
         this.handleClickOpen,
         this.handleClickOpenBill,
-        this.handleClickOpenMessages
+        this.handleClickOpenMessages,
+        this.handleClickOpenStatus
       );
     return getUserColumns(
       this.handleClickOpen,
       this.handleClickOpenBill,
-      this.handleClickOpenMessages
+      this.handleClickOpenMessages,
+      this.handleClickOpenStatus
     );
   };
 
@@ -188,14 +207,29 @@ class ListOrder extends Component {
           }
           filter={{
             componentTitle: title,
-            staticData: [
-              {
-                key: "identifier",
-                type: "text",
-                grid: 12,
-                notRequired: true
-              }
-            ]
+            staticData: this.state.isAdmin
+              ? [
+                  {
+                    key: "identifier",
+                    type: "text",
+                    grid: 12,
+                    notRequired: true
+                  },
+                  {
+                    key: "username",
+                    type: "text",
+                    grid: 12,
+                    notRequired: true
+                  }
+                ]
+              : [
+                  {
+                    key: "identifier",
+                    type: "text",
+                    grid: 12,
+                    notRequired: true
+                  }
+                ]
           }}
         />
         <FullScreenDialog
@@ -227,6 +261,12 @@ class ListOrder extends Component {
           <PaymentInfo
             orderId={this.state.itemId}
             onClose={this.handleClickClosePayment}
+          />
+        )}
+        {this.state.openStatus && (
+          <OrderStatusDialog
+            orderId={parseInt(this.state.itemId)}
+            onClose={this.handleClickCloseStatus}
           />
         )}
         {this.state.openMessages && (
