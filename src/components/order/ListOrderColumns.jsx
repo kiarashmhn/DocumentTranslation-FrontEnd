@@ -352,7 +352,7 @@ export function getUserColumns(
                 {value}
               </div>
             );
-          }
+          } else return <div>{value}</div>;
         }
       }
     },

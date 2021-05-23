@@ -22,3 +22,4 @@ export const GET_MESSAGES = "/message/gets";
 export const CREATE_MESSAGE = "/message/create";
 export const GET_USERS = "/user/gets";
 export const USER_GET = "/user/get";
+export const USER_PASS_RECOVERY = "/user/recoverPass";

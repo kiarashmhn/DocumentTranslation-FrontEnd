@@ -79,9 +79,14 @@ export default class Valuable extends Component {
               <Checkbox
                 checked={!!this.state.check}
                 onChange={e =>
-                  this.setState({
-                    check: e.target.checked
-                  })
+                  this.setState(
+                    {
+                      check: e.target.checked
+                    },
+                    () => {
+                      this.props.onChange(this.state);
+                    }
+                  )
                 }
                 name={"check"}
                 color="secondary"

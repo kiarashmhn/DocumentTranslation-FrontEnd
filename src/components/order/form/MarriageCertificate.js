@@ -48,6 +48,49 @@ export const MarriageCertificateForm = {
         {
           key: "placeofIssueIDCertificate",
           type: "text"
+        },
+        {
+          key: "IDCertSerieNumber",
+          type: "text"
+        },
+        {
+          key: "medicalCertificateNumber",
+          type: "text"
+        },
+        {
+          key: "job",
+          type: "select",
+          options: [
+            { value: "employee", key: "employee" },
+            { value: "freeJob", key: "freeJob" },
+            { value: "nurse", key: "nurse" },
+            { value: "worker1", key: "worker1" },
+            { value: "schoolStudent", key: "schoolStudent" },
+            { value: "uniStudent", key: "uniStudent" },
+            { value: "houseWife", key: "houseWife" },
+            { value: "farmer", key: "farmer" },
+            { value: "doctor", key: "doctor" },
+            { value: "barber", key: "barber" }
+          ],
+          required: true
+        },
+        {
+          key: "religion",
+          type: "select",
+          options: [
+            { value: "islam1", key: "islam1" },
+            { value: "islam2", key: "islam2" },
+            { value: "islam3", key: "islam3" },
+            { value: "christian1", key: "christian1" },
+            { value: "jew1", key: "jew1" },
+            { value: "zartoshti", key: "zartoshti" }
+          ],
+          required: true
+        },
+        {
+          key: "iranianNationality",
+          type: "text",
+          value: "Iranienne / ایرانی"
         }
       ]
     },
@@ -55,38 +98,81 @@ export const MarriageCertificateForm = {
       title: "husbandInfo",
       content: [
         {
-          key: "name",
+          key: "hname",
           type: "text"
         },
         {
-          key: "lastName",
-          type: "text"
-        },
-
-        {
-          key: "fatherName",
+          key: "hlastName",
           type: "text"
         },
 
         {
-          key: "motherName",
+          key: "hfatherName",
+          type: "text"
+        },
+
+        {
+          key: "hmotherName",
           type: "text"
         },
         {
-          key: "birthDate",
+          key: "hbirthDate",
           type: "date"
         },
         {
-          key: "nationalId",
+          key: "hnationalId",
           type: "text"
         },
         {
-          key: "dateofIssueIDCertificate",
+          key: "hdateofIssueIDCertificate",
           type: "date"
         },
         {
-          key: "placeofIssueIDCertificate",
+          key: "hplaceofIssueIDCertificate",
           type: "text"
+        },
+        {
+          key: "hIDCertSerieNumber",
+          type: "text"
+        },
+        {
+          key: "hmedicalCertificateNumber",
+          type: "text"
+        },
+        {
+          key: "hjob",
+          type: "select",
+          options: [
+            { value: "employee", key: "employee" },
+            { value: "freeJob", key: "freeJob" },
+            { value: "nurse", key: "nurse" },
+            { value: "worker1", key: "worker1" },
+            { value: "schoolStudent", key: "schoolStudent" },
+            { value: "uniStudent", key: "uniStudent" },
+            { value: "houseWife", key: "houseWife" },
+            { value: "farmer", key: "farmer" },
+            { value: "doctor", key: "doctor" },
+            { value: "barber", key: "barber" }
+          ],
+          required: true
+        },
+        {
+          key: "hreligion",
+          type: "select",
+          options: [
+            { value: "islam1", key: "islam1" },
+            { value: "islam2", key: "islam2" },
+            { value: "islam3", key: "islam3" },
+            { value: "christian1", key: "christian1" },
+            { value: "jew1", key: "jew1" },
+            { value: "zartoshti", key: "zartoshti" }
+          ],
+          required: true
+        },
+        {
+          key: "hiranianNationality",
+          type: "text",
+          value: "Iranienne / ایرانی"
         }
       ]
     },
@@ -95,7 +181,19 @@ export const MarriageCertificateForm = {
       content: [
         {
           key: "witness",
-          type: "witness"
+          type: "witness",
+          options: [
+            { value: "employee", key: "employee" },
+            { value: "freeJob", key: "freeJob" },
+            { value: "nurse", key: "nurse" },
+            { value: "worker1", key: "worker1" },
+            { value: "schoolStudent", key: "schoolStudent" },
+            { value: "uniStudent", key: "uniStudent" },
+            { value: "houseWife", key: "houseWife" },
+            { value: "farmer", key: "farmer" },
+            { value: "doctor", key: "doctor" },
+            { value: "barber", key: "barber" }
+          ]
         }
       ]
     },
@@ -104,25 +202,84 @@ export const MarriageCertificateForm = {
       content: [
         {
           key: "representer",
-          type: "representer"
+          type: "representer",
+          options: [
+            { value: "employee", key: "employee" },
+            { value: "freeJob", key: "freeJob" },
+            { value: "nurse", key: "nurse" },
+            { value: "worker1", key: "worker1" },
+            { value: "schoolStudent", key: "schoolStudent" },
+            { value: "uniStudent", key: "uniStudent" },
+            { value: "houseWife", key: "houseWife" },
+            { value: "farmer", key: "farmer" },
+            { value: "doctor", key: "doctor" },
+            { value: "barber", key: "barber" }
+          ]
         }
       ]
     },
     {
-      title: "aghed",
+      title: "marriageCertificateInformation",
       content: [
         {
-          key: "name",
+          key: "documentNumber",
           type: "text"
         },
         {
-          key: "lastName",
+          key: "serieNumber",
           type: "text"
         },
-
         {
-          key: "marriageDate",
+          key: "cityBureau",
+          type: "text"
+        },
+        {
+          key: "registerZone",
+          type: "text"
+        },
+        {
+          key: "number",
+          type: "text"
+        },
+        {
+          key: "volume1",
+          type: "text"
+        },
+        {
+          key: "page1",
+          type: "text"
+        },
+        {
+          key: "marriageDate1",
           type: "date"
+        },
+        {
+          key: "mariiageRegisterDate",
+          type: "date"
+        },
+        {
+          key: "stampCost",
+          type: "text"
+        },
+        {
+          key: "receiptNumber",
+          type: "text"
+        },
+        {
+          key: "depositDate",
+          type: "text"
+        },
+        {
+          key: "bankName",
+          type: "text"
+        },
+        {
+          key: "nameAghed",
+          type: "text"
+        },
+        {
+          key: "lastNameAghed",
+          type: "text"
         }
       ]
     },

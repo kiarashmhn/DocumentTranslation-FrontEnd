@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import PropTypes from "prop-types";
 import {
   TextField,
@@ -10,6 +10,8 @@ import {
   withStyles
 } from "@material-ui/core";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
+import Api from "../Api/Api";
+import * as URLConstant from "../../URLConstant";
 
 const styles = theme => ({
   dialogContent: {
@@ -24,15 +26,31 @@ const styles = theme => ({
 function ChangePassword(props) {
   const { onClose, classes, setLoginStatus } = props;
   const [isLoading, setIsLoading] = useState(false);
+  const api = new Api();
+  const username = useRef();
 
   const sendPasswordEmail = useCallback(() => {
+    let postData = {
+      email: username.current.value
+    };
     setIsLoading(true);
-    setTimeout(() => {
-      setLoginStatus("verificationEmailSend");
-      setIsLoading(false);
-      onClose();
-    }, 1500);
-  }, [setIsLoading, setLoginStatus, onClose]);
+    api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.USER_PASS_RECOVERY,
+        postData
+      )
+      .then(function(result) {
+        console.log(result);
+        setLoginStatus("verificationEmailSend");
+        setIsLoading(false);
+        onClose();
+      })
+      .catch(function(result) {
+        console.log(result);
+      });
+  }, [setIsLoading, username, setLoginStatus, onClose]);
 
   return (
     <Dialog
@@ -59,6 +77,7 @@ function ChangePassword(props) {
             دریافت آن وارد کنید:
           </Typography>
           <TextField
+            inputRef={username}
             variant="outlined"
             margin="dense"
             required
@@ -131,7 +150,7 @@ function ChangePassword(props) {
                   }}
                 />
                 <Typography variant="body1" align="center" component={"span"}>
-                  Récupérer mot de passe
+                  Réinitialiser votre mot de passe
                 </Typography>
                 <span
                   style={{

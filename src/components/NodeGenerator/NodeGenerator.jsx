@@ -10,6 +10,7 @@ import Spouses from "../Spouses/Spouses";
 import {
   getCompleteName,
   getFrenchName,
+  getHint,
   getPersianName
 } from "../../Dictionary";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -21,6 +22,8 @@ import ComplexDateInput from "../CustomDateInput/ComplexDateInput";
 import CustomAutoComplete from "../AutoComplete/CustomAutoComplete";
 import Witness from "../Marriage/Witness";
 import Valuable from "../Marriage/Valuable";
+import CustomTooltip from "../Tooltip/CustomTooltip";
+import LicenseType from "../Marriage/LicenseType";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -406,14 +409,28 @@ export default class NodesGenerator extends Component {
               md={element.grid ? element.grid : 4}
               key={element.key}
             >
-              <div style={{ marginTop: "43px", alignItems: "center" }}>
+              <div
+                style={{
+                  marginTop: "43px",
+                  alignItems: "center",
+                  display: "inline-flex"
+                }}
+              >
                 <Checkbox
                   checked={!!this.state[element.key]}
                   onChange={e => this.checkBoxOnChange(e, element)}
                   name={element.key + "name"}
                   color="secondary"
                 />
-                <span>{getCompleteName(element.key)}</span>
+                <span style={{ display: "contents" }}>
+                  {getCompleteName(element.key)}
+                  {getHint(element.key) && (
+                    <CustomTooltip>
+                      <div>{getHint(element.key).french}</div>
+                      <div dir={"rtl"}>{getHint(element.key).persian}</div>{" "}
+                    </CustomTooltip>
+                  )}
+                </span>
               </div>
             </Grid>
           );
@@ -453,6 +470,7 @@ export default class NodesGenerator extends Component {
                     ? this.props.externalInitializationData[element.key + "1"]
                     : null
                 }
+                options={element.options}
               />
               <Witness
                 id={element.key}
@@ -465,6 +483,7 @@ export default class NodesGenerator extends Component {
                     ? this.props.externalInitializationData[element.key + "2"]
                     : null
                 }
+                options={element.options}
               />
               <Witness
                 id={element.key}
@@ -477,6 +496,7 @@ export default class NodesGenerator extends Component {
                     ? this.props.externalInitializationData[element.key + "3"]
                     : null
                 }
+                options={element.options}
               />
             </Grid>
           );
@@ -500,6 +520,7 @@ export default class NodesGenerator extends Component {
                     ? this.props.externalInitializationData[element.key + "1"]
                     : null
                 }
+                options={element.options}
               />
               <Witness
                 id={element.key}
@@ -512,6 +533,7 @@ export default class NodesGenerator extends Component {
                     ? this.props.externalInitializationData[element.key + "2"]
                     : null
                 }
+                options={element.options}
               />
             </Grid>
           );
@@ -531,6 +553,36 @@ export default class NodesGenerator extends Component {
                 valueRequired={element.required}
                 defaultValue={element.defaultValue}
               />
+            </Grid>
+          );
+        case "licenseType":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <LicenseType
+                name={element.key}
+                valueKey={element.valueKey ? element.valueKey : "value"}
+                onChange={value => this.setState({ [element.key]: value })}
+                valueRequired={element.required}
+                defaultValue={element.defaultValue}
+              />
+            </Grid>
+          );
+        case "empty":
+          return (
+            <Grid
+              item
+              xs={element.xsGrid ? element.xsGrid : 12}
+              sm={element.smGrid ? element.smGrid : 12}
+              md={element.grid ? element.grid : 4}
+              key={element.key}
+            >
+              <div />
             </Grid>
           );
         default:

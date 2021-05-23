@@ -188,7 +188,7 @@ export const Dictionary = {
   },
   uploadIDFiles: {
     persian: "بارگذاری سند شناسنامه",
-    french: "Importer ici votre acte de naissance à traduire"
+    french: "Importer ici votre Acte de naissance à traduire"
   },
   uploadIDCardFiles: {
     persian: "بارگذاری سند کارت ملی",
@@ -1011,23 +1011,41 @@ export const Dictionary = {
   },
   firstGrade: {
     persian: "پایه یکم",
-    french: "Nom"
+    french: "Catégorie 1",
+    hint: {
+      persian:
+        "پایه یکم : خودروهای باربری پیش از ۶ تن و خودروهای مسافربری پیش از ۲۶ نفر",
+      french:
+        "Catégorie 1 : véhicules affectés au transport de marchandises dont PTAC est supérieur à 6 tonnes et véhicule de transport en commun comportant plus de 26 personnes."
+    }
   },
   secondGrade: {
     persian: "پایه دوم",
-    french: "Nom"
+    french: "Catégorie 2",
+    hint: {
+      persian:
+        "پایه دوم: خودروهای باربری تا حداکثر ۶ تن و خودروهای مسافربری تا حداکثر ۲۶ نفر و خودروهای خدمات عمومی",
+      french:
+        "Catégorie 2 : poids lourd ne dépasse pas 6 tonnes et véhicule de transport en commun, 26 personnes au maximum."
+    }
   },
   thirdGrade: {
     persian: "پایه سوم",
-    french: "Nom"
+    french: "Catégorie 3",
+    hint: {
+      persian:
+        "پایه سوم : خودروهای سواری تا  حداکثر ۹ نفر و وانت تا حداکثر ۳/۵ تن",
+      french:
+        "Catégorie 3 : véhicule comportant moins de neuf places assises et dont PTAC est de 3,5 tonnes au maximum."
+    }
   },
   special: {
     persian: "ویژه",
-    french: "Nom"
+    french: "Catégorie spécifique"
   },
   motorcycle: {
     persian: "موتورسیکلت",
-    french: "Nom"
+    french: "Motocyclette"
   },
   expirationDuration: {
     persian: "مدت اعتبار",
@@ -1190,9 +1208,9 @@ export const Dictionary = {
     french: "Autre",
     hint: {
       persian:
-        "در صورت وجود موارد دیگر در قسمت مهر، این گزینه را انتخاب کنید، مترجم این قسمت را کامل و تصحیح خواهد کرد.",
+        " با انتخاب این گزینه، نوشتن دیگر موارد قسمت مهر که در لیست بالا وجود ندارد، برایتان امکانپذیر می شود. درهرصورت، مترجم این قسمت را بازنویسی و کامل خواهد کرد.",
       french:
-        "Sélectionnez cette option pour tous autres éléments, le traducteur complétera cette partie."
+        "Sélectionnez cette option pour pouvoir ajouter tous autres éléments qui ne sont pas proposés dans la liste ci-dessus. Toutefois, le traducteur révisera et complétera cette partie."
     }
   },
   houseNumber: {
@@ -1322,7 +1340,7 @@ export const Dictionary = {
   },
   byCertificate: {
     persian: "مطابق عقدنامه",
-    french: "Conformément au livret de mariage"
+    french: "Selon le livret de mariage"
   },
   orderStatus: {
     persian: "وضعیت سفارش",
@@ -1393,6 +1411,331 @@ export const Dictionary = {
   acceptanceDate: {
     french: "Date d'acceptation",
     persian: "تاریخ پذیرش"
+  },
+  aCodeBar: {
+    persian: "کدبار",
+    french: "BR Code",
+    hint: {
+      persian: "عدد نوشته شده در پایین سند",
+      french: ""
+    }
+  },
+  identificationNumber: {
+    persian: "شماره شناسایی سند در وزارت امور خارجه",
+    french: "Numéro d'identification du document au Département d'État"
+  },
+  ministryDate: {
+    persian: "در تاریخ  ",
+    french: "Date"
+  },
+  signed: {
+    persian: "سند بوسیله وزارت امور خارجه افغانستان مهر و تصدیق شده است؟ ",
+    french: "Document validé par le ministère des affaires étrangères"
+  },
+  docNumber: {
+    persian: "نمبر سند (د صکو کو نمبر)",
+    french: "Numéro de document"
+  },
+  village1: {
+    persian: "قریه",
+    french: "Village"
+  },
+  afghanMarriageCertificate: {
+    persian: "نکاح نامه",
+    french: "Certificat de mariage afghan"
+  },
+  uploadAfghanMarriageCertificate: {
+    persian: "بارگذاری نکاح نامه",
+    french: "Importer la certificat de mariage afghan"
+  },
+  confessor: {
+    persian: "شهرت اقرارکننده ها",
+    french: "Témoins"
+  },
+  /*witness: {
+    persian: "شهرت شهود",
+    french: "Garants des Témoins"
+  },*/
+  hname: {
+    persian: "نام",
+    french: "Prénom"
+  },
+  hlastName: {
+    persian: "نام خانوادگی",
+    french: "Nom"
+  },
+  hfatherName: {
+    persian: "نام پدر",
+    french: "Prénom du père"
+  },
+  hmotherName: {
+    persian: "نام مادر",
+    french: "Prénom de la mère"
+  },
+  hbirthDate: {
+    persian: "تاریخ تولد",
+    french: "Date de naissance"
+  },
+  hnationalId: {
+    persian: "شماره ملی",
+    french: "N° d'identité national"
+  },
+  hdateofIssueIDCertificate: {
+    persian: "تاریخ صدور شناسنامه",
+    french: "Date de deĺivrance de l’acte de naissance"
+  },
+  hplaceofIssueIDCertificate: {
+    persian: "محل صدور شناسنامه",
+    french: "Lieu de deĺivrance de l’acte de naissance"
+  },
+  documentNumber: {
+    persian: "شماره سند",
+    french: "Numéro de document"
+  },
+  serieNumber: {
+    persian: "شماره سری سند",
+    french: "Numéro de série"
+  },
+  cityBureau: {
+    persian: "شماره شهر - دفترخانه",
+    french: "N° de référence et ville du Bureau officiel des mariages"
+  },
+  registerZone: {
+    persian: "حوزه ثبت",
+    french: "Zone de l’enregistrement du mariage"
+  },
+  number: {
+    persian: "شماره ترتیب",
+    french: "Référence de l’enregistrement du mariage (numéro)"
+  },
+  volume1: {
+    persian: "جلد",
+    french: "Référence de l’enregistrement du mariage (volume)"
+  },
+  page1: {
+    persian: "صفحه",
+    french: "Référence de l’enregistrement du mariage (page)"
+  },
+
+  marriageDate1: {
+    persian: "تاریخ وقوع عقد",
+    french: "Date du mariage"
+  },
+  mariiageRegisterDate: {
+    persian: "تاریخ ثبت عقد",
+    french: "Date d’émission"
+  },
+  stampCost: {
+    persian: "هزینه ی مربوط به تمبر (به ریال)",
+    french: "Frais de timbre"
+  },
+  receiptNumber: {
+    persian: "شماره فیش",
+    french: "virement"
+  },
+  depositDate: {
+    persian: "تاریخ واریز",
+    french: ""
+  },
+  bankName: {
+    persian: "نام بانک (و شعبه)",
+    french: "banque"
+  },
+  nameAghed: {
+    persian: "نام عاقد",
+    french: "Prénom"
+  },
+  lastNameAghed: {
+    persian: "نام خانوادگی عاقد",
+    french: "Nom"
+  },
+  IDCertSerieNumber: {
+    persian: "شماره مسلس شناسنامه",
+    french: "N° de série de l’Acte d’état civil"
+  },
+  medicalCertificateNumber: {
+    persian: "شماره گواهی پزشکی",
+    french: "N° de certificat médical prénuptial"
+  },
+  medicalCertificatePlace: {
+    persian: "مرجع صدور گواهی پزشکی",
+    french: "Prénom"
+  },
+  iranianNationality: {
+    persian: "تابعیت",
+    french: "Nationalité"
+  },
+  hIDCertSerieNumber: {
+    persian: "شماره مسلس شناسنامه",
+    french: "Prénom"
+  },
+  hmedicalCertificateNumber: {
+    persian: "شماره گواهی پزشکی",
+    french: "N° de certificat médical prénuptial"
+  },
+  hjob: {
+    persian: "شغل",
+    french: "Profession"
+  },
+  hreligion: {
+    persian: "دین",
+    french: "Religion"
+  },
+  hiranianNationality: {
+    persian: "تابعیت",
+    french: "Nationalité"
+  },
+  employee: {
+    persian: "کارمند",
+    french: "Fonctionnaire"
+  },
+  freeJob: {
+    persian: "آزاد",
+    french: "Profession libérale"
+  },
+  nurse: {
+    persian: "پرستار",
+    french: "Infirmière"
+  },
+  worker1: {
+    persian: "کارگر",
+    french: "Ouvrier"
+  },
+  schoolStudent: {
+    persian: "محصل",
+    french: "Elève"
+  },
+  uniStudent: {
+    persian: "دانشجو",
+    french: "Etudiant(e)"
+  },
+  houseWife: {
+    persian: "خانه دار",
+    french: "Femme au foyer"
+  },
+  farmer: {
+    persian: "کشاورز",
+    french: "Agriculteur"
+  },
+  doctor: {
+    persian: "پزشک",
+    french: "Médecin"
+  },
+  barber: {
+    persian: "آرایشگر",
+    french: "Coiffeur(euse)"
+  },
+  islam1: {
+    persian: "اسلام",
+    french: "Islam"
+  },
+  islam2: {
+    persian: "اسلام شیعه",
+    french: "Islam chiite"
+  },
+  islam3: {
+    persian: "اسلام سنی",
+    french: "Islam sunnite"
+  },
+  christian1: {
+    persian: "مسیحیت",
+    french: "Chrétien"
+  },
+  jew1: {
+    persian: "یهودیت",
+    french: "Juif"
+  },
+  zartoshti: {
+    persian: "زرتشتی",
+    french: "zoroastrisme"
+  },
+  firstIssueDate1: {
+    persian: "تاریخ اولین صدور",
+    french: "Date de la 1ère délivrance du permis de conduire"
+  },
+  firstIssueDate2: {
+    persian: "تاریخ اولین صدور",
+    french: "Date de la 1ère délivrance du permis de conduire"
+  },
+  firstIssueDate3: {
+    persian: "تاریخ اولین صدور",
+    french: "Date de la 1ère délivrance du permis de conduire"
+  },
+  firstIssueDate4: {
+    persian: "تاریخ اولین صدور",
+    french: "Date de la 1ère délivrance du permis de conduire"
+  },
+  firstIssueDate5: {
+    persian: "تاریخ اولین صدور",
+    french: "Date de la 1ère délivrance du permis de conduire"
+  },
+  afghanMarriageCertificateInformation: {
+    persian: "مشخصات سند نکاح نامه",
+    french: "Informations sur le livret de mariage"
+  },
+  generalRegistrationNumber: {
+    persian: "شماره ثبت نمبر عمومی",
+    french: "Numéro d’enregistrement général "
+  },
+  specificRegistrationNumber: {
+    persian: "شماره ثبت نمبر خصوصی",
+    french: "Numéro d’enregistrement spécifique"
+  },
+  tarrif: {
+    persian: "تعرفه",
+    french: "Tarif du certificat de mariage"
+  },
+  whichOffice: {
+    persian: "سند در چه اداره دولتی صادر شده است؟",
+    french: "Le certificat est délivré par quel institut ?"
+  },
+  whichProvince: {
+    persian: "کدام ولایت؟",
+    french: "Cour d’appel?"
+  },
+  whichAmbassy: {
+    persian: "کدام سفارت؟",
+    french: "Ambassade"
+  },
+  serialNumber1: {
+    persian: "شماره سریال",
+    french: "Numéro de série"
+  },
+  issueDate1: {
+    persian: "تاریخ صدور",
+    french: "Date d’émission"
+  },
+  tehran: {
+    persian: "تهران",
+    french: "Téhéran"
+  },
+  moscow: {
+    persian: "مسکو",
+    french: "Moscou"
+  },
+  islamabad: {
+    persian: "اسلام آباد",
+    french: "Islamabad"
+  },
+  doushanbe: {
+    persian: "دوشنبه",
+    french: "Douchanbé"
+  },
+  docNumber5: {
+    persian: "نمبر عریضه",
+    french: "N°demande de certificat"
+  },
+  dateofIssueMarriage: {
+    persian: "تاریخ عریضه",
+    french: "Date de demande de certificat"
+  },
+  dateofMarriage: {
+    persian: "تاریخ عقد نکاه",
+    french: "Date de mariage"
+  },
+  placeofMarriage: {
+    persian: "محل وقوع عقد نکاه",
+    french: "Lieu de mariage"
   }
 };
 

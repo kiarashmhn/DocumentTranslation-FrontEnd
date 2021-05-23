@@ -64,18 +64,6 @@ export const DrivingLicenceForm = {
           type: "date"
         },
         {
-          key: "drivingLicenceCategory",
-          type: "select",
-          options: [
-            { value: "firstGrade", key: "firstGrade" },
-            { value: "secondGrade", key: "secondGrade" },
-            { value: "thirdGrade", key: "thirdGrade" },
-            { value: "motorcycle", key: "motorcycle" },
-            { value: "special", key: "special" }
-          ],
-          required: true
-        },
-        {
           key: "expirationDuration",
           type: "select",
           options: [
@@ -85,8 +73,49 @@ export const DrivingLicenceForm = {
           required: true
         },
         {
-          key: "firstIssueDate",
-          type: "date"
+          key: "empty1",
+          type: "empty"
+        },
+        {
+          key: "firstGrade",
+          valueKey: "firstIssueDate1",
+          type: "licenseType"
+        },
+        {
+          key: "empty2",
+          type: "empty"
+        },
+        {
+          key: "secondGrade",
+          valueKey: "firstIssueDate2",
+          type: "licenseType"
+        },
+        {
+          key: "empty3",
+          type: "empty"
+        },
+        {
+          key: "thirdGrade",
+          valueKey: "firstIssueDate3",
+          type: "licenseType"
+        },
+        {
+          key: "empty4",
+          type: "empty"
+        },
+        {
+          key: "special",
+          valueKey: "firstIssueDate4",
+          type: "licenseType"
+        },
+        {
+          key: "empty5",
+          type: "empty"
+        },
+        {
+          key: "motorcycle",
+          valueKey: "firstIssueDate5",
+          type: "licenseType"
         }
       ]
     },

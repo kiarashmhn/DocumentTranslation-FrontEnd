@@ -173,13 +173,10 @@ export default class PlusComponent extends Component {
                 position: "relative"
               }}
             >
-              <CustomTooltip
-                text={
-                  getHint(this.props.name).persian +
-                  "\n" +
-                  getHint(this.props.name).french
-                }
-              />
+              <CustomTooltip>
+                <div>{getHint(this.props.name).french}</div>
+                <div dir={"rtl"}>{getHint(this.props.name).persian}</div>
+              </CustomTooltip>
             </div>
           ) : null}
         </CardActions>

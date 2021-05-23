@@ -127,6 +127,52 @@ function EditUserDialog(props) {
     phone
   ]);
 
+  const deleteAccount = useCallback(() => {
+    if (registerPassword && registerPasswordRepeat) {
+      if (registerPassword !== registerPasswordRepeat) {
+        setStatus("passwordsDontMatch");
+        return;
+      }
+
+      if (registerPassword.length < 6) {
+        setStatus("passwordTooShort");
+        return;
+      }
+    }
+
+    setStatus(null);
+    setIsLoading(true);
+    api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.UPDATE_USER,
+        {
+          username: name,
+          phone: phone,
+          password: registerPassword,
+          enabled: false
+        }
+      )
+      .then(function(res) {
+        if (res.success) {
+          showSnackbar(res.message, "success");
+        } else {
+          showSnackbar(res.message, "error");
+        }
+        setIsLoading(false);
+      })
+      .catch(function() {
+        setIsLoading(false);
+      });
+  }, [
+    setIsLoading,
+    setStatus,
+    registerPassword,
+    registerPasswordRepeat,
+    phone
+  ]);
+
   return (
     <FormDialog
       loading={isLoading}
@@ -292,18 +338,36 @@ function EditUserDialog(props) {
         </Fragment>
       }
       actions={
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          size="large"
-          color="secondary"
-          style={{ textTransform: "none", align: "center" }}
-          disabled={isLoading}
-        >
-          Réactualiser / بروزرسانی
-          {isLoading && <ButtonCircularProgress />}
-        </Button>
+        <div>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            size="large"
+            color="secondary"
+            style={{ textTransform: "none", align: "center" }}
+            disabled={isLoading}
+          >
+            Réactualiser / بروزرسانی
+            {isLoading && <ButtonCircularProgress />}
+          </Button>
+          <Button
+            onClick={deleteAccount}
+            fullWidth
+            variant="contained"
+            size="large"
+            color="danger"
+            style={{
+              marginTop: "10px",
+              textTransform: "none",
+              align: "center"
+            }}
+            disabled={isLoading}
+          >
+            Supprimer le compte / حذف حساب
+            {isLoading && <ButtonCircularProgress />}
+          </Button>
+        </div>
       }
     />
   );

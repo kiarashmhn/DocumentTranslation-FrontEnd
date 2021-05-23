@@ -4,8 +4,13 @@ import CardContent from "@material-ui/core/CardContent";
 import FieldInput from "../CustomInput/FieldInput";
 import Grid from "@material-ui/core/Grid";
 import * as PropTypes from "prop-types";
-import { getFrenchName, getPersianName } from "../../Dictionary";
+import {
+  getCompleteName,
+  getFrenchName,
+  getPersianName
+} from "../../Dictionary";
 import { Typography } from "@material-ui/core";
+import ControlledOpenSelect from "../Dropdown/Dropdown";
 
 const initialState = {
   name: "",
@@ -13,8 +18,7 @@ const initialState = {
   fatherName: "",
   nationalId: "",
   placeofIssueIDCertificate: "",
-  job: "",
-  livingPlace: ""
+  job: ""
 };
 
 export default class Witness extends Component {
@@ -128,23 +132,17 @@ export default class Witness extends Component {
               md={4}
               key={this.props.id + this.props.idx + "job"}
             >
-              <FieldInput
-                name={"job"}
+              <ControlledOpenSelect
+                required
                 value={this.state["job"]}
+                keyId={"job"}
                 onChange={event => this.onChange("job", event)}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              key={this.props.id + this.props.idx + "livingPlace"}
-            >
-              <FieldInput
-                name={"livingPlace"}
-                value={this.state["livingPlace"]}
-                onChange={event => this.onChange("livingPlace", event)}
+                names={this.props.options.map(option => ({
+                  value: option.value,
+                  displayName: getCompleteName(option.key)
+                }))}
+                title={getFrenchName("job")}
+                helperText={getPersianName("job")}
               />
             </Grid>
           </Grid>
@@ -156,6 +154,7 @@ export default class Witness extends Component {
 Witness.propTypes = {
   id: PropTypes.any.isRequired,
   idx: PropTypes.any.isRequired,
+  options: PropTypes.any.isRequired,
   initialState: PropTypes.any,
   onChange: PropTypes.func.isRequired
 };
