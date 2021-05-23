@@ -36,10 +36,7 @@ export default class DataPrivacy extends Component {
       <Fragment>
         <div style={{ marginTop: "10px" }}>
           <Typography variant={"h6"} align={"center"}>
-            Choix de la langue
-          </Typography>
-          <Typography variant={"h6"} align={"center"}>
-            انتخاب زبان
+            Choix de la langue / انتخاب زبان
           </Typography>
         </div>
         <div
@@ -76,10 +73,7 @@ export default class DataPrivacy extends Component {
         <div ref={this.privacyRef}>
           <div>
             <Typography variant={"h6"} align={"center"}>
-              Choix de la langue
-            </Typography>
-            <Typography variant={"h6"} align={"center"}>
-              انتخاب زبان
+              Choix de la langue / انتخاب زبان
             </Typography>
           </div>
           <div

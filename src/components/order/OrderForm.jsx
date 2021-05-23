@@ -4,6 +4,7 @@ import { Button, Grid, Typography, withStyles } from "@material-ui/core";
 import {
   getCompleteName,
   getFrenchName,
+  getHint,
   getPersianName
 } from "../../Dictionary";
 import theme from "../../theme";
@@ -37,9 +38,8 @@ const styles = {
   },
   submitButton: {
     marginTop: theme.spacing(1),
-    marginLeft: theme.spacing(70),
-    backgroundColor: "#197163",
-    color: "#FFFFFF"
+    float: "right",
+    position: "relative"
   },
   actionsContainer: {
     marginTop: theme.spacing(3),
@@ -97,13 +97,25 @@ class OrderForm extends Component {
             {getCompleteName("next")}
           </Button>
           {this.state.step <= this.state.steps - 1 && (
-            <Button
-              variant="contained"
-              onClick={this.handleSave}
-              style={styles.submitButton}
-            >
-              {getCompleteName("save")}
-            </Button>
+            <div style={{ display: "inline" }}>
+              <div style={styles.submitButton}>
+                <div style={{ display: "inline-block" }}>
+                  <Button
+                    variant="contained"
+                    onClick={this.handleSave}
+                    style={{ backgroundColor: "#197163", color: "#FFFFFF" }}
+                  >
+                    {getCompleteName("save")}
+                  </Button>
+                </div>
+                <div style={{ display: "inline-block" }}>
+                  <CustomTooltip>
+                    <div>{getHint("save").french}</div>
+                    <div dir={"rtl"}>{getHint("save").persian}</div>
+                  </CustomTooltip>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>

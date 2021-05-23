@@ -28,7 +28,7 @@ export default class Message extends Component {
 
   getUserName = () => {
     if (this.props.type === "ADMIN")
-      return this.props.position === "right" ? "Vous" : "User";
+      return this.props.position === "right" ? "Vous" : "Client";
     return this.props.position === "right" ? "Vous" : "Admin";
   };
 

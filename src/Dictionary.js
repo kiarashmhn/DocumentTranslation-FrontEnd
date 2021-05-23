@@ -204,7 +204,13 @@ export const Dictionary = {
   },
   save: {
     persian: "ذخیره اطلاعات",
-    french: "Conserver"
+    french: "Conserver",
+    hint: {
+      french:
+        "Les informations seront enregistrées et vous pouvez reprendre plus tard là où vous en étiez pour compléter votre demande via liste commandes.",
+      persian:
+        "اطلاعات وارده موقتا ثبت میشود تا در آینده برای تکمیل آن از طریق لیست سفارشها اقدام کنید."
+    }
   },
   submit: {
     persian: "ثبت و ورود به مرحله پرداخت",

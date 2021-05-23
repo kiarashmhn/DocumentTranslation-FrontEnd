@@ -177,7 +177,7 @@ function LoginDialog(props) {
                 color="secondary"
                 disabled={isLoading}
                 size={"large"}
-                style={{ textTransform: "none" }}
+                style={{ textTransform: "none", width: "70%" }}
               >
                 <Typography variant="body1" align="center" component={"span"}>
                   Connexion / ورود

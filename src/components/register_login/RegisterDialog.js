@@ -399,7 +399,7 @@ function RegisterDialog(props) {
               variant="contained"
               size={"large"}
               color="secondary"
-              style={{ textTransform: "none", align: "center" }}
+              style={{ textTransform: "none", align: "center", width: "70%" }}
               disabled={isLoading}
             >
               <Typography variant="body1" align="center" component={"span"}>

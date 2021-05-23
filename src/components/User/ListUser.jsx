@@ -85,6 +85,17 @@ class ListUser extends Component {
         }
       },
       {
+        name: "creationTime",
+        label: "Date de création",
+        options: {
+          customBodyRender: value => {
+            if (value !== undefined && value !== null) {
+              return <span>{value}</span>;
+            }
+          }
+        }
+      },
+      {
         name: "enable",
         label: "État",
         options: {
