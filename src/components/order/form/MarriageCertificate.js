@@ -85,6 +85,7 @@ export const MarriageCertificateForm = {
             { value: "jew1", key: "jew1" },
             { value: "zartoshti", key: "zartoshti" }
           ],
+          value: "islam1",
           required: true
         },
         {
@@ -167,6 +168,7 @@ export const MarriageCertificateForm = {
             { value: "jew1", key: "jew1" },
             { value: "zartoshti", key: "zartoshti" }
           ],
+          value: "islam1",
           required: true
         },
         {

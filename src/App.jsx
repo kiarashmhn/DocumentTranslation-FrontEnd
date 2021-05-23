@@ -20,6 +20,7 @@ import Payment from "./components/Payment/Payment";
 import LegalNotes from "./components/LegalNotes";
 import PaymentSuccess from "./components/Payment/PaymentSuccess";
 import DataPrivacy from "./components/DataPrivacy";
+import FAQ from "./components/FAQ/FAQ";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
@@ -48,6 +49,7 @@ class App extends Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/LegalNotes" component={LegalNotes} />
                 <Route exact path="/DataPrivacy" component={DataPrivacy} />
+                <Route exact path="/FAQ" component={FAQ} />
                 <Route
                   exact
                   path="/PaymentSuccess"

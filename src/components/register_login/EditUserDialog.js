@@ -15,6 +15,9 @@ import Api from "../Api/Api";
 import * as URLConstant from "../../URLConstant";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import { getFrenchName, getPersianName } from "../../Dictionary";
+import Typography from "@material-ui/core/Typography";
+import AuthService from "../../AuthService";
+import { Redirect } from "react-router";
 
 const styles = theme => ({
   link: {
@@ -41,10 +44,13 @@ function EditUserDialog(props) {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState(null);
+  const [openConfirm, setOpenConfirm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [exit, setExit] = useState(false);
 
   const api = new Api();
+  const auth = new AuthService();
 
   useEffect(() => {
     (async function getUser() {
@@ -127,6 +133,14 @@ function EditUserDialog(props) {
     phone
   ]);
 
+  const openConfirmDialog = useCallback(() => {
+    setOpenConfirm(true);
+  }, [setOpenConfirm]);
+
+  const closeConfirmDialog = useCallback(() => {
+    setOpenConfirm(false);
+  }, [setOpenConfirm]);
+
   const deleteAccount = useCallback(() => {
     if (registerPassword && registerPasswordRepeat) {
       if (registerPassword !== registerPasswordRepeat) {
@@ -161,6 +175,8 @@ function EditUserDialog(props) {
           showSnackbar(res.message, "error");
         }
         setIsLoading(false);
+        auth.logout();
+        setExit(true);
       })
       .catch(function() {
         setIsLoading(false);
@@ -168,208 +184,276 @@ function EditUserDialog(props) {
   }, [
     setIsLoading,
     setStatus,
+    setExit,
     registerPassword,
     registerPasswordRepeat,
     phone
   ]);
 
+  const redirect = () => {
+    if (exit) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: "/",
+            state: {}
+          }}
+        />
+      );
+    }
+  };
+
   return (
-    <FormDialog
-      loading={isLoading}
-      onClose={onClose}
-      open
-      headline="Profil / پروفایل"
-      onFormSubmit={e => {
-        e.preventDefault();
-        register();
-      }}
-      hideBackdrop
-      hasCloseIcon
-      content={
-        <Fragment>
-          <TextField
-            name={"username"}
-            value={username}
-            margin="normal"
-            required
-            fullWidth
-            disabled={true}
-            error={status === "invalidUsername"}
-            label="E-mail"
-            autoComplete="new-off"
-            type="text"
-            helperText={(() => {
-              if (status === "invalidUsername") {
-                return "آدرس ایمیل وارد شده تکراری است";
+    <div>
+      <FormDialog
+        loading={isLoading}
+        onClose={onClose}
+        open
+        headline="Profil / پروفایل"
+        onFormSubmit={e => {
+          e.preventDefault();
+          register();
+        }}
+        hideBackdrop
+        hasCloseIcon
+        content={
+          <Fragment>
+            <TextField
+              name={"username"}
+              value={username}
+              margin="normal"
+              required
+              fullWidth
+              disabled={true}
+              error={status === "invalidUsername"}
+              label="E-mail"
+              autoComplete="new-off"
+              type="text"
+              helperText={(() => {
+                if (status === "invalidUsername") {
+                  return "آدرس ایمیل وارد شده تکراری است";
+                }
+                return "آدرس ایمیل";
+              })()}
+              onChange={() => {
+                if (status === "invalidUsername") {
+                  setStatus(null);
+                }
+              }}
+              FormHelperTextProps={
+                status === "invalidUsername" ? { error: true } : {}
               }
-              return "آدرس ایمیل";
-            })()}
-            onChange={() => {
-              if (status === "invalidUsername") {
-                setStatus(null);
+            />
+            <VisibilityPasswordTextField
+              name={"registerPassword"}
+              margin="normal"
+              fullWidth
+              autoComplete="new-off"
+              error={
+                status === "passwordTooShort" || status === "passwordsDontMatch"
               }
-            }}
-            FormHelperTextProps={
-              status === "invalidUsername" ? { error: true } : {}
-            }
-          />
-          <VisibilityPasswordTextField
-            name={"registerPassword"}
-            margin="normal"
-            fullWidth
-            autoComplete="new-off"
-            error={
-              status === "passwordTooShort" || status === "passwordsDontMatch"
-            }
-            label="Mot de passe"
-            value={registerPassword}
-            onChange={e => {
-              if (
-                status === "passwordTooShort" ||
-                status === "passwordsDontMatch"
-              ) {
-                setStatus(null);
-              }
-              setRegisterPassword(e.target.value);
-            }}
-            helperText={(() => {
-              if (status === "passwordTooShort") {
-                return (
-                  <div>
-                    <div dir={"rtl"}>
-                      طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+              label="Mot de passe"
+              value={registerPassword}
+              onChange={e => {
+                if (
+                  status === "passwordTooShort" ||
+                  status === "passwordsDontMatch"
+                ) {
+                  setStatus(null);
+                }
+                setRegisterPassword(e.target.value);
+              }}
+              helperText={(() => {
+                if (status === "passwordTooShort") {
+                  return (
+                    <div>
+                      <div dir={"rtl"}>
+                        طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+                      </div>
+                      <div>La longueur du mot de passe est inférieure à 6</div>
                     </div>
-                    <div>La longueur du mot de passe est inférieure à 6</div>
-                  </div>
-                );
-              }
-              if (status === "passwordsDontMatch") {
-                return (
-                  <div>
-                    <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
-                    <div>Les mots de passe saisis ne correspondent pas</div>
-                  </div>
-                );
-              }
-              return "رمزعبور";
-            })()}
-            FormHelperTextProps={
-              status === "passwordTooShort" || status === "passwordsDontMatch"
-                ? { error: true }
-                : {}
-            }
-            isVisible={isPasswordVisible}
-            onVisibilityChange={setIsPasswordVisible}
-          />
-          <VisibilityPasswordTextField
-            name={"registerPasswordRepeat"}
-            margin="normal"
-            fullWidth
-            autoComplete="new-off"
-            error={
-              status === "passwordTooShort" || status === "passwordsDontMatch"
-            }
-            label="Répéter le mot de passe"
-            value={registerPasswordRepeat}
-            onChange={e => {
-              if (
-                status === "passwordTooShort" ||
-                status === "passwordsDontMatch"
-              ) {
-                setStatus(null);
-              }
-              setRegisterPasswordRepeat(e.target.value);
-            }}
-            helperText={(() => {
-              if (status === "passwordTooShort") {
-                return (
-                  <div>
-                    <div dir={"rtl"}>
-                      طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+                  );
+                }
+                if (status === "passwordsDontMatch") {
+                  return (
+                    <div>
+                      <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
+                      <div>Les mots de passe saisis ne correspondent pas</div>
                     </div>
-                    <div>La longueur du mot de passe est inférieure à 6</div>
-                  </div>
-                );
+                  );
+                }
+                return "رمزعبور";
+              })()}
+              FormHelperTextProps={
+                status === "passwordTooShort" || status === "passwordsDontMatch"
+                  ? { error: true }
+                  : {}
               }
-              if (status === "passwordsDontMatch") {
-                return (
-                  <div>
-                    <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
-                    <div>Les mots de passe saisis ne correspondent pas</div>
-                  </div>
-                );
+              isVisible={isPasswordVisible}
+              onVisibilityChange={setIsPasswordVisible}
+            />
+            <VisibilityPasswordTextField
+              name={"registerPasswordRepeat"}
+              margin="normal"
+              fullWidth
+              autoComplete="new-off"
+              error={
+                status === "passwordTooShort" || status === "passwordsDontMatch"
               }
-              return "تکرار رمزعبور";
-            })()}
-            FormHelperTextProps={
-              status === "passwordTooShort" || status === "passwordsDontMatch"
-                ? { error: true }
-                : {}
-            }
-            isVisible={isPasswordVisible}
-            onVisibilityChange={setIsPasswordVisible}
-          />
-          <TextField
-            name={"phone"}
-            value={phone}
-            margin="normal"
-            fullWidth
-            error={status === "nullEmailPhone"}
-            label={"Numéro de portable"}
-            helperText={"شماره موبایل"}
-            type="text"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <CustomTooltip>
-                    <div dir={"ltr"}>{getFrenchName("useFrenchNumber")}</div>
-                    <div dir={"rtl"}>{getPersianName("useFrenchNumber")}</div>
-                  </CustomTooltip>
-                </InputAdornment>
-              )
-            }}
-            onChange={e => {
-              if (status === "nullEmailPhone") {
-                setStatus(null);
+              label="Répéter le mot de passe"
+              value={registerPasswordRepeat}
+              onChange={e => {
+                if (
+                  status === "passwordTooShort" ||
+                  status === "passwordsDontMatch"
+                ) {
+                  setStatus(null);
+                }
+                setRegisterPasswordRepeat(e.target.value);
+              }}
+              helperText={(() => {
+                if (status === "passwordTooShort") {
+                  return (
+                    <div>
+                      <div dir={"rtl"}>
+                        طول رمزعبور باید حداقل ۶ کاراکتر باشد.
+                      </div>
+                      <div>La longueur du mot de passe est inférieure à 6</div>
+                    </div>
+                  );
+                }
+                if (status === "passwordsDontMatch") {
+                  return (
+                    <div>
+                      <div dir={"rtl"}>رمزهای وارد شده مطابقت ندارند.</div>
+                      <div>Les mots de passe saisis ne correspondent pas</div>
+                    </div>
+                  );
+                }
+                return "تکرار رمزعبور";
+              })()}
+              FormHelperTextProps={
+                status === "passwordTooShort" || status === "passwordsDontMatch"
+                  ? { error: true }
+                  : {}
               }
-              setPhone(e.target.value);
-            }}
-          />
-        </Fragment>
-      }
-      actions={
-        <div>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            size="large"
-            color="secondary"
-            style={{ textTransform: "none", align: "center" }}
-            disabled={isLoading}
-          >
-            Réactualiser / بروزرسانی
-            {isLoading && <ButtonCircularProgress />}
-          </Button>
-          <Button
-            onClick={deleteAccount}
-            fullWidth
-            variant="contained"
-            size="large"
-            color="danger"
-            style={{
-              marginTop: "10px",
-              textTransform: "none",
-              align: "center"
-            }}
-            disabled={isLoading}
-          >
-            Supprimer le compte / حذف حساب
-            {isLoading && <ButtonCircularProgress />}
-          </Button>
-        </div>
-      }
-    />
+              isVisible={isPasswordVisible}
+              onVisibilityChange={setIsPasswordVisible}
+            />
+            <TextField
+              name={"phone"}
+              value={phone}
+              margin="normal"
+              fullWidth
+              error={status === "nullEmailPhone"}
+              label={"Numéro de portable"}
+              helperText={"شماره موبایل"}
+              type="text"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <CustomTooltip>
+                      <div dir={"ltr"}>{getFrenchName("useFrenchNumber")}</div>
+                      <div dir={"rtl"}>{getPersianName("useFrenchNumber")}</div>
+                    </CustomTooltip>
+                  </InputAdornment>
+                )
+              }}
+              onChange={e => {
+                if (status === "nullEmailPhone") {
+                  setStatus(null);
+                }
+                setPhone(e.target.value);
+              }}
+            />
+          </Fragment>
+        }
+        actions={
+          <div>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              size="large"
+              color="secondary"
+              style={{ textTransform: "none", align: "center" }}
+              disabled={isLoading}
+            >
+              Réactualiser / بروزرسانی
+              {isLoading && <ButtonCircularProgress />}
+            </Button>
+            <Button
+              onClick={openConfirmDialog}
+              fullWidth
+              variant="contained"
+              size="large"
+              color="danger"
+              style={{
+                marginTop: "10px",
+                textTransform: "none",
+                align: "center"
+              }}
+              disabled={isLoading}
+            >
+              Supprimer le compte / حذف حساب
+              {isLoading && <ButtonCircularProgress />}
+            </Button>
+          </div>
+        }
+      />
+      <FormDialog
+        loading={isLoading}
+        onClose={closeConfirmDialog}
+        open={openConfirm}
+        onFormSubmit={e => {
+          e.preventDefault();
+          deleteAccount();
+        }}
+        hasCloseIcon
+        content={
+          <div>
+            <Typography align={"center"}>
+              <div>Êtes-vous sûr de vouloir supprimer votre compte?</div>
+              <div>آیا از حذف حساب اطمینان دارید؟</div>
+            </Typography>
+          </div>
+        }
+        actions={
+          <div>
+            <Button
+              fullWidth
+              onClick={closeConfirmDialog}
+              variant="contained"
+              size="large"
+              color="secondary"
+              style={{ textTransform: "none", align: "center" }}
+              disabled={isLoading}
+            >
+              Annuler / انصراف
+              {isLoading && <ButtonCircularProgress />}
+            </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              size="large"
+              color="danger"
+              style={{
+                marginTop: "10px",
+                textTransform: "none",
+                align: "center"
+              }}
+              disabled={isLoading}
+            >
+              Confirmer / تایید
+              {isLoading && <ButtonCircularProgress />}
+            </Button>
+          </div>
+        }
+      />
+      {redirect()}
+    </div>
   );
 }
 

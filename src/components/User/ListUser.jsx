@@ -85,6 +85,17 @@ class ListUser extends Component {
         }
       },
       {
+        name: "orderCount",
+        label: "N° de commandes",
+        options: {
+          customBodyRender: value => {
+            if (value !== undefined && value !== null) {
+              return <span>{value}</span>;
+            }
+          }
+        }
+      },
+      {
         name: "creationTime",
         label: "Date de création",
         options: {
@@ -101,7 +112,7 @@ class ListUser extends Component {
         options: {
           customBodyRender: value => {
             if (value !== undefined && value !== null) {
-              return <span>{value === 0 ? "Inactif" : "Actif"}</span>;
+              return <span>{value === false ? "Inactif" : "Actif"}</span>;
             }
           }
         }

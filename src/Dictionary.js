@@ -1537,11 +1537,11 @@ export const Dictionary = {
   },
   receiptNumber: {
     persian: "شماره فیش",
-    french: "virement"
+    french: "N⁰ de XXX"
   },
   depositDate: {
     persian: "تاریخ واریز",
-    french: ""
+    french: "Date de virement"
   },
   bankName: {
     persian: "نام بانک (و شعبه)",
@@ -1549,11 +1549,11 @@ export const Dictionary = {
   },
   nameAghed: {
     persian: "نام عاقد",
-    french: "Prénom"
+    french: "Prénom de notaire"
   },
   lastNameAghed: {
     persian: "نام خانوادگی عاقد",
-    french: "Nom"
+    french: "Nom de notaire"
   },
   IDCertSerieNumber: {
     persian: "شماره مسلس شناسنامه",

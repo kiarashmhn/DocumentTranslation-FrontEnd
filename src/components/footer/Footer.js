@@ -201,7 +201,7 @@ class Footer extends Component {
               <Typography variant="h6" paragraph className="text-white">
                 À propos de nous
               </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
+              <Typography style={{ color: "#8f9296" }}>
                 Notre plateforme a pour but de créer une communauté des Experts
                 traducteurs (assermentés) afin de s’assurer la vague importante
                 des demandes de traduction en dari et farsi et de réduire
@@ -211,7 +211,7 @@ class Footer extends Component {
                 les informations, qui vont ensuite être vérifiées, corrigées et
                 complétées par un traducteur assermenté.
               </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
+              <Typography style={{ color: "#8f9296" }}>
                 Identifiant SIRET : 890 317 563 00017
               </Typography>
             </Grid>
@@ -219,7 +219,7 @@ class Footer extends Component {
               <Typography variant="h6" paragraph className="text-white">
                 درباره ما
               </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
+              <Typography style={{ color: "#8f9296" }}>
                 این پلتفرم جامعه ای از مترجمان رسمی به زبان دری ـ فارسی است، که
                 با هدف کاهش زمان انتظار و هزینه ترجمه اسناد و مدارک تشکیل شده
                 است. پلتفرم سعی در ساده و کارآمد کردن فرایند درخواست، انجام و
@@ -228,7 +228,7 @@ class Footer extends Component {
                 تصحیح، تکمیل و تأیید اطلاعات شد در مدت زمان کوتاهی دریافت
                 مینماید.
               </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
+              <Typography style={{ color: "#8f9296" }}>
                 شماره ثبت شرکت: 00017 563 317 890
               </Typography>
             </Grid>
@@ -267,15 +267,31 @@ class Footer extends Component {
                   {"* Protection des données / داده‌های شخصی"}
                 </Link>
               </Typography>
-              <Typography style={{ color: "#8f9296" }} paragraph>
-                Utiliser la messagerie sécurisée de votre espace client pour
-                communiquer avec nous, poser une question ou signaler une
-                difficulté.
+              <Typography style={{ color: "#8f9296" }}>
+                Vous voulez poser une question sur le fonctionnement de notre
+                site, consultez la rubrique{" "}
+                <Link
+                  style={{ textDecoration: "none", color: "#189AB4" }}
+                  to={{ pathname: "/FAQ" }}
+                  target={"_blank"}
+                >
+                  {"Foire aux questions"}
+                </Link>{" "}
+                et sur une commande, utilisez la messagerie sécurisée de votre
+                espace client.
               </Typography>
               <div style={{ dir: "rtl", direction: "rtl" }}>
-                <Typography style={{ color: "#8f9296" }} paragraph>
-                  برای برقراری ارتباط با ما، پرسیدن یک سوال یا گزارش یک مشکل از
-                  سیستم پیام رسان حساب کاربری خود استفاده کنید.
+                <Typography style={{ color: "#8f9296" }}>
+                  به بسیاری از سوالات شما در بخش{" "}
+                  <Link
+                    style={{ textDecoration: "none", color: "#189AB4" }}
+                    to={{ pathname: "/FAQ" }}
+                    target={"_blank"}
+                  >
+                    {"سوالات متداول"}
+                  </Link>{" "}
+                  پاسخ داده شده است. اگر سوال مربوط به یک سفارش است از سیستم
+                  پیام رسان حساب کاربری استفاده کنید.
                 </Typography>
               </div>
               <Box display="flex">

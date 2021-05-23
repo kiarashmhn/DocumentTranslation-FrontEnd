@@ -1,13 +1,25 @@
 import React, { Component, Fragment } from "react";
 import * as PropTypes from "prop-types";
-import { Grid, Typography, withStyles, withWidth } from "@material-ui/core";
-import { getCompleteName, getCompleteNameNew } from "../../Dictionary";
+import {
+  Button,
+  Grid,
+  Typography,
+  withStyles,
+  withWidth
+} from "@material-ui/core";
+import {
+  getCompleteName,
+  getCompleteNameNew,
+  getFrenchName,
+  getPersianName
+} from "../../Dictionary";
 import { getType } from "../order/OrderTypes";
 import theme from "../../theme";
 import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
 import PaymentMethods from "./PaymentMethods";
 import CustomTooltip from "../Tooltip/CustomTooltip";
+import { Redirect } from "react-router";
 
 const persianNote =
   "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی می باشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
@@ -126,7 +138,8 @@ class Payment extends Component {
       basePrice: 20,
       price: 20,
       orderId: this.props.location.state.orderId,
-      type: getType(this.props.location.state.type)
+      type: getType(this.props.location.state.type),
+      redirect: false
     };
   }
 
@@ -193,6 +206,19 @@ class Payment extends Component {
         normal: true,
         deliveryType: 0
       });
+    }
+  };
+
+  redirect = () => {
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: "/"
+          }}
+        />
+      );
     }
   };
 
@@ -385,6 +411,52 @@ class Payment extends Component {
           classes={classes}
           deliveryType={this.state.deliveryType}
         />
+        <div
+          style={{
+            maxWidth: "100%",
+            verticalAlign: "middle",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "10px",
+            paddingBottom: "20px",
+            marginTop: "20px"
+          }}
+        >
+          <Button
+            onClick={() => {
+              this.setState({ redirect: true });
+            }}
+            style={{ textTransform: "none" }}
+            variant="contained"
+            color="secondary"
+            align={"center"}
+          >
+            <p>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "0",
+                  fontSize: 16
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                Payer plus tard
+              </Typography>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "2px",
+                  fontSize: "100%"
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                پرداخت در آینده
+              </Typography>
+            </p>
+          </Button>
+        </div>
+        {this.redirect()}
       </Fragment>
     );
   }
