@@ -1422,6 +1422,40 @@ export const Dictionary = {
     persian: "ارزگان",
     french: "Orozgan"
   },
+  other: {
+    persian: "اسناد دیگر",
+    french: "Document divers"
+  },
+  otherAddress: {
+    persian: "پیش فاکتور به نام فرد یا آدرس دیگری صادر شود؟",
+    french: "L’identité ou l’adresse de facturation sont différentes?"
+  },
+  otherDescr: {
+    persian: "توضیحات",
+    french: "La description"
+  },
+  otherDescription: {
+    persian:
+      "در اینجا می توانید درخواست پیش فاکتور کنید که پس از بررسی در حساب کاربری شما قرار می گیرد. اگر با پیش فاکتور موافق بودید آنرا تایید و هزینه را پرداخت می کنید تا کار ترجمه سند شما آغاز شد.( برآورد هزینه و زمان تحویل با توجه به تعداد لغات، پیچیدگی متن و نوع سند محاسبه می شود.)",
+    french:
+      "Si le type de document que vous souhaitez traduire ne figure pas dans notre liste, vous pouvez demander ici un devis. Nous analysons votre demande et remettrons aussitôt un devis. Le devis est calculé en fonction de la longueur du document à traduire, le type de document à traduire et la technicité du document."
+  },
+  otherDelivery: {
+    persian:
+      "حداکثر تا چه تاریخی نیاز به تحویل ترجمه دارید؟ (هر چه زمان کمتری برای ترجمه در اختیار باشد، هزینه ترجمه بیشتر خواهد بود.)",
+    french:
+      "Quelle est votre date limite pour la traduction ? (plus le délai de livraison est court, plus le tarif augmente.)"
+  },
+  otherDeliveryDescription: {
+    persian:
+      "اینجا منظور تاریخ تحویل ترجمه در نسخه الکترونیکی PDF (در حساب کاربری) می باشد و نسخه کاغذی (دریافت پستی) معمولا سه روز بعد از تحویل نسخه PDF از طریق پست به آدرس شما می رسد.",
+    french:
+      "Ici, il s’agit de la date de livraison de la version électronique PDF (sur espace client). En général, la version papier peut être réceptionnée à votre adresse trois jours après la livraison de la version PDF."
+  },
+  otherUpload: {
+    persian: "بارگذاری سند",
+    french: "Importer un document"
+  },
   otherMahr: {
     persian: "دیگر",
     french: "Autre",

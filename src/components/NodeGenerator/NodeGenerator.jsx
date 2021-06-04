@@ -26,6 +26,7 @@ import CustomTooltip from "../Tooltip/CustomTooltip";
 import LicenseType from "../Marriage/LicenseType";
 import AfghanWitness from "../Marriage/AfghanWitness";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import Typography from "@material-ui/core/Typography";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -188,6 +189,20 @@ export default class NodesGenerator extends Component {
       switch (element.type) {
         case "textarea":
         case "string":
+          return (
+            <Grid
+              item
+              xs={element.xsGrid ? element.xsGrid : 12}
+              sm={element.smGrid ? element.smGrid : 12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <Typography>
+                <div>{getFrenchName(element.key)}</div>
+                <div dir={"rtl"}>{getPersianName(element.key)}</div>
+              </Typography>
+            </Grid>
+          );
         case "text":
           return (
             <Grid
@@ -241,6 +256,7 @@ export default class NodesGenerator extends Component {
                     : ""
                 }
                 onChange={value => this.onChange(value, element)}
+                hideHelper={element.hideHelper}
               />
             </Grid>
           );
@@ -376,8 +392,8 @@ export default class NodesGenerator extends Component {
           return (
             <Grid
               item
-              xs={12}
-              sm={12}
+              xs={element.xsGrid ? element.xsGrid : 12}
+              sm={element.smGrid ? element.smGrid : 12}
               md={element.grid ? element.grid : 4}
               key={element.key}
             >

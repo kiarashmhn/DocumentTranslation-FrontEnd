@@ -326,7 +326,10 @@ class CreateOrder extends Component {
         >
           {Object.keys(OrderTypes).map(typeKey => {
             let type = OrderTypes[typeKey];
-            if (type.nationality === this.state.nationality)
+            if (
+              type.nationality === this.state.nationality ||
+              type.nationality === "BOTH"
+            )
               return (
                 <Grid item xs={12} sm={6} md={4} key={typeKey}>
                   <MediaCard
