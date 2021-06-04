@@ -18,6 +18,11 @@ import {
 } from "./ListOrderColumns";
 import ChatBox from "../Chat/ChatBox";
 import OrderStatusDialog from "../register_login/OrderStatusDialog";
+import DoneOrder from "./DoneOrder";
+import DeleteOrder from "./DeleteOrder";
+import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteExpiredOrders from "./DeleteExpiredOrders";
 
 class ListOrder extends Component {
   constructor(props) {
@@ -32,7 +37,11 @@ class ListOrder extends Component {
       openBillInfo: false,
       openMessages: false,
       openStatus: false,
+      openResult: false,
+      openDelete: false,
+      openDeletes: false,
       itemId: "",
+      name: "",
       username: "",
       adminName: ""
     };
@@ -131,6 +140,51 @@ class ListOrder extends Component {
     });
   };
 
+  handleClickOpenResult = orderId => {
+    this.setState({
+      openResult: true,
+      itemId: orderId
+    });
+  };
+
+  handleClickCloseResult = () => {
+    this.setState({
+      openResult: false,
+      itemId: ""
+    });
+    this.getData();
+  };
+
+  handleClickDelete = (orderId, name) => {
+    this.setState({
+      openDelete: true,
+      itemId: orderId,
+      name: name
+    });
+  };
+
+  handleClickCloseDelete = () => {
+    this.setState({
+      openDelete: false,
+      itemId: "",
+      name: ""
+    });
+    this.getData();
+  };
+
+  handleClickDeletes = () => {
+    this.setState({
+      openDeletes: true
+    });
+  };
+
+  handleClickCloseDeletes = () => {
+    this.setState({
+      openDeletes: false
+    });
+    this.getData();
+  };
+
   handleClickOpenMessages = orderId => {
     this.setState({
       openMessages: true,
@@ -151,34 +205,60 @@ class ListOrder extends Component {
     this.getData();
   };
 
+  handleDownload = id => {
+    let self = this;
+    this.api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.GET_DOCUMENT_,
+        { id: id }
+      )
+      .then(function(res) {
+        if (res.success)
+          self.api.getFile(
+            process.env.REACT_APP_HOST_URL +
+              process.env.REACT_APP_MAIN_PATH +
+              URLConstant.GET_DOCUMENT,
+            id,
+            res.data.name
+          );
+      });
+  };
+
   getColumns = () => {
     if (this.props.type && this.state.isSuperAdmin)
       return getSuperAdminColumns(
         this.handleClickOpenUser,
         this.handleClickOpen,
-        this.handleClickOpenBill,
         this.handleClickOpenAdmins,
         this.handleClickOpenPayment,
         this.handleClickOpenMessages,
-        this.handleClickOpenStatus
+        this.handleClickOpenStatus,
+        this.handleClickOpenResult,
+        this.handleDownload,
+        this.handleClickDelete
       );
     if (this.props.type && this.state.isAdmin)
       return getAdminColumns(
         this.handleClickOpen,
-        this.handleClickOpenBill,
         this.handleClickOpenMessages,
-        this.handleClickOpenStatus
+        this.handleClickOpenStatus,
+        this.handleClickOpenResult,
+        this.handleDownload
       );
     return getUserColumns(
       this.handleClickOpen,
       this.handleClickOpenBill,
       this.handleClickOpenMessages,
-      this.handleClickOpenStatus
+      this.handleClickOpenStatus,
+      this.handleDownload,
+      this.handleClickDelete
     );
   };
 
   render() {
-    const title = "Liste de commande / لیست سفارش‌ها";
+    const title = "Liste des commandes / لیست سفارش‌ها";
 
     const url =
       process.env.REACT_APP_HOST_URL +
@@ -231,6 +311,17 @@ class ListOrder extends Component {
                   }
                 ]
           }}
+          otherOptions={
+            this.state.isSuperAdmin ? (
+              <IconButton
+                aria-label="delete"
+                onClick={this.handleClickDeletes}
+                style={{ color: "#e53935" }}
+              >
+                <DeleteSweepIcon fontSize="small" />
+              </IconButton>
+            ) : null
+          }
         />
         <FullScreenDialog
           title="ویرایش سفارش"
@@ -268,6 +359,22 @@ class ListOrder extends Component {
             orderId={parseInt(this.state.itemId)}
             onClose={this.handleClickCloseStatus}
           />
+        )}
+        {this.state.openResult && (
+          <DoneOrder
+            orderId={parseInt(this.state.itemId)}
+            onClose={this.handleClickCloseResult}
+          />
+        )}
+        {this.state.openDelete && (
+          <DeleteOrder
+            id={parseInt(this.state.itemId)}
+            name={this.state.name}
+            onClose={this.handleClickCloseDelete}
+          />
+        )}
+        {this.state.openDeletes && (
+          <DeleteExpiredOrders onClose={this.handleClickCloseDeletes} />
         )}
         {this.state.openMessages && (
           <ChatBox

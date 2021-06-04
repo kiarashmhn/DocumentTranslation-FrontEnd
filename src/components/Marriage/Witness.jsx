@@ -7,10 +7,12 @@ import * as PropTypes from "prop-types";
 import {
   getCompleteName,
   getFrenchName,
+  getHint,
   getPersianName
 } from "../../Dictionary";
 import { Typography } from "@material-ui/core";
 import ControlledOpenSelect from "../Dropdown/Dropdown";
+import CustomTooltip from "../Tooltip/CustomTooltip";
 
 const initialState = {
   name: "",
@@ -127,9 +129,9 @@ export default class Witness extends Component {
             </Grid>
             <Grid
               item
-              xs={12}
-              sm={12}
-              md={4}
+              xs={11}
+              sm={11}
+              md={3}
               key={this.props.id + this.props.idx + "job"}
             >
               <ControlledOpenSelect
@@ -144,6 +146,14 @@ export default class Witness extends Component {
                 title={getFrenchName("job")}
                 helperText={getPersianName("job")}
               />
+            </Grid>
+            <Grid item xs="auto" sm={"auto"} md={"auto"}>
+              <div style={{ marginTop: "43px" }}>
+                <CustomTooltip>
+                  <div>{getHint("job").french}</div>
+                  <div dir={"rtl"}>{getHint("job").persian}</div>
+                </CustomTooltip>
+              </div>
             </Grid>
           </Grid>
         </CardContent>

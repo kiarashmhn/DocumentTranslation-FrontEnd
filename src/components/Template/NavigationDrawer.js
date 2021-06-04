@@ -15,7 +15,7 @@ import {
   Toolbar
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import { getCompleteName } from "../../Dictionary";
+import { getFrenchName, getPersianName } from "../../Dictionary";
 
 const styles = theme => ({
   closeIcon: {
@@ -110,7 +110,8 @@ class NavigationDrawer extends Component {
                     <ListItemText
                       primary={
                         <Typography variant="subtitle1" className="text-white">
-                          {element.persianName}
+                          <div>{getFrenchName(element.name)}</div>
+                          <div>{getPersianName(element.name)}</div>
                         </Typography>
                       }
                     />
@@ -124,7 +125,8 @@ class NavigationDrawer extends Component {
                 <ListItemText
                   primary={
                     <Typography variant="subtitle1" className="text-white">
-                      {element.persianName}
+                      <div>{getFrenchName(element.name)}</div>
+                      <div>{getPersianName(element.name)}</div>
                     </Typography>
                   }
                 />

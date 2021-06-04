@@ -8,12 +8,16 @@ import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import MarkunreadIcon from "@material-ui/icons/Markunread";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 import DraftsIcon from "@material-ui/icons/Drafts";
+import BackupIcon from "@material-ui/icons/Backup";
+import DescriptionIcon from "@material-ui/icons/Description";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 export function getAdminColumns(
   handleClickOpen,
-  handleClickOpenBill,
   handleClickOpenMessages,
-  handleClickOpenStatus
+  handleClickOpenStatus,
+  handleClickOpenResult,
+  handleDownload
 ) {
   return [
     {
@@ -100,22 +104,39 @@ export function getAdminColumns(
       }
     },
     {
-      name: "isPaymentVerified",
-      label: "Facture",
+      name: "finalDocumentId",
+      label: "Traduction",
       options: {
         customBodyRender: (value, meta) => {
-          if (value !== undefined && value !== null && !!value) {
+          if (value !== undefined && value !== null) {
+            return (
+              <div style={{ display: "inline-flex" }}>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleClickOpenResult(meta.rowData[1])}
+                  style={{ color: theme.palette.primary.main }}
+                >
+                  <BackupIcon fontSize="small" />
+                </IconButton>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleDownload(value)}
+                  style={{ color: "#43a047" }}
+                >
+                  <DescriptionIcon fontSize="small" />
+                </IconButton>
+              </div>
+            );
+          } else {
             return (
               <IconButton
                 aria-label="delete"
-                onClick={() => handleClickOpenBill(meta.rowData[1])}
+                onClick={() => handleClickOpenResult(meta.rowData[1])}
                 style={{ color: theme.palette.primary.main }}
               >
-                <ReceiptIcon fontSize="small" />
+                <BackupIcon fontSize="small" />
               </IconButton>
             );
-          } else {
-            return <span />;
           }
         }
       }
@@ -126,11 +147,13 @@ export function getAdminColumns(
 export function getSuperAdminColumns(
   handleClickOpenUser,
   handleClickOpen,
-  handleClickOpenBill,
   handleClickOpenAdmins,
   handleClickOpenPayment,
   handleClickOpenMessages,
-  handleClickOpenStatus
+  handleClickOpenStatus,
+  handleClickOpenResult,
+  handleDownload,
+  handleClickDelete
 ) {
   return [
     {
@@ -299,18 +322,58 @@ export function getSuperAdminColumns(
       }
     },
     {
-      name: "isPaymentVerified",
-      label: "Facture",
+      name: "finalDocumentId",
+      label: "Traduction",
       options: {
         customBodyRender: (value, meta) => {
-          if (value !== undefined && value !== null && !!value) {
+          if (value !== undefined && value !== null) {
+            return (
+              <div style={{ display: "inline-flex" }}>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleClickOpenResult(meta.rowData[1])}
+                  style={{ color: theme.palette.primary.main }}
+                >
+                  <BackupIcon fontSize="small" />
+                </IconButton>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleDownload(value)}
+                  style={{ color: "#43a047" }}
+                >
+                  <DescriptionIcon fontSize="small" />
+                </IconButton>
+              </div>
+            );
+          } else {
             return (
               <IconButton
                 aria-label="delete"
-                onClick={() => handleClickOpenBill(meta.rowData[1])}
+                onClick={() => handleClickOpenResult(meta.rowData[1])}
                 style={{ color: theme.palette.primary.main }}
               >
-                <ReceiptIcon fontSize="small" />
+                <BackupIcon fontSize="small" />
+              </IconButton>
+            );
+          }
+        }
+      }
+    },
+    {
+      name: "id",
+      label: "Supprimer",
+      options: {
+        customBodyRender: (value, meta) => {
+          if (value !== undefined && value !== null) {
+            return (
+              <IconButton
+                aria-label="delete"
+                onClick={() =>
+                  handleClickDelete(meta.rowData[1], meta.rowData[0])
+                }
+                style={{ color: "#e53935" }}
+              >
+                <DeleteForeverIcon fontSize="small" />
               </IconButton>
             );
           } else {
@@ -326,7 +389,9 @@ export function getUserColumns(
   handleClickOpen,
   handleClickOpenBill,
   handleClickOpenMessages,
-  handleClickOpenStatus
+  handleClickOpenStatus,
+  handleDownload,
+  handleClickDelete
 ) {
   return [
     {
@@ -416,6 +481,34 @@ export function getUserColumns(
       }
     },
     {
+      name: "finalDocumentId",
+      label: (
+        <div>
+          <div dir={"ltr"}>{"Traduction"}</div>
+          <div dir={"rtl"}>{"ترجمه"}</div>
+        </div>
+      ),
+      options: {
+        customBodyRender: value => {
+          if (value !== undefined && value !== null) {
+            return (
+              <div style={{ display: "inline-flex" }}>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleDownload(value)}
+                  style={{ color: "#43a047" }}
+                >
+                  <DescriptionIcon fontSize="small" />
+                </IconButton>
+              </div>
+            );
+          } else {
+            return <span />;
+          }
+        }
+      }
+    },
+    {
       name: "isPaymentVerified",
       label: (
         <div>
@@ -433,6 +526,34 @@ export function getUserColumns(
                 style={{ color: theme.palette.primary.main }}
               >
                 <ReceiptIcon fontSize="small" />
+              </IconButton>
+            );
+          } else {
+            return <span />;
+          }
+        }
+      }
+    },
+    {
+      name: "id",
+      label: (
+        <div>
+          <div dir={"ltr"}>{"Supprimer"}</div>
+          <div dir={"rtl"}>{"حذف"}</div>
+        </div>
+      ),
+      options: {
+        customBodyRender: (value, meta) => {
+          if (value !== undefined && value !== null) {
+            return (
+              <IconButton
+                aria-label="delete"
+                onClick={() =>
+                  handleClickDelete(meta.rowData[1], meta.rowData[0])
+                }
+                style={{ color: "#e53935" }}
+              >
+                <DeleteForeverIcon fontSize="small" />
               </IconButton>
             );
           } else {

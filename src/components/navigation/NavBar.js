@@ -29,6 +29,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import AuthService from "../../AuthService";
 import EditUserDialog from "../register_login/EditUserDialog";
 import PersonIcon from "@material-ui/icons/Person";
+import Badge from "@material-ui/core/Badge";
 
 const styles = theme => ({
   appBar: {
@@ -141,7 +142,8 @@ function NavBar(props) {
     classes,
     width,
     selectCreateOrder,
-    selectListOrder
+    selectListOrder,
+    notif
   } = props;
   // Will be use to make website more accessible by screen readers
   const links = useRef([]);
@@ -190,14 +192,20 @@ function NavBar(props) {
       },
       icon: {
         desktop: (
-          <ListIcon
-            className={
-              selectedTab === "ListOrder" ? classes.textPrimary : "text-white"
-            }
-            fontSize="large"
-          />
+          <Badge color={"error"} variant={"dot"} invisible={!notif}>
+            <ListIcon
+              className={
+                selectedTab === "ListOrder" ? classes.textPrimary : "text-white"
+              }
+              fontSize="large"
+            />
+          </Badge>
         ),
-        mobile: <ListIcon className="text-white" />
+        mobile: (
+          <Badge color={"error"} variant={"dot"} invisible={!notif}>
+            <ListIcon className="text-white" />
+          </Badge>
+        )
       }
     },
     {
@@ -387,6 +395,7 @@ function NavBar(props) {
 
 NavBar.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  notif: PropTypes.bool,
   selectedTab: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,

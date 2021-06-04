@@ -111,6 +111,7 @@ export default class Api {
       },
       responseType: "blob"
     }).then(function(response) {
+      console.log(response);
       fileDownload(response.data, name);
     });
   };

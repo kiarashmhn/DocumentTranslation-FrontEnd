@@ -15,6 +15,8 @@ import { methods } from "./MethodsInfo";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 import FormDialog from "../Template/FormDialog";
 import { Button, Typography } from "@material-ui/core";
+import ShowBill from "./ShowBill";
+import FullScreenDialog from "../FullScreenDialog";
 
 export default class PaymentInfo extends Component {
   constructor(props) {
@@ -22,7 +24,8 @@ export default class PaymentInfo extends Component {
     this.state = {
       files: [],
       payments: [],
-      isLoading: true
+      isLoading: true,
+      openBillInfo: false
     };
     this.api = new Api();
   }
@@ -36,6 +39,18 @@ export default class PaymentInfo extends Component {
       );
     });
   }
+
+  handleClickOpenBill = () => {
+    this.setState({
+      openBillInfo: true
+    });
+  };
+
+  handleClickCloseBill = () => {
+    this.setState({
+      openBillInfo: false
+    });
+  };
 
   getPayments = async () => {
     let self = this;
@@ -174,68 +189,136 @@ export default class PaymentInfo extends Component {
 
   render() {
     return (
-      <FormDialog
-        loading={this.state.isLoading}
-        onClose={this.props.onClose}
-        open
-        headline="Informations de paiement"
-        onFormSubmit={e => {
-          e.preventDefault();
-        }}
-        hideBackdrop
-        hasCloseIcon
-        content={
-          <Fragment>
-            {this.getFilesView()}
-            {this.getPaymentsView()}
-          </Fragment>
-        }
-        actions={
-          <div
-            style={{
-              maxWidth: "100%",
-              verticalAlign: "middle",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "10px",
-              paddingBottom: "20px",
-              marginTop: "5px"
-            }}
-          >
-            <Button
-              onClick={this.verifyPayment}
-              style={{ textTransform: "none" }}
-              variant="contained"
-              color="secondary"
-              align={"center"}
-            >
-              <p>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "0",
-                    fontSize: 16
-                  }}
-                />
-                <Typography variant="body1" align="center" component={"span"}>
-                  {getFrenchName("finalSubmit")}
-                </Typography>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "2px",
-                    fontSize: "100%"
-                  }}
-                />
-                <Typography variant="body1" align="center" component={"span"}>
-                  {getPersianName("finalSubmit")}
-                </Typography>
-              </p>
-            </Button>
-          </div>
-        }
-      />
+      <Fragment>
+        <FormDialog
+          loading={this.state.isLoading}
+          onClose={this.props.onClose}
+          open
+          headline="Informations de paiement"
+          onFormSubmit={e => {
+            e.preventDefault();
+          }}
+          hideBackdrop
+          hasCloseIcon
+          content={
+            <Fragment>
+              {this.getFilesView()}
+              {this.getPaymentsView()}
+            </Fragment>
+          }
+          actions={
+            <div>
+              <div
+                style={{
+                  maxWidth: "100%",
+                  verticalAlign: "middle",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "5px"
+                }}
+              >
+                <Button
+                  onClick={this.handleClickOpenBill}
+                  style={{ textTransform: "none" }}
+                  variant="contained"
+                  color="secondary"
+                  align={"center"}
+                >
+                  <p>
+                    <span
+                      style={{
+                        display: "block",
+                        marginBottom: "0",
+                        fontSize: 16
+                      }}
+                    />
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      component={"span"}
+                    >
+                      {"Afficher la facture"}
+                    </Typography>
+                    <span
+                      style={{
+                        display: "block",
+                        marginBottom: "2px",
+                        fontSize: "100%"
+                      }}
+                    />
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      component={"span"}
+                    >
+                      {"نمایش صورتحساب"}
+                    </Typography>
+                  </p>
+                </Button>
+              </div>
+              <div
+                style={{
+                  maxWidth: "100%",
+                  verticalAlign: "middle",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                  paddingBottom: "20px",
+                  marginTop: "5px"
+                }}
+              >
+                <Button
+                  onClick={this.verifyPayment}
+                  style={{ textTransform: "none" }}
+                  variant="contained"
+                  color="secondary"
+                  align={"center"}
+                >
+                  <p>
+                    <span
+                      style={{
+                        display: "block",
+                        marginBottom: "0",
+                        fontSize: 16
+                      }}
+                    />
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      component={"span"}
+                    >
+                      {getFrenchName("finalSubmit")}
+                    </Typography>
+                    <span
+                      style={{
+                        display: "block",
+                        marginBottom: "2px",
+                        fontSize: "100%"
+                      }}
+                    />
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      component={"span"}
+                    >
+                      {getPersianName("finalSubmit")}
+                    </Typography>
+                  </p>
+                </Button>
+              </div>
+            </div>
+          }
+        />
+        <FullScreenDialog
+          title="Facture"
+          component={<ShowBill orderId={this.props.orderId} />}
+          handleClose={this.handleClickCloseBill}
+          open={this.state.openBillInfo}
+          itemId={this.props.orderId}
+        />
+      </Fragment>
     );
   }
 }

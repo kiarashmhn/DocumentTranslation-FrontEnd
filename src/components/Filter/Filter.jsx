@@ -66,6 +66,7 @@ export default class Filter extends Component {
           loading={false}
           onClose={() => this.handleClose()}
           open={this.state.open}
+          hideBackdrop
           onFormSubmit={e => {
             e.preventDefault();
             this.submit();

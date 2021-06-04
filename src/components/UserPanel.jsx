@@ -1,11 +1,13 @@
 import React, { memo, Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { withStyles } from "@material-ui/core";
+import { Snackbar, withStyles } from "@material-ui/core";
 import NavBar from "./navigation/NavBar";
 import smoothScrollTop from "../functions/smoothScrollTop";
 import CreateOrder from "./order/CreateOrder";
 import ListOrder from "./order/ListOrder";
+import Api from "./Api/Api";
+import * as URLConstant from "../URLConstant";
 
 const styles = theme => ({
   main: {
@@ -62,6 +64,12 @@ const styles = theme => ({
       marginLeft: "auto",
       marginRight: "auto"
     }
+  },
+  root: {
+    backgroundColor: "#e53935",
+    cursor: "pointer",
+    paddingTop: 0,
+    paddingBottom: 0
   }
 });
 
@@ -69,8 +77,13 @@ class UserPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: "dashboard"
+      selectedTab: "dashboard",
+      snackBar: false,
+      stateBar: false,
+      newMsg: false,
+      changeState: false
     };
+    this.api = new Api();
   }
 
   componentDidMount() {
@@ -86,7 +99,28 @@ class UserPanel extends Component {
     )
       this.setSelectedTab(this.props.location.state.selectedTab);
     else this.selectCreateOrder();
+
+    this.getUser().then(() => {});
   }
+
+  getUser = async () => {
+    let self = this;
+    await this.api
+      .doPost(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.USER_GET,
+        {}
+      )
+      .then(function(res) {
+        if (res.data.hasNewMessage) {
+          self.setState({ snackBar: true, newMsg: true });
+        }
+        if (res.data.changeState) {
+          self.setState({ stateBar: true, changeState: true });
+        }
+      });
+  };
 
   setSelectedTab = tab => {
     this.setState({
@@ -104,6 +138,46 @@ class UserPanel extends Component {
     smoothScrollTop();
     document.title = "FD - ListOrder";
     this.setSelectedTab("ListOrder");
+    this.setState({
+      stateBar: false,
+      snackBar: false,
+      newMsg: false,
+      changeState: false
+    });
+  };
+
+  handleClose = (_, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    this.setState({ snackBar: false });
+  };
+
+  snackClick = () => {
+    smoothScrollTop();
+    document.title = "FD - ListOrder";
+    this.setState({
+      stateBar: false,
+      snackBar: false,
+      selectedTab: "ListOrder"
+    });
+  };
+
+  handleCloseState = (_, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    this.setState({ stateBar: false });
+  };
+
+  stateClick = () => {
+    smoothScrollTop();
+    document.title = "FD - ListOrder";
+    this.setState({
+      stateBar: false,
+      snackBar: false,
+      selectedTab: "ListOrder"
+    });
   };
 
   render() {
@@ -113,6 +187,7 @@ class UserPanel extends Component {
           selectedTab={this.state.selectedTab}
           selectCreateOrder={this.selectCreateOrder}
           selectListOrder={this.selectListOrder}
+          notif={this.state.newMsg || this.state.changeState}
           messages={[]}
         />
         <div className={classNames(this.props.classes.main)}>
@@ -121,6 +196,48 @@ class UserPanel extends Component {
             {this.state.selectedTab === "ListOrder" && <ListOrder />}
           </div>
         </div>
+        <Snackbar
+          disableWindowBlurListener
+          key={"snackbarUser"}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right"
+          }}
+          open={this.state.snackBar}
+          autoHideDuration={20000}
+          onClose={this.handleClose}
+          ContentProps={{
+            classes: {
+              root: this.props.classes.root
+            }
+          }}
+          message={
+            <span onClick={() => this.snackClick()}>
+              Vous avez un message/شما یک پیام دارید
+            </span>
+          }
+        />
+        <Snackbar
+          disableWindowBlurListener
+          key={"snackbarUser2"}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right"
+          }}
+          open={this.state.stateBar}
+          autoHideDuration={20000}
+          onClose={this.handleCloseState}
+          ContentProps={{
+            classes: {
+              root: this.props.classes.root
+            }
+          }}
+          message={
+            <span onClick={() => this.stateClick()}>
+              Changement d’état de votre commande/تغییری در وضعیت سفارش
+            </span>
+          }
+        />
       </Fragment>
     );
   }

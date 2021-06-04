@@ -637,7 +637,13 @@ export const Dictionary = {
   },
   job: {
     persian: "شغل",
-    french: "Profession"
+    french: "Profession",
+    hint: {
+      persian:
+        "اگر عنوان شغل در لیست پیشنهادی نیست، گزینه دیگر را انتخاب کنید، مترجم شخصا این قسمت را تکمیل خواهد کرد.",
+      french:
+        "Si le métier ne figure pas sur la liste proposée, sélectionnez ‘Autre’, le traducteur ajoutera personnellement cette case."
+    }
   },
   sex: {
     persian: "جنس",
@@ -1537,7 +1543,7 @@ export const Dictionary = {
   },
   receiptNumber: {
     persian: "شماره فیش",
-    french: "N⁰ de XXX"
+    french: "N⁰ de virement"
   },
   depositDate: {
     persian: "تاریخ واریز",
@@ -1742,6 +1748,26 @@ export const Dictionary = {
   placeofMarriage: {
     persian: "محل وقوع عقد نکاه",
     french: "Lieu de mariage"
+  },
+  Logout: {
+    french: "Sortir",
+    persian: "خروج"
+  },
+  CreateOrder: {
+    french: "Créer une commande",
+    persian: "ثبت سفارش"
+  },
+  ListOrder: {
+    french: "Liste des commandes",
+    persian: "لیست سفارش ها"
+  },
+  ListUser: {
+    french: "Liste des utilisateurs",
+    persian: "لیست کاربران"
+  },
+  FAQ: {
+    french: "FAQ",
+    persian: "سوالات متداول"
   }
 };
 

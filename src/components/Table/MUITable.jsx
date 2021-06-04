@@ -25,7 +25,7 @@ export default class MUITable extends Component {
     this.state = {
       page: 0,
       count: 0,
-      data: [["در حال دریافت..."]],
+      data: [["..."]],
       isLoading: false,
       currentFilters: {}
     };
@@ -36,7 +36,7 @@ export default class MUITable extends Component {
   }
 
   shouldComponentUpdate() {
-    return this.state.data !== [["در حال دریافت..."]];
+    return this.state.data !== [["..."]];
   }
 
   getData = filterInputs => {
@@ -124,7 +124,7 @@ export default class MUITable extends Component {
   changePage = page => {
     this.setState({
       isLoading: true,
-      data: [["در حال دریافت..."]]
+      data: [["..."]]
     });
 
     let begin = page * 10;
@@ -253,7 +253,7 @@ export default class MUITable extends Component {
       },
       textLabels: {
         body: {
-          noMatch: "متاسفانه موردی یافت نشد",
+          noMatch: "Iّl n'y a pas de résultats / موردی یافت نشد",
           toolTip: "مرتب"
         },
         pagination: {
@@ -334,6 +334,11 @@ export default class MUITable extends Component {
                       refreshFunction={this.getData}
                       initial={this.state.currentFilters}
                     />
+                    {this.props.otherOptions ? (
+                      this.props.otherOptions
+                    ) : (
+                      <div />
+                    )}
                   </div>
                 );
               }
@@ -362,5 +367,6 @@ MUITable.propTypes = {
   }),
   initializationFilter: PropTypes.any,
   filterKey: PropTypes.string,
-  doDataPreprocessing: PropTypes.func
+  doDataPreprocessing: PropTypes.func,
+  otherOptions: PropTypes.any
 };

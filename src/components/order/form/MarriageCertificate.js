@@ -194,7 +194,8 @@ export const MarriageCertificateForm = {
             { value: "houseWife", key: "houseWife" },
             { value: "farmer", key: "farmer" },
             { value: "doctor", key: "doctor" },
-            { value: "barber", key: "barber" }
+            { value: "barber", key: "barber" },
+            { value: "others", key: "others" }
           ]
         }
       ]
@@ -215,7 +216,8 @@ export const MarriageCertificateForm = {
             { value: "houseWife", key: "houseWife" },
             { value: "farmer", key: "farmer" },
             { value: "doctor", key: "doctor" },
-            { value: "barber", key: "barber" }
+            { value: "barber", key: "barber" },
+            { value: "others", key: "others" }
           ]
         }
       ]

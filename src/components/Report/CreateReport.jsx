@@ -43,10 +43,11 @@ export default class CreateReport extends Component {
 
     worksheet.pageSetup.printArea = "A1:I" + rowCount;
 
+    let self = this;
     ExcelJSWorkbook.xlsx.writeBuffer().then(function(buffer) {
       saveAs(
         new Blob([buffer], { type: "application/octet-stream" }),
-        `report.xlsx`
+        self.props.type.code + self.props.id + `.xlsx`
       );
     });
   };

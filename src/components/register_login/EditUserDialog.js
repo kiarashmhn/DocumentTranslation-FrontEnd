@@ -86,7 +86,7 @@ function EditUserDialog(props) {
           setIsLoading(false);
         });
     })();
-  }, [setUsername, setPhone, setIsLoading]);
+  });
 
   const register = useCallback(() => {
     if (registerPassword && registerPasswordRepeat) {
@@ -142,30 +142,15 @@ function EditUserDialog(props) {
   }, [setOpenConfirm]);
 
   const deleteAccount = useCallback(() => {
-    if (registerPassword && registerPasswordRepeat) {
-      if (registerPassword !== registerPasswordRepeat) {
-        setStatus("passwordsDontMatch");
-        return;
-      }
-
-      if (registerPassword.length < 6) {
-        setStatus("passwordTooShort");
-        return;
-      }
-    }
-
     setStatus(null);
     setIsLoading(true);
     api
       .doPostNoAppend(
         process.env.REACT_APP_HOST_URL +
           process.env.REACT_APP_MAIN_PATH +
-          URLConstant.UPDATE_USER,
+          URLConstant.USER_DELETE,
         {
-          username: name,
-          phone: phone,
-          password: registerPassword,
-          enabled: false
+          username: name
         }
       )
       .then(function(res) {

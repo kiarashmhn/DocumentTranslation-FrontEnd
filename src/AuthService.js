@@ -41,7 +41,10 @@ export default class AuthService {
           localStorage.setItem("id_token", response.data.data.token);
           localStorage.setItem("username", response.data.data.username);
           localStorage.setItem("level", response.data.data.level);
-          localStorage.setItem("exp_token", Date.now() + 7 * 60 * 60 * 1000);
+          localStorage.setItem(
+            "exp_token",
+            Date.now() + 7 * 24 * 60 * 60 * 1000
+          );
           return Promise.resolve(response.data);
         } else {
           return Promise.resolve(response.data);

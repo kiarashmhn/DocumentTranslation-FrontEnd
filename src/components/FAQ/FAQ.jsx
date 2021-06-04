@@ -158,7 +158,7 @@ export default class FAQ extends Component {
                   }}
                 >
                   <CardContent>
-                    <Typography gutterBottom align={"center"}>
+                    <Typography align={"center"} component={"div"}>
                       <div dir={"ltr"}>{q.french}</div>
                       <div>{q.persian}</div>
                     </Typography>

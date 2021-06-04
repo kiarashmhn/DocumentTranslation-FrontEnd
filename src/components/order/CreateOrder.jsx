@@ -208,7 +208,7 @@ class CreateOrder extends Component {
             <Typography variant="body1" color={"secondary"}>
               * Remarque:
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" component={"div"}>
               <div>
                 - Il est fortement recommandé de concorder l&apos;orthographe
                 des noms, prénoms et les dates à celles déjà déclarées
@@ -226,7 +226,7 @@ class CreateOrder extends Component {
             <Typography variant="body1" dir={"rtl"} color={"secondary"}>
               * نکته:
             </Typography>
-            <Typography variant="body1" dir={"rtl"} paragraph>
+            <Typography variant="body1" dir={"rtl"} component={"div"}>
               <div>
                 - توصیه می شود که نوشتار لاتین نام، نام خانوادگی (تخلص)، تاریخ
                 تولد و دیگر مشخصات را با پاسپورت یا مدارک دیگر مثل کارت اقامت
@@ -246,6 +246,7 @@ class CreateOrder extends Component {
           container
           spacing={3}
           alignItems="center"
+          direction="row"
           justify="center"
           alignContent={"center"}
           style={{ marginBottom: "20px" }}
@@ -317,7 +318,7 @@ class CreateOrder extends Component {
         </Grid>
         <Grid
           container
-          spacing={3}
+          spacing={2}
           alignItems="center"
           direction="row"
           justify="center"
@@ -327,7 +328,7 @@ class CreateOrder extends Component {
             let type = OrderTypes[typeKey];
             if (type.nationality === this.state.nationality)
               return (
-                <Grid item xs={12} sm={12} md={4} key={typeKey}>
+                <Grid item xs={12} sm={6} md={4} key={typeKey}>
                   <MediaCard
                     image={image}
                     title={getFrenchName(type.key)}

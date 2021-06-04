@@ -14,6 +14,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import HowToRegIcon from "@material-ui/icons/HowToReg";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
+import LiveHelpIcon from "@material-ui/icons/LiveHelp";
 //import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../Template/NavigationDrawer";
 import "../../index.css";
@@ -70,25 +71,28 @@ class NavBar extends Component {
     } = this.props;
     const menuItems = [
       {
+        name: "FAQ",
+        link: "/FAQ",
+        onClick: () => {},
+        icon: <LiveHelpIcon className="text-white" />
+      },
+      {
         name: "aboutUs",
         link: "/",
         onClick: selectAbout,
-        icon: <HomeIcon className="text-white" />,
-        mobileHide: true
+        icon: <HomeIcon className="text-white" />
       },
       {
         name: "help",
         link: "/",
         onClick: selectHelp,
-        icon: <HomeIcon className="text-white" />,
-        mobileHide: true
+        icon: <HomeIcon className="text-white" />
       },
       {
         name: "features",
         link: "/",
         onClick: selectFeatures,
-        icon: <HomeIcon className="text-white" />,
-        mobileHide: true
+        icon: <HomeIcon className="text-white" />
       },
       {
         link: "/",

@@ -413,14 +413,14 @@ class Payment extends Component {
         />
         <div
           style={{
-            maxWidth: "100%",
             verticalAlign: "middle",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             marginBottom: "10px",
             paddingBottom: "20px",
-            marginTop: "20px"
+            marginTop: "20px",
+            maxWidth: "100%"
           }}
         >
           <Button
@@ -455,6 +455,19 @@ class Payment extends Component {
               </Typography>
             </p>
           </Button>
+          <div style={{ position: "relative" }}>
+            <CustomTooltip>
+              <div>
+                Appuyez sur ce bouton pour sauvegarder temporairement votre
+                commande et revenir plus tard via la ‘liste des commandes à
+                l&apos;étape de paiement pour régler cette commande.
+              </div>
+              <div dir={"rtl"}>
+                برای ذخیره موقت این سفارش در لیست سفارشها و تکمیل مرحله پرداخت
+                در آینده، این دکمه را فشار دهید.
+              </div>
+            </CustomTooltip>
+          </div>
         </div>
         {this.redirect()}
       </Fragment>
