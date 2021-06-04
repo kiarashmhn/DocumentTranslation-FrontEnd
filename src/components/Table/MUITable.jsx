@@ -151,7 +151,7 @@ export default class MUITable extends Component {
           root: {
             textAlign: "center",
             fontFamily: "MyFont",
-            padding: "2px 8px 2px 8px"
+            padding: "2px 7px 2px 7px"
           }
         },
         MUIDataTable: {

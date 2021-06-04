@@ -182,7 +182,7 @@ export const MarriageCertificateForm = {
       title: "witnesses",
       content: [
         {
-          key: "witness",
+          key: "witness2",
           type: "witness",
           options: [
             { value: "employee", key: "employee" },

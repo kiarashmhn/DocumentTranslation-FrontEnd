@@ -249,10 +249,10 @@ class OrderForm extends Component {
               color="secondary"
             />
             <Typography
-              paragraph
               variant="body1"
               align="center"
               style={{ marginTop: "17px" }}
+              component={"div"}
             >
               J’accepte des{" "}
               <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
@@ -284,7 +284,12 @@ class OrderForm extends Component {
               .
             </Typography>
           </div>
-          <Typography paragraph variant="body1" align="center" dir={"rtl"}>
+          <Typography
+            variant="body1"
+            align="center"
+            dir={"rtl"}
+            component={"div"}
+          >
             <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
               {" "}
               <Box

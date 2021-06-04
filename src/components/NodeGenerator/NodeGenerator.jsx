@@ -24,6 +24,7 @@ import Witness from "../Marriage/Witness";
 import Valuable from "../Marriage/Valuable";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import LicenseType from "../Marriage/LicenseType";
+import AfghanWitness from "../Marriage/AfghanWitness";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -164,14 +165,6 @@ export default class NodesGenerator extends Component {
       : [];
     if (additionalFiles.length > 0)
       state = { ...state, ...{ additionalFiles: additionalFiles } };
-
-    let provinceState = this.provinceDistrictRef
-      ? this.provinceDistrictRef.current
-        ? this.provinceDistrictRef.current.getState()
-        : null
-      : null;
-    if (provinceState && provinceState.province)
-      state = { ...state, ...provinceState };
 
     let tazkaraState = this.tazkaraRef
       ? this.tazkaraRef.current
@@ -373,6 +366,8 @@ export default class NodesGenerator extends Component {
                 districtKey={element.districtKey}
                 villageKey={element.villageKey}
                 required={!element.notRequired}
+                onChange={v => this.onChange(v, element)}
+                showCountry={element.showCountry}
               />
             </Grid>
           );
@@ -534,6 +529,88 @@ export default class NodesGenerator extends Component {
                     : null
                 }
                 options={element.options}
+              />
+            </Grid>
+          );
+        case "afghanRepresenter":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <AfghanWitness
+                id={element.key}
+                idx={"1"}
+                onChange={value =>
+                  this.setState({ [element.key + "1"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "1"]
+                    : null
+                }
+              />
+              <AfghanWitness
+                id={element.key}
+                idx={"2"}
+                onChange={value =>
+                  this.setState({ [element.key + "2"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "2"]
+                    : null
+                }
+              />
+              <AfghanWitness
+                id={element.key}
+                idx={"3"}
+                onChange={value =>
+                  this.setState({ [element.key + "3"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "3"]
+                    : null
+                }
+              />
+            </Grid>
+          );
+        case "afghanWitness":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <AfghanWitness
+                id={element.key}
+                idx={"1"}
+                onChange={value =>
+                  this.setState({ [element.key + "1"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "1"]
+                    : null
+                }
+              />
+              <AfghanWitness
+                id={element.key}
+                idx={"2"}
+                onChange={value =>
+                  this.setState({ [element.key + "2"]: value })
+                }
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key + "2"]
+                    : null
+                }
               />
             </Grid>
           );

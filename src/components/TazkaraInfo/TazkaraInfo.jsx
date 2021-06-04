@@ -61,7 +61,7 @@ export default class TazkaraInfo extends Component {
     return (
       <Fragment>
         <Grid container spacing={1}>
-          <Grid item xs={6} sm={6} md={4} key={"day"}>
+          <Grid item xs={4} sm={4} md={4} key={"day"}>
             <FieldInput
               type={"text"}
               name={"volumeNumber"}
@@ -69,7 +69,7 @@ export default class TazkaraInfo extends Component {
               onChange={e => this.setState({ volumeNumber: e.target.value })}
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={4} key={"pageNumber"}>
+          <Grid item xs={4} sm={4} md={4} key={"pageNumber"}>
             <FieldInput
               type={"number"}
               name={"pageNumber"}
@@ -77,7 +77,7 @@ export default class TazkaraInfo extends Component {
               onChange={e => this.setState({ pageNumber: e.target.value })}
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={4} key={"registerNumber"}>
+          <Grid item xs={4} sm={4} md={4} key={"registerNumber"}>
             <FieldInput
               type={"number"}
               name={"registerNumber"}

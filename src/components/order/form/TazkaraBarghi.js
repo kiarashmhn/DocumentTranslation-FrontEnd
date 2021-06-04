@@ -214,6 +214,7 @@ export const TazkaraBarghiForm = {
         {
           key: "nationality",
           type: "select",
+          value: "afghan",
           options: [
             { value: "afghan", key: "afghan" },
             { value: "others", key: "others" }

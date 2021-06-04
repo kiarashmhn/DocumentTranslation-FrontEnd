@@ -17,6 +17,7 @@ import { TazkaraReportData } from "../Report/data/TazkaraReportData";
 import { TazkaraKetabReportData } from "../Report/data/TazkaraKetabReportData";
 import { DrivingLicenseReportData } from "../Report/data/DrivingLicenseReportData";
 import { BirthLicenseReportData } from "../Report/data/BirthLicenseReportData";
+import { AfghanMarriageCertificateForm } from "./form/AfghanMarriageCertificate";
 
 export const OrderTypes = {
   ID_CERTIFICATE: {
@@ -87,6 +88,14 @@ export const OrderTypes = {
     form: MarriageCertificateForm,
     nationality: "Iranian",
     code: "IM",
+    delay: 48,
+    price: 50
+  },
+  AFGHAN_MARRIAGE_CERTIFICATE: {
+    key: "afghanMarriageCertificate",
+    form: AfghanMarriageCertificateForm,
+    nationality: "Afghan",
+    code: "AM",
     delay: 48,
     price: 50
   },

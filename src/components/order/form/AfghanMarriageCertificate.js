@@ -36,6 +36,7 @@ export const AfghanMarriageCertificateForm = {
         {
           key: "nationality",
           type: "select",
+          value: "afghan",
           options: [
             { value: "afghan", key: "afghan" },
             { value: "others", key: "others" }
@@ -91,6 +92,7 @@ export const AfghanMarriageCertificateForm = {
         {
           key: "nationality",
           type: "select",
+          value: "afghan",
           options: [
             { value: "afghan", key: "afghan" },
             { value: "others", key: "others" }
@@ -126,40 +128,8 @@ export const AfghanMarriageCertificateForm = {
       title: "confessor",
       content: [
         {
-          key: "name",
-          type: "text"
-        },
-        {
-          key: "valad",
-          type: "text"
-        },
-
-        {
-          key: "valadiat",
-          type: "text"
-        },
-
-        {
-          key: "aBirthDate",
-          type: "complexDate"
-        },
-        {
-          key: "livingLocationTemp",
-          provinceKey: "province",
-          districtKey: "district",
-          villageKey: "village",
-          type: "provinceDistrict",
-          name: "livingLocationTemp",
-          required: true
-        },
-        {
-          key: "livingLocationOriginal",
-          provinceKey: "province",
-          districtKey: "district",
-          villageKey: "village",
-          type: "provinceDistrict",
-          name: "livingLocationOriginal",
-          required: true
+          key: "afghanRepresenter",
+          type: "afghanRepresenter"
         }
       ]
     },
@@ -167,40 +137,8 @@ export const AfghanMarriageCertificateForm = {
       title: "witness",
       content: [
         {
-          key: "name",
-          type: "text"
-        },
-        {
-          key: "valad",
-          type: "text"
-        },
-
-        {
-          key: "valadiat",
-          type: "text"
-        },
-
-        {
-          key: "aBirthDate",
-          type: "complexDate"
-        },
-        {
-          key: "livingLocationTemp",
-          provinceKey: "province",
-          districtKey: "district",
-          villageKey: "village",
-          type: "provinceDistrict",
-          name: "livingLocationTemp",
-          required: true
-        },
-        {
-          key: "livingLocationOriginal",
-          provinceKey: "province",
-          districtKey: "district",
-          villageKey: "village",
-          type: "provinceDistrict",
-          name: "livingLocationOriginal",
-          required: true
+          key: "afghanWitness",
+          type: "afghanWitness"
         }
       ]
     },
@@ -244,6 +182,8 @@ export const AfghanMarriageCertificateForm = {
         {
           key: "whichProvince",
           provinceKey: "province",
+          districtKey: "district",
+          villageKey: "village",
           type: "provinceDistrict",
           name: "whichProvince",
           required: true
@@ -278,6 +218,7 @@ export const AfghanMarriageCertificateForm = {
           villageKey: "village",
           type: "provinceDistrict",
           name: "placeofMarriage",
+          showCountry: true,
           required: true
         }
       ]
@@ -285,6 +226,12 @@ export const AfghanMarriageCertificateForm = {
     {
       title: "description",
       content: [
+        {
+          key: "additionalFiles",
+          type: "additionalFileHandler",
+          fileType: "additional",
+          tooltipKey: "description"
+        },
         {
           key: "description",
           type: "text",
@@ -294,12 +241,30 @@ export const AfghanMarriageCertificateForm = {
       ]
     },
     {
-      title: "address",
+      title: "addr",
       content: [
+        {
+          key: "nameOrCompany",
+          type: "text"
+        },
         {
           key: "address",
           grid: 12,
           type: "text"
+        },
+        {
+          key: "postalCode",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
+        },
+        {
+          key: "city",
+          type: "text",
+          grid: 3,
+          smGrid: 6,
+          xsGrid: 6
         }
       ]
     }

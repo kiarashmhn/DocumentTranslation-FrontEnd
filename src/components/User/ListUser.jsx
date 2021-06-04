@@ -4,13 +4,20 @@ import MUITable from "../Table/MUITable";
 import * as URLConstant from "../../URLConstant";
 import theme from "../../theme";
 import EditUserDialog from "../register_login/EditUserDialog";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import DeleteExpiredUsers from "./DeleteExpiredUsers";
+import SendExpiryEmail from "./SendExpiryEmail";
 
 class ListUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      openUser: false
+      openUser: false,
+      openDeletes: false,
+      openWarning: false
     };
     this.refElement = React.createRef();
   }
@@ -28,6 +35,31 @@ class ListUser extends Component {
       username: ""
     });
     this.getData();
+  };
+
+  handleClickDeletes = () => {
+    this.setState({
+      openDeletes: true
+    });
+  };
+
+  handleClickCloseDeletes = () => {
+    this.setState({
+      openDeletes: false
+    });
+    this.getData();
+  };
+
+  handleClickWarning = () => {
+    this.setState({
+      openWarning: true
+    });
+  };
+
+  handleClickCloseWarning = () => {
+    this.setState({
+      openWarning: false
+    });
   };
 
   getColumns = () => {
@@ -140,6 +172,24 @@ class ListUser extends Component {
           url={url}
           method={"Post"}
           title={title}
+          otherOptions={
+            <div>
+              <IconButton
+                aria-label="delete"
+                onClick={this.handleClickDeletes}
+                style={{ color: "#e53935" }}
+              >
+                <DeleteSweepIcon fontSize="small" />
+              </IconButton>
+              <IconButton
+                aria-label="delete"
+                onClick={this.handleClickWarning}
+                style={{ color: "#e53935" }}
+              >
+                <MailOutlineIcon fontSize="small" />
+              </IconButton>
+            </div>
+          }
           filter={{
             componentTitle: title,
             staticData: [
@@ -165,6 +215,12 @@ class ListUser extends Component {
             onClose={this.handleClickCloseUser}
             type={"ADMIN"}
           />
+        )}
+        {this.state.openDeletes && (
+          <DeleteExpiredUsers onClose={this.handleClickCloseDeletes} />
+        )}
+        {this.state.openWarning && (
+          <SendExpiryEmail onClose={this.handleClickCloseWarning} />
         )}
       </Fragment>
     );

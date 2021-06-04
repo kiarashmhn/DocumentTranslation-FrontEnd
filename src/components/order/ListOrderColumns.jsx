@@ -11,6 +11,7 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import BackupIcon from "@material-ui/icons/Backup";
 import DescriptionIcon from "@material-ui/icons/Description";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import { getTypeByKey } from "./OrderTypes";
 
 export function getAdminColumns(
   handleClickOpen,
@@ -426,6 +427,27 @@ export function getUserColumns(
       label: "آیدی",
       options: {
         display: "excluded"
+      }
+    },
+    {
+      name: "type",
+      label: (
+        <div>
+          <div dir={"ltr"}>{getFrenchName("documentType")}</div>
+          <div dir={"rtl"}>{getPersianName("documentType")}</div>
+        </div>
+      ),
+      options: {
+        customBodyRender: value => {
+          if (getTypeByKey(value)) {
+            return (
+              <div>
+                <div>{getFrenchName(getTypeByKey(value).key)}</div>
+                <div>{getPersianName(getTypeByKey(value).key)}</div>
+              </div>
+            );
+          } else return <div>{value}</div>;
+        }
       }
     },
     {
