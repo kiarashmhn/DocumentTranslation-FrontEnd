@@ -16,19 +16,20 @@ export const afghanDrivingLicenceForm = {
       title: "personalInfo",
       content: [
         {
-          key: "name",
+          key: "aName1",
           type: "text"
         },
         {
-          key: "lastName",
+          key: "aLastName",
+          type: "text",
+          notRequired: true
+        },
+        {
+          key: "valad",
           type: "text"
         },
         {
-          key: "fatherName",
-          type: "text"
-        },
-        {
-          key: "tazkaraInformation",
+          key: "tazkaraInformation1",
           type: "tazkaraInfo"
         },
         {
@@ -85,28 +86,97 @@ export const afghanDrivingLicenceForm = {
           required: true
         },
         {
-          key: "serialNumber",
+          key: "serialNumber2",
           type: "text"
         },
         {
           key: "directorProvince",
-          type: "text"
+          type: "select",
+          options: [
+            { value: "kaboul", key: "kaboul" },
+            { value: "herat", key: "herat" },
+            { value: "nangarhar", key: "nangarhar" },
+            { value: "balkh", key: "balkh" },
+            { value: "kandahar", key: "kandahar" },
+            { value: "ghor", key: "ghor" },
+            { value: "laghman", key: "laghman" },
+            { value: "kunduz", key: "kunduz" },
+            { value: "paktiya", key: "paktiya" },
+            { value: "zabol", key: "zabol" },
+            { value: "baghlan", key: "baghlan" },
+            { value: "badakhchan", key: "badakhchan" },
+            { value: "bamiyan", key: "bamiyan" },
+            { value: "badghis", key: "badghis" },
+            { value: "maydanWardak", key: "maydanWardak" },
+            { value: "logar", key: "logar" },
+            { value: "samangan", key: "samangan" },
+            { value: "takhar", key: "takhar" },
+            { value: "nouristan", key: "nouristan" },
+            { value: "faryab", key: "faryab" },
+            { value: "sarpol", key: "sarpol" },
+            { value: "paktika", key: "paktika" },
+            { value: "farah", key: "farah" },
+            { value: "helmand", key: "helmand" },
+            { value: "nimroz", key: "nimroz" },
+            { value: "ghazni", key: "ghazni" },
+            { value: "orozgan", key: "orozgan" },
+            { value: "kapissa", key: "kapissa" },
+            { value: "parwan", key: "parwan" },
+            { value: "pandjchir", key: "pandjchir" },
+            { value: "djozdjan", key: "djozdjan" },
+            { value: "khost", key: "khost" },
+            { value: "kounar", key: "kounar" },
+            { value: "deykandi", key: "deykandi" }
+          ],
+          required: true
         },
         {
-          key: "dateofIssue",
+          key: "dateofIssue1",
           type: "date"
         },
         {
-          key: "validationDate",
+          key: "validationDate1",
           type: "date"
         },
+
         {
-          key: "category",
-          type: "text"
+          key: "aGrade",
+          type: "check",
+          grid: 5
+        },
+        {
+          key: "bGrade",
+          type: "check",
+          grid: 5
+        },
+        {
+          key: "cGrade",
+          type: "check",
+          grid: 5
+        },
+        {
+          key: "dGrade",
+          type: "check",
+          grid: 5
+        },
+        {
+          key: "eGrade",
+          type: "check",
+          grid: 12
         },
         {
           key: "Manuscript",
-          type: "text"
+          type: "text",
+          notRequired: true
+        },
+        {
+          key: "ticket",
+          type: "select",
+          options: [
+            { value: "yes", key: "yes" },
+            { value: "no", key: "no" }
+          ],
+          required: true
         }
       ]
     },

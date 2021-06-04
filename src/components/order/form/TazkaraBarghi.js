@@ -3,7 +3,7 @@ export const TazkaraBarghiForm = {
   steps: 7,
   content: [
     {
-      title: "uploadTazkara",
+      title: "uploadTazkaraBarghi",
       content: [
         {
           key: "files",
@@ -13,7 +13,7 @@ export const TazkaraBarghiForm = {
       ]
     },
     {
-      title: "tazkaraInformation",
+      title: "cardInfo",
       content: [
         {
           key: "aName",
@@ -52,11 +52,84 @@ export const TazkaraBarghiForm = {
           type: "date"
         },
         {
+          key: "aBirthLocation",
+          type: "select",
+          options: [
+            { value: "kaboul", key: "kaboul" },
+            { value: "herat", key: "herat" },
+            { value: "nangarhar", key: "nangarhar" },
+            { value: "balkh", key: "balkh" },
+            { value: "kandahar", key: "kandahar" },
+            { value: "ghor", key: "ghor" },
+            { value: "laghman", key: "laghman" },
+            { value: "kunduz", key: "kunduz" },
+            { value: "paktiya", key: "paktiya" },
+            { value: "zabol", key: "zabol" },
+            { value: "baghlan", key: "baghlan" },
+            { value: "badakhchan", key: "badakhchan" },
+            { value: "bamiyan", key: "bamiyan" },
+            { value: "badghis", key: "badghis" },
+            { value: "maydanWardak", key: "maydanWardak" },
+            { value: "logar", key: "logar" },
+            { value: "samangan", key: "samangan" },
+            { value: "takhar", key: "takhar" },
+            { value: "nouristan", key: "nouristan" },
+            { value: "faryab", key: "faryab" },
+            { value: "sarpol", key: "sarpol" },
+            { value: "paktika", key: "paktika" },
+            { value: "farah", key: "farah" },
+            { value: "helmand", key: "helmand" },
+            { value: "nimroz", key: "nimroz" },
+            { value: "ghazni", key: "ghazni" },
+            { value: "orozgan", key: "orozgan" },
+            { value: "kapissa", key: "kapissa" },
+            { value: "parwan", key: "parwan" },
+            { value: "pandjchir", key: "pandjchir" },
+            { value: "djozdjan", key: "djozdjan" },
+            { value: "khost", key: "khost" },
+            { value: "kounar", key: "kounar" },
+            { value: "deykandi", key: "deykandi" }
+          ],
+          required: true
+        },
+        {
           key: "livingLocationTemp",
           type: "select",
           options: [
-            { value: "Kaboul", key: "Kaboul" },
-            { value: "F", key: "F" }
+            { value: "kaboul", key: "kaboul" },
+            { value: "herat", key: "herat" },
+            { value: "nangarhar", key: "nangarhar" },
+            { value: "balkh", key: "balkh" },
+            { value: "kandahar", key: "kandahar" },
+            { value: "ghor", key: "ghor" },
+            { value: "laghman", key: "laghman" },
+            { value: "kunduz", key: "kunduz" },
+            { value: "paktiya", key: "paktiya" },
+            { value: "zabol", key: "zabol" },
+            { value: "baghlan", key: "baghlan" },
+            { value: "badakhchan", key: "badakhchan" },
+            { value: "bamiyan", key: "bamiyan" },
+            { value: "badghis", key: "badghis" },
+            { value: "maydanWardak", key: "maydanWardak" },
+            { value: "logar", key: "logar" },
+            { value: "samangan", key: "samangan" },
+            { value: "takhar", key: "takhar" },
+            { value: "nouristan", key: "nouristan" },
+            { value: "faryab", key: "faryab" },
+            { value: "sarpol", key: "sarpol" },
+            { value: "paktika", key: "paktika" },
+            { value: "farah", key: "farah" },
+            { value: "helmand", key: "helmand" },
+            { value: "nimroz", key: "nimroz" },
+            { value: "ghazni", key: "ghazni" },
+            { value: "orozgan", key: "orozgan" },
+            { value: "kapissa", key: "kapissa" },
+            { value: "parwan", key: "parwan" },
+            { value: "pandjchir", key: "pandjchir" },
+            { value: "djozdjan", key: "djozdjan" },
+            { value: "khost", key: "khost" },
+            { value: "kounar", key: "kounar" },
+            { value: "deykandi", key: "deykandi" }
           ],
           required: true
         },
@@ -64,8 +137,40 @@ export const TazkaraBarghiForm = {
           key: "livingLocationOriginal",
           type: "select",
           options: [
-            { value: "Kaboul", key: "Kaboul" },
-            { value: "F", key: "F" }
+            { value: "kaboul", key: "kaboul" },
+            { value: "herat", key: "herat" },
+            { value: "nangarhar", key: "nangarhar" },
+            { value: "balkh", key: "balkh" },
+            { value: "kandahar", key: "kandahar" },
+            { value: "ghor", key: "ghor" },
+            { value: "laghman", key: "laghman" },
+            { value: "kunduz", key: "kunduz" },
+            { value: "paktiya", key: "paktiya" },
+            { value: "zabol", key: "zabol" },
+            { value: "baghlan", key: "baghlan" },
+            { value: "badakhchan", key: "badakhchan" },
+            { value: "bamiyan", key: "bamiyan" },
+            { value: "badghis", key: "badghis" },
+            { value: "maydanWardak", key: "maydanWardak" },
+            { value: "logar", key: "logar" },
+            { value: "samangan", key: "samangan" },
+            { value: "takhar", key: "takhar" },
+            { value: "nouristan", key: "nouristan" },
+            { value: "faryab", key: "faryab" },
+            { value: "sarpol", key: "sarpol" },
+            { value: "paktika", key: "paktika" },
+            { value: "farah", key: "farah" },
+            { value: "helmand", key: "helmand" },
+            { value: "nimroz", key: "nimroz" },
+            { value: "ghazni", key: "ghazni" },
+            { value: "orozgan", key: "orozgan" },
+            { value: "kapissa", key: "kapissa" },
+            { value: "parwan", key: "parwan" },
+            { value: "pandjchir", key: "pandjchir" },
+            { value: "djozdjan", key: "djozdjan" },
+            { value: "khost", key: "khost" },
+            { value: "kounar", key: "kounar" },
+            { value: "deykandi", key: "deykandi" }
           ],
           required: true
         },
@@ -115,9 +220,8 @@ export const TazkaraBarghiForm = {
           ],
           required: true
         },
-
         {
-          key: "idNumber",
+          key: "idNumberr",
           type: "text"
         },
         {
@@ -125,13 +229,12 @@ export const TazkaraBarghiForm = {
           type: "date"
         },
         {
-          key: "signatureorFingerPrint",
+          key: "signatureorFingerPrint1",
           type: "select",
           options: [
             { value: "signature", key: "signature" },
             { value: "fingerPrint", key: "fingerPrint" },
-            { value: "both", key: "both" },
-            { value: "nothing", key: "nothing" }
+            { value: "both1", key: "both1" }
           ],
           required: true
         }
