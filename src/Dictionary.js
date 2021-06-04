@@ -105,7 +105,13 @@ export const Dictionary = {
   },
   aBirthDate: {
     persian: "تاریخ تولد یا عمر/ د زیږیدلو نیټه او عمر",
-    french: "Date de naissance"
+    french: "Date de naissance",
+    hint: {
+      persian:
+        "اگر تاریخ تولد دقیق شما در سند مشخص نیست گزینه 'تاریخ تقریبی' را انتخاب کنید، و عمر خود و سال تخمین آن را بنویسد.",
+      french:
+        "Si la date de naissance exacte n'est pas notée dans le document, sélectionnez l'option «Date approximative» et inscrivez l'âge apparent et l'année de sa détermination."
+    }
   },
   aBirthLocation: {
     persian: "محل تولد/د زیږبدلو ځای",
@@ -1115,6 +1121,18 @@ export const Dictionary = {
   lastNameAghed: {
     persian: "نام خانوادگی عاقد",
     french: "Nom de notaire"
+  },
+  licenseNumber: {
+    persian: "نمبر دست نویس لیسانس",
+    french: "Réf. manuscrit de permis"
+  },
+  licensePage: {
+    persian: "صفحه",
+    french: "Page"
+  },
+  licenseRegistration: {
+    persian: "نمبر ثبت",
+    french: "N° d'enregistrement"
   },
   little: {
     persian: "قسمی",

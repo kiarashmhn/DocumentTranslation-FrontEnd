@@ -25,6 +25,7 @@ import Valuable from "../Marriage/Valuable";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import LicenseType from "../Marriage/LicenseType";
 import AfghanWitness from "../Marriage/AfghanWitness";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -660,6 +661,57 @@ export default class NodesGenerator extends Component {
               key={element.key}
             >
               <div />
+            </Grid>
+          );
+        case "multi":
+          return (
+            <Grid
+              item
+              xs={element.xsGrid ? element.xsGrid : 12}
+              sm={element.smGrid ? element.smGrid : 12}
+              md={element.grid ? element.grid : 4}
+              key={element.key}
+            >
+              <Grid container spacing={1}>
+                {element.fields &&
+                  element.fields.map(f => (
+                    <Grid
+                      item
+                      xs={12 / element.fields.length}
+                      sm={12 / element.fields.length}
+                      md={12 / element.fields.length}
+                      key={f.key}
+                    >
+                      <FieldInput
+                        name={f.key}
+                        value={this.state[f.key]}
+                        onChange={event => this.elementOnChange(event, f)}
+                        notRequired={this.isNotRequired(element)}
+                        type={element.inputType}
+                      />
+                    </Grid>
+                  ))}
+              </Grid>
+              <div
+                style={{
+                  display: "flex",
+                  position: "relative",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  direction: "ltr",
+                  top: 0,
+                  marginTop: 0
+                }}
+              >
+                <FormHelperText
+                  style={{
+                    color: "#000000",
+                    marginTop: "2px"
+                  }}
+                >
+                  {getCompleteName(element.key)}
+                </FormHelperText>
+              </div>
             </Grid>
           );
         default:

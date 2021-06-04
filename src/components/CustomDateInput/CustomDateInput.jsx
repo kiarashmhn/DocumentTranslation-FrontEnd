@@ -119,32 +119,35 @@ export default class CustomDateInput extends Component {
           </Grid>
           <Grid item xs={2} sm={2} md={1} key={"hint"}>
             <div style={{ marginTop: "45px", position: "relative" }}>
-              <CustomTooltip
-                text={getHint("date").french + "\n" + getHint("date").persian}
-              />
+              <CustomTooltip>
+                <div>{getHint("date").french}</div>
+                <div dir={"rtl"}>{getHint("date").persian}</div>
+              </CustomTooltip>
             </div>
           </Grid>
         </Grid>
-        <div
-          style={{
-            display: "flex",
-            position: "relative",
-            alignItems: "center",
-            justifyContent: "center",
-            direction: "ltr",
-            top: 0,
-            marginTop: 0
-          }}
-        >
-          <FormHelperText
+        {!this.props.hideHelper && (
+          <div
             style={{
-              color: "#000000",
-              marginTop: "2px"
+              display: "flex",
+              position: "relative",
+              alignItems: "center",
+              justifyContent: "center",
+              direction: "ltr",
+              top: 0,
+              marginTop: 0
             }}
           >
-            {getCompleteName(this.props.name)}
-          </FormHelperText>
-        </div>
+            <FormHelperText
+              style={{
+                color: "#000000",
+                marginTop: "2px"
+              }}
+            >
+              {getCompleteName(this.props.name)}
+            </FormHelperText>
+          </div>
+        )}
       </Fragment>
     );
   }
@@ -152,6 +155,7 @@ export default class CustomDateInput extends Component {
 
 CustomDateInput.propTypes = {
   name: PropTypes.string.isRequired,
+  hideHelper: PropTypes.bool,
   initial: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };

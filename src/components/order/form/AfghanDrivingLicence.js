@@ -165,9 +165,17 @@ export const afghanDrivingLicenceForm = {
           grid: 12
         },
         {
-          key: "Manuscript",
-          type: "text",
-          notRequired: true
+          key: "licenseNumber",
+          type: "multi",
+          notRequired: true,
+          fields: [
+            {
+              key: "licensePage"
+            },
+            {
+              key: "licenseRegistration"
+            }
+          ]
         },
         {
           key: "ticket",

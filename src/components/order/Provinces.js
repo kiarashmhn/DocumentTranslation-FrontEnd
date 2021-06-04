@@ -504,7 +504,6 @@ const provinces = {
 };
 
 export const getDistricts = province => {
-  console.log(province);
   if (province) {
     let p = provinces[province];
     if (p) return p.districts ? p.districts : [];

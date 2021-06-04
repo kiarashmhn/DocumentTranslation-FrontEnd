@@ -407,8 +407,8 @@ export function getUserColumns(
         customBodyRender: (value, meta) => {
           if (
             meta.rowData &&
-            (meta.rowData[2] === "COMPLETING" ||
-              meta.rowData[2] === "WAITING_FOR_PAYMENT")
+            (meta.rowData[3] === "COMPLETING" ||
+              meta.rowData[3] === "WAITING_FOR_PAYMENT")
           ) {
             return (
               <div
