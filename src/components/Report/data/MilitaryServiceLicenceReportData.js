@@ -7,9 +7,7 @@ export function MilitaryServiceLicenceReportData(data) {
       isBold: true,
       size: 16
     },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name: "République Islamique d’Iran",
@@ -70,8 +68,13 @@ export function MilitaryServiceLicenceReportData(data) {
     },
     {
       type: "data",
+      data: "",
+      name: "DateDeDébut"
+    },
+    {
+      type: "data",
       data: data.startDateofMilitaryService,
-      name: "startDateofMilitaryService"
+      name: "militaryService"
     },
     {
       type: "data",
@@ -94,9 +97,7 @@ export function MilitaryServiceLicenceReportData(data) {
     {
       type: "empty"
     },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name:
@@ -111,9 +112,12 @@ export function MilitaryServiceLicenceReportData(data) {
       size: 12
     },
     {
+      type: "empty"
+    },
+    {
       type: "text",
       name: "Notification :",
-      isBold: false,
+      isBold: true,
       align: "left",
       size: 12
     },

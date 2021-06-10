@@ -2,6 +2,7 @@ export const LOGIN = "/user/login";
 export const REGISTER = "/user/register";
 export const CREATE_ORDER = "/order/create";
 export const PAY_ORDER = "/order/pay";
+export const CREATE_PRE_BILL = "/order/preBill";
 export const DONE_ORDER = "/order/done";
 export const VERIFY_PAYMENT = "/order/verifyPayment";
 export const STRIPE_PAY_ORDER = "/order/stripePayment";

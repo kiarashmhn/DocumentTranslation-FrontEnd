@@ -28,10 +28,10 @@ export default class LicenseType extends Component {
       this.setState(this.props.initialState);
   }
 
-  onChange = (key, event) => {
+  onChange = (key, value) => {
     this.setState(
       {
-        [key]: event.target.value
+        [key]: value
       },
       () => {
         this.props.onChange(this.state);

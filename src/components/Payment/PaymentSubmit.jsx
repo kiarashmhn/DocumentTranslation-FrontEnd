@@ -108,6 +108,7 @@ class PaymentSubmit extends Component {
               orderId: this.props.id,
               method: this.props.idx,
               amount: this.props.price,
+              delay: this.props.delay,
               code: this.props.code
             }
           }}
@@ -294,6 +295,7 @@ PaymentSubmit.propTypes = {
   idx: PropTypes.any.isRequired,
   code: PropTypes.any.isRequired,
   price: PropTypes.any.isRequired,
+  delay: PropTypes.any.isRequired,
   deliveryType: PropTypes.any.isRequired,
   showSnackbar: PropTypes.func.isRequired,
   inputKey: PropTypes.string.isRequired

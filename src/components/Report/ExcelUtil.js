@@ -83,7 +83,9 @@ export const writeData = (worksheet, idx, key, value, align) => {
 export const getCorrectValue = (key, value) => {
   if (!value) return value;
   if (value === "Tehran") return "Téhéran";
-  if (key === "Nom") return value.toUpperCase();
+  if (key.toString().includes("Prénom"))
+    return value[0].toUpperCase() + value.slice(1);
+  if (key.toString().includes("Nom")) return value.toUpperCase();
   return value;
 };
 
@@ -195,9 +197,9 @@ export const writeFooter = (worksheet, rowCount, code, id) => {
   let third =
     "Pièce jointe : Copie du document original en langue persan (farsi)";
 
-  rowCount = writeText(worksheet, rowCount, false, first);
-  rowCount = writeText(worksheet, rowCount, false, second);
-  rowCount = writeText(worksheet, rowCount, false, third);
+  rowCount = writeText(worksheet, rowCount, false, first, 12);
+  rowCount = writeText(worksheet, rowCount, false, second, 12);
+  rowCount = writeText(worksheet, rowCount, false, third, 12);
   return rowCount;
 };
 

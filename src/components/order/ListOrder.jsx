@@ -23,6 +23,8 @@ import DeleteOrder from "./DeleteOrder";
 import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteExpiredOrders from "./DeleteExpiredOrders";
+import CreatePreBill from "../Payment/CreatePreBill";
+import ShowPreBill from "../Payment/ShowPreBill";
 
 class ListOrder extends Component {
   constructor(props) {
@@ -40,6 +42,8 @@ class ListOrder extends Component {
       openResult: false,
       openDelete: false,
       openDeletes: false,
+      openCreatePreBill: false,
+      openPreBill: false,
       itemId: "",
       name: "",
       username: "",
@@ -200,6 +204,35 @@ class ListOrder extends Component {
     this.getData();
   };
 
+  handleClickOpenCreatePreBill = orderId => {
+    this.setState({
+      openCreatePreBill: true,
+      itemId: orderId
+    });
+  };
+
+  handleClickCloseCreatePreBill = () => {
+    this.setState({
+      openCreatePreBill: false,
+      itemId: ""
+    });
+    this.getData();
+  };
+
+  handleClickOpenPreBill = orderId => {
+    this.setState({
+      openPreBill: true,
+      itemId: orderId
+    });
+  };
+
+  handleClickClosePreBill = () => {
+    this.setState({
+      openPreBill: false,
+      itemId: ""
+    });
+  };
+
   handleClose = () => {
     this.setState({ open: false });
     this.getData();
@@ -237,7 +270,8 @@ class ListOrder extends Component {
         this.handleClickOpenStatus,
         this.handleClickOpenResult,
         this.handleDownload,
-        this.handleClickDelete
+        this.handleClickDelete,
+        this.handleClickOpenCreatePreBill
       );
     if (this.props.type && this.state.isAdmin)
       return getAdminColumns(
@@ -253,7 +287,8 @@ class ListOrder extends Component {
       this.handleClickOpenMessages,
       this.handleClickOpenStatus,
       this.handleDownload,
-      this.handleClickDelete
+      this.handleClickDelete,
+      this.handleClickOpenPreBill
     );
   };
 
@@ -366,6 +401,12 @@ class ListOrder extends Component {
             onClose={this.handleClickCloseResult}
           />
         )}
+        {this.state.openCreatePreBill && (
+          <CreatePreBill
+            orderId={parseInt(this.state.itemId)}
+            onClose={this.handleClickCloseCreatePreBill}
+          />
+        )}
         {this.state.openDelete && (
           <DeleteOrder
             id={parseInt(this.state.itemId)}
@@ -388,6 +429,13 @@ class ListOrder extends Component {
           component={<ShowBill orderId={this.state.itemId} />}
           handleClose={this.handleClickCloseBill}
           open={this.state.openBillInfo}
+          itemId={this.state.itemId}
+        />
+        <FullScreenDialog
+          title="Devis"
+          component={<ShowPreBill orderId={this.state.itemId} />}
+          handleClose={this.handleClickClosePreBill}
+          open={this.state.openPreBill}
           itemId={this.state.itemId}
         />
       </Fragment>

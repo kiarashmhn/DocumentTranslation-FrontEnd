@@ -138,7 +138,9 @@ class CreateOrder extends Component {
         isLoading: true
       },
       () => {
-        this.createOrder(true, OrderStatus.PENDING.name, "SUBMIT");
+        this.state.type.code === "DD"
+          ? this.createOrder(true, OrderStatus.PRE_BILL.name, "PRE-SUBMIT")
+          : this.createOrder(true, OrderStatus.PENDING.name, "SUBMIT");
       }
     );
   };

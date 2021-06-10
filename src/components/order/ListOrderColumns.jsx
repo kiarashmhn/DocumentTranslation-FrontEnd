@@ -154,7 +154,8 @@ export function getSuperAdminColumns(
   handleClickOpenStatus,
   handleClickOpenResult,
   handleDownload,
-  handleClickDelete
+  handleClickDelete,
+  handleClickOpenCreatePreBill
 ) {
   return [
     {
@@ -231,7 +232,9 @@ export function getSuperAdminColumns(
         customBodyRender: (value, meta) => {
           if (
             meta.rowData &&
-            (meta.rowData[3] === "IN_PROGRESS" || meta.rowData[3] === "PENDING")
+            (meta.rowData[3] === "IN_PROGRESS" ||
+              meta.rowData[3] === "PENDING" ||
+              meta.rowData[3] === "PRE_BILL")
           ) {
             if (value !== undefined && value !== null) {
               return (
@@ -274,6 +277,8 @@ export function getSuperAdminColumns(
                 </span>
               );
             }
+          } else if (value !== undefined && value !== null) {
+            return <span>{value}</span>;
           }
         }
       }
@@ -316,9 +321,17 @@ export function getSuperAdminColumns(
                 <MonetizationOnIcon fontSize="small" />
               </IconButton>
             );
-          } else {
-            return <span />;
-          }
+          } else if (meta.rowData[0].toString().includes("DD")) {
+            return (
+              <IconButton
+                aria-label="delete"
+                onClick={() => handleClickOpenCreatePreBill(meta.rowData[1])}
+                style={{ color: theme.palette.danger.main }}
+              >
+                <ReceiptIcon fontSize="small" />
+              </IconButton>
+            );
+          } else return <span />;
         }
       }
     },
@@ -392,7 +405,8 @@ export function getUserColumns(
   handleClickOpenMessages,
   handleClickOpenStatus,
   handleDownload,
-  handleClickDelete
+  handleClickDelete,
+  handleClickOpenPreBill
 ) {
   return [
     {
@@ -475,6 +489,13 @@ export function getUserColumns(
       }
     },
     {
+      name: "preBillAmount",
+      label: "مبلغ",
+      options: {
+        display: "excluded"
+      }
+    },
+    {
       name: "hasNewAdminMessage",
       label: (
         <div>
@@ -534,8 +555,8 @@ export function getUserColumns(
       name: "isPaymentVerified",
       label: (
         <div>
-          <div dir={"ltr"}>{getFrenchName("facture")}</div>
-          <div dir={"rtl"}>{getPersianName("facture")}</div>
+          <div dir={"ltr"}>{getFrenchName("factureOrDevis")}</div>
+          <div dir={"rtl"}>{getPersianName("factureOrDevis")}</div>
         </div>
       ),
       options: {
@@ -545,6 +566,19 @@ export function getUserColumns(
               <IconButton
                 aria-label="delete"
                 onClick={() => handleClickOpenBill(meta.rowData[1])}
+                style={{ color: theme.palette.primary.main }}
+              >
+                <ReceiptIcon fontSize="small" />
+              </IconButton>
+            );
+          } else if (
+            meta.rowData[4] !== undefined &&
+            meta.rowData[4] !== null
+          ) {
+            return (
+              <IconButton
+                aria-label="delete"
+                onClick={() => handleClickOpenPreBill(meta.rowData[1])}
                 style={{ color: theme.palette.primary.main }}
               >
                 <ReceiptIcon fontSize="small" />

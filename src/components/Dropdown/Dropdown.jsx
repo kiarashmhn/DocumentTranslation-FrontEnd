@@ -88,7 +88,7 @@ export default function ControlledOpenSelect(props) {
           name: `${props.keyId}`
         }}
       >
-        {!props.emptyChoice && (
+        {!props.emptyChoice && !required && (
           <MenuItem value="">
             <em>{getCompleteName("none")}</em>
           </MenuItem>

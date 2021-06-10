@@ -2,7 +2,7 @@ import { getFrenchName } from "../../../Dictionary.js";
 export function TazkaraBarghiReportData(data) {
   let sign;
 
-  switch (data.signatureorFingerPrint) {
+  switch (data.signatureorFingerPrint1) {
     case "fingerPrint":
       sign = "Empreinte digitale du titulaire";
       break;
@@ -10,8 +10,8 @@ export function TazkaraBarghiReportData(data) {
       sign = "signature du titulaire";
       break;
 
-    case "both":
-      sign = "Empreinte digitale et signature du titulaire";
+    case "both1":
+      sign = "Empreinte digitale et signature";
       break;
     case "nothing":
       sign = "";
@@ -24,9 +24,7 @@ export function TazkaraBarghiReportData(data) {
       isBold: true,
       size: 16
     },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name: "République Islamique d’Afghanistan",
@@ -67,9 +65,6 @@ export function TazkaraBarghiReportData(data) {
     {
       type: "empty"
     },
-    {
-      type: "empty"
-    },
 
     {
       type: "data",
@@ -107,7 +102,11 @@ export function TazkaraBarghiReportData(data) {
       data: data.aBirthDate,
       name: "aBirthDate"
     },
-
+    {
+      type: "data",
+      data: getFrenchName(data.aBirthLocation),
+      name: "aBirthLocation"
+    },
     {
       type: "data",
       data: getFrenchName(data.livingLocationTemp),
@@ -135,8 +134,8 @@ export function TazkaraBarghiReportData(data) {
     },
     {
       type: "data",
-      data: data.idNumber,
-      name: "idNumber"
+      data: data.idNumberr,
+      name: "idNumberr"
     },
     {
       type: "data",
@@ -146,12 +145,7 @@ export function TazkaraBarghiReportData(data) {
     {
       type: "empty"
     },
-    {
-      type: "empty"
-    },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name:

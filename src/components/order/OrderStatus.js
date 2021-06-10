@@ -33,6 +33,11 @@ export const OrderStatus = {
     name: "delivered",
     french: "Livré",
     persian: "تحویل شده"
+  },
+  PRE_BILL: {
+    name: "preBill",
+    french: "En attente d'émission de la devis",
+    persian: "در انتظار صدور پیش فاکتور"
   }
 };
 

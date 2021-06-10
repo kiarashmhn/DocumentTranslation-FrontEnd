@@ -16,7 +16,9 @@ export default class PaymentSuccess extends Component {
       amount: this.props.location.state.amount,
       orderId: this.props.location.state.orderId,
       code: this.props.location.state.code,
-      delay: getTypeByKey(this.props.location.state.code).delay,
+      delay: this.props.location.state.delay
+        ? this.props.location.state.delay
+        : getTypeByKey(this.props.location.state.code).delay,
       method: this.props.location.state.method,
       redirect: false,
       redirectToList: false

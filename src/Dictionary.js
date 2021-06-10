@@ -231,6 +231,10 @@ export const Dictionary = {
     persian: "مبلغ",
     french: "Montant"
   },
+  amountInEuros: {
+    persian: "مبلغ به یورو",
+    french: "Montant en euros"
+  },
   appearance: {
     persian: "مشخصات ظاهری/بېلونکې نښې ",
     french: "Caractéristiques physiques"
@@ -542,6 +546,10 @@ export const Dictionary = {
     persian: "شماره ثبت فوت",
     french: "N° d’enregistrement de décès"
   },
+  delayInHours: {
+    french: "Délai de réalisation en heures",
+    persian: "مدت زمان بر حسب ساعت"
+  },
   deliveryDate: {
     persian: "تاریخ تحویل",
     french: "Date de livraison"
@@ -695,6 +703,10 @@ export const Dictionary = {
   facture: {
     persian: "صورتحساب",
     french: "Facture"
+  },
+  factureOrDevis: {
+    persian: "فاکتور / پیش فاکتور",
+    french: "Facture / Devis"
   },
   familyMembers: {
     persian: "تعداد نفرات فامیل/دعایلې شمیره",

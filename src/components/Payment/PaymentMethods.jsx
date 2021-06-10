@@ -110,6 +110,7 @@ export default class PaymentMethods extends Component {
                     orderId={this.props.id}
                     code={this.props.code}
                     deliveryType={this.props.deliveryType}
+                    delay={this.props.delay}
                   />
                 </Elements>
               )}
@@ -123,6 +124,7 @@ export default class PaymentMethods extends Component {
                     price={this.props.price}
                     deliveryType={this.props.deliveryType}
                     code={this.props.code}
+                    delay={this.props.delay}
                   />
                 </Fragment>
               )}
@@ -139,5 +141,6 @@ PaymentMethods.propTypes = {
   deliveryType: PropTypes.any.isRequired,
   id: PropTypes.any.isRequired,
   code: PropTypes.string.isRequired,
-  price: PropTypes.any.isRequired
+  price: PropTypes.any.isRequired,
+  delay: PropTypes.any.isRequired
 };

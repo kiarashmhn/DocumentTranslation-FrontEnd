@@ -7,12 +7,7 @@ import {
   withStyles,
   withWidth
 } from "@material-ui/core";
-import {
-  getCompleteName,
-  getCompleteNameNew,
-  getFrenchName,
-  getPersianName
-} from "../../Dictionary";
+import { getCompleteName, getCompleteNameNew } from "../../Dictionary";
 import { getType } from "../order/OrderTypes";
 import theme from "../../theme";
 import Box from "@material-ui/core/Box";
@@ -20,6 +15,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import PaymentMethods from "./PaymentMethods";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import { Redirect } from "react-router";
+import * as URLConstant from "../../URLConstant";
 
 const persianNote =
   "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی می باشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
@@ -137,18 +133,47 @@ class Payment extends Component {
       specialPost: false,
       basePrice: 20,
       price: 20,
+      delay: 24,
       orderId: this.props.location.state.orderId,
       type: getType(this.props.location.state.type),
       redirect: false
     };
   }
 
+  getOrder = async () => {
+    let self = this;
+    let postData = {
+      id: this.state.orderId
+    };
+    await this.api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.GET_ORDER_BY_ID,
+        postData
+      )
+      .then(function(res) {
+        if (!res.success) self.props.showSnackbar(res.message, "error");
+        else {
+          self.setState({
+            price: res.data.preBillAmount,
+            basePrice: res.data.preBillAmount,
+            delay: res.data.preBillDelay
+          });
+        }
+      });
+  };
+
   componentDidMount() {
     let price = this.state.type.price;
-    this.setState({
-      basePrice: price,
-      price: price
-    });
+    if (price) {
+      this.setState({
+        basePrice: price,
+        price: price
+      });
+    } else {
+      this.getOrder().then(() => {});
+    }
   }
 
   postOnChange = e => {
@@ -410,6 +435,7 @@ class Payment extends Component {
           width={width}
           classes={classes}
           deliveryType={this.state.deliveryType}
+          delay={this.state.delay}
         />
         <div
           style={{

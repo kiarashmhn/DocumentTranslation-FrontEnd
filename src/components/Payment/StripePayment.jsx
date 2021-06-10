@@ -20,7 +20,7 @@ import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
 
 function StripePayment(props) {
-  const { amount, orderId, code, deliveryType, showSnackbar } = props;
+  const { amount, orderId, code, deliveryType, delay, showSnackbar } = props;
 
   const [isPaymentLoading, setPaymentLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState(null);
@@ -105,7 +105,8 @@ function StripePayment(props) {
               orderId: orderId,
               method: 0,
               amount: amount,
-              code: code
+              code: code,
+              delay: delay
             }
           }}
         />
@@ -299,5 +300,6 @@ StripePayment.propTypes = {
   orderId: PropTypes.any.isRequired,
   code: PropTypes.any.isRequired,
   deliveryType: PropTypes.any.isRequired,
+  delay: PropTypes.any.isRequired,
   showSnackbar: PropTypes.func.isRequired
 };
