@@ -389,29 +389,66 @@ export default class NodesGenerator extends Component {
             </Grid>
           );
         case "select":
-          return (
-            <Grid
-              item
-              xs={element.xsGrid ? element.xsGrid : 12}
-              sm={element.smGrid ? element.smGrid : 12}
-              md={element.grid ? element.grid : 4}
-              key={element.key}
-            >
-              <ControlledOpenSelect
-                required={element.required}
-                value={this.state[element.key]}
-                keyId={element.key}
-                onChange={event => this.elementOnChange(event, element)}
-                names={element.options.map(option => ({
-                  value: option.value,
-                  displayName: getCompleteName(option.key)
-                }))}
-                title={getFrenchName(element.key)}
-                helperText={getPersianName(element.key)}
-                disabled={element.readOnly}
-              />
-            </Grid>
-          );
+          if (!getHint(element.key))
+            return (
+              <Grid
+                item
+                xs={element.xsGrid ? element.xsGrid : 12}
+                sm={element.smGrid ? element.smGrid : 12}
+                md={element.grid ? element.grid : 4}
+                key={element.key}
+              >
+                <ControlledOpenSelect
+                  required={element.required}
+                  value={this.state[element.key]}
+                  keyId={element.key}
+                  onChange={event => this.elementOnChange(event, element)}
+                  names={element.options.map(option => ({
+                    value: option.value,
+                    displayName: getCompleteName(option.key)
+                  }))}
+                  title={getFrenchName(element.key)}
+                  helperText={getPersianName(element.key)}
+                  disabled={element.readOnly}
+                />
+              </Grid>
+            );
+          else
+            return (
+              <Grid
+                item
+                xs={element.xsGrid ? element.xsGrid : 12}
+                sm={element.smGrid ? element.smGrid : 12}
+                md={element.grid ? element.grid : 4}
+                key={element.key}
+              >
+                <Grid container spacing={0}>
+                  <Grid item xs={11} sm={11} md={11}>
+                    <ControlledOpenSelect
+                      required={element.required}
+                      value={this.state[element.key]}
+                      keyId={element.key}
+                      onChange={event => this.elementOnChange(event, element)}
+                      names={element.options.map(option => ({
+                        value: option.value,
+                        displayName: getCompleteName(option.key)
+                      }))}
+                      title={getFrenchName(element.key)}
+                      helperText={getPersianName(element.key)}
+                      disabled={element.readOnly}
+                    />
+                  </Grid>
+                  <Grid item xs={1} sm={1} md={1}>
+                    <div style={{ marginTop: "43px" }}>
+                      <CustomTooltip>
+                        <div>{getHint(element.key).french}</div>
+                        <div dir={"rtl"}>{getHint(element.key).persian}</div>
+                      </CustomTooltip>
+                    </div>
+                  </Grid>
+                </Grid>
+              </Grid>
+            );
         case "check":
           return (
             <Grid

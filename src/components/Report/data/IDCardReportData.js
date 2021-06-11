@@ -10,7 +10,7 @@ const getSmartCardFields = data => {
       type: "text",
       name: "Notification",
       isBold: true,
-      size: 16
+      size: 12
     },
     {
       type: "text",
@@ -84,13 +84,12 @@ export function IDCardReportData(data) {
       isBold: true,
       size: 12
     },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name: "Photographie du titulaire",
-      isBold: false
+      isBold: true,
+      size: 12
     },
     {
       type: "empty"

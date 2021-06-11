@@ -1,4 +1,68 @@
+import { getFrenchName } from "../../../Dictionary.js";
 export function AfghanDrivingLicenseReportData(data) {
+  let category = [
+    data.aGrade,
+    data.bGrade,
+    data.cGrade,
+    data.dGrade,
+    data.eGrade
+  ];
+  let categoryName = [
+    "Catégorie A et ",
+    "Catégorie B et ",
+    "Catégorie C et ",
+    "Catégorie D et ",
+    "Catégorie E et "
+  ];
+  let cat = " ";
+
+  for (let i = 0; i < category.length; i++) {
+    if (category[i].toString() === "1") {
+      cat = cat + categoryName[i];
+    }
+  }
+  let a;
+  let c;
+  let d;
+  let e;
+  let f;
+  let g;
+  let h;
+  let k;
+  let j;
+  if (category[0] === 1) {
+    a =
+      "Catégorie A échelle 5 : permet de conduire tout type de motocyclette et de Tuk-tuk.";
+  }
+  if (category[1] === 1) {
+    c =
+      "Catégorie B échelle 4 : permet de conduire un véhicule dont le poids total autorisé en charge (PTAC)";
+    d =
+      "est de 3,5 tonnes au maximum et comportant moins de neuf places assises, conducteur compris.";
+  }
+  if (category[2] === 1) {
+    e =
+      "Catégorie C échelle 3 : autorise la conduite d’un poids lourd dont le poids total autorisé en";
+    f = "charge (PTAC) est supérieur de 3,5.";
+  }
+  if (category[3] === 1) {
+    g =
+      "Catégorie D échelle 2 : autorise la conduite d’un véhicule affecté au transport de personnes";
+    h = "comportant plus de neuf places assises, conducteur compris.";
+  }
+  if (category[4] === 1) {
+    k =
+      "Catégorie E échelle 1 : autorise la conduite des véhicules affectés au transport de marchandises.";
+    j =
+      "Ce permis autorise également la conduite des véhicules des catégories B, C et D.";
+  }
+  cat = cat.slice(0, -4);
+  let province = "";
+  let temp = getFrenchName(data.directorProvince1);
+  // eslint-disable-next-line no-constant-condition
+  if (temp.substring(0, 1) === "A" || "E" || "I" || "O" || "U" || "Y") {
+    province = "d’" + temp;
+  } else province = "de " + temp;
   return [
     {
       type: "text",
@@ -6,12 +70,7 @@ export function AfghanDrivingLicenseReportData(data) {
       isBold: true,
       size: 16
     },
-    {
-      type: "empty"
-    },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name:
@@ -21,20 +80,20 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "text",
-      name: "Permis de conduire  –  Catégories : ",
+      name: "Permis de conduire  –  Catégories : " + cat,
       isBold: true,
       size: 12
     },
     {
       type: "text",
       name:
-        "Photo d’identité du titulaire, tamponnée du sceau de la Direction générale de la circulation de la",
+        "Photo d’identité du titulaire, tamponnée du sceau de la Direction générale de la circulation",
       isBold: true,
       size: 12
     },
     {
       type: "text",
-      name: "Province de ",
+      name: "de la Province " + province,
       isBold: true,
       size: 12
     },
@@ -44,23 +103,23 @@ export function AfghanDrivingLicenseReportData(data) {
 
     {
       type: "data",
-      data: data.name,
-      name: "name"
+      data: data.aName1,
+      name: "aName1"
     },
     {
       type: "data",
-      data: data.lastName,
-      name: "lastName"
+      data: data.aLastName,
+      name: "aLastName"
     },
     {
       type: "data",
-      data: data.fatherName,
-      name: "fatherName"
+      data: data.valad,
+      name: "valad"
     },
     {
       type: "data",
-      data: data.tazkaraInformation,
-      name: "tazkaraInformation"
+      data: data.tazkaraInformation ? data.tazkaraInformation.pageNumber : "",
+      name: "tazkaraInformation1"
     },
     {
       type: "data",
@@ -114,36 +173,38 @@ export function AfghanDrivingLicenseReportData(data) {
       data: data.village,
       name: "village"
     },
-
+    {
+      type: "empty"
+    },
     {
       type: "data",
-      data: data.bloodType,
+      data: getFrenchName(data.bloodType),
       name: "bloodType"
     },
     {
       type: "data",
-      data: data.serialNumber,
-      name: "serialNumber"
+      data: data.serialNumber2,
+      name: "serialNumber2"
     },
     {
       type: "data",
-      data: data.directorProvince,
-      name: "directorProvince"
+      data: getFrenchName(data.directorProvince1),
+      name: "directorProvince1"
     },
     {
       type: "data",
-      data: data.dateofIssue,
-      name: "dateofIssue"
+      data: data.dateofIssue1,
+      name: "dateofIssue1"
     },
     {
       type: "data",
-      data: data.validationDate,
-      name: "validationDate"
+      data: data.validationDate1,
+      name: "validationDate1"
     },
     {
       type: "data",
-      data: data.category,
-      name: "category"
+      data: data.category2,
+      name: "category2"
     },
     {
       type: "data",
@@ -158,85 +219,77 @@ export function AfghanDrivingLicenseReportData(data) {
       size: 12
     },
     {
+      type: "empty"
+    },
+    {
+      type: "empty"
+    },
+    {
       type: "text",
       name: "Notification :",
       isBold: true,
       size: 12
     },
+
     {
       type: "text",
-      name:
-        "Au vu du registre 23 / 93 / 182, ce permis de conduire a été renouvelé pour la catégorie B échelle 4.",
+      name: a,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name:
-        "Catégorie A échelle 5 : permet de conduire tout type de motocyclette et de Tuk-tuk.",
+      name: c,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name:
-        "Catégorie B échelle 4 : permet de conduire un véhicule dont le poids total autorisé en charge (PTAC) est",
+      name: d,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name:
-        "de 3,5 tonnes au maximum et comportant moins de neuf places assises, conducteur compris.",
+      name: e,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name:
-        "Catégorie C échelle 3 : autorise la conduite d’un poids lourd dont le poids total autorisé en charge",
+      name: f,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name: "(PTAC) est supérieur de 3,5.",
+      name: g,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name:
-        "Catégorie D échelle 2 : autorise la conduite d’un véhicule affecté au transport de personnes comportant ",
+      name: h,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name: "plus de neuf places assises, conducteur compris.",
+      name: k,
       isBold: false,
       align: "left",
       size: 12
     },
     {
       type: "text",
-      name:
-        "Catégorie E échelle 1 : autorise la conduite des véhicules affectés au transport de marchandises. Ce",
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name:
-        "permis autorise également la conduite des véhicules des catégories B, C et D. ",
+      name: j,
       isBold: false,
       align: "left",
       size: 12
