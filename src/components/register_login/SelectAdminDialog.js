@@ -84,6 +84,7 @@ function SelectAdminDialog(props) {
           showSnackbar(res.message, "error");
         }
         setIsLoading(false);
+        onClose();
       })
       .catch(function() {
         setIsLoading(false);
@@ -95,7 +96,7 @@ function SelectAdminDialog(props) {
       loading={isLoading}
       onClose={onClose}
       open
-      headline="انتخاب مسئول"
+      headline="Sélectionnez un traducteur"
       onFormSubmit={e => {
         e.preventDefault();
         assign();

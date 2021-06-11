@@ -146,6 +146,12 @@ export default class PreBill extends Component {
                 <StyledTableRow key={"DD"}>
                   <StyledTableCell component="th" scope="row">
                     {"Traduction certifiée dari/farsi↔ français"}
+                    <br />
+                    <div>
+                      {"Délai de réalisation : " +
+                        this.state.delay +
+                        " heures après réception de votre règlement"}
+                    </div>
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     {this.state.amount + " euros TTC"}

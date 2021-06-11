@@ -16,6 +16,7 @@ import PaymentMethods from "./PaymentMethods";
 import CustomTooltip from "../Tooltip/CustomTooltip";
 import { Redirect } from "react-router";
 import * as URLConstant from "../../URLConstant";
+import Api from "../Api/Api";
 
 const persianNote =
   "* نکته: هزینه های اعلام شده شامل دریافت سند ترجمه بصورت فایل PDF در حساب کاربری و اصل آن با پست عادی می باشد. توصیه می شود که برای اطمینان بیشتر از وصول ترجمه یکی از گزینه های زیر را برای ارسال ترجمه انتخاب کنید.";
@@ -138,6 +139,7 @@ class Payment extends Component {
       type: getType(this.props.location.state.type),
       redirect: false
     };
+    this.api = new Api();
   }
 
   getOrder = async () => {
@@ -145,6 +147,7 @@ class Payment extends Component {
     let postData = {
       id: this.state.orderId
     };
+    console.log(postData);
     await this.api
       .doPostNoAppend(
         process.env.REACT_APP_HOST_URL +
@@ -153,14 +156,11 @@ class Payment extends Component {
         postData
       )
       .then(function(res) {
-        if (!res.success) self.props.showSnackbar(res.message, "error");
-        else {
-          self.setState({
-            price: res.data.preBillAmount,
-            basePrice: res.data.preBillAmount,
-            delay: res.data.preBillDelay
-          });
-        }
+        self.setState({
+          price: res.data.preBillAmount,
+          basePrice: res.data.preBillAmount,
+          delay: res.data.preBillDelay
+        });
       });
   };
 

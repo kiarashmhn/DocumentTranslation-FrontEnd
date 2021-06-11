@@ -232,9 +232,7 @@ export function getSuperAdminColumns(
         customBodyRender: (value, meta) => {
           if (
             meta.rowData &&
-            (meta.rowData[3] === "IN_PROGRESS" ||
-              meta.rowData[3] === "PENDING" ||
-              meta.rowData[3] === "PRE_BILL")
+            (meta.rowData[3] === "IN_PROGRESS" || meta.rowData[3] === "PENDING")
           ) {
             if (value !== undefined && value !== null) {
               return (

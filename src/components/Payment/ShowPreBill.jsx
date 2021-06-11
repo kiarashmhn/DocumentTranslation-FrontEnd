@@ -38,7 +38,7 @@ export default class ShowPreBill extends Component {
         format: [canvas.width, canvas.height] // set needed dimensions for any element
       });
       pdf.addImage(imgData, "JPEG", 0, 0, canvas.width, canvas.height);
-      pdf.save("facture.pdf");
+      pdf.save("devis.pdf");
     });
   };
 
@@ -63,8 +63,8 @@ export default class ShowPreBill extends Component {
           to={{
             pathname: URLConstant.PAYMENT,
             state: {
-              orderId: this.state.id,
-              type: "DD"
+              orderId: this.props.orderId,
+              type: "other"
             }
           }}
         />
@@ -100,7 +100,7 @@ export default class ShowPreBill extends Component {
             onClick={this.exportPdf}
             style={{ textTransform: "none", marginRight: "5px" }}
             variant="contained"
-            color="primary"
+            color="secondary"
             align={"center"}
           >
             <p>
@@ -164,7 +164,7 @@ export default class ShowPreBill extends Component {
             }}
             style={{ textTransform: "none", marginLeft: "5px" }}
             variant="contained"
-            color="secondary"
+            color="primary"
             align={"center"}
           >
             <p>

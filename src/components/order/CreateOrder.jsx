@@ -355,6 +355,7 @@ class CreateOrder extends Component {
                 onSave={this.handleSave}
                 itemId={this.state.id}
                 isLoading={this.state.isLoading}
+                code={this.state.type.code}
               />
             }
             handleClose={this.handleCloseDialog}

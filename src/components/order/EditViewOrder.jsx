@@ -174,13 +174,15 @@ class EditViewOrder extends Component {
   render() {
     return (
       <Fragment>
-        {this.props.type === "ADMIN" && (
-          <CreateReport
-            data={this.state.initialState}
-            id={this.props.itemId}
-            type={this.state.type}
-          />
-        )}
+        {this.props.type === "ADMIN" &&
+          this.state.type &&
+          this.state.type.reportData && (
+            <CreateReport
+              data={this.state.initialState}
+              id={this.props.itemId}
+              type={this.state.type}
+            />
+          )}
         {this.state.initialState && this.state.type && (
           <OrderForm
             ref={this.orderFormRef}
@@ -189,6 +191,7 @@ class EditViewOrder extends Component {
             isLoading={this.state.isLoading}
             initialState={this.state.initialState}
             form={this.state.type.form}
+            code={this.state.type.code}
             itemId={this.props.itemId}
             onFileSelect={this.handleFileSelect}
           />

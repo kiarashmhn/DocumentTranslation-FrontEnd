@@ -5,6 +5,7 @@ import { Button } from "@material-ui/core";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import FieldInput from "../CustomInput/FieldInput";
 import * as URLConstant from "../../URLConstant";
+import Api from "../Api/Api";
 
 export default class CreatePreBill extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class CreatePreBill extends Component {
       amount: null,
       delay: null
     };
+    this.api = new Api();
   }
 
   create = () => {
@@ -48,6 +50,7 @@ export default class CreatePreBill extends Component {
         hideBackdrop={false}
         onFormSubmit={e => {
           e.preventDefault();
+          this.create();
         }}
         hasCloseIcon
         content={

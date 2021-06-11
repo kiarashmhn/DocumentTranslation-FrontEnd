@@ -1850,6 +1850,10 @@ export const Dictionary = {
     persian: "تاریخ ثبت / پرداخت",
     french: "Date registre / paiement"
   },
+  submitOrder: {
+    persian: "ثبت سفارش",
+    french: "Enregistrer la commande"
+  },
   tadjik: {
     persian: "تاجیکی",
     french: "Tadjik"
