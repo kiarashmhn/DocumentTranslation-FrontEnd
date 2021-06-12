@@ -683,6 +683,11 @@ export default class NodesGenerator extends Component {
                 onChange={value => this.setState({ [element.key]: value })}
                 valueRequired={element.required}
                 defaultValue={element.defaultValue}
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key]
+                    : null
+                }
               />
             </Grid>
           );
@@ -701,6 +706,11 @@ export default class NodesGenerator extends Component {
                 onChange={value => this.setState({ [element.key]: value })}
                 valueRequired={element.required}
                 defaultValue={element.defaultValue}
+                initialState={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key]
+                    : null
+                }
               />
             </Grid>
           );

@@ -81,9 +81,10 @@ export const writeData = (worksheet, idx, key, value, align) => {
 };
 
 export const getCorrectValue = (key, value) => {
-  if (!value) return value;
+  if (!value) return "Case vide";
+  if (!key) return value;
   if (value === "Tehran") return "Téhéran";
-  if (key.toString().includes("Prénom"))
+  if (key.toString().includes("Prénom") || key.toString().includes("Lieu"))
     return value[0].toUpperCase() + value.slice(1);
   if (key.toString().includes("Nom")) return value.toUpperCase();
   return value;
@@ -162,6 +163,9 @@ export const writeRow = (worksheet, rowCount, row) => {
         rowCount,
         row.align
       );
+      break;
+    case "pureData":
+      rowCount = writeData(worksheet, rowCount, row.name, row.data, row.align);
       break;
     case "array":
       rowCount = writeArray(worksheet, rowCount, row.data, row);

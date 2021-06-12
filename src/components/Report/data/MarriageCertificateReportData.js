@@ -1,4 +1,74 @@
 import { getFrenchName } from "../../../Dictionary.js";
+const capitalize = str => {
+  return str[0].toUpperCase() + str.slice(1);
+};
+
+const getMahr = data => {
+  let res = [];
+  if (data.mahrQuran && data.mahrQuran.check)
+    res = [
+      ...res,
+      ...[
+        {
+          type: "text",
+          name: "Un Coran d’une valeur de " + data.mahrQuran.value + " Rials ;",
+          size: 12
+        }
+      ]
+    ];
+  if (data.mahrChandelier && data.mahrChandelier.check)
+    res = [
+      ...res,
+      ...[
+        {
+          type: "text",
+          name:
+            "Un miroir, un chandelier électrique d’une valeur de " +
+            data.mahrChandelier.value +
+            " Rials ;",
+          size: 12
+        }
+      ]
+    ];
+  if (data.mahrNabat && data.mahrNabat.check)
+    res = [
+      ...res,
+      ...[
+        {
+          type: "text",
+          name:
+            "Un sucre cristallisé sur bâton en bois d’une valeur de " +
+            data.mahrNabat.value +
+            " Rials ;",
+          size: 12
+        }
+      ]
+    ];
+  if (data.mahrCoin && data.mahrCoin.check)
+    res = [
+      ...res,
+      ...[
+        {
+          type: "text",
+          name: data.mahrCoin.value + " pièces d’or Azadi ;",
+          size: 12
+        }
+      ]
+    ];
+  if (data.mahrHaj && data.mahrHaj.check)
+    res = [
+      ...res,
+      ...[
+        {
+          type: "text",
+          name:
+            "Un voyage Hajj d’une valeur de " + data.mahrHaj.value + " Rials.",
+          size: 12
+        }
+      ]
+    ];
+  return res;
+};
 export function MarriageCertificateReportData(data) {
   return [
     {
@@ -396,18 +466,27 @@ export function MarriageCertificateReportData(data) {
       isBold: true,
       size: 12
     },
+    ...getMahr(data),
     {
       type: "empty"
     },
     {
       type: "text",
-      name: "Signature du marié : " + data.hname + " " + data.hlastName,
+      name:
+        "Signature du marié : " +
+        capitalize(data.hname) +
+        " " +
+        data.hlastName.toString().toUpperCase(),
       isBold: true,
       size: 12
     },
     {
       type: "text",
-      name: "Signature de la mariée : " + data.name + " " + data.lastName,
+      name:
+        "Signature de la mariée : " +
+        capitalize(data.name) +
+        " " +
+        data.lastName.toString().toUpperCase(),
       isBold: true,
       size: 12
     },
@@ -858,6 +937,46 @@ export function MarriageCertificateReportData(data) {
       size: 12
     },
     {
+      type: "data",
+      data: data["witness21"].name,
+      name: "name"
+    },
+    {
+      type: "data",
+      data: data["witness21"].lastName,
+      name: "lastName"
+    },
+    {
+      type: "data",
+      data: data["witness21"].fatherName,
+      name: "fatherName"
+    },
+    {
+      type: "data",
+      data: data["witness21"].nationalId,
+      name: "nationalId"
+    },
+    {
+      type: "data",
+      data: data["witness21"].placeofIssueIDCertificate,
+      name: "placeofIssueIDCertificate"
+    },
+    {
+      type: "data",
+      data: data["witness21"].livingPlace,
+      name: "livingPlace"
+    },
+    {
+      type: "data",
+      data: getFrenchName(data["witness21"].job),
+      name: "job"
+    },
+    {
+      type: "pureData",
+      data: "Oui",
+      name: "Signature du 1er témoin"
+    },
+    {
       type: "empty"
     },
     {
@@ -867,6 +986,46 @@ export function MarriageCertificateReportData(data) {
       size: 12
     },
     {
+      type: "data",
+      data: data["witness22"].name,
+      name: "name"
+    },
+    {
+      type: "data",
+      data: data["witness22"].lastName,
+      name: "lastName"
+    },
+    {
+      type: "data",
+      data: data["witness22"].fatherName,
+      name: "fatherName"
+    },
+    {
+      type: "data",
+      data: data["witness22"].nationalId,
+      name: "nationalId"
+    },
+    {
+      type: "data",
+      data: data["witness22"].placeofIssueIDCertificate,
+      name: "placeofIssueIDCertificate"
+    },
+    {
+      type: "data",
+      data: data["witness22"].livingPlace,
+      name: "livingPlace"
+    },
+    {
+      type: "data",
+      data: getFrenchName(data["witness22"].job),
+      name: "job"
+    },
+    {
+      type: "pureData",
+      data: "Oui",
+      name: "Signature du 2ème témoin"
+    },
+    {
       type: "empty"
     },
     {
@@ -874,6 +1033,46 @@ export function MarriageCertificateReportData(data) {
       name: "3ème Témoin :",
       isBold: true,
       size: 12
+    },
+    {
+      type: "data",
+      data: data["witness23"].name,
+      name: "name"
+    },
+    {
+      type: "data",
+      data: data["witness23"].lastName,
+      name: "lastName"
+    },
+    {
+      type: "data",
+      data: data["witness23"].fatherName,
+      name: "fatherName"
+    },
+    {
+      type: "data",
+      data: data["witness23"].nationalId,
+      name: "nationalId"
+    },
+    {
+      type: "data",
+      data: data["witness23"].placeofIssueIDCertificate,
+      name: "placeofIssueIDCertificate"
+    },
+    {
+      type: "data",
+      data: data["witness23"].livingPlace,
+      name: "livingPlace"
+    },
+    {
+      type: "data",
+      data: getFrenchName(data["witness23"].job),
+      name: "job"
+    },
+    {
+      type: "pureData",
+      data: "Oui",
+      name: "Signature du 3ème témoin"
     },
     {
       type: "empty"
@@ -894,6 +1093,46 @@ export function MarriageCertificateReportData(data) {
       size: 12
     },
     {
+      type: "data",
+      data: data["representer1"].name,
+      name: "name"
+    },
+    {
+      type: "data",
+      data: data["representer1"].lastName,
+      name: "lastName"
+    },
+    {
+      type: "data",
+      data: data["representer1"].fatherName,
+      name: "fatherName"
+    },
+    {
+      type: "data",
+      data: data["representer1"].nationalId,
+      name: "nationalId"
+    },
+    {
+      type: "data",
+      data: data["representer1"].placeofIssueIDCertificate,
+      name: "placeofIssueIDCertificate"
+    },
+    {
+      type: "data",
+      data: data["representer1"].livingPlace,
+      name: "livingPlace"
+    },
+    {
+      type: "data",
+      data: getFrenchName(data["representer1"].job),
+      name: "job"
+    },
+    {
+      type: "pureData",
+      data: "Oui",
+      name: "Signature du 1er représentant"
+    },
+    {
       type: "empty"
     },
     {
@@ -901,6 +1140,46 @@ export function MarriageCertificateReportData(data) {
       name: "2ème représentant :",
       isBold: true,
       size: 12
+    },
+    {
+      type: "data",
+      data: data["representer2"].name,
+      name: "name"
+    },
+    {
+      type: "data",
+      data: data["representer2"].lastName,
+      name: "lastName"
+    },
+    {
+      type: "data",
+      data: data["representer2"].fatherName,
+      name: "fatherName"
+    },
+    {
+      type: "data",
+      data: data["representer2"].nationalId,
+      name: "nationalId"
+    },
+    {
+      type: "data",
+      data: data["representer2"].placeofIssueIDCertificate,
+      name: "placeofIssueIDCertificate"
+    },
+    {
+      type: "data",
+      data: data["representer2"].livingPlace,
+      name: "livingPlace"
+    },
+    {
+      type: "data",
+      data: getFrenchName(data["representer2"].job),
+      name: "job"
+    },
+    {
+      type: "pureData",
+      data: "Oui",
+      name: "Signature du 2ème représentant"
     },
     {
       type: "empty"
@@ -912,9 +1191,9 @@ export function MarriageCertificateReportData(data) {
       type: "text",
       name:
         "Identité de la personne qui a célébré le mariage [notaire] entre Mr. " +
-        data.hname +
+        capitalize(data.hname) +
         " " +
-        data.hlastName,
+        data.hlastName.toString().toUpperCase(),
       isBold: true,
       size: 12
     },
@@ -922,9 +1201,9 @@ export function MarriageCertificateReportData(data) {
       type: "text",
       name:
         "(le marié) et Mme. " +
-        data.name +
+        capitalize(data.name) +
         " " +
-        data.lastName +
+        data.lastName.toString().toUpperCase() +
         " (la mariée)",
       isBold: true,
       size: 12
@@ -946,7 +1225,7 @@ export function MarriageCertificateReportData(data) {
       name: "marriageDate1"
     },
     {
-      type: "data",
+      type: "pureData",
       data: "Marriage permanent",
       name: "Type de mariage"
     },
@@ -954,9 +1233,9 @@ export function MarriageCertificateReportData(data) {
       type: "text",
       name:
         "Signature du notaire [ la personne qui a célébré le mariage ], Mr. " +
-        data.nameAghed +
+        capitalize(data.nameAghed) +
         " " +
-        data.lastNameAghed,
+        data.lastNameAghed.toString().toUpperCase(),
       isBold: true,
       size: 12
     },

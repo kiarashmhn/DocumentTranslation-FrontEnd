@@ -271,7 +271,7 @@ export const MarriageCertificateForm = {
         },
         {
           key: "depositDate",
-          type: "text"
+          type: "date"
         },
         {
           key: "bankName",
