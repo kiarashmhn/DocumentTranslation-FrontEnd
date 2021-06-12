@@ -77,7 +77,7 @@ export const TazkaraOldForm = {
           ]
         },
         {
-          key: "sex",
+          key: "sext",
           type: "select",
           options: [
             { value: "M", key: "M" },
@@ -186,22 +186,18 @@ export const TazkaraOldForm = {
           required: true
         },
         {
-          key: "tazkaraInformation",
+          key: "registeredTazkaraInformation",
           type: "tazkaraInfo"
         },
-        {
-          key: "SarakName",
-          type: "text",
-          notRequired: true
-        },
-        {
-          key: "HouseNumber",
-          type: "text",
-          notRequired: true
-        },
+
         {
           key: "TazkaraIssueDate",
           type: "date"
+        },
+        {
+          key: "docNumber",
+          type: "text",
+          notRequired: true
         }
       ]
     },

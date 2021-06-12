@@ -694,11 +694,23 @@ export const Dictionary = {
   },
   eyeColor: {
     persian: "رنگ چشم/د سترګو رنګ",
-    french: "Couleur des yeux"
+    french: "Couleur des yeux",
+    hint: {
+      persian:
+        "اگر متن نوشته شده در تذکره در لیست پیشنهادی نیست، گزینه دیگر را انتخاب کنید مترجم این قسمت را بازنویسی و کامل خواهد کرد. اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french:
+        "Sélectionnez ‘Autre’ si la note inscrite sur la Taskera n’est pas proposée dans la liste, le traducteur révisera et complétera cette partie. Sélectionnez ‘case vide’ si la case est vide. "
+    }
   },
   eyebrow: {
     persian: "حالت ابرو/وروحی",
-    french: "Forme des sourcils"
+    french: "Forme des sourcils",
+    hint: {
+      persian:
+        "اگر متن نوشته شده در تذکره در لیست پیشنهادی نیست، گزینه دیگر را انتخاب کنید مترجم این قسمت را بازنویسی و کامل خواهد کرد. اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french:
+        "Sélectionnez ‘Autre’ si la note inscrite sur la Taskera n’est pas proposée dans la liste, le traducteur révisera et complétera cette partie. Sélectionnez ‘case vide’ si la case est vide. "
+    }
   },
   facture: {
     persian: "صورتحساب",
@@ -710,7 +722,11 @@ export const Dictionary = {
   },
   familyMembers: {
     persian: "تعداد نفرات فامیل/دعایلې شمیره",
-    french: "Nombre de membres dans la famille"
+    french: "Nombre de membres dans la famille",
+    hint: {
+      persian: "اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french: "Sélectionnez ‘case vide’ si la case est vide."
+    }
   },
   farah: {
     persian: "فراه",
@@ -730,7 +746,7 @@ export const Dictionary = {
   },
   fatherInformation: {
     persian: "مشخصات تذکره پدر یا پدر کلان",
-    french: "Référence de l'enregistrement de son père ou grand-père"
+    french: "Réference de Taskera du père ou grand-père"
   },
   fatherLastName: {
     persian: "تخلص پدر",
@@ -846,7 +862,11 @@ export const Dictionary = {
   },
   foreignLanguage: {
     persian: "زبان خارجی/باندنی ژبه",
-    french: "Langue étrangère"
+    french: "Langue étrangère",
+    hint: {
+      persian: "اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french: "Sélectionnez ‘case vide’ si la case est vide."
+    }
   },
   free: {
     persian: "آزاد",
@@ -898,7 +918,13 @@ export const Dictionary = {
   },
   hairColor: {
     persian: "رنگ موی/دویښتانو رنګ",
-    french: "Couleur des cheveux"
+    french: "Couleur des cheveux",
+    hint: {
+      persian:
+        "اگر متن نوشته شده در تذکره در لیست پیشنهادی نیست، گزینه دیگر را انتخاب کنید مترجم این قسمت را بازنویسی و کامل خواهد کرد. اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french:
+        "Sélectionnez ‘Autre’ si la note inscrite sur la Taskera n’est pas proposée dans la liste, le traducteur révisera et complétera cette partie. Sélectionnez ‘case vide’ si la case est vide. "
+    }
   },
   hazara: {
     persian: "هزاره",
@@ -914,7 +940,13 @@ export const Dictionary = {
   },
   height: {
     persian: "قد/ونه",
-    french: "Taille"
+    french: "Taille",
+    hint: {
+      persian:
+        "اگر متن نوشته شده در تذکره در لیست پیشنهادی نیست، گزینه دیگر را انتخاب کنید مترجم این قسمت را بازنویسی و کامل خواهد کرد. اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french:
+        "Sélectionnez ‘Autre’ si la note inscrite sur la Taskera n’est pas proposée dans la liste, le traducteur révisera et complétera cette partie. Sélectionnez ‘case vide’ si la case est vide. "
+    }
   },
   helmand: {
     persian: "هلمند",
@@ -1268,7 +1300,13 @@ export const Dictionary = {
   },
   militaryStatus: {
     persian: "خدمت عسکری",
-    french: "Situation militaire"
+    french: "Situation militaire",
+    hint: {
+      persian:
+        "اگر خدمت عسکری در تذکره ثبت شده است 'بله' را انتخاب کنید، مترجم این قسمت را بازنویسی و کامل خواهد کرد. اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french:
+        "Sélectionnez ‘Oui’ si vous avez effectué le service militaire, le traducteur révisera et complétera cette partie. Sélectionnez ‘case vide’ si la case est vide."
+    }
   },
   ministryDate: {
     persian: "در تاریخ ",
@@ -1480,7 +1518,13 @@ export const Dictionary = {
   },
   otherSigns: {
     persian: "علائم فارقه ی دیگر/نورې نښې",
-    french: "Signe particulier"
+    french: "Signe particulier",
+    hint: {
+      persian:
+        "اگر متن نوشته شده در تذکره در لیست پیشنهادی نیست، گزینه دیگر را انتخاب کنید مترجم این قسمت را بازنویسی و کامل خواهد کرد. اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french:
+        "Sélectionnez ‘Autre’ si la note inscrite sur la Taskera n’est pas proposée dans la liste, le traducteur révisera et complétera cette partie. Sélectionnez ‘case vide’ si la case est vide. "
+    }
   },
   others: {
     persian: "دیگر",
@@ -1636,7 +1680,7 @@ export const Dictionary = {
   },
   registeredTazkaraInformation: {
     persian: "مشخصات ثبت تذکره",
-    french: "Référence de l'enregistrement de l'acte"
+    french: "Référence de l'enregistrement de Taskera"
   },
   registrationDate: {
     persian: "تاریخ ثبت",
@@ -1760,6 +1804,14 @@ export const Dictionary = {
     persian: "جنس",
     french: "Sexe"
   },
+  sext: {
+    persian: "جنس",
+    french: "Sexe",
+    hint: {
+      persian: "اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french: "Sélectionnez ‘case vide’ si la case est vide."
+    }
+  },
   shortHeight: {
     persian: "کوتاه",
     french: "Petite"
@@ -1794,7 +1846,13 @@ export const Dictionary = {
   },
   skinColor: {
     persian: "رنگ پوست/د پوستکي رنګ",
-    french: "Couleur de la peau"
+    french: "Couleur de la peau",
+    hint: {
+      persian:
+        "اگر متن نوشته شده در تذکره در لیست پیشنهادی نیست، گزینه دیگر را انتخاب کنید مترجم این قسمت را بازنویسی و کامل خواهد کرد. اگر این قسمت در تذکره خالی است، گزینه خالی را انتخاب کنید.",
+      french:
+        "Sélectionnez ‘Autre’ si la note inscrite sur la Taskera n’est pas proposée dans la liste, le traducteur révisera et complétera cette partie. Sélectionnez ‘case vide’ si la case est vide. "
+    }
   },
   soldier: {
     persian: "سرباز/ناوی",
@@ -1817,7 +1875,7 @@ export const Dictionary = {
     french: "Numéro d’enregistrement spécifique"
   },
   spouses: {
-    persian: "همسران",
+    persian: "همسر",
     french: "Conjoint",
     hint: {
       persian:
@@ -2003,7 +2061,7 @@ export const Dictionary = {
   },
   uploadTazkara: {
     persian: "بارگذاری تذکره",
-    french: "Importer la Acte de naissance"
+    french: "Importer l'Acte de naissance"
   },
   uploadTazkara1: {
     persian: "بارگذاری تذکره",
@@ -2144,6 +2202,34 @@ export const Dictionary = {
   zone: {
     persian: "زون",
     french: "Zone"
+  },
+  tazkaraf: {
+    persian: "",
+    french: "Référence de l'enregistrement"
+  },
+  tazkara2: {
+    persian: "",
+    french: "de l'acte"
+  },
+  tazkara3: {
+    persian: "",
+    french: "de son père ou grand-père"
+  },
+  numberofFamily: {
+    persian: "",
+    french: "Nombre de membres dans"
+  },
+  members: {
+    persian: "",
+    french: "la famille"
+  },
+  DateDeDebut: {
+    persian: "",
+    french: "Date de début du service "
+  },
+  militaryService: {
+    persian: "",
+    french: "militaire"
   }
 };
 

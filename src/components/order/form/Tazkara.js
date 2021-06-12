@@ -66,7 +66,7 @@ export const TazkaraForm = {
           required: true
         },
         {
-          key: "nationality",
+          key: "nationality1",
           type: "select",
           options: [
             { value: "afghan", key: "afghan" },
@@ -88,7 +88,7 @@ export const TazkaraForm = {
           notRequired: true
         },
         {
-          key: "sex",
+          key: "sext",
           type: "select",
           options: [
             { value: "M", key: "M" },
@@ -269,6 +269,22 @@ export const TazkaraForm = {
         {
           key: "TazkaraIssueDate",
           type: "date"
+        },
+        {
+          key: "docNumber",
+          type: "text",
+          notRequired: true
+        },
+
+        {
+          key: "signatureorFingerPrint1",
+          type: "select",
+          options: [
+            { value: "signature", key: "signature" },
+            { value: "fingerPrint", key: "fingerPrint" },
+            { value: "both1", key: "both1" }
+          ],
+          required: true
         }
       ]
     },

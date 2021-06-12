@@ -2,7 +2,7 @@ import { getFrenchName } from "../../../Dictionary.js";
 export function TazkaraReportData(data) {
   let sign = "";
 
-  switch (data.signatureorFingerPrint) {
+  switch (data.signatureorFingerPrint1) {
     case "fingerPrint":
       sign = "Empreinte digitale du titulaire";
       break;
@@ -65,9 +65,6 @@ export function TazkaraReportData(data) {
       size: 12
     },
 
-    {
-      type: "empty"
-    },
     {
       type: "empty"
     },
@@ -142,8 +139,13 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
+
+      name: "numberofFamily"
+    },
+    {
+      type: "data",
       data: data.familyMembers,
-      name: "familyMembers"
+      name: "members"
     },
     {
       type: "data",
@@ -224,23 +226,46 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
-      data: data.registeredTazkaraInformation,
-      name: "registeredTazkaraInformation"
+
+      name: "tazkaraf"
     },
     {
       type: "data",
-      data: data.fatherstazkaraInformation,
-      name: "fatherstazkaraInformation"
+      data:
+        (data.registeredTazkaraInformation
+          ? data.registeredTazkaraInformation.volumeNumber
+          : "") +
+        (data.registeredTazkaraInformation
+          ? data.registeredTazkaraInformation.pageNumber
+          : "") +
+        (data.registeredTazkaraInformation
+          ? data.registeredTazkaraInformation.registerNumber
+          : ""),
+      name: "tazkara2"
+    },
+    {
+      type: "data",
+
+      name: "tazkaraf"
+    },
+    {
+      type: "data",
+      data:
+        (data.fatherstazkaraInformation
+          ? data.fatherstazkaraInformation.volumeNumber
+          : "") +
+        (data.fatherstazkaraInformation
+          ? data.fatherstazkaraInformation.pageNumber
+          : "") +
+        (data.fatherstazkaraInformation
+          ? data.fatherstazkaraInformation.registerNumber
+          : ""),
+      name: "tazkara3"
     },
     {
       type: "empty"
     },
-    {
-      type: "empty"
-    },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name: "Empreinte digitale de la personne concernée : " + sign,
@@ -250,9 +275,7 @@ export function TazkaraReportData(data) {
     {
       type: "empty"
     },
-    {
-      type: "empty"
-    },
+
     {
       type: "text",
       name:
