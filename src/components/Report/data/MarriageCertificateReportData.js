@@ -1,6 +1,9 @@
 import { getFrenchName } from "../../../Dictionary.js";
 const capitalize = str => {
-  return str[0].toUpperCase() + str.slice(1);
+  return str && str.length > 1 ? str[0].toUpperCase() + str.slice(1) : str;
+};
+const upperCase = str => {
+  return str && str.length > 1 ? str.toString().toUpperCase() : str;
 };
 
 const getMahr = data => {
@@ -476,7 +479,7 @@ export function MarriageCertificateReportData(data) {
         "Signature du marié : " +
         capitalize(data.hname) +
         " " +
-        data.hlastName.toString().toUpperCase(),
+        upperCase(data.hlastName),
       isBold: true,
       size: 12
     },
@@ -486,7 +489,7 @@ export function MarriageCertificateReportData(data) {
         "Signature de la mariée : " +
         capitalize(data.name) +
         " " +
-        data.lastName.toString().toUpperCase(),
+        upperCase(data.lastName),
       isBold: true,
       size: 12
     },
@@ -1193,7 +1196,7 @@ export function MarriageCertificateReportData(data) {
         "Identité de la personne qui a célébré le mariage [notaire] entre Mr. " +
         capitalize(data.hname) +
         " " +
-        data.hlastName.toString().toUpperCase(),
+        upperCase(data.hlastName),
       isBold: true,
       size: 12
     },
@@ -1203,7 +1206,7 @@ export function MarriageCertificateReportData(data) {
         "(le marié) et Mme. " +
         capitalize(data.name) +
         " " +
-        data.lastName.toString().toUpperCase() +
+        upperCase(data.lastName) +
         " (la mariée)",
       isBold: true,
       size: 12
@@ -1235,7 +1238,7 @@ export function MarriageCertificateReportData(data) {
         "Signature du notaire [ la personne qui a célébré le mariage ], Mr. " +
         capitalize(data.nameAghed) +
         " " +
-        data.lastNameAghed.toString().toUpperCase(),
+        upperCase(data.lastNameAghed),
       isBold: true,
       size: 12
     },
