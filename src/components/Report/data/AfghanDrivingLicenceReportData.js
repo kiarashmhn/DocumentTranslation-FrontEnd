@@ -17,11 +17,13 @@ export function AfghanDrivingLicenseReportData(data) {
   let cat = " ";
 
   for (let i = 0; i < category.length; i++) {
-    if (category[i].toString() === "1") {
+    if (category[i] === 1) {
       cat = cat + categoryName[i];
     }
   }
   let a;
+  // eslint-disable-next-line no-unused-vars
+  let b;
   let c;
   let d;
   let e;
@@ -33,6 +35,7 @@ export function AfghanDrivingLicenseReportData(data) {
   if (category[0] === 1) {
     a =
       "Catégorie A échelle 5 : permet de conduire tout type de motocyclette et de Tuk-tuk.";
+    b = "";
   }
   if (category[1] === 1) {
     c =

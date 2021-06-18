@@ -2,7 +2,7 @@ import { getFrenchName } from "../../../Dictionary.js";
 export function TazkaraReportData(data) {
   let sign = "";
 
-  switch (data.signatureorFingerPrint1) {
+  switch (data.signatureorFingerPrint) {
     case "fingerPrint":
       sign = "Empreinte digitale du titulaire";
       break;
@@ -10,7 +10,7 @@ export function TazkaraReportData(data) {
       sign = "signature du titulaire";
       break;
 
-    case "both":
+    case "both1":
       sign = "Empreinte digitale et signature du titulaire";
       break;
     case "nothing":
@@ -68,6 +68,9 @@ export function TazkaraReportData(data) {
     {
       type: "empty"
     },
+    {
+      type: "empty"
+    },
 
     {
       type: "data",
@@ -109,9 +112,10 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
-      data: data.aBirthDate,
-      name: "aBirthDate"
+      data: data.complexDate,
+      name: "complexDate"
     },
+
     {
       type: "data",
       data: getFrenchName(data.religion),
@@ -139,13 +143,8 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
-
-      name: "numberofFamily"
-    },
-    {
-      type: "data",
       data: data.familyMembers,
-      name: "members"
+      name: "familyMembers"
     },
     {
       type: "data",
@@ -226,46 +225,23 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
-
-      name: "tazkaraf"
+      data: data.registeredTazkaraInformation,
+      name: "registeredTazkaraInformation"
     },
     {
       type: "data",
-      data:
-        (data.registeredTazkaraInformation
-          ? data.registeredTazkaraInformation.volumeNumber
-          : "") +
-        (data.registeredTazkaraInformation
-          ? data.registeredTazkaraInformation.pageNumber
-          : "") +
-        (data.registeredTazkaraInformation
-          ? data.registeredTazkaraInformation.registerNumber
-          : ""),
-      name: "tazkara2"
-    },
-    {
-      type: "data",
-
-      name: "tazkaraf"
-    },
-    {
-      type: "data",
-      data:
-        (data.fatherstazkaraInformation
-          ? data.fatherstazkaraInformation.volumeNumber
-          : "") +
-        (data.fatherstazkaraInformation
-          ? data.fatherstazkaraInformation.pageNumber
-          : "") +
-        (data.fatherstazkaraInformation
-          ? data.fatherstazkaraInformation.registerNumber
-          : ""),
-      name: "tazkara3"
+      data: data.fatherstazkaraInformation,
+      name: "fatherstazkaraInformation"
     },
     {
       type: "empty"
     },
-
+    {
+      type: "empty"
+    },
+    {
+      type: "empty"
+    },
     {
       type: "text",
       name: "Empreinte digitale de la personne concernée : " + sign,
@@ -275,7 +251,9 @@ export function TazkaraReportData(data) {
     {
       type: "empty"
     },
-
+    {
+      type: "empty"
+    },
     {
       type: "text",
       name:

@@ -27,6 +27,7 @@ import LicenseType from "../Marriage/LicenseType";
 import AfghanWitness from "../Marriage/AfghanWitness";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Typography from "@material-ui/core/Typography";
+import Address from "../Address";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -63,6 +64,10 @@ export default class NodesGenerator extends Component {
     this.setState({
       ...temp
     });
+  };
+
+  addressOnChange = value => {
+    this.setState({ ...this.state, ...value });
   };
 
   preparingInitValue = element => {
@@ -724,6 +729,21 @@ export default class NodesGenerator extends Component {
               key={element.key}
             >
               <div />
+            </Grid>
+          );
+        case "address":
+          return (
+            <Grid
+              item
+              xs={element.xsGrid ? element.xsGrid : 12}
+              sm={element.smGrid ? element.smGrid : 12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <Address
+                onChange={this.addressOnChange}
+                initial={this.props.externalInitializationData}
+              />
             </Grid>
           );
         case "multi":

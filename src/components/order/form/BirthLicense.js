@@ -146,27 +146,8 @@ export const birthLicenseForm = {
       title: "addr",
       content: [
         {
-          key: "nameOrCompany",
-          type: "text"
-        },
-        {
           key: "address",
-          grid: 12,
-          type: "text"
-        },
-        {
-          key: "postalCode",
-          type: "text",
-          grid: 3,
-          smGrid: 6,
-          xsGrid: 6
-        },
-        {
-          key: "city",
-          type: "text",
-          grid: 3,
-          smGrid: 6,
-          xsGrid: 6
+          type: "address"
         }
       ]
     }

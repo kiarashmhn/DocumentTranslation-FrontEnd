@@ -8,7 +8,6 @@ export const alignmentLeft = { vertical: "middle", horizontal: "left" };
 export const endSection = "Signature et cachet du proposé à l’état civil";
 
 export const writeText = (worksheet, idx, isBold, text, size) => {
-  console.log(text);
   idx = idx + 1;
   worksheet.mergeCells("A" + idx + ":" + "I" + idx);
   worksheet.addRow();
@@ -16,7 +15,7 @@ export const writeText = (worksheet, idx, isBold, text, size) => {
   customCell.font = {
     name: "Times",
     family: 4,
-    size: size ? size : 16,
+    size: size ? size : 12,
     underline: false,
     bold: isBold
   };
@@ -200,6 +199,16 @@ export const writeFooter = (worksheet, rowCount, code, id) => {
 
   let third =
     "Pièce jointe : Copie du document original en langue persan (farsi)";
+  if (
+    code === "AP" ||
+    code === "AA" ||
+    code === "AAB" ||
+    code === "AM" ||
+    code === "AN" ||
+    code === "AC"
+  ) {
+    third = "Pièce jointe : Copie du document original en langue Dari";
+  }
 
   rowCount = writeText(worksheet, rowCount, false, first, 12);
   rowCount = writeText(worksheet, rowCount, false, second, 12);

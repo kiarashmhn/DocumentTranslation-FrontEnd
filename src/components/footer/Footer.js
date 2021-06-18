@@ -322,6 +322,25 @@ class Footer extends Component {
               </Box>
             </Grid>
           </Grid>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "10px"
+            }}
+          >
+            <div
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_in/creditcards.png)`,
+                backgroundRepeat: "no-repeat",
+                verticalAlign: "middle",
+                backgroundSize: "contain",
+                height: "120px",
+                width: "480px"
+              }}
+            />
+          </div>
         </div>
         {this.redirect()}
       </footer>

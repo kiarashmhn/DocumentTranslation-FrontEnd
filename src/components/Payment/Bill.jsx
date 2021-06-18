@@ -49,6 +49,9 @@ export default class Bill extends Component {
       type: { key: "" },
       username: "",
       address: "",
+      postalCode: "",
+      city: "",
+      nameOrCompany: "",
       method: { frenchTitle: "" },
       amount: 0
     };
@@ -76,6 +79,11 @@ export default class Bill extends Component {
         if (!res.success) self.props.showSnackbar(res.message, "error");
         else {
           self.setState({
+            postalCode: res.data.details ? res.data.details.postalCode : "",
+            city: res.data.details ? res.data.details.city : "",
+            nameOrCompany: res.data.details
+              ? res.data.details.nameOrCompany
+              : "",
             address: res.data.details ? res.data.details.address : "",
             username: res.data.username,
             type: getTypeByKey(res.data.type)
@@ -148,12 +156,15 @@ export default class Bill extends Component {
           component="div"
         >
           <Box fontStyle="bold" fontWeight="fontWeightMedium" display="inline">
-            {this.state.username}
+            {this.state.nameOrCompany}
           </Box>
           <br />
         </Typography>
         <Typography variant="body1" align={"center"}>
           {this.state.address}
+        </Typography>
+        <Typography variant="body1" align={"center"}>
+          {this.state.postalCode + " " + this.state.city}
         </Typography>
         <div style={{ padding: "20px 20px" }}>
           <TableContainer component={Paper}>

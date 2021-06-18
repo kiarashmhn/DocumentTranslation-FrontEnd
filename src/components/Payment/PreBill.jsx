@@ -45,6 +45,9 @@ export default class PreBill extends Component {
     this.state = {
       username: "",
       address: "",
+      postalCode: "",
+      city: "",
+      nameOrCompany: "",
       delay: 0,
       amount: 0
     };
@@ -71,6 +74,11 @@ export default class PreBill extends Component {
         if (!res.success) self.props.showSnackbar(res.message, "error");
         else {
           self.setState({
+            postalCode: res.data.details ? res.data.details.postalCode : "",
+            city: res.data.details ? res.data.details.city : "",
+            nameOrCompany: res.data.details
+              ? res.data.details.nameOrCompany
+              : "",
             address: res.data.details ? res.data.details.address : "",
             username: res.data.username,
             amount: res.data.preBillAmount,
@@ -122,12 +130,15 @@ export default class PreBill extends Component {
           component="div"
         >
           <Box fontStyle="bold" fontWeight="fontWeightMedium" display="inline">
-            {this.state.username}
+            {this.state.nameOrCompany}
           </Box>
           <br />
         </Typography>
         <Typography variant="body1" align={"center"}>
           {this.state.address}
+        </Typography>
+        <Typography variant="body1" align={"center"}>
+          {this.state.postalCode + " " + this.state.city}
         </Typography>
         <div style={{ padding: "20px 20px" }}>
           <TableContainer component={Paper}>

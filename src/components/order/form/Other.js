@@ -60,41 +60,8 @@ export const otherForm = {
       title: "addr",
       content: [
         {
-          key: "nameOrCompany",
-          type: "text"
-        },
-        {
           key: "address",
-          grid: 12,
-          type: "text"
-        },
-        {
-          key: "postalCode",
-          type: "text",
-          grid: 3,
-          smGrid: 6,
-          xsGrid: 6
-        },
-        {
-          key: "city",
-          type: "text",
-          grid: 3,
-          smGrid: 6,
-          xsGrid: 6
-        },
-        {
-          key: "empty",
-          type: "empty",
-          grid: 6
-        },
-        {
-          key: "otherAddress",
-          type: "select",
-          options: [
-            { value: "yes", key: "yes" },
-            { value: "no", key: "no" }
-          ],
-          required: true
+          type: "address"
         }
       ]
     }

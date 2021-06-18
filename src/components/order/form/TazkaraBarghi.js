@@ -237,7 +237,7 @@ export const TazkaraBarghiForm = {
             { value: "fingerPrint", key: "fingerPrint" },
             { value: "both1", key: "both1" }
           ],
-          required: true
+          required: false
         }
       ]
     },

@@ -36,25 +36,19 @@ export function TazkaraKetabReportData(data) {
     },
     {
       type: "text",
-      name:
-        "Numéro de volume : " +
-        (data.tazkaraInformation ? data.tazkaraInformation.volumeNumber : ""),
+      name: "Numéro de volume : " + data.tazkaraInformation,
       isBold: true,
       size: 12
     },
     {
       type: "text",
-      name:
-        "Numéro de page :  " +
-        (data.tazkaraInformation ? data.tazkaraInformation.pageNumber : ""),
+      name: "Numéro de page :  " + data.tazkaraInformation,
       isBold: true,
       size: 12
     },
     {
       type: "text",
-      name:
-        "Numéro d'enregistrement : " +
-        (data.tazkaraInformation ? data.tazkaraInformation.registerNumber : ""),
+      name: "Numéro d'enregistrement : " + data.tazkaraInformation,
       isBold: true,
       size: 12
     },
@@ -121,7 +115,7 @@ export function TazkaraKetabReportData(data) {
     {
       type: "data",
       data: data.aBirthDate,
-      name: "aBirthDate"
+      name: "complexDate"
     },
     {
       type: "data",
