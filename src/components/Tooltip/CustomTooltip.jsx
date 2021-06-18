@@ -29,10 +29,10 @@ export default class CustomTooltip extends Component {
   render() {
     const dir = this.props.dir ? this.props.dir : "ltr";
     return (
-      <ClickAwayListener onClickAway={this.handleTooltipClose}>
+      <ClickAwayListener onClickAway={() => this.handleTooltipClose}>
         <div style={{ maxWidth: "100%", width: "30px" }}>
           <Tooltip
-            onClose={this.handleTooltipClose}
+            onClose={() => this.handleTooltipClose}
             open={this.state.open}
             disableFocusListener
             disableHoverListener
@@ -58,7 +58,7 @@ export default class CustomTooltip extends Component {
               color="primary"
               aria-label="hint"
               component="span"
-              onClick={this.handleTooltipOpen}
+              onClick={() => this.handleTooltipOpen}
             >
               {this.props.icon && this.props.icon === "error" ? (
                 <ErrorIcon />

@@ -83,6 +83,7 @@ export const getCorrectValue = (key, value) => {
   if (!value) return "Case vide";
   if (!key) return value;
   if (value === "Tehran") return "Téhéran";
+  if (value === "Iranienne / ایرانی") return "Iranienne";
   if (key.toString().includes("Prénom") || key.toString().includes("Lieu"))
     return value[0].toUpperCase() + value.slice(1);
   if (key.toString().includes("Nom")) return value.toUpperCase();

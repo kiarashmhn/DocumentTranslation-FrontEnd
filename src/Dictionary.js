@@ -2223,13 +2223,9 @@ export const Dictionary = {
     persian: "",
     french: "la famille"
   },
-  DateDeDebut: {
+  serviceStartDate: {
     persian: "",
-    french: "Date de début du service "
-  },
-  militaryService: {
-    persian: "",
-    french: "militaire"
+    french: "Date de début du service militaire"
   }
 };
 

@@ -431,7 +431,6 @@ export function MarriageCertificateReportData(data) {
       data: "Non",
       name: "abc"
     },
-
     {
       type: "empty"
     },
@@ -1193,7 +1192,7 @@ export function MarriageCertificateReportData(data) {
     {
       type: "text",
       name:
-        "Identité de la personne qui a célébré le mariage [notaire] entre Mr. " +
+        "Identité de la personne qui a célébré le mariage [notaire] entre Mr." +
         capitalize(data.hname) +
         " " +
         upperCase(data.hlastName),
@@ -1203,7 +1202,7 @@ export function MarriageCertificateReportData(data) {
     {
       type: "text",
       name:
-        "(le marié) et Mme. " +
+        "(le marié) et Mme." +
         capitalize(data.name) +
         " " +
         upperCase(data.lastName) +
@@ -1278,9 +1277,9 @@ export function MarriageCertificateReportData(data) {
       type: "text",
       name:
         "Je soussigné, " +
-        data.nameAghed +
+        capitalize(data.nameAghed) +
         " " +
-        data.lastNameAghed +
+        upperCase(data.lastNameAghed) +
         ", certifie que les époux  sont bien les ",
       isBold: false,
       size: 12

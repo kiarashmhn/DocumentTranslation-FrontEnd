@@ -105,6 +105,7 @@ class EditViewOrder extends Component {
       : [];
     delete orderFormState["files"];
     delete orderFormState["additionalFiles"];
+    self.orderFormRef.current.onRefresh();
     let postData = {
       id: this.props.itemId,
       type: this.state.type ? this.state.type.code : "",
@@ -123,7 +124,6 @@ class EditViewOrder extends Component {
         self.props.showSnackbar(res.message, res.success ? "success" : "error");
         self.handleFileSelect(files, "documents").then(() => {
           self.handleFileSelect(additionalFiles, "additional").then(() => {
-            self.orderFormRef.current.onRefresh();
             self.setState(
               {
                 isLoading: false

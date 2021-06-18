@@ -68,13 +68,8 @@ export function MilitaryServiceLicenceReportData(data) {
     },
     {
       type: "data",
-      data: "",
-      name: "DateDeDebut"
-    },
-    {
-      type: "data",
       data: data.startDateofMilitaryService,
-      name: "militaryService"
+      name: "serviceStartDate"
     },
     {
       type: "data",

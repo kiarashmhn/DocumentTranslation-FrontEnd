@@ -1,76 +1,69 @@
 import { getFrenchName } from "../../../Dictionary.js";
 export function DrivingLicenseReportData(data) {
-  let type1;
-  let type2;
-  let type3;
-  let type4;
-  let type5;
-  let type6;
-  let category = "";
-  let drivingLicenceCategory = "";
-  let drivingLicenceCategory1 = "";
-  if (data.firstGrade) {
-    category = "Catégorie 1";
-    drivingLicenceCategory = "firstGrade";
-  }
-  if (data.secondGrade) {
-    category = "Catégorie 2";
-    drivingLicenceCategory = "secondGrade";
-  }
-  if (data.thirdGrade) {
-    category = "Catégorie 3";
-    drivingLicenceCategory = "thirdGrade";
-  }
-  if (data.special) {
-    category = category + " et Catégorie spécifique";
-    drivingLicenceCategory1 = "special";
-  }
-  if (data.motorcycle) {
-    category = category + " et Motocyclette";
-    drivingLicenceCategory1 = "motorcycle";
-  }
-  switch (drivingLicenceCategory) {
-    case "motorcycle":
-      type1 =
-        "Motocyclette : permet de conduire d’une motocyclette dont la cylindré est de 200cc";
-      type2 =
-        "maximum et après 3 ans de détention de cette catégorie et sous condition d’être âgé d’au";
-      type3 =
-        "moins 23 ans, d’une motocyclette dont la cylindré est supérieure à 200cc.";
-      break;
-    case "thirdGrade":
-      type4 =
-        "Catégorie 3 : permet de conduire une voiture ou une camionnette comportant moins de neuf";
-      type5 =
-        "places assises et dont le poids total autorisé en charge (PTAC) est de 3,5 tonnes au maximum.";
-      break;
+  let category = "Catégorie : ";
+  let categories = [];
+  let categoryKeys = [
+    "firstGrade",
+    "secondGrade",
+    "thirdGrade",
+    "special",
+    "motorcycle"
+  ];
+  let categoryNames = ["1", "2", "3", "Catégorie spécifique", "Motocyclette"];
+  let categoryDes = [];
+  let categoriesData = [
+    [
+      "Catégorie 1 : autorise la conduite des véhicules affectés au transport de marchandises dont ",
+      "PTAC est supérieur à 6 tonnes et ceux affectés au transport de personnes comportant plus de ",
+      "26 personnes."
+    ],
+    [
+      "Catégorie 2 : autorise la conduite d’un poids lourd ne dépasse pas 6 tonnes, d’un véhicule ",
+      " affecté au transport de personnes comportant 26 personnes au maximum et d’un véhicule de ",
+      " transport en commun."
+    ],
+    [
+      "Catégorie 3 : permet de conduire une voiture ou une camionnette comportant moins de neuf",
+      "places assises et dont le poids total autorisé en charge (PTAC) est de 3,5 tonnes au maximum."
+    ],
+    ["Catégorie spécifique"],
+    [
+      "Motocyclette : permet de conduire d’une motocyclette dont la cylindré est de 200cc",
+      "maximum et après 3 ans de détention de cette catégorie et sous condition d’être âgé d’au",
+      "moins 23 ans, d’une motocyclette dont la cylindré est supérieure à 200cc."
+    ]
+  ];
+  categoryKeys.map((k, idx) => {
+    if (data[k] && data[k].check) {
+      categories.push(idx);
+    }
+  });
+  categories.map((k, idx) => {
+    if (idx === 0) category += categoryNames[k];
+    else category += " et " + categoryNames[k];
+    categoriesData[k].map(c => {
+      categoryDes.push({ type: "text", name: c, isBold: true, size: 10 });
+    });
+  });
+  let cData = [];
+  categories.map(c => {
+    cData = [
+      ...cData,
+      ...[
+        {
+          type: "data",
+          data: getFrenchName(categoryKeys[c]),
+          name: "drivingLicenceCategory"
+        },
+        {
+          type: "data",
+          data: data[categoryKeys[c]].date,
+          name: "firstIssueDate"
+        }
+      ]
+    ];
+  });
 
-    case "secondGrade":
-      type1 =
-        "Catégorie 2 : autorise la conduite d’un poids lourd ne dépasse pas 6 tonnes, d’un véhicule \n affecté au transport de personnes comportant 26 personnes au maximum et d’un véhicule de<br> transport en commun.";
-      break;
-    case "firstGrade":
-      type1 =
-        "Catégorie 1 : autorise la conduite des véhicules affectés au transport de marchandises dont \n PTAC est supérieur à 6 tonnes et ceux affectés au transport de personnes comportant plus de \n 26 personnes.";
-      break;
-    case "special":
-      type1 = "special";
-      break;
-  }
-  switch (drivingLicenceCategory1) {
-    case "motorcycle":
-      type1 =
-        "Motocyclette : permet de conduire d’une motocyclette dont la cylindré est de 200cc";
-      type2 =
-        "maximum et après 3 ans de détention de cette catégorie et sous condition d’être âgé d’au";
-      type3 =
-        "moins 23 ans, d’une motocyclette dont la cylindré est supérieure à 200cc.";
-
-      break;
-    case "special":
-      type1 = "special";
-      break;
-  }
   return [
     {
       type: "text",
@@ -150,24 +143,10 @@ export function DrivingLicenseReportData(data) {
     },
     {
       type: "data",
-      data: getFrenchName(drivingLicenceCategory),
-      name: "drivingLicenceCategory"
+      data: data.dateofIssue,
+      name: "dateofIssue"
     },
-    {
-      type: "data",
-      data: data.firstIssueDate,
-      name: "firstIssueDate"
-    },
-    {
-      type: "data",
-      data: getFrenchName(drivingLicenceCategory1),
-      name: "drivingLicenceCategory"
-    },
-    {
-      type: "data",
-      data: data.firstIssueDate,
-      name: "firstIssueDate"
-    },
+    ...cData,
     {
       type: "empty"
     },
@@ -190,41 +169,6 @@ export function DrivingLicenseReportData(data) {
       isBold: true,
       size: 12
     },
-    {
-      type: "text",
-      name: type1,
-      isBold: true,
-      size: 10
-    },
-    {
-      type: "text",
-      name: type2,
-      isBold: true,
-      size: 10
-    },
-    {
-      type: "text",
-      name: type3,
-      isBold: true,
-      size: 10
-    },
-    {
-      type: "text",
-      name: type4,
-      isBold: true,
-      size: 10
-    },
-    {
-      type: "text",
-      name: type5,
-      isBold: true,
-      size: 10
-    },
-    {
-      type: "text",
-      name: type6,
-      isBold: true,
-      size: 10
-    }
+    ...categoryDes
   ];
 }
