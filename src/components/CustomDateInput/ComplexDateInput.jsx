@@ -21,8 +21,6 @@ export default class ComplexDateInput extends Component {
   }
 
   setStateFromInitial = initial => {
-    console.log(initial.toString());
-
     if (initial.toString().includes("[")) {
       this.setState({
         mode: 2,

@@ -89,7 +89,7 @@ export const TazkaraOldForm = {
           key: "civilState",
           type: "select",
           options: [
-            { value: "sigle", key: "single" },
+            { value: "single", key: "single" },
             { value: "married", key: "married" },
             { value: "divorced", key: "divorced" },
             { value: "weadow", key: "weadow" }
@@ -177,7 +177,7 @@ export const TazkaraOldForm = {
       title: "tazkaraInformation",
       content: [
         {
-          key: "provinceDistrict",
+          key: "provinceDistrict1",
           provinceKey: "province",
           districtKey: "district",
           villageKey: "village",
@@ -189,10 +189,13 @@ export const TazkaraOldForm = {
           key: "registeredTazkaraInformation",
           type: "tazkaraInfo"
         },
-
         {
           key: "TazkaraIssueDate",
           type: "date"
+        },
+        {
+          key: "fatherstazkaraInformation",
+          type: "tazkaraInfo"
         },
         {
           key: "docNumber",

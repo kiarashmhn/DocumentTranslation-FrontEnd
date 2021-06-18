@@ -1,4 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
+import { getComplexDate } from "../ExcelUtil";
 export function AfghanDrivingLicenseReportData(data) {
   let category = [
     data.aGrade,
@@ -17,51 +18,119 @@ export function AfghanDrivingLicenseReportData(data) {
   let cat = " ";
 
   for (let i = 0; i < category.length; i++) {
-    if (category[i] === 1) {
+    if (category[i] === true) {
       cat = cat + categoryName[i];
     }
   }
-  let a;
-  // eslint-disable-next-line no-unused-vars
-  let b;
-  let c;
-  let d;
-  let e;
-  let f;
-  let g;
-  let h;
-  let k;
-  let j;
-  if (category[0] === 1) {
-    a =
-      "Catégorie A échelle 5 : permet de conduire tout type de motocyclette et de Tuk-tuk.";
-    b = "";
+  let categoryData = [];
+  if (category[0] === true) {
+    categoryData = [
+      ...categoryData,
+      ...[
+        {
+          type: "text",
+          name:
+            "Catégorie A échelle 5 : permet de conduire tout type de motocyclette et de Tuk-tuk.",
+          isBold: false,
+          align: "left",
+          size: 12
+        }
+      ]
+    ];
   }
-  if (category[1] === 1) {
-    c =
-      "Catégorie B échelle 4 : permet de conduire un véhicule dont le poids total autorisé en charge (PTAC)";
-    d =
-      "est de 3,5 tonnes au maximum et comportant moins de neuf places assises, conducteur compris.";
+  if (category[1] === true) {
+    categoryData = [
+      ...categoryData,
+      ...[
+        {
+          type: "text",
+          name:
+            "Catégorie B échelle 4 : permet de conduire un véhicule dont le poids total autorisé en charge (PTAC)",
+          isBold: false,
+          align: "left",
+          size: 12
+        },
+        {
+          type: "text",
+          name:
+            "est de 3,5 tonnes au maximum et comportant moins de neuf places assises, conducteur compris.",
+          isBold: false,
+          align: "left",
+          size: 12
+        }
+      ]
+    ];
   }
-  if (category[2] === 1) {
-    e =
-      "Catégorie C échelle 3 : autorise la conduite d’un poids lourd dont le poids total autorisé en";
-    f = "charge (PTAC) est supérieur de 3,5.";
+  if (category[2] === true) {
+    categoryData = [
+      ...categoryData,
+      ...[
+        {
+          type: "text",
+          name:
+            "Catégorie C échelle 3 : autorise la conduite d’un poids lourd dont le poids total autorisé en",
+          isBold: false,
+          align: "left",
+          size: 12
+        },
+        {
+          type: "text",
+          name: "charge (PTAC) est supérieur de 3,5.",
+          isBold: false,
+          align: "left",
+          size: 12
+        }
+      ]
+    ];
   }
-  if (category[3] === 1) {
-    g =
-      "Catégorie D échelle 2 : autorise la conduite d’un véhicule affecté au transport de personnes";
-    h = "comportant plus de neuf places assises, conducteur compris.";
+  if (category[3] === true) {
+    categoryData = [
+      ...categoryData,
+      ...[
+        {
+          type: "text",
+          name:
+            "Catégorie D échelle 2 : autorise la conduite d’un véhicule affecté au transport de personnes",
+          isBold: false,
+          align: "left",
+          size: 12
+        },
+        {
+          type: "text",
+          name: "comportant plus de neuf places assises, conducteur compris.",
+          isBold: false,
+          align: "left",
+          size: 12
+        }
+      ]
+    ];
   }
-  if (category[4] === 1) {
-    k =
-      "Catégorie E échelle 1 : autorise la conduite des véhicules affectés au transport de marchandises.";
-    j =
-      "Ce permis autorise également la conduite des véhicules des catégories B, C et D.";
+  if (category[4] === true) {
+    categoryData = [
+      ...categoryData,
+      ...[
+        {
+          type: "text",
+          name:
+            "Catégorie E échelle 1 : autorise la conduite des véhicules affectés au transport de marchandises.",
+          isBold: false,
+          align: "left",
+          size: 12
+        },
+        {
+          type: "text",
+          name:
+            "Ce permis autorise également la conduite des véhicules des catégories B, C et D.",
+          isBold: false,
+          align: "left",
+          size: 12
+        }
+      ]
+    ];
   }
   cat = cat.slice(0, -4);
-  let province = "";
-  let temp = getFrenchName(data.directorProvince1);
+  let province;
+  let temp = getFrenchName(data.directorProvince);
   // eslint-disable-next-line no-constant-condition
   if (temp.substring(0, 1) === "A" || "E" || "I" || "O" || "U" || "Y") {
     province = "d’" + temp;
@@ -121,12 +190,18 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "data",
-      data: data.tazkaraInformation ? data.tazkaraInformation.pageNumber : "",
+      data: data.tazkaraInformation1
+        ? data.tazkaraInformation1.pageNumber +
+          "-" +
+          data.tazkaraInformation1.pageNumber +
+          "-" +
+          data.tazkaraInformation1.registerNumber
+        : "",
       name: "tazkaraInformation1"
     },
     {
       type: "data",
-      data: data.aBirthDate,
+      data: getComplexDate(data.aBirthDate),
       name: "aBirthDate"
     },
 
@@ -142,17 +217,17 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "data",
-      data: data.province,
+      data: data.provinceDistrict.province,
       name: "province"
     },
     {
       type: "data",
-      data: data.district,
+      data: data.provinceDistrict.district,
       name: "district"
     },
     {
       type: "data",
-      data: data.village,
+      data: data.provinceDistrict.village,
       name: "village"
     },
     {
@@ -163,17 +238,17 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "data",
-      data: data.province,
+      data: data.provinceDistrict1.province,
       name: "province"
     },
     {
       type: "data",
-      data: data.district,
+      data: data.provinceDistrict1.district,
       name: "district"
     },
     {
       type: "data",
-      data: data.village,
+      data: data.provinceDistrict1.village,
       name: "village"
     },
     {
@@ -191,8 +266,8 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "data",
-      data: getFrenchName(data.directorProvince1),
-      name: "directorProvince1"
+      data: getFrenchName(data.directorProvince),
+      name: "directorProvince"
     },
     {
       type: "data",
@@ -206,13 +281,13 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "data",
-      data: data.category2,
-      name: "category2"
+      data: data.licensePage,
+      name: "licensePage"
     },
     {
       type: "data",
-      data: data.Manuscript,
-      name: "Manuscript"
+      data: data.licenseRegistration,
+      name: "licenseRegistration"
     },
 
     {
@@ -233,69 +308,6 @@ export function AfghanDrivingLicenseReportData(data) {
       isBold: true,
       size: 12
     },
-
-    {
-      type: "text",
-      name: a,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: c,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: d,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: e,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: f,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: g,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: h,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: k,
-      isBold: false,
-      align: "left",
-      size: 12
-    },
-    {
-      type: "text",
-      name: j,
-      isBold: false,
-      align: "left",
-      size: 12
-    }
+    ...categoryData
   ];
 }

@@ -225,3 +225,24 @@ export const compareDates = (date1, date2) => {
   else if (d1 < d2) return -1;
   return 0;
 };
+
+export const getComplexDate = date => {
+  if (date && date.toString().includes("[")) {
+    let age = date.toString().substring(0, date.toString().lastIndexOf("["));
+    let year = date.substring(date.lastIndexOf("[") + 1, date.lastIndexOf("]"));
+    if (parseInt(year) < 1600) {
+      let mYear = moment
+        .from("01" + "/" + "01" + "/" + year, "fa", "DD/MM/YYYY")
+        .format("YYYY");
+      year = year + "[" + mYear + "-" + (parseInt(mYear) + 1) + "]";
+    }
+    return "Il était âgé de " + age + " ans en " + year;
+  } else return date;
+};
+
+export const capitalize = str => {
+  return str && str.length > 1 ? str[0].toUpperCase() + str.slice(1) : str;
+};
+export const upperCase = str => {
+  return str && str.length > 1 ? str.toString().toUpperCase() : str;
+};

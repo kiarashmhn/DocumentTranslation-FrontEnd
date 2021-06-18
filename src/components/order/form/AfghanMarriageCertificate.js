@@ -1,6 +1,6 @@
 export const AfghanMarriageCertificateForm = {
   title: "afghanMarriageCertificate",
-  steps: 10,
+  steps: 9,
   content: [
     {
       title: "uploadAfghanMarriageCertificate",

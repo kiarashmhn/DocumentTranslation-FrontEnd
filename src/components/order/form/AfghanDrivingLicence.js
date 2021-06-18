@@ -57,12 +57,12 @@ export const afghanDrivingLicenceForm = {
       title: "homeAddress",
       content: [
         {
-          key: "provinceDistrict",
+          key: "provinceDistrict1",
           provinceKey: "province",
           districtKey: "district",
           villageKey: "village",
           type: "provinceDistrict",
-          name: "aBirthLocation",
+          name: "homeAddress",
           required: true
         }
       ]

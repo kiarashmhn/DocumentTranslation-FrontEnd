@@ -11,15 +11,17 @@ import provinces, { getDistricts } from "../order/Provinces";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FieldInput from "../CustomInput/FieldInput";
 
+const initial = {
+  country: "afghanistan",
+  province: "",
+  district: "",
+  village: ""
+};
+
 export default class ProvinceDistrict extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      country: this.props.country ? this.props.country : "afghanistan",
-      province: this.props.province ? this.props.province : "",
-      district: this.props.district ? this.props.district : "",
-      village: this.props.village ? this.props.village : ""
-    };
+    this.state = initial;
   }
 
   getState = () => {
@@ -30,6 +32,31 @@ export default class ProvinceDistrict extends Component {
       [this.props.villageKey]: this.state.village
     };
   };
+
+  updateState = () => {
+    if (this.props.initial && this.state === initial)
+      this.setState({
+        country: this.props.initial.country
+          ? this.props.initial.country
+          : "afghanistan",
+        province: this.props.initial.province
+          ? this.props.initial.province
+          : "",
+        district: this.props.initial.district
+          ? this.props.initial.district
+          : "",
+        village: this.props.initial.village ? this.props.initial.village : ""
+      });
+  };
+
+  componentDidMount() {
+    this.updateState();
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.updateState();
+  }
 
   onChange = (key, event) => {
     this.setState({ [key]: event.target.value }, () => {
@@ -157,5 +184,6 @@ ProvinceDistrict.propTypes = {
   district: PropTypes.string,
   village: PropTypes.string,
   province: PropTypes.string,
+  initial: PropTypes.any,
   country: PropTypes.string
 };

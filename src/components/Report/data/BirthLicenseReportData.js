@@ -1,21 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
 export function BirthLicenseReportData(data) {
-  let sign = "";
-
-  switch (data.signatureorFingerPrint) {
-    case "fingerPrint":
-      sign = "Empreinte digitale du titulaire";
-      break;
-    case "signature":
-      sign = "signature du titulaire";
-      break;
-    case "both":
-      sign = "Empreinte digitale et signature du titulaire";
-      break;
-    case "nothing":
-      sign = "";
-      break;
-  }
   return [
     {
       type: "text",
@@ -54,7 +38,7 @@ export function BirthLicenseReportData(data) {
 
     {
       type: "text",
-      name: "N° de document (BR Code) : " + data.aCodeBar,
+      name: "N° de document (BR Code) : " + data.codeBar,
       isBold: true,
       size: 12
     },
@@ -82,18 +66,24 @@ export function BirthLicenseReportData(data) {
       type: "empty"
     },
     {
+      type: "text",
+      name: "Lieu de naissance",
+      isBold: false,
+      size: 12
+    },
+    {
       type: "data",
-      data: data.province,
+      data: data.provinceDistrict.province,
       name: "province"
     },
     {
       type: "data",
-      data: data.district,
+      data: data.provinceDistrict.district,
       name: "district"
     },
     {
       type: "data",
-      data: data.village,
+      data: data.provinceDistrict.village,
       name: "village"
     },
     {
@@ -182,9 +172,28 @@ export function BirthLicenseReportData(data) {
       name: "birthDate"
     },
     {
+      type: "text",
+      name: "Adresse",
+      isBold: false,
+      size: 12
+    },
+    {
       type: "data",
-      data: data.province,
+      data: data.provinceDistrict1.province,
       name: "province"
+    },
+    {
+      type: "data",
+      data: data.provinceDistrict1.district,
+      name: "district"
+    },
+    {
+      type: "data",
+      data: data.provinceDistrict1.village,
+      name: "village"
+    },
+    {
+      type: "empty"
     },
     {
       type: "data",
@@ -193,8 +202,23 @@ export function BirthLicenseReportData(data) {
     },
     {
       type: "data",
-      data: data.idNumber,
-      name: "idNumber"
+      data:
+        data.registeredTazkaraInformation.volumeNumber +
+        "-" +
+        data.registeredTazkaraInformation.pageNumber +
+        "-" +
+        data.registeredTazkaraInformation.registerNumber,
+      name: "registeredTazkaraInformation"
+    },
+    {
+      type: "data",
+      data:
+        data.fatherstazkaraInformation.volumeNumber +
+        "-" +
+        data.fatherstazkaraInformation.pageNumber +
+        "-" +
+        data.fatherstazkaraInformation.registerNumber,
+      name: "fatherstazkaraInformation"
     },
     {
       type: "data",
@@ -209,12 +233,6 @@ export function BirthLicenseReportData(data) {
     },
     {
       type: "empty"
-    },
-    {
-      type: "text",
-      name: "Empreinte digitale et signature du titulaire : " + sign,
-      isBold: true,
-      size: 10
     },
     {
       type: "text",
@@ -234,8 +252,8 @@ export function BirthLicenseReportData(data) {
       name: "Signature et cachet du responsable du bureau d’État Civil",
       isBold: true,
       size: 10
-    },
-    {
+    }
+    /*{
       type: "text",
       name:
         "Le document est tamponné et validé par le ministère des affaires étrangères ? " +
@@ -259,6 +277,6 @@ export function BirthLicenseReportData(data) {
         data.ministryDate,
       isBold: true,
       size: 10
-    }
+    }*/
   ];
 }

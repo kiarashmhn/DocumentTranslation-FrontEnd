@@ -13,7 +13,7 @@ export function TazkaraBarghiReportData(data) {
     case "both1":
       sign = "Empreinte digitale et signature";
       break;
-    case "nothing":
+    default:
       sign = "";
       break;
   }

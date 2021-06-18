@@ -57,6 +57,17 @@ export default class TazkaraInfo extends Component {
     return { [this.props.name]: this.state };
   };
 
+  onChange = (key, event) => {
+    this.setState(
+      {
+        [key]: event.target.value
+      },
+      () => {
+        this.props.onChange(this.state);
+      }
+    );
+  };
+
   render() {
     return (
       <Fragment>
@@ -66,7 +77,7 @@ export default class TazkaraInfo extends Component {
               type={"text"}
               name={"volumeNumber"}
               value={this.state.volumeNumber}
-              onChange={e => this.setState({ volumeNumber: e.target.value })}
+              onChange={e => this.onChange("volumeNumber", e)}
             />
           </Grid>
           <Grid item xs={4} sm={4} md={4} key={"pageNumber"}>
@@ -74,7 +85,7 @@ export default class TazkaraInfo extends Component {
               type={"number"}
               name={"pageNumber"}
               value={this.state.pageNumber}
-              onChange={e => this.setState({ pageNumber: e.target.value })}
+              onChange={e => this.onChange("pageNumber", e)}
             />
           </Grid>
           <Grid item xs={4} sm={4} md={4} key={"registerNumber"}>
@@ -82,7 +93,7 @@ export default class TazkaraInfo extends Component {
               type={"number"}
               name={"registerNumber"}
               value={this.state.registerNumber}
-              onChange={e => this.setState({ registerNumber: e.target.value })}
+              onChange={e => this.onChange("registerNumber", e)}
             />
           </Grid>
         </Grid>
@@ -113,5 +124,6 @@ export default class TazkaraInfo extends Component {
 
 TazkaraInfo.propTypes = {
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.any.isRequired,
   initial: PropTypes.any
 };

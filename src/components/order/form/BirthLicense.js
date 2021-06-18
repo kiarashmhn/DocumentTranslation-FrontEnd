@@ -1,6 +1,6 @@
 export const birthLicenseForm = {
   title: "birthLicense",
-  steps: 7,
+  steps: 5,
   content: [
     {
       title: "uploadBirthLicense",
@@ -93,7 +93,11 @@ export const birthLicenseForm = {
           type: "date"
         },
         {
-          key: "provinceDistrict",
+          key: "issueDate",
+          type: "date"
+        },
+        {
+          key: "provinceDistrict1",
           provinceKey: "province",
           districtKey: "district",
           villageKey: "village",
@@ -111,11 +115,11 @@ export const birthLicenseForm = {
           required: true
         },
         {
-          key: "fatherTazkara",
+          key: "registeredTazkaraInformation",
           type: "tazkaraInfo"
         },
         {
-          key: "tazkaraInformation",
+          key: "fatherstazkaraInformation",
           type: "tazkaraInfo"
         },
         {
@@ -124,7 +128,6 @@ export const birthLicenseForm = {
         }
       ]
     },
-
     {
       title: "description",
       content: [

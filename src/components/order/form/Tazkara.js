@@ -100,7 +100,7 @@ export const TazkaraForm = {
           key: "civilState",
           type: "select",
           options: [
-            { value: "sigle", key: "single" },
+            { value: "single", key: "single" },
             { value: "married", key: "married" },
             { value: "divorced", key: "divorced" },
             { value: "weadow", key: "weadow" }
@@ -248,7 +248,7 @@ export const TazkaraForm = {
       title: "tazkaraInformation",
       content: [
         {
-          key: "provinceDistrict",
+          key: "provinceDistrict1",
           provinceKey: "province",
           districtKey: "district",
           villageKey: "village",
@@ -309,27 +309,8 @@ export const TazkaraForm = {
       title: "addr",
       content: [
         {
-          key: "nameOrCompany",
-          type: "text"
-        },
-        {
           key: "address",
-          grid: 12,
-          type: "text"
-        },
-        {
-          key: "postalCode",
-          type: "text",
-          grid: 3,
-          smGrid: 6,
-          xsGrid: 6
-        },
-        {
-          key: "city",
-          type: "text",
-          grid: 3,
-          smGrid: 6,
-          xsGrid: 6
+          type: "address"
         }
       ]
     }

@@ -37,8 +37,6 @@ export default class NodesGenerator extends Component {
     this.spousesRef = React.createRef();
     this.fileHandlerRef = React.createRef();
     this.additionalFileHandlerRef = React.createRef();
-    this.provinceDistrictRef = React.createRef();
-    this.tazkaraRef = React.createRef();
   }
 
   constructState = () => {
@@ -56,7 +54,9 @@ export default class NodesGenerator extends Component {
   }
 
   initiateState = () => {
-    let temp = {};
+    let temp = this.props.externalInitializationData
+      ? this.props.externalInitializationData
+      : {};
     this.props.elements.map(element => {
       temp[element.key] = this.preparingInitValue(element);
     });
@@ -172,13 +172,6 @@ export default class NodesGenerator extends Component {
       : [];
     if (additionalFiles.length > 0)
       state = { ...state, ...{ additionalFiles: additionalFiles } };
-
-    let tazkaraState = this.tazkaraRef
-      ? this.tazkaraRef.current
-        ? this.tazkaraRef.current.getState()
-        : null
-      : null;
-    if (tazkaraState) state = { ...state, ...tazkaraState };
 
     return state;
   };
@@ -373,15 +366,10 @@ export default class NodesGenerator extends Component {
               key={element.key}
             >
               <ProvinceDistrict
-                ref={this.provinceDistrictRef}
-                province={
-                  this.props.externalInitializationData[element.provinceKey]
-                }
-                district={
-                  this.props.externalInitializationData[element.districtKey]
-                }
-                village={
-                  this.props.externalInitializationData[element.villageKey]
+                initial={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key]
+                    : null
                 }
                 name={element.name}
                 provinceKey={element.provinceKey}
@@ -500,7 +488,7 @@ export default class NodesGenerator extends Component {
               <TazkaraInfo
                 name={element.key}
                 initial={this.props.externalInitializationData}
-                ref={this.tazkaraRef}
+                onChange={v => this.onChange(v, element)}
               />
             </Grid>
           );

@@ -1,8 +1,9 @@
 import { getFrenchName } from "../../../Dictionary.js";
+import { getComplexDate } from "../ExcelUtil";
 export function TazkaraReportData(data) {
   let sign = "";
 
-  switch (data.signatureorFingerPrint) {
+  switch (data.signatureorFingerPrint1) {
     case "fingerPrint":
       sign = "Empreinte digitale du titulaire";
       break;
@@ -13,7 +14,7 @@ export function TazkaraReportData(data) {
     case "both1":
       sign = "Empreinte digitale et signature du titulaire";
       break;
-    case "nothing":
+    default:
       sign = "";
       break;
   }
@@ -97,25 +98,24 @@ export function TazkaraReportData(data) {
 
     {
       type: "data",
-      data: data.province,
+      data: data.provinceDistrict.province,
       name: "province"
     },
     {
       type: "data",
-      data: data.district,
+      data: data.provinceDistrict.district,
       name: "district"
     },
     {
       type: "data",
-      data: data.village,
+      data: data.provinceDistrict.village,
       name: "village"
     },
     {
       type: "data",
-      data: data.complexDate,
-      name: "complexDate"
+      data: getComplexDate(data.aBirthDate),
+      name: "aBirthDate"
     },
-
     {
       type: "data",
       data: getFrenchName(data.religion),
@@ -123,7 +123,7 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
-      data: getFrenchName(data.nationality),
+      data: getFrenchName(data.nationality1),
       name: "nationality"
     },
     {
@@ -133,7 +133,7 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
-      data: getFrenchName(data.sex),
+      data: getFrenchName(data.sext),
       name: "gender"
     },
     {
@@ -210,27 +210,37 @@ export function TazkaraReportData(data) {
     },
     {
       type: "data",
-      data: data.province,
+      data: data.provinceDistrict1.province,
       name: "province"
     },
     {
       type: "data",
-      data: data.district,
+      data: data.provinceDistrict1.district,
       name: "district"
     },
     {
       type: "data",
-      data: data.village,
+      data: data.provinceDistrict1.village,
       name: "village"
     },
     {
       type: "data",
-      data: data.registeredTazkaraInformation,
+      data:
+        data.registeredTazkaraInformation.volumeNumber +
+        "-" +
+        data.registeredTazkaraInformation.pageNumber +
+        "-" +
+        data.registeredTazkaraInformation.registerNumber,
       name: "registeredTazkaraInformation"
     },
     {
       type: "data",
-      data: data.fatherstazkaraInformation,
+      data:
+        data.fatherstazkaraInformation.volumeNumber +
+        "-" +
+        data.fatherstazkaraInformation.pageNumber +
+        "-" +
+        data.fatherstazkaraInformation.registerNumber,
       name: "fatherstazkaraInformation"
     },
     {

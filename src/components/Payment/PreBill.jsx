@@ -13,6 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import theme, { grayColor } from "../../theme";
 import * as URLConstant from "../../URLConstant";
 import Api from "../Api/Api";
+import {capitalize, upperCase} from "../Report/ExcelUtil";
 
 const info =
   "Service de traduction certifiée\n" +
@@ -130,7 +131,7 @@ export default class PreBill extends Component {
           component="div"
         >
           <Box fontStyle="bold" fontWeight="fontWeightMedium" display="inline">
-            {this.state.nameOrCompany}
+            {capitalize(this.state.nameOrCompany)}
           </Box>
           <br />
         </Typography>
@@ -138,7 +139,7 @@ export default class PreBill extends Component {
           {this.state.address}
         </Typography>
         <Typography variant="body1" align={"center"}>
-          {this.state.postalCode + " " + this.state.city}
+          {this.state.postalCode + " " + capitalize(this.state.city)}
         </Typography>
         <div style={{ padding: "20px 20px" }}>
           <TableContainer component={Paper}>
