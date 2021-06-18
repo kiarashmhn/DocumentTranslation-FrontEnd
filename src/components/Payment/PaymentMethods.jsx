@@ -39,7 +39,7 @@ export default class PaymentMethods extends Component {
 
   render() {
     let stripe = loadStripe(
-      "pk_test_51IMcfSDJralPixYMYcqmdwXKdFhT0ZbkdpLtu1DjX3K9VSMv7OTdEbolmicfnVuDigV8xV2PeiDoPPGlLFRiV49x00HLxkwkxq"
+      "pk_live_51IAvZFKumUkt7SwGFJd0JzjR2IUAXwKv8cThe3EK13IiPsNdJNLYqJyfjUrpqVzFS4BdXbPsAe7s6wEPRYMcmJbf00Z4cgwgb3"
     );
 
     const { width, classes, id, price, code } = this.props;
