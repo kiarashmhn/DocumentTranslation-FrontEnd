@@ -275,7 +275,6 @@ export const TazkaraForm = {
           type: "text",
           notRequired: true
         },
-
         {
           key: "signatureorFingerPrint1",
           type: "select",

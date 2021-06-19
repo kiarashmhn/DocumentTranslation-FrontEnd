@@ -177,8 +177,10 @@ export default class NodesGenerator extends Component {
   };
 
   isNotRequired = element => {
+    if (element.required) return false;
     if (element.notRequired) return true;
     if (element.notRequiredField) return !!this.state[element.notRequiredField];
+    if (element.requiredField) return !this.state[element.requiredField];
     return false;
   };
 
@@ -392,7 +394,7 @@ export default class NodesGenerator extends Component {
                 key={element.key}
               >
                 <ControlledOpenSelect
-                  required={element.required}
+                  required={!this.isNotRequired(element)}
                   value={this.state[element.key]}
                   keyId={element.key}
                   onChange={event => this.elementOnChange(event, element)}

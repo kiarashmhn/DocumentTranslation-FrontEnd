@@ -1954,7 +1954,7 @@ export const Dictionary = {
   },
   tazkaraNumber: {
     persian: "نمبر عمومی تذکره",
-    french: "Numéro de document (N° de Taskera)"
+    french: "N° de Taskera"
   },
   tazkaraNumberElectronic: {
     persian: "شماره مسلسل تذکره الکترونیکی",

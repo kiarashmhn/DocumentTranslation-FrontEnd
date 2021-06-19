@@ -42,7 +42,8 @@ export const DrivingLicenceForm = {
         },
         {
           key: "DrivingLicenceNumber",
-          type: "text"
+          type: "text",
+          requiredField: "isSmartCard"
         },
         {
           key: "bloodType",
@@ -57,7 +58,7 @@ export const DrivingLicenceForm = {
             { value: "ABplus", key: "ABplus" },
             { value: "ABminus", key: "ABminus" }
           ],
-          notRequiredField: "isSmartCard"
+          requiredField: "isSmartCard"
         },
         {
           key: "dateofIssue",

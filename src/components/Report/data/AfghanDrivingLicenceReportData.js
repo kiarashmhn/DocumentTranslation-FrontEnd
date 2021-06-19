@@ -32,8 +32,7 @@ export function AfghanDrivingLicenseReportData(data) {
           name:
             "Catégorie A échelle 5 : permet de conduire tout type de motocyclette et de Tuk-tuk.",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         }
       ]
     ];
@@ -47,16 +46,14 @@ export function AfghanDrivingLicenseReportData(data) {
           name:
             "Catégorie B échelle 4 : permet de conduire un véhicule dont le poids total autorisé en charge (PTAC)",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         },
         {
           type: "text",
           name:
             "est de 3,5 tonnes au maximum et comportant moins de neuf places assises, conducteur compris.",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         }
       ]
     ];
@@ -70,15 +67,13 @@ export function AfghanDrivingLicenseReportData(data) {
           name:
             "Catégorie C échelle 3 : autorise la conduite d’un poids lourd dont le poids total autorisé en",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         },
         {
           type: "text",
           name: "charge (PTAC) est supérieur de 3,5.",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         }
       ]
     ];
@@ -92,15 +87,13 @@ export function AfghanDrivingLicenseReportData(data) {
           name:
             "Catégorie D échelle 2 : autorise la conduite d’un véhicule affecté au transport de personnes",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         },
         {
           type: "text",
           name: "comportant plus de neuf places assises, conducteur compris.",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         }
       ]
     ];
@@ -114,16 +107,14 @@ export function AfghanDrivingLicenseReportData(data) {
           name:
             "Catégorie E échelle 1 : autorise la conduite des véhicules affectés au transport de marchandises.",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         },
         {
           type: "text",
           name:
             "Ce permis autorise également la conduite des véhicules des catégories B, C et D.",
           isBold: false,
-          align: "left",
-          size: 12
+          align: "left"
         }
       ]
     ];
@@ -147,27 +138,23 @@ export function AfghanDrivingLicenseReportData(data) {
       type: "text",
       name:
         "Ministère de l'intérieur de l'Afghanistan - Direction générale de la circulation",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Permis de conduire  –  Catégories : " + cat,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Photo d’identité du titulaire, tamponnée du sceau de la Direction générale de la circulation",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "de la Province " + province,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "empty"
@@ -212,8 +199,7 @@ export function AfghanDrivingLicenseReportData(data) {
     {
       type: "text",
       name: "Lieu de naissance",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "data",
@@ -233,8 +219,7 @@ export function AfghanDrivingLicenseReportData(data) {
     {
       type: "text",
       name: "Adresse",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "data",
@@ -293,8 +278,7 @@ export function AfghanDrivingLicenseReportData(data) {
     {
       type: "text",
       name: "Signature et Cachet du Directeur de la Circulation",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "empty"
@@ -305,8 +289,7 @@ export function AfghanDrivingLicenseReportData(data) {
     {
       type: "text",
       name: "Notification :",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     ...categoryData
   ];

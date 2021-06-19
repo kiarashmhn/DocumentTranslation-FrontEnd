@@ -8,49 +8,35 @@ export function BirthLicenseReportData(data) {
       size: 16
     },
     {
-      type: "empty"
-    },
-    {
       type: "text",
       name: "Ministère de l’Intérieur de la République Islamique d’Afghanistan",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Direction administrative",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Direction générale des affaires étrangères et de l’enregistrement des actes d’état civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
-
     {
       type: "text",
       name: "N° de document (BR Code) : " + data.codeBar,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Date d’émission : " + data.issueDate,
-      isBold: true,
-      size: 12
-    },
-
-    {
-      type: "empty"
+      isBold: true
     },
     {
       type: "empty"
@@ -59,17 +45,12 @@ export function BirthLicenseReportData(data) {
       type: "text",
       name:
         "Informations sur l’enregistrement de l’acte de naissance (Taskera)",
-      isBold: true,
-      size: 12
-    },
-    {
-      type: "empty"
+      isBold: true
     },
     {
       type: "text",
       name: "Lieu de naissance",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "data",
@@ -85,6 +66,9 @@ export function BirthLicenseReportData(data) {
       type: "data",
       data: data.provinceDistrict.village,
       name: "village"
+    },
+    {
+      type: "empty"
     },
     {
       type: "data",
@@ -133,11 +117,7 @@ export function BirthLicenseReportData(data) {
       type: "text",
       name:
         "Carte d’enregistrement de naissance (Description de la personne concernée) ",
-      isBold: true,
-      size: 12
-    },
-    {
-      type: "empty"
+      isBold: true
     },
     {
       type: "data",
@@ -174,8 +154,7 @@ export function BirthLicenseReportData(data) {
     {
       type: "text",
       name: "Adresse",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "data",
@@ -201,35 +180,41 @@ export function BirthLicenseReportData(data) {
       name: "gender"
     },
     {
-      type: "data",
-      data:
-        data.registeredTazkaraInformation.volumeNumber +
-        "-" +
-        data.registeredTazkaraInformation.pageNumber +
-        "-" +
-        data.registeredTazkaraInformation.registerNumber,
+      type: "text",
       name: "registeredTazkaraInformation"
     },
     {
-      type: "data",
-      data:
+      type: "text",
+      name:
+        "Volume :" +
+        data.registeredTazkaraInformation.volumeNumber +
+        "-" +
+        "Page :" +
+        data.registeredTazkaraInformation.pageNumber +
+        "-" +
+        "N° :" +
+        data.registeredTazkaraInformation.registerNumber
+    },
+    {
+      type: "text",
+      name: "fatherstazkaraInformation"
+    },
+    {
+      type: "text",
+      name:
+        "Volume :" +
         data.fatherstazkaraInformation.volumeNumber +
         "-" +
+        "Page :" +
         data.fatherstazkaraInformation.pageNumber +
         "-" +
-        data.fatherstazkaraInformation.registerNumber,
-      name: "fatherstazkaraInformation"
+        "N° :" +
+        data.fatherstazkaraInformation.registerNumber
     },
     {
       type: "data",
       data: data.issueDate,
       name: "issueDate"
-    },
-    {
-      type: "empty"
-    },
-    {
-      type: "empty"
     },
     {
       type: "empty"

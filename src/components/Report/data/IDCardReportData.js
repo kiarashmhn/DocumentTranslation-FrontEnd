@@ -9,21 +9,18 @@ const getSmartCardFields = data => {
     {
       type: "text",
       name: "Notification",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Le titulaire est tenu de prévenir immédiatement le Bureau d’État Civil",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "text",
       name: "de tout changement de son domicile.",
-      isBold: false,
-      size: 12
+      isBold: false
     }
   ];
   if (data.isSmartCard) {
@@ -32,8 +29,7 @@ const getSmartCardFields = data => {
       {
         type: "text",
         name: "La carte retrouvée doit être remise dans une boîte aux lettres.",
-        isBold: false,
-        size: 12
+        isBold: false
       }
     ];
   }
@@ -52,8 +48,7 @@ const getSmartCardFields = data => {
     {
       type: "text",
       name: "(" + data.codeBar + ")",
-      isBold: false,
-      size: 12
+      isBold: false
     }
   ];
 };
@@ -69,27 +64,22 @@ export function IDCardReportData(data) {
     {
       type: "text",
       name: "République Islamique d’Iran",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Ministère de l’Intérieur",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
-
     {
       type: "text",
       name: "Photographie du titulaire",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "empty"

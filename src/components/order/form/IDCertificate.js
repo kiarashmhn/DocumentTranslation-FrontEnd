@@ -28,6 +28,15 @@ export const idCertificateForm = {
           type: "text"
         },
         {
+          key: "sext",
+          type: "select",
+          options: [
+            { value: "M", key: "M" },
+            { value: "F", key: "F" }
+          ],
+          required: true
+        },
+        {
           key: "name",
           type: "text"
         },

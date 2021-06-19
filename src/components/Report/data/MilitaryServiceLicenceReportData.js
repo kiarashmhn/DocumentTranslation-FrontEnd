@@ -7,18 +7,15 @@ export function MilitaryServiceLicenceReportData(data) {
       isBold: true,
       size: 16
     },
-
     {
       type: "text",
       name: "République Islamique d’Iran",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Photographie du titulaire",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "empty"
@@ -97,14 +94,12 @@ export function MilitaryServiceLicenceReportData(data) {
       type: "text",
       name:
         "Signature du Chef de l’Organisation de la conscription publique de la Force",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Disciplinaire de la République Islamique d'Iran",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "empty"
@@ -113,16 +108,14 @@ export function MilitaryServiceLicenceReportData(data) {
       type: "text",
       name: "Notification :",
       isBold: true,
-      align: "left",
-      size: 12
+      align: "left"
     },
     {
       type: "text",
       name:
         "1- En cas de perte cette carte, nous demandons à son titulaire d’en informer le plus rapidement ",
       isBold: false,
-      align: "left",
-      size: 12
+      align: "left"
     },
 
     {
@@ -130,24 +123,21 @@ export function MilitaryServiceLicenceReportData(data) {
       name:
         "possible le bureau le plus proche de l’Organisation de la conscription publique de la Force de ",
       isBold: false,
-      align: "left",
-      size: 12
+      align: "left"
     },
 
     {
       type: "text",
       name: "police de la République Islamique d'Iran.",
       isBold: false,
-      align: "left",
-      size: 12
+      align: "left"
     },
     {
       type: "text",
       name:
         "2- La carte retrouvée doit être remise au commissariat de police le plus proche ou dans la ",
       isBold: false,
-      align: "left",
-      size: 12
+      align: "left"
     },
 
     {
@@ -155,8 +145,7 @@ export function MilitaryServiceLicenceReportData(data) {
       name:
         "boîte aux lettres de la poste. (Téhéran, Boîte aux lettres : 16415 – 313)",
       isBold: false,
-      align: "left",
-      size: 12
+      align: "left"
     }
   ];
 }

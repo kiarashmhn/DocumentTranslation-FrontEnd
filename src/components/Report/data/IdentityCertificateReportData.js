@@ -81,8 +81,7 @@ export function IdentityCertificateReportData(data) {
       type: "text",
       name:
         "[Acte de naissance, Livret de famille, Certificat de mariage, Certificat de divorce]",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "text",
@@ -120,8 +119,8 @@ export function IdentityCertificateReportData(data) {
     },
     {
       type: "data",
-      data: data.nationalId,
-      name: "nationalId"
+      data: data.sext,
+      name: "gender"
     },
     {
       type: "data",
@@ -132,6 +131,11 @@ export function IdentityCertificateReportData(data) {
       type: "data",
       data: data.name,
       name: "name"
+    },
+    {
+      type: "data",
+      data: data.nationalId,
+      name: "nationalId"
     },
     {
       type: "data",
@@ -193,7 +197,7 @@ export function IdentityCertificateReportData(data) {
     },
     {
       type: "text",
-      name: "Signature et cachet du proposé à l’état civil",
+      name: "Signé et cacheté par l'officier de l'état civil",
       isBold: false
     },
     {

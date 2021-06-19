@@ -13,42 +13,34 @@ export function AfghanMarriageCertificateReportData(data) {
     {
       type: "text",
       name: "Ministère de l’Intérieur de la République Islamique d’Afghanistan",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Direction administrative",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Direction générale des affaires étrangères et de l’enregistrement des actes d’état civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
-
     {
       type: "text",
       name: "N° de document (BR Code) : " + data.codeBar,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Date d’émission : " + data.issueDate,
-      isBold: true,
-      size: 12
+      isBold: true
     },
-
     {
       type: "empty"
     },
@@ -59,15 +51,13 @@ export function AfghanMarriageCertificateReportData(data) {
       type: "text",
       name:
         "Informations sur l’enregistrement de l’acte de naissance (Taskera)",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Carte d’enregistrement de naissance (Description de la personne concernée) ",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "data",

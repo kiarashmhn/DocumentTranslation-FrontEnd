@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import {getComplexDate} from "../ExcelUtil";
+import { getComplexDate } from "../ExcelUtil";
 export function TazkaraKetabReportData(data) {
   return [
     {
@@ -146,8 +146,7 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name: "Caractéristiques physiques",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "empty"
@@ -189,8 +188,7 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name: "Enregistré auprès du bureau du registre d'état civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "empty"
@@ -272,8 +270,7 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name: "Notification :",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
@@ -341,20 +338,17 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name: "Signature de l’officier du bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Signature du responsable du bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Cachet du bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     }
   ];
 }

@@ -26,53 +26,39 @@ export function TazkaraReportData(data) {
       size: 16
     },
     {
-      type: "empty"
-    },
-    {
       type: "text",
       name: "République Islamique d’Afghanistan",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Ministère de l’Intérieur - Bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Direction du recensement",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Numéro de document : " + data.docNumber,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Tarif de l’acte de naissance : 10 Afghani",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Photo d’identité du titulaire, tamponnée du sceau de la Direction d’État Civil",
-      isBold: true,
-      size: 12
-    },
-
-    {
-      type: "empty"
+      isBold: true
     },
     {
       type: "empty"
     },
-
     {
       type: "data",
       data: data.aName,
@@ -95,7 +81,10 @@ export function TazkaraReportData(data) {
       data: data.grandFatherName,
       name: "grandFatherName"
     },
-
+    {
+      type: "text",
+      name: "Lieu de naissance"
+    },
     {
       type: "data",
       data: data.provinceDistrict.province,
@@ -110,6 +99,9 @@ export function TazkaraReportData(data) {
       type: "data",
       data: data.provinceDistrict.village,
       name: "village"
+    },
+    {
+      type: "empty"
     },
     {
       type: "data",
@@ -169,8 +161,7 @@ export function TazkaraReportData(data) {
     {
       type: "text",
       name: "Caractéristiques physiques",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "data",
@@ -205,8 +196,11 @@ export function TazkaraReportData(data) {
     {
       type: "text",
       name: "Enregistré auprès du bureau du registre d'état civil",
-      isBold: true,
-      size: 12
+      isBold: true
+    },
+    {
+      type: "text",
+      name: "Adresse"
     },
     {
       type: "data",
@@ -224,30 +218,39 @@ export function TazkaraReportData(data) {
       name: "village"
     },
     {
-      type: "data",
-      data:
-        data.registeredTazkaraInformation.volumeNumber +
-        "-" +
-        data.registeredTazkaraInformation.pageNumber +
-        "-" +
-        data.registeredTazkaraInformation.registerNumber,
+      type: "empty"
+    },
+    {
+      type: "text",
       name: "registeredTazkaraInformation"
     },
     {
-      type: "data",
-      data:
-        data.fatherstazkaraInformation.volumeNumber +
+      type: "text",
+      name:
+        "Volume :" +
+        data.registeredTazkaraInformation.volumeNumber +
         "-" +
-        data.fatherstazkaraInformation.pageNumber +
+        "Page :" +
+        data.registeredTazkaraInformation.pageNumber +
         "-" +
-        data.fatherstazkaraInformation.registerNumber,
+        "N° :" +
+        data.registeredTazkaraInformation.registerNumber
+    },
+    {
+      type: "text",
       name: "fatherstazkaraInformation"
     },
     {
-      type: "empty"
-    },
-    {
-      type: "empty"
+      type: "text",
+      name:
+        "Volume :" +
+        data.fatherstazkaraInformation.volumeNumber +
+        "-" +
+        "Page :" +
+        data.fatherstazkaraInformation.pageNumber +
+        "-" +
+        "N° :" +
+        data.fatherstazkaraInformation.registerNumber
     },
     {
       type: "empty"
@@ -257,9 +260,6 @@ export function TazkaraReportData(data) {
       name: "Empreinte digitale de la personne concernée : " + sign,
       isBold: true,
       size: 10
-    },
-    {
-      type: "empty"
     },
     {
       type: "empty"

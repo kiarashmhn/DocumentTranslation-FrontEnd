@@ -24,42 +24,35 @@ export function TazkaraBarghiReportData(data) {
       isBold: true,
       size: 16
     },
-
     {
       type: "text",
       name: "République Islamique d’Afghanistan",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Ministère de l’Intérieur",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Carte d'Identité Nationale (Taskera)",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Photographie du Titulaire",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Date d’émission : " + data.issueDate,
-      isBold: true,
-      size: 12
+      isBold: true
     },
 
     {

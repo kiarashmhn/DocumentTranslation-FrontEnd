@@ -5,7 +5,11 @@ export const alignmentCenter = { vertical: "middle", horizontal: "center" };
 export const alignmentRight = { vertical: "middle", horizontal: "right" };
 export const alignmentLeft = { vertical: "middle", horizontal: "left" };
 
-export const endSection = "Signature et cachet du proposé à l’état civil";
+const defaultSize = 12;
+
+export const endSection = "Signé et cacheté par le notaire";
+export const childrenEndSection =
+  "Signé et cacheté par l'officier de l'état civil";
 
 export const writeText = (worksheet, idx, isBold, text, size) => {
   idx = idx + 1;
@@ -15,7 +19,7 @@ export const writeText = (worksheet, idx, isBold, text, size) => {
   customCell.font = {
     name: "Times",
     family: 4,
-    size: size ? size : 12,
+    size: size ? size : defaultSize,
     underline: false,
     bold: isBold
   };
@@ -34,7 +38,7 @@ export const writeData = (worksheet, idx, key, value, align) => {
   customCellKey.font = {
     name: "Times",
     family: 4,
-    size: 12,
+    size: defaultSize,
     underline: false,
     bold: false
   };
@@ -59,7 +63,7 @@ export const writeData = (worksheet, idx, key, value, align) => {
   customCellDot.font = {
     name: "Times",
     family: 4,
-    size: 12,
+    size: defaultSize,
     underline: false,
     bold: false
   };
@@ -70,7 +74,7 @@ export const writeData = (worksheet, idx, key, value, align) => {
   customCellValue.font = {
     name: "Times",
     family: 4,
-    size: 12,
+    size: defaultSize,
     underline: false,
     bold: false
   };
@@ -115,7 +119,13 @@ export const writeArray = (worksheet, rowCount, data, row) => {
     rowCount = writeText(worksheet, rowCount, true, getFrenchName(row.name));
     rowCount = writeText(worksheet, rowCount, false, "[Néant]");
   }
-  rowCount = writeText(worksheet, rowCount, false, endSection);
+  if (data && data.length > 0)
+    rowCount = writeText(
+      worksheet,
+      rowCount,
+      false,
+      row.name === "children" ? childrenEndSection : endSection
+    );
   return rowCount;
 };
 
@@ -140,7 +150,12 @@ export const writeSortedArray = (worksheet, rowCount, data, row) => {
           row.align
         );
       });
-      rowCount = writeText(worksheet, rowCount, false, endSection);
+      rowCount = writeText(
+        worksheet,
+        rowCount,
+        false,
+        row.name === "children" ? childrenEndSection : endSection
+      );
       rowCount = writeText(worksheet, rowCount, false, "");
     }
   } else return writeArray(worksheet, rowCount, data, row);
@@ -211,9 +226,9 @@ export const writeFooter = (worksheet, rowCount, code, id) => {
     third = "Pièce jointe : Copie du document original en langue Dari";
   }
 
-  rowCount = writeText(worksheet, rowCount, false, first, 12);
-  rowCount = writeText(worksheet, rowCount, false, second, 12);
-  rowCount = writeText(worksheet, rowCount, false, third, 12);
+  rowCount = writeText(worksheet, rowCount, false, first, defaultSize);
+  rowCount = writeText(worksheet, rowCount, false, second, defaultSize);
+  rowCount = writeText(worksheet, rowCount, false, third, defaultSize);
   return rowCount;
 };
 

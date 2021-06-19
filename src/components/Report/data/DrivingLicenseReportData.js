@@ -1,6 +1,6 @@
 import { getFrenchName } from "../../../Dictionary.js";
 export function DrivingLicenseReportData(data) {
-  let category = "Catégorie : ";
+  let category = "Catégorie ";
   let categories = [];
   let categoryKeys = [
     "firstGrade",
@@ -64,6 +64,22 @@ export function DrivingLicenseReportData(data) {
     ];
   });
 
+  let smartCardFields =
+    data.isSmartCard === true
+      ? [
+          {
+            type: "data",
+            data: getFrenchName(data.bloodType),
+            name: "bloodType"
+          },
+          {
+            type: "data",
+            data: data.DrivingLicenceNumber,
+            name: "DrivingLicenceNumber"
+          }
+        ]
+      : [];
+
   return [
     {
       type: "text",
@@ -77,32 +93,27 @@ export function DrivingLicenseReportData(data) {
     {
       type: "text",
       name: "Police de la République Islamique d’Iran",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Direction Générale de la Circulation",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Photographie du titulaire",
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "text",
       name: category,
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "text",
       name: "Valable " + getFrenchName(data.expirationDuration),
-      isBold: false,
-      size: 12
+      isBold: false
     },
     {
       type: "empty"
@@ -110,7 +121,6 @@ export function DrivingLicenseReportData(data) {
     {
       type: "empty"
     },
-
     {
       type: "data",
       data: data.name,
@@ -131,16 +141,7 @@ export function DrivingLicenseReportData(data) {
       data: data.nationalId,
       name: "nationalId"
     },
-    {
-      type: "data",
-      data: getFrenchName(data.bloodType),
-      name: "bloodType"
-    },
-    {
-      type: "data",
-      data: data.DrivingLicenceNumber,
-      name: "DrivingLicenceNumber"
-    },
+    ...smartCardFields,
     {
       type: "data",
       data: data.dateofIssue,
@@ -160,14 +161,12 @@ export function DrivingLicenseReportData(data) {
       type: "text",
       name:
         "Signature du responsable de la Direction générale de la circulation",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Notification :",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     ...categoryDes
   ];
