@@ -1,12 +1,12 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import { getComplexDate } from "../ExcelUtil";
+import { getComplexDate, titleSize } from "../ExcelUtil";
 export function TazkaraKetabReportData(data) {
   return [
     {
       type: "text",
       name: "Traduction de l’Acte de Naissance Afghan du Dari au Français",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "empty"
@@ -14,53 +14,45 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name: "République Islamique d’Afghanistan",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Ministère de l’Intérieur - Bureau d’État Civil",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Direction du recensement",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Numéro de document : " + data.docNumber,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Numéro de volume : " + data.registeredTazkaraInformation.volumeNumber,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Numéro de page :  " + data.registeredTazkaraInformation.pageNumber,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name:
         "Numéro d'enregistrement : " +
         data.registeredTazkaraInformation.registerNumber,
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "text",
       name: "Photographie cachetée du titulaire",
-      isBold: true,
-      size: 12
+      isBold: true
     },
 
     {
@@ -72,8 +64,7 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name: "Identité",
-      isBold: true,
-      size: 12
+      isBold: true
     },
     {
       type: "empty"

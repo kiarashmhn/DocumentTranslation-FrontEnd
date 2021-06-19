@@ -1,4 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
+import {titleSize} from "../ExcelUtil";
 export function DrivingLicenseReportData(data) {
   let category = "Catégorie ";
   let categories = [];
@@ -85,7 +86,7 @@ export function DrivingLicenseReportData(data) {
       type: "text",
       name: "Traduction du Permis de Conduire",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "empty"

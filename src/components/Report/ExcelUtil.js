@@ -5,7 +5,9 @@ export const alignmentCenter = { vertical: "middle", horizontal: "center" };
 export const alignmentRight = { vertical: "middle", horizontal: "right" };
 export const alignmentLeft = { vertical: "middle", horizontal: "left" };
 
-const defaultSize = 12;
+const defaultSize = 10;
+const emptySize = 5;
+export const titleSize = 15;
 
 export const endSection = "Signé et cacheté par le notaire";
 export const childrenEndSection =
@@ -19,7 +21,7 @@ export const writeText = (worksheet, idx, isBold, text, size) => {
   customCell.font = {
     name: "Times",
     family: 4,
-    size: size ? size : defaultSize,
+    size: size ? size : text && text.length > 0 ? defaultSize : emptySize,
     underline: false,
     bold: isBold
   };

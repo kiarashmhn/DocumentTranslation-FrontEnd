@@ -1,4 +1,4 @@
-import { compareDates } from "../ExcelUtil";
+import {compareDates, titleSize} from "../ExcelUtil";
 
 const getSpouse = spouse => {
   let info = {
@@ -75,7 +75,7 @@ export function IdentityCertificateReportData(data) {
       type: "text",
       name: "Traduction de l’Acte d’Etat Civil (Shenasnameh)",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "text",

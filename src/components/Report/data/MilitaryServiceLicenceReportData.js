@@ -1,11 +1,12 @@
 import { getFrenchName } from "../../../Dictionary.js";
+import { titleSize } from "../ExcelUtil";
 export function MilitaryServiceLicenceReportData(data) {
   return [
     {
       type: "text",
       name: "Traduction de la Carte de fin de service militaire",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "text",

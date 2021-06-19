@@ -1,4 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
+import {titleSize} from "../ExcelUtil";
 export function TazkaraBarghiReportData(data) {
   let sign;
 
@@ -22,7 +23,7 @@ export function TazkaraBarghiReportData(data) {
       type: "text",
       name: "Traduction de la Carte d'Identité Nationale afghane (Taskera)",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "text",

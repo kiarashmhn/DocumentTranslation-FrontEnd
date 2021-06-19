@@ -1,4 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
+import {titleSize} from "../ExcelUtil";
 const capitalize = str => {
   return str && str.length > 1 ? str[0].toUpperCase() + str.slice(1) : str;
 };
@@ -73,7 +74,7 @@ export function MarriageCertificateReportData(data) {
       type: "text",
       name: "Traduction du Livret de Mariage",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "empty"

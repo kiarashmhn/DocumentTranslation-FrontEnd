@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import { getComplexDate } from "../ExcelUtil";
+import {getComplexDate, titleSize} from "../ExcelUtil";
 export function AfghanDrivingLicenseReportData(data) {
   let category = [
     data.aGrade,
@@ -131,7 +131,7 @@ export function AfghanDrivingLicenseReportData(data) {
       type: "text",
       name: "Traduction du Permis de Conduire",
       isBold: true,
-      size: 16
+      size: titleSize
     },
 
     {

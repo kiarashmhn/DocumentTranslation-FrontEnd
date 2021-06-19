@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import { getComplexDate } from "../ExcelUtil";
+import { getComplexDate, titleSize } from "../ExcelUtil";
 export function TazkaraReportData(data) {
   let sign = "";
 
@@ -23,7 +23,7 @@ export function TazkaraReportData(data) {
       type: "text",
       name: "Traduction de l’Acte de Naissance Afghan du Dari au Français",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "text",

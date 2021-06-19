@@ -1,11 +1,12 @@
 import { getFrenchName } from "../../../Dictionary.js";
+import {titleSize} from "../ExcelUtil";
 export function AfghanMarriageCertificateReportData(data) {
   return [
     {
       type: "text",
       name: "Traduction de la Carte d’enregistrement de naissance",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "empty"

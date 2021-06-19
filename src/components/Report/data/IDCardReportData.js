@@ -1,3 +1,5 @@
+import {titleSize} from "../ExcelUtil";
+
 const getSmartCardFields = data => {
   let footer = [
     {
@@ -59,7 +61,7 @@ export function IDCardReportData(data) {
       type: "text",
       name: "Traduction de la Carte d'Identité Nationale Iranienne",
       isBold: true,
-      size: 16
+      size: titleSize
     },
     {
       type: "text",
