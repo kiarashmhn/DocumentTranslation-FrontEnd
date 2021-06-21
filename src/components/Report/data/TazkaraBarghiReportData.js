@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import {titleSize} from "../ExcelUtil";
+import { titleSize } from "../ExcelUtil";
 export function TazkaraBarghiReportData(data) {
   let sign;
 

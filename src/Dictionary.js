@@ -113,6 +113,16 @@ export const Dictionary = {
         "Si la date de naissance exacte n'est pas notée dans le document, sélectionnez l'option «Date approximative» et inscrivez l'âge apparent et l'année de sa détermination."
     }
   },
+  aBirthDate1: {
+    persian: "تاریخ تولد یا عمر/ د زیږیدلو نیټه او عمر",
+    french: "Date de naissance",
+    hint: {
+      persian:
+        "اگر تاریخ تولد دقیق شما در سند مشخص نیست گزینه 'تاریخ تقریبی' را انتخاب کنید، و عمر خود و سال تخمین آن را بنویسد.",
+      french:
+        "Si la date de naissance exacte n'est pas notée dans le document, sélectionnez l'option «Date approximative» et inscrivez l'âge apparent et l'année de sa détermination."
+    }
+  },
   aBirthLocation: {
     persian: "محل تولد/د زیږبدلو ځای",
     french: "Lieu de naissance"
@@ -397,7 +407,13 @@ export const Dictionary = {
   },
   certificateId: {
     persian: "شماره شناسنامه",
-    french: "N° d’acte de naissance"
+    french: "N° d’acte de naissance",
+    hint: {
+      persian:
+        "درصورتیکه شماره شناسنامه و شماره ملی شما یکسان است، شماره ملی را دوباره اینجا تکرار کنید.",
+      french:
+        "Si votre numéro d'identité national et numéro d’acte de naissance sont identiques, récrivez ici numéro d’identité national."
+    }
   },
   chequeInfo: {
     persian: "تصویر چک را برای ما ارسال کنید",
@@ -770,7 +786,7 @@ export const Dictionary = {
   },
   fatherstazkaraInformation: {
     persian: "مشخصات تذکره پدر یا پدر کلان",
-    french: "Référence de l'enregistrement de son père ou grand-père"
+    french: "Référence de l'enregistrement de son père"
   },
   features: {
     persian: "خدمات",
@@ -1190,7 +1206,15 @@ export const Dictionary = {
     persian: "اصلی استوګنخی/سکونت اصلی",
     french: "Lieu de résidence principal"
   },
+  livingLocationOriginal1: {
+    persian: "اصلی استوګنخی/سکونت اصلی",
+    french: "Lieu de résidence principal"
+  },
   livingLocationTemp: {
+    persian: "اوسنی استوګنخی/سکونت فعلی",
+    french: "Lieu de résidence actuel"
+  },
+  livingLocationTemp1: {
     persian: "اوسنی استوګنخی/سکونت فعلی",
     french: "Lieu de résidence actuel"
   },
@@ -1345,6 +1369,10 @@ export const Dictionary = {
     french: "Motocyclette"
   },
   name: {
+    persian: "نام",
+    french: "Prénom"
+  },
+  name1: {
     persian: "نام",
     french: "Prénom"
   },
@@ -1679,6 +1707,10 @@ export const Dictionary = {
     french: "Zone de l’enregistrement du mariage"
   },
   registeredTazkaraInformation: {
+    persian: "مشخصات ثبت تذکره",
+    french: "Référence de l'enregistrement de Taskera"
+  },
+  registeredTazkaraInformation1: {
     persian: "مشخصات ثبت تذکره",
     french: "Référence de l'enregistrement de Taskera"
   },
@@ -2095,7 +2127,15 @@ export const Dictionary = {
     persian: "ولد",
     french: "Prénom du père"
   },
+  valad1: {
+    persian: "ولد",
+    french: "Prénom du père"
+  },
   valadiat: {
+    persian: "ولدیت",
+    french: "Prénom du grand-père"
+  },
+  valadiat1: {
     persian: "ولدیت",
     french: "Prénom du grand-père"
   },

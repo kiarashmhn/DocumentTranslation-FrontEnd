@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import { getComplexDate, titleSize } from "../ExcelUtil";
+import { alignmentLeft, getComplexDate, titleSize } from "../ExcelUtil";
 export function TazkaraKetabReportData(data) {
   return [
     {
@@ -7,9 +7,6 @@ export function TazkaraKetabReportData(data) {
       name: "Traduction de l’Acte de Naissance Afghan du Dari au Français",
       isBold: true,
       size: titleSize
-    },
-    {
-      type: "empty"
     },
     {
       type: "text",
@@ -54,10 +51,6 @@ export function TazkaraKetabReportData(data) {
       name: "Photographie cachetée du titulaire",
       isBold: true
     },
-
-    {
-      type: "empty"
-    },
     {
       type: "empty"
     },
@@ -90,6 +83,11 @@ export function TazkaraKetabReportData(data) {
       type: "data",
       data: data.grandFatherName,
       name: "grandFatherName"
+    },
+    {
+      type: "text",
+      name: "Lieu de naissance",
+      align: alignmentLeft
     },
     {
       type: "data",
@@ -185,6 +183,11 @@ export function TazkaraKetabReportData(data) {
       type: "empty"
     },
     {
+      type: "text",
+      name: "Adresse",
+      align: alignmentLeft
+    },
+    {
       type: "data",
       data: data.provinceDistrict1.province,
       name: "province"
@@ -201,26 +204,29 @@ export function TazkaraKetabReportData(data) {
     },
     {
       type: "data",
+      name: "registeredTazkaraInformation",
       data:
+        "Volume:" +
         data.registeredTazkaraInformation.volumeNumber +
         "-" +
+        "Page:" +
         data.registeredTazkaraInformation.pageNumber +
         "-" +
-        data.registeredTazkaraInformation.registerNumber,
-      name: "registeredTazkaraInformation"
+        "N°:" +
+        data.registeredTazkaraInformation.registerNumber
     },
     {
       type: "data",
+      name: "fatherstazkaraInformation",
       data:
+        "Volume:" +
         data.fatherstazkaraInformation.volumeNumber +
         "-" +
+        "Page:" +
         data.fatherstazkaraInformation.pageNumber +
         "-" +
-        data.fatherstazkaraInformation.registerNumber,
-      name: "fatherstazkaraInformation"
-    },
-    {
-      type: "empty"
+        "N°:" +
+        data.fatherstazkaraInformation.registerNumber
     },
     {
       type: "empty"

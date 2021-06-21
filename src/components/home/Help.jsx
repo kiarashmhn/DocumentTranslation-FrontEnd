@@ -38,7 +38,7 @@ const helpSteps = [
     french: {
       title: "Étape 2: enregistrer votre demande",
       details:
-        "Choisissez le type de document à traduire(acte de naissance, carte d'identité, permis de conduire, certificat de mariage, etc.), télécharger une copie de votre document (au format jpg, png, pdf ou zip) et remplissez soigneusement le formulaire correspondant. Assurez-vous de la parfaite lisibilité des documents et de l’exactitude des informations saisies."
+        "Choisissez le type de document à traduire (acte de naissance, carte d'identité, permis de conduire, certificat de mariage, etc.), télécharger une copie de votre document (au format jpg, png, pdf ou zip) et remplissez soigneusement le formulaire correspondant. Assurez-vous de la parfaite lisibilité des documents et de l’exactitude des informations saisies."
     }
   },
   {

@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import {titleSize} from "../ExcelUtil";
+import { alignmentLeft, titleSize } from "../ExcelUtil";
 export function BirthLicenseReportData(data) {
   return [
     {
@@ -51,7 +51,8 @@ export function BirthLicenseReportData(data) {
     {
       type: "text",
       name: "Lieu de naissance",
-      isBold: false
+      isBold: false,
+      align: alignmentLeft
     },
     {
       type: "data",
@@ -67,9 +68,6 @@ export function BirthLicenseReportData(data) {
       type: "data",
       data: data.provinceDistrict.village,
       name: "village"
-    },
-    {
-      type: "empty"
     },
     {
       type: "data",
@@ -155,7 +153,8 @@ export function BirthLicenseReportData(data) {
     {
       type: "text",
       name: "Adresse",
-      isBold: false
+      isBold: false,
+      align: alignmentLeft
     },
     {
       type: "data",
@@ -173,43 +172,34 @@ export function BirthLicenseReportData(data) {
       name: "village"
     },
     {
-      type: "empty"
-    },
-    {
       type: "data",
       data: getFrenchName(data.gender),
       name: "gender"
     },
     {
-      type: "text",
-      name: "registeredTazkaraInformation"
-    },
-    {
-      type: "text",
-      name:
-        "Volume :" +
+      type: "data",
+      name: "registeredTazkaraInformation",
+      data:
+        "Volume:" +
         data.registeredTazkaraInformation.volumeNumber +
         "-" +
-        "Page :" +
+        "Page:" +
         data.registeredTazkaraInformation.pageNumber +
         "-" +
-        "N° :" +
+        "N°:" +
         data.registeredTazkaraInformation.registerNumber
     },
     {
-      type: "text",
-      name: "fatherstazkaraInformation"
-    },
-    {
-      type: "text",
-      name:
-        "Volume :" +
+      type: "data",
+      name: "fatherstazkaraInformation",
+      data:
+        "Volume:" +
         data.fatherstazkaraInformation.volumeNumber +
         "-" +
-        "Page :" +
+        "Page:" +
         data.fatherstazkaraInformation.pageNumber +
         "-" +
-        "N° :" +
+        "N°:" +
         data.fatherstazkaraInformation.registerNumber
     },
     {
@@ -225,19 +215,19 @@ export function BirthLicenseReportData(data) {
       name:
         "Signature du fonctionnaire en charge de l’enregistrement des Actes d’État Civil au",
       isBold: true,
-      size: 10
+      size: 12
     },
     {
       type: "text",
       name: "bureau d’État Civil",
       isBold: true,
-      size: 10
+      size: 12
     },
     {
       type: "text",
       name: "Signature et cachet du responsable du bureau d’État Civil",
       isBold: true,
-      size: 10
+      size: 12
     }
     /*{
       type: "text",

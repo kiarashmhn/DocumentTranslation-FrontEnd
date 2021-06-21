@@ -38,6 +38,10 @@ export default class CreateReport extends Component {
       headerFooter: { oddFooter: footer }
     });
     worksheet.pageSetup.printTitlesColumn = "A:I";
+    worksheet.getColumn("A").width = 7;
+    worksheet.getColumn("B").width = 13;
+    worksheet.getColumn("H").width = 13;
+    worksheet.getColumn("I").width = 5;
 
     let rowCount = this.writeData(worksheet);
 

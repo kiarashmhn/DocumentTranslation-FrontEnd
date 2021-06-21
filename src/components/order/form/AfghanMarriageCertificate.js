@@ -13,28 +13,26 @@ export const AfghanMarriageCertificateForm = {
       ]
     },
     {
-      title: "wifeInfo",
+      title: "husbandInfo",
       content: [
         {
-          key: "name",
+          key: "name1",
           type: "text"
         },
         {
-          key: "valad",
+          key: "valad1",
           type: "text"
         },
-
         {
-          key: "valadiat",
+          key: "valadiat1",
           type: "text"
         },
-
         {
-          key: "aBirthDate",
+          key: "aBirthDate1",
           type: "complexDate"
         },
         {
-          key: "nationality",
+          key: "nationality1",
           type: "select",
           value: "afghan",
           options: [
@@ -44,12 +42,12 @@ export const AfghanMarriageCertificateForm = {
           required: true
         },
         {
-          key: "registeredTazkaraInformation",
+          key: "registeredTazkaraInformation1",
           type: "tazkaraInfo",
           notRequired: true
         },
         {
-          key: "livingLocationTemp",
+          key: "livingLocationTemp1",
           provinceKey: "province",
           districtKey: "district",
           villageKey: "village",
@@ -58,7 +56,7 @@ export const AfghanMarriageCertificateForm = {
           required: true
         },
         {
-          key: "livingLocationOriginal",
+          key: "livingLocationOriginal1",
           provinceKey: "province",
           districtKey: "district",
           villageKey: "village",
@@ -69,7 +67,7 @@ export const AfghanMarriageCertificateForm = {
       ]
     },
     {
-      title: "husbandInfo",
+      title: "wifeInfo",
       content: [
         {
           key: "name",

@@ -13,11 +13,15 @@ export const endSection = "Signé et cacheté par le notaire";
 export const childrenEndSection =
   "Signé et cacheté par l'officier de l'état civil";
 
-export const writeText = (worksheet, idx, isBold, text, size) => {
+export const writeText = (worksheet, idx, isBold, text, size, align) => {
   idx = idx + 1;
-  worksheet.mergeCells("A" + idx + ":" + "I" + idx);
+  worksheet.mergeCells(
+    (align === alignmentLeft ? "B" : "A") + idx + ":" + "I" + idx
+  );
   worksheet.addRow();
-  const customCell = worksheet.getCell("A" + idx);
+  const customCell = worksheet.getCell(
+    (align === alignmentLeft ? "B" : "A") + idx
+  );
   customCell.font = {
     name: "Times",
     family: 4,
@@ -25,7 +29,7 @@ export const writeText = (worksheet, idx, isBold, text, size) => {
     underline: false,
     bold: isBold
   };
-  customCell.alignment = alignmentCenter;
+  customCell.alignment = align ? align : alignmentCenter;
   customCell.value = text;
   return idx;
 };
@@ -167,7 +171,14 @@ export const writeSortedArray = (worksheet, rowCount, data, row) => {
 export const writeRow = (worksheet, rowCount, row) => {
   switch (row.type) {
     case "text":
-      rowCount = writeText(worksheet, rowCount, row.isBold, row.name, row.size);
+      rowCount = writeText(
+        worksheet,
+        rowCount,
+        row.isBold,
+        row.name,
+        row.size,
+        row.align
+      );
       break;
     case "empty":
       rowCount = writeText(worksheet, rowCount, false, "");

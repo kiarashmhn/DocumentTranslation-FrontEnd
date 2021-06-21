@@ -20,7 +20,7 @@ const questions = [
     pAns:
       'یک حساب کاربری ایجاد کنید. در حساب کاربری، نوع سند را انتخاب کنید، به عنوان مثال "شناسنامه". سند را برای ترجمه بارگیری کنید یا یک مرحله از فرم مربوطه را تکمیل کنید و سپس دکمه "ذخیره اطلاعات" را فشار دهید. سیستم به طور خودکار یک خط در لیست سفارش ها اضافه می کند که امکان مشاهده، اصلاح یا لغو سفارش، در هر زمان قبل از تأیید پرداخت، را به شما می دهد. در همین مکان، یعنی لیست سفارش ها و در خط سفارش مورد نظر، محلی برای تبادل پیام پیش بینی شده است که به شما اجازه پرسیدن سوأل در مورد همان سفارش را می دهد.',
     fAns:
-      "Créer un compte. Connectez-vous à votre espace client. Sélectionnez un type de document, par exemple ‘Acte de naissance’. Téléchargez le document à traduire ou remplissez une étape de formulaire correspondant et puis appuyez sur le bouton ‘Conserver’. Le système ajoute automatiquement une ligne de commande qui peut être consultée, modifiée ou annulée à tout moment avant la confirmation de paiement via la liste de commandes. Toujours à partir de la liste de commandes et sur la même ligne que la commande en question, vous avez à votre disposition une interface d’échanges qui vous permettra de communiquer avec nous au sujet de la commande en question."
+      "Créez un compte. Connectez-vous à votre espace client. Sélectionnez un type de document, par exemple ‘Acte de naissance’. Téléchargez le document à traduire ou remplissez une étape de formulaire correspondant et puis appuyez sur le bouton ‘Conserver’. Le système ajoute automatiquement une ligne de commande qui peut être consultée, modifiée ou annulée à tout moment avant la confirmation de paiement via la liste de commandes. Toujours à partir de la liste de commandes et sur la même ligne que la commande en question, vous avez à votre disposition une interface d’échanges qui vous permettra de communiquer avec nous au sujet de la commande en question."
   },
   {
     persian: "چگونه می توانم یک پیش فاکتور درخواست بدهم؟",
@@ -97,7 +97,7 @@ const questions = [
       "Il suffit d’aller sur votre compte client, retrouver la commande en question et nous écrire votre demande par l’interface d’échange dédiée à cette commande. Un nouvel envoi en lettre simple vous sera facturé à un coût minimum de 15 euros (hors taxes), ou à la moitié du coût de la traduction assermentée initiale, plus les frais de livraison correspondants, sauf en cas d’un devis spécifique."
   },
   {
-    persian: "آیا ترجمه رسمی همان فرم اصلی سند اصلی را خواهد داشت ؟ ",
+    persian: "آیا ترجمه رسمی همان فرم سند اصلی را خواهد داشت ؟",
     french:
       "Ma traduction certifiée aura-t-elle le même format que le document original ?",
     pAns:

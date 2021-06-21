@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import { getComplexDate, titleSize } from "../ExcelUtil";
+import { alignmentLeft, getComplexDate, titleSize } from "../ExcelUtil";
 export function TazkaraReportData(data) {
   let sign = "";
 
@@ -69,13 +69,11 @@ export function TazkaraReportData(data) {
       data: data.aLastName,
       name: "aLastName"
     },
-
     {
       type: "data",
       data: data.aFatherName,
       name: "aFatherName"
     },
-
     {
       type: "data",
       data: data.grandFatherName,
@@ -83,7 +81,8 @@ export function TazkaraReportData(data) {
     },
     {
       type: "text",
-      name: "Lieu de naissance"
+      name: "Lieu de naissance",
+      align: alignmentLeft
     },
     {
       type: "data",
@@ -99,9 +98,6 @@ export function TazkaraReportData(data) {
       type: "data",
       data: data.provinceDistrict.village,
       name: "village"
-    },
-    {
-      type: "empty"
     },
     {
       type: "data",
@@ -199,10 +195,6 @@ export function TazkaraReportData(data) {
       isBold: true
     },
     {
-      type: "text",
-      name: "Adresse"
-    },
-    {
       type: "data",
       data: data.provinceDistrict1.province,
       name: "province"
@@ -218,38 +210,29 @@ export function TazkaraReportData(data) {
       name: "village"
     },
     {
-      type: "empty"
-    },
-    {
-      type: "text",
-      name: "registeredTazkaraInformation"
-    },
-    {
-      type: "text",
-      name:
-        "Volume :" +
+      type: "data",
+      name: "registeredTazkaraInformation",
+      data:
+        "Volume:" +
         data.registeredTazkaraInformation.volumeNumber +
-        "-" +
-        "Page :" +
+        " - " +
+        "Page:" +
         data.registeredTazkaraInformation.pageNumber +
-        "-" +
-        "N° :" +
+        " - " +
+        "N°:" +
         data.registeredTazkaraInformation.registerNumber
     },
     {
-      type: "text",
-      name: "fatherstazkaraInformation"
-    },
-    {
-      type: "text",
-      name:
-        "Volume :" +
+      type: "data",
+      name: "fatherstazkaraInformation",
+      data:
+        "Volume:" +
         data.fatherstazkaraInformation.volumeNumber +
-        "-" +
-        "Page :" +
+        " - " +
+        "Page:" +
         data.fatherstazkaraInformation.pageNumber +
-        "-" +
-        "N° :" +
+        " - " +
+        "N°:" +
         data.fatherstazkaraInformation.registerNumber
     },
     {
@@ -259,7 +242,7 @@ export function TazkaraReportData(data) {
       type: "text",
       name: "Empreinte digitale de la personne concernée : " + sign,
       isBold: true,
-      size: 10
+      size: 12
     },
     {
       type: "empty"
@@ -269,19 +252,19 @@ export function TazkaraReportData(data) {
       name:
         "Signature du fonctionnaire en charge de l’enregistrement des Actes d’État Civil au",
       isBold: true,
-      size: 10
+      size: 12
     },
     {
       type: "text",
       name: "bureau d’État Civil",
       isBold: true,
-      size: 10
+      size: 12
     },
     {
       type: "text",
       name: "Signature du responsable du bureau d’État Civil",
       isBold: true,
-      size: 10
+      size: 12
     }
   ];
 }

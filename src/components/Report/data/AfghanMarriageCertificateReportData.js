@@ -1,45 +1,42 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import {titleSize} from "../ExcelUtil";
+import { titleSize } from "../ExcelUtil";
 export function AfghanMarriageCertificateReportData(data) {
   return [
     {
       type: "text",
-      name: "Traduction de la Carte d’enregistrement de naissance",
+      name: "Traduction d’un certificat de mariage afghan",
       isBold: true,
       size: titleSize
     },
     {
-      type: "empty"
-    },
-    {
       type: "text",
-      name: "Ministère de l’Intérieur de la République Islamique d’Afghanistan",
-      isBold: true
-    },
-    {
-      type: "text",
-      name: "Direction administrative",
+      name:
+        "Numéro d’enregistrement général : " + data.generalRegistrationNumber,
       isBold: true
     },
     {
       type: "text",
       name:
-        "Direction générale des affaires étrangères et de l’enregistrement des actes d’état civil",
+        "Numéro d’enregistrement spécifique : " +
+        data.specificRegistrationNumber,
       isBold: true
     },
     {
       type: "text",
-      name: "Bureau d’État Civil",
+      name: "Numéro de série : " + data.serialNumber1,
       isBold: true
     },
     {
       type: "text",
-      name: "N° de document (BR Code) : " + data.codeBar,
+      name:
+        "Tarif du certificat de mariage : " +
+        data.tarrif +
+        " Afghani ( a été réglé )",
       isBold: true
     },
     {
       type: "text",
-      name: "Date d’émission : " + data.issueDate,
+      name: "Date d’émission : " + data.issueDate1,
       isBold: true
     },
     {
