@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import {titleSize} from "../ExcelUtil";
+import { titleSize } from "../ExcelUtil";
 export function DrivingLicenseReportData(data) {
   let category = "Catégorie ";
   let categories = [];
@@ -59,7 +59,8 @@ export function DrivingLicenseReportData(data) {
         {
           type: "data",
           data: data[categoryKeys[c]].date,
-          name: "firstIssueDate"
+          name: "firstIssueDate",
+          size: 8
         }
       ]
     ];

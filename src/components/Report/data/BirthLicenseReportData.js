@@ -55,24 +55,24 @@ export function BirthLicenseReportData(data) {
       align: alignmentLeft
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.province,
-      name: "province"
+      name: "    Province"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.district,
-      name: "district"
+      name: "    District"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.village,
-      name: "village"
+      name: "    Village"
     },
     {
-      type: "data",
+      type: "pureData",
       data: getFrenchName(data.zone),
-      name: "zone"
+      name: "    Zone"
     },
     {
       type: "data",
@@ -157,19 +157,19 @@ export function BirthLicenseReportData(data) {
       align: alignmentLeft
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict1.province,
-      name: "province"
+      name: "    Province"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict1.district,
-      name: "district"
+      name: "    District"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict1.village,
-      name: "village"
+      name: "    Village"
     },
     {
       type: "data",
@@ -182,10 +182,10 @@ export function BirthLicenseReportData(data) {
       data:
         "Volume:" +
         data.registeredTazkaraInformation.volumeNumber +
-        "-" +
+        " - " +
         "Page:" +
         data.registeredTazkaraInformation.pageNumber +
-        "-" +
+        " - " +
         "N°:" +
         data.registeredTazkaraInformation.registerNumber
     },
@@ -195,10 +195,10 @@ export function BirthLicenseReportData(data) {
       data:
         "Volume:" +
         data.fatherstazkaraInformation.volumeNumber +
-        "-" +
+        " - " +
         "Page:" +
         data.fatherstazkaraInformation.pageNumber +
-        "-" +
+        " - " +
         "N°:" +
         data.fatherstazkaraInformation.registerNumber
     },

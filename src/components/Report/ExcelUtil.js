@@ -5,7 +5,7 @@ export const alignmentCenter = { vertical: "middle", horizontal: "center" };
 export const alignmentRight = { vertical: "middle", horizontal: "right" };
 export const alignmentLeft = { vertical: "middle", horizontal: "left" };
 
-const defaultSize = 10;
+const defaultSize = 9;
 const emptySize = 5;
 export const titleSize = 15;
 
@@ -34,7 +34,7 @@ export const writeText = (worksheet, idx, isBold, text, size, align) => {
   return idx;
 };
 
-export const writeData = (worksheet, idx, key, value, align) => {
+export const writeData = (worksheet, idx, key, value, align, size) => {
   idx = idx + 1;
   worksheet.mergeCells("B" + idx + ":" + "D" + idx);
   worksheet.mergeCells("F" + idx + ":" + "I" + idx);
@@ -44,7 +44,7 @@ export const writeData = (worksheet, idx, key, value, align) => {
   customCellKey.font = {
     name: "Times",
     family: 4,
-    size: defaultSize,
+    size: size ? size : defaultSize,
     underline: false,
     bold: false
   };
@@ -100,8 +100,8 @@ export const getCorrectValue = (key, value) => {
   return value;
 };
 
-export const writeDataByKey = (key, data, worksheet, rowCount, align) => {
-  return writeData(worksheet, rowCount, getFrenchName(key), data, align);
+export const writeDataByKey = (key, data, worksheet, rowCount, align, size) => {
+  return writeData(worksheet, rowCount, getFrenchName(key), data, align, size);
 };
 
 export const writeArray = (worksheet, rowCount, data, row) => {
@@ -189,7 +189,8 @@ export const writeRow = (worksheet, rowCount, row) => {
         row.data,
         worksheet,
         rowCount,
-        row.align
+        row.align,
+        row.size
       );
       break;
     case "pureData":
@@ -262,7 +263,7 @@ export const getComplexDate = date => {
       let mYear = moment
         .from("01" + "/" + "01" + "/" + year, "fa", "DD/MM/YYYY")
         .format("YYYY");
-      year = year + "[" + mYear + "-" + (parseInt(mYear) + 1) + "]";
+      year = year + " [" + mYear + "-" + (parseInt(mYear) + 1) + "]";
     }
     return "Il était âgé de " + age + " ans en " + year;
   } else return date;

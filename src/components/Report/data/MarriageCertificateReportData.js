@@ -1,5 +1,5 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import {titleSize} from "../ExcelUtil";
+import { titleSize } from "../ExcelUtil";
 const capitalize = str => {
   return str && str.length > 1 ? str[0].toUpperCase() + str.slice(1) : str;
 };
@@ -1100,7 +1100,7 @@ export function MarriageCertificateReportData(data) {
     {
       type: "text",
       name:
-        "Identité de la personne qui a célébré le mariage [notaire] entre Mr." +
+        "Identité de la personne qui a célébré le mariage [notaire] entre M. " +
         capitalize(data.hname) +
         " " +
         upperCase(data.hlastName),
@@ -1110,7 +1110,7 @@ export function MarriageCertificateReportData(data) {
     {
       type: "text",
       name:
-        "(le marié) et Mme." +
+        "(le marié) et Mme " +
         capitalize(data.name) +
         " " +
         upperCase(data.lastName) +
@@ -1141,7 +1141,7 @@ export function MarriageCertificateReportData(data) {
     {
       type: "text",
       name:
-        "Signature du notaire [ la personne qui a célébré le mariage ], Mr. " +
+        "Signature du notaire [ la personne qui a célébré le mariage ], M. " +
         capitalize(data.nameAghed) +
         " " +
         upperCase(data.lastNameAghed),

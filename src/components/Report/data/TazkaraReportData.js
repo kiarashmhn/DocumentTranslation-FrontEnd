@@ -85,19 +85,19 @@ export function TazkaraReportData(data) {
       align: alignmentLeft
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.province,
-      name: "province"
+      name: "    Province"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.district,
-      name: "district"
+      name: "    District"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.village,
-      name: "village"
+      name: "    Village"
     },
     {
       type: "data",

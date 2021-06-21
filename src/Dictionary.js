@@ -528,7 +528,7 @@ export const Dictionary = {
   },
   dateofIssue1: {
     persian: "تاریخ صدور کارت",
-    french: "Date de deĺivrance de permis"
+    french: "Date de délivrance de permis"
   },
   dateofIssueIDCertificate: {
     persian: "تاریخ صدور شناسنامه",

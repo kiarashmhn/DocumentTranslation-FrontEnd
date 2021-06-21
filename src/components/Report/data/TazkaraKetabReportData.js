@@ -1,5 +1,11 @@
 import { getFrenchName } from "../../../Dictionary.js";
-import { alignmentLeft, getComplexDate, titleSize } from "../ExcelUtil";
+import {
+  alignmentLeft,
+  capitalize,
+  getComplexDate,
+  titleSize,
+  upperCase
+} from "../ExcelUtil";
 export function TazkaraKetabReportData(data) {
   return [
     {
@@ -90,19 +96,19 @@ export function TazkaraKetabReportData(data) {
       align: alignmentLeft
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.province,
-      name: "province"
+      name: "    Province"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.district,
-      name: "district"
+      name: "    District"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict.village,
-      name: "village"
+      name: "    Village"
     },
     {
       type: "data",
@@ -180,27 +186,24 @@ export function TazkaraKetabReportData(data) {
       isBold: true
     },
     {
-      type: "empty"
-    },
-    {
       type: "text",
       name: "Adresse",
       align: alignmentLeft
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict1.province,
-      name: "province"
+      name: "    Province"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict1.district,
-      name: "district"
+      name: "    District"
     },
     {
-      type: "data",
+      type: "pureData",
       data: data.provinceDistrict1.village,
-      name: "village"
+      name: "    Village"
     },
     {
       type: "data",
@@ -208,10 +211,10 @@ export function TazkaraKetabReportData(data) {
       data:
         "Volume:" +
         data.registeredTazkaraInformation.volumeNumber +
-        "-" +
+        " - " +
         "Page:" +
         data.registeredTazkaraInformation.pageNumber +
-        "-" +
+        " - " +
         "N°:" +
         data.registeredTazkaraInformation.registerNumber
     },
@@ -221,10 +224,10 @@ export function TazkaraKetabReportData(data) {
       data:
         "Volume:" +
         data.fatherstazkaraInformation.volumeNumber +
-        "-" +
+        " - " +
         "Page:" +
         data.fatherstazkaraInformation.pageNumber +
-        "-" +
+        " - " +
         "N°:" +
         data.fatherstazkaraInformation.registerNumber
     },
@@ -234,9 +237,9 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name:
-        data.aName +
+        capitalize(data.aName) +
         " " +
-        data.aLastName +
+        upperCase(data.aLastName) +
         ", dont son identité  et son état civil sont mentionnés dans cet acte de naissance",
       isBold: true,
       size: 10
