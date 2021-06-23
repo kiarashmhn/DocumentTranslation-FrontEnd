@@ -2266,6 +2266,27 @@ export const Dictionary = {
   serviceStartDate: {
     persian: "",
     french: "Date de début du service militaire"
+  },
+  court: {
+    persian: "محکمه",
+    french: "Cour d’appel"
+  },
+  embassy: {
+    persian: "سفارت",
+    french: "Ambassade"
+  },
+  otherPlace: {
+    persian: "دیگر",
+    french: "Autre préciser"
+  },
+  write: {
+    persian: "بنویسید",
+    french: "Préciser"
+  },
+  ministryConfirm: {
+    persian: "آیا وزارت امور خارجه افغانستان سند را مهر و تایید کرده است؟",
+    french:
+      "Le certificat est-il attesté par le ministère des affaires étrangères afghan?"
   }
 };
 

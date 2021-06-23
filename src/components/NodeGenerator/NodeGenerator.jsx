@@ -28,12 +28,15 @@ import AfghanWitness from "../Marriage/AfghanWitness";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Typography from "@material-ui/core/Typography";
 import Address from "../Address";
+import DocumentPlace from "../DocumentPlace/DocumentPlace";
+import AfghanChildren from "../Marriage/AfghanChildren";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
     super(props);
     this.state = { ...this.constructState() };
     this.childrenRef = React.createRef();
+    this.afghanChildrenRef = React.createRef();
     this.spousesRef = React.createRef();
     this.fileHandlerRef = React.createRef();
     this.additionalFileHandlerRef = React.createRef();
@@ -133,6 +136,17 @@ export default class NodesGenerator extends Component {
       : { children: [] };
   };
 
+  getAfghanChildrenState = () => {
+    return this.afghanChildrenRef.current
+      ? this.afghanChildrenRef.current.getState()
+        ? {
+            afghanChildren: this.afghanChildrenRef.current.getState()
+              .afghanChildren
+          }
+        : { afghanChildren: [] }
+      : { afghanChildren: [] };
+  };
+
   getInitialArrayByKey = key => {
     return this.props.externalInitializationData
       ? this.props.externalInitializationData[key]
@@ -154,6 +168,10 @@ export default class NodesGenerator extends Component {
 
     let children = this.getChildrenState();
     if (children.children.length > 0) state = { ...state, ...children };
+
+    let afghanChildren = this.getAfghanChildrenState();
+    if (afghanChildren.afghanChildren.length > 0)
+      state = { ...state, ...afghanChildren };
 
     let marriages = this.getSpousesState();
     if (marriages.spouses.length > 0) state = { ...state, ...marriages };
@@ -340,6 +358,21 @@ export default class NodesGenerator extends Component {
               <Children
                 ref={this.childrenRef}
                 initialChildren={this.getInitialArrayByKey(element.key)}
+              />
+            </Grid>
+          );
+        case "afghanChildren":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <AfghanChildren
+                ref={this.afghanChildrenRef}
+                initialAfghanChildren={this.getInitialArrayByKey(element.key)}
               />
             </Grid>
           );
@@ -578,6 +611,25 @@ export default class NodesGenerator extends Component {
                     : null
                 }
                 options={element.options}
+              />
+            </Grid>
+          );
+        case "documentPlace":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <DocumentPlace
+                onChange={value => this.setState({ [element.key]: value })}
+                initial={
+                  this.props.externalInitializationData
+                    ? this.props.externalInitializationData[element.key]
+                    : null
+                }
               />
             </Grid>
           );

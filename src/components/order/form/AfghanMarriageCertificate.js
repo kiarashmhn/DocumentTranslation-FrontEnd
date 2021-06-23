@@ -33,13 +33,8 @@ export const AfghanMarriageCertificateForm = {
         },
         {
           key: "nationality1",
-          type: "select",
-          value: "afghan",
-          options: [
-            { value: "afghan", key: "afghan" },
-            { value: "others", key: "others" }
-          ],
-          required: true
+          type: "text",
+          value: "Afghane / افغان"
         },
         {
           key: "registeredTazkaraInformation1",
@@ -53,7 +48,8 @@ export const AfghanMarriageCertificateForm = {
           villageKey: "village",
           type: "provinceDistrict",
           name: "livingLocationTemp",
-          required: true
+          showCountry: true,
+          required: false
         },
         {
           key: "livingLocationOriginal1",
@@ -62,7 +58,8 @@ export const AfghanMarriageCertificateForm = {
           villageKey: "village",
           type: "provinceDistrict",
           name: "livingLocationOriginal",
-          required: true
+          showCountry: true,
+          required: false
         }
       ]
     },
@@ -89,13 +86,8 @@ export const AfghanMarriageCertificateForm = {
         },
         {
           key: "nationality",
-          type: "select",
-          value: "afghan",
-          options: [
-            { value: "afghan", key: "afghan" },
-            { value: "others", key: "others" }
-          ],
-          required: true
+          type: "text",
+          value: "Afghane / افغان"
         },
         {
           key: "registeredTazkaraInformation",
@@ -109,7 +101,8 @@ export const AfghanMarriageCertificateForm = {
           villageKey: "village",
           type: "provinceDistrict",
           name: "livingLocationTemp",
-          required: true
+          showCountry: true,
+          required: false
         },
         {
           key: "livingLocationOriginal",
@@ -118,7 +111,8 @@ export const AfghanMarriageCertificateForm = {
           villageKey: "village",
           type: "provinceDistrict",
           name: "livingLocationOriginal",
-          required: true
+          showCountry: true,
+          required: false
         }
       ]
     },
@@ -144,8 +138,8 @@ export const AfghanMarriageCertificateForm = {
       title: "children",
       content: [
         {
-          key: "children",
-          type: "children"
+          key: "afghanChildren",
+          type: "afghanChildren"
         }
       ]
     },
@@ -174,28 +168,8 @@ export const AfghanMarriageCertificateForm = {
           type: "date"
         },
         {
-          key: "whichOffice",
-          type: "text"
-        },
-        {
-          key: "whichProvince",
-          provinceKey: "province",
-          districtKey: "district",
-          villageKey: "village",
-          type: "provinceDistrict",
-          name: "whichProvince",
-          required: true
-        },
-        {
-          key: "whichAmbassy",
-          type: "select",
-          options: [
-            { value: "islamabad", key: "islamabad" },
-            { value: "tehran", key: "tehran" },
-            { value: "doushanbe", key: "doushanbe" },
-            { value: "moscow", key: "moscow" }
-          ],
-          notRequiredrequired: true
+          key: "documentPlace",
+          type: "documentPlace"
         },
         {
           key: "docNumber5",
@@ -217,6 +191,15 @@ export const AfghanMarriageCertificateForm = {
           type: "provinceDistrict",
           name: "placeofMarriage",
           showCountry: true,
+          required: true
+        },
+        {
+          key: "ministryConfirm",
+          type: "select",
+          options: [
+            { value: "yes", key: "yes" },
+            { value: "no", key: "no" }
+          ],
           required: true
         }
       ]

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Typography } from "@material-ui/core";
-import { getFrenchName, getPersianName } from "../../Dictionary";
 import Grid from "@material-ui/core/Grid";
 import FieldInput from "../CustomInput/FieldInput";
 import * as PropTypes from "prop-types";
@@ -21,7 +19,7 @@ const initialState = {
   livingLocationOriginal: ""
 };
 
-export default class AfghanWitness extends Component {
+export default class AfghanChild extends Component {
   constructor(props) {
     super(props);
     this.state = initialState;
@@ -37,44 +35,21 @@ export default class AfghanWitness extends Component {
   }
 
   onChange = (key, event) => {
-    this.setState(
-      {
-        [key]: event.target.value
-      },
-      () => {
-        this.props.onChange(this.state);
-      }
-    );
+    this.setState({
+      [key]: event.target.value
+    });
   };
 
   onEdit = (key, value) => {
-    this.setState({ [key]: value }, () => {
-      this.props.onChange(this.state);
-    });
+    this.setState({ [key]: value });
   };
 
   render() {
     return (
       <Card variant="outlined">
         <CardContent>
-          {!this.props.disableTitle && (
-            <div>
-              <Typography>
-                {getFrenchName(this.props.id) + " " + this.props.idx}
-              </Typography>
-              <Typography>
-                {getPersianName(this.props.id) + " " + this.props.idx}
-              </Typography>
-            </div>
-          )}
           <Grid container spacing={2}>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={4}
-              key={this.props.id + this.props.idx + "name"}
-            >
+            <Grid item xs={12} sm={12} md={4} key={"afghanChildName"}>
               <FieldInput
                 name={"name"}
                 value={this.state["name"]}
@@ -86,47 +61,7 @@ export default class AfghanWitness extends Component {
               xs={12}
               sm={12}
               md={4}
-              key={this.props.id + this.props.idx + "valad"}
-            >
-              <FieldInput
-                name={"valad"}
-                value={this.state["valad"]}
-                onChange={event => this.onChange("valad", event)}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={4}
-              key={this.props.id + this.props.idx + "valadiat"}
-            >
-              <FieldInput
-                name={"valadiat"}
-                value={this.state["valadiat"]}
-                onChange={event => this.onChange("valadiat", event)}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              key={this.props.id + this.props.idx + "aBirthDate"}
-            >
-              <ComplexDateInput
-                name={"aBirthDate"}
-                initial={this.state.aBirthDate}
-                required={true}
-                onChange={value => this.onEdit("aBirthDate", value)}
-              />
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={4}
-              key={this.props.id + this.props.idx + "tazkaraInfo"}
+              key={"afghanChildValadtazkaraInfo"}
             >
               <TazkaraInfo
                 name={"registeredTazkaraInformation"}
@@ -139,7 +74,7 @@ export default class AfghanWitness extends Component {
               xs={12}
               sm={12}
               md={4}
-              key={this.props.id + this.props.idx + "nationality"}
+              key={"afghanChildValadnationality"}
             >
               <FieldInput
                 name={"nationality"}
@@ -152,7 +87,21 @@ export default class AfghanWitness extends Component {
               xs={12}
               sm={12}
               md={12}
-              key={this.props.id + this.props.idx + "livingLocationTemp"}
+              key={"afghanChildValadaBirthDate"}
+            >
+              <ComplexDateInput
+                name={"aBirthDate"}
+                initial={this.state.aBirthDate}
+                required={true}
+                onChange={value => this.onEdit("aBirthDate", value)}
+              />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              key={"afghanChildValadlivingLocationTemp"}
             >
               <ProvinceDistrict
                 province={
@@ -184,7 +133,7 @@ export default class AfghanWitness extends Component {
               xs={12}
               sm={12}
               md={12}
-              key={this.props.id + this.props.idx + "livingLocationOriginal"}
+              key={"afghanChildValadlivingLocationOriginal"}
             >
               <ProvinceDistrict
                 province={
@@ -217,10 +166,6 @@ export default class AfghanWitness extends Component {
     );
   }
 }
-AfghanWitness.propTypes = {
-  id: PropTypes.any.isRequired,
-  idx: PropTypes.any.isRequired,
-  initialState: PropTypes.any,
-  disableTitle: PropTypes.any,
-  onChange: PropTypes.func.isRequired
+AfghanChild.propTypes = {
+  initialState: PropTypes.any
 };

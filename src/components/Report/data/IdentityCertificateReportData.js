@@ -1,4 +1,4 @@
-import {compareDates, titleSize} from "../ExcelUtil";
+import { compareDates, titleSize } from "../ExcelUtil";
 
 const getSpouse = spouse => {
   let info = {
