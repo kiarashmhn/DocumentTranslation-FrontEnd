@@ -126,15 +126,14 @@ class OrderForm extends Component {
     this.nodeGenRef.onRefresh();
   };
 
-  handleNext = event => {
-    event.preventDefault();
+  handleNext = () => {
     let prevState = this.state.step;
     let nodeGenState = this.nodeGenRef.getState();
 
     this.setState(
       {
-        step: prevState + 1,
-        ...nodeGenState
+        ...nodeGenState,
+        step: prevState + 1
       },
       () => {
         this.props.onSave();
@@ -162,8 +161,7 @@ class OrderForm extends Component {
     );
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = () => {
     let nodeGenState = this.nodeGenRef.getState();
     this.setState(
       {
@@ -177,9 +175,14 @@ class OrderForm extends Component {
 
   selectStep = (e, index) => {
     e.preventDefault();
-    this.setState({
-      step: index
-    });
+    this.setState(
+      {
+        step: index
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
 
   getSteps = () => {
@@ -189,6 +192,172 @@ class OrderForm extends Component {
   setRef = e => {
     if (e !== null) this.nodeGenRef = e;
     return this.nodeGenRef;
+  };
+
+  renderSubmit = () => {
+    return (
+      <div>
+        <div
+          style={{
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "40px"
+          }}
+        >
+          <Checkbox
+            checked={!!this.state.approval}
+            onChange={e =>
+              this.setState({
+                approval: e.target.checked
+              })
+            }
+            name={"approval"}
+            color="secondary"
+          />
+          <Typography
+            variant="body1"
+            align="center"
+            style={{ marginTop: "17px" }}
+            component={"div"}
+          >
+            J’accepte des{" "}
+            <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
+              {" "}
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                mentions légales de vente
+              </Box>
+            </Link>{" "}
+            et{" "}
+            <Link
+              to={{
+                pathname: "/DataPrivacy"
+              }}
+              target={"_blank"}
+            >
+              {" "}
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                de protection des données
+              </Box>
+            </Link>
+            .
+          </Typography>
+        </div>
+        <Typography
+          variant="body1"
+          align="center"
+          dir={"rtl"}
+          component={"div"}
+        >
+          <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
+            {" "}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              قوانین فروش
+            </Box>
+          </Link>{" "}
+          و{" "}
+          <Link
+            to={{
+              pathname: "/DataPrivacy"
+            }}
+            target={"_blank"}
+          >
+            {" "}
+            <Box
+              fontStyle="bold"
+              fontWeight="fontWeightMedium"
+              display="inline"
+            >
+              حفاظت از داده‌های شخصی
+            </Box>
+          </Link>{" "}
+          را قبول دارم.
+        </Typography>
+        <div
+          style={{
+            verticalAlign: "middle",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "10px",
+            paddingBottom: "20px",
+            marginTop: "5px"
+          }}
+        >
+          <Button
+            type={"submit"}
+            style={{ ...styles.button, ...{ textTransform: "none" } }}
+            variant="contained"
+            color="secondary"
+            disabled={!this.state.approval}
+          >
+            <p>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "2px",
+                  fontSize: "100%"
+                }}
+              />
+              <Typography variant="body1" align="center" component={"span"}>
+                {this.props.code === "DD"
+                  ? getFrenchName("submitOrder")
+                  : getFrenchName("submit")}
+              </Typography>
+              <span
+                style={{
+                  display: "block",
+                  marginBottom: "0",
+                  fontSize: 16
+                }}
+              />
+              <Typography variant="body2" align="center" component={"span"}>
+                {this.props.code === "DD"
+                  ? getPersianName("submitOrder")
+                  : getPersianName("submit")}
+              </Typography>
+            </p>
+            {this.props.isLoading && <ButtonCircularProgress />}
+          </Button>
+          {this.props.code !== "DD" && (
+            <div style={{ maxWidth: "100%", position: "relative" }}>
+              <CustomTooltip>
+                <div>
+                  Les informations seront enregistrées et vous passerez à
+                  l’étape du paiement. Cependant, avant le paiement, vous aurez
+                  la possibilité de modifier les informations saisies via liste
+                  commandes.
+                </div>
+                <div dir={"rtl"}>
+                  با فشار بر این دکمه، اطلاعات شما موقتا ثبت میشود و به قسمت
+                  پرداخت وارد می شوید. البته قبل از پرداخت، می توانید برای تصحیح
+                  آنها از طریق لیست سفارشها اقدام کنید.
+                </div>
+              </CustomTooltip>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    this.state.step === this.state.steps - 1
+      ? this.handleSubmit()
+      : this.handleNext();
   };
 
   render() {
@@ -210,7 +379,7 @@ class OrderForm extends Component {
                   </IconButton>
                 </StepLabel>
                 <StepContent>
-                  <form onSubmit={this.handleNext}>
+                  <form onSubmit={this.onSubmit}>
                     <Grid container spacing={2}>
                       <NodeGenerator
                         ref={this.setRef}
@@ -220,6 +389,8 @@ class OrderForm extends Component {
                       />
                     </Grid>
                     {this.getStepActions()}
+                    {this.state.step === this.state.steps - 1 &&
+                      this.renderSubmit()}
                   </form>
                 </StepContent>
               </Step>
@@ -230,158 +401,6 @@ class OrderForm extends Component {
               <Typography>{getCompleteName("allStepsCompleted")}</Typography>
             </Paper>
           )}
-          <div
-            style={{
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "40px"
-            }}
-          >
-            <Checkbox
-              checked={!!this.state.approval}
-              onChange={e =>
-                this.setState({
-                  approval: e.target.checked
-                })
-              }
-              name={"approval"}
-              color="secondary"
-            />
-            <Typography
-              variant="body1"
-              align="center"
-              style={{ marginTop: "17px" }}
-              component={"div"}
-            >
-              J’accepte des{" "}
-              <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
-                {" "}
-                <Box
-                  fontStyle="bold"
-                  fontWeight="fontWeightMedium"
-                  display="inline"
-                >
-                  mentions légales de vente
-                </Box>
-              </Link>{" "}
-              et{" "}
-              <Link
-                to={{
-                  pathname: "/DataPrivacy"
-                }}
-                target={"_blank"}
-              >
-                {" "}
-                <Box
-                  fontStyle="bold"
-                  fontWeight="fontWeightMedium"
-                  display="inline"
-                >
-                  de protection des données
-                </Box>
-              </Link>
-              .
-            </Typography>
-          </div>
-          <Typography
-            variant="body1"
-            align="center"
-            dir={"rtl"}
-            component={"div"}
-          >
-            <Link to={{ pathname: "/LegalNotes" }} target={"_blank"}>
-              {" "}
-              <Box
-                fontStyle="bold"
-                fontWeight="fontWeightMedium"
-                display="inline"
-              >
-                قوانین فروش
-              </Box>
-            </Link>{" "}
-            و{" "}
-            <Link
-              to={{
-                pathname: "/DataPrivacy"
-              }}
-              target={"_blank"}
-            >
-              {" "}
-              <Box
-                fontStyle="bold"
-                fontWeight="fontWeightMedium"
-                display="inline"
-              >
-                حفاظت از داده‌های شخصی
-              </Box>
-            </Link>{" "}
-            را قبول دارم.
-          </Typography>
-          <div
-            style={{
-              verticalAlign: "middle",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: "10px",
-              paddingBottom: "20px",
-              marginTop: "5px"
-            }}
-          >
-            <Button
-              onClick={this.handleSubmit}
-              style={{ ...styles.button, ...{ textTransform: "none" } }}
-              variant="contained"
-              color="secondary"
-              disabled={!this.state.approval}
-            >
-              <p>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "2px",
-                    fontSize: "100%"
-                  }}
-                />
-                <Typography variant="body1" align="center" component={"span"}>
-                  {this.props.code === "DD"
-                    ? getFrenchName("submitOrder")
-                    : getFrenchName("submit")}
-                </Typography>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "0",
-                    fontSize: 16
-                  }}
-                />
-                <Typography variant="body2" align="center" component={"span"}>
-                  {this.props.code === "DD"
-                    ? getPersianName("submitOrder")
-                    : getPersianName("submit")}
-                </Typography>
-              </p>
-              {this.props.isLoading && <ButtonCircularProgress />}
-            </Button>
-            {this.props.code !== "DD" && (
-              <div style={{ maxWidth: "100%", position: "relative" }}>
-                <CustomTooltip>
-                  <div>
-                    Les informations seront enregistrées et vous passerez à
-                    l’étape du paiement. Cependant, avant le paiement, vous
-                    aurez la possibilité de modifier les informations saisies
-                    via liste commandes.
-                  </div>
-                  <div dir={"rtl"}>
-                    با فشار بر این دکمه، اطلاعات شما موقتا ثبت میشود و به قسمت
-                    پرداخت وارد می شوید. البته قبل از پرداخت، می توانید برای
-                    تصحیح آنها از طریق لیست سفارشها اقدام کنید.
-                  </div>
-                </CustomTooltip>
-              </div>
-            )}
-          </div>
         </div>
       </Fragment>
     );

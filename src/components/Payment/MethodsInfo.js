@@ -8,9 +8,9 @@ const persianNote =
   "* هزینه ترجمه را به حساب بانکی واریز کرده و رسید واریز را در حساب کاربری برای ما ارسال کنید. اطلاعات زیر را در دستور واریز بانکی خود می بایست ثبت کنید :";
 
 const persianNote2 =
-  "مبلغ هزینه ترجمه را در قالب چک در وجه Daniel MOVAHHEDI به آدرس زیر با قرار دادن شماره سفارش در نامه ارسال کنید: ";
+  "مبلغ هزینه ترجمه را در قالب چک در وجه  Seyedeh Zahra DIBAJ به آدرس زیر با قرار دادن شماره سفارش در نامه ارسال کنید: ";
 const frenchNote2 =
-  "Envoyer votre chèque en indiquant le numero de votre commande dans votre courier à l’ordre de Daniel MOVAHHEDI à l’adresse suivante :\n";
+  "Envoyer votre chèque en indiquant le numero de votre commande dans votre courier à l’ordre de Seyedeh Zahra DIBAJ à l’adresse suivante :\n";
 const address = "99 boulevard Général Vanier, 14000 CAEN \n";
 
 const persianNote3 =

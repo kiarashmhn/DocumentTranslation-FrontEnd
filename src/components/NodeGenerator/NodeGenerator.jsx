@@ -216,8 +216,33 @@ export default class NodesGenerator extends Component {
               key={element.key}
             >
               <Typography>
-                <div>{getFrenchName(element.key)}</div>
-                <div dir={"rtl"}>{getPersianName(element.key)}</div>
+                <div style={{ display: "grid" }}>
+                  <div style={{ display: "inline-flex" }}>
+                    <div style={{ paddingTop: "14px" }}>
+                      {getFrenchName(element.key)}
+                    </div>
+                    {getHint(element.key) && (
+                      <div style={{ padding: "0px 10px" }}>
+                        <CustomTooltip>
+                          <div>{getHint(element.key).french}</div>
+                        </CustomTooltip>
+                      </div>
+                    )}
+                  </div>
+                  <div style={{ display: "inline-flex" }}>
+                    {getHint(element.key) && (
+                      <div style={{ padding: "0px 10px" }}>
+                        {" "}
+                        <CustomTooltip>
+                          <div dir={"rtl"}>{getHint(element.key).persian}</div>
+                        </CustomTooltip>
+                      </div>
+                    )}
+                    <div style={{ paddingTop: "14px" }} dir={"rtl"}>
+                      {getPersianName(element.key)}
+                    </div>
+                  </div>
+                </div>
               </Typography>
             </Grid>
           );

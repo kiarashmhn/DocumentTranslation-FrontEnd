@@ -25,21 +25,12 @@ class Home extends Component {
 
   executeScroll = () => {
     if (this.props.selectedSection === "Features")
-      this.featureRef.current.scrollIntoView({
-        behavior: "smooth"
-      });
+      this.featureRef.current.scrollIntoView(true);
     else if (this.props.selectedSection === "About")
-      this.aboutRef.current.scrollIntoView({
-        behavior: "smooth"
-      });
+      this.aboutRef.current.scrollIntoView(true);
     else if (this.props.selectedSection === "Help")
-      this.helpRef.current.scrollIntoView({
-        behavior: "smooth"
-      });
-    else
-      this.homeRef.current.scrollIntoView({
-        behavior: "smooth"
-      });
+      this.helpRef.current.scrollIntoView(true);
+    else this.homeRef.current.scrollIntoView(true);
   };
 
   render() {

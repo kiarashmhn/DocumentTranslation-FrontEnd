@@ -159,7 +159,7 @@ class PaymentSubmit extends Component {
                 justifyContent: "center"
               }}
             >
-              <div style={{ marginBottom: "18px" }}>
+              <div style={{ marginBottom: "18px", marginRight: "10px" }}>
                 <CustomTooltip text={getPersianName("sendInfo")} dir={"rtl"} />
               </div>
               <Typography paragraph variant="h6" align="center" dir="rtl">

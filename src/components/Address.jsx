@@ -25,37 +25,31 @@ export default class Address extends Component {
 
   updateState = () => {
     if (this.props.initial && this.state === initialState)
-      this.setState(
-        {
-          tempAddress: this.props.initial.tempAddress
-            ? this.props.initial.tempAddress
-            : "",
-          tempName: this.props.initial.tempName
-            ? this.props.initial.tempName
-            : "",
-          tempCity: this.props.initial.tempCity
-            ? this.props.initial.tempCity
-            : "",
-          tempPostalCode: this.props.initial.tempPostalCode
-            ? this.props.initial.tempPostalCode
-            : "",
-          address: this.props.initial.address ? this.props.initial.address : "",
-          nameOrCompany: this.props.initial.nameOrCompany
-            ? this.props.initial.nameOrCompany
-            : "",
-          city: this.props.initial.city ? this.props.initial.city : "",
-          postalCode: this.props.initial.postalCode
-            ? this.props.initial.postalCode
-            : "",
-          otherAddress: this.props.initial.otherAddress
-            ? this.props.initial.otherAddress
-            : false
-        },
-        () => {
-          console.log(this.props.initial);
-          console.log(this.state);
-        }
-      );
+      this.setState({
+        tempAddress: this.props.initial.tempAddress
+          ? this.props.initial.tempAddress
+          : "",
+        tempName: this.props.initial.tempName
+          ? this.props.initial.tempName
+          : "",
+        tempCity: this.props.initial.tempCity
+          ? this.props.initial.tempCity
+          : "",
+        tempPostalCode: this.props.initial.tempPostalCode
+          ? this.props.initial.tempPostalCode
+          : "",
+        address: this.props.initial.address ? this.props.initial.address : "",
+        nameOrCompany: this.props.initial.nameOrCompany
+          ? this.props.initial.nameOrCompany
+          : "",
+        city: this.props.initial.city ? this.props.initial.city : "",
+        postalCode: this.props.initial.postalCode
+          ? this.props.initial.postalCode
+          : "",
+        otherAddress: this.props.initial.otherAddress
+          ? this.props.initial.otherAddress
+          : false
+      });
   };
 
   componentDidMount() {

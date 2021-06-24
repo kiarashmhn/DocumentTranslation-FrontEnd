@@ -1514,15 +1514,24 @@ export const Dictionary = {
   },
   otherDescription: {
     persian:
-      "در اینجا می توانید درخواست پیش فاکتور کنید که پس از بررسی در حساب کاربری شما قرار می گیرد. اگر با پیش فاکتور موافق بودید آنرا تایید و هزینه را پرداخت می کنید تا کار ترجمه سند شما آغاز شد.( برآورد هزینه و زمان تحویل با توجه به تعداد لغات، پیچیدگی متن و نوع سند محاسبه می شود.)",
+      "در اینجا می توانید درخواست پیش فاکتور کنید که پس از بررسی در حساب کاربری شما قرار می گیرد. اگر با پیش فاکتور موافق بودید آنرا تایید و هزینه را پرداخت می کنید تا کار ترجمه سند شما آغاز شود.",
     french:
-      "Si le type de document que vous souhaitez traduire ne figure pas dans notre liste, vous pouvez demander ici un devis. Nous analysons votre demande et remettrons aussitôt un devis. Le devis est calculé en fonction de la longueur du document à traduire, le type de document à traduire et la technicité du document."
+      "Si le type de document que vous souhaitez traduire ne figure pas dans notre liste, vous pouvez demander ici un devis. Nous analysons votre demande et remettrons aussitôt un devis.",
+    hint: {
+      persian:
+        "برآورد هزینه و زمان تحویل با توجه به تعداد لغات، پیچیدگی متن و نوع سند محاسبه می شود.",
+      french:
+        "Le devis est calculé en fonction de la longueur du document à traduire, le type de document à traduire et la technicité du document."
+    }
   },
   otherDelivery: {
-    persian:
-      "حداکثر تا چه تاریخی نیاز به تحویل ترجمه دارید؟ (هر چه زمان کمتری برای ترجمه در اختیار باشد، هزینه ترجمه بیشتر خواهد بود.)",
-    french:
-      "Quelle est votre date limite pour la traduction ? (plus le délai de livraison est court, plus le tarif augmente.)"
+    persian: "حداکثر تا چه تاریخی نیاز به تحویل ترجمه دارید؟",
+    french: "Quelle est votre date limite pour la traduction ?",
+    hint: {
+      persian:
+        "هر چه زمان کمتری برای ترجمه در اختیار باشد، هزینه ترجمه بیشتر خواهد بود.",
+      french: "Plus le délai de livraison est court, plus le tarif augmente."
+    }
   },
   otherDeliveryDescription: {
     persian:
