@@ -8,7 +8,8 @@ export const idCertificateForm = {
         {
           key: "files",
           type: "fileHandler",
-          fileType: "documents"
+          fileType: "documents",
+          required: true
         }
       ]
     },

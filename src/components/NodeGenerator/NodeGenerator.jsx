@@ -30,6 +30,7 @@ import Typography from "@material-ui/core/Typography";
 import Address from "../Address";
 import DocumentPlace from "../DocumentPlace/DocumentPlace";
 import AfghanChildren from "../Marriage/AfghanChildren";
+import Sign from "../Sign";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -335,6 +336,7 @@ export default class NodesGenerator extends Component {
             >
               <CustomFileUpload
                 onChange={event => this.fileOnChange(event, element)}
+                required={element.required}
               />
             </Grid>
           );
@@ -351,6 +353,7 @@ export default class NodesGenerator extends Component {
                 ref={this.fileHandlerRef}
                 orderId={this.props.id}
                 type={element.fileType}
+                required={element.required}
               />
             </Grid>
           );
@@ -383,6 +386,21 @@ export default class NodesGenerator extends Component {
               <Children
                 ref={this.childrenRef}
                 initialChildren={this.getInitialArrayByKey(element.key)}
+              />
+            </Grid>
+          );
+        case "sign":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <Sign
+                onChange={v => this.addressOnChange(v)}
+                initial={this.props.externalInitializationData}
               />
             </Grid>
           );

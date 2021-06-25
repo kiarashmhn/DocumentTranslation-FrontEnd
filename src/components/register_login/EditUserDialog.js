@@ -373,7 +373,6 @@ function EditUserDialog(props) {
               fullWidth
               variant="contained"
               size="large"
-              color="danger"
               style={{
                 marginTop: "10px",
                 textTransform: "none",
@@ -396,6 +395,7 @@ function EditUserDialog(props) {
           deleteAccount();
         }}
         hasCloseIcon
+        hideBackdrop={false}
         content={
           <div>
             <Typography align={"center"}>
@@ -423,7 +423,6 @@ function EditUserDialog(props) {
               fullWidth
               variant="contained"
               size="large"
-              color="danger"
               style={{
                 marginTop: "10px",
                 textTransform: "none",
@@ -449,7 +448,7 @@ EditUserDialog.propTypes = {
   showSnackbar: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string
 };
 
 export default SnackbarWrapper(

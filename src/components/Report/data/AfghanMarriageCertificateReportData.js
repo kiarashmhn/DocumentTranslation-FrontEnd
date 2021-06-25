@@ -2,6 +2,7 @@ import {
   alignmentLeft,
   capitalize,
   getComplexDate,
+  getCorrectName,
   titleSize
 } from "../ExcelUtil";
 export function AfghanMarriageCertificateReportData(data) {
@@ -56,7 +57,7 @@ export function AfghanMarriageCertificateReportData(data) {
       r.push(
         {
           type: "text",
-          name: "Lieu de résidence principal",
+          name: "Lieu de résidence principale",
           isBold: false,
           align: alignmentLeft
         },
@@ -89,7 +90,7 @@ export function AfghanMarriageCertificateReportData(data) {
       r.push(
         {
           type: "text",
-          name: "Lieu de résidence actuel",
+          name: "Lieu de résidence actuelle",
           isBold: false,
           align: alignmentLeft
         },
@@ -143,7 +144,12 @@ export function AfghanMarriageCertificateReportData(data) {
         },
         {
           type: "text",
-          name: "A cette date, de leur union sont nés six d'enfant :",
+          name:
+            "A cette date, de leur union sont nés " +
+            data.afghanChildren.length +
+            " enfant" +
+            (data.afghanChildren.length > 1 ? "s" : "") +
+            " :",
           isBold: false
         },
         ...children
@@ -174,6 +180,21 @@ export function AfghanMarriageCertificateReportData(data) {
           type: "text",
           name:
             "Cachet et signature du directeur de la Direction consulaire du Ministère des affaires étrangères",
+          isBold: true
+        },
+        {
+          type: "text",
+          name:
+            "Numéro d’identification de ce document à la Direction consulaire du Ministère des affaires",
+          isBold: true
+        },
+        {
+          type: "text",
+          name:
+            "étrangères afghan : " +
+            data.confirmNumber +
+            " - Date : le " +
+            data.confirmDate,
           isBold: true
         }
       ];
@@ -218,7 +239,7 @@ export function AfghanMarriageCertificateReportData(data) {
             {
               type: "text",
               name:
-                "Photos d’identité de la mariée et du marié, tamponnées du cachet" +
+                "Photos d’identité de la mariée et du marié, tamponnées du cachet " +
                 province,
               isBold: true
             },
@@ -237,12 +258,12 @@ export function AfghanMarriageCertificateReportData(data) {
             {
               type: "text",
               name:
-                "Photos d’identité de la mariée et du marié, tamponnées du cachet de ",
+                "Photos d’identité de la mariée et du marié, tamponnées du cachet ",
               isBold: true
             },
             {
               type: "text",
-              name: province,
+              name: getCorrectName(province),
               isBold: true
             }
           ];
@@ -399,7 +420,9 @@ export function AfghanMarriageCertificateReportData(data) {
     },
     {
       type: "text",
-      name: `fils de ${data.valad1}, les témoins mentionnés ci-dessus se présentent devant`
+      name: `fils ${getCorrectName(
+        data.valad1
+      )}, les témoins mentionnés ci-dessus se présentent devant`
     },
     {
       type: "text",
@@ -407,7 +430,9 @@ export function AfghanMarriageCertificateReportData(data) {
     },
     {
       type: "text",
-      name: `fils de ${data.valad1} et madame ${data.name}, fille de ${data.valad}.`
+      name: `fils ${getCorrectName(data.valad1)} et madame ${
+        data.name
+      }, fille ${getCorrectName(data.valad)}.`
     },
     {
       type: "empty"
@@ -425,15 +450,21 @@ export function AfghanMarriageCertificateReportData(data) {
     },
     {
       type: "text",
-      name: `Nous, les témoins, qui connaissons bien monsieur ${data.name1}, fils de ${data.valad1},`
+      name: `Nous, les témoins, qui connaissons bien monsieur ${
+        data.name1
+      }, fils ${getCorrectName(data.valad1)},`
     },
     {
       type: "text",
-      name: `petit-fils de ${data.valadiat1} et madame ${data.name}, fille de ${data.valad},`
+      name: `petit-fils ${getCorrectName(data.valadiat1)} et madame ${
+        data.name
+      }, fille ${getCorrectName(data.valad)},`
     },
     {
       type: "text",
-      name: `petite-fille d’${data.valadiat}, certifions que ces deux personnes se sont mariées`
+      name: `petite-fille ${getCorrectName(
+        data.valadiat
+      )}, certifions que ces deux personnes se sont mariées`
     },
     {
       type: "text",

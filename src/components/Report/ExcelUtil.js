@@ -276,3 +276,18 @@ export const capitalize = str => {
 export const upperCase = str => {
   return str && str.length > 1 ? str.toString().toUpperCase() : str;
 };
+export const getCorrectName = str => {
+  let first = str.substring(0, 1);
+  if (
+    first === "A" ||
+    first === "E" ||
+    first === "I" ||
+    first === "O" ||
+    first === "U" ||
+    first === "Y" ||
+    first === "H"
+  ) {
+    return "d’" + str;
+  }
+  return "de " + str;
+};

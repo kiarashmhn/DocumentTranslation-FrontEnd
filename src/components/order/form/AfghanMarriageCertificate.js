@@ -195,12 +195,7 @@ export const AfghanMarriageCertificateForm = {
         },
         {
           key: "ministryConfirm",
-          type: "select",
-          options: [
-            { value: "yes", key: "yes" },
-            { value: "no", key: "no" }
-          ],
-          required: true
+          type: "sign"
         }
       ]
     },

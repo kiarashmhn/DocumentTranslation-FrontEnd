@@ -1204,19 +1204,19 @@ export const Dictionary = {
   },
   livingLocationOriginal: {
     persian: "اصلی استوګنخی/سکونت اصلی",
-    french: "Lieu de résidence principal"
+    french: "Lieu de résidence principale"
   },
   livingLocationOriginal1: {
     persian: "اصلی استوګنخی/سکونت اصلی",
-    french: "Lieu de résidence principal"
+    french: "Lieu de résidence principale"
   },
   livingLocationTemp: {
     persian: "اوسنی استوګنخی/سکونت فعلی",
-    french: "Lieu de résidence actuel"
+    french: "Lieu de résidence actuelle"
   },
   livingLocationTemp1: {
     persian: "اوسنی استوګنخی/سکونت فعلی",
-    french: "Lieu de résidence actuel"
+    french: "Lieu de résidence actuelle"
   },
   livingPlace: {
     persian: "محل سکونت",
@@ -2201,8 +2201,8 @@ export const Dictionary = {
     french: "Le certificat est délivré par quel institut ?"
   },
   whichProvince: {
-    persian: "کدام ولایت؟",
-    french: "Cour d’appel?"
+    persian: "محکمه کدام ولایت؟",
+    french: "Cour d'appel de quelle province?"
   },
   white: {
     persian: "سفید",
@@ -2296,6 +2296,14 @@ export const Dictionary = {
     persian: "آیا وزارت امور خارجه افغانستان سند را مهر و تایید کرده است؟",
     french:
       "Le certificat est-il attesté par le ministère des affaires étrangères afghan?"
+  },
+  confirmNumber: {
+    persian: "نمبر",
+    french: "Référence"
+  },
+  confirmDate: {
+    persian: "تاریخ",
+    french: "Date"
   }
 };
 

@@ -96,5 +96,6 @@ CustomFileUpload.propTypes = {
   onChange: PropTypes.func.isRequired,
   onEmpty: PropTypes.func,
   single: PropTypes.any,
-  title: PropTypes.string
+  title: PropTypes.string,
+  required: PropTypes.bool
 };

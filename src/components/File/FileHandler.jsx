@@ -132,6 +132,7 @@ export default class FileHandler extends Component {
         <CustomFileUpload
           ref={this.uploadFileRef}
           onChange={event => this.fileOnChange(event)}
+          required={this.props.required}
         />
         {this.state.oldFiles && this.state.oldFiles.length > 0 && (
           <div style={textStyle}>
@@ -148,5 +149,6 @@ export default class FileHandler extends Component {
 FileHandler.propTypes = {
   orderId: PropTypes.any,
   type: PropTypes.string.isRequired,
-  tooltipKey: PropTypes.any
+  tooltipKey: PropTypes.any,
+  required: PropTypes.bool
 };
