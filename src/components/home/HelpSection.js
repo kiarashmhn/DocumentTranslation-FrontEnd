@@ -233,7 +233,7 @@ class HelpSection extends Component {
                   width: "100%",
                   height: "100%"
                 }}
-                src={`https://www.aparat.com/video/video/embed/videohash/1WL4S/vt/frame?&recom=none`}
+                src={`https://www.aparat.com/video/video/embed/videohash/6MgU8/vt/frame?&recom=none`}
                 frameBorder="0"
                 allowFullScreen={true}
               />
