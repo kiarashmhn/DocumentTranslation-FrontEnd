@@ -13,7 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import theme, { grayColor } from "../../theme";
 import * as URLConstant from "../../URLConstant";
 import Api from "../Api/Api";
-import {capitalize, upperCase} from "../Report/ExcelUtil";
+import { capitalize } from "../Report/ExcelUtil";
 
 const info =
   "Service de traduction certifiée\n" +
@@ -124,23 +124,31 @@ export default class PreBill extends Component {
             DEVIS
           </Box>
         </Typography>
-        <Typography
-          variant="body1"
-          style={{ marginTop: "10px" }}
-          align={"center"}
-          component="div"
-        >
-          <Box fontStyle="bold" fontWeight="fontWeightMedium" display="inline">
-            {capitalize(this.state.nameOrCompany)}
-          </Box>
-          <br />
-        </Typography>
-        <Typography variant="body1" align={"center"}>
-          {this.state.address}
-        </Typography>
-        <Typography variant="body1" align={"center"}>
-          {this.state.postalCode + " " + capitalize(this.state.city)}
-        </Typography>
+        <div style={{ display: "inline-flex", marginLeft: "20px" }}>
+          <div style={{ float: "left" }}>
+            <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
+              {info}
+            </Typography>
+          </div>
+          <div style={{ position: "absolute", left: "44.7%" }}>
+            <Typography variant="body1" align={"center"} component="div">
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                {capitalize(this.state.nameOrCompany)}
+              </Box>
+              <br />
+            </Typography>
+            <Typography variant="body1" align={"center"}>
+              {this.state.address}
+            </Typography>
+            <Typography variant="body1" align={"center"}>
+              {this.state.postalCode + " " + capitalize(this.state.city)}
+            </Typography>
+          </div>
+        </div>
         <div style={{ padding: "20px 20px" }}>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
@@ -192,15 +200,6 @@ export default class PreBill extends Component {
           </Typography>
           <Typography>{"Affaire : " + "DD" + this.props.orderId}</Typography>
           <Divider style={{ margin: "4px 2px" }} />
-          <Typography component="div">
-            <Box
-              fontStyle="bold"
-              fontWeight="fontWeightMedium"
-              display="inline"
-            >
-              francedoc.fr
-            </Box>
-          </Typography>
           <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
             {info}
           </Typography>

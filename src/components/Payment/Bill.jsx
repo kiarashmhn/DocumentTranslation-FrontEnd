@@ -9,14 +9,13 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import * as PropTypes from "prop-types";
-import Divider from "@material-ui/core/Divider";
 import theme, { grayColor } from "../../theme";
 import * as URLConstant from "../../URLConstant";
 import { getTypeByKey } from "../order/OrderTypes";
 import { methods } from "./MethodsInfo";
 import { getFrenchName } from "../../Dictionary";
 import Api from "../Api/Api";
-import {capitalize, upperCase} from "../Report/ExcelUtil";
+import { capitalize } from "../Report/ExcelUtil";
 
 const info =
   "Service de traduction certifiée\n" +
@@ -150,23 +149,31 @@ export default class Bill extends Component {
             FACTURE
           </Box>
         </Typography>
-        <Typography
-          variant="body1"
-          style={{ marginTop: "10px" }}
-          align={"center"}
-          component="div"
-        >
-          <Box fontStyle="bold" fontWeight="fontWeightMedium" display="inline">
-            {capitalize(this.state.nameOrCompany)}
-          </Box>
-          <br />
-        </Typography>
-        <Typography variant="body1" align={"center"}>
-          {this.state.address}
-        </Typography>
-        <Typography variant="body1" align={"center"}>
-          {this.state.postalCode + " " + capitalize(this.state.city)}
-        </Typography>
+        <div style={{ display: "inline-flex", marginLeft: "20px" }}>
+          <div style={{ float: "left" }}>
+            <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
+              {info}
+            </Typography>
+          </div>
+          <div style={{ position: "absolute", left: "44.7%" }}>
+            <Typography variant="body1" align={"center"} component="div">
+              <Box
+                fontStyle="bold"
+                fontWeight="fontWeightMedium"
+                display="inline"
+              >
+                {capitalize(this.state.nameOrCompany)}
+              </Box>
+              <br />
+            </Typography>
+            <Typography variant="body1" align={"center"}>
+              {this.state.address}
+            </Typography>
+            <Typography variant="body1" align={"center"}>
+              {this.state.postalCode + " " + capitalize(this.state.city)}
+            </Typography>
+          </div>
+        </div>
         <div style={{ padding: "20px 20px" }}>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
@@ -216,19 +223,6 @@ export default class Bill extends Component {
             {"La facture a été payée par " + this.state.method.frenchTitle}
           </Typography>
           <Typography>TVA non applicable, art. 293 B du CGI</Typography>
-          <Divider style={{ margin: "4px 2px" }} />
-          <Typography component="div">
-            <Box
-              fontStyle="bold"
-              fontWeight="fontWeightMedium"
-              display="inline"
-            >
-              francedoc.fr
-            </Box>
-          </Typography>
-          <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
-            {info}
-          </Typography>
         </div>
       </div>
     );

@@ -21,69 +21,68 @@ const helpSteps = [
     persian: {
       title: "مرحله ۱: ایجاد حساب شخصی",
       details:
-        "اطلاعات خود را وارد کنید.  نام کاربری و رمز خود را انتخاب کنید. یک حساب کاربری برای شما ایجاد میشود که از طریق آن میتوانید درخواست ترجمه مدارک دهید، با ما تبادل اطلاعات کنید، پیش فاکتور دریافت کنید، هزینه ترجمه را پرداخت کنید و نسخه الکترونیکی ترجمه آماده شده را بارگیری کنید."
+        "در منو بالای صفحه، دکمه « ثبت‌نام» را کلیک کنید. ایمیل خود را وارد و رمز خود را انتخاب کنید. یک حساب کاربری برای شما ایجاد می‌شود که از طریق آن می‌توانید درخواست ترجمه مدارک دهید، با ما تبادل اطلاعات کنید، پیش فاکتور دریافت کنید، هزینه ترجمه را پرداخت کنید و نسخه الکترونیکی ترجمه آماده شده را بارگیری کنید."
     },
     french: {
-      title: "Étape 1: Créez un compte personnel",
+      title: "Étape 1: Créez un compte client",
       details:
-        "Choisissez votre identifiant et votre mot de passe. Ce compte vous permet ensuite de demander la traduction de vos documents, d’échanger des informations avec nous, de recevoir un devis, de payer les frais de traduction et de télécharger la version électronique de la traduction réalisée."
+        "Depuis la page d’accueil du site, cliquez sur le bouton « S’inscrire ». Saisissez votre adresse e-mail et enregistrez un mot de passe. Votre compte sera actif instantanément et vous pourrez accéder à tous les services en ligne : demander une traduction ou un devis, échanger avec nous, payer les frais de traduction, télécharger la version électronique de la traduction réalisée, …"
     }
   },
   {
     persian: {
       title: "مرحله ۲: آپلود سند و پرکردن فرم مربوطه",
       details:
-        "در این مرحله نوع مدرک خود (تزکره، شناسنامه، گواهینامه، لیسانس درایوری، نکاح نامه، سند ازدواج، کارت ملی...)  را انتخاب کنید. سپس مدرک را آپلود، فرم مربوطه را با دقت پر و درخواست خود را ثبت کنید."
+        "در این مرحله نوع مدرک خود (تذکره، شناسنامه، گواهینامه، لیسانس درایوری، نکاح‌نامه، سند ازدواج، کارت ملی...)  را انتخاب کنید. سپس مدرک خود را با کیفیت بالا و خوانا آپلود، فرم مربوطه را با دقت پر و درخواست خود را ثبت کنید. اگر نیاز به ترجمه مدرکی داشتید که در لیست ما نبود، فرم « مدارک دیگر» را برای درخواست پیش‌فاکتور (قیمت و زمان لازم ترجمه) انتخاب کنید."
     },
     french: {
-      title: "Étape 2: enregistrer votre demande",
+      title: "Étape 2: Enregistrer votre demande",
       details:
-        "Choisissez le type de document à traduire (acte de naissance, carte d'identité, permis de conduire, certificat de mariage, etc.), télécharger une copie de votre document (au format jpg, png, pdf ou zip) et remplissez soigneusement le formulaire correspondant. Assurez-vous de la parfaite lisibilité des documents et de l’exactitude des informations saisies."
+        "Choisissez le type de document à traduire (acte de naissance, carte d'identité, permis de conduire, certificat de mariage, etc.), téléchargez une copie de votre document et remplissez soigneusement le formulaire correspondant. Assurez-vous de la parfaite lisibilité des documents et de l’exactitude des informations saisies. Si le type de votre document ne faisait pas partie de notre liste, sélectionnez le formulaire dédié à des « documents divers » pour demander un devis."
     }
   },
   {
     persian: {
-      title: "مرحله ۳: تأیید و پذیرش درخواست ترجمه",
-      details:
-        "پس از ثبت نهایی، ما مدرک و اطلاعات وارده را بررسی می کنیم. اگر کامل باشد در خواست ترجمه را تأیید میکنیم. سپس به شما پیش فاکتور می دهیم ،یعنی هزینه درخواست ترجمه را اطلاع می دهیم.  میتوانید لیست هزینه ترجمه برای مدارک متداول مثل شناسنامه، تذکره، گواهینامه، لیسانس درایوری و از این قیبل را در اینجا ببینید.  در این مرحله اگر نقص و ایرادی در درخواست وجود داشته باشد با شما در حساب کاربری تماس گرفته میشود. "
-    },
-    french: {
-      title: "Étape 3: validation de la demande de traduction",
-      details:
-        "Après l'enregistrement définitif de la demande, nous vérifions le document et les informations reçues. S'ils sont complets, nous validons la demande de traduction. Nous vous remettrons ensuite un devis. Vous pouvez consulter la liste des frais de traduction pour les documents courants ici. A ce stade, s'il y a un défaut dans le document, vous serez contacté sur votre compte."
-    }
-  },
-  {
-    persian: {
-      title: "مرحله ۴: پرداخت هزینه ترجمه",
+      title: "مرحله ۳: پرداخت هزینه ترجمه",
       details:
         "میتوانید به روشهای زیر در فرانسه هزینه ترجمه خود را پرداخت کنید : \n" +
-        "-\tمبلغ هزینه ترجمه را به حساب زیر واریز کرده و رسید یا شماره واریز را برایمان در حساب کاربری خود ارسال کنید.\n" +
-        "-\tمبلغ هزینه ترجمه را در قالب چک به آدرس ما ارسال کنید.\n" +
         "-\tهزینه را با کارت پرداخت کنید.\n" +
+        "-\tمبلغ هزینه ترجمه را به حساب بانکی ما واریز کرده و رسید یا شماره واریز را برایمان در حساب کاربری خود ارسال کنید.\n" +
+        "-\tمبلغ هزینه ترجمه را در قالب چک به آدرس ما ارسال کنید.\n" +
         "به محض دریافت هزینه، کار ترجمه مدرک شما آغاز خواهد شد. \n"
     },
     french: {
-      title: "Étape 4: Payez la commande de traduction",
+      title: "Étape 3: Payez la commande de traduction",
       details:
-        "Vous pouvez payer votre commande de traduction assermentée en France par un des moyens de paiement suivants : \n" +
-        "- par un virement bancaire. Dans ce cas, envoyez-nous le reçu ou le numéro de virement par votre compte.\n" +
-        "- par l’envoie d’un chèque à notre adresse. Le traducteur commencera votre traduction dès réception du chèque. Indiquer le numéro de votre commande dans votre courrier et de préférence, déposez une copie de votre chèque sur votre compte.\n" +
-        "-  par carte bancaire.\n" +
+        "Vous pouvez payer votre commande de traduction assermentée par un des moyens de paiement suivants : \n" +
+        "- par carte bancaire.\n" +
+        "- par un virement bancaire. Dans ce cas, faites-nous parvenir le reçu ou le numéro de virement via votre compte client.\n" +
+        "- par l’envoie d’un chèque à notre adresse. Indiquer le numéro de votre commande dans votre courrier et de préférence, faites-nous parvenir une copie de votre chèque via votre compte client.\n" +
         "Dès réception du frais de commande, la traduction de votre document commencera.\n"
+    }
+  },
+  {
+    persian: {
+      title: "مرحله ۴: تأیید و پذیرش درخواست ترجمه",
+      details:
+        "پس از پرداخت، ما مدرک و اطلاعات وارده را بررسی می‌کنیم. اگر کامل باشد در خواست ترجمه را تأیید می‌کنیم. در این مرحله اگر نقص و ایرادی در درخواست ترجمه وجود داشته باشد (مثلا سند ناخوانا باشد) با شما در حساب کاربری تماس گرفته می‌شود."
+    },
+    french: {
+      title: "Étape 4: Validation de la demande de traduction",
+      details:
+        "Après le paiement, nous vérifions le document et les informations saisies. S'ils sont complets, nous validons la demande de traduction et s'il y a un défaut, vous serez contacté via la messagerie de votre compte client."
     }
   },
   {
     persian: {
       title: "مرحله ۵: دریافت ترجمه",
       details:
-        "ترجمه انجام شده در حساب شخصی شما در قالب فایل بصورت رنگی قابل رویت و دانلود میباشد. همچنین یک نسخه کاغذی آن با پست به آدرس پستی شما ارسال میشود.\n" +
-        " ترجمه مدارک متداول، معمولا 24 ساعت بعد از دریافت هزینه، آماده و در حساب کاربردی شما قابل دانلود می باشند. کمتر از سه روز غیر تعطیل مدارک به آدرس شما در فرانسه ارسال خواهند شد. امکان ارسال با پست سفارشی نیز در صورت پرداخت هزینه نیز فراهم میباشد.\n"
+        "نسخه الکترونیکی ترجمه مدارک متداول معمولا 24 ساعت بعد از تأیید کامل بودن درخواست در حساب کاربری قابل رویت و دانلود می‌باشد. همچنین، نسخه کاغذی ترجمه را کمتر از سه روز غیرتعطیل در آدرس خود دریافت خواهید کرد. امکان ارسال با پست سفارشی نیز در صورت پرداخت هزینه اضافه فراهم می‌باشد."
     },
     french: {
       title: "Étape 5: Réception de la traduction",
       details:
-        "La traduction vous sera disponible sur votre compte et elle peut être téléchargée en couleur au format PDF. La version papier (original) vous sera également envoyée par courrier à votre adresse. Le délai de traduction est de 24 heures pour les documents courants et de 2 à 3 jours pour d’autres types de documents."
+        "La traduction vous sera livrée et téléchargeable en version PDF sur votre compte dans le délai convenu (en général, 24h pour les documents courants). La version papier (original) vous sera également envoyée par courrier simple à votre adresse (il est possible d’envoyer en lettre recommandée ou suivie en payant un supplément)."
     }
   }
 ];
