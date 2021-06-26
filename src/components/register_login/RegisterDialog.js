@@ -351,7 +351,7 @@ function RegisterDialog(props) {
                 fontWeight="fontWeightMedium"
                 display="inline"
               >
-                Avez-vous déjà un compte personnel?
+                Avez-vous déjà un compte?
               </Box>
               <span
                 className={classes.link}
