@@ -1,60 +1,99 @@
 @font-face {
     font-family: "MyFont";
-    src: url('./fonts/vazir/UI/Vazir-Regular-UI.eot');
-    src: url('./fonts/vazir/UI/Vazir-Regular-UI.eot?#iefix') format('embedded-opentype'),
-    url('./fonts/vazir/UI/Vazir-Regular-UI.woff2') format('woff2'),
-    url('./fonts/vazir/UI/Vazir-Regular-UI.woff') format('woff'),
-    url('./fonts/vazir/UI/Vazir-Regular-UI.ttf') format('truetype');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Regular-WOL-UI.eot');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Regular-WOL-UI.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Regular-WOL-UI.woff2') format('woff2'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Regular-WOL-UI.woff') format('woff'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Regular-WOL-UI.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "MyFont";
-    src: url('./fonts/vazir/UI/Vazir-Bold-UI.eot');
-    src: url('./fonts/vazir/UI/Vazir-Bold-UI.eot?#iefix') format('embedded-opentype'),
-    url('./fonts/vazir/UI/Vazir-Bold-UI.woff2') format('woff2'),
-    url('./fonts/vazir/UI/Vazir-Bold-UI.woff') format('woff'),
-    url('./fonts/vazir/UI/Vazir-Bold-UI.ttf') format('truetype');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Bold-WOL-UI.eot');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Bold-WOL-UI.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Bold-WOL-UI.woff2') format('woff2'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Bold-WOL-UI.woff') format('woff'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Bold-WOL-UI.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: "MyFont";
-    src: url('./fonts/vazir/UI/Vazir-Black-UI.eot');
-    src: url('./fonts/vazir/UI/Vazir-Black-UI.eot?#iefix') format('embedded-opentype'),
-    url('./fonts/vazir/UI/Vazir-Black-UI.woff2') format('woff2'),
-    url('./fonts/vazir/UI/Vazir-Black-UI.woff') format('woff'),
-    url('./fonts/vazir/UI/Vazir-Black-UI.ttf') format('truetype');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Black-WOL-UI.eot');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Black-WOL-UI.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Black-WOL-UI.woff2') format('woff2'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Black-WOL-UI.woff') format('woff'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Black-WOL-UI.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
 }
 @font-face {
     font-family: "MyFont";
-    src: url('./fonts/vazir/UI/Vazir-Medium-UI.eot');
-    src: url('./fonts/vazir/UI/Vazir-Medium-UI.eot?#iefix') format('embedded-opentype'),
-    url('./fonts/vazir/UI/Vazir-Medium-UI.woff2') format('woff2'),
-    url('./fonts/vazir/UI/Vazir-Medium-UI.woff') format('woff'),
-    url('./fonts/vazir/UI/Vazir-Medium-UI.ttf') format('truetype');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Medium-WOL-UI.eot');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Medium-WOL-UI.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Medium-WOL-UI.woff2') format('woff2'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Medium-WOL-UI.woff') format('woff'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Medium-WOL-UI.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
     font-family: "MyFont";
-    src: url('./fonts/vazir/UI/Vazir-Light-UI.eot');
-    src: url('./fonts/vazir/UI/Vazir-Light-UI.eot?#iefix') format('embedded-opentype'),
-    url('./fonts/vazir/UI/Vazir-Light-UI.woff2') format('woff2'),
-    url('./fonts/vazir/UI/Vazir-Light-UI.woff') format('woff'),
-    url('./fonts/vazir/UI/Vazir-Light-UI.ttf') format('truetype');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Light-WOL-UI.eot');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Light-WOL-UI.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Light-WOL-UI.woff2') format('woff2'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Light-WOL-UI.woff') format('woff'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Light-WOL-UI.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: "MyFont";
-    src: url('./fonts/vazir/UI/Vazir-Thin-UI.eot');
-    src: url('./fonts/vazir/UI/Vazir-Thin-UI.eot?#iefix') format('embedded-opentype'),
-    url('./fonts/vazir/UI/Vazir-Thin-UI.woff2') format('woff2'),
-    url('./fonts/vazir/UI/Vazir-Thin-UI.woff') format('woff'),
-    url('./fonts/vazir/UI/Vazir-Thin-UI.ttf') format('truetype');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Thin-WOL-UI.eot');
+    src: url('./fonts/vazir/UI/Without-Latin/Vazir-Thin-WOL-UI.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Thin-WOL-UI.woff2') format('woff2'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Thin-WOL-UI.woff') format('woff'),
+    url('./fonts/vazir/UI/Without-Latin/Vazir-Thin-WOL-UI.ttf') format('truetype');
     font-weight: 100;
     font-style: normal;
+}
+@font-face {
+    font-family: "OS";
+    src: url('./fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "OS";
+    src: url('./fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "OS";
+    src: url('./fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: "OS";
+    src: url('./fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "OS";
+    src: url('./fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "OS";
+    src: url('./fonts/Roboto/Roboto-Thin.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, text {
+    font-family: "MyFont", "OS", sans-serif;
 }

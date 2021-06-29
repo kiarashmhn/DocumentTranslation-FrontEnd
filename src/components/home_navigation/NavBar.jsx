@@ -30,7 +30,7 @@ const styles = theme => ({
     justifyContent: "space-between"
   },
   menuButtonText: {
-    fontFamily: "MyFont",
+    fontFamily: `"MyFont","OS"`,
     fontSize: theme.typography.body1.fontSize,
     fontWeight: theme.typography.h6.fontWeight,
     color: theme.palette.primary.main
@@ -142,7 +142,10 @@ class NavBar extends Component {
                       return (
                         <Link
                           key={element.name}
-                          to={element.link}
+                          to={{
+                            pathname: element.link,
+                            state: { noRedirect: true }
+                          }}
                           className={classes.noDecoration}
                           onClick={
                             element.onClick

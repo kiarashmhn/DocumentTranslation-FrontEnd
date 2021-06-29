@@ -77,7 +77,7 @@ const features = [
   {
     color: "#DD2C00",
     headline: "شناسنامه",
-    frenchHeadline: "Acte de l’état civil",
+    frenchHeadline: "Acte de naissance",
     text: "تعرفه: از ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
     frenchText: "Tarif * : 20 à 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,

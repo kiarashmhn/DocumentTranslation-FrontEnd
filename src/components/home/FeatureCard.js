@@ -81,7 +81,6 @@ function FeatureCard(props) {
           {frenchHeadline && (
             <Typography
               variant="h6"
-              paragraph
               align={"center"}
               style={{ whiteSpace: "pre-line" }}
             >

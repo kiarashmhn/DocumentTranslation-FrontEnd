@@ -427,9 +427,10 @@ export const Dictionary = {
     persian: "فرزندان",
     french: "Enfants",
     hint: {
-      persian: "لطفاً در صورت داشتن فرزند این قسمت را کامل کنید",
+      persian:
+        "لطفاً در صورت داشتن فرزند این قسمت را کامل کنید. با اضافه‌ شدن قسمت‌های اطلاعات همسر و اطلاعات فرزندان، هزینه ترجمه از 20 به 25 یورو افزایش پیدا می‌کند.",
       french:
-        "Veuillez compléter cette rubrique, si vous avez un (des) enfant(s)"
+        "Veuillez compléter cette rubrique, si vous avez un (des) enfant(s). En ajoutant les parties ‘Conjoint(e)’ et ‘Enfants’, le frais de traduction passe de 20 à 25 euros."
     }
   },
   childrenInfo: {
@@ -1920,9 +1921,9 @@ export const Dictionary = {
     french: "Conjoint",
     hint: {
       persian:
-        "لطفاً اگر ازدواج کرده اید یا مطلقه هستید این قسمت را تکمیل کنید",
+        "لطفاً اگر ازدواج کرده اید یا مطلقه هستید این قسمت را تکمیل کنید. با اضافه‌ شدن قسمت‌های اطلاعات همسر و اطلاعات فرزندان، هزینه ترجمه از 20 به 25 یورو افزایش پیدا می‌کند.",
       french:
-        "Veuillez compléter cette rubrique, si vous êtes marié(e) ou divorcé(e)"
+        "Veuillez compléter cette rubrique, si vous êtes marié(e) ou divorcé(e). En ajoutant les parties ‘Conjoint(e)’ et ‘Enfants’, le frais de traduction passe de 20 à 25 euros."
     }
   },
   spousesInfo: {

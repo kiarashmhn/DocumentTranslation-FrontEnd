@@ -8,6 +8,6 @@
 
 .select input {
   left: 0;
-  font-family: "MyFont";
+  font-family: "MyFont","OS";
   z-index: 999;
 }

@@ -76,7 +76,7 @@ const styles = theme => ({
     }
   },
   title: {
-    fontFamily: "MyFont",
+    fontFamily: `"MyFont","OS"`,
     useNextVariants: true
   },
   header: {
@@ -132,6 +132,7 @@ class Payment extends Component {
       normal: true,
       post: false,
       specialPost: false,
+      additionalPrice: 0,
       basePrice: 20,
       price: 20,
       delay: 24,
@@ -156,24 +157,41 @@ class Payment extends Component {
         postData
       )
       .then(function(res) {
+        let additionalPrice = res.data.details
+          ? (res.data.details.children &&
+              res.data.details.children.length > 0) ||
+            (res.data.details.spouses && res.data.details.spouses.length > 0) ||
+            (res.data.details.ticket && res.data.details.ticket === "yes")
+            ? 5
+            : 0
+          : 0;
         self.setState({
           price: res.data.preBillAmount,
           basePrice: res.data.preBillAmount,
-          delay: res.data.preBillDelay
+          delay: res.data.preBillDelay,
+          additionalPrice: additionalPrice
         });
       });
   };
 
   componentDidMount() {
-    let price = this.state.type.price;
-    if (price) {
+    this.getOrder().then(() => {
+      let price = this.state.type.price;
+      let oldPrice = this.state.price;
+      let oldBasePrice = this.state.basePrice;
+      let additionalPrice = this.state.additionalPrice;
+      let delay = this.state.type.delay;
+      let oldDelay = this.state.delay;
       this.setState({
-        basePrice: price,
+        basePrice: price
+          ? parseInt(price) + parseInt(additionalPrice)
+          : parseInt(oldBasePrice) + parseInt(additionalPrice),
         price: price
+          ? parseInt(price) + parseInt(additionalPrice)
+          : parseInt(oldPrice) + parseInt(additionalPrice),
+        delay: delay ? parseInt(delay) : parseInt(oldDelay)
       });
-    } else {
-      this.getOrder().then(() => {});
-    }
+    });
   }
 
   postOnChange = e => {

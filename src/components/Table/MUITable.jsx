@@ -150,13 +150,13 @@ export default class MUITable extends Component {
         MuiTableCell: {
           root: {
             textAlign: "center",
-            fontFamily: "MyFont",
+            fontFamily: `"MyFont","OS"`,
             padding: "4px 3px 4px 3px"
           }
         },
         MUIDataTable: {
           root: {
-            fontFamily: "MyFont"
+            fontFamily: `"MyFont","OS"`
           },
           caption: {
             display: "none"
@@ -165,34 +165,34 @@ export default class MUITable extends Component {
         MuiTableFooter: {
           root: {
             textAlign: "center",
-            fontFamily: "MyFont"
+            fontFamily: `"MyFont","OS"`
           }
         },
         MuiTableBody: {
           root: {
-            fontFamily: "MyFont"
+            fontFamily: `"MyFont","OS"`
           }
         },
         MuiTableBodyCell: {
           root: {
-            fontFamily: "MyFont"
+            fontFamily: `"MyFont","OS"`
           }
         },
         MuiTypography: {
           subtitle1: {
-            fontFamily: "MyFont",
+            fontFamily: `"MyFont","OS"`,
             paddingRight: "10%"
           },
           caption: {
-            fontFamily: "MyFont"
+            fontFamily: `"MyFont","OS"`
           },
           root: {
-            fontFamily: "MyFont !important"
+            fontFamily: `"MyFont","OS"`
           }
         },
         MUIDataTableHeadCell: {
           root: {
-            fontFamily: "MyFont"
+            fontFamily: `"MyFont","OS"`
           },
           sortAction: {
             display: "block"
@@ -200,7 +200,7 @@ export default class MUITable extends Component {
         },
         MuiPaper: {
           root: {
-            fontFamily: "MyFont",
+            fontFamily: `"MyFont","OS"`,
             width: "100%"
           }
         }

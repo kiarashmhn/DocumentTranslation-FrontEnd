@@ -14,7 +14,6 @@ import StepLabel from "@material-ui/core/StepLabel";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import StepContent from "@material-ui/core/StepContent";
-import Paper from "@material-ui/core/Paper";
 import ButtonCircularProgress from "../Template/ButtonCircularProgress";
 import NodeGenerator from "../NodeGenerator/NodeGenerator";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -175,14 +174,9 @@ class OrderForm extends Component {
 
   selectStep = (e, index) => {
     e.preventDefault();
-    this.setState(
-      {
-        step: index
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
+    this.setState({
+      step: index
+    });
   };
 
   getSteps = () => {
@@ -396,11 +390,6 @@ class OrderForm extends Component {
               </Step>
             ))}
           </Stepper>
-          {this.state.step === this.getSteps().length && (
-            <Paper square elevation={0} style={styles.resetContainer}>
-              <Typography>{getCompleteName("allStepsCompleted")}</Typography>
-            </Paper>
-          )}
         </div>
       </Fragment>
     );

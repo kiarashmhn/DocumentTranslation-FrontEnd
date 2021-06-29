@@ -67,7 +67,7 @@ const styles = theme => ({
     }
   },
   title: {
-    fontFamily: "MyFont",
+    fontFamily: `"MyFont","OS"`,
     useNextVariants: true
   },
   header: {

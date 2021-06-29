@@ -61,7 +61,7 @@ const useStyles1 = makeStyles(theme => ({
 
 const style = {
   message: {
-    fontFamily: "MyFont",
+    fontFamily: `"MyFont","OS"`,
     display: "flex",
     direction: "rtl",
     alignItems: "right"
@@ -72,7 +72,7 @@ const getMuiTheme = createMuiTheme({
   overrides: {
     MuiTypography: {
       root: {
-        fontFamily: "MyFont"
+        fontFamily: `"MyFont","OS"`
       }
     },
     MuiSnackbarContent: {
@@ -98,7 +98,8 @@ function MySnackbarContentWrapper(props) {
         message={
           <span id="client-snackbar" style={style.message}>
             <Icon className={clsx(classes.icon, classes.iconVariant)} />
-            {message}
+            {variant === "success" && <div>با موفقیت انجام شد/</div>}
+            {variant === "success" ? "Fait avec succès" : message}
           </span>
         }
         action={[

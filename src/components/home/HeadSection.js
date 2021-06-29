@@ -119,11 +119,10 @@ class HeadSection extends Component {
                             component={"span"}
                             style={{
                               display: "block",
-                              marginBottom: "2px",
                               color: "#000000"
                             }}
                           >
-                            درخواست ترجمه
+                            Demande de Traduction
                           </Typography>
                           <Typography
                             variant="h6"
@@ -131,10 +130,11 @@ class HeadSection extends Component {
                             component={"span"}
                             style={{
                               display: "block",
+                              marginBottom: "2px",
                               color: "#000000"
                             }}
                           >
-                            Demande de Traduction
+                            درخواست ترجمه
                           </Typography>
                         </div>
                       </Button>

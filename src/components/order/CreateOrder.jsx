@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Grid, Typography } from "@material-ui/core";
-import MediaCard from "../MediaCard";
 import PropTypes from "prop-types";
-import image from "../../images/identityCard.jpg";
 import FullScreenDialog from "../FullScreenDialog";
 import Api from "../Api/Api";
 import * as URLConstant from "../../URLConstant";
@@ -11,12 +9,12 @@ import { OrderTypes } from "./OrderTypes";
 import { OrderStatus } from "./OrderStatus";
 import Box from "@material-ui/core/Box";
 import OrderForm from "./OrderForm";
-import { getFrenchName, getPersianName } from "../../Dictionary";
 import { Redirect } from "react-router";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import theme from "../../theme";
+import FeatureCard from "../home/FeatureCard";
 
 class CreateOrder extends Component {
   constructor(props) {
@@ -333,11 +331,14 @@ class CreateOrder extends Component {
             )
               return (
                 <Grid item xs={12} sm={6} md={4} key={typeKey}>
-                  <MediaCard
-                    image={image}
-                    title={getFrenchName(type.key)}
+                  <FeatureCard
+                    Icon={type.details.icon}
+                    color={type.details.color}
+                    headline={type.details.headline}
+                    frenchHeadline={type.details.frenchHeadline}
+                    text={type.details.text}
+                    frenchText={type.details.frenchText}
                     onClick={() => this.handleOpenDialog(type)}
-                    secondaryTitle={getPersianName(type.key)}
                   />
                 </Grid>
               );

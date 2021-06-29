@@ -44,7 +44,7 @@ export default class CustomFileDownload extends Component {
         marginTop: "0px",
         minHeight: "auto",
         fontWeight: "300",
-        fontFamily: "MyFont",
+        fontFamily: `"MyFont","OS"`,
         marginBottom: "3px",
         textDecoration: "none",
         textAlign: "center"

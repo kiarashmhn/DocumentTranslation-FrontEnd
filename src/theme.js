@@ -45,7 +45,7 @@ const spacing = 8;
 
 const theme = createMuiTheme({
   font: {
-    fontFamily: "MyFont"
+    fontFamily: `"MyFont","OS"`
   },
   palette: {
     primary: { main: primary },
@@ -145,7 +145,7 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: "MyFont",
+    fontFamily: `"MyFont","OS"`,
     useNextVariants: true
   },
   direction: "rtl"

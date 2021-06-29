@@ -17,7 +17,7 @@ const styles = {
     width: 310
   },
   title: {
-    fontFamily: "MyFont",
+    fontFamily: `"MyFont", "OS"`,
     useNextVariants: true,
     display: "block"
   },
@@ -49,18 +49,13 @@ class MediaCard extends Component {
           )}
           <CardContent>
             <div style={styles.titleWrapper}>
-              <Typography
-                gutterBottom
-                variant="h6"
-                component={"span"}
-                style={styles.title}
-              >
+              <Typography variant="h6" component={"div"} style={styles.title}>
                 {this.props.title}
               </Typography>
               <Typography
                 variant="body1"
                 color="textSecondary"
-                component={"span"}
+                component={"div"}
                 style={styles.title}
               >
                 {this.props.secondaryTitle}

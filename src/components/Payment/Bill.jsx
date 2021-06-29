@@ -149,29 +149,33 @@ export default class Bill extends Component {
             FACTURE
           </Box>
         </Typography>
-        <div style={{ display: "inline-flex", marginLeft: "20px" }}>
-          <div style={{ float: "left" }}>
-            <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
-              {info}
-            </Typography>
+        <div style={{ display: "grid" }}>
+          <div style={{ marginLeft: "20px" }}>
+            <div style={{ float: "left", position: "relative" }}>
+              <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
+                {info}
+              </Typography>
+            </div>
           </div>
-          <div style={{ position: "absolute", left: "44.7%" }}>
-            <Typography variant="body1" align={"center"} component="div">
-              <Box
-                fontStyle="bold"
-                fontWeight="fontWeightMedium"
-                display="inline"
-              >
-                {capitalize(this.state.nameOrCompany)}
-              </Box>
-              <br />
-            </Typography>
-            <Typography variant="body1" align={"center"}>
-              {this.state.address}
-            </Typography>
-            <Typography variant="body1" align={"center"}>
-              {this.state.postalCode + " " + capitalize(this.state.city)}
-            </Typography>
+          <div style={{ marginRight: "20px" }}>
+            <div style={{ float: "right", position: "relative" }}>
+              <Typography variant="body1" align={"center"} component="div">
+                <Box
+                  fontStyle="bold"
+                  fontWeight="fontWeightMedium"
+                  display="inline"
+                >
+                  {capitalize(this.state.nameOrCompany)}
+                </Box>
+                <br />
+              </Typography>
+              <Typography variant="body1" align={"left"}>
+                {this.state.address}
+              </Typography>
+              <Typography variant="body1" align={"left"}>
+                {this.state.postalCode + " " + capitalize(this.state.city)}
+              </Typography>
+            </div>
           </div>
         </div>
         <div style={{ padding: "20px 20px" }}>

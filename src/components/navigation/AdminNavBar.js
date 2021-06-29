@@ -99,7 +99,7 @@ const styles = theme => ({
   },
   textPrimary: {
     color: theme.palette.secondary.main,
-    fontFamily: "MyFont",
+    fontFamily: `"MyFont","OS"`,
     useNextVariants: true,
     direction: "rtl"
   },
