@@ -85,17 +85,28 @@ class CreateOrder extends Component {
     let self = this;
     let orderFormState = this.orderFormRef.current.getState();
     let files = orderFormState
-      ? orderFormState.files
+      ? orderFormState.files &&
+        (orderFormState.files.length > 1 || orderFormState.files[0] !== "true")
         ? orderFormState.files
         : []
       : [];
     let additionalFiles = orderFormState
-      ? orderFormState.additionalFiles
+      ? orderFormState.additionalFiles &&
+        (orderFormState.additionalFiles.length > 1 ||
+          orderFormState.additionalFiles[0] !== "true")
         ? orderFormState.additionalFiles
         : []
       : [];
-    delete orderFormState["files"];
-    delete orderFormState["additionalFiles"];
+    orderFormState["files"] =
+      orderFormState && orderFormState.files && orderFormState.files.length > 0
+        ? ["true"]
+        : [];
+    orderFormState["additionalFiles"] =
+      orderFormState &&
+      orderFormState.additionalFiles &&
+      orderFormState.additionalFiles.length > 0
+        ? ["true"]
+        : [];
     self.orderFormRef.current.onRefresh();
     let postData = {
       id: this.state.id,

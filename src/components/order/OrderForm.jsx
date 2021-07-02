@@ -20,6 +20,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import CustomTooltip from "../Tooltip/CustomTooltip";
+import { validateForm } from "./form/FormValidator";
+import SnackbarWrapper from "../Snackbar/SnackbarWrapper";
+import * as ColorPalette from "../ColorPalette";
 
 const styles = {
   customWidth: {
@@ -64,9 +67,20 @@ class OrderForm extends Component {
       step: 0,
       steps: this.props.form.steps,
       approval: false,
+      stepValidations: [],
       ...initialState
     };
     this.nodeGenRef = React.createRef();
+  }
+
+  componentDidMount() {
+    let s = [];
+    for (let i = 0; i < this.props.form.steps; i++) {
+      s.push(false);
+    }
+    this.setState({
+      stepValidations: s
+    });
   }
 
   getState = () => {
@@ -128,11 +142,14 @@ class OrderForm extends Component {
   handleNext = () => {
     let prevState = this.state.step;
     let nodeGenState = this.nodeGenRef.getState();
+    let s = this.state.stepValidations;
+    s[prevState] = false;
 
     this.setState(
       {
         ...nodeGenState,
-        step: prevState + 1
+        step: prevState + 1,
+        stepValidations: s
       },
       () => {
         this.props.onSave();
@@ -167,7 +184,24 @@ class OrderForm extends Component {
         ...nodeGenState
       },
       () => {
-        this.props.onSubmit();
+        this.setState(
+          {
+            stepValidations: validateForm(this.state, this.getSteps())
+          },
+          () => {
+            let b = false;
+            this.state.stepValidations.map(s => {
+              if (s) b = true;
+            });
+            if (!b) this.props.onSubmit();
+            else {
+              this.props.showSnackbar(
+                "Complétez les informations sur les étapes rouges / اطلاعات مراحل قرمز را کامل کنید",
+                "error"
+              );
+            }
+          }
+        );
       }
     );
   };
@@ -366,9 +400,19 @@ class OrderForm extends Component {
           >
             {this.getSteps().map((step, index) => (
               <Step key={step.title}>
-                <StepLabel classes={{ label: classes.stepLabel }}>
+                <StepLabel
+                  classes={{ label: classes.stepLabel }}
+                  error={this.state.stepValidations[index]}
+                >
                   {getCompleteName(step.title)}
-                  <IconButton onClick={e => this.selectStep(e, index)}>
+                  <IconButton
+                    onClick={e => this.selectStep(e, index)}
+                    style={{
+                      color: this.state.stepValidations[index]
+                        ? ColorPalette.red
+                        : ColorPalette.lightBlack
+                    }}
+                  >
                     <EditIcon />
                   </IconButton>
                 </StepLabel>
@@ -401,8 +445,11 @@ OrderForm.propTypes = {
   code: PropTypes.any.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  showSnackbar: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   initialState: PropTypes.object,
   itemId: PropTypes.any
 };
-export default withStyles(customStyles, { withTheme: true })(OrderForm);
+export default SnackbarWrapper(
+  withStyles(customStyles, { withTheme: true })(OrderForm)
+);

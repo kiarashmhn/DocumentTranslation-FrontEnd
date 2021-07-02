@@ -141,6 +141,6 @@ PaymentMethods.propTypes = {
   deliveryType: PropTypes.any.isRequired,
   id: PropTypes.any.isRequired,
   code: PropTypes.string.isRequired,
-  price: PropTypes.any.isRequired,
-  delay: PropTypes.any.isRequired
+  price: PropTypes.any,
+  delay: PropTypes.any
 };
