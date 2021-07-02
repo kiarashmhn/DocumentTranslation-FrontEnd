@@ -18,6 +18,7 @@ class EditViewOrder extends Component {
       isLoading: false,
       initialState: null,
       openPaymentDialog: false,
+      openDevisDialog: false,
       type: null
     };
   }
@@ -79,13 +80,27 @@ class EditViewOrder extends Component {
     });
   };
 
+  handleCloseDevisDialog = () => {
+    this.setState({
+      openDevisDialog: false
+    });
+  };
+
+  handleOpenDevisDialog = () => {
+    this.setState({
+      openDevisDialog: true
+    });
+  };
+
   handleSubmit = () => {
     this.setState(
       {
         isLoading: true
       },
       () => {
-        this.updateOrder(true, OrderStatus.PENDING.name, "SUBMIT");
+        this.state.type.code === "DD"
+          ? this.updateOrder(true, OrderStatus.PRE_BILL.name, "PRE-SUBMIT")
+          : this.updateOrder(true, OrderStatus.PENDING.name, "SUBMIT");
       }
     );
   };
@@ -130,11 +145,29 @@ class EditViewOrder extends Component {
               },
               () => {
                 if (mode === "SUBMIT") self.handleOpenPaymentDialog();
+                if (mode === "PRE-SUBMIT") self.handleOpenDevisDialog();
               }
             );
           });
         });
       });
+  };
+
+  redirectToDevis = () => {
+    if (this.state.openDevisDialog) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: URLConstant.DEVIS_SUCCESS,
+            state: {
+              orderId: this.props.itemId,
+              code: this.state.type.code
+            }
+          }}
+        />
+      );
+    }
   };
 
   handleSave = () => {
@@ -197,6 +230,7 @@ class EditViewOrder extends Component {
           />
         )}
         {this.redirectToPayment()}
+        {this.redirectToDevis()}
       </Fragment>
     );
   }

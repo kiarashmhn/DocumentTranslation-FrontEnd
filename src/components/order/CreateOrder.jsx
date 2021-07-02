@@ -24,6 +24,7 @@ class CreateOrder extends Component {
     this.state = {
       openIdentityDialog: false,
       openPaymentDialog: false,
+      openDevisDialog: false,
       isLoading: false,
       type: null,
       id: null,
@@ -53,6 +54,18 @@ class CreateOrder extends Component {
   handleOpenPaymentDialog = () => {
     this.setState({
       openPaymentDialog: true
+    });
+  };
+
+  handleCloseDevisDialog = () => {
+    this.setState({
+      openDevisDialog: false
+    });
+  };
+
+  handleOpenDevisDialog = () => {
+    this.setState({
+      openDevisDialog: true
     });
   };
 
@@ -118,6 +131,7 @@ class CreateOrder extends Component {
                   });
 
                   if (mode === "SUBMIT") self.handleOpenPaymentDialog();
+                  if (mode === "PRE-SUBMIT") self.handleOpenDevisDialog();
                 }
               );
           }
@@ -186,6 +200,23 @@ class CreateOrder extends Component {
             state: {
               orderId: this.state.id,
               type: this.state.type.key
+            }
+          }}
+        />
+      );
+    }
+  };
+
+  redirectToDevis = () => {
+    if (this.state.openDevisDialog) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: URLConstant.DEVIS_SUCCESS,
+            state: {
+              orderId: this.state.id,
+              code: this.state.type.code
             }
           }}
         />
@@ -363,6 +394,7 @@ class CreateOrder extends Component {
           />
         )}
         {this.redirectToPayment()}
+        {this.redirectToDevis()}
       </Fragment>
     );
   }

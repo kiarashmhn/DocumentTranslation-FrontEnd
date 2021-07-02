@@ -21,6 +21,7 @@ import LegalNotes from "./components/LegalNotes";
 import PaymentSuccess from "./components/Payment/PaymentSuccess";
 import DataPrivacy from "./components/DataPrivacy";
 import FAQ from "./components/FAQ/FAQ";
+import DevisSuccess from "./components/Payment/DevisSuccess";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
@@ -55,6 +56,7 @@ class App extends Component {
                   path="/PaymentSuccess"
                   component={PaymentSuccess}
                 />
+                <Route exact path="/DevisSuccess" component={DevisSuccess} />
               </Switch>
             </Suspense>
           </MuiThemeProvider>

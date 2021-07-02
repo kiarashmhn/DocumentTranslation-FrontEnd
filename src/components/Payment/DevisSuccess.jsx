@@ -5,21 +5,15 @@ import Button from "@material-ui/core/Button";
 import { getFrenchName, getPersianName } from "../../Dictionary";
 import { Redirect } from "react-router";
 import Box from "@material-ui/core/Box";
-import { getTypeByKey } from "../order/OrderTypes";
 import theme from "../../theme";
 import AuthService from "../../AuthService";
 
-export default class PaymentSuccess extends Component {
+export default class DevisSuccess extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      amount: this.props.location.state.amount,
       orderId: this.props.location.state.orderId,
       code: this.props.location.state.code,
-      delay: this.props.location.state.delay
-        ? this.props.location.state.delay
-        : getTypeByKey(this.props.location.state.code).delay,
-      method: this.props.location.state.method,
       redirect: false,
       redirectToList: false
     };
@@ -85,7 +79,7 @@ export default class PaymentSuccess extends Component {
           align="center"
           style={{ whiteSpace: "pre-line", marginTop: "10px" }}
         >
-          Information de paiement enregistrée avec succès
+          Votre demande de devis est enregistrée
         </Typography>
         <Typography
           gutterBottom
@@ -94,7 +88,7 @@ export default class PaymentSuccess extends Component {
           align="center"
           style={{ whiteSpace: "pre-line" }}
         >
-          اطلاعات پرداخت با موفقيت ثبت شد
+          درخواست شما برای پیش‌فاکتور ثبت شد
         </Typography>
 
         <Box
@@ -110,7 +104,7 @@ export default class PaymentSuccess extends Component {
             style={{ padding: "10px" }}
             component={"div"}
           >
-            Votre demande de traduction N⁰{""}
+            Votre demande de devis N⁰{""}
             <Box
               fontStyle="bold"
               fontWeight="fontWeightMedium"
@@ -118,19 +112,10 @@ export default class PaymentSuccess extends Component {
             >
               {this.state.code + "" + this.state.orderId}
             </Box>{" "}
-            a bien été enregistrée et sera traitée dans les plus brefs délais.
-            Nous reviendrons vers vous en cas de demande incomplète pour vous
-            indiquer les renseignements manquants. Vous pouvez suivre l’état
-            d’avancement de votre commande et télécharger,{" "}
-            <Box
-              fontStyle="bold"
-              fontWeight="fontWeightMedium"
-              display="inline"
-            >
-              {this.state.delay}
-            </Box>{" "}
-            heures après la validation de votre commande, la traduction
-            certifiée via{" "}
+            sera traitée dans les plus brefs délais. Nous vous contacterons via
+            la messagerie de votre compte si nous avons besoin d&apos;autres
+            informations. Vous pouvez suivre l’état d’avancement de votre
+            demande et télécharger votre devis via{" "}
             <span
               style={{ color: theme.palette.secondary.main, cursor: "pointer" }}
               onClick={() => {
@@ -149,7 +134,7 @@ export default class PaymentSuccess extends Component {
             style={{ padding: "10px" }}
             component={"div"}
           >
-            درخواست ترجمه شما با شماره{" "}
+            به درخواست شماره{" "}
             <Box
               fontStyle="bold"
               fontWeight="fontWeightMedium"
@@ -157,18 +142,9 @@ export default class PaymentSuccess extends Component {
             >
               {this.state.code + "" + this.state.orderId}
             </Box>{" "}
-            ثبت شده است. در صورت تکمیل بودن اطلاعات، سفارش تایید و ترجمه آغاز می
-            شود و سند شما بعد از{" "}
-            <Box
-              fontStyle="bold"
-              fontWeight="fontWeightMedium"
-              display="inline"
-            >
-              {this.state.delay}
-            </Box>{" "}
-            ساعت در حساب کاربری قابل دانلود خواهد بود. در غیر اینصورت، موارد نقص
-            در حساب کاربری به شما اطلاع داده خواهد شد و تایید آن منوط به تکمیل
-            آن می باشد. می توانید وضعیت سفارش خود را از طریق{" "}
+            شما برای پیش‌فاکتور در اسرع وقت رسیدگی می شود. در صورت نیاز به
+            اطلاعات بیشتر، بوسیله پیام‌رسان حساب کاربری با شما تماس خواهیم گرفت.
+            همچنین، از طریق{" "}
             <span
               style={{ color: theme.palette.secondary.main, cursor: "pointer" }}
               onClick={() => {
@@ -177,7 +153,8 @@ export default class PaymentSuccess extends Component {
             >
               حساب کاربری &gt; لیست سفارش‌ها
             </span>{" "}
-            دنبال کنید.
+            می توانید روند وضعیت درخواست خود را دنبال کرده و پیش‌فاکتور خود را
+            بارگیری کنید.
             {""}
           </Typography>
         </Box>
@@ -233,6 +210,6 @@ export default class PaymentSuccess extends Component {
   }
 }
 
-PaymentSuccess.propTypes = {
+DevisSuccess.propTypes = {
   location: PropTypes.any
 };

@@ -3,6 +3,7 @@ import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
+import img from "../../images/idcertificate.png";
 import { writeRows, writeFooter } from "./ExcelUtil";
 
 const footer =
@@ -32,16 +33,26 @@ export default class CreateReport extends Component {
 
   excelExport = () => {
     let ExcelJSWorkbook = new ExcelJS.Workbook();
+    let b = "";
+    let imageId = ExcelJSWorkbook.addImage({
+      base64: b,
+      extension: "png"
+    });
     let worksheet = ExcelJSWorkbook.addWorksheet("sheet1", {
       views: [{ showGridLines: false }],
       pageSetup: { paperSize: 9, orientation: "portrait" },
-      headerFooter: { oddFooter: footer }
+      headerFooter: {
+        oddFooter: footer,
+        firstHeader: `&G&[public/images/logged_out/idcertificate.png]`
+      }
     });
     worksheet.pageSetup.printTitlesColumn = "A:I";
     worksheet.getColumn("A").width = 7;
     worksheet.getColumn("B").width = 13;
     worksheet.getColumn("H").width = 13;
     worksheet.getColumn("I").width = 5;
+
+    //worksheet.addImage(imageId, "A1:I" + "100");
 
     let rowCount = this.writeData(worksheet);
 

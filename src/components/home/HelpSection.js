@@ -19,6 +19,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
 import Help from "./Help";
+import ReactPlayer from "react-player";
 
 const styles = theme => ({
   wrapper: {
@@ -207,37 +208,32 @@ class HelpSection extends Component {
             handleClose={this.handleCloseDialog}
             open={this.state.openIdentityDialog}
           />
-          <Typography
-            variant="h6"
-            align="center"
-            className={classes.thirdHeader}
-          >
-            ویدیو آموزش استفاده از سایت
-          </Typography>
-          <div className={classes.grid}>
-            <div
-              style={{
-                position: "relative",
-                paddingBottom: "30%" /* 16:9 */,
-                paddingTop: 25,
-                marginTop: "20px",
-                height: 0,
-                width: "80%"
-              }}
+          <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+            <Grid
+              container
+              spacing={calculateSpacing(width)}
+              alignItems="center"
+              direction="row"
+              justify="center"
+              alignContent={"center"}
             >
-              <iframe
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%"
-                }}
-                src={`https://www.aparat.com/video/video/embed/videohash/6MgU8/vt/frame?&recom=none`}
-                frameBorder="0"
-                allowFullScreen={true}
-              />
-            </div>
+              <Grid item xs={12} md={6} sm={6}>
+                <ReactPlayer
+                  url="https://youtu.be/iO60q5RrhsY"
+                  controls
+                  width="100%"
+                  height="400px"
+                />
+              </Grid>
+              <Grid item xs={12} md={6} sm={6}>
+                <ReactPlayer
+                  url="https://youtu.be/3VhHCJiyjMk"
+                  controls
+                  width="100%"
+                  height="400px"
+                />
+              </Grid>
+            </Grid>
           </div>
         </div>
       </div>

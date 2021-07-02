@@ -24,7 +24,7 @@ export const Dictionary = {
     french: "B+"
   },
   CreateOrder: {
-    french: "Créer une commande",
+    french: "Nos prestations",
     persian: "ثبت سفارش"
   },
   DrivingLicence: {
@@ -64,7 +64,7 @@ export const Dictionary = {
     persian: "لیست کاربران"
   },
   Logout: {
-    french: "Sortir",
+    french: "Déconnexion",
     persian: "خروج"
   },
   M: {

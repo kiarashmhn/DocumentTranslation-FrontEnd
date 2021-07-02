@@ -24,6 +24,7 @@
     "classnames": "^2.2.6",
     "core-js": "^2.6.5",
     "date-fns": "^2.16.1",
+    "dom-to-image": "latest",
     "emoji-mart": "^3.0.0",
     "eslint-config-prettier": "4.0.0",
     "eslint-plugin-prettier": "3.0.1",
@@ -47,6 +48,7 @@
     "react-dom": "^16.14.0",
     "react-dropzone": "^11.2.4",
     "react-file-icon": "^1.0.0",
+    "react-player": "^2.9.0",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -58,8 +60,7 @@
     "redux": "latest",
     "redux-thunk": "^2.3.0",
     "terser": "3.14.1",
-    "xlsx": "^0.16.9",
-    "dom-to-image": "latest"
+    "xlsx": "^0.16.9"
   },
   "scripts": {
     "start": "react-scripts start",

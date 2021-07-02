@@ -17,6 +17,31 @@ export default class CreatePreBill extends Component {
     this.api = new Api();
   }
 
+  componentDidMount() {
+    this.getOrder().then(() => {});
+  }
+
+  getOrder = async () => {
+    let self = this;
+    let postData = {
+      id: this.props.orderId
+    };
+    console.log(postData);
+    await this.api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.GET_ORDER_BY_ID,
+        postData
+      )
+      .then(function(res) {
+        self.setState({
+          amount: res.data.preBillAmount,
+          delay: res.data.preBillDelay
+        });
+      });
+  };
+
   create = () => {
     this.setState({ loading: true }, async () => {
       let postData = {

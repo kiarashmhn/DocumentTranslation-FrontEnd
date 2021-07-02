@@ -30,6 +30,7 @@ import AuthService from "../../AuthService";
 import EditUserDialog from "../register_login/EditUserDialog";
 import PersonIcon from "@material-ui/icons/Person";
 import Badge from "@material-ui/core/Badge";
+import {getCompleteName} from "../../Dictionary";
 
 const styles = theme => ({
   appBar: {
@@ -322,7 +323,7 @@ function NavBar(props) {
                     }}
                   >
                     <Tooltip
-                      title={element.persianName}
+                      title={getCompleteName(element.name)}
                       placement="left"
                       key={element.persianName}
                     >
@@ -349,7 +350,7 @@ function NavBar(props) {
                 );
               return (
                 <Tooltip
-                  title={element.persianName}
+                  title={getCompleteName(element.name)}
                   placement="left"
                   key={element.persianName}
                 >
