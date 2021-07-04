@@ -48,7 +48,7 @@ function StripePayment(props) {
       .then(function(res) {
         setClientSecret(res.data.clientSecret);
       });
-  }, [setClientSecret]);
+  }, [setClientSecret, api, postData]);
 
   const payMoney = async e => {
     e.preventDefault();

@@ -124,7 +124,7 @@ export function AfghanMarriageCertificateReportData(data) {
 
   const getChildrenInfo = () => {
     let children = [];
-    data.afghanChildren.map((c, idx) => {
+    data.afghanChildren.forEach((c, idx) => {
       children.push(
         {
           type: "text",

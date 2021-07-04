@@ -41,16 +41,13 @@ function ChangePassword(props) {
           URLConstant.USER_PASS_RECOVERY,
         postData
       )
-      .then(function(result) {
-        console.log(result);
+      .then(function() {
         setLoginStatus("verificationEmailSend");
         setIsLoading(false);
         onClose();
       })
-      .catch(function(result) {
-        console.log(result);
-      });
-  }, [setIsLoading, username, setLoginStatus, onClose]);
+      .catch(() => {});
+  }, [setIsLoading, username, setLoginStatus, onClose, api]);
 
   return (
     <Dialog

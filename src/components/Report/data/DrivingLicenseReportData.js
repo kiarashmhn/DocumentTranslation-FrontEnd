@@ -34,20 +34,20 @@ export function DrivingLicenseReportData(data) {
       "moins 23 ans, d’une motocyclette dont la cylindré est supérieure à 200cc."
     ]
   ];
-  categoryKeys.map((k, idx) => {
+  categoryKeys.forEach((k, idx) => {
     if (data[k] && data[k].check) {
       categories.push(idx);
     }
   });
-  categories.map((k, idx) => {
+  categories.forEach((k, idx) => {
     if (idx === 0) category += categoryNames[k];
     else category += " et " + categoryNames[k];
-    categoriesData[k].map(c => {
+    categoriesData[k].forEach(c => {
       categoryDes.push({ type: "text", name: c, isBold: true, size: 10 });
     });
   });
   let cData = [];
-  categories.map(c => {
+  categories.forEach(c => {
     cData = [
       ...cData,
       ...[

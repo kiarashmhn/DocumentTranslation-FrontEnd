@@ -5,10 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import CustomFileDownload from "../File/CustomFileDownload";
 
 export default class Message extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   getFromFormat = function(date, format) {
     let yyyy = date.getFullYear().toString();
     yyyy = yyyy.slice(2, 4);

@@ -28,12 +28,12 @@ export default class ShowPreBill extends Component {
       windowWidth: "1360px",
       width: "1360",
       scrollY: window.pageYOffset + 100,
-      height: "768",
-      windowHeight: "768px"
+      height: "1500",
+      windowHeight: "1500px"
     }).then(canvas => {
       const imgData = canvas.toDataURL("image/jpg");
       const pdf = new JsPDF({
-        orientation: "l", // landscape
+        orientation: "p", // landscape
         unit: "pt", // points, pixels won't work properly
         format: [canvas.width, canvas.height] // set needed dimensions for any element
       });

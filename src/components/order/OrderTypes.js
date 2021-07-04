@@ -89,12 +89,12 @@ export const OrderTypes = {
     nationality: "Afghan",
     code: "AP",
     delay: 24,
-    price: 25,
+    price: 20,
     details: {
       color: "#C51162",
       headline: "لایسنس درایوری",
       frenchHeadline: "Permis de conduire",
-      text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+      text: "تعرفه: ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
       frenchText: "Tarif: 25€ \n Délai de livraison: 24h",
       icon: <DescriptionIcon style={{ fontSize: 30 }} />,
       mdDelay: "200",
@@ -255,7 +255,7 @@ export const OrderTypes = {
 
 export const getTypeByKey = key => {
   let obj = null;
-  Object.keys(OrderTypes).map(objectKey => {
+  Object.keys(OrderTypes).forEach(objectKey => {
     if (OrderTypes[objectKey].code === key) obj = OrderTypes[objectKey];
   });
   return obj;
@@ -263,7 +263,7 @@ export const getTypeByKey = key => {
 
 export const getType = key => {
   let obj = null;
-  Object.keys(OrderTypes).map(objectKey => {
+  Object.keys(OrderTypes).forEach(objectKey => {
     if (OrderTypes[objectKey].key === key) {
       obj = OrderTypes[objectKey];
     }

@@ -55,7 +55,7 @@ export const validateElement = (data, element) => {
         return true;
       else {
         let b = true;
-        data["children"].map(c => {
+        data["children"].forEach(c => {
           if (
             !(
               validateValue(c["name"]) &&
@@ -76,7 +76,7 @@ export const validateElement = (data, element) => {
         return true;
       else {
         let b = true;
-        data["afghanChildren"].map(c => {
+        data["afghanChildren"].forEach(c => {
           if (
             !(
               validateValue(c["name"]) &&
@@ -104,7 +104,7 @@ export const validateElement = (data, element) => {
         return true;
       else {
         let b = true;
-        data["spouses"].map(c => {
+        data["spouses"].forEach(c => {
           if (
             !(
               validateValue(c["name"]) &&
@@ -266,7 +266,7 @@ export const validateStep = (data, step) => {
   if (!data) return false;
   if (!step || !step.content) return true;
   let b = true;
-  step.content.map(e => {
+  step.content.forEach(e => {
     if (!validateElement(data, e)) b = false;
   });
   return b;
@@ -274,7 +274,7 @@ export const validateStep = (data, step) => {
 
 export const validateForm = (data, steps) => {
   let s = [];
-  steps.map(st => {
+  steps.forEach(st => {
     s.push(!validateStep(data, st));
   });
   return s;

@@ -2043,7 +2043,13 @@ export const Dictionary = {
   ticket: {
     persian: "آیا لیسانس دارای کارت تخلف میباشد؟",
     french:
-      "Y a-t-il une carte jointe au permis de conduire (carte d’infractions)?"
+      "Y a-t-il une carte jointe au permis de conduire (carte d’infractions)?",
+    hint: {
+      persian:
+        "با اضافه شدن کارت تخلف، هزینه ترجمه از 20 به 25 یورو افزایش می‌یابد.",
+      french:
+        "En ajoutant la carte d’infractions, le frais de traduction passe de 20 à 25 euros."
+    }
   },
   tribe: {
     persian: "قومیت",

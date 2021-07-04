@@ -3,17 +3,12 @@ import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
-import img from "../../images/idcertificate.png";
 import { writeRows, writeFooter } from "./ExcelUtil";
 
 const footer =
   "www.francedoc.fr - Plate-forme des Experts Traducteurs Assermentés";
 
 export default class CreateReport extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleExportClick = () => {
     this.excelExport();
   };
@@ -33,11 +28,6 @@ export default class CreateReport extends Component {
 
   excelExport = () => {
     let ExcelJSWorkbook = new ExcelJS.Workbook();
-    let b = "";
-    let imageId = ExcelJSWorkbook.addImage({
-      base64: b,
-      extension: "png"
-    });
     let worksheet = ExcelJSWorkbook.addWorksheet("sheet1", {
       views: [{ showGridLines: false }],
       pageSetup: { paperSize: 9, orientation: "portrait" },

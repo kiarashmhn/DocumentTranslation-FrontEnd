@@ -43,14 +43,6 @@ class CustomDialogs extends Component {
     this.lastRef = React.createRef();
   }
 
-  componentDidMount() {
-    //console.log(this.lastRef);
-    /*this.lastRef.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });*/
-  }
-
   render() {
     return (
       <Dialog

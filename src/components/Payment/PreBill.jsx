@@ -202,7 +202,7 @@ export default class PreBill extends Component {
               "/" +
               new Date().getFullYear()}
           </Typography>
-          <Typography>{"Affaire : " + "DD" + this.props.orderId}</Typography>
+          <Typography>{"Affaire : DD" + this.props.orderId}</Typography>
           <Divider style={{ margin: "4px 2px" }} />
           <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
             {info}

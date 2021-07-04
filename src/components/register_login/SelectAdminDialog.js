@@ -63,7 +63,7 @@ function SelectAdminDialog(props) {
           setIsLoading(false);
         });
     })();
-  }, [setAdmins, setIsLoading]);
+  });
 
   const assign = useCallback(() => {
     setIsLoading(true);
@@ -89,7 +89,7 @@ function SelectAdminDialog(props) {
       .catch(function() {
         setIsLoading(false);
       });
-  }, [setIsLoading, admin]);
+  }, [setIsLoading, admin, api, itemId, onClose, showSnackbar]);
 
   return (
     <FormDialog

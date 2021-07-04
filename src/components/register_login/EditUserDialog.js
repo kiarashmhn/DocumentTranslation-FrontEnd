@@ -130,7 +130,10 @@ function EditUserDialog(props) {
     setStatus,
     registerPassword,
     registerPasswordRepeat,
-    phone
+    phone,
+    api,
+    name,
+    showSnackbar
   ]);
 
   const openConfirmDialog = useCallback(() => {
@@ -166,14 +169,7 @@ function EditUserDialog(props) {
       .catch(function() {
         setIsLoading(false);
       });
-  }, [
-    setIsLoading,
-    setStatus,
-    setExit,
-    registerPassword,
-    registerPasswordRepeat,
-    phone
-  ]);
+  }, [setIsLoading, setStatus, setExit, api, name, showSnackbar, auth]);
 
   const redirect = () => {
     if (exit) {

@@ -64,7 +64,16 @@ function LoginDialog(props) {
       .catch(function() {
         setIsLoading(false);
       });
-  }, [setIsLoading, username, loginPassword, setStatus, setIsAdmin, setIsUser]);
+  }, [
+    setIsLoading,
+    username,
+    loginPassword,
+    setStatus,
+    setIsAdmin,
+    setIsUser,
+    Auth,
+    showSnackbar
+  ]);
 
   const redirect = () => {
     let url = isAdmin

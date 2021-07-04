@@ -14,6 +14,9 @@ module.exports = {
     }
   },
   plugins: ["react"],
+  rules: {
+    "array-callback-return": ["off"]
+  },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",

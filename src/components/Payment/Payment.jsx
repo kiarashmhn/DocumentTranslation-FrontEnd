@@ -136,8 +136,8 @@ class Payment extends Component {
       basePrice: 20,
       price: 20,
       delay: 24,
-      orderId: this.props.location.state.orderId,
-      type: getType(this.props.location.state.type),
+      orderId: "",
+      type: "",
       redirect: false
     };
     this.api = new Api();
@@ -148,7 +148,6 @@ class Payment extends Component {
     let postData = {
       id: this.state.orderId
     };
-    console.log(postData);
     await this.api
       .doPostNoAppend(
         process.env.REACT_APP_HOST_URL +
@@ -175,23 +174,37 @@ class Payment extends Component {
   };
 
   componentDidMount() {
-    this.getOrder().then(() => {
-      let price = this.state.type.price;
-      let oldPrice = this.state.price;
-      let oldBasePrice = this.state.basePrice;
-      let additionalPrice = this.state.additionalPrice;
-      let delay = this.state.type.delay;
-      let oldDelay = this.state.delay;
-      this.setState({
-        basePrice: price
-          ? parseInt(price) + parseInt(additionalPrice)
-          : parseInt(oldBasePrice) + parseInt(additionalPrice),
-        price: price
-          ? parseInt(price) + parseInt(additionalPrice)
-          : parseInt(oldPrice) + parseInt(additionalPrice),
-        delay: delay ? parseInt(delay) : parseInt(oldDelay)
-      });
-    });
+    if (
+      this.props.location &&
+      this.props.location.state &&
+      this.props.location.state.orderId
+    )
+      this.setState(
+        {
+          orderId: this.props.location.state.orderId,
+          type: getType(this.props.location.state.type)
+        },
+        () => {
+          this.getOrder().then(() => {
+            let price = this.state.type.price;
+            let oldPrice = this.state.price;
+            let oldBasePrice = this.state.basePrice;
+            let additionalPrice = this.state.additionalPrice;
+            let delay = this.state.type.delay;
+            let oldDelay = this.state.delay;
+            this.setState({
+              basePrice: price
+                ? parseInt(price) + parseInt(additionalPrice)
+                : parseInt(oldBasePrice) + parseInt(additionalPrice),
+              price: price
+                ? parseInt(price) + parseInt(additionalPrice)
+                : parseInt(oldPrice) + parseInt(additionalPrice),
+              delay: delay ? parseInt(delay) : parseInt(oldDelay)
+            });
+          });
+        }
+      );
+    else this.setState({ redirect: true });
   }
 
   postOnChange = e => {

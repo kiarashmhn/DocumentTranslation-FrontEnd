@@ -219,7 +219,7 @@ class HelpSection extends Component {
             >
               <Grid item xs={12} md={6} sm={6}>
                 <ReactPlayer
-                  url="https://youtu.be/iO60q5RrhsY"
+                  url="https://youtu.be/MZurWmWulfk"
                   controls
                   width="100%"
                   height="400px"
@@ -227,7 +227,7 @@ class HelpSection extends Component {
               </Grid>
               <Grid item xs={12} md={6} sm={6}>
                 <ReactPlayer
-                  url="https://youtu.be/3VhHCJiyjMk"
+                  url="https://youtu.be/XkMiGa53gJ0"
                   controls
                   width="100%"
                   height="400px"

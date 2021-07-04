@@ -26,7 +26,6 @@ export default class CreatePreBill extends Component {
     let postData = {
       id: this.props.orderId
     };
-    console.log(postData);
     await this.api
       .doPostNoAppend(
         process.env.REACT_APP_HOST_URL +

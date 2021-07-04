@@ -384,6 +384,7 @@ class CreateOrder extends Component {
                   />
                 </Grid>
               );
+            return "";
           })}
         </Grid>
         {this.state.type && (

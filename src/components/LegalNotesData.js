@@ -408,8 +408,8 @@ export function getDataNotesInFrench() {
         * Vous pouvez accéder aux données vous concernant, les rectifier,
         demander leur effacement ou exercer votre droit à la limitation du
         traitement de vos données via votre compte client ou en écrivant un
-        courriel à<a>francedoc.fr@gmail.com</a>. Consultez le site cnil.fr pour
-        plus d’informations sur vos droits.
+        courriel à<a href={"https://www.gmail.com"}>francedoc.fr@gmail.com</a>.
+        Consultez le site cnil.fr pour plus d’informations sur vos droits.
       </Typography>
       <Typography variant="body1">
         * Dans tout les cas, si l&apos;utilisateur paie par carte bancaire, le
@@ -443,15 +443,18 @@ export function getDataNotesInFrench() {
         vous ne demandez pas leur suppression.
       </Typography>
       <Typography variant="body1">
-        * Le site <a>https://francedoc.fr/</a> est hébergé par Hostinger, un
-        prestataire sur le territoire de l’Union Européenne conformément aux
-        dispositions du RGPD, et joignable par le moyen suivant :{" "}
-        <a>https://www.hostinger.fr/contact</a>
+        * Le site <a href={"https://www.francedoc.fr"}>https://francedoc.fr/</a>{" "}
+        est hébergé par Hostinger, un prestataire sur le territoire de l’Union
+        Européenne conformément aux dispositions du RGPD, et joignable par le
+        moyen suivant :{" "}
+        <a href={"https://www.hostinger.fr/contact"}>
+          https://www.hostinger.fr/contact
+        </a>
       </Typography>
       <Typography variant="body1">
         * Pour exercer ces droits ou pour toute question sur le traitement de
         vos données dans ce dispositif, vous pouvez nous contacter par{" "}
-        <a>francedoc.fr@gmail.com</a>.
+        <a href={"https://www.gmail.com"}>francedoc.fr@gmail.com</a>.
       </Typography>
       <Typography variant="body1">
         * Si vous estimez, après nous avoir contactés, que vos droits «

@@ -43,7 +43,7 @@ function CustomInput({ ...props }) {
   const underlineClasses = classNames({
     [classes.underlineError]: error,
     [classes.underlineSuccess]: success && !error,
-    [classes.underlineWarning]: theme == "orange" && !success,
+    [classes.underlineWarning]: theme === "orange" && !success,
     [classes.underline]: true
   });
   const marginTop = classNames({

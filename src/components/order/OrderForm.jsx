@@ -190,7 +190,7 @@ class OrderForm extends Component {
           },
           () => {
             let b = false;
-            this.state.stepValidations.map(s => {
+            this.state.stepValidations.forEach(s => {
               if (s) b = true;
             });
             if (!b) this.props.onSubmit();

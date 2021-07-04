@@ -6,9 +6,6 @@ import CustomInput from "./CustomInput";
 import PropTypes from "prop-types";
 
 export default class FieldInput extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <CustomInput

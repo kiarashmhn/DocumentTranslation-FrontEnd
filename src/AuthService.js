@@ -50,9 +50,7 @@ export default class AuthService {
           return Promise.resolve(response.data);
         }
       })
-      .catch(function(error) {
-        console.log(error);
-      });
+      .catch(() => {});
   }
 
   loggedIn() {

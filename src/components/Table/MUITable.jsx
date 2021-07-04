@@ -94,10 +94,7 @@ export default class MUITable extends Component {
             checker.checkResponse(response);
             return response.data;
           })
-          .catch(function(error) {
-            // eslint-disable-next-line no-console
-            console.log(error);
-          })
+          .catch(() => {})
       : axios({
           method: this.props.method,
           url: this.props.url,
@@ -110,10 +107,8 @@ export default class MUITable extends Component {
             checker.checkResponse(response);
             return response.data;
           })
-          .catch(function(error) {
+          .catch(function() {
             checker.redirectToLogin();
-            // eslint-disable-next-line no-console
-            console.log(error);
           });
   };
 

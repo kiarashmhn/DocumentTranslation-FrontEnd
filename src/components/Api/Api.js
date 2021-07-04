@@ -20,9 +20,8 @@ export default class Api {
         checker.checkResponse(response);
         return response.data;
       })
-      .catch(function(error) {
+      .catch(function() {
         checker.redirectToLogin();
-        console.log(error);
       });
   };
 
@@ -48,9 +47,8 @@ export default class Api {
         checker.checkResponse(response);
         return response.data;
       })
-      .catch(function(error) {
+      .catch(function() {
         checker.redirectToLogin();
-        console.log(error);
       });
   };
 
@@ -72,8 +70,7 @@ export default class Api {
         checker.checkResponse(response);
         return response.data;
       })
-      .catch(function(error) {
-        console.error(error.message);
+      .catch(function() {
         checker.redirectToLogin();
       });
   };
@@ -92,8 +89,7 @@ export default class Api {
         checker.checkResponse(response);
         return response.data;
       })
-      .catch(function(error) {
-        console.error(error.message);
+      .catch(function() {
         checker.redirectToLogin();
       });
   };
@@ -111,7 +107,6 @@ export default class Api {
       },
       responseType: "blob"
     }).then(function(response) {
-      console.log(response);
       fileDownload(response.data, name);
     });
   };

@@ -219,40 +219,39 @@ class NavBar extends Component {
                         </div>
                       </Button>
                     );
-                  } else if (element.name === "login") {
-                    return (
-                      <Button
-                        color="secondary"
-                        onClick={element.onClick}
-                        classes={{ text: classes.menuButtonText }}
-                        key={element.name}
-                        style={{ textTransform: "none" }}
-                      >
-                        <div style={{ display: "block", lineHeight: "18pt" }}>
-                          <span
-                            id="textSpan1"
-                            style={{
-                              fontWeight: "bold",
-                              display: "block",
-                              align: "center"
-                            }}
-                          >
-                            {getFrenchName(element.name)}
-                          </span>
-                          <span
-                            id="textSpan2"
-                            style={{
-                              fontWeight: "bold",
-                              display: "block",
-                              align: "center"
-                            }}
-                          >
-                            {getPersianName(element.name)}
-                          </span>
-                        </div>
-                      </Button>
-                    );
                   }
+                  return (
+                    <Button
+                      color="secondary"
+                      onClick={element.onClick}
+                      classes={{ text: classes.menuButtonText }}
+                      key={element.name}
+                      style={{ textTransform: "none" }}
+                    >
+                      <div style={{ display: "block", lineHeight: "18pt" }}>
+                        <span
+                          id="textSpan1"
+                          style={{
+                            fontWeight: "bold",
+                            display: "block",
+                            align: "center"
+                          }}
+                        >
+                          {getFrenchName(element.name)}
+                        </span>
+                        <span
+                          id="textSpan2"
+                          style={{
+                            fontWeight: "bold",
+                            display: "block",
+                            align: "center"
+                          }}
+                        >
+                          {getPersianName(element.name)}
+                        </span>
+                      </div>
+                    </Button>
+                  );
                 })}
               </Hidden>
             </div>

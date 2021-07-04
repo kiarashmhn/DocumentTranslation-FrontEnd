@@ -128,7 +128,7 @@ const features = [
     color: "#C51162",
     headline: "لیسانس درایوری",
     frenchHeadline: "Permis de conduire",
-    text: "تعرفه: ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+    text: "تعرفه: ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
     frenchText: "Tarif * : 25€ \n Délai de livraison : 24h",
     icon: <DescriptionIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
@@ -178,9 +178,6 @@ const features = [
 ];
 
 class FeatureSection extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { width, classes } = this.props;
     return (

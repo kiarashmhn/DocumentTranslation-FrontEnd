@@ -75,7 +75,6 @@ function RegisterDialog(props) {
 
   const redirect = () => {
     let url = isUser ? URLConstant.USER_PANEL : null;
-    console.log(url);
     if (url) {
       return (
         <Redirect
@@ -133,7 +132,9 @@ function RegisterDialog(props) {
     setStatus,
     registerPassword,
     registerPasswordRepeat,
-    setIsUser
+    setIsUser,
+    Auth,
+    showSnackbar
   ]);
 
   return (

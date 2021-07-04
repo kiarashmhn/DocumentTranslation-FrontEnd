@@ -45,11 +45,10 @@ export default class NodesGenerator extends Component {
 
   constructState = () => {
     let temp = {};
-    this.props.elements.map(element => {
-      element.type === "boolean"
-        ? (temp[element.key] = false)
-        : (temp[element.key] = "");
-    });
+    for (let element of this.props.elements)
+      if (element.type === "boolean") temp[element.key] = false;
+      else temp[element.key] = "";
+
     return temp;
   };
 
@@ -61,9 +60,8 @@ export default class NodesGenerator extends Component {
     let temp = this.props.externalInitializationData
       ? this.props.externalInitializationData
       : {};
-    this.props.elements.map(element => {
+    for (let element of this.props.elements)
       temp[element.key] = this.preparingInitValue(element);
-    });
 
     this.setState({
       ...temp

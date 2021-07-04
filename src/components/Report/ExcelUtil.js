@@ -16,7 +16,7 @@ export const childrenEndSection =
 export const writeText = (worksheet, idx, isBold, text, size, align) => {
   idx = idx + 1;
   worksheet.mergeCells(
-    (align === alignmentLeft ? "B" : "A") + idx + ":" + "I" + idx
+    (align === alignmentLeft ? "B" : "A") + idx + ":I" + idx
   );
   worksheet.addRow();
   const customCell = worksheet.getCell(
@@ -36,8 +36,8 @@ export const writeText = (worksheet, idx, isBold, text, size, align) => {
 
 export const writeData = (worksheet, idx, key, value, align, size) => {
   idx = idx + 1;
-  worksheet.mergeCells("B" + idx + ":" + "D" + idx);
-  worksheet.mergeCells("F" + idx + ":" + "I" + idx);
+  worksheet.mergeCells("B" + idx + ":D" + idx);
+  worksheet.mergeCells("F" + idx + ":I" + idx);
   worksheet.addRow();
 
   const customCellKey = worksheet.getCell("B" + idx);
@@ -111,7 +111,8 @@ export const writeArray = (worksheet, rowCount, data, row) => {
     rowCount = writeText(worksheet, rowCount, false, "");
     for (let i = 0; i < data.length; i++) {
       let keys = row.keys ? row.keys : Object.keys(data[i]);
-      keys.map(key => {
+      // eslint-disable-next-line no-loop-func
+      keys.forEach(key => {
         rowCount = writeDataByKey(
           key,
           data[i][key],
@@ -139,6 +140,7 @@ export const writeArray = (worksheet, rowCount, data, row) => {
 export const writeSortedArray = (worksheet, rowCount, data, row) => {
   if (data && data.length >= 1) {
     for (let i = 0; i < data.length; i++) {
+      // eslint-disable-next-line no-loop-func
       rowCount = writeText(
         worksheet,
         rowCount,
@@ -148,7 +150,8 @@ export const writeSortedArray = (worksheet, rowCount, data, row) => {
           : getFrenchName(row.name)
       );
       let keys = row.keys ? row.keys : Object.keys(data[i]);
-      keys.map(key => {
+      // eslint-disable-next-line no-loop-func
+      keys.forEach(key => {
         rowCount = writeDataByKey(
           key,
           data[i][key],
@@ -210,7 +213,7 @@ export const writeRow = (worksheet, rowCount, row) => {
 };
 
 export const writeRows = (worksheet, rowCount, rows) => {
-  rows.map(row => {
+  rows.forEach(row => {
     rowCount = writeRow(worksheet, rowCount, row);
   });
   return rowCount;
@@ -262,7 +265,7 @@ export const getComplexDate = date => {
     let year = date.substring(date.lastIndexOf("[") + 1, date.lastIndexOf("]"));
     if (parseInt(year) < 1600) {
       let mYear = moment
-        .from("01" + "/" + "01" + "/" + year, "fa", "DD/MM/YYYY")
+        .from("01/01/" + year, "fa", "DD/MM/YYYY")
         .format("YYYY");
       year = year + " [" + mYear + "-" + (parseInt(mYear) + 1) + "]";
     }

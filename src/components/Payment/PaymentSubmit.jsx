@@ -293,7 +293,7 @@ export default SnackbarWrapper(PaymentSubmit);
 PaymentSubmit.propTypes = {
   id: PropTypes.any.isRequired,
   idx: PropTypes.any.isRequired,
-  code: PropTypes.any.isRequired,
+  code: PropTypes.any,
   price: PropTypes.any.isRequired,
   delay: PropTypes.any.isRequired,
   deliveryType: PropTypes.any.isRequired,

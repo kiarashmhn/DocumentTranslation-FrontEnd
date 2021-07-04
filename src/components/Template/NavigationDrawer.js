@@ -34,10 +34,6 @@ const styles = theme => ({
 });
 
 class NavigationDrawer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   resize = () => {
     window.onresize = () => {
       if (isWidthUp("sm", this.props.width) && this.props.open) {
