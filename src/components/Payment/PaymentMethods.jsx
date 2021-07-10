@@ -12,6 +12,8 @@ import { methodsInfo } from "./MethodsInfo";
 import StripePayment from "./StripePayment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import * as URLConstant from "../../URLConstant";
+import Api from "../Api/Api";
 
 export default class PaymentMethods extends Component {
   constructor(props) {
@@ -19,10 +21,32 @@ export default class PaymentMethods extends Component {
     this.state = {
       idx: null,
       files: [],
-      num: ""
+      num: "",
+      config: null
     };
+    this.api = new Api();
     this.boxRef = React.createRef();
   }
+
+  componentDidMount() {
+    this.getConfig().then(() => {});
+  }
+
+  getConfig = async () => {
+    let self = this;
+    await this.api
+      .doPostNoAppend(
+        process.env.REACT_APP_HOST_URL +
+          process.env.REACT_APP_MAIN_PATH +
+          URLConstant.GET_CONFIG,
+        {}
+      )
+      .then(function(res) {
+        self.setState({
+          config: res.data
+        });
+      });
+  };
 
   handleOpen = idx => {
     this.setState(
@@ -43,7 +67,12 @@ export default class PaymentMethods extends Component {
     );
 
     const { width, classes, id, price, code } = this.props;
-    const methods = methodsInfo(id, code, price);
+    const methods = methodsInfo(
+      id,
+      code,
+      price,
+      this.state.config ? this.state.config : {}
+    );
     return (
       <Fragment>
         <div className={classes.thirdHeader}>

@@ -2,21 +2,6 @@ import React, { Fragment } from "react";
 import { Box, Typography } from "@material-ui/core";
 import ribFile from "../../images/rib.png";
 
-const frenchNote =
-  "* Vous pouvez régler votre commande par virement bancaire. Ajouter ensuite la preuve de virement bancaire ici sur votre compte client. Dans ce cas, votre commande sera validée, traitée et expédiée dès réception de votre virement. Renseignez les informations suivantes sur l’ordre de virement à votre banque :";
-const persianNote =
-  "* هزینه ترجمه را به حساب بانکی واریز کرده و رسید واریز را در حساب کاربری برای ما ارسال کنید. اطلاعات زیر را در دستور واریز بانکی خود می بایست ثبت کنید :";
-
-const persianNote2 =
-  "مبلغ هزینه ترجمه را در قالب چک در وجه  Seyedeh Zahra DIBAJ به آدرس زیر با قرار دادن شماره سفارش در نامه ارسال کنید: ";
-const frenchNote2 =
-  "Envoyer votre chèque en indiquant le numero de votre commande dans votre courier à l’ordre de Seyedeh Zahra DIBAJ à l’adresse suivante :\n";
-const address = "99 boulevard Général Vanier, 14000 CAEN \n";
-
-const persianNote3 =
-  "از طریق Western Union در وجه Daniel MOVAHHEDI مبلغ هزینه را پرداخت کنید.";
-const frenchNote3 = "Western Union à l’ordre de Daniel MOVAHHEDI.";
-
 export const methods = [
   {
     title: "پرداخت با کارت",
@@ -39,7 +24,23 @@ export const methods = [
   }
 ];
 
-export function methodsInfo(id, code, price) {
+export function methodsInfo(id, code, price, config) {
+  const frenchNote =
+    "* Vous pouvez régler votre commande par virement bancaire. Ajouter ensuite la preuve de virement bancaire ici sur votre compte client. Dans ce cas, votre commande sera validée, traitée et expédiée dès réception de votre virement. Renseignez les informations suivantes sur l’ordre de virement à votre banque :";
+  const persianNote =
+    "* هزینه ترجمه را به حساب بانکی واریز کرده و رسید واریز را در حساب کاربری برای ما ارسال کنید. اطلاعات زیر را در دستور واریز بانکی خود می بایست ثبت کنید :";
+
+  const persianNote2 = `مبلغ هزینه ترجمه را در قالب چک در وجه  ${config.accName +
+    " " +
+    config.accLastName} به آدرس زیر با قرار دادن شماره سفارش در نامه ارسال کنید:`;
+  const frenchNote2 = `Envoyer votre chèque en indiquant le numero de votre commande dans votre courier à l’ordre de ${config.accName +
+    " " +
+    config.accLastName} à l’adresse suivante :\n`;
+  const address = config.address + "\n";
+
+  const persianNote3 =
+    "از طریق Western Union در وجه Daniel MOVAHHEDI مبلغ هزینه را پرداخت کنید.";
+  const frenchNote3 = "Western Union à l’ordre de Daniel MOVAHHEDI.";
   return [
     {
       title: "پرداخت با کارت",

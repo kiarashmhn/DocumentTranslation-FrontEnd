@@ -6,6 +6,8 @@ import smoothScrollTop from "../functions/smoothScrollTop";
 import ListOrder from "./order/ListOrder";
 import AdminNavBar from "./navigation/AdminNavBar";
 import ListUser from "./User/ListUser";
+import AuthService from "../AuthService";
+import Config from "./Config/Config";
 
 const styles = theme => ({
   main: {
@@ -69,8 +71,10 @@ class AdminPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: "ListOrder"
+      selectedTab: "ListOrder",
+      superAdmin: false
     };
+    this.auth = new AuthService();
   }
 
   componentDidMount() {
@@ -84,6 +88,9 @@ class AdminPanel extends Component {
       this.props.location.state.selectedTab
     )
       this.setSelectedTab(this.props.location.state.selectedTab);
+    this.setState({
+      superAdmin: this.auth.isSuperAdmin()
+    });
   }
 
   setSelectedTab = tab => {
@@ -104,6 +111,12 @@ class AdminPanel extends Component {
     this.setSelectedTab("ListUser");
   };
 
+  selectListConfig = () => {
+    smoothScrollTop();
+    document.title = "FD - ListConfig";
+    this.setSelectedTab("ListConfig");
+  };
+
   render() {
     return (
       <Fragment>
@@ -111,6 +124,7 @@ class AdminPanel extends Component {
           selectedTab={this.state.selectedTab}
           selectListOrder={this.selectListOrder}
           selectListUser={this.selectListUser}
+          selectListConfig={this.selectListConfig}
           messages={[]}
         />
         <div className={classNames(this.props.classes.main)}>
@@ -119,6 +133,8 @@ class AdminPanel extends Component {
               <ListOrder type={"ADMIN"} />
             )}
             {this.state.selectedTab === "ListUser" && <ListUser />}
+            {this.state.selectedTab === "ListConfig" &&
+              this.state.superAdmin && <Config />}
           </div>
         </div>
       </Fragment>

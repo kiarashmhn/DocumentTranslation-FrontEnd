@@ -63,6 +63,10 @@ export const Dictionary = {
     french: "Liste des utilisateurs",
     persian: "لیست کاربران"
   },
+  ListConfig: {
+    french: "Les paramètres",
+    persian: "تنظیمات"
+  },
   Logout: {
     french: "Déconnexion",
     persian: "خروج"
@@ -2311,6 +2315,34 @@ export const Dictionary = {
   confirmDate: {
     persian: "تاریخ",
     french: "Date"
+  },
+  frenchQuestion: {
+    persian: "سوال به فرانسوی",
+    french: "Question en français"
+  },
+  persianQuestion: {
+    persian: "سوال به فارسی",
+    french: "Question en farsi"
+  },
+  fAns: {
+    persian: "پاسخ به فرانسوی",
+    french: "Répondre en français"
+  },
+  pAns: {
+    persian: "پاسخ به فارسی",
+    french: "Répondre en farsi"
+  },
+  accName: {
+    persian: "نام مالک حساب",
+    french: "Prénom du propriétaire du compte"
+  },
+  accLastName: {
+    persian: "نام‌خانوادگی مالک حساب",
+    french: "Nom du propriétaire du compte"
+  },
+  accNumber: {
+    persian: "شماره حساب",
+    french: "N° de compte"
   }
 };
 

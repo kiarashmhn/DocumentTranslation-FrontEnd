@@ -31,6 +31,7 @@ import Address from "../Address";
 import DocumentPlace from "../DocumentPlace/DocumentPlace";
 import AfghanChildren from "../Marriage/AfghanChildren";
 import Sign from "../Sign";
+import Questions from "../Question/Questions";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ export default class NodesGenerator extends Component {
     this.state = { ...this.constructState() };
     this.childrenRef = React.createRef();
     this.afghanChildrenRef = React.createRef();
+    this.questionRef = React.createRef();
     this.spousesRef = React.createRef();
     this.fileHandlerRef = React.createRef();
     this.additionalFileHandlerRef = React.createRef();
@@ -146,10 +148,28 @@ export default class NodesGenerator extends Component {
       : { afghanChildren: [] };
   };
 
+  getQuestionsState = () => {
+    return this.questionRef.current
+      ? this.questionRef.current.getState()
+        ? {
+            questions: this.questionRef.current.getState().questions
+          }
+        : { questions: [] }
+      : { questions: [] };
+  };
+
   getInitialArrayByKey = key => {
     return this.props.externalInitializationData
       ? this.props.externalInitializationData[key]
         ? this.props.externalInitializationData[key]
+        : []
+      : [];
+  };
+
+  getInitialQuestions = () => {
+    return this.props.externalInitializationData
+      ? this.props.externalInitializationData.questions
+        ? this.props.externalInitializationData.questions.questions
         : []
       : [];
   };
@@ -171,6 +191,10 @@ export default class NodesGenerator extends Component {
     let afghanChildren = this.getAfghanChildrenState();
     if (afghanChildren.afghanChildren.length > 0)
       state = { ...state, ...afghanChildren };
+
+    let questions = this.getQuestionsState();
+    if (questions.questions.length > 0)
+      state = { ...state, ...{ questions: questions } };
 
     let marriages = this.getSpousesState();
     if (marriages.spouses.length > 0) state = { ...state, ...marriages };
@@ -414,6 +438,21 @@ export default class NodesGenerator extends Component {
               <AfghanChildren
                 ref={this.afghanChildrenRef}
                 initialAfghanChildren={this.getInitialArrayByKey(element.key)}
+              />
+            </Grid>
+          );
+        case "questions":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <Questions
+                ref={this.questionRef}
+                initialQuestions={this.getInitialQuestions()}
               />
             </Grid>
           );

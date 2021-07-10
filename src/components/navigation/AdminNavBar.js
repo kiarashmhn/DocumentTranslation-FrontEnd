@@ -29,7 +29,8 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import AuthService from "../../AuthService";
 import EditUserDialog from "../register_login/EditUserDialog";
 import PersonIcon from "@material-ui/icons/Person";
-import {getCompleteName} from "../../Dictionary";
+import SettingsIcon from "@material-ui/icons/Settings";
+import { getCompleteName } from "../../Dictionary";
 
 const styles = theme => ({
   appBar: {
@@ -141,7 +142,8 @@ function NavBar(props) {
     classes,
     width,
     selectListOrder,
-    selectListUser
+    selectListUser,
+    selectListConfig
   } = props;
   // Will be use to make website more accessible by screen readers
   const links = useRef([]);
@@ -219,6 +221,31 @@ function NavBar(props) {
         mobile: <SupervisorAccountIcon className="text-white" />
       }
     },
+    ...(Auth.isSuperAdmin()
+      ? [
+          {
+            name: "ListConfig",
+            persianName: "تنظیمات",
+            onClick: () => {
+              closeMobileDrawer();
+              selectListConfig();
+            },
+            icon: {
+              desktop: (
+                <SettingsIcon
+                  className={
+                    selectedTab === "ListConfig"
+                      ? classes.textPrimary
+                      : "text-white"
+                  }
+                  fontSize="large"
+                />
+              ),
+              mobile: <SettingsIcon className="text-white" />
+            }
+          }
+        ]
+      : []),
     {
       link: "/",
       name: "Logout",
@@ -391,7 +418,8 @@ NavBar.propTypes = {
   width: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
   selectListOrder: PropTypes.func.isRequired,
-  selectListUser: PropTypes.func.isRequired
+  selectListUser: PropTypes.func.isRequired,
+  selectListConfig: PropTypes.func.isRequired
 };
 
 export default withWidth()(withStyles(styles, { withTheme: true })(NavBar));
