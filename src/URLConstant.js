@@ -24,6 +24,7 @@ export const GET_DOCUMENT = "/document/get";
 export const GET_DOCUMENT_ = "/document/getDocument";
 export const GET_DOCUMENTS = "/document/gets";
 export const CREATE_DOCUMENT = "/document/create";
+export const CREATE_CONFIG_DOCUMENT = "/config/createFile";
 export const GET_MESSAGES = "/message/gets";
 export const CREATE_MESSAGE = "/message/create";
 export const GET_USERS = "/user/gets";

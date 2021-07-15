@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Box, Typography } from "@material-ui/core";
-import ribFile from "../../images/rib.png";
+import Api from "../Api/Api";
+import * as URLConstant from "../../URLConstant";
 
 export const methods = [
   {
@@ -25,6 +26,8 @@ export const methods = [
 ];
 
 export function methodsInfo(id, code, price, config) {
+  const api = new Api();
+
   const frenchNote =
     "* Vous pouvez régler votre commande par virement bancaire. Ajouter ensuite la preuve de virement bancaire ici sur votre compte client. Dans ce cas, votre commande sera validée, traitée et expédiée dès réception de votre virement. Renseignez les informations suivantes sur l’ordre de virement à votre banque :";
   const persianNote =
@@ -41,6 +44,17 @@ export function methodsInfo(id, code, price, config) {
   const persianNote3 =
     "از طریق Western Union در وجه Daniel MOVAHHEDI مبلغ هزینه را پرداخت کنید.";
   const frenchNote3 = "Western Union à l’ordre de Daniel MOVAHHEDI.";
+
+  const downloadRib = () => {
+    api.getFile(
+      process.env.REACT_APP_HOST_URL +
+        process.env.REACT_APP_MAIN_PATH +
+        URLConstant.GET_DOCUMENT,
+      config.ribId,
+      config.ribName
+    );
+  };
+
   return [
     {
       title: "پرداخت با کارت",
@@ -119,22 +133,21 @@ export function methodsInfo(id, code, price, config) {
               display: "flex"
             }}
           >
-            <a href={ribFile} download="rib.png">
-              <div
-                style={{
-                  display: "block",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundRepeat: "no-repeat",
-                  verticalAlign: "middle",
-                  backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/rib.png)`,
-                  backgroundSize: "contain",
-                  height: "262px",
-                  width: "422px",
-                  cursor: "pointer"
-                }}
-              />
-            </a>
+            <div
+              onClick={() => downloadRib()}
+              style={{
+                display: "block",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundRepeat: "no-repeat",
+                verticalAlign: "middle",
+                backgroundImage: `url(${process.env.PUBLIC_URL}/images/logged_out/rib.png)`,
+                backgroundSize: "contain",
+                height: "262px",
+                width: "422px",
+                cursor: "pointer"
+              }}
+            />
           </div>
         </Fragment>
       )

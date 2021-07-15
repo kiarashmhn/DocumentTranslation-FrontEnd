@@ -32,6 +32,7 @@ import DocumentPlace from "../DocumentPlace/DocumentPlace";
 import AfghanChildren from "../Marriage/AfghanChildren";
 import Sign from "../Sign";
 import Questions from "../Question/Questions";
+import CustomFileDownload from "../File/CustomFileDownload";
 
 export default class NodesGenerator extends Component {
   constructor(props) {
@@ -357,9 +358,22 @@ export default class NodesGenerator extends Component {
               key={element.key}
             >
               <CustomFileUpload
+                single={true}
                 onChange={event => this.fileOnChange(event, element)}
                 required={element.required}
               />
+            </Grid>
+          );
+        case "fileDownload":
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={element.smGrid ? element.smGrid : 12}
+              md={element.grid ? element.grid : 12}
+              key={element.key}
+            >
+              <CustomFileDownload id={element.id} name={element.name} />
             </Grid>
           );
         case "fileHandler":

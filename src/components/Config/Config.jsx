@@ -38,6 +38,33 @@ class Config extends Component {
   postConfig = async () => {
     let self = this;
     let postData = this.nodeGenRef.getState();
+
+    let ribName = null;
+    let ribId = null;
+
+    if (postData.file && postData.file.length > 0) {
+      let file = postData.file[0];
+      let params = {
+        type: "additional",
+        name: file.name,
+        useCase: "rib",
+        size: file.size
+      };
+      await this.api
+        .doPostMultiPartFileAndHeader(
+          process.env.REACT_APP_HOST_URL +
+            process.env.REACT_APP_MAIN_PATH +
+            URLConstant.CREATE_CONFIG_DOCUMENT,
+          file,
+          params
+        )
+        .then(function(res) {
+          if (!res.success) self.props.showSnackbar(res.message, "error");
+          ribName = res.data.name;
+          ribId = res.data.id;
+        });
+    }
+    postData = { ...postData, ...{ ribName: ribName, ribId: ribId } };
     await this.api
       .doPostNoAppend(
         process.env.REACT_APP_HOST_URL +
@@ -47,6 +74,12 @@ class Config extends Component {
       )
       .then(function(res) {
         self.props.showSnackbar(res.message, res.success ? "success" : "error");
+        self.setState({
+          config: {
+            ...self.state.config,
+            ...{ ribName: ribName, ribId: ribId }
+          }
+        });
       });
   };
 
@@ -101,6 +134,7 @@ class Config extends Component {
       >
         <Button
           type={"submit"}
+          disabled={this.state.isLoading}
           style={{ textTransform: "none", marginTop: theme.spacing(1) }}
           variant="contained"
           color="secondary"
@@ -136,6 +170,10 @@ class Config extends Component {
   getElements = () => {
     return [
       {
+        key: "bankInfo",
+        type: "string"
+      },
+      {
         key: "accName",
         type: "text"
       },
@@ -151,6 +189,30 @@ class Config extends Component {
         key: "address",
         type: "text",
         grid: 12
+      },
+      {
+        key: "ribImage",
+        type: "string"
+      },
+      { key: "empty", type: "empty" },
+      ...(this.state.config && this.state.config.ribName
+        ? [
+            {
+              type: "fileDownload",
+              name: this.state.config.ribName,
+              id: this.state.config.ribId,
+              key: "fileDownload",
+              grid: 4
+            }
+          ]
+        : []),
+      {
+        key: "file",
+        type: "file"
+      },
+      {
+        key: "FAQ",
+        type: "string"
       },
       {
         key: "questions",

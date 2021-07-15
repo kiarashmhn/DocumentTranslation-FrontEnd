@@ -2343,6 +2343,14 @@ export const Dictionary = {
   accNumber: {
     persian: "شماره حساب",
     french: "N° de compte"
+  },
+  bankInfo: {
+    persian: "اطلاعات حساب بانکی",
+    french: "informations sur le compte bancaire"
+  },
+  ribImage: {
+    persian: "تصویر قیب",
+    french: "Image de notre RIB"
   }
 };
 
