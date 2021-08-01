@@ -181,10 +181,10 @@ class Config extends Component {
         key: "accLastName",
         type: "text"
       },
-      {
+      /* {
         key: "accNumber",
         type: "text"
-      },
+      },*/
       {
         key: "address",
         type: "text",

@@ -22,11 +22,23 @@ import PaymentSuccess from "./components/Payment/PaymentSuccess";
 import DataPrivacy from "./components/DataPrivacy";
 import FAQ from "./components/FAQ/FAQ";
 import DevisSuccess from "./components/Payment/DevisSuccess";
+import ReactGA from "react-ga";
 
 const store = createStore(snackbarReducer, applyMiddleware(thunk));
 const hist = createBrowserHistory();
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    ReactGA.initialize("G-EV3WSTL6BG");
+  }
+  componentDidMount() {
+    hist.listen(location => {
+      ReactGA.set({ page: location.pathname }); // Update the user's current page
+      ReactGA.pageview(location.pathname); // Record a pageview for the given page
+    });
+  }
+
   render() {
     return (
       <Provider store={store}>

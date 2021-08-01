@@ -2346,7 +2346,7 @@ export const Dictionary = {
   },
   bankInfo: {
     persian: "اطلاعات حساب بانکی",
-    french: "informations sur le compte bancaire"
+    french: "Informations sur le compte bancaire"
   },
   ribImage: {
     persian: "تصویر قیب",

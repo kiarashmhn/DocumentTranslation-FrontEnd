@@ -15,6 +15,9 @@ import HomeIcon from "@material-ui/icons/Home";
 import HowToRegIcon from "@material-ui/icons/HowToReg";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LiveHelpIcon from "@material-ui/icons/LiveHelp";
+import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
+import HelpIcon from "@material-ui/icons/Help";
+import InfoIcon from "@material-ui/icons/Info";
 //import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../Template/NavigationDrawer";
 import "../../index.css";
@@ -80,19 +83,19 @@ class NavBar extends Component {
         name: "aboutUs",
         link: "/",
         onClick: selectAbout,
-        icon: <HomeIcon className="text-white" />
+        icon: <InfoIcon className="text-white" />
       },
       {
         name: "help",
         link: "/",
         onClick: selectHelp,
-        icon: <HomeIcon className="text-white" />
+        icon: <HelpIcon className="text-white" />
       },
       {
         name: "features",
         link: "/",
         onClick: selectFeatures,
-        icon: <HomeIcon className="text-white" />
+        icon: <PlaylistAddCheckIcon className="text-white" />
       },
       {
         link: "/",

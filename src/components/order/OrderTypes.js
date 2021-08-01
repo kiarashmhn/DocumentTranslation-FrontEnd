@@ -94,8 +94,8 @@ export const OrderTypes = {
       color: "#C51162",
       headline: "لایسنس درایوری",
       frenchHeadline: "Permis de conduire",
-      text: "تعرفه: ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
-      frenchText: "Tarif: 25€ \n Délai de livraison: 24h",
+      text: "تعرفه: از ۲۰ تا ۲۵ یورو\n زمان تحویل: ۲۴ ساعت",
+      frenchText: "Tarif: 20 à 25€ \n Délai de livraison: 24h",
       icon: <DescriptionIcon style={{ fontSize: 30 }} />,
       mdDelay: "200",
       smDelay: "200"

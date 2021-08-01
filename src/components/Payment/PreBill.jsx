@@ -9,7 +9,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import * as PropTypes from "prop-types";
-import Divider from "@material-ui/core/Divider";
 import theme, { grayColor } from "../../theme";
 import * as URLConstant from "../../URLConstant";
 import Api from "../Api/Api";
@@ -203,10 +202,6 @@ export default class PreBill extends Component {
               new Date().getFullYear()}
           </Typography>
           <Typography>{"Affaire : DD" + this.props.orderId}</Typography>
-          <Divider style={{ margin: "4px 2px" }} />
-          <Typography component={"div"} style={{ whiteSpace: "pre-line" }}>
-            {info}
-          </Typography>
         </div>
       </div>
     );
