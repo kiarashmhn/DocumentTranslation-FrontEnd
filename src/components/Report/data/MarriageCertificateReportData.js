@@ -853,37 +853,37 @@ export function MarriageCertificateReportData(data) {
     },
     {
       type: "data",
-      data: data["witness21"].name,
+      data: data["witness21"]?.name,
       name: "name"
     },
     {
       type: "data",
-      data: data["witness21"].lastName,
+      data: data["witness21"]?.lastName,
       name: "lastName"
     },
     {
       type: "data",
-      data: data["witness21"].fatherName,
+      data: data["witness21"]?.fatherName,
       name: "fatherName"
     },
     {
       type: "data",
-      data: data["witness21"].nationalId,
+      data: data["witness21"]?.nationalId,
       name: "nationalId"
     },
     {
       type: "data",
-      data: data["witness21"].placeofIssueIDCertificate,
+      data: data["witness21"]?.placeofIssueIDCertificate,
       name: "placeofIssueIDCertificate"
     },
     {
       type: "data",
-      data: data["witness21"].livingPlace,
+      data: data["witness21"]?.livingPlace,
       name: "livingPlace"
     },
     {
       type: "data",
-      data: getFrenchName(data["witness21"].job),
+      data: getFrenchName(data["witness21"]?.job),
       name: "job"
     },
     {
@@ -901,37 +901,37 @@ export function MarriageCertificateReportData(data) {
     },
     {
       type: "data",
-      data: data["witness22"].name,
+      data: data["witness22"]?.name,
       name: "name"
     },
     {
       type: "data",
-      data: data["witness22"].lastName,
+      data: data["witness22"]?.lastName,
       name: "lastName"
     },
     {
       type: "data",
-      data: data["witness22"].fatherName,
+      data: data["witness22"]?.fatherName,
       name: "fatherName"
     },
     {
       type: "data",
-      data: data["witness22"].nationalId,
+      data: data["witness22"]?.nationalId,
       name: "nationalId"
     },
     {
       type: "data",
-      data: data["witness22"].placeofIssueIDCertificate,
+      data: data["witness22"]?.placeofIssueIDCertificate,
       name: "placeofIssueIDCertificate"
     },
     {
       type: "data",
-      data: data["witness22"].livingPlace,
+      data: data["witness22"]?.livingPlace,
       name: "livingPlace"
     },
     {
       type: "data",
-      data: getFrenchName(data["witness22"].job),
+      data: getFrenchName(data["witness22"]?.job),
       name: "job"
     },
     {
@@ -949,37 +949,37 @@ export function MarriageCertificateReportData(data) {
     },
     {
       type: "data",
-      data: data["witness23"].name,
+      data: data["witness23"]?.name,
       name: "name"
     },
     {
       type: "data",
-      data: data["witness23"].lastName,
+      data: data["witness23"]?.lastName,
       name: "lastName"
     },
     {
       type: "data",
-      data: data["witness23"].fatherName,
+      data: data["witness23"]?.fatherName,
       name: "fatherName"
     },
     {
       type: "data",
-      data: data["witness23"].nationalId,
+      data: data["witness23"]?.nationalId,
       name: "nationalId"
     },
     {
       type: "data",
-      data: data["witness23"].placeofIssueIDCertificate,
+      data: data["witness23"]?.placeofIssueIDCertificate,
       name: "placeofIssueIDCertificate"
     },
     {
       type: "data",
-      data: data["witness23"].livingPlace,
+      data: data["witness23"]?.livingPlace,
       name: "livingPlace"
     },
     {
       type: "data",
-      data: getFrenchName(data["witness23"].job),
+      data: getFrenchName(data["witness23"]?.job),
       name: "job"
     },
     {
@@ -1005,37 +1005,37 @@ export function MarriageCertificateReportData(data) {
     },
     {
       type: "data",
-      data: data["representer1"].name,
+      data: data["representer1"]?.name,
       name: "name"
     },
     {
       type: "data",
-      data: data["representer1"].lastName,
+      data: data["representer1"]?.lastName,
       name: "lastName"
     },
     {
       type: "data",
-      data: data["representer1"].fatherName,
+      data: data["representer1"]?.fatherName,
       name: "fatherName"
     },
     {
       type: "data",
-      data: data["representer1"].nationalId,
+      data: data["representer1"]?.nationalId,
       name: "nationalId"
     },
     {
       type: "data",
-      data: data["representer1"].placeofIssueIDCertificate,
+      data: data["representer1"]?.placeofIssueIDCertificate,
       name: "placeofIssueIDCertificate"
     },
     {
       type: "data",
-      data: data["representer1"].livingPlace,
+      data: data["representer1"]?.livingPlace,
       name: "livingPlace"
     },
     {
       type: "data",
-      data: getFrenchName(data["representer1"].job),
+      data: getFrenchName(data["representer1"]?.job),
       name: "job"
     },
     {
@@ -1053,37 +1053,37 @@ export function MarriageCertificateReportData(data) {
     },
     {
       type: "data",
-      data: data["representer2"].name,
+      data: data["representer2"]?.name,
       name: "name"
     },
     {
       type: "data",
-      data: data["representer2"].lastName,
+      data: data["representer2"]?.lastName,
       name: "lastName"
     },
     {
       type: "data",
-      data: data["representer2"].fatherName,
+      data: data["representer2"]?.fatherName,
       name: "fatherName"
     },
     {
       type: "data",
-      data: data["representer2"].nationalId,
+      data: data["representer2"]?.nationalId,
       name: "nationalId"
     },
     {
       type: "data",
-      data: data["representer2"].placeofIssueIDCertificate,
+      data: data["representer2"]?.placeofIssueIDCertificate,
       name: "placeofIssueIDCertificate"
     },
     {
       type: "data",
-      data: data["representer2"].livingPlace,
+      data: data["representer2"]?.livingPlace,
       name: "livingPlace"
     },
     {
       type: "data",
-      data: getFrenchName(data["representer2"].job),
+      data: getFrenchName(data["representer2"]?.job),
       name: "job"
     },
     {

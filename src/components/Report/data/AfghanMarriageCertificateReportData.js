@@ -43,13 +43,13 @@ export function AfghanMarriageCertificateReportData(data) {
         type: "pureData",
         data:
           "Volume:" +
-          d["registeredTazkaraInformation" + a].volumeNumber +
+          d["registeredTazkaraInformation" + a]?.volumeNumber +
           " - " +
           "Page:" +
-          d["registeredTazkaraInformation" + a].pageNumber +
+          d["registeredTazkaraInformation" + a]?.pageNumber +
           " - " +
           "N°:" +
-          d["registeredTazkaraInformation" + a].registerNumber,
+          d["registeredTazkaraInformation" + a]?.registerNumber,
         name: "N° de Taskera (Acte de naissance)"
       }
     );
@@ -63,25 +63,25 @@ export function AfghanMarriageCertificateReportData(data) {
         },
         {
           type: "pureData",
-          data: capitalize(d["livingLocationTemp" + a].country),
+          data: capitalize(d["livingLocationTemp" + a]?.country),
           name: "    Pays"
         }
       );
-      if (d["livingLocationTemp" + a].country === "afghanistan")
+      if (d["livingLocationTemp" + a]?.country === "afghanistan")
         r.push(
           {
             type: "pureData",
-            data: d["livingLocationTemp" + a].province,
+            data: d["livingLocationTemp" + a]?.province,
             name: "    Province"
           },
           {
             type: "pureData",
-            data: d["livingLocationTemp" + a].district,
+            data: d["livingLocationTemp" + a]?.district,
             name: "    District"
           },
           {
             type: "pureData",
-            data: d["livingLocationTemp" + a].village,
+            data: d["livingLocationTemp" + a]?.village,
             name: "    Village"
           }
         );
@@ -96,25 +96,25 @@ export function AfghanMarriageCertificateReportData(data) {
         },
         {
           type: "pureData",
-          data: capitalize(d["livingLocationOriginal" + a].country),
+          data: capitalize(d["livingLocationOriginal" + a]?.country),
           name: "    Pays"
         }
       );
-      if (d["livingLocationOriginal" + a].country === "afghanistan")
+      if (d["livingLocationOriginal" + a]?.country === "afghanistan")
         r.push(
           {
             type: "pureData",
-            data: d["livingLocationOriginal" + a].province,
+            data: d["livingLocationOriginal" + a]?.province,
             name: "    Province"
           },
           {
             type: "pureData",
-            data: d["livingLocationOriginal" + a].district,
+            data: d["livingLocationOriginal" + a]?.district,
             name: "    District"
           },
           {
             type: "pureData",
-            data: d["livingLocationOriginal" + a].village,
+            data: d["livingLocationOriginal" + a]?.village,
             name: "    Village"
           }
         );

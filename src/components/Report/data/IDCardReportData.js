@@ -1,4 +1,4 @@
-import {titleSize} from "../ExcelUtil";
+import { titleSize } from "../ExcelUtil";
 
 const getSmartCardFields = data => {
   let footer = [

@@ -56,17 +56,17 @@ export function BirthLicenseReportData(data) {
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.province,
+      data: data.provinceDistrict?.province,
       name: "    Province"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.district,
+      data: data.provinceDistrict?.district,
       name: "    District"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.village,
+      data: data.provinceDistrict?.village,
       name: "    Village"
     },
     {
@@ -158,17 +158,17 @@ export function BirthLicenseReportData(data) {
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.province,
+      data: data.provinceDistrict1?.province,
       name: "    Province"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.district,
+      data: data.provinceDistrict1?.district,
       name: "    District"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.village,
+      data: data.provinceDistrict1?.village,
       name: "    Village"
     },
     {
@@ -181,26 +181,26 @@ export function BirthLicenseReportData(data) {
       name: "registeredTazkaraInformation",
       data:
         "Volume:" +
-        data.registeredTazkaraInformation.volumeNumber +
+        data.registeredTazkaraInformation?.volumeNumber +
         " - " +
         "Page:" +
-        data.registeredTazkaraInformation.pageNumber +
+        data.registeredTazkaraInformation?.pageNumber +
         " - " +
         "N°:" +
-        data.registeredTazkaraInformation.registerNumber
+        data.registeredTazkaraInformation?.registerNumber
     },
     {
       type: "data",
       name: "fatherstazkaraInformation",
       data:
         "Volume:" +
-        data.fatherstazkaraInformation.volumeNumber +
+        data.fatherstazkaraInformation?.volumeNumber +
         " - " +
         "Page:" +
-        data.fatherstazkaraInformation.pageNumber +
+        data.fatherstazkaraInformation?.pageNumber +
         " - " +
         "N°:" +
-        data.fatherstazkaraInformation.registerNumber
+        data.fatherstazkaraInformation?.registerNumber
     },
     {
       type: "data",

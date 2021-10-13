@@ -1,46 +1,50 @@
 import { compareDates, titleSize } from "../ExcelUtil";
 
 const getSpouse = spouse => {
-  let info = {
-    name: spouse.name,
-    lastName: spouse.lastName,
-    certificateId: spouse.certificateId,
-    birthLocation: spouse.birthLocation,
-    birthDate: spouse.birthDate,
-    marriageDate: spouse.marriageDate,
-    marriageLocation: spouse.marriageLocation,
-    officeNumber: spouse.officeNumber,
-    registrationNumber: spouse.registrationNumber
-  };
+  let info = {};
+  if (spouse) {
+    info = {
+      name: spouse.name,
+      lastName: spouse.lastName,
+      certificateId: spouse.certificateId,
+      birthLocation: spouse.birthLocation,
+      birthDate: spouse.birthDate,
+      marriageDate: spouse.marriageDate,
+      marriageLocation: spouse.marriageLocation,
+      officeNumber: spouse.officeNumber,
+      registrationNumber: spouse.registrationNumber
+    };
 
-  if (spouse.marriageStatus === "divorce")
-    info = {
-      ...info,
-      ...{
-        divorceDate: spouse.divorceDate,
-        divorceLocation: spouse.divorceLocation,
-        divorceRegistrationNumber: spouse.divorceRegistrationNumber
-      }
-    };
-  else if (spouse.marriageStatus === "death")
-    info = {
-      ...info,
-      ...{
-        deathDate: spouse.deathDate,
-        deathLocation: spouse.deathLocation,
-        deathRegistrationNumber: spouse.deathRegistrationNumber
-      }
-    };
-  else
-    info = {
-      ...info,
-      ...{
-        divorceOrDeath: "Néant"
-      }
-    };
+    if (spouse.marriageStatus === "divorce")
+      info = {
+        ...info,
+        ...{
+          divorceDate: spouse.divorceDate,
+          divorceLocation: spouse.divorceLocation,
+          divorceRegistrationNumber: spouse.divorceRegistrationNumber
+        }
+      };
+    else if (spouse.marriageStatus === "death")
+      info = {
+        ...info,
+        ...{
+          deathDate: spouse.deathDate,
+          deathLocation: spouse.deathLocation,
+          deathRegistrationNumber: spouse.deathRegistrationNumber
+        }
+      };
+    else
+      info = {
+        ...info,
+        ...{
+          divorceOrDeath: "Néant"
+        }
+      };
+  }
   return info;
 };
 const getSpouses = data => {
+  if (!data.spouses) return [];
   let spouses = data.spouses.map(spouse => {
     return getSpouse(spouse);
   });

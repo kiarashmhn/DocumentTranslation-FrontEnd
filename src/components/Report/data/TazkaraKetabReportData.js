@@ -37,19 +37,20 @@ export function TazkaraKetabReportData(data) {
     {
       type: "text",
       name:
-        "Numéro de volume : " + data.registeredTazkaraInformation.volumeNumber,
+        "Numéro de volume : " + data.registeredTazkaraInformation?.volumeNumber,
       isBold: true
     },
     {
       type: "text",
-      name: "Numéro de page :  " + data.registeredTazkaraInformation.pageNumber,
+      name:
+        "Numéro de page :  " + data.registeredTazkaraInformation?.pageNumber,
       isBold: true
     },
     {
       type: "text",
       name:
         "Numéro d'enregistrement : " +
-        data.registeredTazkaraInformation.registerNumber,
+        data.registeredTazkaraInformation?.registerNumber,
       isBold: true
     },
     {
@@ -97,17 +98,17 @@ export function TazkaraKetabReportData(data) {
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.province,
+      data: data.provinceDistrict?.province,
       name: "    Province"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.district,
+      data: data.provinceDistrict?.district,
       name: "    District"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.village,
+      data: data.provinceDistrict?.village,
       name: "    Village"
     },
     {
@@ -192,17 +193,17 @@ export function TazkaraKetabReportData(data) {
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.province,
+      data: data.provinceDistrict1?.province,
       name: "    Province"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.district,
+      data: data.provinceDistrict1?.district,
       name: "    District"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.village,
+      data: data.provinceDistrict1?.village,
       name: "    Village"
     },
     {
@@ -210,26 +211,26 @@ export function TazkaraKetabReportData(data) {
       name: "registeredTazkaraInformation",
       data:
         "Volume:" +
-        data.registeredTazkaraInformation.volumeNumber +
+        data.registeredTazkaraInformation?.volumeNumber +
         " - " +
         "Page:" +
-        data.registeredTazkaraInformation.pageNumber +
+        data.registeredTazkaraInformation?.pageNumber +
         " - " +
         "N°:" +
-        data.registeredTazkaraInformation.registerNumber
+        data.registeredTazkaraInformation?.registerNumber
     },
     {
       type: "data",
       name: "fatherstazkaraInformation",
       data:
         "Volume:" +
-        data.fatherstazkaraInformation.volumeNumber +
+        data.fatherstazkaraInformation?.volumeNumber +
         " - " +
         "Page:" +
-        data.fatherstazkaraInformation.pageNumber +
+        data.fatherstazkaraInformation?.pageNumber +
         " - " +
         "N°:" +
-        data.fatherstazkaraInformation.registerNumber
+        data.fatherstazkaraInformation?.registerNumber
     },
     {
       type: "empty"

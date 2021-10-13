@@ -345,21 +345,23 @@ export function AfghanDrivingLicenseReportData(data) {
     ];
   }
   cat = cat.slice(0, -4);
-  let province;
+  let province = "";
   let temp = getFrenchName(data.directorProvince);
-  // eslint-disable-next-line no-constant-condition
-  let first = temp.substring(0, 1);
-  if (
-    first === "A" ||
-    first === "E" ||
-    first === "I" ||
-    first === "O" ||
-    first === "U" ||
-    first === "Y" ||
-    first === "H"
-  ) {
-    province = "d’" + temp;
-  } else province = "de " + temp;
+  if (temp) {
+    // eslint-disable-next-line no-constant-condition
+    let first = temp.substring(0, 1);
+    if (
+      first === "A" ||
+      first === "E" ||
+      first === "I" ||
+      first === "O" ||
+      first === "U" ||
+      first === "Y" ||
+      first === "H"
+    ) {
+      province = "d’" + temp;
+    } else province = "de " + temp;
+  }
   return [
     {
       type: "text",
@@ -414,13 +416,13 @@ export function AfghanDrivingLicenseReportData(data) {
       name: "tazkaraInformation1",
       data:
         "Volume:" +
-        data.tazkaraInformation1.volumeNumber +
+        data.tazkaraInformation1?.volumeNumber +
         " - " +
         "Page:" +
-        data.tazkaraInformation1.pageNumber +
+        data.tazkaraInformation1?.pageNumber +
         " - " +
         "N°:" +
-        data.tazkaraInformation1.registerNumber
+        data.tazkaraInformation1?.registerNumber
     },
     {
       type: "data",
@@ -434,17 +436,17 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.province,
+      data: data.provinceDistrict?.province,
       name: "    Province"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.district,
+      data: data.provinceDistrict?.district,
       name: "    District"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict.village,
+      data: data.provinceDistrict?.village,
       name: "    Village"
     },
     {
@@ -454,17 +456,17 @@ export function AfghanDrivingLicenseReportData(data) {
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.province,
+      data: data.provinceDistrict1?.province,
       name: "    Province"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.district,
+      data: data.provinceDistrict1?.district,
       name: "    District"
     },
     {
       type: "pureData",
-      data: data.provinceDistrict1.village,
+      data: data.provinceDistrict1?.village,
       name: "    Village"
     },
     {
