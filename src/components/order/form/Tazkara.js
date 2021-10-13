@@ -142,7 +142,8 @@ export const TazkaraForm = {
           options: [
             { value: "yes", key: "yes" },
             { value: "no", key: "no" }
-          ]
+          ],
+          notRequired: true
         },
         {
           key: "tribe",
@@ -166,7 +167,8 @@ export const TazkaraForm = {
             { value: "guijar", key: "guijar" },
             { value: "hindu", key: "hindu" },
             { value: "sikan", key: "sikan" }
-          ]
+          ],
+          notRequired: true
         }
       ]
     },
@@ -181,7 +183,8 @@ export const TazkaraForm = {
             { value: "tall", key: "tall" },
             { value: "middle", key: "middle" },
             { value: "others", key: "others" }
-          ]
+          ],
+          notRequired: true
         },
         {
           key: "eyeColor",
@@ -194,7 +197,8 @@ export const TazkaraForm = {
             { value: "noisette", key: "noisette" },
             { value: "green", key: "green" },
             { value: "others", key: "others" }
-          ]
+          ],
+          notRequired: true
         },
         {
           key: "eyebrow",
@@ -203,7 +207,8 @@ export const TazkaraForm = {
             { value: "connected", key: "connected" },
             { value: "departed", key: "departed" },
             { value: "others", key: "others" }
-          ]
+          ],
+          notRequired: true
         },
         {
           key: "hairColor",
@@ -215,7 +220,8 @@ export const TazkaraForm = {
             { value: "white", key: "white" },
             { value: "marron", key: "marron" },
             { value: "others", key: "others" }
-          ]
+          ],
+          notRequired: true
         },
         {
           key: "skinColor",
@@ -228,7 +234,8 @@ export const TazkaraForm = {
             { value: "red", key: "red" },
 
             { value: "others", key: "others" }
-          ]
+          ],
+          notRequired: true
         },
         {
           key: "otherSigns",
@@ -240,7 +247,8 @@ export const TazkaraForm = {
             { value: "moderate", key: "moderate" },
             { value: "majorSigns", key: "majorSigns" },
             { value: "others", key: "others" }
-          ]
+          ],
+          notRequired: true
         }
       ]
     },

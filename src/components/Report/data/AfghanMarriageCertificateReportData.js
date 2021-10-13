@@ -124,20 +124,20 @@ export function AfghanMarriageCertificateReportData(data) {
 
   const getChildrenInfo = () => {
     let children = [];
-    data.afghanChildren.forEach((c, idx) => {
-      children.push(
-        {
-          type: "text",
-          name: "Enfant " + (idx + 1) + ":",
-          isBold: true
-        },
-        ...getFields(c, ""),
-        {
-          type: "empty"
-        }
-      );
-    });
     if (data.afghanChildren && data.afghanChildren.length > 0) {
+      data.afghanChildren.forEach((c, idx) => {
+        children.push(
+          {
+            type: "text",
+            name: "Enfant " + (idx + 1) + ":",
+            isBold: true
+          },
+          ...getFields(c, ""),
+          {
+            type: "empty"
+          }
+        );
+      });
       return [
         {
           type: "empty"

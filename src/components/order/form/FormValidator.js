@@ -259,7 +259,7 @@ export const isNotRequired = (element, data) => {
   if (element.notRequired) return true;
   if (element.notRequiredField) return !!data[element.notRequiredField];
   if (element.requiredField) return !data[element.requiredField];
-  return false;
+  return true;
 };
 
 export const validateStep = (data, step) => {

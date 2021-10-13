@@ -105,9 +105,12 @@ class OrderForm extends Component {
             color="primary"
             type={"submit"}
             style={styles.button}
-            disabled={this.state.step === this.state.steps - 1}
+            disabled={
+              this.state.step === this.state.steps - 1 || this.props.isLoading
+            }
           >
             {getCompleteName("next")}
+            {this.props.isLoading && <ButtonCircularProgress />}
           </Button>
           {this.state.step <= this.state.steps - 1 && (
             <div style={{ display: "inline" }}>
@@ -117,8 +120,10 @@ class OrderForm extends Component {
                     variant="contained"
                     onClick={this.handleSave}
                     style={{ backgroundColor: "#197163", color: "#FFFFFF" }}
+                    disabled={this.props.isLoading}
                   >
                     {getCompleteName("save")}
+                    {this.props.isLoading && <ButtonCircularProgress />}
                   </Button>
                 </div>
                 <div style={{ display: "inline-block" }}>

@@ -209,7 +209,8 @@ export const TazkaraBarghiForm = {
             { value: "guijar", key: "guijar" },
             { value: "hindu", key: "hindu" },
             { value: "sikan", key: "sikan" }
-          ]
+          ],
+          required: true
         },
         {
           key: "nationality",
